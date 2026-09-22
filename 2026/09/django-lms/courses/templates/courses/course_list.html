@@ -1,0 +1,51 @@
+{% extends 'courses/course_base.html' %} 
+
+{% block title_name %}
+  在线学习平台 - 课程
+{% endblock title_name %}
+  
+{% block main_content %}
+<div class="container">
+  <div>
+    <h1>全部课程</h1>
+
+    {% if user.user_type == 2 %}
+    <a
+      href="{% url 'courses:create' %}"
+      class="btn btn-lg btn-fill btn-success button-stretch"
+    >
+      <i class="fa fa-plus-circle" aria-hidden="true"> 创建课程</i>
+    </a>
+    {% endif %}
+  </div>
+    <div class="card-deck">
+      {% for course_item in object_list %}
+      <div>
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{course_item.course_name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{course_item.teacher}}</h6>
+          <p class="card-text">
+            {{course_item.course_description}}
+          </p>
+          <a href="{% url 'courses:detail' pk=course_item.pk %}" class="btn btn-primary card-link">查看详情</a>
+          {% if user.user_type == 1 %}
+            {%if user in course_item.students.all%}
+                <a href="{% url 'courses:unenroll' pk=course_item.pk %}" class="btn btn-danger card-link">退出课程</a>
+            {% else %}
+                <a href="{% url 'courses:enroll' pk=course_item.pk %}" class="btn btn-success card-link">加入课程</a>
+            {% endif %}
+          {% endif %}
+
+          <p>{{course_item.students.count}}
+                人已加入</p>
+          
+              
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock main_content %}
+</div>

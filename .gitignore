@@ -216,3 +216,30 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# ===== Python =====
+__pycache__/
+*.py[cod]
+
+# ===== Virtual environments =====
+venv/
+.venv/
+
+# ===== Local environment / secrets =====
+.env
+.env.*
+!.env.example
+
+# ===== Django local files =====
+*.log
+
+# ===== MySQL local database files =====
+**/db/
+
+# ===== IDE =====
+.idea/
+
+# ===== VS Code local settings =====
+.vscode/
+
+# ===== Django uploaded media =====
+media/

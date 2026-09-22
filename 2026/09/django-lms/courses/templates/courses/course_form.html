@@ -1,0 +1,25 @@
+{% extends 'courses/course_base.html' %}
+{% load bootstrap4 %}
+
+{% block title_name %}
+    在线学习平台 - 创建课程
+{% endblock title_name %}
+    
+
+{% block main_content %}
+    <h1>创建课程</h1>
+    
+    {% if user_type == 2 %}
+        <form action="{% url 'courses:create' %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" value="创建" class="btn btn-success btn-lg">
+        </form>
+    {% else %}
+        <div class="jumbotron">
+            <h2>仅教师可以访问此页面。</h2>
+        </div>
+    {% endif %}
+        
+{% endblock main_content %}
+    

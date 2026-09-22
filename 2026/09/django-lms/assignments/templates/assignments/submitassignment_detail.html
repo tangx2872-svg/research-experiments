@@ -1,0 +1,61 @@
+{% extends 'assignments/assignment_base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title_name %}
+    在线学习平台 - {{submissions.topic}}
+{% endblock title_name %}
+    
+
+
+{% block main_content %}
+    <div class="container">
+        {% if submissions.assignment_ques.course.teacher.id == user.id or submissions.author.id == user.id %}
+            <h1>{{submissions.topic}}</h1>
+            <h4>提交人： {{submissions.author}}</h4>
+            <h6>提交时间： {{submissions.submitted_date}}</h6>
+            <p>说明： {{submissions.description}}</p>
+            <p>提交文件： {{submissions.assignment_file.name}}</p>
+             
+            <a href="{{submissions.assignment_file.url}}" class="btn btn-lg btn-primary" download>下载</a>
+            <div class="grade">
+                {% if submissions.graded == False %}
+                    <p>这份作业尚未评分。</p>
+                {% else %}
+                    <p>这份作业已评分。</p>
+                    <p>成绩： {{submissions.grade}}</p>
+                {% endif %}
+            </div>
+                
+            
+            
+            {% if user.user_type == 1 and submissions.graded == False %}
+                <div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <a href="{% url 'assignments:submit_delete' pk=submissions.pk %}" 
+                        class="btn btn-danger btn-lg">删除</a>
+                    </form>
+                    
+                </div>
+            {% else %}
+                
+                {% if submissions.assignment_ques.course.teacher.id == user.id %}
+                    {% if submissions.graded == False %}
+                        <div>
+                            <a href="{% url 'assignments:grade' pk=submissions.pk %}" 
+                            class="btn btn-success btn-lg">评分</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+            {% endif %}
+                
+        {% else %}
+            <div class="jumbotron">
+                <h2>您无权查看这份作业。</h2>
+            </div>
+        {% endif %}
+    </div>
+{% endblock main_content %}
+    

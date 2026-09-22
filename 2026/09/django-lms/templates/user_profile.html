@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    在线学习平台 - 个人资料
+{% endblock title %}
+
+
+{% block body_content %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            <i class="fa fa-user-circle-o fa-5x" aria-hidden="true"></i>
+            <h1>用户名： {{user.username}}</h1>
+            <h4>名： {{user.first_name}}</h4>
+            <h4>姓： {{user.last_name}}</h4>
+
+            <h4>身份：
+            {% if user.user_type == 1 %}
+                学生
+            {% else %}
+                教师
+            {% endif %}
+            </h4>
+            <h5>电子邮箱： {{user.email}}</h5>
+
+            {% if user.user_type == 2 %}
+                <div class="card-deck">
+                {% for course in course_list %}
+
+                    {% if course.teacher.id == user.id %}
+                        <div class="card" style="width: 18rem">
+                            <div class="card-body">
+                            <h5 class="card-title">{{course.course_name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{course.teacher}}</h6>
+                            <p class="card-text">
+                                {{course.course_description}}
+                            </p>
+                            <a href="{% url 'courses:detail' pk=course.pk %}"
+                            class="btn btn-primary card-link">查看详情</a>
+                            <p>{{course.students.count}}
+                                    人已加入</p>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                {% empty %}
+                    <div class="jumbotron">
+                        您还没有创建课程。
+                    </div>
+                {% endfor %}
+                </div>
+            {% elif user.user_type == 1 %}
+            <div class="card-deck">
+                {% for course in course_list %}
+
+                    {% if user in course.students.all %}
+                        <div class="card" style="width: 18rem">
+                            <div class="card-body">
+                            <h5 class="card-title">{{course.course_name}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{course.teacher}}</h6>
+                            <p class="card-text">
+                                {{course.course_description}}
+                            </p>
+                            <a href="{% url 'courses:detail' pk=course.pk %}" class="btn btn-primary card-link">查看详情</a>
+                            <a href="{% url 'courses:unenroll' pk=course.pk %}" class="btn btn-danger card-link">退出课程</a>
+                            <p>{{course.students.count}}
+                                    人已加入</p>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                {% empty %}
+                    <div class="jumbotron">
+                        您还没有加入课程。
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        {% else %}
+            <div class="jumbotron">
+                您无权查看此个人资料。
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock body_content %}
+
