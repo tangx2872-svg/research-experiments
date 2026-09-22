@@ -1,0 +1,85 @@
+{% extends 'courses/course_base.html' %} 
+
+{% block title_name %}
+  在线学习平台 - {{course.course_name}}
+{% endblock title_name %}
+  
+{% block main_content %}
+<h1>{{course.course_name}}</h1>
+<h4>授课教师： {{course.teacher}}</h4>
+<p>说明： {{course.course_description}}</p>
+
+{% if user.user_type == 1 %} {%if user in course.students.all%}
+<a
+  href="{% url 'courses:unenroll' pk=course.pk %}"
+  class="btn btn-danger btn-lg"
+  >退出课程</a
+>
+{% else %}
+<a href="{% url 'courses:enroll' pk=course.pk %}" class="btn btn-success btn-lg"
+  >加入课程</a
+>
+{% endif %} 
+{% endif %}
+
+{% if course.teacher.id == user.id or user in course.students.all%}
+  {% if user.user_type == 2 %}
+    <a
+      href="{% url 'assignments:create' %}"
+      class="btn btn-lg btn-fill btn-warning button-stretch"
+    >
+      <i class="fa fa-plus-circle" aria-hidden="true"> 发布作业</i>
+    </a>
+    <a
+      href="{% url 'resources:create' %}"
+      class="btn btn-lg btn-fill btn-info button-stretch"
+    >
+      <i class="fa fa-plus-circle" aria-hidden="true"> 上传学习资料</i>
+    </a>
+  {% endif %}
+    
+  <div class="assignments">
+    <h3>课程作业</h3>
+    <ul class="list-group">
+      {% for assignment in assignments %}
+      <a href="{% url 'assignments:detail' pk=assignment.pk %}" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{assignment.assignment_name}}</h5>
+        </div>
+        <p class="mb-1">
+          {{assignment.assignment_description}}
+        </p>
+        <small>发布时间： {{assignment.start_date}}</small><br>
+        <small>截止时间： {{assignment.due_date}} {{assignment.due_time}}</small>
+      </a>
+      {% empty %}
+      <h6>暂无作业</h6>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="resources">
+    <h3>学习资料</h3>
+    <!-- {% include 'assignments/assignment_list.html' %} -->
+    <ul class="list-group">
+      {% for resource in resources %}
+      <div  class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{resource.resource_name}}</h5>
+        </div>
+        <p class="mb-1">
+          资料文件： {{resource.resource_file.name}}
+          <a href="{{resource.resource_file.url}}" class="btn btn-sm btn-primary" download>下载</a>
+        </p>
+        
+        {% if user.id == course.teacher.id %}
+          <small><a href="{% url 'resources:delete' pk=resource.pk %}" class="btn btn-sm btn-danger">删除</a></small>
+        {% endif %}
+      </div>
+      {% empty %}
+        <h6>暂无学习资料</h6>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+  
+{% endblock main_content %}

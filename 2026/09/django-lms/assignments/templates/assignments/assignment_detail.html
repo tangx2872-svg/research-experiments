@@ -1,0 +1,70 @@
+{% extends 'assignments/assignment_base.html' %}
+{% load bootstrap4 %}
+
+{% block title_name %}
+    在线学习平台 - {{assignment.assignment_name}}
+{% endblock title_name %}
+    
+
+{% block main_content %}
+    <div class="container">
+        <h1>{{assignment.assignment_name}}</h1>
+        <h4>所属课程： {{assignment.course}}</h4>
+        <h6>发布时间： {{assignment.start_date}}</h6>
+        <h6>截止时间： {{assignment.due_date}}</h6>
+        
+        <p>说明： {{assignment.assignment_description}}</p>
+        {% if user.user_type == 2 %}
+            <a href="{% url 'assignments:update' pk=assignment.pk %}" class="btn btn-warning btn-lg">编辑</a>
+            <a href="{% url 'assignments:delete' pk=assignment.pk %}" class="btn btn-danger btn-lg">删除</a>
+
+            <div class="submissions">
+            <h3>提交记录</h3>
+            
+            {% for submissions in submitted %}
+                <a href="{% url 'assignments:submit_detail' pk=submissions.pk %}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{submissions.topic}}</h5>
+                    <small>{{submissions.author}}</small>
+                    </div>
+                    <p class="mb-1">
+                    {{submissions.description}}
+                    </p>
+                    <small>提交时间： {{submissions.submitted_date}}</small><br>
+                </a>
+            {% empty %}
+                <h6>暂无提交记录</h6>
+            {% endfor %}
+            </div>
+                
+
+        {% else %}            
+            {% if assignment.course in course %}
+                {% if duedate >= time %}
+                    <a href="{% url 'assignments:submit' %}" class="btn btn-success btn-lg">提交作业</a>
+                {% endif %}
+                <div class="submissions">
+                <h3>我的提交记录</h3>
+                
+                {% for submissions in submitted %}
+                    {% if submissions.author.id == user.id %}
+                        <a href="{% url 'assignments:submit_detail' pk=submissions.pk %}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{submissions.topic}}</h5>
+                            <small>{{submissions.author}}</small>
+                            </div>
+                            <p class="mb-1">
+                            {{submissions.description}}
+                            </p>
+                            <small>提交时间： {{submissions.submitted_date}}</small><br>
+                        </a>
+                    {% endif %}
+                {% empty %}
+                    <h6>暂无提交记录</h6>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock main_content %}
+    
