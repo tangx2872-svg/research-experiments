@@ -4,6 +4,7 @@ from users.models import User
 
 # Create your models here.
 class Course(models.Model):
+    is_archived = models.BooleanField(default=False)
     course_name = models.CharField(max_length=200)
     course_description = models.TextField()
     teacher = models.ForeignKey(User, related_name="course", on_delete=models.CASCADE)
@@ -23,7 +24,7 @@ class Enrollment(models.Model):
     student = models.ForeignKey(User, related_name="user_courses", on_delete=models.CASCADE)
 
     def __str__(self):
-        self.student.username
+        return '{} - {}'.format(self.student.username, self.course.course_name)
 
     class Meta:
         unique_together = ('course', 'student')

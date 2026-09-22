@@ -11,7 +11,7 @@
   <h1>{% if object %}编辑作业{% else %}发布作业{% endif %}</h1>
 
   {% if user.user_type == 2 %}
-    <form method="POST" action="{% url 'assignments:create' %}">
+    <form method="POST" action="{{ request.path }}">
       {% csrf_token %} 
       {% bootstrap_field form.assignment_name %}
       {% bootstrap_field form.assignment_description %}

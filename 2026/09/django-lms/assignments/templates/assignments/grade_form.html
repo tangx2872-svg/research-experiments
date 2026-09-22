@@ -1,30 +1,16 @@
 {% extends 'assignments/assignment_base.html' %}
 {% load bootstrap4 %}
-
-{% block title_name %}
-    在线学习平台 - 评分
-{% endblock title_name %}
-    
-
+{% block title_name %}在线学习平台 - 批改作业{% endblock %}
 {% block main_content %}
-    
-    {% if user.user_type == 2 and submissions.assignment_ques.course.teacher.id == user.id %}
-        <div class="container">
-            <form method="POST">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <div>
-                    <input type="submit" value="评分" class="btn btn-success btn-lg">
-                </div>
-            </form>
-        </div>
-    {% else %}
-        <div class="container">
-            <div class="jumbotron">
-                <h2>您无权为这份作业评分。</h2>
-            </div>
-        </div>
-    {% endif %}
-        
-{% endblock main_content %}
-    
+<div class="container">
+<h1>{% if submissions.graded %}修改评分{% else %}批改作业{% endif %}</h1>
+<p>作业：{{ submissions.assignment_ques }} · 学生：{{ submissions.author }}</p>
+<h4>{{ submissions.topic }}</h4><p>{{ submissions.description|linebreaksbr }}</p>
+<a href="{% url 'assignments:download' pk=submissions.pk %}" class="btn btn-primary mb-3">下载提交附件</a>
+{% if submissions.graded %}<p>当前成绩：{{ submissions.grade }} 分。保存后学生将看到最新成绩，原评分保留在记录中。</p>{% endif %}
+<form method="post">{% csrf_token %}{% bootstrap_form form %}
+<button class="btn btn-success" type="submit">保存评分</button>
+<a class="btn btn-secondary" href="{% url 'assignments:submit_detail' pk=submissions.pk %}">返回提交详情</a>
+</form>
+</div>
+{% endblock %}
