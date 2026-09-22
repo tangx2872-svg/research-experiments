@@ -3,7 +3,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.views import generic
 from courses.models import Course
-from assignments.models import SubmitAssignment
+from assignments.models import Assignment, SubmitAssignment
 
 
 def index(request):
@@ -23,6 +23,14 @@ class UserProfile(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        courses = context['course_list']
+        context['course_count'] = courses.count()
+        context['assignment_count'] = Assignment.objects.filter(course__in=courses).count()
         if self.request.user.user_type == 1:
             context['my_submissions'] = SubmitAssignment.objects.filter(author=self.request.user).select_related('assignment_ques__course').order_by('-updated_at', '-pk')
+            current = context['my_submissions'].filter(current_slot=1)
+        else:
+            current = SubmitAssignment.objects.filter(assignment_ques__course__teacher=self.request.user, current_slot=1)
+        context['pending_count'] = current.filter(graded=False).count()
+        context['graded_count'] = current.filter(graded=True).count()
         return context

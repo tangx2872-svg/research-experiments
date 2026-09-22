@@ -1,73 +1,66 @@
 {% load static %}
+<!doctype html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        
-        {% block title %}
-            
-        {% endblock title %}
-        
-    </title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Raleway&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'django_lms/css/master.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#174f50">
+    <title>{% block title %}苏州工学院 · 教学平台{% endblock %}</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'django_lms/images/learning-mark.svg' %}">
+    <link rel="stylesheet" href="{% static 'django_lms/vendor/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'django_lms/vendor/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'django_lms/css/master.css' %}?v=20260922-3">
+    <script defer src="{% static 'django_lms/js/navigation.js' %}?v=20260922-3"></script>
 </head>
 <body>
-    <div class="sidenav">
-        <div class="side-items">
-        <span class="sidemenu side-element"><i class="fa fa-user-circle-o fa-5x" aria-hidden="true" id="profile"></i></span>
-        
-        {% if user.is_authenticated %}
-            <a href="{% url 'profile' pk=user.pk %}" class="sidemenu side-element">{{user}}</a>
-            <a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
-            <a href="{% url 'courses:list' %}"><i class="fa fa-list-ul" aria-hidden="true"></i>全部课程</a>
-            
-            {% if user.user_type == 1 %}
-                <span class="sidemenu"><h5 id="side-head"><i class="fa fa-list courses-icon" aria-hidden="true"></i>我的课程</h5></span>
-                {% for course in list_courses %}
-                    
-                    {% if user in course.students.all %}
-                        <span class="course-item"><a href="{% url 'courses:detail' pk=course.pk %}" >{{course}}</a></span>
-                    {% endif %}
-                        
-                {% endfor %}
+<a class="skip-link" href="#main-content">跳到主要内容</a>
+<aside class="sidenav" aria-label="主导航">
+    <a class="brand" href="{% url 'home' %}">
+        <img src="{% static 'django_lms/images/learning-mark.svg' %}" width="42" height="42" alt="">
+        <span><strong>苏州工学院</strong><small>教学与学习平台</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation-content">展开导航</button>
+    <div class="nav-body" id="navigation-content">
+        <p class="nav-caption">工作空间</p>
+        <nav class="nav-links" aria-label="功能导航">
+            <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+            <a href="{% url 'courses:list' %}" {% if request.resolver_match.view_name == 'courses:list' %}aria-current="page"{% endif %}><i class="fa fa-th-large" aria-hidden="true"></i>全部课程</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'assignments:center' %}" {% if request.resolver_match.view_name == 'assignments:center' %}aria-current="page"{% endif %}><i class="fa fa-tasks" aria-hidden="true"></i>作业中心</a>
+                <a href="{% url 'assignments:feedback' %}" {% if request.resolver_match.view_name == 'assignments:feedback' %}aria-current="page"{% endif %}><i class="fa fa-comment-o" aria-hidden="true"></i>成绩反馈</a>
+                {% if user.user_type == 2 %}
+                <a href="{% url 'courses:create' %}" {% if request.resolver_match.view_name == 'courses:create' %}aria-current="page"{% endif %}><i class="fa fa-plus-square-o" aria-hidden="true"></i>创建课程</a>
+                <a href="{% url 'assignments:create' %}" {% if request.resolver_match.view_name == 'assignments:create' %}aria-current="page"{% endif %}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>发布作业</a>
+                <a href="{% url 'resources:create' %}" {% if request.resolver_match.view_name == 'resources:create' %}aria-current="page"{% endif %}><i class="fa fa-folder-open-o" aria-hidden="true"></i>上传学习资料</a>
+                {% endif %}
             {% else %}
-                <a href="{% url 'courses:create' %}"><i class="fa fa-plus-circle" aria-hidden="true" style="color: #5cb85c;font-size: 20px;"></i> 创建课程</a>
-                <a href="{% url 'assignments:create' %}"><i class="fa fa-plus-circle" aria-hidden="true" style="color: #f0ad4e;font-size: 20px;"></i> 发布作业</a>
-                <a href="{% url 'resources:create' %}"><i class="fa fa-plus-circle" aria-hidden="true" style="color: #5bc0de;font-size: 20px;"></i> 上传学习资料</a>
-                <span class="sidemenu"><h5 id="side-head"><i class="fa fa-list courses-icon" aria-hidden="true"></i>我的课程</h5></span>
-                {% for course in list_courses %}
-                    
-                    {% if user.id == course.teacher.id %}
-                        <span class="course-item"><a href="{% url 'courses:detail' pk=course.pk %}" >{{course}}</a></span>
-                    {% endif %}
-                        
-                {% endfor %}                 
+                <a href="{% url 'users:login' %}" {% if request.resolver_match.view_name == 'users:login' %}aria-current="page"{% endif %}><i class="fa fa-sign-in" aria-hidden="true"></i>登录</a>
+                <a href="{% url 'users:signup' %}" {% if request.resolver_match.view_name == 'users:signup' %}aria-current="page"{% endif %}><i class="fa fa-user-plus" aria-hidden="true"></i>注册</a>
             {% endif %}
-            <a href="{% url 'users:logout' %}" class="sidemenu"><i class="fa fa-sign-out" aria-hidden="true"></i>退出登录</a>
-        {% else %}
-            <a class="sidemenu side-element">访客</a>
-            <a href="{% url 'home' %}"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
-            <a href="{% url 'users:login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i>登录</a>
-            <a href="{% url 'users:signup' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>注册</a>
-            <a href="{% url 'courses:list' %}"><i class="fa fa-list-ul" aria-hidden="true"></i>全部课程</a>
-        {% endif %}
+        </nav>
+        {% if user.is_authenticated %}
+        <div class="course-navigation">
+            <p class="nav-caption">我的课程</p>
+            {% for course in list_courses %}
+                {% if user.id == course.teacher_id or user in course.students.all %}
+                <a class="course-link" href="{% url 'courses:detail' pk=course.pk %}" {% if request.resolver_match.view_name == 'courses:detail' and object.pk == course.pk %}aria-current="page"{% endif %}><span class="course-dot" aria-hidden="true"></span><span>{{ course.course_name }}{% if course.is_archived %}<small>已归档</small>{% endif %}</span></a>
+                {% endif %}
+            {% endfor %}
         </div>
-            
+        <div class="account-card">
+            <a href="{% url 'profile' pk=user.pk %}" class="account-link"><span class="avatar" aria-hidden="true">{{ user.username|first|upper }}</span><span><strong>{{ user }}</strong><small>{% if user.user_type == 2 %}教师账号{% else %}学生账号{% endif %} · 个人页</small></span></a>
+            <a class="logout-link" href="{% url 'users:logout' %}">退出登录 <span aria-hidden="true">↗</span></a>
+        </div>
+        {% else %}<div class="visitor-note">欢迎来到教学平台<br><span>登录后查看你的课程与作业。</span></div>{% endif %}
     </div>
-
-    
-        
-    <div class="content">
-        {% for message in messages %}<div class="alert alert-info" role="alert">{{ message }}</div>{% endfor %}
-        {% block body_content %}
-            
-        {% endblock body_content %}
-    </div> 
-
+</aside>
+<div class="workspace">
+    <header class="workspace-header"><span>苏州工学院 <span class="header-separator">/</span> 教学工作台</span><span class="role-label">{% if user.is_authenticated %}{% if user.user_type == 2 %}教师端{% else %}学生端{% endif %}{% else %}访客{% endif %}</span></header>
+    <main class="content" id="main-content" tabindex="-1">
+        {% for message in messages %}<div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}" role="status">{{ message }}</div>{% endfor %}
+        <div class="page-panel">{% block body_content %}{% endblock %}</div>
+    </main>
+    <footer class="workspace-footer">苏州工学院 · 教学实验平台 <span>界面版本 2026.09 · 课程 / 作业 / 学习资料</span></footer>
+</div>
 </body>
 </html>
