@@ -1,77 +1,99 @@
-from django.shortcuts import render
-import datetime
-from django.contrib.auth.mixins import (LoginRequiredMixin,
-                                        PermissionRequiredMixin)
-from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
+from django.shortcuts import get_object_or_404, redirect
 from django.views import generic
-from django.shortcuts import get_object_or_404
-from users.models import User
+from django.views.decorators.http import require_POST
+
 from courses.models import Course, Enrollment
 from courses.forms import CreateCourseForm
-from assignments.models import Assignment
-from resources.models import Resource
+from django_lms.permissions import TeacherRequiredMixin, require_role, require_teacher, require_active_course
 
-# Create your views here.
-class CreateCourse(LoginRequiredMixin, generic.CreateView):
+
+class CreateCourse(TeacherRequiredMixin, generic.CreateView):
     form_class = CreateCourseForm
     model = Course
 
-    def get(self, request,*args, **kwargs):
-        self.object = None
-        context_dict = self.get_context_data()
-        context_dict.update(user_type=self.request.user.user_type)
-        return self.render_to_response(context_dict)
-    
     def form_valid(self, form):
         form.instance.teacher = self.request.user
-        return super(CreateCourse, self).form_valid(form)
-    
+        messages.success(self.request, '课程已创建。')
+        return super().form_valid(form)
+
+
+class UpdateCourse(TeacherRequiredMixin, generic.UpdateView):
+    form_class = CreateCourseForm
+    model = Course
+
+    def get_queryset(self):
+        return Course.objects.filter(teacher=self.request.user, is_archived=False)
+
+    def form_valid(self, form):
+        with transaction.atomic():
+            course = get_object_or_404(Course.objects.select_for_update(), pk=form.instance.pk)
+            require_teacher(self.request.user, course)
+            require_active_course(course)
+            messages.success(self.request, '课程信息已更新。')
+            return super().form_valid(form)
+
+
 class CourseDetail(generic.DetailView):
     model = Course
 
-    def get_context_data(self,**kwargs):
-        assignments = Assignment.objects.filter(course=self.kwargs['pk'])
-        resources = Resource.objects.filter(course=self.kwargs['pk'])
-        context = super(CourseDetail, self).get_context_data(**kwargs)
-        context['assignments'] = assignments
-        context['resources'] = resources
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        course = self.object
+        context['is_teacher'] = user.is_authenticated and user.user_type == 2 and course.teacher_id == user.pk
+        context['is_enrolled'] = user.is_authenticated and user.user_type == 1 and course.students.filter(pk=user.pk).exists()
+        context['can_view_content'] = context['is_teacher'] or context['is_enrolled']
+        if context['can_view_content']:
+            context['assignments'] = course.assignment_set.order_by('-start_date')
+            context['resources'] = course.resource_set.all()
+        if context['is_teacher']:
+            context['members'] = course.students.order_by('username')
         return context
+
 
 class ListCourse(generic.ListView):
     model = Course
 
-class EnrollCourse(LoginRequiredMixin, generic.RedirectView):
+    def get_queryset(self):
+        return Course.objects.select_related('teacher').prefetch_related('students').order_by('is_archived', 'course_name')
 
-    def get_redirect_url(self, *args, **kwargs):
-        return reverse('courses:detail', kwargs={'pk':self.kwargs.get('pk')})
-    
-    def get(self, *args, **kwargs):
-        course = get_object_or_404(Course, pk=self.kwargs.get('pk'))
 
-        try:
-            Enrollment.objects.create(student=self.request.user, course=course)
-        except:
-            messages.warning(self.request, '您已加入这门课程，无需重复加入。')
-        else:
-            messages.success(self.request, '已成功加入课程。')
-        return super().get(self.request, *args, **kwargs)
+@login_required
+@require_POST
+def enroll_course(request, pk):
+    require_role(request.user, 1)
+    with transaction.atomic():
+        course = get_object_or_404(Course.objects.select_for_update(), pk=pk)
+        require_active_course(course)
+        _, created = Enrollment.objects.get_or_create(student=request.user, course=course)
+    messages.success(request, '已加入课程。' if created else '您已加入这门课程。')
+    return redirect(course)
 
-class UnenrollCourse(LoginRequiredMixin, generic.RedirectView):
 
-    def get_redirect_url(self, *args, **kwargs):
-        return reverse('courses:detail', kwargs={'pk':self.kwargs.get('pk')})
+@login_required
+@require_POST
+def unenroll_course(request, pk):
+    require_role(request.user, 1)
+    with transaction.atomic():
+        course = get_object_or_404(Course.objects.select_for_update(), pk=pk)
+        Enrollment.objects.filter(student=request.user, course=course).delete()
+    messages.success(request, '已退出课程。您的提交和成绩仍保留在个人页。')
+    return redirect(course)
 
-    def get(self, *args, **kwargs):
 
-        try:
-            enrollment = Enrollment.objects.filter(
-                student=self.request.user,
-                course__pk=self.kwargs.get('pk')
-            ).get()
-        except Enrollment.DoesNotExist:
-            messages.warning(self.request, '您尚未加入这门课程。')
-        else:
-            enrollment.delete()
-            messages.success(self.request, '已退出课程。')
-        return super().get(self.request, *args, **kwargs)
+@login_required
+@require_POST
+def archive_course(request, pk):
+    with transaction.atomic():
+        course = get_object_or_404(Course.objects.select_for_update(), pk=pk)
+        require_teacher(request.user, course)
+        if request.POST.get('action') not in ('archive', 'restore'):
+            from django.http import HttpResponseBadRequest
+            return HttpResponseBadRequest('无效的课程操作。')
+        course.is_archived = request.POST['action'] == 'archive'
+        course.save(update_fields=['is_archived'])
+    messages.success(request, '课程已归档，历史内容可以继续查看。' if course.is_archived else '课程已恢复。')
+    return redirect(course)

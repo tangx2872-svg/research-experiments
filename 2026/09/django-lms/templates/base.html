@@ -63,6 +63,7 @@
     
         
     <div class="content">
+        {% for message in messages %}<div class="alert alert-info" role="alert">{{ message }}</div>{% endfor %}
         {% block body_content %}
             
         {% endblock body_content %}

@@ -51,7 +51,9 @@ class TeacherCreationNavigationTests(TestCase):
         ):
             with self.subTest(label=label):
                 # Both the sidebar and the course action must point to the right form.
-                self.assertEqual(parser.links[label], [reverse(route), reverse(route)])
+                self.assertEqual(parser.links[label], [reverse(route), reverse(route) + '?course={}'.format(self.course.pk)])
+                course_page = self.client.get(parser.links[label][1])
+                self.assertEqual(course_page.context['form'].initial['course'], self.course.pk)
                 page = self.client.get(parser.links[label][0])
                 self.assertEqual(page.status_code, 200)
                 self.assertTemplateUsed(page, template)

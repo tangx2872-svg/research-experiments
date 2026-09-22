@@ -17,3 +17,13 @@ class Resource(models.Model):
 
     def get_absolute_url(self):
         return reverse('courses:list')
+
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+from django_lms.files import remove_unreferenced_file
+
+
+@receiver(post_delete, sender=Resource)
+def cleanup_attachment(sender, instance, **kwargs):
+    field = instance.resource_file
+    remove_unreferenced_file(field.storage, field.name)

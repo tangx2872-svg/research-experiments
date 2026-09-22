@@ -1,35 +1,17 @@
 {% extends 'assignments/assignment_base.html' %}
 {% load bootstrap4 %}
-
-{% block title_name %}
-    在线学习平台 - 提交作业
-{% endblock title_name %}
-    
+{% block title_name %}在线学习平台 - 提交作业{% endblock %}
 {% block main_content %}
-    
-    {% if user.user_type == 2 %}
-        <div class="container">
-            <div class="jumbotron">
-                <h2>仅学生可以提交作业。</h2>
-            </div>
-        </div>
-    {% else %}
-            
-        <div class="container">
-            <h2>提交作业</h2>
-            <form action="{% url 'assignments:submit' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                {{ form.name.errors }}
-                
-                {% if duedate >= time %}
-                    <input type="submit" value="提交" class="btn btn-warning btn-lg">
-                {% endif %}
-            </form>
-            <ul>
-            </ul> 
-        </div>
-    {% endif %}
-        
-{% endblock main_content %}
-    
+<div class="container">
+  <h2>{% if submission %}更新提交{% else %}提交作业{% endif %}</h2>
+  <p>作业：{{ assignment.assignment_name }} · 提交人：{{ user }}</p>
+  <p>截止时间（北京时间）：{{ assignment.due_date }}</p>
+  <p>截止前且未评分时可以更新或撤回。更新后以当前内容作为有效提交。</p>
+  {% if submission %}<p>当前附件：{{ submission.assignment_file.name }}</p>{% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}{% bootstrap_form form %}
+    <button class="btn btn-success" type="submit">保存提交</button>
+    <a href="{% url 'assignments:detail' pk=assignment.pk %}" class="btn btn-secondary">返回作业</a>
+  </form>
+</div>
+{% endblock %}

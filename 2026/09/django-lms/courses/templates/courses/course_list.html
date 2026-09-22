@@ -1,51 +1,11 @@
-{% extends 'courses/course_base.html' %} 
-
-{% block title_name %}
-  在线学习平台 - 课程
-{% endblock title_name %}
-  
+{% extends 'courses/course_base.html' %}
+{% block title_name %}在线学习平台 - 全部课程{% endblock %}
 {% block main_content %}
-<div class="container">
-  <div>
-    <h1>全部课程</h1>
-
-    {% if user.user_type == 2 %}
-    <a
-      href="{% url 'courses:create' %}"
-      class="btn btn-lg btn-fill btn-success button-stretch"
-    >
-      <i class="fa fa-plus-circle" aria-hidden="true"> 创建课程</i>
-    </a>
-    {% endif %}
-  </div>
-    <div class="card-deck">
-      {% for course_item in object_list %}
-      <div>
-      <div class="card" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title">{{course_item.course_name}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{course_item.teacher}}</h6>
-          <p class="card-text">
-            {{course_item.course_description}}
-          </p>
-          <a href="{% url 'courses:detail' pk=course_item.pk %}" class="btn btn-primary card-link">查看详情</a>
-          {% if user.user_type == 1 %}
-            {%if user in course_item.students.all%}
-                <a href="{% url 'courses:unenroll' pk=course_item.pk %}" class="btn btn-danger card-link">退出课程</a>
-            {% else %}
-                <a href="{% url 'courses:enroll' pk=course_item.pk %}" class="btn btn-success card-link">加入课程</a>
-            {% endif %}
-          {% endif %}
-
-          <p>{{course_item.students.count}}
-                人已加入</p>
-          
-              
-        </div>
-      </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-  {% endblock main_content %}
-</div>
+<h1>全部课程</h1>
+{% if user.user_type == 2 %}<a class="btn btn-success mb-3" href="{% url 'courses:create' %}">创建课程</a>{% endif %}
+<div class="row">{% for course_item in object_list %}<div class="col-md-6 mb-3"><div class="card h-100"><div class="card-body">
+<h5>{{ course_item.course_name }} {% if course_item.is_archived %}<span class="badge badge-secondary">已归档</span>{% endif %}</h5>
+<p>教师：{{ course_item.teacher }} · {{ course_item.students.count }} 人选课</p><p>{{ course_item.course_description|truncatechars:160 }}</p>
+<a class="btn btn-primary" href="{% url 'courses:detail' pk=course_item.pk %}">查看课程</a>
+</div></div></div>{% empty %}<p>暂无课程。</p>{% endfor %}</div>
+{% endblock %}

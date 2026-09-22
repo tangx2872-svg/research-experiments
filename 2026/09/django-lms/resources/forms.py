@@ -1,3 +1,4 @@
+from django_lms.files import validate_upload
 from django.forms import ModelForm, DateInput, TimeInput, Form
 from django import forms
 from django.shortcuts import get_object_or_404
@@ -23,4 +24,7 @@ class CreateResourceForm(ModelForm):
         super().__init__(*args, **kwargs)
         user_object = User.objects.filter(username=user.username)
         new_user_object = get_object_or_404(user_object)
-        self.fields['course'].queryset = self.fields['course'].queryset.filter(teacher=new_user_object.id)
+        self.fields['course'].queryset = self.fields['course'].queryset.filter(teacher=new_user_object.id, is_archived=False)
+
+    def clean_resource_file(self):
+        return validate_upload(self.cleaned_data['resource_file'])
