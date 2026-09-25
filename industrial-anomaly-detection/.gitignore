@@ -1,8 +1,12 @@
 # 数据集：体积大，不上传 GitHub
 data/
 
-# 实验输出：模型权重、日志、结果图片等
-results/
+# 实验输出
+results/*
+notebooks/results/
+
+# 仅保留 README 使用的正式结果图
+!results/patchcore_bottle_broken_large.png
 
 # Python 缓存
 __pycache__/
