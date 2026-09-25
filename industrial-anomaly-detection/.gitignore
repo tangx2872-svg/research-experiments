@@ -1,0 +1,25 @@
+# 数据集：体积大，不上传 GitHub
+data/
+
+# 实验输出：模型权重、日志、结果图片等
+results/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# Jupyter 临时文件
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# 模型权重
+*.pth
+*.pt
+*.ckpt
+
+# 系统文件
+.DS_Store
+Thumbs.db
