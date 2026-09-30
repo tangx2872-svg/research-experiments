@@ -1,0 +1,96 @@
+{
+  "paired": true,
+  "n_test_images": 83,
+  "counts": {
+    "broken_large": 20,
+    "broken_small": 22,
+    "contamination": 21,
+    "good": 20
+  },
+  "defects": {
+    "broken_large": {
+      "defect_type": "broken_large",
+      "count": 20,
+      "mean_score_alpha0": 0.9215804934501648,
+      "mean_score_alpha1": 0.8500328451395035,
+      "mean_delta": -0.07154764831066132,
+      "median_delta": -0.07566693425178528,
+      "std_delta": 0.07624368120028029,
+      "min_delta": -0.18637073040008545,
+      "max_delta": 0.07068502902984619,
+      "n_down": 16,
+      "n_up": 3,
+      "n_tied": 1,
+      "prop_down": 0.8,
+      "prop_up": 0.15,
+      "wilcoxon": {
+        "statistic": 16.0,
+        "pvalue": 0.0014771661952373799
+      },
+      "rank_biserial_r": -0.8316
+    },
+    "broken_small": {
+      "defect_type": "broken_small",
+      "count": 22,
+      "mean_score_alpha0": 0.8734634030948986,
+      "mean_score_alpha1": 0.8930096951397982,
+      "mean_delta": 0.01954629204489968,
+      "median_delta": 0.02291998267173767,
+      "std_delta": 0.045461347157112385,
+      "min_delta": -0.07830995321273804,
+      "max_delta": 0.08935493230819702,
+      "n_down": 6,
+      "n_up": 14,
+      "n_tied": 2,
+      "prop_down": 0.2727,
+      "prop_up": 0.6364,
+      "wilcoxon": {
+        "statistic": 52.0,
+        "pvalue": 0.04785751139622272
+      },
+      "rank_biserial_r": 0.5048
+    },
+    "contamination": {
+      "defect_type": "contamination",
+      "count": 21,
+      "mean_score_alpha0": 0.7974907557169596,
+      "mean_score_alpha1": 0.8329684422129676,
+      "mean_delta": 0.03547768649600801,
+      "median_delta": 0.045717716217041016,
+      "std_delta": 0.06224781567950824,
+      "min_delta": -0.11412841081619263,
+      "max_delta": 0.14600074291229248,
+      "n_down": 4,
+      "n_up": 15,
+      "n_tied": 2,
+      "prop_down": 0.1905,
+      "prop_up": 0.7143,
+      "wilcoxon": {
+        "statistic": 38.0,
+        "pvalue": 0.021801738635254905
+      },
+      "rank_biserial_r": 0.6
+    },
+    "good": {
+      "defect_type": "good",
+      "count": 20,
+      "mean_score_alpha0": 0.2430117830634117,
+      "mean_score_alpha1": 0.24877250492572783,
+      "mean_delta": 0.005760721862316132,
+      "median_delta": 0.006129622459411621,
+      "std_delta": 0.030570660830947637,
+      "min_delta": -0.04678413271903992,
+      "max_delta": 0.09594601392745972,
+      "n_down": 8,
+      "n_up": 12,
+      "n_tied": 0,
+      "prop_down": 0.4,
+      "prop_up": 0.6,
+      "wilcoxon": {
+        "statistic": 80.0,
+        "pvalue": 0.36827659606933594
+      },
+      "rank_biserial_r": 0.2381
+    }
+  }
+}

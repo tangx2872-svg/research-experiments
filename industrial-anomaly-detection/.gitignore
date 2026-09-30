@@ -1,5 +1,7 @@
-# 数据集：体积大，不上传 GitHub
-data/
+# 数据集：体积大，不上传 GitHub（仅保留 README/.gitkeep 占位）
+data/*
+!data/README.md
+!data/.gitkeep
 
 # 实验输出
 results/*

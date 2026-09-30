@@ -1,0 +1,26 @@
+{
+  "dataset": "MVTecAD",
+  "category": "bottle",
+  "alpha": 0.0,
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "coreset_sampling_ratio": 0.1,
+  "num_neighbors": 9,
+  "train_batch_size": 16,
+  "eval_batch_size": 16,
+  "seed": 0,
+  "limit_train": null,
+  "num_train": 209,
+  "num_test": 83,
+  "metrics": {
+    "image_AUROC": 1.0,
+    "image_F1Score": 0.9919999837875366,
+    "pixel_AUROC": 0.9855730533599854,
+    "pixel_F1Score": 0.7270374298095703,
+    "image_AUPR": 0.9980875849723816,
+    "pixel_AUPR": 0.7711229920387268
+  }
+}

@@ -2,6 +2,11 @@
 
 工业视觉异常检测学习与实验项目。
 
+## 实验归档
+
+- [2026-09-30｜工业异常检测光照敏感性探索](experiments/2026-09-30_illumination_sensitivity_exploration/README.md)：包含 F_alpha/PatchCore、MVTec AD 2 与 CSEM-MISD 调查；未找到明确可推进方向，暂时搁置。代码、说明和已有结果已集中归档。
+
+
 本项目用于研究生阶段探索 **工业视觉与视觉异常检测（Industrial Anomaly Detection）** 方向。
 
 通过公开工业数据集、经典异常检测算法和小型对比实验，逐步完成：
