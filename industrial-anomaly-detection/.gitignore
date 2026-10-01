@@ -10,6 +10,10 @@ notebooks/results/
 # 仅保留 README 使用的正式结果图
 !results/patchcore_bottle_broken_large.png
 
+# Experiment 1 结果（机制筛查，CSV/JSON/图体积小，纳入版本控制）
+!results/experiment1_illumination_tradeoff/
+results/experiment1_illumination_tradeoff/logs/
+
 # Python 缓存
 __pycache__/
 *.pyc
