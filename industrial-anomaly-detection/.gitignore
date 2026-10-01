@@ -14,6 +14,13 @@ notebooks/results/
 !results/experiment1_illumination_tradeoff/
 results/experiment1_illumination_tradeoff/logs/
 
+# Experiment 1B 结果（defect-specific 筛查，纳入版本控制；排除大体积 anomaly_maps.npz）
+!results/experiment_1b/
+results/experiment_1b/raw/
+
+# 本地工作记忆（.workbuddy），不上传 GitHub
+.workbuddy/
+
 # Python 缓存
 __pycache__/
 *.pyc
