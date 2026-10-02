@@ -1,0 +1,37 @@
+{
+  "experiment": "Experiment 1B: Defect-Specific α Sensitivity Screening",
+  "dataset": "MVTecAD bottle",
+  "alphas": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "defect_types": [
+    "broken_large",
+    "broken_small",
+    "contamination"
+  ],
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "coreset_sampling_ratio": 0.1,
+  "num_neighbors": 9,
+  "input_size": 256,
+  "batch_size": 16,
+  "seed": 0,
+  "val_size": 20,
+  "train_size": 189,
+  "threshold_rule": "max_validation_score",
+  "num_test": {
+    "good": 20,
+    "broken_large": 20,
+    "broken_small": 22,
+    "contamination": 21
+  },
+  "IN_position": "generate_embedding concat 后、reshape 前，affine=False",
+  "alpha0_shortcut": "alpha==0 直接返回原始 feature，跳过 IN"
+}

@@ -18,6 +18,12 @@ results/experiment1_illumination_tradeoff/logs/
 !results/experiment_1b/
 results/experiment_1b/raw/
 
+# Experiment 1C 结果（multi-seed 稳定性验证，纳入 summary/figures；排除 raw/npz 与 logs）
+!results/experiment_1c/
+results/experiment_1c/seed_*/raw/
+results/experiment_1c/seed_*/logs/
+results/experiment_1c/seed_*/heatmaps/
+
 # 本地工作记忆（.workbuddy），不上传 GitHub
 .workbuddy/
 

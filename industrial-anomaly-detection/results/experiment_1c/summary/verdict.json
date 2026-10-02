@@ -1,0 +1,24 @@
+{
+  "delta_dprime_by_seed": {
+    "0": {
+      "broken_large": -6.313235378844348,
+      "broken_small": -0.5801256718591086,
+      "contamination": 0.3946369469669766
+    },
+    "1": {
+      "broken_large": -5.712871007299002,
+      "broken_small": -0.20184695274671327,
+      "contamination": 0.5570402569921407
+    },
+    "2": {
+      "broken_large": -5.569737128131145,
+      "broken_small": -0.12489245515445901,
+      "contamination": 0.535553863812885
+    }
+  },
+  "large_all_down": true,
+  "small_small": true,
+  "cont_diff": true,
+  "std_small": true,
+  "verdict": "CONTINUE → 进入 Experiment 1D (Size Confound Analysis)"
+}

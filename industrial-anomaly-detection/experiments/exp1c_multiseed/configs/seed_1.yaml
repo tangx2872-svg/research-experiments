@@ -1,0 +1,27 @@
+dataset: MVTec_AD
+category: bottle
+
+model: PatchCore
+
+backbone: wide_resnet50_2
+feature_layers: [layer2, layer3]
+coreset_sampling_ratio: 0.1
+num_neighbors: 9
+input_size: 256
+
+intervention:
+  type: alpha_IN
+  formula: "F_alpha = (1-alpha)*F + alpha*IN(F)"
+  IN_affine: false
+  IN_position: "generate_embedding concat 后、reshape 前"
+
+alpha: [0, 0.25, 0.5, 0.75, 1.0]
+
+defect_types: [broken_large, broken_small, contamination]
+
+threshold_rule: max_validation_score
+validation_size: 20
+train_size: 189
+
+seed:
+  value: 1

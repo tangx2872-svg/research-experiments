@@ -1,0 +1,83 @@
+{
+  "0": {
+    "0.0": {
+      "broken_large": 13.630942517202298,
+      "broken_small": 8.306135809206303,
+      "contamination": 3.8797555176807434
+    },
+    "0.25": {
+      "broken_large": 11.463673739233835,
+      "broken_small": 8.004828484305996,
+      "contamination": 3.908912923685393
+    },
+    "0.5": {
+      "broken_large": 10.313848383773642,
+      "broken_small": 8.1545222505396,
+      "contamination": 4.103283306988353
+    },
+    "0.75": {
+      "broken_large": 8.547915035218438,
+      "broken_small": 7.974603810967371,
+      "contamination": 4.177366308711987
+    },
+    "1.0": {
+      "broken_large": 7.31770713835795,
+      "broken_small": 7.7260101373471946,
+      "contamination": 4.27439246464772
+    }
+  },
+  "1": {
+    "0.0": {
+      "broken_large": 13.157554846233566,
+      "broken_small": 8.091722310660591,
+      "contamination": 3.7078795559819926
+    },
+    "0.25": {
+      "broken_large": 12.363968947259279,
+      "broken_small": 8.173530231957724,
+      "contamination": 3.8765761997168755
+    },
+    "0.5": {
+      "broken_large": 10.01487136597316,
+      "broken_small": 8.197680717224623,
+      "contamination": 4.015364161519717
+    },
+    "0.75": {
+      "broken_large": 8.64542824898556,
+      "broken_small": 8.045618330633607,
+      "contamination": 4.145213020890349
+    },
+    "1.0": {
+      "broken_large": 7.444683838934564,
+      "broken_small": 7.889875357913878,
+      "contamination": 4.264919812974133
+    }
+  },
+  "2": {
+    "0.0": {
+      "broken_large": 12.872308389083525,
+      "broken_small": 8.06992474499002,
+      "contamination": 3.7827634388850053
+    },
+    "0.25": {
+      "broken_large": 11.812231458760643,
+      "broken_small": 7.960257168093616,
+      "contamination": 3.9486859117171025
+    },
+    "0.5": {
+      "broken_large": 9.981020042895874,
+      "broken_small": 8.132212971839506,
+      "contamination": 4.043123252921379
+    },
+    "0.75": {
+      "broken_large": 8.34045289133307,
+      "broken_small": 8.06599083545064,
+      "contamination": 4.107353919926897
+    },
+    "1.0": {
+      "broken_large": 7.30257126095238,
+      "broken_small": 7.945032289835561,
+      "contamination": 4.31831730269789
+    }
+  }
+}

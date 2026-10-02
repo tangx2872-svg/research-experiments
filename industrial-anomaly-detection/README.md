@@ -4,6 +4,7 @@
 
 ## 实验归档
 
+- [2026-10-02｜Experiment 1C: Multi-Seed Stability Validation](experiments/exp1c_multiseed/README.md)：多 seed（0/1/2）稳定性验证，确认 1B 的 defect-specific α-IN response 非 coreset 随机性产物。broken_large Δd'=-5.87±0.39（三 seed 全部大幅下降）、broken_small -0.30±0.24、contamination +0.50±0.09（全部反向上升），判定 **CONTINUE** → 进入 1D size confound analysis。
 - [2026-10-01｜Experiment 1B: Defect-Specific α Sensitivity Screening](results/experiment_1b/README.md)：在 MVTec AD bottle + PatchCore 上，仅研究内部 α-IN representation probe 对不同缺陷类型的差异化影响（不引入合成光照）。结论：三类缺陷的 α-response 曲线明显分化——broken_large 分离度 d' 13.63→7.32（-46%）、broken_small 稳定、contamination 反向上升（+10%）；方向与初始假设相反。size confound 部分存在（type-only R²=0.292 > area-only R²=0.130），属 A+C 混合结论。
 - [2026-10-01｜Experiment 1: Synthetic Illumination × α-IN 机制筛查](results/experiment1_illumination_tradeoff/README.md)：PatchCore 特征混合 InstanceNorm（α-IN）在简单光度扰动下的机制筛查。结论：robustness 提升与 pixel-level sensitivity cost 的 trade-off 苗头存在，无 defect-type 分化；仅 synthetic 证据，待真实光照数据验证。
 - [2026-09-30｜工业异常检测光照敏感性探索](experiments/2026-09-30_illumination_sensitivity_exploration/README.md)：包含 F_alpha/PatchCore、MVTec AD 2 与 CSEM-MISD 调查；未找到明确可推进方向，暂时搁置。代码、说明和已有结果已集中归档。
@@ -497,6 +498,80 @@ Robustness side：perturbation 后正常图 anomaly score 升高多少，随 α 
 - 脚本：`scripts/experiment1b_defect_sensitivity.py`（主实验）、`scripts/analyze_experiment1b.py`（汇总+图）
 - 结果：`results/experiment_1b/`（README、config/、summary/、figures/、heatmaps/、raw/all_sample_scores.csv；`raw/anomaly_maps.npz` 约 89MB 不上传 Git）
 - 数据集侦察：`docs/msc_dataset_analysis.md`、`docs/csem_dataset_analysis.md`、`docs/msc_download_guide.md`、`datasets/MSC-AD/access.md`（MSC-AD / CSEM-MISD / BGA 多光照数据集调查）
+
+---
+
+## 2026-10-02｜Experiment 1C: Multi-Seed Stability Validation
+
+### 实验性质（边界声明）
+
+**稳定性验证实验**。目的不是发现新结果，而是给 Experiment 1B 的 defect-specific α-IN response「办身份证」：排除 PatchCore coreset sampling / feature randomness 导致的偶然现象。
+
+- 保持 1B **所有实验条件不变**（dataset/model/α-IN/阈值规则/split 规则），唯一允许变化的是 random seed。
+- 复用 1B 的 `run_screening`（import 复用，实验逻辑零改动），仅按 seed 分结果目录。
+
+### 预注册四句话（实验前记录）
+
+- **① 怀疑什么？** 1B 观察到的 broken_large 大幅下降 / broken_small 稳定 / contamination 反向，可能只是 seed=0 的随机波动，需要排除 coreset sampling 随机性。
+- **② 干什么？** 固定除 seed 外全部条件，seed ∈ {0, 1, 2}，重复 1B 全流程（每 seed 独立 validation split + 每 α 独立 fit）。
+- **③ 看什么？** 每 seed × alpha × defect 的 d'；Δd' = d'(α=1) − d'(α=0) 的跨 seed mean/std；三类 defect 曲线是否跨 seed 保持形态。
+- **④ 什么结果意味着继续？** broken_large 三个 seed 全部明显下降、broken_small 变化小、contamination 方向不同且 std 小 → 稳定存在，进入 1D；若 seed 间方向混乱 → 1B 可能是随机产物，重新设计。
+
+### 实验设置
+
+- **Dataset**：MVTec AD bottle（每 seed：209 train/good → 20 validation + 189 bank；test 20 good + 20/22/21 defect）
+- **Model**：PatchCore，wide_resnet50_2，layer2+layer3，coreset 0.1，num_neighbors 9
+- **Seeds**：0, 1, 2（固定 python/numpy/torch CPU+CUDA）
+- **α**：0, 0.25, 0.5, 0.75, 1.0（每 α 独立 fit）
+- **阈值规则**：tau_alpha = max(validation normal scores)，与 1B 一致
+
+### Smoke 复现校验
+
+seed=0 smoke（每类 5 张）的 α=0 阈值 = 20.433，与 1B 全量 validation max ~20.4 一致；seed=0 的 validation split 与 1B 完全相同。三个 seed 的 validation split 各不相同，确认多 seed 真实覆盖 split + coreset 两层随机性。
+
+### 结果
+
+**d' 曲线（三 seed 形态几乎重合，Figure 1）：**
+
+| alpha | broken_large (s0/s1/s2) | broken_small (s0/s1/s2) | contamination (s0/s1/s2) |
+|---:|---|---|---|
+| 0 | 13.63 / 13.16 / 12.87 | 8.31 / 8.09 / 8.07 | 3.88 / 3.71 / 3.78 |
+| 1.0 | 7.32 / 7.45 / 7.30 | 7.73 / 7.89 / 7.95 | 4.27 / 4.27 / 4.32 |
+
+**Δd' = d'(α=1) − d'(α=0) 跨 seed 统计（sample std, ddof=1）：**
+
+| defect | seed0 | seed1 | seed2 | mean | std |
+|---|---:|---:|---:|---:|---:|
+| broken_large | -6.31 | -5.71 | -5.57 | **-5.87** | **0.39** |
+| broken_small | -0.58 | -0.20 | -0.12 | -0.30 | 0.24 |
+| contamination | +0.40 | +0.56 | +0.54 | **+0.50** | **0.09** |
+
+### 分析要点
+
+- **现象跨 seed 高度稳定**：broken_large 三个 seed Δd' 全部 < -5.5，std 0.39（约效应量 7%）；contamination 三个 seed 全部为正，std 0.09。
+- **方向完全一致**：不存在「seed0 降 / seed1 升 / seed2 平」的混乱模式；三类相对排序（large 降 >> small 平 >> cont 升）在所有 seed 中不变。
+- **整条曲线逐 α 对齐**：不仅端点稳定，α-response 曲线在三 seed 间几乎重合，说明 α 的作用是确定性系统效应，随机性只带来 ±0.4 内的水平抖动。
+- **效应量层级**：|Δd'(large)| ≈ 12 × |Δd'(cont)|，两组置信区间完全不重叠。
+
+### Conclusion（Case 判定）
+
+**CONTINUE —— defect-specific α sensitivity 稳定存在，不是 coreset/feature 随机性的偶然产物。** 预注册判断标准四条全部通过：
+
+1. broken_large 三 seed 全部明显下降 ✅（-6.31 / -5.71 / -5.57）
+2. broken_small 变化较小 ✅（|Δd'| ≤ 0.58）
+3. contamination 方向不同或不下降 ✅（全部为正）
+4. broken_large std 较小 ✅（0.39 << 1.0）
+
+### Next Step
+
+按协议进入 **Experiment 1D: Size Confound Analysis**：matched-area 比较彻底剥离 size confound，回答「控制面积后 type 效应是否仍存在」（1B 已知类内 corr(area, delta) ≈ -0.73~-0.75，size 效应真实存在）。
+
+### 文件
+
+- 驱动脚本：`scripts/experiment1c_multiseed.py`（seed 循环 + 目录隔离）
+- 分析脚本：`scripts/analyze_experiment1c.py`（d' 表、Δd' 统计、Figure 1/2、verdict）
+- 目录：`experiments/exp1c_multiseed/`（configs/seed_{0,1,2}.yaml + README）
+- 结果：`results/experiment_1c/seed_{0,1,2}/` + `summary/`（verdict.json 等）+ `figures/`（dprime_curves_per_seed.png、delta_dprime_stability.png）；`raw/`（含大体积 npz）与 `logs/` 不上传 Git
 
 ---
 

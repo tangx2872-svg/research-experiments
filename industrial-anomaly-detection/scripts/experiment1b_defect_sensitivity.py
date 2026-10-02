@@ -69,13 +69,8 @@ from falpha_patchcore import FAlphaPatchcore, FAlphaPatchcoreModel  # noqa: E402
 # 常量
 # ---------------------------------------------------------------------------
 DATA_ROOT = PROJECT_ROOT / "data" / "mvtec_ad"
+# 结果根目录：默认 experiment_1b；Experiment 1C 会通过 --results-root 覆盖为按 seed 分目录。
 RESULTS_ROOT = PROJECT_ROOT / "results" / "experiment_1b"
-CONFIG_DIR = RESULTS_ROOT / "config"
-RAW_DIR = RESULTS_ROOT / "raw"
-SUMMARY_DIR = RESULTS_ROOT / "summary"
-FIGURES_DIR = RESULTS_ROOT / "figures"
-HEATMAPS_DIR = RESULTS_ROOT / "heatmaps"
-LOGS_DIR = RESULTS_ROOT / "logs"
 
 ALPHAS = [0.0, 0.25, 0.5, 0.75, 1.0]
 DEFECT_TYPES = ["broken_large", "broken_small", "contamination"]
@@ -213,7 +208,23 @@ def predict_one(torch_model, img_tensor, device) -> tuple[float, np.ndarray]:
 # ---------------------------------------------------------------------------
 # 主实验
 # ---------------------------------------------------------------------------
-def run_screening(smoke_limit: int | None = None, seed: int = SEED) -> None:
+def run_screening(
+    smoke_limit: int | None = None,
+    seed: int = SEED,
+    results_root: Path | None = None,
+) -> None:
+    """运行五档 α 筛查。results_root 为空则用模块默认 RESULTS_ROOT；
+    Experiment 1C 传入按 seed 分目录的 results_root，实现多 seed 隔离。"""
+    global RESULTS_ROOT, CONFIG_DIR, RAW_DIR, SUMMARY_DIR, FIGURES_DIR, HEATMAPS_DIR, LOGS_DIR
+    if results_root is not None:
+        RESULTS_ROOT = Path(results_root)
+    CONFIG_DIR = RESULTS_ROOT / "config"
+    RAW_DIR = RESULTS_ROOT / "raw"
+    SUMMARY_DIR = RESULTS_ROOT / "summary"
+    FIGURES_DIR = RESULTS_ROOT / "figures"
+    HEATMAPS_DIR = RESULTS_ROOT / "heatmaps"
+    LOGS_DIR = RESULTS_ROOT / "logs"
+
     RESULTS_ROOT.mkdir(parents=True, exist_ok=True)
     for d in [CONFIG_DIR, RAW_DIR, SUMMARY_DIR, FIGURES_DIR, HEATMAPS_DIR, LOGS_DIR]:
         d.mkdir(parents=True, exist_ok=True)
@@ -368,13 +379,20 @@ def main() -> None:
     parser.add_argument("--smoke", action="store_true", help="smoke test：少量样本")
     parser.add_argument("--smoke-limit", type=int, default=5, help="smoke test 每类样本数")
     parser.add_argument("--seed", type=int, default=SEED)
+    parser.add_argument(
+        "--results-root",
+        type=str,
+        default=None,
+        help="结果输出根目录（默认 results/experiment_1b）。Experiment 1C 按 seed 分目录时传入。",
+    )
     args = parser.parse_args()
 
+    results_root = Path(args.results_root) if args.results_root else None
     if args.smoke:
         print(f"[smoke test] 每类样本数 = {args.smoke_limit}")
-        run_screening(smoke_limit=args.smoke_limit, seed=args.seed)
+        run_screening(smoke_limit=args.smoke_limit, seed=args.seed, results_root=results_root)
     else:
-        run_screening(smoke_limit=None, seed=args.seed)
+        run_screening(smoke_limit=None, seed=args.seed, results_root=results_root)
 
 
 if __name__ == "__main__":
