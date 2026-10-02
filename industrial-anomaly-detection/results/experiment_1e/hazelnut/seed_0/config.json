@@ -1,0 +1,29 @@
+{
+  "experiment": "Experiment 1E Cross-Category Validation",
+  "category": "hazelnut",
+  "seed": 0,
+  "alphas": [
+    0.0,
+    1.0
+  ],
+  "defect_types": [
+    "crack",
+    "cut",
+    "hole",
+    "print"
+  ],
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "coreset_sampling_ratio": 0.1,
+  "num_neighbors": 9,
+  "image_size": 256,
+  "val_size": 20,
+  "train_size": 371,
+  "n_test_good": 40,
+  "log_area_epsilon": 1e-09,
+  "z_normalization": "test/good contemporaneous (same seed+alpha), ddof=1",
+  "d_prime": "pooled_std sqrt((sd^2+sg^2)/2)"
+}

@@ -73,7 +73,9 @@ DATA_ROOT = PROJECT_ROOT / "data" / "mvtec_ad"
 RESULTS_ROOT = PROJECT_ROOT / "results" / "experiment_1b"
 
 ALPHAS = [0.0, 0.25, 0.5, 0.75, 1.0]
-DEFECT_TYPES = ["broken_large", "broken_small", "contamination"]
+# 默认 category（历史 1B/1C 均用 bottle）。Experiment 1E 会通过 --category 传入
+# 其他 category，defect types 由 test/ 目录自动发现（见 discover_defect_types）。
+DEFAULT_CATEGORY = "bottle"
 
 SEED = 0
 VAL_SIZE = 20            # 从 209 train/good 划出的 validation 数
@@ -91,12 +93,29 @@ THRESHOLD_RULE = "max_validation_score"
 # ---------------------------------------------------------------------------
 # 工具函数
 # ---------------------------------------------------------------------------
-def make_validation_split(seed: int = SEED, val_size: int = VAL_SIZE) -> tuple[list[str], list[str]]:
-    """从 train/good 固定 seed 划分 (validation_ids, train_ids)。
+def discover_defect_types(category: str) -> list[str]:
+    """自动扫描 <DATA_ROOT>/<category>/test/ 下的 defect type 目录。
+
+    排除 "good"（正常类），其余按字典序固定排序，保证不同运行可复现。
+    仅返回实际存在的目录（含 *.png），不硬编码任何 category 的缺陷类型。
+    若 category/test 目录不存在（数据未下载），返回空列表（由调用方处理）。
+    """
+    test_root = DATA_ROOT / category / "test"
+    if not test_root.is_dir():
+        return []
+    types = sorted(
+        d.name for d in test_root.iterdir()
+        if d.is_dir() and d.name != "good" and any(d.glob("*.png"))
+    )
+    return types
+
+
+def make_validation_split(category: str, seed: int = SEED, val_size: int = VAL_SIZE) -> tuple[list[str], list[str]]:
+    """从 <category>/train/good 固定 seed 划分 (validation_ids, train_ids)。
 
     返回文件名列表（如 '000.png'）。validation 不进 memory bank。
     """
-    train_root = DATA_ROOT / "bottle" / "train" / "good"
+    train_root = DATA_ROOT / category / "train" / "good"
     all_names = sorted(p.name for p in train_root.glob("*.png"))
     rng = random.Random(seed)
     shuffled = all_names[:]
@@ -131,7 +150,7 @@ def defect_area_ratio(mask_path: Path) -> float:
 # ---------------------------------------------------------------------------
 # 模型 fit（每 α 独立，用固定的 train_ids 建 bank）
 # ---------------------------------------------------------------------------
-def fit_model(alpha: float, train_ids: list[str], seed: int = SEED):
+def fit_model(alpha: float, category: str, train_ids: list[str], seed: int = SEED):
     """用 train_ids 建 memory bank 的 FAlphaPatchcore。返回 (lightning_model, torch_model)。"""
     random.seed(seed)
     np.random.seed(seed)
@@ -141,7 +160,7 @@ def fit_model(alpha: float, train_ids: list[str], seed: int = SEED):
 
     datamodule = MVTecAD(
         root=str(DATA_ROOT),
-        category="bottle",
+        category=category,
         train_batch_size=16,
         eval_batch_size=16,
         num_workers=0,
@@ -150,7 +169,7 @@ def fit_model(alpha: float, train_ids: list[str], seed: int = SEED):
     datamodule.setup()
 
     # ---- 用 train_ids 过滤 train_data 的 _samples DataFrame（最干净的子集方式）----
-    train_root = DATA_ROOT / "bottle" / "train" / "good"
+    train_root = DATA_ROOT / category / "train" / "good"
     keep_names = {n for n in train_ids}
     td = datamodule.train_data
     df = td._samples
@@ -212,9 +231,11 @@ def run_screening(
     smoke_limit: int | None = None,
     seed: int = SEED,
     results_root: Path | None = None,
+    category: str = DEFAULT_CATEGORY,
 ) -> None:
     """运行五档 α 筛查。results_root 为空则用模块默认 RESULTS_ROOT；
-    Experiment 1C 传入按 seed 分目录的 results_root，实现多 seed 隔离。"""
+    Experiment 1C 传入按 seed 分目录的 results_root，实现多 seed 隔离。
+    category 指定 MVTec AD 类别，defect types 由 test/ 目录自动发现。"""
     global RESULTS_ROOT, CONFIG_DIR, RAW_DIR, SUMMARY_DIR, FIGURES_DIR, HEATMAPS_DIR, LOGS_DIR
     if results_root is not None:
         RESULTS_ROOT = Path(results_root)
@@ -231,9 +252,21 @@ def run_screening(
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+    # ---- 前置守卫：category 数据目录必须存在（数据未下载时给出清晰报错）----
+    if not (DATA_ROOT / category).is_dir():
+        raise FileNotFoundError(
+            f"category '{category}' 数据目录不存在: {DATA_ROOT / category}。"
+            f"请先通过 MVTec 官方渠道下载该 category 并解压到 {DATA_ROOT}/。"
+        )
+
+    # ---- defect types：自动发现（排除 good，固定排序）----
+    defect_types = discover_defect_types(category)
+    if not defect_types:
+        raise RuntimeError(f"category '{category}' 的 test/ 目录下未发现任何 defect type")
+
     # ---- validation split ----
-    val_ids, train_ids = make_validation_split(seed=seed)
-    print(f"[split] validation={len(val_ids)} train={len(train_ids)} (seed={seed})")
+    val_ids, train_ids = make_validation_split(category=category, seed=seed)
+    print(f"[split] validation={len(val_ids)} train={len(train_ids)} (seed={seed}, category={category})")
 
     # 保存 validation split
     with open(CONFIG_DIR / "validation_split.csv", "w", newline="", encoding="utf-8") as f:
@@ -245,10 +278,10 @@ def run_screening(
             w.writerow(["validation", n])
 
     # ---- 收集路径 ----
-    val_paths = [DATA_ROOT / "bottle" / "train" / "good" / n for n in val_ids]
-    test_root = DATA_ROOT / "bottle" / "test"
+    val_paths = [DATA_ROOT / category / "train" / "good" / n for n in val_ids]
+    test_root = DATA_ROOT / category / "test"
     test_paths: dict[str, list[Path]] = {}
-    for d in ["good"] + DEFECT_TYPES:
+    for d in ["good"] + defect_types:
         paths = sorted((test_root / d).glob("*.png"))
         if smoke_limit is not None:
             paths = paths[:smoke_limit]
@@ -256,9 +289,9 @@ def run_screening(
 
     # ---- 预计算 defect area（用全量 GT mask）----
     area_by_sample: dict[str, float] = {}
-    for dt in DEFECT_TYPES:
+    for dt in defect_types:
         for p in sorted((test_root / dt).glob("*.png")):
-            mask_path = DATA_ROOT / "bottle" / "ground_truth" / dt / f"{p.stem}_mask.png"
+            mask_path = DATA_ROOT / category / "ground_truth" / dt / f"{p.stem}_mask.png"
             area_by_sample[str(p)] = defect_area_ratio(mask_path) if mask_path.exists() else float("nan")
 
     raw_rows: list[dict] = []
@@ -268,7 +301,7 @@ def run_screening(
 
     for alpha in ALPHAS:
         print(f"\n{'='*70}\n[alpha={alpha:g}] fit + predict\n{'='*70}")
-        lightning_model, torch_model, datamodule = fit_model(alpha, train_ids, seed=seed)
+        lightning_model, torch_model, datamodule = fit_model(alpha, category, train_ids, seed=seed)
         _move_model_to_device(torch_model, device)
 
         amaps_by_alpha[alpha] = {}
@@ -300,7 +333,7 @@ def run_screening(
             amaps_by_alpha[alpha][str(p)] = amap
 
         # ---- test/defect ----
-        for dt in DEFECT_TYPES:
+        for dt in defect_types:
             for p in test_paths[dt]:
                 img = load_image_as_tensor(p)
                 score, amap = predict_one(torch_model, img, device)
@@ -329,9 +362,10 @@ def run_screening(
     # ---- 保存 config ----
     config = {
         "experiment": "Experiment 1B: Defect-Specific α Sensitivity Screening",
-        "dataset": "MVTecAD bottle",
+        "dataset": f"MVTecAD {category}",
+        "category": category,
         "alphas": ALPHAS,
-        "defect_types": DEFECT_TYPES,
+        "defect_types": defect_types,
         "backbone": "wide_resnet50_2",
         "layers": ["layer2", "layer3"],
         "coreset_sampling_ratio": 0.1,
@@ -342,7 +376,7 @@ def run_screening(
         "val_size": VAL_SIZE,
         "train_size": len(train_ids),
         "threshold_rule": THRESHOLD_RULE,
-        "num_test": {d: len(test_paths[d]) for d in ["good"] + DEFECT_TYPES},
+        "num_test": {d: len(test_paths[d]) for d in ["good"] + defect_types},
         "IN_position": "generate_embedding concat 后、reshape 前，affine=False",
         "alpha0_shortcut": "alpha==0 直接返回原始 feature，跳过 IN",
     }
@@ -379,6 +413,7 @@ def main() -> None:
     parser.add_argument("--smoke", action="store_true", help="smoke test：少量样本")
     parser.add_argument("--smoke-limit", type=int, default=5, help="smoke test 每类样本数")
     parser.add_argument("--seed", type=int, default=SEED)
+    parser.add_argument("--category", type=str, default=DEFAULT_CATEGORY, help="MVTec AD category")
     parser.add_argument(
         "--results-root",
         type=str,
@@ -390,9 +425,9 @@ def main() -> None:
     results_root = Path(args.results_root) if args.results_root else None
     if args.smoke:
         print(f"[smoke test] 每类样本数 = {args.smoke_limit}")
-        run_screening(smoke_limit=args.smoke_limit, seed=args.seed, results_root=results_root)
+        run_screening(smoke_limit=args.smoke_limit, seed=args.seed, results_root=results_root, category=args.category)
     else:
-        run_screening(smoke_limit=None, seed=args.seed, results_root=results_root)
+        run_screening(smoke_limit=None, seed=args.seed, results_root=results_root, category=args.category)
 
 
 if __name__ == "__main__":
