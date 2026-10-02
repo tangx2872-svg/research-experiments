@@ -1,0 +1,35 @@
+{
+  "verdict": "CASE_D",
+  "verdict_text": "NO_EXPLAINABLE_STRUCTURE",
+  "primary_outcome": "delta_defect_std",
+  "n_defect_types": 25,
+  "conditions": {
+    "full_data_strong_attr_exists": false,
+    "strong_attrs": [],
+    "shrink_expand_group_diff_exists": false,
+    "group_diff_attrs": [],
+    "CASE_A": false,
+    "CASE_B_category_driven": false,
+    "CASE_B_drivers": [],
+    "all_univariate_weak": true,
+    "pca_structure": false,
+    "pc1_explained_variance": 0.497,
+    "k2_cluster_sign_agreement": 0.76,
+    "CASE_C": false
+  },
+  "multivariate_followup": {
+    "cluster_profile_min_p": 0.198,
+    "best_pair_adj_r2": 0.141,
+    "best_pair": "log_area_ratio + laplacian_energy",
+    "conclusion": "组合属性解释力接近零（对比 1E defect identity 饱和 R2=1.0）"
+  },
+  "frequency_family_hint": {
+    "note": "frequency 族方向一致弱负相关：A1 rho -0.15~-0.19（CI 跨零），A2 控制 area 后 -0.25~-0.36（laplacian 最强 p=0.076），LOCO 5/5 保持方向，dilation 10/15/20 稳定。仅为方向性 hint，远不足以构成 mechanism。",
+    "best_partial": {
+      "attr": "laplacian_energy",
+      "partial_rho": -0.361,
+      "p": 0.0763
+    }
+  },
+  "interpretation": "1E 的 heterogeneity 真实且稳定（25/25 seed-consistent），但 4 组预注册视觉属性（size/contrast/frequency/morphology）单独或组合都无法解释它（最好 adj R2=0.141 vs identity 饱和 1.0）。机制不在图像空间的简单属性里，应转向 representation-space 分析。按协议停止。"
+}

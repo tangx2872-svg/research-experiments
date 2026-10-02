@@ -1,0 +1,67 @@
+{
+  "experiment": "1F",
+  "title": "Offline Defect-Attribute Mechanism Screening",
+  "status": "FROZEN",
+  "core_question": "为什么相同的 α-IN 会让一些 defect 的异常分布收缩，而另一些 defect 的异常分布膨胀？",
+
+  "primary_outcome": "delta_defect_std",
+  "secondary_outcomes": ["delta_mean_gap", "delta_z", "delta_dprime"],
+
+  "reuse": {
+    "response_signatures": "results/experiment_1e/analysis/defect_response_signatures_seed_summary.csv",
+    "seed_stability": "results/experiment_1e/analysis/seed_stability.csv",
+    "no_refit": true,
+    "note": "完全复用 1E，不重新 fit PatchCore，GPU 基本不用"
+  },
+
+  "sample_unit": "defect_type (n=25), 属性先 sample-level 提取再 median+IQR 聚合",
+
+  "attribute_families": {
+    "size": {
+      "attributes": ["area_ratio", "log_area_ratio"],
+      "role": "control_variable",
+      "note": "已从 1E 获得，非新发现"
+    },
+    "local_contrast": {
+      "attributes": ["intensity_contrast", "lab_contrast", "local_variance_ratio"],
+      "method": "defect ROI vs surrounding ring (dilated mask - mask)",
+      "dilation_px": 15,
+      "sensitivity_check_px": [10, 20],
+      "note": "dilation 参数冻结，sensitivity check 预注册，不得看完结果挑最好看的"
+    },
+    "spatial_frequency": {
+      "attributes": ["gradient_mean_defect", "gradient_contrast", "laplacian_energy", "hf_energy_ratio"],
+      "gradient": "Sobel",
+      "hf_energy_ratio": "缺陷区 vs surrounding ring 的 Sobel 梯度能量比(平方和), 衡量缺陷是否比周围更细碎",
+      "fft_note": "原协议 FFT HF-ratio(=energy(f>fc)/total) 经诊断对自然图像无区分度(1/f 谱致 f>0.25*nyquist 环带面积占比>99%, 恒~1.0), 质心频率亦由 1/f 共性主导区分度<0.003, 故改用梯度能量比(协议 GradientContrast 的能量版)。此决策已冻结, 非看完结果后调整。"
+    },
+    "morphology": {
+      "attributes": ["area_pixels", "perimeter", "compactness", "elongation"],
+      "compactness": "4*pi*A/P^2",
+      "elongation": "major_axis/minor_axis (fitEllipse)"
+    }
+  },
+
+  "analysis_plan": {
+    "A1_scatter": "attribute vs delta_defect_std, Spearman rho + 95% bootstrap CI, 点用 category 区分",
+    "A2_partial": "partial corr(attr, delta_defect_std | log(area))",
+    "A3_loco": "leave-one-category-out, 尤其去掉 grid 后关系是否保留",
+    "A4_shrink_expand": "Δdefect_std<0 vs >0 group 对比 (排除 MIXED), median diff + effect size + bootstrap CI",
+    "A5_exploratory": "4D response PCA + clustering (仅 exploratory)"
+  },
+
+  "case_rules": {
+    "CASE_A": "至少一个 attribute family 与 Δdefect_std 稳定非弱关系: full-data 方向明确 + control area 基本保留 + LOCO 多数保持 + 非 grid 单类驱动 + shrink/expand 一致差异",
+    "CASE_B": "有关系但去掉某 category 后基本消失 → category-specific structure",
+    "CASE_C": "所有单一属性弱关系，但 PCA/组合属性有结构 → 谨慎 multivariate follow-up",
+    "CASE_D": "全部解释不了 → 合法负结果，停"
+  },
+
+  "forbidden": [
+    "不对 25 defect 做机器学习/Random Forest 拟合故事",
+    "不预先人工贴 texture/structure 标签",
+    "不做 Grad-CAM / embedding clustering / CLIP / feature attribution",
+    "不用聚类结果反向宣布机制",
+    "看完结果后改 dilation 或指标选好看的"
+  ]
+}
