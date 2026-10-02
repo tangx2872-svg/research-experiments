@@ -1,0 +1,29 @@
+{
+  "experiment": "1G",
+  "verdict": "CASE_A",
+  "reason": "稳定链 1E↔NN-dispersion↔feature-geometry 成立，继续 channel/layer 机制（LEVEL 3）",
+  "level1": {
+    "spearman_1e_vs_nnstd": 0.8333333333333333,
+    "p": 0.005265691029161746,
+    "n": 9,
+    "spearman_1e_vs_nnstd_frozen": 0.9500000000000001,
+    "p_frozen": 8.762523965086187e-05,
+    "ok": true
+  },
+  "level2": {
+    "spearman_nnstd_vs_dispersion": 0.6,
+    "p_disp": 0.0876228290414025,
+    "spearman_nnstd_vs_normstd": 0.7,
+    "p_norm": 0.03576957497026173,
+    "ok": true
+  },
+  "level3": {
+    "spearman_norm_vs_channel": 0.6,
+    "p": 0.0876228290414025
+  },
+  "thresholds": {
+    "rho": 0.6,
+    "p": 0.05,
+    "n_min": 5
+  }
+}

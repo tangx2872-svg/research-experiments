@@ -4,6 +4,8 @@
 
 ## 实验归档
 
+- [2026-10-02｜Experiment 1G: Feature-Space Representation Reshaping](experiments/exp1g_feature_space/README.md)：双轨 memory-bank 分解（matched Mα vs frozen M0）追踪 α-IN 在 PatchCore 计算链中的传导，9 个代表 defect × 5 α × seed0。结论：**CASE_A — REPRESENTATION_CHAIN_SUPPORTED**——1E Δdefect_std 与 defect patch NN-distance dispersion 强对应（matched ρ=+0.833 p=0.005；frozen ρ=+0.950 p<0.001），且 frozen track 更强 → 机制主要在 defect 特征表示自身漂移；L2 经 feature norm-std 通过（ρ=+0.700 p=0.036）；L3 channel-var 仅弱 hint。诚实记录：bottle/contamination 的 matched/frozen 方向分歧（bank 端反向推回）；background 存在非镜像的全局分量（expand +4.4 / shrink -1.0）。下一步：seed 1/2 复核 + 1H layer/channel 机制。
+
 - [2026-10-02｜Experiment 1F: Offline Defect-Attribute Mechanism Screening](experiments/exp1f_mechanism_screening/README.md)：完全复用 1E，从原图+GT mask 提取 4 组预注册视觉属性（size/contrast/frequency/morphology），检验它们能否解释 25 个 defect type 的 response heterogeneity。结论：**CASE_D — NO_EXPLAINABLE_STRUCTURE**——全部单属性 |rho|≤0.24 且 CI 跨零，shrink/expand 组属性画像不可区分，双变量组合最好 adj R²=0.141（对比 identity 饱和 1.0）；频率族存在方向一致的弱 hint（laplacian partial rho=-0.361, p=0.076，LOCO/dilation 稳定）。机制不在图像空间简单属性里，若继续应转向 representation-space 分析。附带技术记录：FFT HF-ratio 对自然图像无区分度（1/f 谱数学必然），改用梯度能量比。
 
 - [2026-10-02｜Experiment 1E: Formal Cross-Category Pilot](experiments/exp1e_cross_category/README.md)：5 类别（bottle/grid/cable/screw/hazelnut）× 3 seeds × 5 α = 75 conditions 跨类别验证（bottle 复用 1C 重建，equivalence check 9/9 PASS）。结论：**CASE_A — CROSS_CATEGORY_HETEROGENEITY_SUPPORTED**。25/25 defect types 有 3/3 seed 稳定响应；5/5 类别内部存在方向分化；1D 的"方差收缩→Δd' 反升"模式在 cable/bent_wire 与 hazelnut/print 跨类别复现；area-only 解释力接近零（R²≤0.079），heterogeneity 载体在 defect identity 而非 size。
