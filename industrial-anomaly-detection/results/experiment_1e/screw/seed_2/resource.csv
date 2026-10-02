@@ -1,0 +1,6 @@
+category,seed,alpha,runtime_seconds,train_good_count,validation_good_count,memory_bank_train_count,coreset_size,peak_gpu_memory_allocated_mb,status
+screw,2,0.0,142.39,300,20,300,32768,3937.04,OK
+screw,2,0.25,161.05,300,20,300,32768,3937.04,OK
+screw,2,0.5,161.11,300,20,300,32768,3937.04,OK
+screw,2,0.75,161.3,300,20,300,32768,3937.04,OK
+screw,2,1.0,161.55,300,20,300,32768,3937.04,OK

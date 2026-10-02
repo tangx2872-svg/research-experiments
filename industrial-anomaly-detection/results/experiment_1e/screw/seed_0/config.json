@@ -1,6 +1,6 @@
 {
   "experiment": "Experiment 1E Cross-Category Validation",
-  "category": "hazelnut",
+  "category": "screw",
   "seed": 0,
   "alphas": [
     0.0,
@@ -10,10 +10,11 @@
     1.0
   ],
   "defect_types": [
-    "crack",
-    "cut",
-    "hole",
-    "print"
+    "manipulated_front",
+    "scratch_head",
+    "scratch_neck",
+    "thread_side",
+    "thread_top"
   ],
   "backbone": "wide_resnet50_2",
   "layers": [
@@ -24,8 +25,8 @@
   "num_neighbors": 9,
   "image_size": 256,
   "val_size": 20,
-  "train_size": 371,
-  "n_test_good": 40,
+  "train_size": 300,
+  "n_test_good": 41,
   "log_area_epsilon": 1e-09,
   "z_normalization": "test/good contemporaneous (same seed+alpha), ddof=1",
   "d_prime": "pooled_std sqrt((sd^2+sg^2)/2)"

@@ -1,0 +1,6 @@
+category,seed,alpha,runtime_seconds,train_good_count,validation_good_count,memory_bank_train_count,coreset_size,peak_gpu_memory_allocated_mb,status
+hazelnut,2,0.0,234.35,371,20,371,40038,4789.04,OK
+hazelnut,2,0.25,231.26,371,20,371,40038,4789.04,OK
+hazelnut,2,0.5,230.89,371,20,371,40038,4789.04,OK
+hazelnut,2,0.75,230.74,371,20,371,40038,4789.04,OK
+hazelnut,2,1.0,230.61,371,20,371,40038,4789.04,OK

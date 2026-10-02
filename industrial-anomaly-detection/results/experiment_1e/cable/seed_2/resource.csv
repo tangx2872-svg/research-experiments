@@ -1,0 +1,6 @@
+category,seed,alpha,runtime_seconds,train_good_count,validation_good_count,memory_bank_train_count,coreset_size,peak_gpu_memory_allocated_mb,status
+cable,2,0.0,102.6,204,20,204,22937,2785.04,OK
+cable,2,0.25,99.33,204,20,204,22937,2785.04,OK
+cable,2,0.5,99.53,204,20,204,22937,2785.04,OK
+cable,2,0.75,99.34,204,20,204,22937,2785.04,OK
+cable,2,1.0,99.34,204,20,204,22937,2785.04,OK

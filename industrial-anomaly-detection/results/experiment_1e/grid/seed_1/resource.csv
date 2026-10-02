@@ -1,0 +1,6 @@
+category,seed,alpha,runtime_seconds,train_good_count,validation_good_count,memory_bank_train_count,coreset_size,peak_gpu_memory_allocated_mb,status
+grid,1,0.0,118.79,244,20,244,27033,3265.04,OK
+grid,1,0.25,115.43,244,20,244,27033,3265.04,OK
+grid,1,0.5,115.35,244,20,244,27033,3265.04,OK
+grid,1,0.75,115.24,244,20,244,27033,3265.04,OK
+grid,1,1.0,115.45,244,20,244,27033,3265.04,OK

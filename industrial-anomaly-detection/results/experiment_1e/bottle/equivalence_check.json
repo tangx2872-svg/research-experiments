@@ -1,0 +1,95 @@
+{
+  "all_pass": true,
+  "checks": [
+    {
+      "defect_type": "broken_large",
+      "seed": 0,
+      "rebuilt_delta_z": -6.082336525327207,
+      "ref_delta_z": -6.082336525327207,
+      "rebuilt_delta_std": 1.7551910876646102,
+      "ref_delta_std": 1.7551910876646102,
+      "rebuilt_delta_dp": -6.153380688796797,
+      "ref_delta_dp": -6.153380688796797
+    },
+    {
+      "defect_type": "broken_large",
+      "seed": 1,
+      "rebuilt_delta_z": -3.976570774928616,
+      "ref_delta_z": -3.976570774928616,
+      "rebuilt_delta_std": 1.6987593622991226,
+      "ref_delta_std": 1.6987593622991226,
+      "rebuilt_delta_dp": -5.568217882656501,
+      "ref_delta_dp": -5.568217882656501
+    },
+    {
+      "defect_type": "broken_large",
+      "seed": 2,
+      "rebuilt_delta_z": -3.6337525642903987,
+      "ref_delta_z": -3.6337525642903987,
+      "rebuilt_delta_std": 1.7299666151898432,
+      "ref_delta_std": 1.7299666151898432,
+      "rebuilt_delta_dp": -5.428708234254117,
+      "ref_delta_dp": -5.428708234254117
+    },
+    {
+      "defect_type": "broken_small",
+      "seed": 0,
+      "rebuilt_delta_z": -3.9227195461142816,
+      "ref_delta_z": -3.9227195461142816,
+      "rebuilt_delta_std": -0.41610760178828343,
+      "ref_delta_std": -0.41610760178828343,
+      "rebuilt_delta_dp": -0.5677285439115085,
+      "ref_delta_dp": -0.5677285439115085
+    },
+    {
+      "defect_type": "broken_small",
+      "seed": 1,
+      "rebuilt_delta_z": -1.8394657706104844,
+      "ref_delta_z": -1.8394657706104844,
+      "rebuilt_delta_std": -0.5006215046649354,
+      "ref_delta_std": -0.5006215046649354,
+      "rebuilt_delta_dp": -0.1977814599523251,
+      "ref_delta_dp": -0.1977814599523251
+    },
+    {
+      "defect_type": "broken_small",
+      "seed": 2,
+      "rebuilt_delta_z": -1.5534394454138756,
+      "ref_delta_z": -1.5534394454138756,
+      "rebuilt_delta_std": -0.5783016830730192,
+      "ref_delta_std": -0.5783016830730192,
+      "rebuilt_delta_dp": -0.12261834690058127,
+      "ref_delta_dp": -0.12261834690058127
+    },
+    {
+      "defect_type": "contamination",
+      "seed": 0,
+      "rebuilt_delta_z": -3.2441854228104106,
+      "ref_delta_z": -3.2441854228104106,
+      "rebuilt_delta_std": -2.0858223753359084,
+      "ref_delta_std": -2.0858223753359084,
+      "rebuilt_delta_dp": 0.3849406195639431,
+      "ref_delta_dp": 0.3849406195639431
+    },
+    {
+      "defect_type": "contamination",
+      "seed": 1,
+      "rebuilt_delta_z": -1.4118094054900272,
+      "ref_delta_z": -1.4118094054900272,
+      "rebuilt_delta_std": -2.425267424207382,
+      "ref_delta_std": -2.425267424207382,
+      "rebuilt_delta_dp": 0.5434641826575413,
+      "ref_delta_dp": 0.5434641826575413
+    },
+    {
+      "defect_type": "contamination",
+      "seed": 2,
+      "rebuilt_delta_z": -1.1975602802868277,
+      "ref_delta_z": -1.1975602802868277,
+      "rebuilt_delta_std": -2.400490655832371,
+      "ref_delta_std": -2.400490655832371,
+      "rebuilt_delta_dp": 0.5224915282165612,
+      "ref_delta_dp": 0.5224915282165612
+    }
+  ]
+}

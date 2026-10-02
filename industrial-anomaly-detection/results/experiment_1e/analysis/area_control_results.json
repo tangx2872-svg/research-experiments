@@ -1,0 +1,32 @@
+{
+  "delta_z_mean": {
+    "Model_A_r2": 0.01457907509178269,
+    "Model_A_adj_r2": -0.028265312947705068,
+    "Model_B_r2": 0.6915833174092136,
+    "Model_B_adj_r2": 0.6104210325169015,
+    "Model_C_r2": 1.0,
+    "Model_C_adj_r2": NaN,
+    "delta_r2_area_to_B": 0.677004242317431,
+    "delta_r2_B_to_C": 0.30841668259078636
+  },
+  "delta_defect_std_mean": {
+    "Model_A_r2": 0.07850037581734282,
+    "Model_A_adj_r2": 0.038435174765923064,
+    "Model_B_r2": 0.7958427323603258,
+    "Model_B_adj_r2": 0.7421171356130432,
+    "Model_C_r2": 1.0,
+    "Model_C_adj_r2": NaN,
+    "delta_r2_area_to_B": 0.717342356542983,
+    "delta_r2_B_to_C": 0.20415726763967423
+  },
+  "delta_dprime_mean": {
+    "Model_A_r2": 0.05195948911152293,
+    "Model_A_adj_r2": 0.010740336464197808,
+    "Model_B_r2": 0.2455235466641027,
+    "Model_B_adj_r2": 0.04697711157570861,
+    "Model_C_r2": 1.0,
+    "Model_C_adj_r2": NaN,
+    "delta_r2_area_to_B": 0.19356405755257977,
+    "delta_r2_B_to_C": 0.7544764533358973
+  }
+}

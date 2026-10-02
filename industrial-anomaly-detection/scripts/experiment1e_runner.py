@@ -38,6 +38,7 @@ import gc
 import json
 import math
 import sys
+import time
 from pathlib import Path
 
 import numpy as np
@@ -111,13 +112,43 @@ def run_category_seed(
 
     sample_rows: list[dict] = []
     group_rows: list[dict] = []
+    resource_rows: list[dict] = []
 
     for alpha in alphas:
         print(f"\n{'='*60}\n[{category} seed={seed} alpha={alpha:g}] fit\n{'='*60}")
+        t0 = time.time()
+        if torch.cuda.is_available():
+            torch.cuda.reset_peak_memory_stats()
         lightning_model, torch_model, datamodule = e1b.fit_model(
             alpha, category, train_ids, seed=seed
         )
         e1b._move_model_to_device(torch_model, device)
+
+        # ---- Phase 8 资源记录：coreset_size / peak_gpu ----
+        coreset_size = "not_measured"
+        try:
+            if hasattr(torch_model, "memory_bank") and isinstance(torch_model.memory_bank, torch.Tensor):
+                coreset_size = int(torch_model.memory_bank.shape[0])
+        except Exception:
+            coreset_size = "not_measured"
+        peak_gpu_mb = "not_measured"
+        if torch.cuda.is_available():
+            try:
+                peak_gpu_mb = round(torch.cuda.max_memory_allocated() / (1024 * 1024), 2)
+            except Exception:
+                peak_gpu_mb = "not_measured"
+        resource_rows.append({
+            "category": category,
+            "seed": seed,
+            "alpha": alpha,
+            "runtime_seconds": round(time.time() - t0, 2),
+            "train_good_count": len(train_ids),
+            "validation_good_count": len(val_ids),
+            "memory_bank_train_count": len(train_ids),
+            "coreset_size": coreset_size,
+            "peak_gpu_memory_allocated_mb": peak_gpu_mb,
+            "status": "OK",
+        })
 
         # ---- 推理 test/good → 得到 contemporaneous good 分布 ----
         good_scores = []
@@ -248,6 +279,16 @@ def run_category_seed(
     }
     with open(out_dir / "config.json", "w", encoding="utf-8") as f:
         json.dump(config, f, indent=2, ensure_ascii=False)
+
+    # ---- 写 resource CSV（Phase 8 资源记录）----
+    resource_fields = ["category", "seed", "alpha", "runtime_seconds",
+                       "train_good_count", "validation_good_count",
+                       "memory_bank_train_count", "coreset_size",
+                       "peak_gpu_memory_allocated_mb", "status"]
+    with open(out_dir / "resource.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=resource_fields)
+        w.writeheader()
+        w.writerows(resource_rows)
 
     print(f"\n[done] {category} seed={seed}: sample_rows={len(sample_rows)}, "
           f"group_rows={len(group_rows)}")

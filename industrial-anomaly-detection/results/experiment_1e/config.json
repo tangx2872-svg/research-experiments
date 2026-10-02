@@ -1,0 +1,64 @@
+{
+  "experiment": "Experiment 1E — Formal Cross-Category Pilot",
+  "status": "FROZEN",
+  "frozen_at": "2026-10-02T12:15:00+08:00",
+  "freeze_note": "正式 Pilot 开始后禁止中途修改配置。若因 OOM 或其他问题必须修改，须停止实验并报告，不允许静默改变。",
+
+  "model": {
+    "model": "PatchCore",
+    "backbone": "wide_resnet50_2",
+    "layers": ["layer2", "layer3"],
+    "coreset_sampling_ratio": 0.1,
+    "num_neighbors": 9,
+    "image_size": 256,
+    "train_batch_size": 16,
+    "eval_batch_size": 16,
+    "num_workers": 0
+  },
+
+  "alpha": {
+    "alphas": [0.0, 0.25, 0.5, 0.75, 1.0],
+    "definition": "F_alpha = (1-alpha)*F + alpha*IN(F)",
+    "IN_affine": false,
+    "IN_location": "generate_embedding concat 后、reshape 前（与 Experiment 1B/1C/1D 完全一致）",
+    "alpha0_shortcut": "alpha==0 直接返回原始 feature，跳过 IN"
+  },
+
+  "seeds": [0, 1, 2],
+
+  "validation": {
+    "validation_good_count": 20,
+    "split_rule": "每 category 从 train/good 固定 seed 划 VAL_SIZE=20 张，剩余进 memory bank；validation 不进 bank、不参与训练"
+  },
+
+  "z_normalization": {
+    "basis": "contemporaneous category x seed x alpha test/good distribution",
+    "formula": "z_i = (s_i - mu_good) / sigma_good",
+    "std_ddof": 1,
+    "note": "每个 category x seed x alpha 用同一条件下的 test/good 分布独立标准化"
+  },
+
+  "d_prime": {
+    "formula": "(mu_D - mu_G) / sqrt((sigma_D^2 + sigma_G^2) / 2)",
+    "pooled_std": "sqrt((sigma_D^2 + sigma_G^2) / 2)"
+  },
+
+  "area": {
+    "area_pixels": "GT mask 像素和（原始分辨率）",
+    "area_ratio": "area_pixels / (H * W)",
+    "log_area_ratio": "log(area_ratio + eps), eps = 1e-9"
+  },
+
+  "categories": {
+    "full": ["bottle", "grid", "cable", "screw", "hazelnut"],
+    "bottle": "复用（1C raw + 1B area 重建，不重训）",
+    "to_run": ["grid", "cable", "screw", "hazelnut"],
+    "run_order": "grid -> cable -> screw -> hazelnut（仅资源管理策略，无科学含义）"
+  },
+
+  "total_conditions": {
+    "to_run": "4 categories x 3 seeds x 5 alphas = 60 fits",
+    "bottle_reused": 15,
+    "final_complete": "5 categories x 3 seeds x 5 alphas = 75 conditions"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "verdict": "CASE_A",
+  "verdict_text": "CROSS_CATEGORY_HETEROGENEITY_SUPPORTED",
+  "n_defect_types": 25,
+  "n_any_stable": 25,
+  "stable_by_dim": {
+    "delta_mean_gap": {
+      "NEGATIVE_3_OF_3": 18,
+      "POSITIVE_3_OF_3": 6,
+      "MIXED": 1
+    },
+    "delta_defect_std": {
+      "POSITIVE_3_OF_3": 13,
+      "NEGATIVE_3_OF_3": 11,
+      "MIXED": 1
+    },
+    "delta_z": {
+      "NEGATIVE_3_OF_3": 19,
+      "MIXED": 4,
+      "POSITIVE_3_OF_3": 2
+    },
+    "delta_dprime": {
+      "NEGATIVE_3_OF_3": 19,
+      "POSITIVE_3_OF_3": 6
+    }
+  },
+  "hetero_by_category": {
+    "bottle": {
+      "delta_mean_gap": false,
+      "delta_defect_std": true,
+      "delta_z": false,
+      "delta_dprime": true
+    },
+    "cable": {
+      "delta_mean_gap": false,
+      "delta_defect_std": true,
+      "delta_z": true,
+      "delta_dprime": true
+    },
+    "grid": {
+      "delta_mean_gap": true,
+      "delta_defect_std": false,
+      "delta_z": false,
+      "delta_dprime": false
+    },
+    "hazelnut": {
+      "delta_mean_gap": true,
+      "delta_defect_std": true,
+      "delta_z": false,
+      "delta_dprime": true
+    },
+    "screw": {
+      "delta_mean_gap": true,
+      "delta_defect_std": true,
+      "delta_z": false,
+      "delta_dprime": false
+    }
+  },
+  "cats_with_hetero": [
+    "cable",
+    "screw",
+    "hazelnut"
+  ],
+  "variance_shrink_pattern": [
+    {
+      "category": "bottle",
+      "defect_type": "contamination",
+      "delta_z": "-1.9511850361957552",
+      "delta_std": "-2.3038601517918873",
+      "delta_dprime": "0.4836321101460152"
+    },
+    {
+      "category": "cable",
+      "defect_type": "bent_wire",
+      "delta_z": "-1.0705583184616625",
+      "delta_std": "-3.5073510664199326",
+      "delta_dprime": "2.1888931051381566"
+    },
+    {
+      "category": "hazelnut",
+      "defect_type": "print",
+      "delta_z": "-4.629266802805402",
+      "delta_std": "-2.769504555915129",
+      "delta_dprime": "0.7035440176016362"
+    }
+  ],
+  "area_r2_model_a": {
+    "delta_z_mean": 0.01457907509178269,
+    "delta_defect_std_mean": 0.07850037581734282,
+    "delta_dprime_mean": 0.05195948911152293
+  },
+  "area_sufficient": false,
+  "conditions": {
+    "A1_cats_hetero": true,
+    "A2_stable_coverage": true,
+    "A3_area_insufficient": true,
+    "A4_shrink_repro": true
+  }
+}

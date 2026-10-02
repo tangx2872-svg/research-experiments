@@ -4,6 +4,7 @@
 
 ## 实验归档
 
+- [2026-10-02｜Experiment 1E: Formal Cross-Category Pilot](experiments/exp1e_cross_category/README.md)：5 类别（bottle/grid/cable/screw/hazelnut）× 3 seeds × 5 α = 75 conditions 跨类别验证（bottle 复用 1C 重建，equivalence check 9/9 PASS）。结论：**CASE_A — CROSS_CATEGORY_HETEROGENEITY_SUPPORTED**。25/25 defect types 有 3/3 seed 稳定响应；5/5 类别内部存在方向分化；1D 的"方差收缩→Δd' 反升"模式在 cable/bent_wire 与 hazelnut/print 跨类别复现；area-only 解释力接近零（R²≤0.079），heterogeneity 载体在 defect identity 而非 size。
 - [2026-10-02｜Experiment 1D: Size-Controlled Defect Sensitivity Analysis](experiments/exp1d_size_control/README.md)：控制缺陷面积后的敏感性分析（完全离线，复用 1B/1C 逐样本结果）。结论：**CASE_A**——控制 area 后 type 仍提供显著额外解释力（ΔR²=0.188，area-only R² 仅 0.115）；matched-area 下 broken_large vs contamination 仍差 Δz -2.23；contamination 残差 +1.11 与 broken_large -1.10 方向相反。附加 metric decomposition 发现：α-IN 对三类缺陷方差的作用方向不同（large 增方差/small 微缩/contamination 强缩 -2.3），这是 Δz（sample-level）与 d'（group-level）方向分歧的根源。
 - [2026-10-02｜Experiment 1C: Multi-Seed Stability Validation](experiments/exp1c_multiseed/README.md)：多 seed（0/1/2）稳定性验证，确认 1B 的 defect-specific α-IN response 非 coreset 随机性产物。broken_large Δd'=-5.87±0.39（三 seed 全部大幅下降）、broken_small -0.30±0.24、contamination +0.50±0.09（全部反向上升），判定 **CONTINUE** → 进入 1D size confound analysis。
 - [2026-10-01｜Experiment 1B: Defect-Specific α Sensitivity Screening](results/experiment_1b/README.md)：在 MVTec AD bottle + PatchCore 上，仅研究内部 α-IN representation probe 对不同缺陷类型的差异化影响（不引入合成光照）。结论：三类缺陷的 α-response 曲线明显分化——broken_large 分离度 d' 13.63→7.32（-46%）、broken_small 稳定、contamination 反向上升（+10%）；方向与初始假设相反。size confound 部分存在（type-only R²=0.292 > area-only R²=0.130），属 A+C 混合结论。
@@ -634,6 +635,68 @@ n=63 单类别；large-small 匹配仅 5 对（不可靠）；Δz 依赖 n=20 go
 - 脚本：`scripts/analyze_experiment1d_size_control.py`、`scripts/metric_decomposition_check.py`
 - 目录：`experiments/exp1d_size_control/`（README + 全部口径/规则/结果记录）
 - 结果：`results/experiment_1d/summary/`（audit/statistics/correlation/regression/matched_pairs/metric_decomposition/verdict）、`figures/`（6 张）、`tables/sample_level_response.csv`
+
+---
+
+## 2026-10-02｜Experiment 1E: Formal Cross-Category Pilot
+
+**解释实验**（非模型优化）。验证 1B–1D 在 Bottle 上发现的 defect-dependent α-IN response heterogeneity 是否跨 MVTec AD 类别成立。预注册协议驱动，配置冻结后零修改。
+
+### 设计（冻结于 results/experiment_1e/config.json）
+
+- 5 categories（bottle/grid/cable/screw/hazelnut）× 3 seeds × 5 α = **75 conditions**；bottle 复用 1C raw + 1B area 重建（不重训），新增 60 fits 串行运行
+- α-IN / backbone / coreset / z / d' 口径与 1B/1C/1D 完全一致；z 用 contemporaneous category×seed×α test/good（ddof=1）
+- 每 category 完成后自动 sanity checkpoint（completeness/count/finite/good normalization/discovery/area/重复错位）——4 类全部 PASS，无 OOM 无中断
+- 资源实测：coreset 22.9k–40.0k patches，peak GPU 2.8–4.8 GB（`max_memory_allocated()` 实测）
+
+### Bottle 重建 equivalence check
+
+9/9 PASS（3 defect types × 3 seeds 的 Δz/Δdefect_std/Δd' 与 1D 确认值完全一致，阈值 1e-6）。
+
+### 核心结果
+
+**Seed stability**：25/25 defect types 至少一个 response 维度 3/3 seeds 符号一致——现象普遍稳定，非随机产物。方向分化是关键：
+
+- **Δdefect_std**：13 POS vs 11 NEG vs 1 MIXED——方差响应强烈类型分化
+- 5/5 类别内部出现方向分化（cable/hazelnut 在 3 个维度分化；grid 全类型同向但幅度差 10 倍）
+
+**方差收缩模式跨类别复现**（Δz<0 & Δdefect_std<0 & Δd'>0，全部 3/3 稳定）：
+
+| pattern | Δz | Δstd | Δd' |
+|---|---:|---:|---:|
+| bottle/contamination | -1.95 | -2.30 | +0.48 |
+| cable/bent_wire | -1.07 | -3.51 | +2.19 |
+| hazelnut/print | -4.63 | -2.77 | +0.70 |
+
+1D 发现的"α-IN 收缩 defect 方差 → sample z 降但 group d' 反升"模式有两个新增类别的正式确认实例（hazelnut print 即 smoke test 预测的正式验证）。
+
+**Area control**（Phase 15，25 types）：
+
+| response | A: log(area) | B: +category |
+|---|---:|---:|
+| Δz | R²=0.015 | R²=0.692 |
+| Δdefect_std | R²=0.079 | R²=0.796 |
+| Δd' | R²=0.052 | R²=0.246 |
+
+area-only 解释力接近零 → **area contributes but is NOT sufficient**；异质性载体在 defect identity（Model C 饱和 R²=1.0 为 one-hot 饱和拟合，仅作方向参考）。
+
+### 判定：CASE_A — CROSS_CATEGORY_HETEROGENEITY_SUPPORTED
+
+A1（≥2 新增类别方向分化：cable/screw/hazelnut）+ A2（稳定覆盖 25/25）+ A3（area 不充分）+ A4（方差收缩模式复现 3 例）全部满足。
+
+### 边界与局限
+
+不做机制归因（texture/structure/frequency/clustering 属 1F）；单 backbone/detector/size；bottle 为重建数据（equivalence check 缓解）；grid texture 类方差普遍放大（Δstd 至 +11.4）现象记录待 1F 解释。
+
+### Next Step
+
+**停止，不自动进入 1F。** 人工判断：方差收缩模式与 grid texture 方差放大是否值得机制级研究。
+
+### 文件
+
+- 脚本：`scripts/experiment1e_{runner,orchestrator,bottle_reconstruct,analysis,figures_area,verdict}.py`
+- 实验记录：`experiments/exp1e_cross_category/README.md`
+- 结果：`results/experiment_1e/`（config.json 冻结配置、`<category>/seed_*/` 原始 schema、`analysis/`（含 verdict.json）、`figures/figure1~4`）
 
 ---
 
