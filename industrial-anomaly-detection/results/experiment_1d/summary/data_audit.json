@@ -1,0 +1,24 @@
+{
+  "n_samples": 63,
+  "n_by_type": {
+    "broken_large": 20,
+    "broken_small": 22,
+    "contamination": 21
+  },
+  "missing_mask": 0,
+  "area_zero": 0,
+  "area_min": 0.00575679012345679,
+  "area_max": 0.27418641975308644,
+  "area_from_gt_mask": true,
+  "three_seeds_same_samples": true,
+  "good_n_per_alpha": {
+    "0.0": 20,
+    "0.25": 20,
+    "0.5": 20,
+    "0.75": 20,
+    "1.0": 20
+  },
+  "normal_reference": "test/good 20 samples, per (seed, alpha) independent mu/sigma",
+  "response_primary": "delta_z = z(alpha=1) - z(alpha=0)",
+  "response_secondary": "slope_z (linear fit over 5 alphas)"
+}

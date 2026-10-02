@@ -4,6 +4,7 @@
 
 ## 实验归档
 
+- [2026-10-02｜Experiment 1D: Size-Controlled Defect Sensitivity Analysis](experiments/exp1d_size_control/README.md)：控制缺陷面积后的敏感性分析（完全离线，复用 1B/1C 逐样本结果）。结论：**CASE_A**——控制 area 后 type 仍提供显著额外解释力（ΔR²=0.188，area-only R² 仅 0.115）；matched-area 下 broken_large vs contamination 仍差 Δz -2.23；contamination 残差 +1.11 与 broken_large -1.10 方向相反。附加 metric decomposition 发现：α-IN 对三类缺陷方差的作用方向不同（large 增方差/small 微缩/contamination 强缩 -2.3），这是 Δz（sample-level）与 d'（group-level）方向分歧的根源。
 - [2026-10-02｜Experiment 1C: Multi-Seed Stability Validation](experiments/exp1c_multiseed/README.md)：多 seed（0/1/2）稳定性验证，确认 1B 的 defect-specific α-IN response 非 coreset 随机性产物。broken_large Δd'=-5.87±0.39（三 seed 全部大幅下降）、broken_small -0.30±0.24、contamination +0.50±0.09（全部反向上升），判定 **CONTINUE** → 进入 1D size confound analysis。
 - [2026-10-01｜Experiment 1B: Defect-Specific α Sensitivity Screening](results/experiment_1b/README.md)：在 MVTec AD bottle + PatchCore 上，仅研究内部 α-IN representation probe 对不同缺陷类型的差异化影响（不引入合成光照）。结论：三类缺陷的 α-response 曲线明显分化——broken_large 分离度 d' 13.63→7.32（-46%）、broken_small 稳定、contamination 反向上升（+10%）；方向与初始假设相反。size confound 部分存在（type-only R²=0.292 > area-only R²=0.130），属 A+C 混合结论。
 - [2026-10-01｜Experiment 1: Synthetic Illumination × α-IN 机制筛查](results/experiment1_illumination_tradeoff/README.md)：PatchCore 特征混合 InstanceNorm（α-IN）在简单光度扰动下的机制筛查。结论：robustness 提升与 pixel-level sensitivity cost 的 trade-off 苗头存在，无 defect-type 分化；仅 synthetic 证据，待真实光照数据验证。
@@ -572,6 +573,67 @@ seed=0 smoke（每类 5 张）的 α=0 阈值 = 20.433，与 1B 全量 validatio
 - 分析脚本：`scripts/analyze_experiment1c.py`（d' 表、Δd' 统计、Figure 1/2、verdict）
 - 目录：`experiments/exp1c_multiseed/`（configs/seed_{0,1,2}.yaml + README）
 - 结果：`results/experiment_1c/seed_{0,1,2}/` + `summary/`（verdict.json 等）+ `figures/`（dprime_curves_per_seed.png、delta_dprime_stability.png）；`raw/`（含大体积 npz）与 `logs/` 不上传 Git
+
+---
+
+## 2026-10-02｜Experiment 1D: Size-Controlled Defect Sensitivity Analysis
+
+**解释实验**（非模型优化）。完整复用 1B/1C 逐样本 score 与 GT area，零 fit/predict，零模型/口径修改。核心问题：控制 defect area 后，defect type 是否仍能解释 α-IN sensitivity 的差异？
+
+### 预注册口径（冻结，执行中未更改）
+
+- normal reference = test/good 20 张，每 (seed, alpha) 独立 μ/σ
+- PRIMARY（sample-level）：`Δz = z(α=1) - z(α=0)`，`z = (score - μ_good) / σ_good`
+- SECONDARY：`slope_z`；GROUP-LEVEL CONTEXT：1B/1C 的 d'（不作单样本 sensitivity）
+- 主分析 per-image 三 seed mean；禁止把 63×3 当 189 独立样本
+- area = GT defect pixels / total pixels；matched-area caliper = 全样本 area 的 MAD（0.03744，看结果前锁定）
+
+### 数据审计
+
+63 样本（20/22/21），缺失 mask=0、area=0 defect=0、重复=0、三 seed test samples 完全一致、三对 type 面积 common support 充足（overlap 0.553/0.780/1.000）。无需重新运行任何模型部分。
+
+### Metric decomposition sanity check（执行中追加的诊断）
+
+Δz 与 1C Δd' 方向分歧（如 contamination Δz<0 而 Δd'>0）不是 bug：二者回答不同问题。分解（3-seed mean，α=0→1）显示 **defect variance 响应是类型分化的真正载体**：
+
+| type | Δmean_gap | Δstd_good | Δstd_defect | Δmean_z | Δd' |
+|---|---:|---:|---:|---:|---:|
+| broken_large | -8.44 | +0.17 | **+1.73** | -4.56 | -5.72 |
+| broken_small | -3.40 | +0.17 | **-0.50** | -2.44 | -0.30 |
+| contamination | -2.44 | +0.17 | **-2.30** | -1.95 | **+0.48** |
+
+α-IN 同时作用于 mean separation / within-defect variance / normal variance 三个分量，且对不同 type 的作用结构不同。d' 混合三者；Δz 只反映相对 contemporaneous good 分布的标准化距离。"敏感性"不是单一统计量可完全描述的——记录为实验发现。
+
+### 六问回答
+
+- **Q1 area 分布**：large(mean .117) > cont(.085) > small(.031)，但三对均有 common support。
+- **Q2 area-Δz 关系**：type-dependent——两类 broken 类内强负相关（-0.76/-0.75），contamination 类内**弱正相关**（+0.21）。
+- **Q3 area-only**：R²=0.115，解释有限。
+- **Q4 +type**：R²→0.304，**ΔR²(type|area)=0.188**；反向 ΔR²(area|type)=0.025。type 不可被 area 替代，area 大部分被 type 吸收。
+- **Q5 matched-area**：large vs contamination 15 对，同面积 Δz 仍差 **-2.23**；残差 large **-1.10** / small -0.06 / cont **+1.11**，控制面积后 type 分化清晰。
+- **Q6 contamination**：面积匹配后仍整体高于 matched broken（-2.24 vs -3.18，28 对）；类内正相关与 broken 类反向，无法由 area 单独解释。注意 Δz 口径下其 Δz mean=-1.95（也下降，只是显著慢于 broken 类）；1C 中 d' 上升是 group-level 方差收缩驱动的现象。
+
+### Multi-seed robustness
+
+各 seed 独立重复主要分析：overall corr -0.33/-0.34/-0.35，type 均值排序三 seed 完全一致（large 最负、cont 最不负）。方向不依赖单一 seed。
+
+### 判定：CASE_A — TYPE EFFECT REMAINS
+
+控制 area 后 type 仍提供显著额外解释力；contamination 的响应模式无法由 size 单独解释。限定：d' 的 group-level 上升部分来自 within-defect variance 收缩，准确表述为 **defect type 影响 α-IN 对缺陷分布的完整作用结构（mean + variance）**。
+
+### 局限
+
+n=63 单类别；large-small 匹配仅 5 对（不可靠）；Δz 依赖 n=20 good 估计 μ/σ；matched-area 是观察性控制；单 backbone/detector 外推性未知。
+
+### Next Step
+
+**Experiment 1E — Cross-Category Validation**（cable/screw 等），检验 type effect 与 decomposition 结构是否跨类别成立。未自动开始，等待确认。
+
+### 文件
+
+- 脚本：`scripts/analyze_experiment1d_size_control.py`、`scripts/metric_decomposition_check.py`
+- 目录：`experiments/exp1d_size_control/`（README + 全部口径/规则/结果记录）
+- 结果：`results/experiment_1d/summary/`（audit/statistics/correlation/regression/matched_pairs/metric_decomposition/verdict）、`figures/`（6 张）、`tables/sample_level_response.csv`
 
 ---
 

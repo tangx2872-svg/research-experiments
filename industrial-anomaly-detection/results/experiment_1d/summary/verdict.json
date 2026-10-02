@@ -1,0 +1,19 @@
+{
+  "verdict": "CASE_A",
+  "verdict_text": "TYPE EFFECT REMAINS — 控制 area 后 type 仍明显解释 α-response",
+  "delta_R2_type_given_area": 0.18835575112143454,
+  "delta_R2_area_given_type": 0.02502248415479902,
+  "residual_mean_large": -1.0990079399008486,
+  "residual_mean_small": -0.060145134741336495,
+  "residual_mean_cont": 1.1096834172536356,
+  "delta_z_mean_large": -4.564219954848741,
+  "delta_z_mean_small": -2.4385415873795453,
+  "delta_z_mean_cont": -1.9511850361957572,
+  "overlap_report": {
+    "broken_large_vs_broken_small": 0.5532808037711179,
+    "broken_large_vs_contamination": 0.7796738718240425,
+    "broken_small_vs_contamination": 1.0
+  },
+  "caliper": 0.03744074074074074,
+  "n_matched_pairs": 33
+}

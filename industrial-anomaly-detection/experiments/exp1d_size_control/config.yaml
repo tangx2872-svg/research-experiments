@@ -1,0 +1,36 @@
+# Experiment 1D — Size-Controlled Defect Sensitivity Analysis
+# 冻结的统计口径（执行前确认，执行中未更改）
+# 预注册 protocol 由用户 2026-10-02 提供；metric decomposition 诊断由用户追加批准
+
+dataset: MVTec_AD
+category: bottle
+model: PatchCore
+
+data_source:
+  scores: results/experiment_1c/seed_{0,1,2}/raw/all_sample_scores.csv
+  area: results/experiment_1b/summary/area_analysis.csv   # GT mask 计算，非 predicted mask
+  refit: false          # 禁止重新 fit/predict
+
+normal_reference:
+  split: test/good      # 20 张
+  per_seed_alpha_independent: true   # 每 (seed, alpha) 独立 mu/sigma
+
+response:
+  primary: delta_z      # z(alpha=1) - z(alpha=0)
+  secondary: slope_z    # z 对 5 alpha 线性拟合斜率
+  group_level_context: dprime   # 1B/1C pooled-std 口径，不作单样本 sensitivity
+  multi_seed: per_image_mean_across_seeds   # 主分析；各 seed 单独作 robustness；禁止 63x3 当独立样本
+
+alphas: [0.0, 0.25, 0.5, 0.75, 1.0]
+seeds: [0, 1, 2]
+
+matching:
+  method: nearest_neighbor_no_replacement
+  covariate: defect_area_ratio only
+  caliper: MAD_of_all_63_areas    # 0.03744，看 outcome 前锁定
+  rule_change_forbidden: true
+
+outputs:
+  summary: results/experiment_1d/summary/
+  figures: results/experiment_1d/figures/
+  tables: results/experiment_1d/tables/
