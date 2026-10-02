@@ -1,0 +1,57 @@
+{
+  "experiment": "1G",
+  "title": "Feature-Space Representation Reshaping",
+  "status": "FROZEN",
+  "core_question": "α-IN 如何改变 defect patch → normal memory bank 的最近邻距离分布，从而引起 1E 的 anomaly-score dispersion shrink/expansion？",
+
+  "primary_causal_chain": "α-IN → defect-to-normal-memory-bank NN distance distribution → image anomaly-score distribution",
+  "primary_outcome": "GT defect patch 的 NN-distance dispersion（std）",
+  "secondary": ["defect feature dispersion", "feature norm / channel variance", "representation drift (1-cos(F_pre,F_alpha))"],
+
+  "selection": {
+    "source": "1E seed_summary.csv 三 seed mean delta_defect_std",
+    "primary": "严格 bottom3/top3/|Δstd|最小3",
+    "balanced": "每 category ≤2（sensitivity，处理 grid 垄断 expand 端）",
+    "file": "results/experiment_1g/selection.csv",
+    "immutable": true
+  },
+
+  "two_track_decomposition": {
+    "track_a_matched": "distance(Fα, Mα) — 系统层 response（bank 随 α 重建）",
+    "track_b_frozen": "distance(Fα, M0) — defect representation drift（bank 冻结在 α=0）",
+    "purpose": "区分 defect 移动 vs normal bank 移动 vs 相对几何重构"
+  },
+
+  "patch_role": {
+    "defect": "GT mask overlap > 50%",
+    "boundary": "0 < overlap <= 50%",
+    "background": "完全不碰 GT mask",
+    "primary_uses": "defect patches only; boundary/background 作 control"
+  },
+
+  "alpha": [0, 0.25, 0.5, 0.75, 1.0],
+  "seeds": "pilot 阶段仅 seed=0；仅当 seed=0 出现明确结构才补 seed=1/2",
+
+  "analysis_levels": {
+    "level1": "1E Δdefect_std 是否来自 patch NN distance dispersion？",
+    "level2": "NN-distance shrink/expand 是否来自 defect feature geometry shrink/expand？",
+    "level3": "feature geometry 改变是否与 norm / channel variance 有关？",
+    "rule": "只有上一层成立才进入下一层，禁止跳过层级扫指标"
+  },
+
+  "case_rules": {
+    "CASE_A": "稳定链 1E↔NN-dispersion↔feature-geometry，跨 defect 跨 seed，非 background 同步变化 → 继续 channel/layer 机制",
+    "CASE_B": "1E↔NN-dispersion 对应好，但 feature dispersion/norm 解释不了 → 定位到 NN geometry，研究 bank geometry/neighbor switching",
+    "CASE_C": "NN distance 对不上 + feature geometry 对不上 + background 乱 → STOP，切口降级"
+  },
+
+  "forbidden": [
+    "不重新做 25 类大实验（只选 9 代表 defect）",
+    "不因 feature 结果更换 selection",
+    "不扫 30 个 channel 碰运气（LEVEL 未成立不进 channel-level）",
+    "不把 representation drift / norm 等 secondary 换成 primary",
+    "不看结果后挑最好看的 α 或 seed"
+  ],
+
+  "figures": ["figure1_1e_vs_1g_core", "figure2_trajectory_3group", "figure3_feature_geometry", "figure4_defect_vs_background"]
+}
