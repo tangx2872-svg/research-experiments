@@ -1,0 +1,32 @@
+{
+  "experiment": "Experiment 1H Layer-Specific Normalization Sensitivity",
+  "category": "bottle",
+  "seed": 1,
+  "location": "post_concat",
+  "alphas": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "defect_types": [
+    "broken_large",
+    "broken_small",
+    "contamination"
+  ],
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "coreset_sampling_ratio": 0.1,
+  "num_neighbors": 9,
+  "image_size": 256,
+  "val_size": 20,
+  "train_size": 189,
+  "n_test_good": 20,
+  "IN_affine": false,
+  "intervention_location": "post_concat",
+  "z_normalization": "contemporaneous test/good (same seed+alpha+location), ddof=1"
+}

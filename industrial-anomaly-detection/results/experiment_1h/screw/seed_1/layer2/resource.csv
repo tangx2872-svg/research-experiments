@@ -1,0 +1,6 @@
+category,seed,location,alpha,runtime_seconds,train_good_count,coreset_size,peak_gpu_memory_allocated_mb,pixel_auroc,status
+screw,1,layer2,0.0,140.94,300,32768,3937.04,0.9882618358374431,OK
+screw,1,layer2,0.25,139.89,300,32768,3937.04,,OK
+screw,1,layer2,0.5,139.9,300,32768,3937.04,,OK
+screw,1,layer2,0.75,140.3,300,32768,3937.04,,OK
+screw,1,layer2,1.0,140.02,300,32768,3937.04,0.9884341050196888,OK

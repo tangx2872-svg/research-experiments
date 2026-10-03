@@ -1,0 +1,6 @@
+category,seed,location,alpha,runtime_seconds,train_good_count,coreset_size,peak_gpu_memory_allocated_mb,pixel_auroc,status
+bottle,1,layer3,0.0,93.98,189,21401,2605.04,0.9854553801,OK
+bottle,1,layer3,0.25,93.28,189,21401,2605.04,,OK
+bottle,1,layer3,0.5,93.29,189,21401,2605.04,,OK
+bottle,1,layer3,0.75,92.66,189,21401,2605.04,,OK
+bottle,1,layer3,1.0,92.66,189,21401,2605.04,0.98502660255,OK

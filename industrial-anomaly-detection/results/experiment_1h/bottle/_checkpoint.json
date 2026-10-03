@@ -1,0 +1,13 @@
+{
+  "category": "bottle",
+  "sanity_pass": true,
+  "messages": [
+    "  [PASS] bottle seed=0 loc=layer3 α=0 等价 (maxdiff=0.000e+00)",
+    "  [PASS] bottle seed=0 loc=post_concat α=0 等价 (maxdiff=0.000e+00)",
+    "  [PASS] bottle seed=1 loc=layer3 α=0 等价 (maxdiff=0.000e+00)",
+    "  [PASS] bottle seed=1 loc=post_concat α=0 等价 (maxdiff=0.000e+00)",
+    "  [PASS] bottle seed=2 loc=layer3 α=0 等价 (maxdiff=0.000e+00)",
+    "  [PASS] bottle seed=2 loc=post_concat α=0 等价 (maxdiff=0.000e+00)"
+  ],
+  "timestamp": 1790971199.231599
+}

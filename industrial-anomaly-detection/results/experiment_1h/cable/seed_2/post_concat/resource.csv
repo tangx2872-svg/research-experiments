@@ -1,0 +1,6 @@
+category,seed,location,alpha,runtime_seconds,train_good_count,coreset_size,peak_gpu_memory_allocated_mb,pixel_auroc,status
+cable,2,post_concat,0.0,110.13,204,22937,2785.04,0.9846066177,OK
+cable,2,post_concat,0.25,109.97,204,22937,2785.04,,OK
+cable,2,post_concat,0.5,109.36,204,22937,2785.04,,OK
+cable,2,post_concat,0.75,109.07,204,22937,2785.04,,OK
+cable,2,post_concat,1.0,109.68,204,22937,2785.04,0.97137372415,OK

@@ -1,0 +1,6 @@
+category,seed,location,alpha,runtime_seconds,train_good_count,coreset_size,peak_gpu_memory_allocated_mb,pixel_auroc,status
+hazelnut,0,layer2,0.0,244.65,371,40038,4789.04,0.9882051864954067,OK
+hazelnut,0,layer2,0.25,241.03,371,40038,4789.04,,OK
+hazelnut,0,layer2,0.5,240.18,371,40038,4789.04,,OK
+hazelnut,0,layer2,0.75,240.35,371,40038,4789.04,,OK
+hazelnut,0,layer2,1.0,240.31,371,40038,4789.04,0.9887083442482361,OK

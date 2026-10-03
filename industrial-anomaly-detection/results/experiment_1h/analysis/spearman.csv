@@ -1,0 +1,4 @@
+pair,rho,n
+layer2_vs_layer3,0.7407692307692307,25
+layer2_vs_concat,0.9584615384615385,25
+layer3_vs_concat,0.8492307692307692,25

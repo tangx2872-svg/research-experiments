@@ -52,9 +52,15 @@ def load_group(category: str, seed: int, location: str) -> list[dict]:
 
 
 def spearman(a: np.ndarray, b: np.ndarray) -> float:
-    a = a - np.nanmean(a)
-    b = b - np.nanmean(b)
-    return float(np.corrcoef(a, b)[0, 1]) if len(a) > 1 else float("nan")
+    """真 Spearman：rank 变换后算 Pearson（与 scipy.stats.spearmanr 一致）。"""
+    if len(a) < 2:
+        return float("nan")
+    ra = np.argsort(np.argsort(a)).astype(float)  # rank（平均秩近似足够，无并列时严格一致）
+    rb = np.argsort(np.argsort(b)).astype(float)
+    ra = ra - ra.mean()
+    rb = rb - rb.mean()
+    denom = np.sqrt((ra ** 2).sum() * (rb ** 2).sum())
+    return float((ra * rb).sum() / denom) if denom > 0 else float("nan")
 
 
 def main() -> None:

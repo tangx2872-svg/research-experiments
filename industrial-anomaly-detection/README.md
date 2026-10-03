@@ -4,6 +4,8 @@
 
 ## 实验归档
 
+- [2026-10-03｜Experiment 1H: Layer-Selective Intervention](experiments/exp1h_layer_selectivity/README.md)：α-IN 分别插入 layer2/layer3/post_concat 三位置（5 类别 × 25 defect × 3 seeds × 3 locations × 5 α = 45 unit，α=0 bit-wise 等价 sanity 全 PASS）。结论：**层级选择性存在且与 1E 家族严格对应**——shrink 缺陷全部由 layer2-IN 驱动（3/3），neutral/expand 全部由 layer3-IN 驱动（6/6）；bottle/cable 为 layer2 主导、screw/grid/hazelnut 为 layer3 主导；grid 特例 = 两层效应独立加和（Δconcat≈ΔL2+ΔL3，误差<10%）+ 分数分布整体爆炸（good +37.8 / defect +41.1）但 d' 腰斩、AUROC 全降 → 1E 的「expand」本质是校准破坏而非缺陷证据增强。与 1E（现象）→ 1G（传导链）→ 1H（来源定位）形成完整闭环。
+
 - [2026-10-02｜Experiment 1G: Feature-Space Representation Reshaping](experiments/exp1g_feature_space/README.md)：双轨 memory-bank 分解（matched Mα vs frozen M0）追踪 α-IN 在 PatchCore 计算链中的传导，9 个代表 defect × 5 α × seed0。结论：**CASE_A — REPRESENTATION_CHAIN_SUPPORTED**——1E Δdefect_std 与 defect patch NN-distance dispersion 强对应（matched ρ=+0.833 p=0.005；frozen ρ=+0.950 p<0.001），且 frozen track 更强 → 机制主要在 defect 特征表示自身漂移；L2 经 feature norm-std 通过（ρ=+0.700 p=0.036）；L3 channel-var 仅弱 hint。诚实记录：bottle/contamination 的 matched/frozen 方向分歧（bank 端反向推回）；background 存在非镜像的全局分量（expand +4.4 / shrink -1.0）。下一步：seed 1/2 复核 + 1H layer/channel 机制。
 
 - [2026-10-02｜Experiment 1F: Offline Defect-Attribute Mechanism Screening](experiments/exp1f_mechanism_screening/README.md)：完全复用 1E，从原图+GT mask 提取 4 组预注册视觉属性（size/contrast/frequency/morphology），检验它们能否解释 25 个 defect type 的 response heterogeneity。结论：**CASE_D — NO_EXPLAINABLE_STRUCTURE**——全部单属性 |rho|≤0.24 且 CI 跨零，shrink/expand 组属性画像不可区分，双变量组合最好 adj R²=0.141（对比 identity 饱和 1.0）；频率族存在方向一致的弱 hint（laplacian partial rho=-0.361, p=0.076，LOCO/dilation 稳定）。机制不在图像空间简单属性里，若继续应转向 representation-space 分析。附带技术记录：FFT HF-ratio 对自然图像无区分度（1/f 谱数学必然），改用梯度能量比。

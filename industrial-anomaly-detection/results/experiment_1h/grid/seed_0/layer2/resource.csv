@@ -1,0 +1,6 @@
+category,seed,location,alpha,runtime_seconds,train_good_count,coreset_size,peak_gpu_memory_allocated_mb,pixel_auroc,status
+grid,0,layer2,0.0,98.31,244,27033,3265.04,0.9827579670096681,OK
+grid,0,layer2,0.25,95.34,244,27033,3265.04,,OK
+grid,0,layer2,0.5,94.87,244,27033,3265.04,,OK
+grid,0,layer2,0.75,95.21,244,27033,3265.04,,OK
+grid,0,layer2,1.0,94.51,244,27033,3265.04,0.9839901443150336,OK
