@@ -54,6 +54,12 @@ results/experiment_1h/logs/
 # Experiment 1H-S 结果（dispersion-aligned layer analysis；纯 CSV/图，全部纳入）
 !results/experiment_1hs/
 
+# Experiment 1I 结果（spatial-statistics control；纳入 CSV/图/checkpoint，排除 logs 与逐图 sample_level.csv）
+!results/experiment_1i/
+results/experiment_1i/**/logs/
+results/experiment_1i/logs/
+results/experiment_1i/**/sample_level.csv
+
 # 本地工作记忆（.workbuddy），不上传 GitHub
 .workbuddy/
 

@@ -1,0 +1,2 @@
+category,seed,phase,alpha,runtime_seconds,train_good_count,peak_gpu_memory_allocated_mb,status
+hazelnut,1,01,1.0,234.43,371,4789.04,OK

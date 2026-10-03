@@ -1,0 +1,19 @@
+{
+  "category": "bottle",
+  "completeness_pass": true,
+  "messages": [
+    "  [PASS] matched256 bottle seed=0 phase=00 α=1 完整",
+    "  [PASS] matched256 bottle seed=0 phase=01 α=1 完整",
+    "  [PASS] matched256 bottle seed=0 phase=10 α=1 完整",
+    "  [PASS] matched256 bottle seed=0 phase=11 α=1 完整",
+    "  [PASS] matched256 bottle seed=1 phase=00 α=1 完整",
+    "  [PASS] matched256 bottle seed=1 phase=01 α=1 完整",
+    "  [PASS] matched256 bottle seed=1 phase=10 α=1 完整",
+    "  [PASS] matched256 bottle seed=1 phase=11 α=1 完整",
+    "  [PASS] matched256 bottle seed=2 phase=00 α=1 完整",
+    "  [PASS] matched256 bottle seed=2 phase=01 α=1 完整",
+    "  [PASS] matched256 bottle seed=2 phase=10 α=1 完整",
+    "  [PASS] matched256 bottle seed=2 phase=11 α=1 完整"
+  ],
+  "timestamp": 1790997549.1208317
+}

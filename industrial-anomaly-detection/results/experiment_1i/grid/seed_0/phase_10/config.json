@@ -1,0 +1,30 @@
+{
+  "experiment": "Experiment 1I Spatial-Statistics Control",
+  "category": "grid",
+  "seed": 0,
+  "phase": "10",
+  "alphas": [
+    1.0
+  ],
+  "defect_types": [
+    "bent",
+    "broken",
+    "glue",
+    "metal_contamination",
+    "thread"
+  ],
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "coreset_sampling_ratio": 0.1,
+  "num_neighbors": 9,
+  "image_size": 256,
+  "val_size": 20,
+  "train_size": 244,
+  "n_test_good": 21,
+  "IN_affine": false,
+  "intervention": "layer2 matched256 (stride-2 sampled statistics applied to full 32x32)",
+  "z_normalization": "contemporaneous test/good (same seed+phase+alpha), ddof=1"
+}

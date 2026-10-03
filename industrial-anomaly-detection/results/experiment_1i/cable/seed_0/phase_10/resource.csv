@@ -1,0 +1,2 @@
+category,seed,phase,alpha,runtime_seconds,train_good_count,peak_gpu_memory_allocated_mb,status
+cable,0,10,1.0,94.74,204,2785.04,OK

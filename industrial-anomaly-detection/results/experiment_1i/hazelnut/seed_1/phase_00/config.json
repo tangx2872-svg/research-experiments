@@ -1,0 +1,29 @@
+{
+  "experiment": "Experiment 1I Spatial-Statistics Control",
+  "category": "hazelnut",
+  "seed": 1,
+  "phase": "00",
+  "alphas": [
+    1.0
+  ],
+  "defect_types": [
+    "crack",
+    "cut",
+    "hole",
+    "print"
+  ],
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "coreset_sampling_ratio": 0.1,
+  "num_neighbors": 9,
+  "image_size": 256,
+  "val_size": 20,
+  "train_size": 371,
+  "n_test_good": 40,
+  "IN_affine": false,
+  "intervention": "layer2 matched256 (stride-2 sampled statistics applied to full 32x32)",
+  "z_normalization": "contemporaneous test/good (same seed+phase+alpha), ddof=1"
+}

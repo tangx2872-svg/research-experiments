@@ -1,0 +1,33 @@
+{
+  "experiment": "Experiment 1I Spatial-Statistics Control",
+  "category": "cable",
+  "seed": 1,
+  "phase": "11",
+  "alphas": [
+    1.0
+  ],
+  "defect_types": [
+    "bent_wire",
+    "cable_swap",
+    "combined",
+    "cut_inner_insulation",
+    "cut_outer_insulation",
+    "missing_cable",
+    "missing_wire",
+    "poke_insulation"
+  ],
+  "backbone": "wide_resnet50_2",
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "coreset_sampling_ratio": 0.1,
+  "num_neighbors": 9,
+  "image_size": 256,
+  "val_size": 20,
+  "train_size": 204,
+  "n_test_good": 58,
+  "IN_affine": false,
+  "intervention": "layer2 matched256 (stride-2 sampled statistics applied to full 32x32)",
+  "z_normalization": "contemporaneous test/good (same seed+phase+alpha), ddof=1"
+}
