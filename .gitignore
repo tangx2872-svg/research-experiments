@@ -243,3 +243,4 @@ venv/
 
 # ===== Django uploaded media =====
 media/
+industrial-anomaly-detection/results/experiment_1g/patch_level.csv
