@@ -28,7 +28,7 @@
 | **Stage ⑨ 结论** | Soft-GC pilot（10 GPU units，sanity 18/18）：在**同一 category identity**下把 fragile 端 α 从 0 提到 **α_F=0.25** → d′ 4.9967→4.8782（仍比 fixed α=0.5 高 **+0.2112**）、\|Δz\| 0.2643→**0.2329**（比 Hard GC 改善 **0.0313**）、worst harm 0、neg transfer 0、**3/3 seeds** 同时满足 → **CASE_A**；保留 Hard-GC preservation gain **64.1%**、回收 robustness penalty **55.9%** |
 | 允许声称 | ① normal-only feature geometry 含有 category-level normalization tolerance 的预测信息（n=5，descriptive）；② 把该几何用于**门控式 safe normalization** 可避免高脆弱类别的归一化损伤；③ **gate 选择本身携带大量信息**（10 个同 budget gate 的 Δd′ 相差 0.36），且 geometry 的 top-2 = 唯一最优 gate；④ **hard gate（fragile 端 α=0）过于极端**：把 fragile 端 α 提到 0.25 可在同一 identity 下同时改善 robustness 并保留大部分 preservation |
 | 不允许声称 | 因果机制已被证明；"adaptive α 提升平均性能"；**geometry predictor identity 已确立**（5D：优势为单类别驱动、robustness 为 10 个 gate 中最差）；**6A 的 CASE_A 是 identity 证据**（6A 只改 fragile 端强度、不改 category identity，且 mean α 0.30→0.40 budget 不 matched、A 的余量仅 5.6%）；需要 category-specific continuous α；结论可外推到其他 backbone / detector / 数据集 / 真实光照 |
-| 最新 commit | `31150bd`（5D）→ 见下方 6A commit；关键历史 commit：`e0bda22`(5D docs) · `fdd6fa9`(5C) · `5d6ee98`(5B-C) · `24d1b22`(5B) · `ff4a1b2`(5A-H) · `ba11038`(5A) |
+| 最新 commit | **`1b3edd2`（6A）**；关键历史 commit：`e0bda22`(5D docs) · `31150bd`(5D) · `fdd6fa9`(5C) · `5d6ee98`(5B-C) · `24d1b22`(5B) · `ff4a1b2`(5A-H) · `ba11038`(5A) |
 
 ---
 
@@ -114,7 +114,7 @@
 
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
-| [6A](experiments/experiment6a/README.md) | Hard GC 的 robustness 代价能否用 soft gating 回收 | 保持 identity 冻结、只插值 fragile 端 α：**α_F=0.25** → d′ +0.2112 vs fixed、\|Δz\| −0.0313 vs Hard GC、worst harm 0、neg transfer 0、3/3 seeds → 保留 64.1% gain、回收 55.9% penalty | **CASE_A**（Soft Geometry Gating Works） | DONE `6ACOMMIT` |
+| [6A](experiments/experiment6a/README.md) | Hard GC 的 robustness 代价能否用 soft gating 回收 | 保持 identity 冻结、只插值 fragile 端 α：**α_F=0.25** → d′ +0.2112 vs fixed、\|Δz\| −0.0313 vs Hard GC、worst harm 0、neg transfer 0、3/3 seeds → 保留 64.1% gain、回收 55.9% penalty | **CASE_A**（Soft Geometry Gating Works） | DONE `1b3edd2` |
 | [5D](experiments/experiment5d/README.md) | 5C 的收益是否来自 geometry 的**类别选择信息**（而非「随便 gate」） | CPU-only 重组：10 个同 budget gate 的 Δd′ 跨度 −0.033…+0.330（CASE_C 被排除）；GC preservation / worst-harm / neg-transfer 均 **1/10** 且 Pareto-efficient，但 **robustness 10/10**；vs matched sensitivity control **+0.1450/+0.1540（≥ε、3/3 seeds）** 且由 **grid 单类别**驱动 | **literal CASE_D / 实质 CASE_B**（identity 未确立） | DONE `31150bd` |
 | [5C](experiments/experiment5c/README.md) | 5B 的预测结构能否真正改善 normalization policy | adaptive α 未在两轴同时优于 best fixed（pair-win 0/15）；v1B 零负迁移 + high-damage 恢复 +0.824 | **CASE_B**（Harm Reduction Only） | DONE `fdd6fa9` |
 | [5B-C](experiments/experiment5b/README.md#17-experiment-5b-c--group-c-completion--final-verdict2026-10-06) | 补齐 Group C 后 verdict 是否改变 | 原 geometry 信号不变；Group C 8/8 null（\|ρ\|≤0.30，LOCO ≤ random） | **CASE_A (FINAL)** | DONE `5d6ee98` |

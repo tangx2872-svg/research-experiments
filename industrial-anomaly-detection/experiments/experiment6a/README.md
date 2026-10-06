@@ -1,6 +1,6 @@
 # Experiment 6A — Geometry-Guided Soft Gating / Adaptive α Pilot
 
-> 状态：**已完成**（GPU 10 units，人类批准；tmux 不可用 → screen detached 3 workers）。
+> 状态：**已完成**（commit `1b3edd2`；GPU 10 units，人类批准；tmux 不可用 → screen detached 3 workers）。
 > freeze：`results/experiment_6a/reference/policy_freeze.json`，
 > SHA256 `d4364457b00bb886ada747722f1d4cb82e31a44df631e0920e2d1bfd4c4b50ce`；sanity **S1–S18 = 18/18 PASS**。
 > **FINAL VERDICT：CASE_A — Soft Geometry Gating Works**（α_F = 0.25 满足 A+B+C+D；
