@@ -1,6 +1,6 @@
 # Experiment 6B — Confirmatory Validation of Soft Geometry Gating
 
-> 状态：**已完成**（GPU 27 units + 1 smoke；freeze
+> 状态：**已完成**（commit `ad26ec5`；GPU 27 units + 1 smoke；freeze
 > `1b4d1e5db4f0e39a18dce46916aeb49749b474f5451d3ab9e972eb51b285ca06`；sanity **S1–S20 = 20/20 PASS**）。
 > **FINAL VERDICT：CASE_C — 6A 的 knee 不复现为区域（α_F=0.25 是孤立点）；其收益主要来自整体
 > normalization strength（60.1%）而非 selective allocation（39.9%）。**
