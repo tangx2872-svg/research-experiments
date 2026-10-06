@@ -1,0 +1,32 @@
+{
+  "rule": "inverse-sensitivity max-rescale (方案A)",
+  "sensitivity_source": "1J-A family_summary: mean over 3 families of |radius_response_layer|",
+  "sensitivity_l2_family_level": 0.267031,
+  "sensitivity_l3_family_level": 0.161193,
+  "sensitivity_l2_defect_level_check": 0.267031,
+  "sensitivity_l3_defect_level_check": 0.169462,
+  "sensitivity_ordering_agrees": true,
+  "alpha_ratio_l2_over_l3": 0.603651,
+  "formula": "alpha_l3 = A; alpha_l2 = A * (s_l3 / s_l2)",
+  "guided_levels": {
+    "A=0.5": {
+      "alpha_l2": 0.3018,
+      "alpha_l3": 0.5,
+      "effective_mean_alpha_simple": 0.4009,
+      "effective_mean_alpha_channel_weighted": 0.4339
+    },
+    "A=0.75": {
+      "alpha_l2": 0.4527,
+      "alpha_l3": 0.75,
+      "effective_mean_alpha_simple": 0.6014,
+      "effective_mean_alpha_channel_weighted": 0.6509
+    },
+    "A=1": {
+      "alpha_l2": 0.6037,
+      "alpha_l3": 1.0,
+      "effective_mean_alpha_simple": 0.8018,
+      "effective_mean_alpha_channel_weighted": 0.8679
+    }
+  },
+  "frozen_before_run": true
+}

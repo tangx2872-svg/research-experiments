@@ -1,0 +1,4 @@
+config,kind,alpha_l2,alpha_l3,effective_mean_alpha_simple,pooled_image_auroc,mean_dprime,mean_z_separation,mean_delta_normal_score_z,mean_abs_delta_normal_score_z,mean_fpr_at_tau_val,tau_val,dprime_broken_large,dprime_broken_small,dprime_contamination,dz_brightness_0.7,fpr_brightness_0.7,dz_brightness_1.3,fpr_brightness_1.3,dz_gamma_0.7,fpr_gamma_0.7,dz_gamma_1.3,fpr_gamma_1.3
+G1,guided,0.3018255,0.5,0.4009,1.0,7.4401,13.6567,0.2715,0.2715,1.0,19.3224,10.6367,7.8511,3.8325,0.3124,1.0,0.3906,1.0,0.3206,1.0,0.0625,1.0
+G2,guided,0.45273825,0.75,0.6014,1.0,7.0776,13.3968,0.2347,0.2347,1.0,20.4436,9.3097,7.9196,4.0036,0.3551,1.0,0.3033,1.0,0.2636,1.0,0.0168,1.0
+G3,guided,0.603651,1.0,0.8018,1.0,6.7529,13.4236,0.2652,0.2652,1.0,20.5172,8.2276,8.0574,3.9739,0.4404,1.0,0.3148,1.0,0.2895,1.0,0.016,1.0

@@ -1,0 +1,4 @@
+pair,g_mean_alpha,c_mean_alpha,delta_robustness_mean_dz,delta_robustness_mean_abs_dz,delta_robustness_fpr,delta_pooled_auroc,delta_mean_dprime
+G1 vs C1,0.4009,0.4009,0.0012,0.0012,0.0,0.0,-0.0237
+G2 vs C2,0.6014,0.6014,-0.0453,-0.0453,0.0,0.0,0.0014
+G3 vs C3,0.8018,0.8018,0.0292,0.0292,0.0,0.0,0.2504
