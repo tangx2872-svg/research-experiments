@@ -1,7 +1,7 @@
 method,family,slope_abs_delta_z_per_unit_deviation,intercept,r2,n_points
-M0_original,brightness,3.89425,-0.48117,0.620276,6
-M0_original,gamma,1.934371,-0.221625,0.39985,6
-M0_original,pooled,2.914311,-0.351397,0.474091,12
-M1_uniform,brightness,2.468197,-0.303084,0.649268,6
-M1_uniform,gamma,1.258696,-0.13428,0.369318,6
-M1_uniform,pooled,1.863447,-0.218682,0.482996,12
+M0_original,brightness,3.785514,-0.467083,0.620003,6
+M0_original,gamma,1.864791,-0.213875,0.399051,6
+M0_original,pooled,2.825152,-0.340479,0.472508,12
+M1_uniform,brightness,2.442034,-0.292778,0.673248,6
+M1_uniform,gamma,1.329164,-0.142483,0.378592,6
+M1_uniform,pooled,1.885599,-0.217631,0.502325,12

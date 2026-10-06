@@ -141,7 +141,10 @@
 
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
-| [7A-O](experiments/experiment7a_o/README.md) | 是否存在简单可插拔模块能超过 Uniform α=0.40091275（residual / dual / layer-selective / alternative-norm 四类） | **92 units**、sanity 18/18、smoke `max\|Δscore\|=0`：4 family × 14 config **无一达 Tier S/A/B**（Round1 晋级集空，full panel 5×3 一致）；A3_lam050 +0.5612 d′/+0.0619 \|Δz\|、B1_g100 +0.5104/+0.0717、D1 +0.1739/+0.1164、C3 +0.0219/+0.0115；**无 candidate 与 Uniform 相互支配**，但 **A3_lam050 严格支配 Original**（+0.3700/−0.0352） | **CASE_C**（NO USEFUL MODULE） | DONE `7AOCOMMIT` |
+| [7A-O Q4](results/experiment_7a_o_q4/README.md) | uniform normalization strength 响应图 + illumination condition × seed 补齐 | 9 个历史 α 点补齐到 **15/15**（5 cat × 3 seeds）：\|Δz\| 0.3105(α=0) → 0.1895(α=0.601) → 0.1902(α=0.802)，d′ 4.9852 → 4.5078；**α=0.20 支配 α=0**；**α=0.8018 被 α=0.6014 支配**；Q4-B 补 20 个 stress 单元 | **asset completion**（非方法） | DONE `Q4COMMIT` |
+| [7A-O Q3](results/experiment_7a_o_q3/README.md) | 最强 baseline 在更系统 illumination severity 下的退化 | 12 conditions（复用历史唯一实现 brightness/gamma，severity 扩展到 ±10/30/50%）：medium 档与历史 **`max\|Δscore\|=0`**；Uniform 12/12 条件 \|Δz\| 更低；slope **1.886 vs 2.825**（−33%） | **baseline stress-test** | DONE `Q4COMMIT` |
+| [7A-O Q2](results/experiment_7a_o_q2/README.md) | Original / invariant representation 的组合是否应发生在特定 layer | 4 个机械配置 × 3 cat × seed0：**0/4 达 Tier → STOP**；Q2L2（L2 residual + L3 uniform）+0.5793/+0.0429（兑换率 13.5）vs Q2L3 −0.0489/+0.1184 → **L2 槽位有效、L3 槽位有害** | **STOP** | DONE `7ffb3aa` |
+| [7A-O](experiments/experiment7a_o/README.md) | 是否存在简单可插拔模块能超过 Uniform α=0.40091275（residual / dual / layer-selective / alternative-norm 四类） | **92 units**、sanity 18/18、smoke `max\|Δscore\|=0`：4 family × 14 config **无一达 Tier S/A/B**（Round1 晋级集空，full panel 5×3 一致）；A3_lam050 +0.5612 d′/+0.0619 \|Δz\|、B1_g100 +0.5104/+0.0717、D1 +0.1739/+0.1164、C3 +0.0219/+0.0115；**无 candidate 与 Uniform 相互支配**，但 **A3_lam050 严格支配 Original**（+0.3700/−0.0352） | **CASE_C**（NO USEFUL MODULE） | DONE `f118e1e` |
 | [6B](experiments/experiment6b/README.md) | 6A 的 α_F=0.25 knee 是稳定区域还是孤立点；优势来自 allocation 还是 strength | 27 units confirm：**A∧B∧C∧D 仅 α_F=0.25（region length=1）**，放宽到 A∧B∧C 也只有 [0.20,0.25]；任何口径 CASE_A 不可达；vs **mean-α matched Uniform(0.4009)**：Δd′ +0.0842（<ε）但 \|Δz\| 差 +0.0195 → strength 占 60.1%、allocation 39.9%（兑换率差 5.7×） | **CASE_C** | DONE `ad26ec5` |
 | [6A](experiments/experiment6a/README.md) | Hard GC 的 robustness 代价能否用 soft gating 回收 | 保持 identity 冻结、只插值 fragile 端 α：**α_F=0.25** → d′ +0.2112 vs fixed、\|Δz\| −0.0313 vs Hard GC、worst harm 0、neg transfer 0、3/3 seeds → 保留 64.1% gain、回收 55.9% penalty | **CASE_A**（Soft Geometry Gating Works） | DONE `1b3edd2` |
 | [5D](experiments/experiment5d/README.md) | 5C 的收益是否来自 geometry 的**类别选择信息**（而非「随便 gate」） | CPU-only 重组：10 个同 budget gate 的 Δd′ 跨度 −0.033…+0.330（CASE_C 被排除）；GC preservation / worst-harm / neg-transfer 均 **1/10** 且 Pareto-efficient，但 **robustness 10/10**；vs matched sensitivity control **+0.1450/+0.1540（≥ε、3/3 seeds）** 且由 **grid 单类别**驱动 | **literal CASE_D / 实质 CASE_B**（identity 未确立） | DONE `31150bd` |
@@ -582,6 +585,27 @@ smoke：α=0 与 Uniform 相对历史均为 **`max|Δscore| = 0`**。
 ③ A3_lam050 保留为"最强的弱归一化参考点"。
 
 ---
+
+### 10.1 Overnight continuation queue（Q1–Q5，2026-10-06 22:17 → 2026-10-07 02:07）
+
+| Queue | 状态 | GPU units | 关键结果 | 入口 |
+|---|---|---|---|---|
+| **Q0** 7A-O 模块筛选 | DONE | 92 | **CASE_C**（14 config 无一达 Tier）；A3_lam050 严格支配 Original | `experiments/experiment7a_o/README.md` |
+| **Q1** winner local robustness | **SKIPPED** | 0 | 启动条件不满足（Q0 = CASE_C，无 CASE_A/B/D candidate） | `overnight_status.json` |
+| **Q2** layer × representation composition | DONE（**STOP**） | 12 | 0/4 达 Tier；**强 L2/L3 非对称**：residual 放 L2 → +0.5793 d′/+0.0429 \|Δz\|（兑换率 13.5，全项目最高）；放 L3 → −0.0489/+0.1184（两轴都差） | `results/experiment_7a_o_q2/README.md` |
+| **Q3** illumination stress-test | DONE | 10 (+20 in Q4-B) | 12 conditions（brightness/gamma × ±10%/±30%/±50%）；medium 档与历史 **`max\|Δscore\|=0`**；Uniform \(\|Δz\|\) 在 12/12 条件更低，**degradation slope 1.886 vs 2.825（−33%）** | `results/experiment_7a_o_q3/README.md` |
+| **Q4** strong-baseline extended validation | DONE | 56 | 9 个历史 α 点补齐到 **15/15**；\(\|Δz\|\) 随 α 单调降到 α≈0.6 后饱和；**α=0.20 Pareto 支配 α=0**；**α=0.8018 被 α=0.6014 支配** | `results/experiment_7a_o_q4/README.md` |
+| **Q5** CPU paper assets | DONE | 0 | registry(22) / evidence map / negative results / figure inventory(108) / main results table draft | `results/experiment_7a_o/summary/` |
+
+**总 GPU units：170**（Q0 92 + Q2 12 + Q3 10 + Q4 36 + Q4-B 20），wall-clock ≈ 3h50m（预算 8–10h，提前结束符合 §17）。
+
+**Overnight 的三条可写进论文的新事实**
+1. 简单 representation 模块（residual / dual / layer-selective / alternative-norm，14 个冻结 config）
+   **不能**把 Uniform α≈0.40 的 preservation–robustness frontier 往外推（7A-O CASE_C）。
+2. **干预槽位有强非对称性**：把 representation 干预放在 **layer2** 是有效且高效的，
+   放在 **layer3** 会同时损害两个轴（Q2）。
+3. **strength 有甜点区间**：\(\|Δz\|\) 随 α 单调下降并在 α≈0.6 饱和，**α=0.20 同时优于 α=0**
+   （d′ 5.0094 vs 4.9852 且 \|Δz\| 0.2777 vs 0.3105），α≥0.8 反而被 α≈0.60 支配（Q4-A）。
 
 ## 11. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 

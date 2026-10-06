@@ -74,3 +74,33 @@ M1_uniform   brightness: 0.9→0.0387  1.1→0.0326  0.7→0.2413  1.3→0.2658 
 推进一格：把 "normalization strength → illumination robustness" 从**单点/4 条件**扩展为
 **12 条件的 severity 响应曲线**，并首次给出 **degradation slope** 这一可写进论文的量
 （Uniform 的 slope 比 Original 低 ~36%）。
+
+---
+
+## 7. Q4-B 扩展后的最终结果（**30 units：2 methods × 5 categories × 3 seeds**）
+
+| method | d′ ↑ | \|Δz\| all-12 ↓ | \|Δz\| medium-4 ↓ | worst condition | slope pooled | slope brightness | slope gamma | negTr vs Uniform |
+|---|---|---|---|---|---|---|---|---|
+| `M0_original` | **4.9852** | 0.5071 | 0.3105 | 2.3286 | 2.825 | 3.786 | 1.865 | 11/12 |
+| `M1_uniform` | 4.7940 | **0.3480** | **0.2134** | **1.4463** | **1.886** | 2.442 | 1.329 | — |
+
+**关键内部一致性检查**：Q3 的 medium 档（0.7/1.3）在 5 cat × 3 seeds 上的
+\|Δz\| = **0.3105（Original）/ 0.2134（Uniform）**，与历史 canonical baseline（5A-H B0 / 6A+6B Uniform）
+**完全一致** → 12-condition 扩展管道与冻结口径无缝衔接（这是一个比单点 equivalence 更强的验证）。
+
+**3-seed 结论**：
+- Uniform 在 **12/12 conditions** 上 \|Δz\| 都低于 Original（seed0 时有两个温和点例外，3-seed 平均后消失）；
+- 差距随 severity 放大：brightness 0.5 → 0.585 vs 0.789（1.35×）；0.7 → 0.249 vs 0.342（1.37×）；
+  **1.5 → 1.446 vs 2.329（1.61×）**；
+- **degradation slope 更浅**：pooled 1.886 vs 2.825（**−33%**）；brightness −35%；gamma −29%
+  → normalization 同时**降低截距与斜率**；
+- brightness 的破坏性始终强于 gamma（Uniform：0.249/0.281 vs 0.282/0.042）。
+
+## 8. 数据组织说明（诚实记录）
+
+- 本目录 `raw/` 含 **Q3 的 seed0（10 units）** 与 **Q4-B 的 seeds 1/2（20 units）**——因为
+  `experiment7ao_q3_runner.py` 没有 `--out-root`，Q4-B 直接写入此处。分析脚本按 method 合并两个来源，
+  结果口径一致（medium 档与历史逐位一致，见上）。
+- 本目录 `accidental_stress_runs/` 含 **12 个误跑单元**：首轮 Q4 启动时单元参数顺序错误，
+  导致 4 个 α-point × {cable, hazelnut, screw} × seed2 被 stress-runner 执行（12 conditions）。
+  **它们不属于任何冻结协议，未被任何分析使用**，仅保留（不删除）。

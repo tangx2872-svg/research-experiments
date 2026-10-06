@@ -1,6 +1,6 @@
 # Figure Inventory（不删除任何文件）
 
-共 107 个 figure 文件。分类为**建议**，最终归属需人工确认。
+共 108 个 figure 文件。分类为**建议**，最终归属需人工确认。
 
 | figure | size (KB) | suggested class |
 |---|---|---|
@@ -106,7 +106,8 @@
 | `results/experiment_7a_o/figures/fig3_winner_category.png` | 72.1 | Main-paper candidate |
 | `results/experiment_7a_o/figures/fig4_winner_seed.png` | 81.8 | Supplementary candidate |
 | `results/experiment_7a_o/figures/q2_layer_comparison.png` | 124.7 | unclassified (needs human) |
-| `results/experiment_7a_o/figures/q3_robustness_curves.png` | 102.5 | Main-paper candidate |
+| `results/experiment_7a_o/figures/q3_robustness_curves.png` | 101.7 | Main-paper candidate |
+| `results/experiment_7a_o/figures/q4_alpha_response.png` | 186.1 | unclassified (needs human) |
 | `results/patchcore_bottle_broken_large.png` | 304.1 | unclassified (needs human) |
 | `experiments/2026-09-30_illumination_sensitivity_exploration/results/falpha_experiment/bottle/analysis/fig1_mean_score.png` | 43.0 | Main-paper candidate |
 | `experiments/2026-09-30_illumination_sensitivity_exploration/results/falpha_experiment/bottle/analysis/fig2_delta_boxplot.png` | 54.9 | Main-paper candidate |
