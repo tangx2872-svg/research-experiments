@@ -60,6 +60,16 @@ results/experiment_1i/**/logs/
 results/experiment_1i/logs/
 results/experiment_1i/**/sample_level.csv
 
+# Experiment 1J-A 结果（feature geometry probe；纳入 per_image/nn/analysis/figures 轻量资产，
+# 排除可用 scripts/experiment1j_extract.py + rebuild 脚本重新生成的 raw npz（~972MB）、banks（~1.2GB）与 logs）
+!results/experiment_1j/
+results/experiment_1j/raw/
+results/experiment_1j/banks/
+results/experiment_1j/logs/
+
+# Experiment 1J-B 结果（transmission intervention；全部为轻量 CSV/图，纳入）
+!results/experiment_1j_b/
+
 # 本地工作记忆（.workbuddy），不上传 GitHub
 .workbuddy/
 

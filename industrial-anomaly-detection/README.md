@@ -4,6 +4,12 @@
 
 ## 实验归档
 
+- [2026-10-03｜Experiment 1J-B: Geometry → NN → Score Transmission Intervention](experiments/experiment1j_b_transmission/README.md)：对 1J-A 缓存的 Layer3 F0/F1 做 radius-controlled intervention（X(β)=μ1+(r0+β(r1−r0))·D1/r1，β∈{0,0.5,1}），用 frozen M0 bank 检验 geometry expansion 是 NN/score amplification 的**中介环节还是伴随 signature**。结论：**CASE A — TRANSMISSION SUPPORTED**——expand 3/3 呈单调 dose-response（β↑→radius↑→NN↑→score proxy↑，TRR_NN +0.64/+0.82/+1.39）；β=0 压制 geometry 后 NN/score amplification 同步大幅减弱；neutral（negative control）影响仅为 expand 的 ~4%，并解答 1J-A 的「neutral NN↑ 但 score≈0」之谜（其 NN 扩张非 radius 驱动且不传导）。**机制探索自此硬停止**（score 为 layer-specific proxy 口径为已知限制）。2026-10-06 服务器全量复现通过（1386 行，TRR_NN +0.638/+0.806/+1.363，判定 REPRODUCED）。
+
+- [2026-10-03｜Experiment 1J-A: Layer-wise Feature Geometry Probe](experiments/experiment1j_feature_geometry/README.md)：分离 layer2/layer3 feature（1848 npz + 30 layer-specific banks，纯 forward hook，与 1H intervention 位置严格对齐），对 frozen 9 primary defects 计算几何指标（RMS radius/MDC/PR/PCA1）+ secondary layer-specific NN。结论：**CASE A — STRONG GEOMETRY SUPPORT**——expand 家族**特有** Layer3 RMS-radius expansion（R_L3≈+0.45，shrink/neutral≈0）；R_L2 符号完美三分家族（expand 全正 / shrink·neutral 全负）；geometry 为确定性证据（不依赖 coreset 采样）。诚实限定：GAI>0 本身无家族区分力（9/9 全正），判据承载条款是「Layer3 expansion 仅存在于 expand」；neutral 的 NN 扩张未传导到 score。2026-10-06 服务器全量复现通过（确定性指标与历史最大差 0.000477，判定 REPRODUCED）。
+
+- [2026-10-03｜Experiment 1I: Spatial-Statistics Control](experiments/experiment1i_spatial_statistics_control/README.md)：控制 IN 统计量的 spatial sample 数（Layer2 从 1024 降到 matched-256，4 phase deterministic stride-2 采样，不改变 feature map 尺寸），检验 1H-S 的 Layer3 amplification 是否为「Layer3 只用 256 个样本估 μ/σ → 统计噪声更大」的混杂。60 unit 全部完成，α=0 baseline 复用 1H（coreset 跨进程不可 bit 级复现，聚合统计一致 <0.13）。结论：**CASE C — LAYER3 AMPLIFICATION SURVIVES CONTROL**——L2-matched256 几乎不变（Δstd +2.764→+2.928），LSI 仅 −0.029（CI [+0.322,+0.588] 仍全正），Layer3 amplification（+6.678）远超 L2 → 不能用 spatial sample count 解释，显著加强 layer-specific representation mechanism 证据。
+
 - [2026-10-03｜Experiment 1H-S: Dispersion-Aligned Layer Analysis](experiments/exp1hs_dispersion_layer/README.md)：零训练、纯读 1H 的 raw_results.csv（逐 seed std_defect），把 1H 的层偏好从 Δmean_defect 口径切换到 dispersion（Δstd_defect），与 1E/1G 主线对齐。结论：**CASE B — PARTIAL ALIGNMENT**——expand 家族（grid）是真正的 layer3-dominant dispersion expansion（LSI=+0.448，CI 与 shrink 不重叠，effect 2.81）；shrink 家族 dispersion 收缩是**双层同号**（无层选择性，LSI CI 跨零）；1H 用 mean 口径发现的「bottle/cable layer2 主导、layer3 反向」被推翻为 **score-level shift 现象，非 dispersion 来源**；加和性在 std 口径下不再是 grid 家族特征（4/5，screw/bottle/hazelnut 全 0）。诚实记录：仅 9 个 primary defect 有冻结标签、n=3 bootstrap CI 宽、layer3 统计粒度混杂未排除（留给 1I）。
 
 - [2026-10-03｜Experiment 1H: Layer-Selective Intervention](experiments/exp1h_layer_selectivity/README.md)：α-IN 分别插入 layer2/layer3/post_concat 三位置（5 类别 × 25 defect × 3 seeds × 3 locations × 5 α = 45 unit，α=0 bit-wise 等价 sanity 全 PASS）。结论：**层级选择性存在且与 1E 家族严格对应**——shrink 缺陷全部由 layer2-IN 驱动（3/3），neutral/expand 全部由 layer3-IN 驱动（6/6）；bottle/cable 为 layer2 主导、screw/grid/hazelnut 为 layer3 主导；grid 特例 = 两层效应独立加和（Δconcat≈ΔL2+ΔL3，误差<10%）+ 分数分布整体爆炸（good +37.8 / defect +41.1）但 d' 腰斩、AUROC 全降 → 1E 的「expand」本质是校准破坏而非缺陷证据增强。与 1E（现象）→ 1G（传导链）→ 1H（来源定位）形成完整闭环。**注：1H 的层偏好是 Δmean_defect 口径，1H-S 已用 std 口径修正（见上）。**
@@ -18,6 +24,97 @@
 - [2026-10-01｜Experiment 1B: Defect-Specific α Sensitivity Screening](results/experiment_1b/README.md)：在 MVTec AD bottle + PatchCore 上，仅研究内部 α-IN representation probe 对不同缺陷类型的差异化影响（不引入合成光照）。结论：三类缺陷的 α-response 曲线明显分化——broken_large 分离度 d' 13.63→7.32（-46%）、broken_small 稳定、contamination 反向上升（+10%）；方向与初始假设相反。size confound 部分存在（type-only R²=0.292 > area-only R²=0.130），属 A+C 混合结论。
 - [2026-10-01｜Experiment 1: Synthetic Illumination × α-IN 机制筛查](results/experiment1_illumination_tradeoff/README.md)：PatchCore 特征混合 InstanceNorm（α-IN）在简单光度扰动下的机制筛查。结论：robustness 提升与 pixel-level sensitivity cost 的 trade-off 苗头存在，无 defect-type 分化；仅 synthetic 证据，待真实光照数据验证。
 - [2026-09-30｜工业异常检测光照敏感性探索](experiments/2026-09-30_illumination_sensitivity_exploration/README.md)：包含 F_alpha/PatchCore、MVTec AD 2 与 CSEM-MISD 调查；未找到明确可推进方向，暂时搁置。代码、说明和已有结果已集中归档。
+
+---
+
+## Research Progress / Paper Evidence Chain
+
+研究主线：**Defect-Preserving Illumination Robustness**（光照鲁棒处理可能抑制 defect-relevant 信息；以 PatchCore + α-IN `F_α=(1−α)F+α·IN(F)` 为研究载体，MVTec AD 五类）。
+
+### 证据链（阶段③现象 → 阶段④机制）
+
+```text
+1B–1E（现象）
+  defect-specific α-IN response 跨 seed 稳定、跨 5 类别复现；
+  缺陷面积不足以解释差异
+        ↓
+1F（排除）
+  简单图像空间属性（size/contrast/frequency/morphology）无法解释异质性
+        ↓
+1G（传导）
+  feature → NN-distance → score dispersion 存在强传导（ρ≈0.95），
+  机制位于表征空间
+        ↓
+1H / 1H-S（层级结构）
+  响应具有 layer-specific structure：
+  expand 家族 = Layer3-dominant dispersion expansion（LSI_std≈+0.448）；
+  shrink 家族 = 双层同号收缩
+        ↓
+1I（排除混杂）
+  Layer3 amplification 不能用 IN 统计量 spatial sample count（256 vs 1024）解释
+        ↓
+1J-A（Feature Geometry Probe）
+  expand 家族存在稳定的 Layer3 RMS-radius expansion（R_L3≈+0.45，
+  仅 expand 显著为正）；经 neutral / shrink family control 验证
+  不是普遍性漂移；geometry 为确定性证据
+        ↓
+1J-B（Geometry Intervention / Dose-response）
+  主动控制 Layer3 radius component（β∈{0,0.5,1}）后，
+  NN / anomaly response 随 β 系统单调变化（expand 3/3，TRR_NN 0.64–1.39），
+  支持 geometry change 与下游异常响应之间存在机制联系（intervention 级证据）
+        ↓
+Reproduction Audit（2026-10-06）
+  AutoDL 服务器全量资产恢复与复现通过：
+  1848 NPZ / 30 banks / 1386 intervention rows 全部重建；
+  deterministic metrics（geometry/GAI）与历史结果舍入级一致（max |Δ|=0.000477）；
+  stochastic metrics（NN/TRR）差异 ≤0.03，远小于 effect size
+        ↓
+Stage ④ Mechanism Validation
+  STATUS: FROZEN / REPRODUCED
+  NEXT: Stage ⑤ Method Design
+```
+
+### 实验导航表
+
+| Experiment | Question | Main Finding | Status |
+|---|---|---|---|
+| [1G](experiments/exp1g_feature_space/README.md) | 机制在哪个空间传导 | feature→NN→score dispersion 强传导（ρ≈0.95） | DONE |
+| [1H](experiments/exp1h_layer_selectivity/README.md) | α-IN 是否有层级选择性 | shrink=L2 驱动、neutral/expand=L3 驱动 | DONE |
+| [1H-S](experiments/exp1hs_dispersion_layer/README.md) | dispersion 口径下层偏好 | expand=真正 L3-dominant（LSI +0.448）；shrink 双层同号 | DONE |
+| [1I](experiments/experiment1i_spatial_statistics_control/README.md) | L3 放大是否统计粒度假象 | 否——matched-256 后 LSI 几乎不动（CASE C） | DONE |
+| [1J-A](experiments/experiment1j_feature_geometry/README.md) | L3 是否有几何扩张 | expand 特有 Layer3 RMS-radius expansion | REPRODUCED |
+| [1J-B](experiments/experiment1j_b_transmission/README.md) | geometry 是否为中介 | β 干预下 NN/score 单调联动（intervention 级证据） | REPRODUCED |
+
+**Paper Stage ④ = FROZEN**（证据等级：geometry→NN = intervention-level；geometry→score = proxy-level + natural correlation）。
+
+### 机制阶段停止条件（冻结声明）
+
+> **Mechanism exploration is frozen.**
+>
+> Current evidence is considered sufficient for method design.
+>
+> **Do NOT continue adding:**
+> - 1J-C
+> - 2A
+> - additional mechanism probes
+>
+> unless Stage ⑤ Method Design later reveals a specific missing piece of evidence.
+
+### 论文路线
+
+```text
+① Problem（现实问题）                ✅
+② Theory / Literature                ✅
+③ Phenomenon（NDIL / α-IN 现象）     ✅
+④ Mechanism Validation               ✅ FROZEN（2026-10-06）
+⑤ Method Design                      ← NEXT
+⑥ Mini Method Validation             ⏸
+⑦ Full Experiments / Benchmark       ⏸
+⑧ Writing                            ⏸
+```
+
+资产恢复复现审计详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)。
+
 
 
 本项目用于研究生阶段探索 **工业视觉与视觉异常检测（Industrial Anomaly Detection）** 方向。
@@ -37,24 +134,25 @@
 
 ## Environment
 
-当前实验环境：
+### 当前正式实验环境（AutoDL 服务器，2026-10-05 验证 READY）
 
-- Windows 11
-- Python 3.11
-- PyTorch 2.11.0 + CUDA 12.8
-- NVIDIA GeForce RTX 5060 Laptop GPU
+- Linux（AutoDL 容器）
+- Conda **base** 环境（`/root/miniconda3`），Python 3.12.3
+- PyTorch 2.8.0 + CUDA 12.8
+- NVIDIA GeForce RTX 3090 24GB
 - Anomalib 2.6.2
-- OpenCV
-- Jupyter Notebook
-- VS Code
+- OpenCV 5.0.0
 
-Conda 环境：
+运行 anomalib 模型时必须设置（服务器直连 huggingface.co 不可达）：
 
 ```bash
-conda activate industrial-ad
+export HF_ENDPOINT=https://hf-mirror.com
 ```
 
-当前 GPU 已能够被 PyTorch 正常识别并用于 Anomalib 实验。
+### 历史环境（Windows 本地，已退役，仅作记录）
+
+- Windows 11 / Python 3.11 / PyTorch 2.11.0 + CUDA 12.8 / RTX 5060 Laptop GPU
+- Conda 环境 `industrial-ad`（服务器上不存在该环境）
 
 ---
 
