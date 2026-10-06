@@ -1,11 +1,11 @@
 {
   "started_at": "2026-10-06T22:17:05",
-  "updated_at": "2026-10-07T00:18:33",
+  "updated_at": "2026-10-07T00:36:36",
   "queues": {
     "Q0_7AO_module_screening": "DONE",
     "Q1_winner_local_robustness": "SKIPPED (Q0 = CASE_C -> no CASE_A/B/D candidate; per addendum Q1 startup condition not met)",
-    "Q2_layer_representation_composition": "PENDING",
-    "Q3_illumination_stress_test": "PENDING",
+    "Q2_layer_representation_composition": "DONE (12 units; promoted = none -> STOP per addendum rule)",
+    "Q3_illumination_stress_test": "RUNNING (10 units: M0_original + M1_uniform x 5 categories x seed0)",
     "Q4_strong_baseline_extended_validation": "PENDING",
     "Q5_cpu_paper_assets": "PENDING"
   },
@@ -16,8 +16,23 @@
     "runtime_seconds_total": null,
     "freeze_sha256": "e046a89a852da9aad55d2eafeea1c3bc05a5aff640be4338f7e515e53150f224"
   },
-  "gpu_units_total": 92,
+  "gpu_units_total": 114,
   "notes": [],
-  "gpu_status": "1 MiB, 0 %",
-  "disk_usage": "13M"
+  "gpu_status": "12936 MiB, 100 %",
+  "disk_usage": "13M",
+  "q2": {
+    "verdict": "no promotion (0/4 configurations reached Tier S/A/B) -> Q2 STOP",
+    "freeze_sha256": "c76ee8f358e6d159e78df7fff8f9dc30e295df175167141c44fd9de3ee3c0d7c",
+    "headline": "Q2L2_l2res50_l3uni dprime +0.5793 / |dz| +0.0429 (exchange rate 13.5) on 3cat x seed0; strong L2/L3 asymmetry: same intervention at L3 hurts both axes",
+    "gpu_units": 12
+  },
+  "q3": {
+    "freeze_sha256": "6c4ee3d07c081c23026a82fb3a426494675f76947785e0b32eb8e256144a91ec",
+    "methods": [
+      "M0_original",
+      "M1_uniform"
+    ],
+    "conditions": 12,
+    "gpu_units": 10
+  }
 }

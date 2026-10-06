@@ -1,0 +1,5 @@
+config,spec_l2,spec_l3
+Q2L0_l2org_l3uni,"{""kind"": ""alpha_in"", ""alpha"": 0.0}","{""kind"": ""alpha_in"", ""alpha"": 0.40091275}"
+Q2L1_l2uni_l3org,"{""kind"": ""alpha_in"", ""alpha"": 0.40091275}","{""kind"": ""alpha_in"", ""alpha"": 0.0}"
+Q2L2_l2res50_l3uni,"{""kind"": ""residual"", ""lambda"": 0.5, ""norm"": ""instance"", ""scale_match"": ""per_sample_per_channel_rms(f)"", ""eps"": 1e-05}","{""kind"": ""alpha_in"", ""alpha"": 0.40091275}"
+Q2L3_l2uni_l3res50,"{""kind"": ""alpha_in"", ""alpha"": 0.40091275}","{""kind"": ""residual"", ""lambda"": 0.5, ""norm"": ""instance"", ""scale_match"": ""per_sample_per_channel_rms(f)"", ""eps"": 1e-05}"

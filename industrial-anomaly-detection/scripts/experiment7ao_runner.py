@@ -28,6 +28,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "experiments" / "2026-09-30_illumination_sensitivity_exploration" / "falpha_patchcore"))
 
 import experiment7ao_config as c7  # noqa: E402
+import experiment7ao_q2 as q2  # noqa: E402
 import experiment5a_h_runner as h  # noqa: E402
 from experiment7ao_model import ModulePatchcore  # noqa: E402
 from anomalib.data import MVTecAD  # noqa: E402
@@ -40,6 +41,7 @@ h.LOGS_DIR = LOGS_DIR
 
 ALL_SPECS = dict(c7.MODULE_SPECS)
 ALL_SPECS.update(c7.SMOKE_SPECS)
+ALL_SPECS.update(q2.Q2_SPECS)   # Overnight Queue Q2 (separate frozen protocol)
 
 CAPTURED: dict = {}
 
@@ -128,7 +130,13 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--units", required=True, help="逗号分隔 category:seed:CONFIG")
     ap.add_argument("--worker-tag", default="w0")
+    ap.add_argument("--out-root", default="", help="覆盖 raw 输出根目录（队列隔离用）")
     args = ap.parse_args()
+    global OUT_ROOT
+    if args.out_root:
+        OUT_ROOT = Path(args.out_root).resolve()
+        h.OUT_ROOT = OUT_ROOT
+        print(f"[{args.worker_tag}] out-root override -> {OUT_ROOT}", flush=True)
     OUT_ROOT.mkdir(parents=True, exist_ok=True)
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -192,7 +200,8 @@ def main() -> None:
         finally:
             lock.unlink(missing_ok=True)
         info = json.loads((cfg_dir / "info.json").read_text())
-        fam = c7.FAMILY_OF.get(name, "smoke" if name in c7.SMOKE_SPECS else "combination")
+        fam = c7.FAMILY_OF.get(name, "smoke" if name in c7.SMOKE_SPECS
+                          else ("Q2" if name in q2.Q2_SPECS else "combination"))
         meta = {"config": name, "family": fam, "spec": spec,
                 "embedding_dim": CAPTURED.get("embed_dim", -1),
                 "memory_bank_size": info.get("coreset_size"),

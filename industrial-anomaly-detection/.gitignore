@@ -151,3 +151,15 @@ results/experiment_7a_o/logs/runner_pid_*.txt
 results/experiment_7a_o/logs/sanity_pre_*.csv
 results/experiment_7a_o/raw/**/fit/
 results/experiment_7a_o/raw/**/run.lock
+
+# overnight 后续队列 Q2 / Q3 轻量结果入库（reference/configs/raw/README）；日志/fit/lock 不入库
+!results/experiment_7a_o_q2/
+results/experiment_7a_o_q2/logs/*.log
+results/experiment_7a_o_q2/logs/*.txt
+results/experiment_7a_o_q2/raw/**/fit/
+results/experiment_7a_o_q2/raw/**/run.lock
+!results/experiment_7a_o_q3/
+results/experiment_7a_o_q3/logs/*.log
+results/experiment_7a_o_q3/logs/*.txt
+results/experiment_7a_o_q3/raw/**/fit/
+results/experiment_7a_o_q3/raw/**/run.lock

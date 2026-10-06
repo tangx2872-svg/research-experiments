@@ -54,12 +54,19 @@ def load_dir(root: Path, tag: str, data: dict) -> None:
             "sub": sub, "info": d, "rows": rows}
 
 
-def build_lookup() -> tuple:
+MODULE_TAGS = ("7AO", "Q2")
+
+
+def build_lookup(extra=()) -> tuple:
+    """extra: ((tag, raw_root), ...) 追加数据源（overnight 后续队列用；默认行为不变）。"""
     data = {}
     for tag, root in HIST.items():
         if root.exists():
             load_dir(root, tag, data)
     load_dir(c7.RAW_DIR, "7AO", data)
+    for tag, root in extra:
+        if Path(root).exists():
+            load_dir(Path(root), tag, data)
     # 5A per_image_scores.csv（仅 bottle/seed0 的 uniform alpha）
     sp = ROOT / "results" / "experiment_5a" / "raw" / "per_image_scores.csv"
     if sp.exists():
@@ -84,7 +91,7 @@ def build_lookup() -> tuple:
     for k, v in mm.items():
         cat, seed, tag = k
         info = data[k]["info"]
-        if tag.startswith("7AO:"):
+        if tag.split(":", 1)[0] in MODULE_TAGS:
             key = ("config", tag.split(":", 1)[1])
         else:
             key = ("alpha", c7.akey(info["alpha_l2"]), c7.akey(info["alpha_l3"]))
