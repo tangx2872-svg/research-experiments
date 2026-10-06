@@ -1,0 +1,16 @@
+predictor_name,definition,source,layer,uses_normal_only,frozen_before_target_analysis,direction_hypothesis,registry_written_at
+norm_mean_L2,[A_magnitude] bank patch L2 norm mean,1j_banks,layer2,true,true,none,2026-10-06T16:24:14
+norm_mean_L3,[A_magnitude] bank patch L2 norm mean,1j_banks,layer3,true,true,none,2026-10-06T16:24:14
+norm_cv_L2,[A_magnitude] bank patch norm std/mean,1j_banks,layer2,true,true,high->tolerant,2026-10-06T16:24:14
+norm_cv_L3,[A_magnitude] bank patch norm std/mean,1j_banks,layer3,true,true,high->tolerant,2026-10-06T16:24:14
+rms_radius_L2,[B_geometry] RMS dist to bank centroid / ||centroid||,1j_banks,layer2,true,true,high->tolerant,2026-10-06T16:24:14
+rms_radius_L3,[B_geometry] RMS dist to bank centroid / ||centroid||,1j_banks,layer3,true,true,high->tolerant,2026-10-06T16:24:14
+nn_dist_rel_L2,[B_geometry] mean intra-bank NN euclid dist / mean norm,1j_banks,layer2,true,true,high->tolerant,2026-10-06T16:24:14
+nn_dist_rel_L3,[B_geometry] mean intra-bank NN euclid dist / mean norm,1j_banks,layer3,true,true,high->tolerant,2026-10-06T16:24:14
+eff_dim_L2,[B_geometry] PCA participation ratio of bank covariance,1j_banks,layer2,true,true,high->tolerant,2026-10-06T16:24:14
+eff_dim_L3,[B_geometry] PCA participation ratio of bank covariance,1j_banks,layer3,true,true,high->tolerant,2026-10-06T16:24:14
+radius_ratio_L3L2,[D_crosslayer] rms_radius_L3 / rms_radius_L2,derived,both,true,true,none,2026-10-06T16:24:14
+nn_dist_ratio_L3L2,[D_crosslayer] nn_dist_rel_L3 / nn_dist_rel_L2,derived,both,true,true,none,2026-10-06T16:24:14
+eff_dim_ratio_L3L2,[D_crosslayer] eff_dim_L3 / eff_dim_L2,derived,both,true,true,none,2026-10-06T16:24:14
+img_brightness_mean,[control] train/good mean pixel brightness,images,none,true,true,control,2026-10-06T16:24:14
+img_pixel_std,[control] train/good pixel intensity std,images,none,true,true,control,2026-10-06T16:24:14

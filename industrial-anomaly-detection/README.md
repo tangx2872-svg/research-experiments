@@ -4,6 +4,12 @@
 
 ## 实验归档
 
+- [2026-10-06｜Experiment 5B: Normal-Only Normalization-Tolerance Predictability Probe](experiments/experiment5b/README.md)：复用 1J 30 个 normal feature bank（5 categories × 3 seeds × 2 layers）与 5A-H damage target，CPU-only 评估 normal training geometry 能否预测 category-level normalization tolerance。15 个预注册 normal-only predictor；修复了 NN distance 展开式漏 `||x||²` 的 bug。结论：**CASE_A — Predictive Structure Exists（interim）**：`radius_ratio_L3L2`、`eff_dim_L2`、`rms_radius_L3` 与 C2 damage 呈强描述性相关（|ρ|≥0.60，方向与预注册一致），三 seed 方向完全一致，LOCO 5/5 泛化且优于 `img_pixel_std` / random controls。**Group C asset 缺失**，最终 verdict 待补齐后复核；未获批准前不启动 GPU / 5C / Adaptive α。
+
+- [2026-10-06｜Experiment 5A-H: Cross-Category Validation of Geometry-Guided Rule](experiments/experiment5a_h/README.md)：5 categories × 3 seeds × 5 frozen configs（G2/C2/C3/B0/B2），75 runs。结论：**CASE_C — BOTTLE-SPECIFIC**：G2 无法泛化，grid/screw 受系统性损伤，hazelnut 反而受益；固定层级归一化规则 hard STOP。
+
+- [2026-10-06｜Experiment 5A: Geometry-Guided Defect-Preserving Normalization Probe](experiments/experiment5a/README.md)：bottle/seed0 上 11 个配置，冻结 inverse-sensitivity 几何规则。结论：**CASE_A — conditional success on bottle**：Pareto 前沿由几何规则 G2 主导；但仅 bottle 不足以支持全局规则。
+
 - [2026-10-03｜Experiment 1J-B: Geometry → NN → Score Transmission Intervention](experiments/experiment1j_b_transmission/README.md)：对 1J-A 缓存的 Layer3 F0/F1 做 radius-controlled intervention（X(β)=μ1+(r0+β(r1−r0))·D1/r1，β∈{0,0.5,1}），用 frozen M0 bank 检验 geometry expansion 是 NN/score amplification 的**中介环节还是伴随 signature**。结论：**CASE A — TRANSMISSION SUPPORTED**——expand 3/3 呈单调 dose-response（β↑→radius↑→NN↑→score proxy↑，TRR_NN +0.64/+0.82/+1.39）；β=0 压制 geometry 后 NN/score amplification 同步大幅减弱；neutral（negative control）影响仅为 expand 的 ~4%，并解答 1J-A 的「neutral NN↑ 但 score≈0」之谜（其 NN 扩张非 radius 驱动且不传导）。**机制探索自此硬停止**（score 为 layer-specific proxy 口径为已知限制）。2026-10-06 服务器全量复现通过（1386 行，TRR_NN +0.638/+0.806/+1.363，判定 REPRODUCED）。
 
 - [2026-10-03｜Experiment 1J-A: Layer-wise Feature Geometry Probe](experiments/experiment1j_feature_geometry/README.md)：分离 layer2/layer3 feature（1848 npz + 30 layer-specific banks，纯 forward hook，与 1H intervention 位置严格对齐），对 frozen 9 primary defects 计算几何指标（RMS radius/MDC/PR/PCA1）+ secondary layer-specific NN。结论：**CASE A — STRONG GEOMETRY SUPPORT**——expand 家族**特有** Layer3 RMS-radius expansion（R_L3≈+0.45，shrink/neutral≈0）；R_L2 符号完美三分家族（expand 全正 / shrink·neutral 全负）；geometry 为确定性证据（不依赖 coreset 采样）。诚实限定：GAI>0 本身无家族区分力（9/9 全正），判据承载条款是「Layer3 expansion 仅存在于 expand」；neutral 的 NN 扩张未传导到 score。2026-10-06 服务器全量复现通过（确定性指标与历史最大差 0.000477，判定 REPRODUCED）。
@@ -71,13 +77,23 @@ Reproduction Audit（2026-10-06）
         ↓
 Stage ④ Mechanism Validation
   STATUS: FROZEN / REPRODUCED
-  NEXT: Stage ⑤ Method Design
+        ↓
+Stage ⑤ Method Design
+  5A:  bottle 上 geometry-guided rule CASE_A（conditional）
+  5A-H: global frozen rule CASE_C ❌ STOP（bottle-specific）
+        ↓
+Stage ⑥ Improvement Method Screening
+  5B:  normal-only geometry → normalization tolerance CASE_A（interim）
+       Candidate ① Category-Adaptive Normalization 存活，待 Group C 复核
 ```
 
 ### 实验导航表
 
 | Experiment | Question | Main Finding | Status |
 |---|---|---|---|
+| [5B](experiments/experiment5b/README.md) | normal-only geometry 能否预测 tolerance | L3/L3-L2 分散度预测 C2 damage，CASE_A interim | DONE |
+| [5A-H](experiments/experiment5a_h/README.md) | frozen geometry rule 是否跨类别泛化 | 否，G2 仅 bottle 受益，CASE_C STOP | DONE |
+| [5A](experiments/experiment5a/README.md) | bottle 上 geometry-guided rule | CASE_A conditional on bottle | DONE |
 | [1G](experiments/exp1g_feature_space/README.md) | 机制在哪个空间传导 | feature→NN→score dispersion 强传导（ρ≈0.95） | DONE |
 | [1H](experiments/exp1h_layer_selectivity/README.md) | α-IN 是否有层级选择性 | shrink=L2 驱动、neutral/expand=L3 驱动 | DONE |
 | [1H-S](experiments/exp1hs_dispersion_layer/README.md) | dispersion 口径下层偏好 | expand=真正 L3-dominant（LSI +0.448）；shrink 双层同号 | DONE |
@@ -107,10 +123,11 @@ Stage ④ Mechanism Validation
 ② Theory / Literature                ✅
 ③ Phenomenon（NDIL / α-IN 现象）     ✅
 ④ Mechanism Validation               ✅ FROZEN（2026-10-06）
-⑤ Method Design                      ← NEXT
-⑥ Mini Method Validation             ⏸
-⑦ Full Experiments / Benchmark       ⏸
-⑧ Writing                            ⏸
+⑤ Method Design                      ✅（5A/5A-H closed）
+⑥ Improvement Method Screening       ← NEXT（5B interim CASE_A）
+⑦ Mini Method Validation             ⏸
+⑧ Full Experiments / Benchmark       ⏸
+⑨ Writing                            ⏸
 ```
 
 资产恢复复现审计详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)。

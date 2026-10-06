@@ -1,0 +1,16 @@
+predictor,spearman_rho,spearman_p_n5,kendall_tau,abs_rho
+norm_mean_L2,0.7,0.1881,0.6,0.7
+norm_mean_L3,0.4,0.5046,0.4,0.4
+norm_cv_L2,0.5,0.391,0.4,0.5
+norm_cv_L3,-0.3,0.6238,-0.2,0.3
+rms_radius_L2,-0.1,0.8729,0.0,0.1
+rms_radius_L3,-0.6,0.2848,-0.4,0.6
+nn_dist_rel_L2,-0.6,0.2848,-0.4,0.6
+nn_dist_rel_L3,-0.8,0.1041,-0.6,0.8
+eff_dim_L2,-0.8,0.1041,-0.6,0.8
+eff_dim_L3,-0.9,0.0374,-0.8,0.9
+radius_ratio_L3L2,-0.9,0.0374,-0.8,0.9
+nn_dist_ratio_L3L2,-0.9,0.0374,-0.8,0.9
+eff_dim_ratio_L3L2,0.1,0.8729,0.0,0.1
+img_brightness_mean,0.4,0.5046,0.4,0.4
+img_pixel_std,0.9,0.0374,0.8,0.9

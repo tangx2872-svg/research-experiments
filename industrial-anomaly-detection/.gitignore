@@ -105,3 +105,7 @@ Thumbs.db
 
 # 5A Lightning fit 运行时指针目录（symlink，运行时产物）
 results/experiment_5a/logs/fit_*/
+
+# 5B lightweight results & figures tracked; logs/run 不跟踪
+!results/experiment_5b/
+results/experiment_5b/logs/*.log

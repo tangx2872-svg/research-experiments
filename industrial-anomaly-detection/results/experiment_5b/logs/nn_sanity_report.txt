@@ -1,0 +1,6 @@
+NN sanity overall: PASS  (30 banks, 27.4s)
+A non-negativity : PASS  min raw d2 = 1.317e+02
+B self-distance  : PASS  max |d2(x,x)| = 1.455e-11
+C brute-force    : PASS  max |dNN| = 2.984e-13
+D nn>0 (subsample): PASS  min mean NN = 1.4268e+01, max zero-frac = 0.0000
+E 30 banks finite: PASS
