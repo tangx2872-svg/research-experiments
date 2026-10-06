@@ -1,0 +1,10 @@
+{
+  "case": "CASE_C",
+  "meaning": "NO USEFUL MODULE: no simple module beats the strong Uniform baseline alpha=0.40091275.",
+  "n_strong": 0,
+  "n_weak": 0,
+  "strong_configs": [],
+  "weak_configs": [],
+  "strong_families": [],
+  "combination_strong": []
+}

@@ -1,0 +1,38 @@
+{
+  "amendment_id": "7A-O-A1",
+  "written_before_round2_data": true,
+  "timestamp": "2026-10-06T23:01:48",
+  "issue": "Protocol section 14 (tier rule) eliminates every Round-1 candidate -> promotion set is empty, while section 15 says 'keep at most Top-1 per family from Round 1 (max 4)'. The two readings conflict when zero configurations reach Tier S/A/B.",
+  "round1_outcome": {
+    "n_candidates": 14,
+    "n_tier_S": 0,
+    "n_tier_A": 0,
+    "n_tier_B": 0,
+    "mechanical_promotion_under_section14": []
+  },
+  "resolution": "Run Round 2 as a FULL-PANEL DIAGNOSTIC on the Top-1 config per family (frozen configs only, no new hyperparameters, no threshold change). Rationale: the morning report is required (section 21) to answer Q5-Q9, which need 5-category x 3-seed coverage; and a CASE_C verdict resting on 3 categories x 1 seed would be too thin. The pre-registered verdict ladder and all thresholds are UNCHANGED; the section-14 outcome (zero promotions) is reported separately and governs the 'mechanical' reading.",
+  "selection_rule": "per family: highest delta_dprime_vs_uniform among Round-1 candidates (tie-break: lower delta_abs_z)",
+  "selected_configs": {
+    "A": "A3_lam050",
+    "B": "B1_g100",
+    "D": "D1_ln_s040",
+    "C": "C3_l2_045_l3_035"
+  },
+  "round2_scope": {
+    "categories": [
+      "bottle",
+      "cable",
+      "grid",
+      "hazelnut",
+      "screw"
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "new_units": 48
+  },
+  "round3": "remains forbidden unless >=2 families reach Tier S/A on the full panel (section 15/16 condition is evaluated on the full panel for this diagnostic)",
+  "verdict_authority": "section-14 mechanical reading = CASE_C (zero promotions); the full-panel diagnostic is reported alongside and cannot silently override it."
+}

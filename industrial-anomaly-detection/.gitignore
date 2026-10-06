@@ -141,3 +141,13 @@ results/experiment_6b/logs/runner_pid_*.txt
 results/experiment_6b/logs/sanity_pre_*.csv
 results/experiment_6b/raw_new/**/fit/
 results/experiment_6b/raw_new/**/run.lock
+
+# 7A-O 轻量结果纳入版本控制（reference/configs/raw/summary/figures/README）；
+# 逐图分数 ~0.4MB/92unit 与 5A-H/6A/6B 同口径入库；运行日志/fit cache/lock 不入库
+!results/experiment_7a_o/
+results/experiment_7a_o/logs/*.log
+results/experiment_7a_o/logs/*.json
+results/experiment_7a_o/logs/runner_pid_*.txt
+results/experiment_7a_o/logs/sanity_pre_*.csv
+results/experiment_7a_o/raw/**/fit/
+results/experiment_7a_o/raw/**/run.lock

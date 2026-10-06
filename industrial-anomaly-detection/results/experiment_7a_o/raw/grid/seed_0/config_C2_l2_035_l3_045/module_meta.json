@@ -1,0 +1,22 @@
+{
+  "config": "C2_l2_035_l3_045",
+  "family": "C",
+  "spec": {
+    "l2": {
+      "kind": "alpha_in",
+      "alpha": 0.35
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.45
+    }
+  },
+  "embedding_dim": 1536,
+  "memory_bank_size": 27033,
+  "runtime_seconds": 101.78,
+  "wallclock_seconds": 102.01,
+  "peak_gpu_memory_allocated_mb": 3265.04,
+  "declared_alpha_l2": 0.35,
+  "declared_alpha_l3": 0.45,
+  "embedding_dim_note": "3072 for concat_dual (doubled), 1536 otherwise"
+}

@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-10-06T22:17:05",
+  "updated_at": "2026-10-07T00:18:33",
+  "queues": {
+    "Q0_7AO_module_screening": "DONE",
+    "Q1_winner_local_robustness": "SKIPPED (Q0 = CASE_C -> no CASE_A/B/D candidate; per addendum Q1 startup condition not met)",
+    "Q2_layer_representation_composition": "PENDING",
+    "Q3_illumination_stress_test": "PENDING",
+    "Q4_strong_baseline_extended_validation": "PENDING",
+    "Q5_cpu_paper_assets": "PENDING"
+  },
+  "q0": {
+    "verdict": "CASE_C",
+    "gpu_units": 92,
+    "sanity": "18/18 PASS",
+    "runtime_seconds_total": null,
+    "freeze_sha256": "e046a89a852da9aad55d2eafeea1c3bc05a5aff640be4338f7e515e53150f224"
+  },
+  "gpu_units_total": 92,
+  "notes": [],
+  "gpu_status": "1 MiB, 0 %",
+  "disk_usage": "13M"
+}
