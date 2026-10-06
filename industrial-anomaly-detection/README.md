@@ -4,6 +4,8 @@
 
 ## 实验归档
 
+- [2026-10-06｜Experiment 5C: Geometry-Guided Category-Adaptive α v1](experiments/experiment5c/README.md)：Stage ⑦ 方法验证。用 5B-Final 冻结的 normal-only predictor `radius_ratio_L3L2` 经**单一 rank→α 映射**为每个 category 分配 uniform α（α 只能取自 5A-H 历史 grid {0, 0.5, 0.6014, 0.8018}；best fixed α = 0.5 由 5A-H 冻结 PAIR-WIN 规则机械选出；零新 α、零拟合）。45/45 runs 完成，与 5A-H 在相同 α 上 **raw 分数逐位一致**（33 keys / 9273 行，max|Δscore| = 0.0），sanity S1–S15 全 PASS。结论：**CASE_B — Harm Reduction Only**（driver = v1B Geometry Conservative）。**v1A（full-range）失败**：Δd′ +0.035 但 robustness 变差 +0.0195、pair-win 0/15、3/5 类别 d′ 损失 > ε→ 激进重分配**没有**击败 best fixed α；**v1B（conservative）**= 仅在 bottle+grid 把 α 降到 0（其余保持 best fixed 0.5）→ high-damage recovery **+0.824**、worst-category gain **0.000**、negative transfer **0/5**，且 5 类平均在 preservation 与 robustness 两轴上都不劣于 Original PatchCore。**predictor identity 未确立**（GF vs SG 聚合略优但优势集中在 grid 单类别，v1B 无 matched sensitivity 对照）。n=5，descriptive；未启动 5D。
+
 - [2026-10-06｜Experiment 5B-C: Group C Completion & FINAL VERDICT](experiments/experiment5b/README.md#17-experiment-5b-c--group-c-completion--final-verdict2026-10-06)：补齐 5B 预注册但缺失的 **Group C（normalization sensitivity：geometry(F0) vs geometry(IN(F0))）**，复用 1J-A 冻结 `geometry_of` 与 1E/1H/1J 冻结 IN，forward-only、只用 normal train 图（3924 张），定义在读取 target 前写入 `group_c_freeze.json`（targets_read=false）。sanity **S-C1…S-C7 7/7 PASS**（含与 1J-A 冻结 CSV 的定义一致性对照 max_rel_dev=1.11e-05），主分析 19 checks / 0 FAIL。结论：**CASE_A (FINAL)** —— 原 geometry 信号（`eff_dim_L3`/`radius_ratio_L3L2`，ρ=−0.90、三 seed 方向一致、LOCO 5/5）加入 Group C 后完全不变，且仍显著优于 negative controls（LOCO 3/5、2/5）；但 **Group C 8 个 predictor 全部为 null**（|ρ|≤0.30，LOCO ≤0.60 = random，留一 category 可反号）→ 「normalization 敏感度中介 tolerance」的机制解释**不被支持**，存活的是通用 normal-feature 分散度几何。n=5，descriptive/exploratory，不做 causal claim。未启动 5C。
 
 - [2026-10-06｜Experiment 5B: Normal-Only Normalization-Tolerance Predictability Probe](experiments/experiment5b/README.md)：复用 1J 30 个 normal feature bank（5 categories × 3 seeds × 2 layers）与 5A-H damage target，CPU-only 评估 normal training geometry 能否预测 category-level normalization tolerance。15 个预注册 normal-only predictor；修复了 NN distance 展开式漏 `||x||²` 的 bug。结论：**CASE_A — Predictive Structure Exists（interim）**：`radius_ratio_L3L2`、`eff_dim_L2`、`rms_radius_L3` 与 C2 damage 呈强描述性相关（|ρ|≥0.60，方向与预注册一致），三 seed 方向完全一致，LOCO 5/5 泛化且优于 `img_pixel_std` / random controls。**Group C asset 缺失**，最终 verdict 待补齐后复核；未获批准前不启动 GPU / 5C / Adaptive α。
@@ -90,12 +92,19 @@ Stage ⑥ Improvement Method Screening
         Group C 全 null，不推翻 but 也不支持 sensitivity 中介解释；
         存活信号 = 通用 normal-feature 分散度几何（eff_dim_L3 / L3:L2 radius ratio）
         Candidate ① Category-Adaptive Normalization 存活（机制解释受限）
+        ↓
+Stage ⑦ Method Validation
+  5C:  Geometry-Guided Category-Adaptive α v1 → CASE_B — Harm Reduction Only
+        v1A（full-range 重分配）≈ best fixed α（失败）；
+        v1B（conservative，fragile 类别 α→0）→ harm 全消除（0/5 negative transfer）
+        方案① 收敛为 Geometry-Guided Safe Normalization（下一步，未启动）
 ```
 
 ### 实验导航表
 
 | Experiment | Question | Main Finding | Status |
 |---|---|---|---|
+| [5C](experiments/experiment5c/README.md) | geometry-guided adaptive α 是否优于 fixed α | v1A≈fixed（失败）；v1B 零负迁移、harm 全恢复 → CASE_B | DONE |
 | [5B-C](experiments/experiment5b/README.md) | 补齐 Group C 后 verdict 是否改变 | 否——CASE_A **FINAL**；Group C(normalization sensitivity) 全 null | DONE |
 | [5B](experiments/experiment5b/README.md) | normal-only geometry 能否预测 tolerance | L3/L3-L2 分散度预测 C2 damage，CASE_A interim | DONE |
 | [5A-H](experiments/experiment5a_h/README.md) | frozen geometry rule 是否跨类别泛化 | 否，G2 仅 bottle 受益，CASE_C STOP | DONE |
@@ -130,10 +139,11 @@ Stage ⑥ Improvement Method Screening
 ③ Phenomenon（NDIL / α-IN 现象）     ✅
 ④ Mechanism Validation               ✅ FROZEN（2026-10-06）
 ⑤ Method Design                      ✅（5A/5A-H closed）
-⑥ Improvement Method Screening       ← NEXT（5B interim CASE_A）
-⑦ Mini Method Validation             ⏸
-⑧ Full Experiments / Benchmark       ⏸
-⑨ Writing                            ⏸
+⑥ Improvement Method Screening       ✅（5B / 5B-C CASE_A FINAL）
+⑦ Method Validation                  ← 5C 完成（CASE_B：Safe Normalization 方向）
+⑧ Mini/FULL Method Validation v2     ⏸（需人工批准）
+⑨ Full Experiments / Benchmark       ⏸
+⑩ Writing                            ⏸
 ```
 
 资产恢复复现审计详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)。

@@ -1,0 +1,7 @@
+check,status,detail
+S15_all_outputs_finite,PASS,375 metric values all finite
+S14b_alpha_level_raw_score_equivalence,PASS,"5C runs vs 5A-H at identical alpha: n_keys=33, rows=9273, max|Δscore|=0.000e+00, max|Δt|=0.000e+00"
+S14b_summary_metric_rounding_ok,PASS,summary-level max|Δmetric|=4.989e-05 == 5A-H CSV 4-decimal rounding (half unit 5e-5); raw scores are bit-identical
+S14_historical_results_unchanged_after,PASS,6 frozen files re-hashed; changed=none
+S6_recheck_all_alpha_in_grid,PASS,"observed alphas = ['0.000000000', '0.500000000', '0.601369125', '0.801825500']"
+S2b_no_test_label_in_alpha_decision,PASS,alpha 来自 5B normal-only predictor + 冻结 mapping；无反例通路

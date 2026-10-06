@@ -113,3 +113,8 @@ results/experiment_5b/logs/*.log
 # 5B-Final（Group C 补齐）轻量结果纳入版本控制（summary/figures/reference/logs/逐图统计）
 !results/experiment_5b_final/
 !results/experiment_5b_final/logs/*.log
+
+# 5C 轻量结果纳入版本控制；progress 日志与 lightning fit 运行目录不跟踪
+!results/experiment_5c/
+results/experiment_5c/logs/*.log
+results/experiment_5c/raw/**/fit/

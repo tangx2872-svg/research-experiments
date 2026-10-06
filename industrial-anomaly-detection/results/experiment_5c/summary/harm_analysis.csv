@@ -1,0 +1,4 @@
+policy,label,mean_gain_vs_best_fixed,worst_category,worst_category_gain,high_damage_subset,high_damage_recovery,negative_transfer_count,n_categories,win_tie_loss_vs_best_fixed,pair_win_units_vs_best_fixed,mean_delta_robust_vs_best_fixed
+GF,C. Geometry Full (v1A),0.034935,screw,-0.283087,bottle+grid,0.438416,3,5,mixed,0/15,0.019488
+GC,D. Geometry Conservative (v1B),0.32972,cable,0.0,bottle+grid,0.8243,0,5,mixed,0/15,0.056027
+SG,E. Sensitivity-Guided,0.00087,grid,-0.561731,bottle+grid,0.157551,2,5,mixed,2/15,0.028211

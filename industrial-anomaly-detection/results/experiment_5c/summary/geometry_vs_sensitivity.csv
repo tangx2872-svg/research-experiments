@@ -1,0 +1,6 @@
+category,alpha_geometry,alpha_sensitivity,dprime_geometry,dprime_sensitivity,delta_dprime_GF_minus_SG,abs_delta_z_geometry,abs_delta_z_sensitivity,delta_robust_GF_minus_SG,outcome
+bottle,0.000000000,0.000000000,8.178533,8.178533,0.0,0.4422,0.4422,0.0,tie_or_mixed
+cable,0.601369125,0.500000000,4.805667,5.007867,-0.2022,0.237825,0.271167,-0.033342,tie_or_mixed
+grid,0.500000000,0.801825500,2.363833,1.802103,0.56173,0.1004,0.104804,-0.004404,GF_better
+hazelnut,0.801825500,0.601369125,5.958126,6.147334,-0.189208,0.137543,0.14341,-0.005867,tie_or_mixed
+screw,0.801825500,0.801825500,2.203479,2.203479,0.0,0.22064,0.22064,0.0,tie_or_mixed
