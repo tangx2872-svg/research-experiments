@@ -1,0 +1,9 @@
+group,alpha,layer_uniform,fragile_keys_have,illumination_conditions,sources,needs_gpu,missing_units,provenance
+confirm_alpha_F_grid,0.00000000,true,6/6,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A-H/5A/6A,false,0,6A evaluated
+confirm_alpha_F_grid,0.12500000,false,0/6,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,partial,true,6,6B confirm (new)
+confirm_alpha_F_grid,0.20000000,false,0/6,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,partial,true,6,6B confirm (new)
+confirm_alpha_F_grid,0.25000000,true,6/6,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A-H/5A/6A,false,0,6A evaluated
+confirm_alpha_F_grid,0.30000000,false,0/6,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,partial,true,6,6B confirm (new)
+confirm_alpha_F_grid,0.40091275,true,6/6,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A-H/5A/6A,false,0,6A evaluated
+confirm_alpha_F_grid,0.50000000,true,6/6,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A-H/5A/6A,false,0,6A evaluated
+uniform_baseline_matched,0.40091275,true,n/a,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,"5A C1 (bottle/seed0) + 6A (bottle s1/s2, grid s0-2)",true,9,chosen by minimal |mean_alpha - 0.40| among historical uniform alpha

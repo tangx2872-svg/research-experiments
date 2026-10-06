@@ -132,3 +132,12 @@ results/experiment_6a/logs/sanity_pre_*.csv
 results/experiment_6a/raw_new/**/fit/
 results/experiment_6a/raw_new/**/run.lock
 # 6A 逐图分数仅 404 KB（11 unit），与 5A-H raw 同口径纳入版本控制以保证可复现
+
+# 6B 轻量结果纳入版本控制（reference/raw/summary/sanity/figures）；raw_new 逐图分数 ~0.4MB/28unit 亦入库
+!results/experiment_6b/
+results/experiment_6b/logs/*.log
+results/experiment_6b/logs/*.json
+results/experiment_6b/logs/runner_pid_*.txt
+results/experiment_6b/logs/sanity_pre_*.csv
+results/experiment_6b/raw_new/**/fit/
+results/experiment_6b/raw_new/**/run.lock

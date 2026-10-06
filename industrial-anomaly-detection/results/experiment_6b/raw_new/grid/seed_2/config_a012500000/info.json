@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "grid",
+  "seed": 2,
+  "config": "a012500000",
+  "alpha_l2": 0.125,
+  "alpha_l3": 0.125,
+  "runtime_seconds": 137.5,
+  "coreset_size": 27033,
+  "tau_val": 20.673297882080078,
+  "peak_gpu_memory_allocated_mb": 3265.04,
+  "train_ids_hash": "85d1afb036d2",
+  "n_rows": 182,
+  "pixel_auroc": 0.9830576321592129,
+  "aupro": 0.9237453937530518
+}

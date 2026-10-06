@@ -1,0 +1,39 @@
+{
+  "missing": [
+    "bottle:s0:a0.125000000",
+    "bottle:s0:a0.200000000",
+    "bottle:s0:a0.300000000",
+    "bottle:s1:a0.125000000",
+    "bottle:s1:a0.200000000",
+    "bottle:s1:a0.300000000",
+    "bottle:s2:a0.125000000",
+    "bottle:s2:a0.200000000",
+    "bottle:s2:a0.300000000",
+    "cable:s0:a0.400912750",
+    "cable:s1:a0.400912750",
+    "cable:s2:a0.400912750",
+    "grid:s0:a0.125000000",
+    "grid:s0:a0.200000000",
+    "grid:s0:a0.300000000",
+    "grid:s1:a0.125000000",
+    "grid:s1:a0.200000000",
+    "grid:s1:a0.300000000",
+    "grid:s2:a0.125000000",
+    "grid:s2:a0.200000000",
+    "grid:s2:a0.300000000",
+    "hazelnut:s0:a0.400912750",
+    "hazelnut:s1:a0.400912750",
+    "hazelnut:s2:a0.400912750",
+    "screw:s0:a0.400912750",
+    "screw:s1:a0.400912750",
+    "screw:s2:a0.400912750"
+  ],
+  "estimate": {
+    "n_source_units": 18,
+    "runtime_mean_seconds": 102.36,
+    "runtime_max_seconds": 161.1,
+    "peak_vram_mean_mb": 2935.0,
+    "peak_vram_max_mb": 3265.0,
+    "source": "results/experiment_5c/raw/{bottle,grid}/*/info.json"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "experiment": "6B",
+  "title": "Confirmatory Validation of Soft Geometry Gating",
+  "paper_stage": "9. Robustness-Preservation Trade-off \u65b9\u6cd5\u6539\u8fdb \u2014 confirmatory validation",
+  "inherits": {
+    "frozen_by_6A": "results/experiment_6a/reference/policy_freeze.json",
+    "identity": {
+      "fragile": [
+        "bottle",
+        "grid"
+      ],
+      "tolerant": [
+        "cable",
+        "hazelnut",
+        "screw"
+      ],
+      "source": "5D frozen GC assignment (bottle+grid) - NOT to be changed"
+    },
+    "success_criteria": {
+      "A_preservation_retention": {
+        "rule": "delta_dprime_vs_fixed(soft) >= +0.20",
+        "threshold": 0.2,
+        "note": ">= ~60% of the Hard-GC preservation gain (+0.3297 \u2192 60% = +0.1978)"
+      },
+      "B_robustness_recovery": {
+        "rule": "mean_abs_delta_z(soft) <= mean_abs_delta_z(hard_GC) - 0.02",
+        "threshold_abs_z_max": 0.244255,
+        "improvement_required": 0.02,
+        "note": "Hard GC |dz| = 0.2643 (read from 5D frozen summary, not hard-coded)"
+      },
+      "C_safety": {
+        "rule": "worst_category_gain >= -eps AND negative_transfer_count <= HardGC negative_transfer_count",
+        "epsilon": 0.1,
+        "hard_gc_negative_transfer_count": 0
+      },
+      "D_stability": {
+        "rule": "at least 2/3 seeds satisfy BOTH A and B at seed level: delta_dprime_vs_fixed_seed >= +0.20 AND mean_abs_delta_z_seed <= hardGC_mean_abs_delta_z_seed - 0.02",
+        "min_seeds": 2
+      }
+    },
+    "metrics": {
+      "preservation": "mean defect d-prime (higher better)",
+      "robustness": "mean |Delta NormalScore_z| (lower better)",
+      "safety": [
+        "worst_category_gain",
+        "negative_transfer_count(eps)",
+        "high_damage_subset={bottle,grid}",
+        "seed consistency"
+      ],
+      "implementation": "reuse experiment5a_h_analysis.load_all/unit_metrics (unchanged)"
+    },
+    "reference_5d": {
+      "source_file": "results/experiment_5d/summary/policy_summary.csv",
+      "hard_gc": {
+        "mean_defect_dprime": 4.996715,
+        "mean_robustness": 0.264255,
+        "delta_dprime_vs_fixed": 0.329722,
+        "delta_robust_vs_fixed": 0.056039,
+        "worst_category_gain": 0.0,
+        "negative_transfer_count": 0,
+        "gate": "bottle+grid"
+      },
+      "best_fixed": {
+        "mean_defect_dprime": 4.666993,
+        "mean_robustness": 0.208216,
+        "mean_alpha": 0.5
+      }
+    },
+    "epsilon": 0.1,
+    "note": "identity / epsilon / primary metrics / success thresholds are INHERITED UNCHANGED (not re-selected)"
+  },
+  "goal_1_confirm_sampling": {
+    "question": "is the 6A knee a stable region or an isolated point?",
+    "already_evaluated": [
+      "0.00000000",
+      "0.25000000",
+      "0.40091275",
+      "0.50000000"
+    ],
+    "new_confirm_candidates": [
+      "0.12500000",
+      "0.20000000",
+      "0.30000000"
+    ],
+    "policy_family": "fragile -> alpha_F, tolerant -> 0.5 (frozen, unchanged)",
+    "no_dense_sweep": true
+  },
+  "goal_2_mean_alpha_matched_uniform_baseline": {
+    "question": "does Soft-GC beat a Uniform policy with the SAME mean normalization strength (selective allocation vs raw strength)?",
+    "soft_gc_reference": {
+      "alpha_F": 0.25,
+      "mean_alpha": 0.4
+    },
+    "uniform_alpha_chosen": 0.40091275,
+    "mean_alpha_gap": 0.000913,
+    "selection_rule": "among historical layer-uniform alpha values, pick the one minimizing |alpha - mean_alpha(Soft-GC 0.25)|; no new alpha invented",
+    "uniform_missing_units": [
+      "cable:s0:a0.40091275",
+      "cable:s1:a0.40091275",
+      "cable:s2:a0.40091275",
+      "hazelnut:s0:a0.40091275",
+      "hazelnut:s1:a0.40091275",
+      "hazelnut:s2:a0.40091275",
+      "screw:s0:a0.40091275",
+      "screw:s1:a0.40091275",
+      "screw:s2:a0.40091275"
+    ]
+  },
+  "evaluated_soft_grid": [
+    "0.00000000",
+    "0.12500000",
+    "0.20000000",
+    "0.25000000",
+    "0.30000000",
+    "0.40091275",
+    "0.50000000"
+  ],
+  "missing_units_fragile": {
+    "0.12500000": [
+      "bottle:s0:a0.12500000",
+      "bottle:s1:a0.12500000",
+      "bottle:s2:a0.12500000",
+      "grid:s0:a0.12500000",
+      "grid:s1:a0.12500000",
+      "grid:s2:a0.12500000"
+    ],
+    "0.20000000": [
+      "bottle:s0:a0.20000000",
+      "bottle:s1:a0.20000000",
+      "bottle:s2:a0.20000000",
+      "grid:s0:a0.20000000",
+      "grid:s1:a0.20000000",
+      "grid:s2:a0.20000000"
+    ],
+    "0.30000000": [
+      "bottle:s0:a0.30000000",
+      "bottle:s1:a0.30000000",
+      "bottle:s2:a0.30000000",
+      "grid:s0:a0.30000000",
+      "grid:s1:a0.30000000",
+      "grid:s2:a0.30000000"
+    ]
+  },
+  "needs_gpu": true,
+  "verdict_ladder_6B": {
+    "order": [
+      "CASE_D",
+      "CASE_A",
+      "CASE_B",
+      "CASE_C"
+    ],
+    "CASE_A": "knee region has >=3 consecutive alpha_F satisfying A&B&C&D including 0.25, AND mean_dprime(Soft-GC 0.25) - mean_dprime(Uniform) >= +eps, AND mean_abs_delta_z(Soft-GC 0.25) - mean_abs_delta_z(Uniform) <= +0.02",
+    "CASE_B": "knee region has >=2 consecutive alpha_F satisfying A&B&C&D including 0.25, AND mean_dprime(Soft-GC 0.25) - mean_dprime(Uniform) > -eps (region confirmed, but the advantage is not clearly allocation-driven)",
+    "CASE_C": "only alpha_F=0.25 satisfies A&B&C&D (or none): the 6A knee does not replicate -> single-point result",
+    "CASE_D": "Uniform(mean-alpha matched) Pareto-dominates Soft-GC(0.25): mean_dprime(Uniform) >= mean_dprime(Soft) and mean_abs_delta_z(Uniform) <= mean_abs_delta_z(Soft) with strict inequality in at least one",
+    "region_definition": "consecutive = adjacent in the sorted evaluated alpha_F list"
+  },
+  "forbidden": [
+    "re-selecting predictor",
+    "changing fragile identity",
+    "changing epsilon",
+    "changing primary metrics",
+    "changing success thresholds",
+    "per-category alpha tuning",
+    "dense sweep",
+    "gating network",
+    "new backbone",
+    "new dataset"
+  ],
+  "git_head": "b28f3a2e549043307c15025f7b85e52c2c4ee9ef",
+  "timestamp": "2026-10-06T21:24:42",
+  "input_md5": {
+    "results/experiment_5a_h/summary/per_unit.csv": "6c7de555094af09a5ed13a91d0c8b3e1",
+    "results/experiment_5c/reference/geometry_policy_freeze.json": "e23d2b29ebd83c34f62010791d36aeda",
+    "results/experiment_5d/reference/policy_freeze.json": "a033a30e27613c728e9dd7e52b7dd03b",
+    "results/experiment_5d/summary/policy_summary.csv": "9c5f7ff52ad54986ec4d715d89903d74",
+    "results/experiment_5a/raw/per_image_scores.csv": "c17e82b422ffa977cb06dd3adaef2acc",
+    "results/experiment_5b_final/summary/normal_only_predictors.csv": "5439b99ad1ea31e447ea4895731f1502",
+    "results/experiment_6a/reference/policy_freeze.json": "5be1d72e89114a8885d0cc8ad4a769c6",
+    "results/experiment_6a/summary/policy_summary.csv": "edec2509cdbffe13f4709a13e93535c9"
+  }
+}

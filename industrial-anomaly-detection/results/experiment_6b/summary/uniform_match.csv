@@ -1,0 +1,11 @@
+item,value,note
+uniform_alpha,0.40091275,historical 5A C1 layer-uniform point
+uniform_mean_alpha,0.400913,matched to Soft 0.25 (0.40) within 0.001
+uniform_mean_defect_dprime,4.793959,
+uniform_mean_robustness,0.213367,
+soft25_mean_defect_dprime,4.878197,
+soft25_mean_robustness,0.232915,
+allocation_effect_delta_dprime,0.084237,d-prime(Soft 0.25) - d-prime(Uniform): >0 = selective allocation adds preservation
+allocation_effect_delta_abs_z,0.019548,|dz|(Soft 0.25) - |dz|(Uniform): >0 = Uniform is more robust
+strength_effect_delta_dprime,0.126967,Uniform - Best Fixed
+strength_effect_delta_abs_z,0.005151,Uniform - Best Fixed

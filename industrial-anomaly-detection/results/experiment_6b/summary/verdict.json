@@ -1,0 +1,108 @@
+{
+  "experiment": "6B",
+  "title": "Confirmatory Validation of Soft Geometry Gating",
+  "freeze_sha256": "1b4d1e5db4f0e39a18dce46916aeb49749b474f5451d3ab9e972eb51b285ca06",
+  "git_head": "b28f3a2e549043307c15025f7b85e52c2c4ee9ef",
+  "inherited_criteria_unchanged": {
+    "A_preservation_retention": {
+      "rule": "delta_dprime_vs_fixed(soft) >= +0.20",
+      "threshold": 0.2,
+      "note": ">= ~60% of the Hard-GC preservation gain (+0.3297 \u2192 60% = +0.1978)"
+    },
+    "B_robustness_recovery": {
+      "rule": "mean_abs_delta_z(soft) <= mean_abs_delta_z(hard_GC) - 0.02",
+      "threshold_abs_z_max": 0.244255,
+      "improvement_required": 0.02,
+      "note": "Hard GC |dz| = 0.2643 (read from 5D frozen summary, not hard-coded)"
+    },
+    "C_safety": {
+      "rule": "worst_category_gain >= -eps AND negative_transfer_count <= HardGC negative_transfer_count",
+      "epsilon": 0.1,
+      "hard_gc_negative_transfer_count": 0
+    },
+    "D_stability": {
+      "rule": "at least 2/3 seeds satisfy BOTH A and B at seed level: delta_dprime_vs_fixed_seed >= +0.20 AND mean_abs_delta_z_seed <= hardGC_mean_abs_delta_z_seed - 0.02",
+      "min_seeds": 2
+    }
+  },
+  "evaluated_soft_grid": [
+    "0.00000000",
+    "0.12500000",
+    "0.20000000",
+    "0.25000000",
+    "0.30000000",
+    "0.40091275",
+    "0.50000000"
+  ],
+  "knee_region_definition": "consecutive alpha_F satisfying A&B&C&D (adjacent in the sorted grid)",
+  "knee_regions": [
+    {
+      "start": "0.25000000",
+      "end": "0.25000000",
+      "length": 1
+    }
+  ],
+  "region_containing_0.25_length": 1,
+  "per_alpha_ABCD": {
+    "0.00000000": false,
+    "0.12500000": false,
+    "0.20000000": false,
+    "0.25000000": true,
+    "0.30000000": false,
+    "0.40091275": false,
+    "0.50000000": false
+  },
+  "soft25": {
+    "alpha_F": 0.25,
+    "mean_defect_dprime": 4.878197,
+    "mean_abs_delta_z": 0.232915,
+    "criteria": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true
+    }
+  },
+  "uniform_baseline": {
+    "alpha": 0.40091275,
+    "mean_alpha": 0.400913,
+    "mean_defect_dprime": 4.793959,
+    "mean_abs_delta_z": 0.213367
+  },
+  "allocation_vs_strength": {
+    "allocation_delta_dprime": 0.084237,
+    "allocation_delta_abs_z": 0.019548,
+    "strength_delta_dprime": 0.126967,
+    "strength_delta_abs_z": 0.005151,
+    "reading": "allocation_delta_dprime > 0 means selective allocation adds preservation beyond mean-strength matching"
+  },
+  "verdict": {
+    "case": "CASE_C",
+    "meaning": "The 6A knee does not replicate: alpha_F=0.25 is an isolated point.",
+    "conditions": {
+      "CASE_A": {
+        "region_len_ge_3": false,
+        "allocation_dprime_ge_eps": false,
+        "allocation_robustness_not_worse_than_0.02": true
+      },
+      "CASE_B": {
+        "region_len_ge_2": false,
+        "allocation_dprime_gt_minus_eps": true
+      },
+      "CASE_C": {
+        "region_len_le_1": true
+      },
+      "CASE_D": {
+        "uniform_pareto_dominates_soft25": false
+      }
+    }
+  },
+  "sanity_passed": "20/20",
+  "limitations": [
+    "n_category=5, gate_size=2, 7 soft points only (no dense sweep by protocol)",
+    "Uniform baseline = closest historical layer-uniform alpha (0.40091275); mean-alpha gap 0.000913",
+    "single backbone (wide_resnet50_2); synthetic photometric illumination protocol",
+    "descriptive only: no significance test, no causal claim beyond the matched-strength control"
+  ],
+  "no_gpu_during_analysis": true
+}

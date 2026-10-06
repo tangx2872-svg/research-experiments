@@ -1,0 +1,21 @@
+check,status,detail
+S1_historical_frozen_assets_exist,PASS,8/8 tracked assets present
+S2_identity_unchanged_vs_6A,PASS,"fragile=['bottle', 'grid'], tolerant=['cable', 'hazelnut', 'screw'] @ 0.5 (identical to the 6A freeze)"
+S3_fixed_baseline_unchanged,PASS,best fixed alpha=0.5 inherited from 6A/5C/5D (not re-selected)
+S4_metric_implementation_unchanged,PASS,"recomputed Hard GC vs 6A/5D frozen: |dd-prime|=2.94e-07, |d|dz||=3.08e-07"
+S5_protocol_frozen_before_target_analysis,PASS,freeze + asset_audit written before any 6B target analysis
+S6_all_required_cat_seed_alpha_keys_exist,PASS,all required keys present
+S7_illumination_protocol_unchanged,PASS,"shifts=['brightness_0.7', 'brightness_1.3', 'gamma_0.7', 'gamma_1.3']"
+S8_historical_score_equivalence,PASS,"5A vs 5A-H rows=732 max|dscore|=0.0e+00; smoke 5A C1 vs 6B: {'status': 'OK', 'n_keys': 183, 'max_abs_score_diff': 0.0, 'note': '5A C1 (bottle/seed0, alpha=0.40091275) vs 6B rerun'}"
+S9_no_target_derived_category_reassignment,PASS,"fragile/tolerant identity copied from 6A/5D freeze, not derived from 6B targets"
+S10_no_alpha_selected_after_target_read,PASS,"confirm candidates pre-specified by the human = ['0.12500000', '0.20000000', '0.30000000'] (no dense sweep)"
+S11_mean_alpha_formula,PASS,"mean_alpha=(2*alpha_F+3*0.5)/5 -> [(0.0, 0.3), (0.125, 0.35), (0.2, 0.38), (0.25, 0.4), (0.3, 0.42), (0.4009, 0.4604), (0.5, 0.5)]"
+S12_per_category_aggregation_correct,PASS,per-category recomputation matches eval_alpha_map for 7 available alpha_F
+S13_per_seed_aggregation_correct,PASS,aggregate == mean of the 3 per-seed aggregates
+S14_negative_transfer_implementation_unchanged,PASS,count(gain < -eps); eps inherited unchanged
+S15_epsilon_unchanged,PASS,eps=0.1
+S16_frozen_asset_hashes_unchanged,PASS,8 tracked assets md5 identical vs freeze time
+S17_no_accidental_gpu_run_in_analysis,PASS,analysis/sanity path runs no CUDA work; all GPU runs live in experiment6b_runner
+S18_output_completeness,PASS,raw/policy_results.csv present; freeze present
+S19_uniform_mean_alpha_match_quality,PASS,|alpha_uniform - mean_alpha(Soft 0.25)| = 0.000913 <= 0.01 (0.40091275 vs 0.400000)
+S20_knee_region_rule_preregistered,PASS,region definition + CASE_A-D thresholds frozen before analysis
