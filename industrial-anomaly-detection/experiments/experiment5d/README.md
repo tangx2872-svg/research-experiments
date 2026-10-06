@@ -5,6 +5,7 @@
 > SHA256 `30150bc49484990524e88a2d06bfcee85262db8ca3f4ae3c0663c0ad32a5b263`，`target_results_read=false`）。
 > **Final verdict：预注册判定链 literal = CASE_D（仅由 LOCO 单类别驱动条件触发）；实质性结论 = CASE_B
 > （Geometry Useful but Identity Weak）→ 见 §15，CASE 归属请人工裁决。**
+> **commit `31150bd`**（git HEAD 冻结时 = `1a0245e`）。
 > 前序：5C ✅ **CASE_B — Harm Reduction Only**（commit `fdd6fa9`）→ 本实验 = Stage ⑧
 > **Method Identity / Matched-Control Validation**。
 
