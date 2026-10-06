@@ -1,0 +1,85 @@
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+
+================ Experiment 5B-C / 5B-Final — Paper Navigation ================
+📍 论文阶段 : Stage 6 — Improvement Method Screening
+             候选方案① Category-Adaptive Normalization（5B 为其 Go/No-Go mini experiment）
+🎯 要证明的话: A category's tolerance to normalization can be estimated from
+             normal-only feature geometry / normalization sensitivity.
+🧪 为什么做 5B-C: 5B interim 的 predictor registry 缺少 Group C
+             (normalization sensitivity: geometry(F0) vs geometry(IN(F0)))，
+             因此 Normal Geometry -> Tolerance 只能判为 interim CASE_A。
+             本步骤补齐 Group C 后重跑冻结 5B 协议，得到 FINAL verdict。
+🚦 出口条件: CASE_A -> 支持继续方案①（但禁止自动启动 5C）
+             CASE_B -> 证据变弱，建议最小 robustness
+             CASE_C -> 停止方案①
+==============================================================================
+
+[registry] frozen at 2026-10-06T17:21:37: 23 predictors (target NOT loaded yet)
+[predictors] bottle:0 done (10s)
+[predictors] bottle:1 done (19s)
+[predictors] bottle:2 done (29s)
+[predictors] cable:0 done (44s)
+[predictors] cable:1 done (58s)
+[predictors] cable:2 done (72s)
+[predictors] grid:0 done (84s)
+[predictors] grid:1 done (95s)
+[predictors] grid:2 done (107s)
+[predictors] hazelnut:0 done (139s)
+[predictors] hazelnut:1 done (171s)
+[predictors] hazelnut:2 done (203s)
+[predictors] screw:0 done (219s)
+[predictors] screw:1 done (235s)
+[predictors] screw:2 done (252s)
+
+[sanity] 10/11 PASS
+
+=== C2 damage by category (seed-mean +/- std) ===
+   bottle: +1.207 +/- 0.113   (C3 +1.627, G2 +1.029)
+    cable: +0.249 +/- 0.072   (C3 +0.434, G2 +0.315)
+     grid: +1.001 +/- 0.026   (C3 +1.333, G2 +1.155)
+ hazelnut: -0.183 +/- 0.214   (C3 +0.006, G2 -0.035)
+    screw: +0.113 +/- 0.090   (C3 +0.390, G2 +0.328)
+
+=== top predictors by |rho| (category-level, C2 damage) ===
+            eff_dim_L3 rho=-0.900 (p=0.037) seed-rho=-0.875
+     radius_ratio_L3L2 rho=-0.900 (p=0.037) seed-rho=-0.832
+    nn_dist_ratio_L3L2 rho=-0.900 (p=0.037) seed-rho=-0.804
+         img_pixel_std rho=+0.900 (p=0.037) seed-rho=+0.818
+        nn_dist_rel_L3 rho=-0.800 (p=0.104) seed-rho=-0.739
+            eff_dim_L2 rho=-0.800 (p=0.104) seed-rho=-0.768
+
+=== LOCO accuracy (top 6) ===
+combo2:eff_dim_L3+radius_ratio_L3L2 acc=1.00 bal=nan
+combo2:nn_dist_ratio_L3L2+img_pixel_std acc=1.00 bal=nan
+combo2:norm_mean_L2+norm_mean_L3 acc=1.00 bal=nan
+combo2:radius_ratio_L3L2+norm_cv_L3 acc=1.00 bal=nan
+            eff_dim_L2 acc=1.00 bal=1.00
+     radius_ratio_L3L2 acc=1.00 bal=1.00
+
+total runtime 254s (CPU only)
+[sanity-final] 19 checks, 0 FAIL
+
+=== Q1: frozen best geometry predictor radius_ratio_L3L2 ===
+rho_C2=-0.900 seed_rho=-0.832 LOCO=1.00 dir_consistent=True
+
+=== Q2: Group C predictors (all reported) ===
+    sens_radius_L2 rho_C2=-0.300 seed_rho=-0.246 LOCO=0.40 dir_consistent=True
+    sens_radius_L3 rho_C2=+0.100 seed_rho=+0.146 LOCO=0.60 dir_consistent=True
+       sens_mdc_L2 rho_C2=-0.300 seed_rho=-0.246 LOCO=0.40 dir_consistent=True
+       sens_mdc_L3 rho_C2=-0.100 seed_rho=-0.096 LOCO=0.00 dir_consistent=True
+   sens_effrank_L2 rho_C2=-0.200 seed_rho=-0.157 LOCO=0.20 dir_consistent=True
+   sens_effrank_L3 rho_C2=-0.200 seed_rho=-0.143 LOCO=0.20 dir_consistent=True
+      sens_pca1_L2 rho_C2=+0.200 seed_rho=+0.168 LOCO=0.20 dir_consistent=True
+      sens_pca1_L3 rho_C2=+0.200 seed_rho=+0.125 LOCO=0.40 dir_consistent=True
+-> best Group C = sens_radius_L2
+
+=== Q3: geometry vs Group C direction (descriptive consistency) ===
+best geometry eff_dim_L3: rho=-0.900; best Group C sens_radius_L2: rho=-0.300
+
+=== Q4: LOCO geometry vs controls ===
+eff_dim_L3: 0.80 | random_control: 0.60 | controls: img_brightness_mean=0.40, img_pixel_std=0.60
+
+[5B-Final] summary tables: /root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_5b_final/summary

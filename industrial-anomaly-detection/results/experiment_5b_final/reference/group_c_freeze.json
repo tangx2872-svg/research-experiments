@@ -1,0 +1,140 @@
+{
+  "frozen_at": "2026-10-06T17:07:27",
+  "purpose": "Group C (normalization sensitivity) predictors frozen BEFORE any target correlation",
+  "git_head": "24d1b229531f4f1d68f0533f34ef003f4d19e6c0",
+  "recovered_definition_note": "5B registry \u672a\u9010\u6761\u679a\u4e3e Group C\uff1bREADME \u00a75/\u00a77/\u00a79 \u552f\u4e00\u5177\u540d\u91cf\u662f category-specific s_L2/s_L3\uff081J-A radius_response\uff09\uff0c\u00a77 \u6982\u5ff5\u5b9a\u4e49 geometry(F) vs geometry(IN(F))\u3002\u6309 1J-A \u51bb\u7ed3 geometry \u6307\u6807\u65cf\u673a\u68b0\u5e94\u7528\u4e8e F0 vs IN(F0)\uff1bprimary = radius\uff08= s_L2/s_L3\uff09\u3002",
+  "group_c_predictors": [
+    {
+      "name": "sens_radius_L2",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer2",
+      "definition": "mean_image log((rms_radius(IN(F0))+eps)/(rms_radius(F0)+eps))",
+      "direction_hypothesis": "high->fragile",
+      "role": "primary"
+    },
+    {
+      "name": "sens_radius_L3",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer3",
+      "definition": "mean_image log((rms_radius(IN(F0))+eps)/(rms_radius(F0)+eps))",
+      "direction_hypothesis": "high->fragile",
+      "role": "primary"
+    },
+    {
+      "name": "sens_mdc_L2",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer2",
+      "definition": "mean_image log((mdc(IN(F0))+eps)/(mdc(F0)+eps))",
+      "direction_hypothesis": "high->fragile",
+      "role": "secondary_same_frozen_family"
+    },
+    {
+      "name": "sens_mdc_L3",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer3",
+      "definition": "mean_image log((mdc(IN(F0))+eps)/(mdc(F0)+eps))",
+      "direction_hypothesis": "high->fragile",
+      "role": "secondary_same_frozen_family"
+    },
+    {
+      "name": "sens_effrank_L2",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer2",
+      "definition": "mean_image log((normalized_pr(IN(F0))+eps)/(normalized_pr(F0)+eps))",
+      "direction_hypothesis": "high->fragile",
+      "role": "secondary_same_frozen_family"
+    },
+    {
+      "name": "sens_effrank_L3",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer3",
+      "definition": "mean_image log((normalized_pr(IN(F0))+eps)/(normalized_pr(F0)+eps))",
+      "direction_hypothesis": "high->fragile",
+      "role": "secondary_same_frozen_family"
+    },
+    {
+      "name": "sens_pca1_L2",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer2",
+      "definition": "mean_image (pca1_ratio(IN(F0)) - pca1_ratio(F0))",
+      "direction_hypothesis": "high->fragile",
+      "role": "secondary_same_frozen_family"
+    },
+    {
+      "name": "sens_pca1_L3",
+      "group": "C_normalization_sensitivity",
+      "layer": "layer3",
+      "definition": "mean_image (pca1_ratio(IN(F0)) - pca1_ratio(F0))",
+      "direction_hypothesis": "high->fragile",
+      "role": "secondary_same_frozen_family"
+    }
+  ],
+  "definition_provenance": {
+    "geometry_of": "scripts/experiment1j_extract.py::geometry_of (1J-A frozen)",
+    "response_formula": "log((metric(IN(F0))+1e-12)/(metric(F0)+1e-12)); pca1 = simple difference (1J-A frozen)",
+    "IN": "FAlphaLayerPatchcoreModel._alpha_mix(alpha=1) == F.instance_norm(F) (1E/1H/1J frozen)",
+    "feature_path": "wide_resnet50_2 eval + feature_pooler; layer2 (512,32,32), layer3 (1024,16,16)"
+  },
+  "aggregation": "per-image geometry -> per-image response -> mean over that (category, seed) normal train images",
+  "categories": [
+    "bottle",
+    "cable",
+    "grid",
+    "hazelnut",
+    "screw"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "layers": [
+    "layer2",
+    "layer3"
+  ],
+  "source_assets": "data/mvtec_ad/<cat>/train/good (make_validation_split train side)",
+  "n_units": 15,
+  "sanity_all_pass": true,
+  "sanity": [
+    {
+      "check": "S-C1_shape_F0_eq_IN",
+      "status": "PASS",
+      "detail": "asserted per image: F0.shape == IN(F0).shape"
+    },
+    {
+      "check": "S-C2_finite",
+      "status": "PASS",
+      "detail": "all per-image geometry values finite (no NaN/Inf)"
+    },
+    {
+      "check": "S-C3_determinism",
+      "status": "PASS",
+      "detail": "max|\u0394feature| = 0.000e+00 (repeat extraction, same input)"
+    },
+    {
+      "check": "S-C4_IN_effect_exists",
+      "status": "PASS",
+      "detail": "max|IN(F0)-F0| > 0 for every image/layer"
+    },
+    {
+      "check": "S-C5_coverage",
+      "status": "PASS",
+      "detail": "15 units = 5 categories \u00d7 3 seeds (2 layers each)"
+    },
+    {
+      "check": "S-C6_no_defect_leakage",
+      "status": "PASS",
+      "detail": "only <cat>/train/good read (path asserted); no test image / GT label / C2 damage / anomaly score"
+    },
+    {
+      "check": "S-C7_definition_match",
+      "status": "PASS",
+      "detail": "vs 1J-A frozen per_image CSV: max_rel_dev=1.108e-05 (n=64)"
+    }
+  ],
+  "md5": {
+    "group_c_predictors.csv": "629eb89e5aafe4b0d1f094a53d6159d9",
+    "predictor_registry_group_c.csv": "d95b60f977e608d1c7e70edca7178a49"
+  },
+  "targets_read": false
+}

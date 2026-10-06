@@ -1,0 +1,24 @@
+predictor_name,definition,source,layer,uses_normal_only,frozen_before_target_analysis,direction_hypothesis,registry_written_at
+norm_mean_L2,[A_magnitude] bank patch L2 norm mean,1j_banks,layer2,true,true,none,2026-10-06T17:21:37
+norm_mean_L3,[A_magnitude] bank patch L2 norm mean,1j_banks,layer3,true,true,none,2026-10-06T17:21:37
+norm_cv_L2,[A_magnitude] bank patch norm std/mean,1j_banks,layer2,true,true,high->tolerant,2026-10-06T17:21:37
+norm_cv_L3,[A_magnitude] bank patch norm std/mean,1j_banks,layer3,true,true,high->tolerant,2026-10-06T17:21:37
+rms_radius_L2,[B_geometry] RMS dist to bank centroid / ||centroid||,1j_banks,layer2,true,true,high->tolerant,2026-10-06T17:21:37
+rms_radius_L3,[B_geometry] RMS dist to bank centroid / ||centroid||,1j_banks,layer3,true,true,high->tolerant,2026-10-06T17:21:37
+nn_dist_rel_L2,[B_geometry] mean intra-bank NN euclid dist / mean norm,1j_banks,layer2,true,true,high->tolerant,2026-10-06T17:21:37
+nn_dist_rel_L3,[B_geometry] mean intra-bank NN euclid dist / mean norm,1j_banks,layer3,true,true,high->tolerant,2026-10-06T17:21:37
+eff_dim_L2,[B_geometry] PCA participation ratio of bank covariance,1j_banks,layer2,true,true,high->tolerant,2026-10-06T17:21:37
+eff_dim_L3,[B_geometry] PCA participation ratio of bank covariance,1j_banks,layer3,true,true,high->tolerant,2026-10-06T17:21:37
+radius_ratio_L3L2,[D_crosslayer] rms_radius_L3 / rms_radius_L2,derived,both,true,true,none,2026-10-06T17:21:37
+nn_dist_ratio_L3L2,[D_crosslayer] nn_dist_rel_L3 / nn_dist_rel_L2,derived,both,true,true,none,2026-10-06T17:21:37
+eff_dim_ratio_L3L2,[D_crosslayer] eff_dim_L3 / eff_dim_L2,derived,both,true,true,none,2026-10-06T17:21:37
+img_brightness_mean,[control] train/good mean pixel brightness,images,none,true,true,control,2026-10-06T17:21:37
+img_pixel_std,[control] train/good pixel intensity std,images,none,true,true,control,2026-10-06T17:21:37
+sens_radius_L2,[C_normalization_sensitivity] mean_image log((rms_radius(IN(F0))+eps)/(rms_radius(F0)+eps)),normal_train_images,layer2,true,true,high->fragile,2026-10-06T17:21:37
+sens_radius_L3,[C_normalization_sensitivity] mean_image log((rms_radius(IN(F0))+eps)/(rms_radius(F0)+eps)),normal_train_images,layer3,true,true,high->fragile,2026-10-06T17:21:37
+sens_mdc_L2,[C_normalization_sensitivity] mean_image log((mdc(IN(F0))+eps)/(mdc(F0)+eps)),normal_train_images,layer2,true,true,high->fragile,2026-10-06T17:21:37
+sens_mdc_L3,[C_normalization_sensitivity] mean_image log((mdc(IN(F0))+eps)/(mdc(F0)+eps)),normal_train_images,layer3,true,true,high->fragile,2026-10-06T17:21:37
+sens_effrank_L2,[C_normalization_sensitivity] mean_image log((normalized_pr(IN(F0))+eps)/(normalized_pr(F0)+eps)),normal_train_images,layer2,true,true,high->fragile,2026-10-06T17:21:37
+sens_effrank_L3,[C_normalization_sensitivity] mean_image log((normalized_pr(IN(F0))+eps)/(normalized_pr(F0)+eps)),normal_train_images,layer3,true,true,high->fragile,2026-10-06T17:21:37
+sens_pca1_L2,[C_normalization_sensitivity] mean_image (pca1_ratio(IN(F0)) - pca1_ratio(F0)),normal_train_images,layer2,true,true,high->fragile,2026-10-06T17:21:37
+sens_pca1_L3,[C_normalization_sensitivity] mean_image (pca1_ratio(IN(F0)) - pca1_ratio(F0)),normal_train_images,layer3,true,true,high->fragile,2026-10-06T17:21:37

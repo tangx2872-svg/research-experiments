@@ -1,0 +1,25 @@
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+[5B-C] device=cuda
+[5B-C] model built (eval, no fit); feature path == 1J-A/1H
+[S-C7] definition match vs 1J-A frozen CSV: max_rel_dev=1.108e-05 (n=64) PASS
+[S-C3] determinism max|Δfeature|=0.000e+00 (000.png)
+[5B-C] bottle:s0 done (189 images, 57s)
+[5B-C] bottle:s1 done (189 images, 79s)
+[5B-C] bottle:s2 done (189 images, 101s)
+[5B-C] cable:s0 done (204 images, 128s)
+[5B-C] cable:s1 done (204 images, 155s)
+[5B-C] cable:s2 done (204 images, 182s)
+[5B-C] grid:s0 done (244 images, 208s)
+[5B-C] grid:s1 done (244 images, 234s)
+[5B-C] grid:s2 done (244 images, 260s)
+[5B-C] hazelnut:s0 done (371 images, 308s)
+[5B-C] hazelnut:s1 done (371 images, 356s)
+[5B-C] hazelnut:s2 done (371 images, 404s)
+[5B-C] screw:s0 done (300 images, 436s)
+[5B-C] screw:s1 done (300 images, 469s)
+[5B-C] screw:s2 done (300 images, 501s)
+[5B-C] sanity 7/7 PASS; overall=PASS
+[5B-C] freeze record written (targets_read=False); elapsed 501s

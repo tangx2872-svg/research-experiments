@@ -4,6 +4,8 @@
 
 ## 实验归档
 
+- [2026-10-06｜Experiment 5B-C: Group C Completion & FINAL VERDICT](experiments/experiment5b/README.md#17-experiment-5b-c--group-c-completion--final-verdict2026-10-06)：补齐 5B 预注册但缺失的 **Group C（normalization sensitivity：geometry(F0) vs geometry(IN(F0))）**，复用 1J-A 冻结 `geometry_of` 与 1E/1H/1J 冻结 IN，forward-only、只用 normal train 图（3924 张），定义在读取 target 前写入 `group_c_freeze.json`（targets_read=false）。sanity **S-C1…S-C7 7/7 PASS**（含与 1J-A 冻结 CSV 的定义一致性对照 max_rel_dev=1.11e-05），主分析 19 checks / 0 FAIL。结论：**CASE_A (FINAL)** —— 原 geometry 信号（`eff_dim_L3`/`radius_ratio_L3L2`，ρ=−0.90、三 seed 方向一致、LOCO 5/5）加入 Group C 后完全不变，且仍显著优于 negative controls（LOCO 3/5、2/5）；但 **Group C 8 个 predictor 全部为 null**（|ρ|≤0.30，LOCO ≤0.60 = random，留一 category 可反号）→ 「normalization 敏感度中介 tolerance」的机制解释**不被支持**，存活的是通用 normal-feature 分散度几何。n=5，descriptive/exploratory，不做 causal claim。未启动 5C。
+
 - [2026-10-06｜Experiment 5B: Normal-Only Normalization-Tolerance Predictability Probe](experiments/experiment5b/README.md)：复用 1J 30 个 normal feature bank（5 categories × 3 seeds × 2 layers）与 5A-H damage target，CPU-only 评估 normal training geometry 能否预测 category-level normalization tolerance。15 个预注册 normal-only predictor；修复了 NN distance 展开式漏 `||x||²` 的 bug。结论：**CASE_A — Predictive Structure Exists（interim）**：`radius_ratio_L3L2`、`eff_dim_L2`、`rms_radius_L3` 与 C2 damage 呈强描述性相关（|ρ|≥0.60，方向与预注册一致），三 seed 方向完全一致，LOCO 5/5 泛化且优于 `img_pixel_std` / random controls。**Group C asset 缺失**，最终 verdict 待补齐后复核；未获批准前不启动 GPU / 5C / Adaptive α。
 
 - [2026-10-06｜Experiment 5A-H: Cross-Category Validation of Geometry-Guided Rule](experiments/experiment5a_h/README.md)：5 categories × 3 seeds × 5 frozen configs（G2/C2/C3/B0/B2），75 runs。结论：**CASE_C — BOTTLE-SPECIFIC**：G2 无法泛化，grid/screw 受系统性损伤，hazelnut 反而受益；固定层级归一化规则 hard STOP。
@@ -83,14 +85,18 @@ Stage ⑤ Method Design
   5A-H: global frozen rule CASE_C ❌ STOP（bottle-specific）
         ↓
 Stage ⑥ Improvement Method Screening
-  5B:  normal-only geometry → normalization tolerance CASE_A（interim）
-       Candidate ① Category-Adaptive Normalization 存活，待 Group C 复核
+  5B:  normal-only geometry → normalization tolerance CASE_A (interim)
+  5B-C: 补齐 Group C（normalization sensitivity）→ CASE_A (FINAL)
+        Group C 全 null，不推翻 but 也不支持 sensitivity 中介解释；
+        存活信号 = 通用 normal-feature 分散度几何（eff_dim_L3 / L3:L2 radius ratio）
+        Candidate ① Category-Adaptive Normalization 存活（机制解释受限）
 ```
 
 ### 实验导航表
 
 | Experiment | Question | Main Finding | Status |
 |---|---|---|---|
+| [5B-C](experiments/experiment5b/README.md) | 补齐 Group C 后 verdict 是否改变 | 否——CASE_A **FINAL**；Group C(normalization sensitivity) 全 null | DONE |
 | [5B](experiments/experiment5b/README.md) | normal-only geometry 能否预测 tolerance | L3/L3-L2 分散度预测 C2 damage，CASE_A interim | DONE |
 | [5A-H](experiments/experiment5a_h/README.md) | frozen geometry rule 是否跨类别泛化 | 否，G2 仅 bottle 受益，CASE_C STOP | DONE |
 | [5A](experiments/experiment5a/README.md) | bottle 上 geometry-guided rule | CASE_A conditional on bottle | DONE |

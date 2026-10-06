@@ -109,3 +109,7 @@ results/experiment_5a/logs/fit_*/
 # 5B lightweight results & figures tracked; logs/run 不跟踪
 !results/experiment_5b/
 results/experiment_5b/logs/*.log
+
+# 5B-Final（Group C 补齐）轻量结果纳入版本控制（summary/figures/reference/logs/逐图统计）
+!results/experiment_5b_final/
+!results/experiment_5b_final/logs/*.log

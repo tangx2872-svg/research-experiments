@@ -1,0 +1,318 @@
+{
+  "n_predictors": 23,
+  "categories": [
+    "bottle",
+    "cable",
+    "grid",
+    "hazelnut",
+    "screw"
+  ],
+  "damage_C2_category_mean": {
+    "bottle": 1.2073,
+    "cable": 0.2489,
+    "grid": 1.0013,
+    "hazelnut": -0.1831,
+    "screw": 0.113
+  },
+  "best_geometry_predictor": "eff_dim_L3",
+  "best_group_c_predictor": "sens_radius_L2",
+  "predictor_table": [
+    {
+      "predictor": "norm_mean_L2",
+      "group": "A_magnitude",
+      "rho_C2": 0.7,
+      "rho_C3": 0.7,
+      "rho_G2": 0.7,
+      "rho_seed_C2": 0.6357,
+      "kendall_C2": 0.6,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.8,
+      "loco_bal_acc": 0.8333333333333333
+    },
+    {
+      "predictor": "norm_mean_L3",
+      "group": "A_magnitude",
+      "rho_C2": 0.4,
+      "rho_C3": 0.4,
+      "rho_G2": 0.6,
+      "rho_seed_C2": 0.3964,
+      "kendall_C2": 0.4,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.4,
+      "loco_bal_acc": 0.41666666666666663
+    },
+    {
+      "predictor": "norm_cv_L2",
+      "group": "A_magnitude",
+      "rho_C2": 0.5,
+      "rho_C3": 0.5,
+      "rho_G2": 0.9,
+      "rho_seed_C2": 0.4607,
+      "kendall_C2": 0.4,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.6,
+      "loco_bal_acc": 0.5833333333333333
+    },
+    {
+      "predictor": "norm_cv_L3",
+      "group": "A_magnitude",
+      "rho_C2": -0.3,
+      "rho_C3": -0.3,
+      "rho_G2": 0.2,
+      "rho_seed_C2": -0.2464,
+      "kendall_C2": -0.2,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.2,
+      "loco_bal_acc": 0.16666666666666666
+    },
+    {
+      "predictor": "rms_radius_L2",
+      "group": "B_geometry",
+      "rho_C2": -0.1,
+      "rho_C3": -0.1,
+      "rho_G2": -0.4,
+      "rho_seed_C2": -0.1429,
+      "kendall_C2": 0.0,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.0,
+      "loco_bal_acc": 0.0
+    },
+    {
+      "predictor": "rms_radius_L3",
+      "group": "B_geometry",
+      "rho_C2": -0.6,
+      "rho_C3": -0.6,
+      "rho_G2": -0.6,
+      "rho_seed_C2": -0.5643,
+      "kendall_C2": -0.4,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 1.0,
+      "loco_bal_acc": 1.0
+    },
+    {
+      "predictor": "nn_dist_rel_L2",
+      "group": "B_geometry",
+      "rho_C2": -0.6,
+      "rho_C3": -0.6,
+      "rho_G2": -0.9,
+      "rho_seed_C2": -0.6036,
+      "kendall_C2": -0.4,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.8,
+      "loco_bal_acc": 0.8333333333333333
+    },
+    {
+      "predictor": "nn_dist_rel_L3",
+      "group": "B_geometry",
+      "rho_C2": -0.8,
+      "rho_C3": -0.8,
+      "rho_G2": -1.0,
+      "rho_seed_C2": -0.7393,
+      "kendall_C2": -0.6,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.8,
+      "loco_bal_acc": 0.8333333333333333
+    },
+    {
+      "predictor": "eff_dim_L2",
+      "group": "B_geometry",
+      "rho_C2": -0.8,
+      "rho_C3": -0.8,
+      "rho_G2": -1.0,
+      "rho_seed_C2": -0.7679,
+      "kendall_C2": -0.6,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 1.0,
+      "loco_bal_acc": 1.0
+    },
+    {
+      "predictor": "eff_dim_L3",
+      "group": "B_geometry",
+      "rho_C2": -0.9,
+      "rho_C3": -0.9,
+      "rho_G2": -0.9,
+      "rho_seed_C2": -0.875,
+      "kendall_C2": -0.8,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.8,
+      "loco_bal_acc": 0.8333333333333333
+    },
+    {
+      "predictor": "radius_ratio_L3L2",
+      "group": "D_crosslayer",
+      "rho_C2": -0.9,
+      "rho_C3": -0.9,
+      "rho_G2": -0.6,
+      "rho_seed_C2": -0.8321,
+      "kendall_C2": -0.8,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 1.0,
+      "loco_bal_acc": 1.0
+    },
+    {
+      "predictor": "nn_dist_ratio_L3L2",
+      "group": "D_crosslayer",
+      "rho_C2": -0.9,
+      "rho_C3": -0.9,
+      "rho_G2": -0.9,
+      "rho_seed_C2": -0.8036,
+      "kendall_C2": -0.8,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.8,
+      "loco_bal_acc": 0.8333333333333333
+    },
+    {
+      "predictor": "eff_dim_ratio_L3L2",
+      "group": "D_crosslayer",
+      "rho_C2": 0.1,
+      "rho_C3": 0.1,
+      "rho_G2": 0.4,
+      "rho_seed_C2": 0.1357,
+      "kendall_C2": 0.0,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.6,
+      "loco_bal_acc": 0.5833333333333333
+    },
+    {
+      "predictor": "img_brightness_mean",
+      "group": "control",
+      "rho_C2": 0.4,
+      "rho_C3": 0.4,
+      "rho_G2": 0.6,
+      "rho_seed_C2": 0.4,
+      "kendall_C2": 0.4,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.4,
+      "loco_bal_acc": 0.41666666666666663
+    },
+    {
+      "predictor": "img_pixel_std",
+      "group": "control",
+      "rho_C2": 0.9,
+      "rho_C3": 0.9,
+      "rho_G2": 0.5,
+      "rho_seed_C2": 0.8179,
+      "kendall_C2": 0.8,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.6,
+      "loco_bal_acc": 0.5833333333333333
+    },
+    {
+      "predictor": "sens_radius_L2",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": -0.3,
+      "rho_C3": -0.3,
+      "rho_G2": 0.3,
+      "rho_seed_C2": -0.2464,
+      "kendall_C2": -0.2,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.4,
+      "loco_bal_acc": 0.3333333333333333
+    },
+    {
+      "predictor": "sens_radius_L3",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": 0.1,
+      "rho_C3": 0.1,
+      "rho_G2": 0.4,
+      "rho_seed_C2": 0.1464,
+      "kendall_C2": 0.0,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.6,
+      "loco_bal_acc": 0.5833333333333333
+    },
+    {
+      "predictor": "sens_mdc_L2",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": -0.3,
+      "rho_C3": -0.3,
+      "rho_G2": 0.3,
+      "rho_seed_C2": -0.2464,
+      "kendall_C2": -0.2,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.4,
+      "loco_bal_acc": 0.3333333333333333
+    },
+    {
+      "predictor": "sens_mdc_L3",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": -0.1,
+      "rho_C3": -0.1,
+      "rho_G2": 0.5,
+      "rho_seed_C2": -0.0964,
+      "kendall_C2": 0.0,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.0,
+      "loco_bal_acc": 0.0
+    },
+    {
+      "predictor": "sens_effrank_L2",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": -0.2,
+      "rho_C3": -0.2,
+      "rho_G2": 0.3,
+      "rho_seed_C2": -0.1571,
+      "kendall_C2": -0.2,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.2,
+      "loco_bal_acc": 0.16666666666666666
+    },
+    {
+      "predictor": "sens_effrank_L3",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": -0.2,
+      "rho_C3": -0.2,
+      "rho_G2": 0.3,
+      "rho_seed_C2": -0.1429,
+      "kendall_C2": -0.2,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.2,
+      "loco_bal_acc": 0.16666666666666666
+    },
+    {
+      "predictor": "sens_pca1_L2",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": 0.2,
+      "rho_C3": 0.2,
+      "rho_G2": -0.3,
+      "rho_seed_C2": 0.1679,
+      "kendall_C2": 0.2,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.2,
+      "loco_bal_acc": 0.16666666666666666
+    },
+    {
+      "predictor": "sens_pca1_L3",
+      "group": "C_normalization_sensitivity",
+      "rho_C2": 0.2,
+      "rho_C3": 0.2,
+      "rho_G2": -0.3,
+      "rho_seed_C2": 0.125,
+      "kendall_C2": 0.2,
+      "direction_consistent_all_seeds": true,
+      "loco_acc": 0.4,
+      "loco_bal_acc": 0.3333333333333333
+    }
+  ],
+  "q1_radius_ratio_L3L2": {
+    "rho_C2": -0.9,
+    "rho_seed_C2": -0.8321,
+    "loco_acc": 1.0,
+    "direction_consistent_all_seeds": true
+  },
+  "controls": {
+    "img_brightness_mean": {
+      "rho_C2": 0.4,
+      "loco_acc": 0.4
+    },
+    "img_pixel_std": {
+      "rho_C2": 0.9,
+      "loco_acc": 0.6
+    }
+  },
+  "random_control": {
+    "rho_C2": null,
+    "loco_acc": 0.6
+  },
+  "random_control_loco_acc": 0.6
+}

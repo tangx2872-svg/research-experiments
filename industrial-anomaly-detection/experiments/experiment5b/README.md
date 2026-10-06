@@ -1,6 +1,7 @@
 # Experiment 5B — Normal-Only Normalization-Tolerance Predictability Probe
 
-> 状态：**已执行 / 待 Review**。Predictor registry 在计算任何 target correlation 之前写入
+> 状态：**5B-C 已完成 → FINAL VERDICT: CASE_A (FINAL)（见 §17）**。
+> Predictor registry 在计算任何 target correlation 之前写入
 > `results/experiment_5b/reference/predictor_registry.csv`。
 > 前序：5A ✅（bottle CASE A）→ 5A-H ❌ CASE C（global frozen rule 不泛化，
 > commit `ff4a1b2`）。本实验不设计新方法、不搜 α，只回答一个可预测性问题。
@@ -214,6 +215,9 @@ predictor 正确预测，说明相关不是由单一 category 驱动。
 
 **CASE_A — Predictive Structure Exists（interim）**
 
+> ⚠️ 本判定已在 §17（5B-C，补齐 Group C）升级为 **CASE_A (FINAL)**：
+> 原 geometry 结论完全不变，但 normalization-sensitivity 通道（Group C）为 null。
+
 理由：
 - 至少三个预注册 normal-only predictor（`radius_ratio_L3L2`、`eff_dim_L2`、
   `rms_radius_L3`）与 C2 damage 有强描述性相关（|ρ|≥0.60），方向与预注册
@@ -295,3 +299,162 @@ After 5B:
 
 **禁止**：在未获批准前启动 5C、实现 Adaptive α、开启新 GPU experiment、
 创建新 predictor family、进入方案②。
+
+---
+
+## 17. Experiment 5B-C — Group C Completion & FINAL VERDICT（2026-10-06）
+
+> 本附录为 5B 的最终状态；§1–§16 保留为 interim 记录（未修改任何历史内容）。
+> 输出目录：`results/experiment_5b_final/`（**不覆盖** `results/experiment_5b/`）。
+
+### 17.1 目的
+
+补齐 5B 预注册但缺失的 Group C（normalization sensitivity），然后用**完全相同的冻结协议**
+重跑分析，把 interim CASE_A 升级为 final verdict。
+
+### 17.2 Group C 定义（读取任何 target 之前冻结）
+
+5B registry（15 项）**未逐条枚举** Group C；README 中唯一的具名量是 §5
+「category-specific s_L2/s_L3」（= 1J-A `radius_response`），§7 给出概念定义
+「geometry(F) vs geometry(IN(F))」，§9 预注册 Group C figure 名 `l2_l3_category_sensitivity`。
+
+按协议「恢复最保守的机械定义」，直接复用冻结实现（不新造指标）：
+
+| 项 | 来源 |
+|---|---|
+| geometry | `scripts/experiment1j_extract.py::geometry_of`（1J-A 冻结） |
+| IN | `FAlphaLayerPatchcoreModel._alpha_mix(alpha=1)` == `F.instance_norm(F)`（1E/1H/1J 冻结） |
+| response | `log((metric(IN(F0))+1e-12)/(metric(F0)+1e-12))`；pca1 用简单差（1J-A 冻结） |
+| feature 路径 | wide_resnet50_2 **eval** + feature_pooler；layer2 (512,32,32)、layer3 (1024,16,16) |
+
+| # | predictor | layer | 定义 | 角色 |
+|---|---|---|---|---|
+| 1 | sens_radius_L2 | L2 | mean_image log(R(IN(F0))/R(F0)) | **primary（= s_L2）** |
+| 2 | sens_radius_L3 | L3 | mean_image log(R(IN(F0))/R(F0)) | **primary（= s_L3）** |
+| 3 | sens_mdc_L2 | L2 | mean_image log(MDC(IN(F0))/MDC(F0)) | secondary（同一冻结族） |
+| 4 | sens_mdc_L3 | L3 | 同上 | secondary |
+| 5 | sens_effrank_L2 | L2 | mean_image log(nPR(IN(F0))/nPR(F0)) | secondary |
+| 6 | sens_effrank_L3 | L3 | 同上 | secondary |
+| 7 | sens_pca1_L2 | L2 | mean_image (PCA1(IN(F0)) − PCA1(F0)) | secondary |
+| 8 | sens_pca1_L3 | L3 | 同上 | secondary |
+
+全部 uses_normal_only = true；direction hypothesis = high→fragile。
+**UNRESOLVED_PRE-REGISTERED PREDICTOR：无**（8 项均可由冻结代码唯一恢复）。
+
+Freeze record：`results/experiment_5b_final/reference/group_c_freeze.json`
+（frozen_at `2026-10-06T17:07:27`，git_head `24d1b22`，**targets_read = false**，
+md5：group_c_predictors.csv `629eb89e…`，predictor_registry_group_c.csv `d95b60f9…`）。
+
+### 17.3 Extraction 与 sanity
+
+- forward-only（无训练、无 α search），仅读 `<cat>/train/good`；
+  15 units = 5 categories × 3 seeds，共 **3924 张** normal 图。
+- **S-C1…S-C7 = 7/7 PASS**：
+  shape(F0)==shape(IN(F0))；无 NaN/Inf；determinism max|Δfeature| = `0.000e+00`；
+  IN 效应存在；覆盖 15 units；无 defect 泄漏（路径断言）；
+  **S-C7 定义一致性：与 1J-A 冻结 per_image CSV 对照 n=64，max_rel_dev = 1.11e-05**。
+- 主分析链 sanity：**19 checks / 0 FAIL**。interim 的 `S5_predictor_count_le_15`
+  在 final 表中标注为 **SUPERSEDED**（≤15 上限属于未枚举 Group C 的 interim registry），
+  并补 `S5b_group_c_completion`（8 项 Group C 在 target 读取前已冻结）。
+  未做任何 post-hoc predictor 增补；Group A/B/D 与 LOCO/风险标签规则未改动。
+
+### 17.4 Results：Group C（全部 8 项，不筛选不隐藏）
+
+| predictor | ρ(C2) | ρ(C3) | ρ(G2) | seed ρ(C2) | LOCO | 逐 seed 方向 | 留一 category ρ 范围 |
+|---|---:|---:|---:|---:|---:|:---:|---|
+| sens_radius_L2 | **−0.30** | −0.30 | +0.30 | −0.246 | 2/5 | ✅ | [−0.8, **+0.4**]（剔 bottle 反号） |
+| sens_radius_L3 | +0.10 | +0.10 | +0.40 | +0.146 | 3/5 | ✅ | [−0.4, +0.6] |
+| sens_mdc_L2 | −0.30 | −0.30 | +0.30 | −0.246 | 2/5 | ✅ | [−0.8, +0.4] |
+| sens_mdc_L3 | −0.10 | −0.10 | +0.50 | −0.096 | 0/5 | ✅ | [−0.6, +0.4] |
+| sens_effrank_L2 | −0.20 | −0.20 | +0.30 | −0.157 | 1/5 | ✅ | [−0.8, +0.2] |
+| sens_effrank_L3 | −0.20 | −0.20 | +0.30 | −0.143 | 1/5 | ✅ | [−0.8, +0.2] |
+| sens_pca1_L2 | +0.20 | +0.20 | −0.30 | +0.168 | 1/5 | ✅ | [−0.2, +0.8] |
+| sens_pca1_L3 | +0.20 | +0.20 | −0.30 | +0.125 | 2/5 | ✅ | [−0.2, +0.8] |
+
+**事实**：Group C 全部 8 个 predictor 与 C2 damage 仅弱描述性关系（|ρ| ≤ 0.30），
+LOCO 0.00–0.60（random control = 0.60），留一 category 后符号可翻转。
+
+**解释**：在最保守且预注册的 Group C 定义下，normal feature「对 normalization 的敏感度」
+**没有**可泛化的 tolerance 预测力 —— 这是一个 negative result，如实记录。
+
+**限定**：这不是对 Group D 的反证。sens_radius_L2（ρ=−0.30）与 eff_dim / L3:L2 ratio 族
+同号（负），方向并不矛盾，只是幅度远低于可用水平，故判为 **null 而非反证**。
+
+### 17.5 Q1–Q4
+
+**Q1 — 原 best predictor `radius_ratio_L3L2` 加入 Group C 后是否仍稳定？**
+ρ = **−0.90（与 interim 完全一致）**，seed ρ = −0.832，逐 seed 方向 3/3 一致，
+LOCO **5/5** → **仍稳定**。（同理 `eff_dim_L3` ρ=−0.90 / LOCO 4/5、
+`nn_dist_ratio_L3L2` ρ=−0.90 / LOCO 4/5。）
+
+**Q2 — Group C 是否出现与 C2 damage 稳定相关的 predictor？**
+否。最强者为 `sens_radius_L2`（ρ = −0.30，LOCO 2/5，剔 bottle 后反号），
+其余 7 项更弱（含 `sens_mdc_L3` LOCO 0/5）。
+
+**Q3 — Group C 与 Group D 是否方向一致、是否形成合理链路？**
+- `geometry → damage`：**supported（descriptive）**
+- `normalization sensitivity → damage`（Group C 通道）：**unsupported**
+→ 链路整体 **partially supported**（仅 descriptive / mechanistic consistency 层面，
+**不构成 causal proof**）。
+
+**Q4 — Geometry 是否仍优于 negative controls（以 LOCO 为准）？**
+
+| predictor | 类型 | LOCO |
+|---|---|---|
+| radius_ratio_L3L2 | geometry (D) | **5/5** |
+| eff_dim_L2 | geometry (B) | 5/5 |
+| rms_radius_L3 | geometry (B) | 5/5 |
+| eff_dim_L3 | geometry (B) | 4/5 |
+| img_pixel_std | control | 3/5 |
+| random_control | control | 3/5 |
+| img_brightness_mean | control | 2/5 |
+
+→ geometry 在 LOCO 上明显优于 controls。但必须诚实记录：`img_pixel_std` 在 **|ρ|** 上
+与 top geometry 并列（0.90），只有 LOCO 才拉开差距（3/5 vs 5/5）。
+
+### 17.6 FINAL VERDICT
+
+**CASE_A — Predictive Structure Exists (FINAL)**
+
+按预注册规则逐条核对：
+1. 原 geometry signal 加入 Group C 后仍稳定（ρ / seed / LOCO 完全不变）✅
+2. top geometry predictor 三 seed 方向完全一致 ✅
+3. LOCO 明显优于 negative controls（5/5、4/5 vs 3/5、3/5、2/5）✅
+4. Group C **不推翻**现有结构（8/8 null，无反向证据），但**未提供**支持性的
+   normalization-sensitivity 证据 ⚠️（规则要求的是"不推翻"，该条成立）
+5. leave-one-category-out 后 top predictors |ρ| 仍 ≥ 0.8，非单一 category 驱动 ✅
+
+**必须同时声明的限定（不得省略）**：
+- 存活的是**通用 normal-feature 分散度几何**（eff_dim_L3 / L3:L2 radius ratio 等），
+  而非 normalization-specific 的敏感度指标；「敏感度中介 tolerance」的机制解释
+  **不被 Group C 支持**。
+- `img_pixel_std` 在 |ρ| 上与 top geometry 并列，提示信号可能部分与图像纹理/对比度
+  共变；目前唯一区分证据是 LOCO。
+- n_category = 5，全部为描述性 / exploratory 证据，无显著性主张，不做 causal claim。
+- 未执行未预注册的 bootstrap / permutation 检验。
+
+### 17.7 Files（5B-C 新增，interim 全部保留）
+
+- scripts：`scripts/experiment5b_c_extract.py`、`scripts/experiment5b_final_analysis.py`
+  （后者 import 并复用 5B 冻结分析代码，仅扩展 registry 与合并 Group C 列，
+  **不修改旧 predictor 算法 / target / LOCO 规则**）
+- `results/experiment_5b_final/group_c/`：`per_image/`（15 CSV，3924 行）、
+  `group_c_predictors.csv`、`group_c_sanity.csv`
+- `results/experiment_5b_final/reference/`：`predictor_registry.csv`（23 项完整 registry）、
+  `predictor_registry_group_c.csv`、`group_c_freeze.json`
+- `results/experiment_5b_final/summary/`：冻结协议全部输出 + `final_summary.json`、
+  `leave_one_category_out_rho.csv`、`seed_consistency_descriptive.csv`、
+  `sanity_checks.csv` 与 `sanity_checks_final.csv`
+- `results/experiment_5b_final/figures/`：`all_predictors_vs_damage`、`group_c_panel`、
+  `l2_l3_category_sensitivity`、`loco_geometry_vs_controls`、`best_predictors_vs_damage`
+  （+ 冻结协议原有的 4 张）
+- `results/experiment_5b_final/logs/`：`group_c_extract.log`、`analysis_run.log`、
+  `paper_navigation.txt`、`registry_freeze_time.txt`
+
+### 17.8 下一步（建议，不执行）
+
+1. 若继续方案①：5C = 最简 **Geometry-Guided / Category-Adaptive α v1**，
+   必须与 fixed α（含 5A-H 已否定的 G2）直接对比，并额外加入 "predictor identity"
+   对照（通用分散度 vs normalization-specific 敏感度），因为 Group C 已表明
+   机制性通道缺乏证据。
+2. 需人工批准新协议后才可启动。本轮 **不启动 5C**。

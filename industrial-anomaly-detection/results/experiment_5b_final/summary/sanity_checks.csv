@@ -1,0 +1,12 @@
+check,status,detail
+S9_5A_commit_in_history,PASS,ba11038 is ancestor of HEAD
+S10_head_is_5AH_archive,PASS,HEAD=24d1b229
+S10_tracked_files_clean,PASS,no tracked modifications
+S5_predictor_count_le_15,FAIL,23 predictors
+S4_registry_before_target,PASS,"registry CSV written before per_unit.csv opened (code order, timestamp recorded)"
+S11_no_nan_inf,PASS,all finite
+S1_train_good_only,PASS,banks=1J normal train coreset (a=0 raw); image controls read train/good only
+S2_S3_no_test_defect_in_X,PASS,"X sources: banks + train/good images; no test paths, no labels"
+S12_bank_split_alignment,PASS,"bank rows == int(0.1*n_train*{1024,256}) for all 30 banks (asserted)"
+S7_no_alpha_search,PASS,"no model fitting, no alpha anywhere"
+S6_two_level_n,PASS,category n=5 primary; seed n=15 exploratory

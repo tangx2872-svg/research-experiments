@@ -1,0 +1,8 @@
+check,status,detail
+S-C1_shape_F0_eq_IN,PASS,asserted per image: F0.shape == IN(F0).shape
+S-C2_finite,PASS,all per-image geometry values finite (no NaN/Inf)
+S-C3_determinism,PASS,"max|Δfeature| = 0.000e+00 (repeat extraction, same input)"
+S-C4_IN_effect_exists,PASS,max|IN(F0)-F0| > 0 for every image/layer
+S-C5_coverage,PASS,15 units = 5 categories × 3 seeds (2 layers each)
+S-C6_no_defect_leakage,PASS,only <cat>/train/good read (path asserted); no test image / GT label / C2 damage / anomaly score
+S-C7_definition_match,PASS,vs 1J-A frozen per_image CSV: max_rel_dev=1.108e-05 (n=64)
