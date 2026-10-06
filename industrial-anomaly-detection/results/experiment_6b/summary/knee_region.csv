@@ -1,0 +1,9 @@
+alpha_F,satisfies_A_and_B_and_C_and_D,in_knee_region
+0.00000000,False,False
+0.12500000,False,False
+0.20000000,False,False
+0.25000000,True,True
+0.30000000,False,False
+0.40091275,False,False
+0.50000000,False,False
+SUMMARY,,"regions=[(0.25, 0.25, 1)]"

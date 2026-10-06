@@ -1,0 +1,11 @@
+policy,predictor,orientation,category,predictor_value_seed_mean,fragile_rank,alpha,role
+SC_A,sens_radius_L2,low_predictor_is_fragile,bottle,-0.464776,1,0.0,gate(alpha=0)
+SC_A,sens_radius_L2,low_predictor_is_fragile,cable,-0.424141,2,0.0,gate(alpha=0)
+SC_A,sens_radius_L2,low_predictor_is_fragile,grid,0.289088,5,0.5,keep(alpha=0.5)
+SC_A,sens_radius_L2,low_predictor_is_fragile,hazelnut,-0.208852,3,0.5,keep(alpha=0.5)
+SC_A,sens_radius_L2,low_predictor_is_fragile,screw,-0.166175,4,0.5,keep(alpha=0.5)
+SC_B,sens_radius_L2,high_predictor_is_fragile,bottle,-0.464776,5,0.5,keep(alpha=0.5)
+SC_B,sens_radius_L2,high_predictor_is_fragile,cable,-0.424141,4,0.5,keep(alpha=0.5)
+SC_B,sens_radius_L2,high_predictor_is_fragile,grid,0.289088,1,0.0,gate(alpha=0)
+SC_B,sens_radius_L2,high_predictor_is_fragile,hazelnut,-0.208852,3,0.5,keep(alpha=0.5)
+SC_B,sens_radius_L2,high_predictor_is_fragile,screw,-0.166175,2,0.0,gate(alpha=0)

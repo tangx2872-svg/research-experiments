@@ -1,0 +1,7 @@
+check,status,detail
+S2_G2_exact,PASS,"alpha_l2=0.45273825 (≈0.453), alpha_l3=0.75"
+S3_C2_exact,PASS,C2=mean(G2)=0.60136912 (≈0.601); C3=0.80182550 (≈0.802)
+S1_alpha0_equivalence,PASS,max_abs_diff=0.000e+00
+S5_photometric_protocol,PASS,same apply_photometric as 5A; range OK
+S7_preprocessing_same,PASS,preprocess/load via e1b (same as 5A/1H/1J)
+S8_no_label_in_alpha,PASS,alphas are frozen constants for all images

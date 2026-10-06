@@ -1,0 +1,6 @@
+scope,metric,n_pairs,median_paired_delta,mean_paired_delta,wilcoxon_stat,wilcoxon_p_two_sided,note
+all_15,robustness,15,-0.0089,-0.009,36.0,0.172762,zero-diffs dropped (scipy default)
+all_15,preservation,15,-0.1071,-0.0808,30.0,0.094604,zero-diffs dropped (scipy default)
+excluding_bottle_12,robustness,12,-0.0066,-0.0077,25.0,0.291992,zero-diffs dropped (scipy default)
+excluding_bottle_12,preservation,12,-0.1383,-0.1457,3.0,0.002441,zero-diffs dropped (scipy default)
+per_category,not_tested,3,na,na,na,na,n=3 时 Wilcoxon 最小 p≈0.25 无意义，只报 mean±std 与 wins/3

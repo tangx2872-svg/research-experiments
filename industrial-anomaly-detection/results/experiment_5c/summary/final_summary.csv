@@ -1,0 +1,17 @@
+item,value
+GF_delta_dprime_vs_best_fixed,0.034935
+GF_delta_robust_vs_best_fixed,0.019489
+GF_pair_win_categories_vs_best_fixed,0/5
+GF_seed_wins,"[0, 0, 0]"
+GF_seed_consistent,False
+GF_dominates_best_fixed,False
+GF_minus_SG_dprime,0.034065
+GF_minus_SG_robust,-0.008722
+geometry_identity_clear,True
+GC_delta_dprime_vs_best_fixed,0.32972
+GC_delta_robust_vs_best_fixed,0.056027
+loco_rest_gain_all_within_eps_or_better,True
+loco_rest_gains,"{""bottle"": 0.115253, ""cable"": 0.14152, ""grid"": 0.14152, ""hazelnut"": 0.097887, ""screw"": 0.11444}"
+variant_conditions,"{""GF"": {""delta_dprime_vs_best_fixed"": 0.034935, ""delta_robust_vs_best_fixed"": 0.019489, ""pair_win_categories"": ""0/5"", ""pair_win_units"": ""0/15"", ""seed_pair_wins"": [0, 0, 0], ""mean_gain_vs_best_fixed"": 0.034935, ""high_damage_recovery"": 0.438416, ""negative_transfer_count"": 3, ""worst_category_gain"": -0.283087, ""dominates_best_fixed"": false, ""harm_reduction_conditions"": false, ""robustness_gain_without_preservation_loss"": false}, ""GC"": {""delta_dprime_vs_best_fixed"": 0.32972, ""delta_robust_vs_best_fixed"": 0.056027, ""pair_win_categories"": ""0/5"", ""pair_win_units"": ""0/15"", ""seed_pair_wins"": [0, 0, 0], ""mean_gain_vs_best_fixed"": 0.32972, ""high_damage_recovery"": 0.8243, ""negative_transfer_count"": 0, ""worst_category_gain"": 0.0, ""dominates_best_fixed"": false, ""harm_reduction_conditions"": true, ""robustness_gain_without_preservation_loss"": false}}"
+verdict,CASE_B
+verdict_driver_variant,GC

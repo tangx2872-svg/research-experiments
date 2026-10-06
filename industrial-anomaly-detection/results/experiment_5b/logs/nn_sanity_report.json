@@ -1,0 +1,316 @@
+{
+  "checks": {
+    "A_pass": true,
+    "B_pass": true,
+    "D_pass": true,
+    "E_pass": true,
+    "A_min_raw_d2": {
+      "bottle:s0:layer2": 172.49018384400824,
+      "bottle:s0:layer3": 143.3328814528686,
+      "bottle:s1:layer2": 180.7992742585484,
+      "bottle:s1:layer3": 155.02644317831073,
+      "bottle:s2:layer2": 173.617157532678,
+      "bottle:s2:layer3": 144.6957941532146,
+      "cable:s0:layer2": 466.33894465299,
+      "cable:s0:layer3": 421.14827154542036,
+      "cable:s1:layer2": 467.97493961424425,
+      "cable:s1:layer3": 400.0317290959192,
+      "cable:s2:layer2": 441.757001893242,
+      "cable:s2:layer3": 395.47291193575074,
+      "grid:s0:layer2": 167.8422079638367,
+      "grid:s0:layer3": 143.27078789969346,
+      "grid:s1:layer2": 169.7687434728523,
+      "grid:s1:layer3": 135.70479412751138,
+      "grid:s2:layer2": 170.28258696552984,
+      "grid:s2:layer3": 131.70835659282602,
+      "hazelnut:s0:layer2": 287.8512749319848,
+      "hazelnut:s0:layer3": 378.7294413546615,
+      "hazelnut:s1:layer2": 277.1748613844393,
+      "hazelnut:s1:layer3": 378.54942618947734,
+      "hazelnut:s2:layer2": 272.3893963902151,
+      "hazelnut:s2:layer3": 378.5867271405459,
+      "screw:s0:layer2": 232.3276706660481,
+      "screw:s0:layer3": 268.7405325309205,
+      "screw:s1:layer2": 225.57915307392386,
+      "screw:s1:layer3": 248.6523193880912,
+      "screw:s2:layer2": 231.73666409550424,
+      "screw:s2:layer3": 249.12216826508006
+    },
+    "B_max_self_d2": {
+      "bottle:s0:layer2": 7.275957614183426e-12,
+      "bottle:s0:layer3": 5.4569682106375694e-12,
+      "bottle:s1:layer2": 1.0913936421275139e-11,
+      "bottle:s1:layer3": 9.094947017729282e-12,
+      "bottle:s2:layer2": 5.4569682106375694e-12,
+      "bottle:s2:layer3": 9.094947017729282e-12,
+      "cable:s0:layer2": 7.275957614183426e-12,
+      "cable:s0:layer3": 8.185452315956354e-12,
+      "cable:s1:layer2": 9.094947017729282e-12,
+      "cable:s1:layer3": 7.275957614183426e-12,
+      "cable:s2:layer2": 7.275957614183426e-12,
+      "cable:s2:layer3": 9.094947017729282e-12,
+      "grid:s0:layer2": 9.094947017729282e-12,
+      "grid:s0:layer3": 1.4551915228366852e-11,
+      "grid:s1:layer2": 9.094947017729282e-12,
+      "grid:s1:layer3": 1.0913936421275139e-11,
+      "grid:s2:layer2": 9.094947017729282e-12,
+      "grid:s2:layer3": 1.0913936421275139e-11,
+      "hazelnut:s0:layer2": 1.0913936421275139e-11,
+      "hazelnut:s0:layer3": 7.275957614183426e-12,
+      "hazelnut:s1:layer2": 5.4569682106375694e-12,
+      "hazelnut:s1:layer3": 7.275957614183426e-12,
+      "hazelnut:s2:layer2": 3.637978807091713e-12,
+      "hazelnut:s2:layer3": 7.275957614183426e-12,
+      "screw:s0:layer2": 7.275957614183426e-12,
+      "screw:s0:layer3": 1.4551915228366852e-11,
+      "screw:s1:layer2": 7.275957614183426e-12,
+      "screw:s1:layer3": 7.275957614183426e-12,
+      "screw:s2:layer2": 9.094947017729282e-12,
+      "screw:s2:layer3": 1.2732925824820995e-11
+    },
+    "D_mean_nn": {
+      "bottle:s0:layer2": 16.579757358864057,
+      "bottle:s0:layer3": 14.268187144697269,
+      "bottle:s1:layer2": 16.546930976428527,
+      "bottle:s1:layer3": 14.276217018943983,
+      "bottle:s2:layer2": 16.579878942422248,
+      "bottle:s2:layer3": 14.287472119772595,
+      "cable:s0:layer2": 26.553226987817347,
+      "cable:s0:layer3": 23.778728736024366,
+      "cable:s1:layer2": 26.58287824237353,
+      "cable:s1:layer3": 23.76689434118715,
+      "cable:s2:layer2": 26.535462161500064,
+      "cable:s2:layer3": 23.761071787596865,
+      "grid:s0:layer2": 17.220246479374346,
+      "grid:s0:layer3": 14.404034496736994,
+      "grid:s1:layer2": 17.21486250163844,
+      "grid:s1:layer3": 14.368258176827378,
+      "grid:s2:layer2": 17.1692985415387,
+      "grid:s2:layer3": 14.34963058287968,
+      "hazelnut:s0:layer2": 23.372982875787937,
+      "hazelnut:s0:layer3": 24.475434813304297,
+      "hazelnut:s1:layer2": 23.41851394033359,
+      "hazelnut:s1:layer3": 24.458466481545525,
+      "hazelnut:s2:layer2": 23.40044578295402,
+      "hazelnut:s2:layer3": 24.441417800410317,
+      "screw:s0:layer2": 19.750112444079853,
+      "screw:s0:layer3": 19.388249080635802,
+      "screw:s1:layer2": 19.67107714689347,
+      "screw:s1:layer3": 19.35961038668751,
+      "screw:s2:layer2": 19.688356330211484,
+      "screw:s2:layer3": 19.38357279064961
+    },
+    "D_median_nn": {
+      "bottle:s0:layer2": 16.34054078288866,
+      "bottle:s0:layer3": 14.152736079621452,
+      "bottle:s1:layer2": 16.337275569605197,
+      "bottle:s1:layer3": 14.183226057938832,
+      "bottle:s2:layer2": 16.302013110905584,
+      "bottle:s2:layer3": 14.19084444759315,
+      "cable:s0:layer2": 26.388112248514485,
+      "cable:s0:layer3": 23.69913230583019,
+      "cable:s1:layer2": 26.381994738687286,
+      "cable:s1:layer3": 23.667203170683237,
+      "cable:s2:layer2": 26.320793798204217,
+      "cable:s2:layer3": 23.65720787981833,
+      "grid:s0:layer2": 16.873056085481778,
+      "grid:s0:layer3": 14.175861118961794,
+      "grid:s1:layer2": 16.800978204847183,
+      "grid:s1:layer3": 14.13890232904098,
+      "grid:s2:layer2": 16.814999818603145,
+      "grid:s2:layer3": 14.160902259320018,
+      "hazelnut:s0:layer2": 23.152634596519203,
+      "hazelnut:s0:layer3": 24.16491526824938,
+      "hazelnut:s1:layer2": 23.240157838722332,
+      "hazelnut:s1:layer3": 24.105551411433698,
+      "hazelnut:s2:layer2": 23.19195717759733,
+      "hazelnut:s2:layer3": 24.134681885714606,
+      "screw:s0:layer2": 19.323545235289334,
+      "screw:s0:layer3": 19.084499667640838,
+      "screw:s1:layer2": 19.237806436909814,
+      "screw:s1:layer3": 19.096382069704603,
+      "screw:s2:layer2": 19.274927576362593,
+      "screw:s2:layer3": 19.07713365323921
+    },
+    "D_zero_frac": {
+      "bottle:s0:layer2": 0.0,
+      "bottle:s0:layer3": 0.0,
+      "bottle:s1:layer2": 0.0,
+      "bottle:s1:layer3": 0.0,
+      "bottle:s2:layer2": 0.0,
+      "bottle:s2:layer3": 0.0,
+      "cable:s0:layer2": 0.0,
+      "cable:s0:layer3": 0.0,
+      "cable:s1:layer2": 0.0,
+      "cable:s1:layer3": 0.0,
+      "cable:s2:layer2": 0.0,
+      "cable:s2:layer3": 0.0,
+      "grid:s0:layer2": 0.0,
+      "grid:s0:layer3": 0.0,
+      "grid:s1:layer2": 0.0,
+      "grid:s1:layer3": 0.0,
+      "grid:s2:layer2": 0.0,
+      "grid:s2:layer3": 0.0,
+      "hazelnut:s0:layer2": 0.0,
+      "hazelnut:s0:layer3": 0.0,
+      "hazelnut:s1:layer2": 0.0,
+      "hazelnut:s1:layer3": 0.0,
+      "hazelnut:s2:layer2": 0.0,
+      "hazelnut:s2:layer3": 0.0,
+      "screw:s0:layer2": 0.0,
+      "screw:s0:layer3": 0.0,
+      "screw:s1:layer2": 0.0,
+      "screw:s1:layer3": 0.0,
+      "screw:s2:layer2": 0.0,
+      "screw:s2:layer3": 0.0
+    },
+    "E_shapes": {
+      "bottle:s0:layer2": [
+        19353,
+        512
+      ],
+      "bottle:s0:layer3": [
+        4838,
+        1024
+      ],
+      "bottle:s1:layer2": [
+        19353,
+        512
+      ],
+      "bottle:s1:layer3": [
+        4838,
+        1024
+      ],
+      "bottle:s2:layer2": [
+        19353,
+        512
+      ],
+      "bottle:s2:layer3": [
+        4838,
+        1024
+      ],
+      "cable:s0:layer2": [
+        20889,
+        512
+      ],
+      "cable:s0:layer3": [
+        5222,
+        1024
+      ],
+      "cable:s1:layer2": [
+        20889,
+        512
+      ],
+      "cable:s1:layer3": [
+        5222,
+        1024
+      ],
+      "cable:s2:layer2": [
+        20889,
+        512
+      ],
+      "cable:s2:layer3": [
+        5222,
+        1024
+      ],
+      "grid:s0:layer2": [
+        24985,
+        512
+      ],
+      "grid:s0:layer3": [
+        6246,
+        1024
+      ],
+      "grid:s1:layer2": [
+        24985,
+        512
+      ],
+      "grid:s1:layer3": [
+        6246,
+        1024
+      ],
+      "grid:s2:layer2": [
+        24985,
+        512
+      ],
+      "grid:s2:layer3": [
+        6246,
+        1024
+      ],
+      "hazelnut:s0:layer2": [
+        37990,
+        512
+      ],
+      "hazelnut:s0:layer3": [
+        9497,
+        1024
+      ],
+      "hazelnut:s1:layer2": [
+        37990,
+        512
+      ],
+      "hazelnut:s1:layer3": [
+        9497,
+        1024
+      ],
+      "hazelnut:s2:layer2": [
+        37990,
+        512
+      ],
+      "hazelnut:s2:layer3": [
+        9497,
+        1024
+      ],
+      "screw:s0:layer2": [
+        30720,
+        512
+      ],
+      "screw:s0:layer3": [
+        7680,
+        1024
+      ],
+      "screw:s1:layer2": [
+        30720,
+        512
+      ],
+      "screw:s1:layer3": [
+        7680,
+        1024
+      ],
+      "screw:s2:layer2": [
+        30720,
+        512
+      ],
+      "screw:s2:layer3": [
+        7680,
+        1024
+      ]
+    },
+    "C_pass": true,
+    "C_max_abs_diff": {
+      "bottle:s0:layer2": 2.2026824808563106e-13,
+      "grid:s0:layer2": 2.984279490192421e-13,
+      "screw:s0:layer3": 2.913225216616411e-13
+    },
+    "D_full": {
+      "bottle:s0:layer2": {
+        "nn_mean": 15.25827891387914,
+        "norm_mean": 66.30326721099307,
+        "nn_dist_rel": 0.23012861289811853
+      },
+      "bottle:s0:layer3": {
+        "nn_mean": 14.159770378818424,
+        "norm_mean": 60.13209620040661,
+        "nn_dist_rel": 0.23547774439173264
+      },
+      "grid:s0:layer2": {
+        "nn_mean": 15.178303978334245,
+        "norm_mean": 71.22273877026986,
+        "nn_dist_rel": 0.2131103667227979
+      }
+    }
+  },
+  "n_banks": 30,
+  "overall": "PASS",
+  "elapsed_s": 27.4
+}

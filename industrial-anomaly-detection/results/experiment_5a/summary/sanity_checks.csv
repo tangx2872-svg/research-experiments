@@ -1,0 +1,11 @@
+check,status,detail
+S1_alpha0_embedding_equivalence,PASS,max_abs_diff=0.000e+00
+S2_nan_inf_scan,PASS,all scores finite OK
+S3_rule_hash_unchanged,PASS,dd08ed5e67b5... -> dd08ed5e67b5...
+S4_bank_source_consistency,PASS,train_ids_hash=['4e89d97b0d21'] coreset_size=[21401] 一致 OK
+S5_photometric_numeric_range,PASS,photometric range/identity OK
+S6_rule_frozen_before_run,PASS,frozen_before_run=True
+S7_config_count_11,PASS,OK configs=11
+S8_data_counts,PASS,val=20 train=189 good=20 defect=63
+S9_rule_constants_match_protocol,PASS,s_L2=0.2670 s_L3=0.1612 ratio=0.6037 与协议一致 OK
+S10_mean_alpha_control_match,PASS,C1 == mean(G1) (3dp = 0.401/0.601/0.802) OK; C2 == mean(G2) (3dp = 0.401/0.601/0.802) OK; C3 == mean(G3) (3dp = 0.401/0.601/0.802) OK

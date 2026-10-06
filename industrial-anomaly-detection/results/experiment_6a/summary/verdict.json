@@ -1,0 +1,129 @@
+{
+  "experiment": "6A",
+  "title": "Geometry-Guided Soft Gating / Adaptive alpha Pilot",
+  "freeze_sha256": "d4364457b00bb886ada747722f1d4cb82e31a44df631e0920e2d1bfd4c4b50ce",
+  "git_head": "e0bda2260b3ec0f91d4fb8bdd75b061afbed9656",
+  "alpha_F_grid_evaluated": [
+    "0.00000000",
+    "0.25000000",
+    "0.50000000",
+    "0.40091275"
+  ],
+  "frozen_fragile": [
+    "bottle",
+    "grid"
+  ],
+  "frozen_tolerant": [
+    "cable",
+    "hazelnut",
+    "screw"
+  ],
+  "tolerant_alpha": 0.5,
+  "primary_control_baselines": {
+    "hard_GC": {
+      "mean_defect_dprime": 4.996715,
+      "mean_robustness": 0.264255,
+      "delta_dprime_vs_fixed": 0.329722,
+      "delta_robust_vs_fixed": 0.056039,
+      "worst_category_gain": 0.0,
+      "negative_transfer_count": 0,
+      "gate": "bottle+grid"
+    },
+    "best_fixed": {
+      "mean_defect_dprime": 4.666993,
+      "mean_robustness": 0.208216,
+      "mean_alpha": 0.5
+    }
+  },
+  "success_criteria_used": {
+    "A_preservation_retention": {
+      "rule": "delta_dprime_vs_fixed(soft) >= +0.20",
+      "threshold": 0.2,
+      "note": ">= ~60% of the Hard-GC preservation gain (+0.3297 \u2192 60% = +0.1978)"
+    },
+    "B_robustness_recovery": {
+      "rule": "mean_abs_delta_z(soft) <= mean_abs_delta_z(hard_GC) - 0.02",
+      "threshold_abs_z_max": 0.244255,
+      "improvement_required": 0.02,
+      "note": "Hard GC |dz| = 0.2643 (read from 5D frozen summary, not hard-coded)"
+    },
+    "C_safety": {
+      "rule": "worst_category_gain >= -eps AND negative_transfer_count <= HardGC negative_transfer_count",
+      "epsilon": 0.1,
+      "hard_gc_negative_transfer_count": 0
+    },
+    "D_stability": {
+      "rule": "at least 2/3 seeds satisfy BOTH A and B at seed level: delta_dprime_vs_fixed_seed >= +0.20 AND mean_abs_delta_z_seed <= hardGC_mean_abs_delta_z_seed - 0.02",
+      "min_seeds": 2
+    }
+  },
+  "criteria_per_policy": {
+    "aF=0.00000000": {
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": false
+    },
+    "aF=0.25000000": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true
+    },
+    "aF=0.50000000": {
+      "A": false,
+      "B": true,
+      "C": true,
+      "D": false
+    },
+    "aF=0.40091275": {
+      "A": false,
+      "B": true,
+      "C": true,
+      "D": false
+    }
+  },
+  "verdict": {
+    "case": "CASE_A",
+    "meaning": "Soft Geometry Gating Works: at least one alpha_F satisfies A+B+C+D.",
+    "winning_alpha_F": [
+      0.25
+    ],
+    "conditions_CASE_C": {
+      "no_soft_alpha_reaches_criterion_A": false,
+      "some_soft_alpha_has_negative_transfer_worse_than_hardGC": false
+    },
+    "conditions_CASE_D": {
+      "no_soft_alpha_recovers_robustness_by_0.02": false
+    },
+    "criteria_summary": {
+      "aF=0.00000000": {
+        "A": true,
+        "B": false,
+        "C": true,
+        "D": false
+      },
+      "aF=0.25000000": {
+        "A": true,
+        "B": true,
+        "C": true,
+        "D": true
+      },
+      "aF=0.50000000": {
+        "A": false,
+        "B": true,
+        "C": true,
+        "D": false
+      },
+      "aF=0.40091275": {
+        "A": false,
+        "B": true,
+        "C": true,
+        "D": false
+      }
+    }
+  },
+  "sanity_passed": "18/18",
+  "budget_disclosure": "Soft GC mean alpha = (2*alpha_F+1.5)/5 > 0.30 for alpha_F>0, so soft policies receive MORE normalization strength than Hard GC; policy-identity effect and normalization-strength effect are NOT separable here. No strong causal claim.",
+  "no_gpu_during_analysis": true
+}

@@ -1,0 +1,6 @@
+policy,predictor,orientation,category,predictor_value_seed_mean,fragile_rank,alpha,role
+GC,radius_ratio_L3L2,low_predictor_is_fragile,bottle,0.889279,1,0.0,gate(alpha=0)
+GC,radius_ratio_L3L2,low_predictor_is_fragile,cable,1.116523,3,0.5,keep(alpha=0.5)
+GC,radius_ratio_L3L2,low_predictor_is_fragile,grid,0.897690,2,0.0,gate(alpha=0)
+GC,radius_ratio_L3L2,low_predictor_is_fragile,hazelnut,1.160640,4,0.5,keep(alpha=0.5)
+GC,radius_ratio_L3L2,low_predictor_is_fragile,screw,1.355897,5,0.5,keep(alpha=0.5)

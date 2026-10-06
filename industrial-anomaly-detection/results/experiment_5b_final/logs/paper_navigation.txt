@@ -1,0 +1,14 @@
+
+================ Experiment 5B-C / 5B-Final — Paper Navigation ================
+📍 论文阶段 : Stage 6 — Improvement Method Screening
+             候选方案① Category-Adaptive Normalization（5B 为其 Go/No-Go mini experiment）
+🎯 要证明的话: A category's tolerance to normalization can be estimated from
+             normal-only feature geometry / normalization sensitivity.
+🧪 为什么做 5B-C: 5B interim 的 predictor registry 缺少 Group C
+             (normalization sensitivity: geometry(F0) vs geometry(IN(F0)))，
+             因此 Normal Geometry -> Tolerance 只能判为 interim CASE_A。
+             本步骤补齐 Group C 后重跑冻结 5B 协议，得到 FINAL verdict。
+🚦 出口条件: CASE_A -> 支持继续方案①（但禁止自动启动 5C）
+             CASE_B -> 证据变弱，建议最小 robustness
+             CASE_C -> 停止方案①
+==============================================================================

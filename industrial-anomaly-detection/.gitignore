@@ -60,6 +60,25 @@ results/experiment_1i/**/logs/
 results/experiment_1i/logs/
 results/experiment_1i/**/sample_level.csv
 
+# Experiment 1J-A 结果（feature geometry probe；纳入 per_image/nn/analysis/figures 轻量资产，
+# 排除可用 scripts/experiment1j_extract.py + rebuild 脚本重新生成的 raw npz（~972MB）、banks（~1.2GB）与 logs）
+!results/experiment_1j/
+results/experiment_1j/raw/
+results/experiment_1j/banks/
+results/experiment_1j/logs/
+
+# Experiment 1J-B 结果（transmission intervention；全部为轻量 CSV/图，纳入）
+!results/experiment_1j_b/
+
+# Experiment 5A 结果（geometry-guided normalization mini probe；纳入轻量 CSV/JSON/图与
+# 逐图分数（364KB），排除运行日志 progress-bar 噪声）
+!results/experiment_5a/
+results/experiment_5a/logs/run.log
+
+# Experiment 5A-H 结果（跨类别验证；raw 4.4MB per-image CSV + summary + figures 全部轻量，
+# fit/ 目录为空指针目录）
+!results/experiment_5a_h/
+
 # 本地工作记忆（.workbuddy），不上传 GitHub
 .workbuddy/
 
@@ -83,3 +102,42 @@ __pycache__/
 # 系统文件
 .DS_Store
 Thumbs.db
+
+# 5A Lightning fit 运行时指针目录（symlink，运行时产物）
+results/experiment_5a/logs/fit_*/
+
+# 5B lightweight results & figures tracked; logs/run 不跟踪
+!results/experiment_5b/
+results/experiment_5b/logs/*.log
+
+# 5B-Final（Group C 补齐）轻量结果纳入版本控制（summary/figures/reference/logs/逐图统计）
+!results/experiment_5b_final/
+!results/experiment_5b_final/logs/*.log
+
+# 5C 轻量结果纳入版本控制；progress 日志与 lightning fit 运行目录不跟踪
+!results/experiment_5c/
+results/experiment_5c/logs/*.log
+results/experiment_5c/raw/**/fit/
+
+# 5D 轻量结果纳入版本控制（reference/summary/sanity/figures）；运行日志不跟踪
+!results/experiment_5d/
+results/experiment_5d/logs/*.log
+
+# 6A 轻量结果纳入版本控制（reference/raw/summary/sanity/figures）；raw_new 的逐图分数与运行日志不入库
+!results/experiment_6a/
+results/experiment_6a/logs/*.log
+results/experiment_6a/logs/*.json
+results/experiment_6a/logs/runner_pid_*.txt
+results/experiment_6a/logs/sanity_pre_*.csv
+results/experiment_6a/raw_new/**/fit/
+results/experiment_6a/raw_new/**/run.lock
+# 6A 逐图分数仅 404 KB（11 unit），与 5A-H raw 同口径纳入版本控制以保证可复现
+
+# 6B 轻量结果纳入版本控制（reference/raw/summary/sanity/figures）；raw_new 逐图分数 ~0.4MB/28unit 亦入库
+!results/experiment_6b/
+results/experiment_6b/logs/*.log
+results/experiment_6b/logs/*.json
+results/experiment_6b/logs/runner_pid_*.txt
+results/experiment_6b/logs/sanity_pre_*.csv
+results/experiment_6b/raw_new/**/fit/
+results/experiment_6b/raw_new/**/run.lock

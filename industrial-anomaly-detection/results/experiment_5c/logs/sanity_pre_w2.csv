@@ -1,0 +1,15 @@
+check,status,detail
+S1_predictor_normal_only,PASS,predictor source = normal_only_predictors.csv (5B-Final normal-only asset); no test-image path
+S2_no_target_in_alpha_assignment,PASS,geometry_policy_freeze.json: target_results_read=false; alpha 只由 5B predictor 值 + rank 决定
+S3_mapping_monotonic,PASS,"full-range ranks 1..5 -> [0.0, 0.5, 0.601369125, 0.8018255000000001, 0.8018255000000001]"
+S4_mapping_deterministic,PASS,两次独立重算 assignment 完全一致
+S5_same_mapping_all_categories,PASS,GF/GC/SG 共用同一 rank->alpha 函数（逐行复算一致）
+S6_alpha_in_historical_grid,PASS,"all assigned alpha in [0.0, 0.5, 0.601369125, 0.8018255000000001] (GC subset <= 0.5)"
+S7_seeds_unchanged,PASS,"seeds=[0, 1, 2] (same as 5A-H / 5B)"
+S8_categories_unchanged,PASS,"categories=['bottle', 'cable', 'grid', 'hazelnut', 'screw'] (same as 5A-H / 5B)"
+S9_fixed_baseline_frozen_before_run,PASS,freeze written before any 5C run; best_fixed_alpha=0.5 [B2] from 5A-H frozen PAIR-WIN rule (eps=0.10)
+S10_control_same_mapping,PASS,SG 与 GF 使用同一 mapping，且 mean alpha 相同（budget-matched）
+S11_no_target_leakage,PASS,alpha 路径只读 5B normal-only predictor 表；5A-H 仅用于 best-fixed 冻结选择（历史 baseline），不参与 adaptive 评估
+S12_primary_predictor_frozen,PASS,primary hard-coded = radius_ratio_L3L2
+S13_no_posthoc_alpha_tuning,PASS,"全部 assigned alpha in [0.0, 0.5, 0.601369125, 0.8018255000000001]（无新 α）"
+S14_historical_results_unchanged_before,PASS,6 个历史冻结文件 md5 记录于 frozen_hashes_before_w2.json

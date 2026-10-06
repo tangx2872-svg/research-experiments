@@ -1,0 +1,9 @@
+predictor_name,group,layer,definition,source,uses_normal_only,direction_hypothesis,primary_or_secondary,unresolved_pre_registered
+sens_radius_L2,C_normalization_sensitivity,layer2,mean_image log((rms_radius(IN(F0))+eps)/(rms_radius(F0)+eps)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,primary,false
+sens_radius_L3,C_normalization_sensitivity,layer3,mean_image log((rms_radius(IN(F0))+eps)/(rms_radius(F0)+eps)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,primary,false
+sens_mdc_L2,C_normalization_sensitivity,layer2,mean_image log((mdc(IN(F0))+eps)/(mdc(F0)+eps)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,secondary_same_frozen_family,false
+sens_mdc_L3,C_normalization_sensitivity,layer3,mean_image log((mdc(IN(F0))+eps)/(mdc(F0)+eps)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,secondary_same_frozen_family,false
+sens_effrank_L2,C_normalization_sensitivity,layer2,mean_image log((normalized_pr(IN(F0))+eps)/(normalized_pr(F0)+eps)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,secondary_same_frozen_family,false
+sens_effrank_L3,C_normalization_sensitivity,layer3,mean_image log((normalized_pr(IN(F0))+eps)/(normalized_pr(F0)+eps)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,secondary_same_frozen_family,false
+sens_pca1_L2,C_normalization_sensitivity,layer2,mean_image (pca1_ratio(IN(F0)) - pca1_ratio(F0)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,secondary_same_frozen_family,false
+sens_pca1_L3,C_normalization_sensitivity,layer3,mean_image (pca1_ratio(IN(F0)) - pca1_ratio(F0)),normal_train_images(F0_vs_IN(F0)),true,high->fragile,secondary_same_frozen_family,false

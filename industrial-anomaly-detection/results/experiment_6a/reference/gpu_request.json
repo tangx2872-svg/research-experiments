@@ -1,0 +1,24 @@
+{
+  "missing": {
+    "0.250000000": [
+      "bottle:s1:a0.250000000",
+      "bottle:s2:a0.250000000",
+      "grid:s0:a0.250000000",
+      "grid:s1:a0.250000000",
+      "grid:s2:a0.250000000"
+    ]
+  },
+  "grid": [
+    0.0,
+    0.25,
+    0.5
+  ],
+  "estimate": {
+    "n_source_units": 18,
+    "runtime_mean_seconds": 102.36,
+    "runtime_max_seconds": 161.1,
+    "peak_vram_mean_mb": 2935.0,
+    "peak_vram_max_mb": 3265.0,
+    "source": "results/experiment_5c/raw/{bottle,grid}/*/info.json"
+  }
+}

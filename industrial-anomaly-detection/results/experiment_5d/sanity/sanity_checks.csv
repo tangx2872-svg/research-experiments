@@ -1,0 +1,19 @@
+check,status,detail
+S1_P0_repo_state,PASS,"branch=main head=1a0245e==freeze_head, modified_tracked_files=0 (untracked 5D outputs excluded)"
+S2_primary_predictor_frozen,PASS,primary=radius_ratio_L3L2 (identical to 5C freeze)
+S3_control_predictor_frozen,PASS,control=sens_radius_L2 (identical to 5C freeze)
+S4_normal_only_predictors,PASS,source=results/experiment_5b_final/summary/normal_only_predictors.csv (5B normal-only asset; no test-image path)
+S5_target_results_read_false,PASS,policy_freeze.json target_results_read=false (freeze precedes any target analysis)
+S6_geometry_assignment_matches_5C,PASS,"GC={'bottle': 0.0, 'cable': 0.5, 'grid': 0.0, 'hazelnut': 0.5, 'screw': 0.5} == 5C frozen D_geometry_conservative"
+S7_gate_size_2of5,PASS,all adaptive/matched policies close exactly 2/5 categories
+S8_mean_alpha_0p3,PASS,all adaptive/matched policies have mean alpha = 0.3 (budget matched)
+S9_alpha_set,PASS,"all assigned alpha in {0, 0.5}"
+S10_fixed_baseline_frozen,PASS,"best fixed = alpha 0.5 (5C frozen, reused as 5A-H B2, not re-selected)"
+S11_epsilon_unchanged,PASS,eps=0.1 == 5A-H frozen band
+S12_categories_unchanged,PASS,"categories=['bottle', 'cable', 'grid', 'hazelnut', 'screw']"
+S13_seeds_unchanged,PASS,"seeds=[0, 1, 2]"
+S14_illumination_protocol_unchanged,PASS,"shifts=['brightness_0.7', 'brightness_1.3', 'gamma_0.7', 'gamma_1.3'] (5A-H frozen photometric protocol)"
+S15_historical_raw_score_equivalence,PASS,"5C vs 5A-H at identical alpha: n_keys=33, rows=9273, max|dscore|=0.000e+00, max|dtau|=0.000e+00"
+S16_exhaustive_gates_complete,PASS,"n_gates=10 (C(5,2)); each closes 2/5 with mean alpha 0.3"
+S17_all_outputs_finite,PASS,60 aggregate metric values all finite
+S18_frozen_asset_hashes_unchanged,PASS,9 tracked frozen assets md5 identical before/after analysis

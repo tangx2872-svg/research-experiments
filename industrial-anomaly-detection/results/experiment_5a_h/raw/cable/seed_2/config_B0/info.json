@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "cable",
+  "seed": 2,
+  "config": "B0",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 196.71,
+  "coreset_size": 22937,
+  "tau_val": 31.88883399963379,
+  "peak_gpu_memory_allocated_mb": 2785.04,
+  "train_ids_hash": "a146719cbf49",
+  "n_rows": 402,
+  "pixel_auroc": 0.984646109625,
+  "aupro": 0.9289275407791138
+}

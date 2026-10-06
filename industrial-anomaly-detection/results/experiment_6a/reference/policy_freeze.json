@@ -1,0 +1,188 @@
+{
+  "experiment": "6A",
+  "title": "Geometry-Guided Soft Gating / Adaptive alpha Pilot",
+  "paper_stage": "9. Robustness-Preservation Trade-off method improvement (METHOD PILOT)",
+  "research_question": "Can geometry-guided soft normalization recover illumination robustness while retaining most of the defect-preservation gain of Hard GC?",
+  "target_claim_under_test": "Geometry-guided adaptive normalization can provide a better preservation-robustness trade-off than either no normalization, globally fixed normalization, or hard geometry gating. (HYPOTHESIS, not a fact)",
+  "frozen_category_identity": {
+    "fragile": [
+      "bottle",
+      "grid"
+    ],
+    "tolerant": [
+      "cable",
+      "hazelnut",
+      "screw"
+    ],
+    "source": "5D frozen GC assignment (bottle+grid) - NOT to be changed"
+  },
+  "policy_family": {
+    "fragile_alpha": "alpha_F (candidate grid)",
+    "tolerant_alpha": 0.5,
+    "mean_alpha_formula": "(2 * alpha_F + 3 * 0.5) / 5",
+    "alpha_F_0_equals": "Hard Geometry Gating (5D GC)",
+    "alpha_F_0p5_equals": "Best Fixed alpha=0.5"
+  },
+  "candidate_grid": [
+    0.0,
+    0.25,
+    0.5
+  ],
+  "candidate_grid_provenance": {
+    "0.000000000": "5A B0 / 5A-H B0",
+    "0.250000000": "5A B1",
+    "0.500000000": "5A B2 / 5A-H B2",
+    "0.400912750": "5A C1"
+  },
+  "pre_registered_conditional_extension": {
+    "values": [
+      0.40091275
+    ],
+    "provenance": {
+      "0.400912750": "5A C1"
+    },
+    "rule": "per protocol section 5: may add at most 1-2 historical alpha ONLY if a Pareto knee lies between two existing points; the extension value is pre-specified here BEFORE any 6A target analysis, and requires human approval of the GPU request"
+  },
+  "grid_rule": "alpha_F grid = {0, nearest historical uniform intermediate with usable coverage, 0.5}; derived from HISTORICAL AVAILABILITY + protocol minimum, never from 6A target results",
+  "historical_uniform_alphas_available": [
+    "0.000000000",
+    "0.250000000",
+    "0.400912750",
+    "0.500000000",
+    "0.601369125",
+    "0.750000000",
+    "0.801825500",
+    "1.000000000"
+  ],
+  "alpha_availability": {
+    "0.000000000": {
+      "bottle_seeds": [
+        0,
+        1,
+        2
+      ],
+      "grid_seeds": [
+        0,
+        1,
+        2
+      ],
+      "full_5cat_3seed": true,
+      "n_category_seed_keys": 15
+    },
+    "0.250000000": {
+      "bottle_seeds": [
+        0
+      ],
+      "grid_seeds": [],
+      "full_5cat_3seed": false,
+      "n_category_seed_keys": 1
+    },
+    "0.500000000": {
+      "bottle_seeds": [
+        0,
+        1,
+        2
+      ],
+      "grid_seeds": [
+        0,
+        1,
+        2
+      ],
+      "full_5cat_3seed": true,
+      "n_category_seed_keys": 15
+    },
+    "0.400912750": {
+      "bottle_seeds": [
+        0
+      ],
+      "grid_seeds": [],
+      "full_5cat_3seed": false,
+      "n_category_seed_keys": 1
+    }
+  },
+  "missing_units_for_grid": [
+    "bottle:1:alpha=0.250000000",
+    "bottle:2:alpha=0.250000000",
+    "grid:0:alpha=0.250000000",
+    "grid:1:alpha=0.250000000",
+    "grid:2:alpha=0.250000000"
+  ],
+  "needs_gpu_for_grid": true,
+  "epsilon": 0.1,
+  "metrics_frozen": {
+    "preservation": "mean defect d-prime (higher better)",
+    "robustness": "mean |Delta NormalScore_z| (lower better)",
+    "safety": [
+      "worst_category_gain",
+      "negative_transfer_count(eps)",
+      "high_damage_subset={bottle,grid}",
+      "seed consistency"
+    ],
+    "implementation": "reuse experiment5a_h_analysis.load_all/unit_metrics (unchanged)"
+  },
+  "reference_5d": {
+    "source_file": "results/experiment_5d/summary/policy_summary.csv",
+    "hard_gc": {
+      "mean_defect_dprime": 4.996715,
+      "mean_robustness": 0.264255,
+      "delta_dprime_vs_fixed": 0.329722,
+      "delta_robust_vs_fixed": 0.056039,
+      "worst_category_gain": 0.0,
+      "negative_transfer_count": 0,
+      "gate": "bottle+grid"
+    },
+    "best_fixed": {
+      "mean_defect_dprime": 4.666993,
+      "mean_robustness": 0.208216,
+      "mean_alpha": 0.5
+    }
+  },
+  "success_criteria": {
+    "A_preservation_retention": {
+      "rule": "delta_dprime_vs_fixed(soft) >= +0.20",
+      "threshold": 0.2,
+      "note": ">= ~60% of the Hard-GC preservation gain (+0.3297 \u2192 60% = +0.1978)"
+    },
+    "B_robustness_recovery": {
+      "rule": "mean_abs_delta_z(soft) <= mean_abs_delta_z(hard_GC) - 0.02",
+      "threshold_abs_z_max": 0.244255,
+      "improvement_required": 0.02,
+      "note": "Hard GC |dz| = 0.2643 (read from 5D frozen summary, not hard-coded)"
+    },
+    "C_safety": {
+      "rule": "worst_category_gain >= -eps AND negative_transfer_count <= HardGC negative_transfer_count",
+      "epsilon": 0.1,
+      "hard_gc_negative_transfer_count": 0
+    },
+    "D_stability": {
+      "rule": "at least 2/3 seeds satisfy BOTH A and B at seed level: delta_dprime_vs_fixed_seed >= +0.20 AND mean_abs_delta_z_seed <= hardGC_mean_abs_delta_z_seed - 0.02",
+      "min_seeds": 2
+    }
+  },
+  "budget_matching_disclosure": "Hard GC mean alpha = 0.30; Soft GC mean alpha = (2*alpha_F+1.5)/5 > 0.30 for alpha_F > 0. Soft GC therefore receives MORE normalization strength; the analysis must separate policy-identity effect from normalization-strength effect. No strong causal claim.",
+  "categories": [
+    "bottle",
+    "cable",
+    "grid",
+    "hazelnut",
+    "screw"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "illumination_protocol": "4 photometric shifts (brightness 0.7/1.3, gamma 0.7/1.3), frozen since 5A-H",
+  "no_gpu_by_default": true,
+  "data_provenance": "CPU-only recombination of frozen historical raw per-image scores",
+  "git_head": "e0bda2260b3ec0f91d4fb8bdd75b061afbed9656",
+  "timestamp": "2026-10-06T20:43:52",
+  "input_md5": {
+    "results/experiment_5a_h/summary/per_unit.csv": "6c7de555094af09a5ed13a91d0c8b3e1",
+    "results/experiment_5c/reference/geometry_policy_freeze.json": "e23d2b29ebd83c34f62010791d36aeda",
+    "results/experiment_5d/reference/policy_freeze.json": "a033a30e27613c728e9dd7e52b7dd03b",
+    "results/experiment_5d/summary/policy_summary.csv": "9c5f7ff52ad54986ec4d715d89903d74",
+    "results/experiment_5a/raw/per_image_scores.csv": "c17e82b422ffa977cb06dd3adaef2acc",
+    "results/experiment_5b_final/summary/normal_only_predictors.csv": "5439b99ad1ea31e447ea4895731f1502"
+  }
+}

@@ -1,0 +1,6 @@
+policy,label,mean_alpha,mean_dprime_5cat,mean_abs_delta_z_5cat,mean_damage_vs_B0,mean_gain_vs_best_fixed,mean_delta_robust_vs_best_fixed
+A_original,A. Original (a=0),0.0,4.98524,0.310487,0.0,0.318247,0.102253
+B_best_fixed,B. Best Fixed (a=0.5),0.5,4.666993,0.208233,0.318247,0.0,0.0
+GF,C. Geometry Full (v1A),0.541004,4.701928,0.227722,0.283312,0.034935,0.019488
+GC,D. Geometry Conservative (v1B),0.3,4.996713,0.26426,-0.011473,0.32972,0.056027
+SG,E. Sensitivity-Guided,0.541004,4.667863,0.236444,0.317377,0.00087,0.028211

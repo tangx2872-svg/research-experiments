@@ -1,0 +1,12 @@
+alpha,historical_score_exists,n_category_seed_keys,full_5cat_3seed_coverage,categories,seeds,illumination_conditions,source_configs,layer_uniform,usable_as_alpha_F,needs_gpu
+0.000000000,true,15,true,bottle+cable+grid+hazelnut+screw,0+1+2,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:B0;experiment_5a_h:B0;experiment_5c:GC;experiment_5c:GF;experiment_5c:SG,true,true,false
+0.250000000,true,1,false,bottle,0,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:B1,true,false,true
+0.301825500,true,1,false,bottle,0,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:G1,false,false,true
+0.400912750,true,1,false,bottle,0,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:C1,true,false,true
+0.452738250,true,15,true,bottle+cable+grid+hazelnut+screw,0+1+2,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:G2;experiment_5a_h:G2,false,false,false
+0.500000000,true,15,true,bottle+cable+grid+hazelnut+screw,0+1+2,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:B2;experiment_5a_h:B2,true,true,false
+0.601369125,true,15,true,bottle+cable+grid+hazelnut+screw,0+1+2,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:C2;experiment_5a_h:C2,true,false,false
+0.603651000,true,1,false,bottle,0,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:G3,false,false,true
+0.750000000,true,1,false,bottle,0,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:B3,true,false,true
+0.801825500,true,15,true,bottle+cable+grid+hazelnut+screw,0+1+2,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:C3;experiment_5a_h:C3,true,false,false
+1.000000000,true,1,false,bottle,0,brightness_0.7|brightness_1.3|gamma_0.7|gamma_1.3,5A:B4,true,false,true

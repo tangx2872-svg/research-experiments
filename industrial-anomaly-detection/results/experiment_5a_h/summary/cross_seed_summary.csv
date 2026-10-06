@@ -1,0 +1,6 @@
+category,robustness_wins,preservation_noninferior,pair_wins,delta_robustness_mean,delta_robustness_std,delta_preservation_mean,delta_preservation_std,pareto_beyond,pareto_nondominated_or_beyond,dominates_C2
+bottle,2,3,2,-0.0141,0.0306,0.1788,0.1625,3,3,2
+cable,2,3,2,-0.0037,0.0338,-0.0658,0.0093,1,2,0
+grid,3,0,0,-0.0167,0.0106,-0.1536,0.0273,0,3,0
+hazelnut,1,1,0,-0.0054,0.0416,-0.148,0.1845,0,2,0
+screw,2,0,0,-0.0049,0.0162,-0.2155,0.095,0,2,0

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "hazelnut",
+  "seed": 1,
+  "config": "a040091275",
+  "alpha_l2": 0.40091275,
+  "alpha_l3": 0.40091275,
+  "runtime_seconds": 272.85,
+  "coreset_size": 40038,
+  "tau_val": 24.965944290161133,
+  "peak_gpu_memory_allocated_mb": 4789.04,
+  "train_ids_hash": "8281c84393a1",
+  "n_rows": 290,
+  "pixel_auroc": 0.9881809557361713,
+  "aupro": 0.956996738910675
+}

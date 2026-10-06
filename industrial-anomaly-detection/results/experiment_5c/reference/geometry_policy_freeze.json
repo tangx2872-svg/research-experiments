@@ -1,0 +1,113 @@
+{
+  "primary_predictor": "radius_ratio_L3L2",
+  "secondary_predictor": "eff_dim_L3",
+  "negative_control_predictor": "sens_radius_L2",
+  "mapping_type": "rank_monotonic_nearest_rank_quantile",
+  "mapping_formula": "alpha(r) = legal[min(K-1, ceil(r*K/n)-1)], r = ascending predictor rank, n = 5",
+  "direction": "higher_geometry_to_higher_alpha",
+  "alpha_grid": [
+    0.0,
+    0.5,
+    0.601369125,
+    0.8018255000000001
+  ],
+  "alpha_grid_source": {
+    "0.0": "B0",
+    "0.5": "B2",
+    "0.601369125": "C2",
+    "0.8018255": "C3"
+  },
+  "alpha_grid_excluded": {
+    "values": [
+      0.25,
+      0.75,
+      1.0
+    ],
+    "reason": "5A-only (bottle/seed0)\uff0c\u65e0 5-category \u00d7 3-seed \u8986\u76d6\uff1b\u7eb3\u5165\u4f1a\u9700\u8981\u65b0\u8dd1 baseline \u4e14\u4e0d\u516c\u5e73"
+  },
+  "best_fixed_alpha": 0.5,
+  "best_fixed_config": "B2",
+  "best_fixed_rule": "argmax over uniform alpha in {B2,C2,C3} of #units satisfying the frozen 5A-H PAIR-WIN criterion vs alpha=0 (dRobust<0 AND dPres>=-eps, eps=0.10); tie -> smaller alpha",
+  "best_fixed_wins_units": 7,
+  "conservative_ceiling": 0.5,
+  "conservative_ceiling_rule": "alpha_max = best fixed alpha (no new parameter)",
+  "epsilon_preservation_band": 0.1,
+  "eps_source": "Experiment 5A-H section 2 (frozen d' non-inferiority band)",
+  "policies": {
+    "A_original": {
+      "alpha": 0.0,
+      "source": "5A-H B0 (reused, not re-run)"
+    },
+    "B_best_fixed": {
+      "alpha": 0.5,
+      "source": "5A-H B2 (reused, not re-run)"
+    },
+    "C_geometry_full": {
+      "predictor": "radius_ratio_L3L2",
+      "alpha_by_category": {
+        "bottle": 0.0,
+        "cable": 0.601369125,
+        "grid": 0.5,
+        "hazelnut": 0.8018255000000001,
+        "screw": 0.8018255000000001
+      }
+    },
+    "D_geometry_conservative": {
+      "predictor": "radius_ratio_L3L2",
+      "alpha_by_category": {
+        "bottle": 0.0,
+        "cable": 0.5,
+        "grid": 0.0,
+        "hazelnut": 0.5,
+        "screw": 0.5
+      }
+    },
+    "E_sensitivity_guided": {
+      "predictor": "sens_radius_L2",
+      "alpha_by_category": {
+        "bottle": 0.0,
+        "cable": 0.5,
+        "grid": 0.8018255000000001,
+        "hazelnut": 0.601369125,
+        "screw": 0.8018255000000001
+      }
+    },
+    "secondary_identity_only_no_run": {
+      "predictor": "eff_dim_L3",
+      "alpha_by_category": {
+        "bottle": 0.0,
+        "cable": 0.8018255000000001,
+        "grid": 0.5,
+        "hazelnut": 0.8018255000000001,
+        "screw": 0.601369125
+      }
+    }
+  },
+  "high_damage_subset_frozen": [
+    "bottle",
+    "grid"
+  ],
+  "categories": [
+    "bottle",
+    "cable",
+    "grid",
+    "hazelnut",
+    "screw"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "target_results_read": false,
+  "git_head": "5d6ee986c8b60bdb09c3b5ad5d399a1f071ec660",
+  "timestamp": "2026-10-06T18:09:18",
+  "input_md5": {
+    "results/experiment_5a_h/summary/per_unit.csv": "6c7de555094af09a5ed13a91d0c8b3e1",
+    "results/experiment_5b_final/summary/normal_only_predictors.csv": "5439b99ad1ea31e447ea4895731f1502",
+    "results/experiment_5b_final/summary/correlation_summary.csv": "ad9f80f26fe740a33e290b91ed6d3747",
+    "results/experiment_5b_final/summary/final_summary.json": "dd49b5d8384eb65928cbb684a4266f6d",
+    "results/experiment_5b_final/reference/group_c_freeze.json": "0974416c59dc6bd57f69d796358085b2",
+    "results/experiment_5a_h/summary/statistical_tests.csv": "da9ef0da455262f6ce477152eb20d38f"
+  }
+}

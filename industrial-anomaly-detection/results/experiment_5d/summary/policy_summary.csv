@@ -1,0 +1,6 @@
+policy,label,gated_categories,mean_alpha,mean_defect_dprime,mean_robustness,delta_dprime_vs_fixed,delta_robust_vs_fixed,worst_category,worst_category_gain,negative_transfer_count,high_damage_recovery,pair_win_units,win_tie_loss
+A_original,A. Original (alpha=0),bottle+cable+grid+hazelnut+screw,0.0,4.985245,0.310489,0.318252,0.102273,hazelnut,-0.210743,1,0.824306,0/15,mixed
+B_best_fixed,B. Best Fixed (alpha=0.5),-,0.5,4.666993,0.208216,0.0,0.0,bottle,0.0,0,0.0,0/15,tie
+GC,Geometry Conservative (PRIMARY METHOD),bottle+grid,0.3,4.996715,0.264255,0.329722,0.056039,cable,0.0,0,0.824306,0/15,mixed
+SC_A,Sensitivity Conservative SC-A (PRIMARY CONTROL),bottle+cable,0.3,4.8517,0.251406,0.184707,0.043191,grid,0.0,0,0.438416,0/15,mixed
+SC_B,Sensitivity Conservative SC-B (secondary control),grid+screw,0.3,4.842687,0.254746,0.175694,0.046531,bottle,0.0,0,0.38589,0/15,mixed

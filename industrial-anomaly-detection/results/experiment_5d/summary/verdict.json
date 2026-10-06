@@ -1,0 +1,108 @@
+{
+  "experiment": "5D",
+  "title": "Matched-Control Gate Validation of Geometry-Guided Safe Normalization",
+  "freeze_sha256": "30150bc49484990524e88a2d06bfcee85262db8ca3f4ae3c0663c0ad32a5b263",
+  "git_head": "1a0245e825f487d7a709f222e012e6b5b1edbc0f",
+  "primary_control": "SC_A",
+  "primary_verdict": {
+    "primary_control": "SC_A",
+    "case": "CASE_D",
+    "meaning": "Geometry predictor does not provide sufficient actionable policy information.",
+    "GC_mean_dprime": 4.996715,
+    "control_mean_dprime": 4.8517,
+    "GC_mean_robustness": 0.264255,
+    "control_mean_robustness": 0.251406,
+    "delta_dprime_GC_minus_control": 0.145016,
+    "delta_robust_GC_minus_control": 0.012848,
+    "rank_dprime_within_gates": 1,
+    "rank_robust_within_gates": 10,
+    "n_gates_not_worse_than_GC": 1,
+    "dominated_by": [],
+    "seed_level_pair_wins": "0/3",
+    "loco_gain_positive": [
+      true,
+      true,
+      false,
+      true,
+      true
+    ],
+    "GC_worst_category_gain": 0.0,
+    "control_worst_category_gain": 0.0,
+    "GC_negative_transfer": 0,
+    "control_negative_transfer": 0,
+    "conditions_CASE_D": {
+      "GC_dprime_clearly_worse_than_control": false,
+      "control_pareto_dominates_GC": false,
+      "GC_rank_dprime_among_gates_ge_8": false,
+      "single_category_driver_of_identity_gain": true
+    },
+    "conditions_CASE_A": {
+      "GC_dprime_gain_over_control_ge_eps": true,
+      "GC_robustness_not_clearly_worse": true,
+      "GC_worst_category_gain_ge_control": true,
+      "GC_negative_transfer_le_control": true,
+      "seed_level_pair_win_ge_2of3": false,
+      "rank_dprime_le_3_and_pareto_efficient": true,
+      "loco_gain_positive_all_holdouts": false
+    },
+    "conditions_CASE_C": {
+      "GC_and_control_indistinguishable": false,
+      "at_least_4_gates_not_worse_than_GC": false
+    }
+  },
+  "secondary_control_SC_B": {
+    "primary_control": "SC_B",
+    "case": "CASE_D",
+    "meaning": "Geometry predictor does not provide sufficient actionable policy information.",
+    "GC_mean_dprime": 4.996715,
+    "control_mean_dprime": 4.842687,
+    "GC_mean_robustness": 0.264255,
+    "control_mean_robustness": 0.254746,
+    "delta_dprime_GC_minus_control": 0.154028,
+    "delta_robust_GC_minus_control": 0.009508,
+    "rank_dprime_within_gates": 1,
+    "rank_robust_within_gates": 10,
+    "n_gates_not_worse_than_GC": 1,
+    "dominated_by": [],
+    "seed_level_pair_wins": "0/3",
+    "loco_gain_positive": [
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    "GC_worst_category_gain": 0.0,
+    "control_worst_category_gain": 0.0,
+    "GC_negative_transfer": 0,
+    "control_negative_transfer": 0,
+    "conditions_CASE_D": {
+      "GC_dprime_clearly_worse_than_control": false,
+      "control_pareto_dominates_GC": false,
+      "GC_rank_dprime_among_gates_ge_8": false,
+      "single_category_driver_of_identity_gain": true
+    },
+    "conditions_CASE_A": {
+      "GC_dprime_gain_over_control_ge_eps": true,
+      "GC_robustness_not_clearly_worse": true,
+      "GC_worst_category_gain_ge_control": true,
+      "GC_negative_transfer_le_control": true,
+      "seed_level_pair_win_ge_2of3": false,
+      "rank_dprime_le_3_and_pareto_efficient": true,
+      "loco_gain_positive_all_holdouts": false
+    },
+    "conditions_CASE_C": {
+      "GC_and_control_indistinguishable": false,
+      "at_least_4_gates_not_worse_than_GC": false
+    }
+  },
+  "sanity_failed": [],
+  "historical_equivalence": {
+    "n_common": 33,
+    "n_score_rows": 9273,
+    "max_abs_score_diff": 0.0,
+    "max_abs_tau_diff": 0.0
+  },
+  "no_gpu": true,
+  "note": "EXHAUSTIVE CONTROLS ARE EVALUATION-ONLY. NO BEST RANDOM GATE MAY REPLACE THE FROZEN GEOMETRY POLICY. Verdict ladder was pre-registered in experiments/experiment5d/README.md section 10 before any target analysis."
+}

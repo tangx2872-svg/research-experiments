@@ -1,0 +1,16 @@
+predictor,rho_seed0,rho_seed1,rho_seed2,direction_consistent
+norm_mean_L2,0.7,0.7,0.7,True
+norm_mean_L3,0.4,0.4,0.7,True
+norm_cv_L2,0.5,0.5,0.5,True
+norm_cv_L3,-0.3,-0.3,-0.3,True
+rms_radius_L2,-0.1,-0.1,-0.1,True
+rms_radius_L3,-0.6,-0.6,-0.6,True
+nn_dist_rel_L2,-0.6,-0.6,-0.6,True
+nn_dist_rel_L3,-0.8,-0.8,-0.8,True
+eff_dim_L2,-0.8,-0.8,-0.8,True
+eff_dim_L3,-0.9,-0.9,-0.9,True
+radius_ratio_L3L2,-0.9,-0.9,-0.9,True
+nn_dist_ratio_L3L2,-0.9,-0.9,-0.9,True
+eff_dim_ratio_L3L2,0.1,0.1,0.1,True
+img_brightness_mean,0.4,0.4,0.4,True
+img_pixel_std,0.9,0.9,0.9,True
