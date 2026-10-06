@@ -47,8 +47,8 @@ Recommended next exp : no further tuning of the current feature-intervention fam
 Paper progress       : 7A-O completes one evidence cell ("simple representation modules cannot push
                        the frontier"); Q3/Q4 add a severity-response curve and a completed
                        strength-response map
-Git HEAD             : <FINAL_HEAD>
-origin/main          : <FINAL_ORIGIN>
+Git HEAD             : b726476
+origin/main          : b726476
 GPU status           : idle (0 % utilization)
 ```
 
