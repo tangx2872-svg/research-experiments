@@ -75,6 +75,10 @@ results/experiment_1j/logs/
 !results/experiment_5a/
 results/experiment_5a/logs/run.log
 
+# Experiment 5A-H 结果（跨类别验证；raw 4.4MB per-image CSV + summary + figures 全部轻量，
+# fit/ 目录为空指针目录）
+!results/experiment_5a_h/
+
 # 本地工作记忆（.workbuddy），不上传 GitHub
 .workbuddy/
 

@@ -1,0 +1,9 @@
+{
+  "before": {
+    "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_1j/analysis/experiment1j_cross_chain_summary.csv": "31b308b99e369e76fbda975d4e15de24",
+    "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_1j/analysis/experiment1j_family_summary.csv": "319b70fcfb718ec99b674485298e2ce4",
+    "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_1j_b/analysis/transmission_summary.csv": "8e19d5db3d19658878e378972b41f5f6",
+    "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_1j_b/analysis/per_defect.csv": "8f5262b605abf552a942e4f9ab25f136",
+    "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_5a/geometry_rule.json": "dd08ed5e67b54c9b24b79fab54ad0bde"
+  }
+}
