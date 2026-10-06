@@ -1,0 +1,13 @@
+condition,family,level,severity
+brightness_0.9,brightness,0.9,mild
+brightness_1.1,brightness,1.1,mild
+brightness_0.7,brightness,0.7,medium
+brightness_1.3,brightness,1.3,medium
+brightness_0.5,brightness,0.5,strong
+brightness_1.5,brightness,1.5,strong
+gamma_0.9,gamma,0.9,mild
+gamma_1.1,gamma,1.1,mild
+gamma_0.7,gamma,0.7,medium
+gamma_1.3,gamma,1.3,medium
+gamma_0.5,gamma,0.5,strong
+gamma_1.5,gamma,1.5,strong

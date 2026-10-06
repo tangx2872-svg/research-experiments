@@ -1,0 +1,185 @@
+{
+  "queue": "Q4",
+  "title": "Strong-Baseline Extended Validation",
+  "status": "EXPLORATORY / asset completion (no new method, no new benchmark)",
+  "purpose": "complete the uniform-normalization-strength response map and the illumination condition x seed coverage of the strongest baselines",
+  "asset_audit": {
+    "uniform_alpha_coverage_before": {
+      "0.0": 15,
+      "0.125": 6,
+      "0.20": 6,
+      "0.25": 6,
+      "0.30": 6,
+      "0.40091275": 15,
+      "0.5": 15,
+      "0.601369": 15,
+      "0.801825": 15
+    },
+    "q4a_new_units": 36,
+    "q4b_new_units": 20,
+    "total_new_units": 56
+  },
+  "q4a": {
+    "alpha_points": [
+      0.125,
+      0.2,
+      0.25,
+      0.3
+    ],
+    "specs": {
+      "Q4a0125": {
+        "l2": {
+          "kind": "alpha_in",
+          "alpha": 0.125
+        },
+        "l3": {
+          "kind": "alpha_in",
+          "alpha": 0.125
+        }
+      },
+      "Q4a02": {
+        "l2": {
+          "kind": "alpha_in",
+          "alpha": 0.2
+        },
+        "l3": {
+          "kind": "alpha_in",
+          "alpha": 0.2
+        }
+      },
+      "Q4a025": {
+        "l2": {
+          "kind": "alpha_in",
+          "alpha": 0.25
+        },
+        "l3": {
+          "kind": "alpha_in",
+          "alpha": 0.25
+        }
+      },
+      "Q4a03": {
+        "l2": {
+          "kind": "alpha_in",
+          "alpha": 0.3
+        },
+        "l3": {
+          "kind": "alpha_in",
+          "alpha": 0.3
+        }
+      }
+    },
+    "historical_reuse": [
+      [
+        "bottle",
+        0
+      ],
+      [
+        "bottle",
+        1
+      ],
+      [
+        "bottle",
+        2
+      ],
+      [
+        "grid",
+        0
+      ],
+      [
+        "grid",
+        1
+      ],
+      [
+        "grid",
+        2
+      ]
+    ],
+    "units": [
+      "Q4a0125:cable:0",
+      "Q4a0125:cable:1",
+      "Q4a0125:cable:2",
+      "Q4a0125:hazelnut:0",
+      "Q4a0125:hazelnut:1",
+      "Q4a0125:hazelnut:2",
+      "Q4a0125:screw:0",
+      "Q4a0125:screw:1",
+      "Q4a0125:screw:2",
+      "Q4a02:cable:0",
+      "Q4a02:cable:1",
+      "Q4a02:cable:2",
+      "Q4a02:hazelnut:0",
+      "Q4a02:hazelnut:1",
+      "Q4a02:hazelnut:2",
+      "Q4a02:screw:0",
+      "Q4a02:screw:1",
+      "Q4a02:screw:2",
+      "Q4a025:cable:0",
+      "Q4a025:cable:1",
+      "Q4a025:cable:2",
+      "Q4a025:hazelnut:0",
+      "Q4a025:hazelnut:1",
+      "Q4a025:hazelnut:2",
+      "Q4a025:screw:0",
+      "Q4a025:screw:1",
+      "Q4a025:screw:2",
+      "Q4a03:cable:0",
+      "Q4a03:cable:1",
+      "Q4a03:cable:2",
+      "Q4a03:hazelnut:0",
+      "Q4a03:hazelnut:1",
+      "Q4a03:hazelnut:2",
+      "Q4a03:screw:0",
+      "Q4a03:screw:1",
+      "Q4a03:screw:2"
+    ]
+  },
+  "q4b": {
+    "methods": [
+      "M0_original",
+      "M1_uniform"
+    ],
+    "seeds": [
+      1,
+      2
+    ],
+    "conditions": "identical to Q3 (12 conditions, brightness/gamma x mild/medium/strong)",
+    "units": [
+      "M0_original:bottle:1",
+      "M0_original:bottle:2",
+      "M0_original:cable:1",
+      "M0_original:cable:2",
+      "M0_original:grid:1",
+      "M0_original:grid:2",
+      "M0_original:hazelnut:1",
+      "M0_original:hazelnut:2",
+      "M0_original:screw:1",
+      "M0_original:screw:2",
+      "M1_uniform:bottle:1",
+      "M1_uniform:bottle:2",
+      "M1_uniform:cable:1",
+      "M1_uniform:cable:2",
+      "M1_uniform:grid:1",
+      "M1_uniform:grid:2",
+      "M1_uniform:hazelnut:1",
+      "M1_uniform:hazelnut:2",
+      "M1_uniform:screw:1",
+      "M1_uniform:screw:2"
+    ]
+  },
+  "forbidden": [
+    "new dataset",
+    "new backbone",
+    "per-category alpha tuning",
+    "dense alpha sweep",
+    "new illumination family"
+  ],
+  "frozen_assumptions": [
+    "Q4-A \u53ea\u8fd0\u884c\u5386\u53f2\u7f3a\u5931\u5355\u5143\uff1bbottle/grid x 3 seeds \u7684 Q4a* \u76f4\u63a5\u590d\u7528 6A/6B raw\uff080 GPU\uff09",
+    "Q4-B \u590d\u7528 Q3 \u5b8c\u5168\u76f8\u540c\u7684 12 conditions \u4e0e 2 \u4e2a\u65b9\u6cd5\uff0c\u53ea\u8865 seeds 1/2",
+    "\u4e0d\u4f7f\u7528\u4efb\u4f55\u65b0\u7684 \u03b1 point\u3001\u65b0\u7684 illumination family\u3001\u65b0\u7684 category/seed/metric",
+    "\u6240\u6709\u6a21\u578b fit \u8d70 Q0 \u7684\u540c\u4e00\u4ee3\u7801\u8def\u5f84\uff08experiment7ao_runner.patched_fit_dual_model\uff09"
+  ],
+  "target_results_read": false,
+  "git_head": "7ffb3aadeeee05072c085c1339c046c3f8d7e120",
+  "timestamp": "2026-10-07T00:50:06"
+}

@@ -29,6 +29,7 @@ sys.path.insert(0, str(ROOT / "experiments" / "2026-09-30_illumination_sensitivi
 
 import experiment7ao_config as c7  # noqa: E402
 import experiment7ao_q2 as q2  # noqa: E402
+import experiment7ao_q4 as q4  # noqa: E402
 import experiment5a_h_runner as h  # noqa: E402
 from experiment7ao_model import ModulePatchcore  # noqa: E402
 from anomalib.data import MVTecAD  # noqa: E402
@@ -42,6 +43,7 @@ h.LOGS_DIR = LOGS_DIR
 ALL_SPECS = dict(c7.MODULE_SPECS)
 ALL_SPECS.update(c7.SMOKE_SPECS)
 ALL_SPECS.update(q2.Q2_SPECS)   # Overnight Queue Q2 (separate frozen protocol)
+ALL_SPECS.update(q4.Q4_ALPHA_SPECS)  # Overnight Queue Q4-A (historical uniform-alpha points)
 
 CAPTURED: dict = {}
 

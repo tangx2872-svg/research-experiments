@@ -1,0 +1,11 @@
+method,category,seed,reference,n_keys,max_abs_delta_score
+M0_original,bottle,0,config_B0,80,0.0
+M1_uniform,bottle,0,config_a040091275,80,0.0
+M0_original,cable,0,config_B0,232,0.0
+M1_uniform,cable,0,config_a040091275,232,0.0
+M0_original,grid,0,config_B0,84,0.0
+M1_uniform,grid,0,config_aF040091275,84,0.0
+M0_original,hazelnut,0,config_B0,160,0.0
+M1_uniform,hazelnut,0,config_a040091275,160,0.0
+M0_original,screw,0,config_B0,164,0.0
+M1_uniform,screw,0,config_a040091275,164,0.0

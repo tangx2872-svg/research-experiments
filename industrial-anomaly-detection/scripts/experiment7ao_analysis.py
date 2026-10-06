@@ -57,14 +57,18 @@ def load_dir(root: Path, tag: str, data: dict) -> None:
 MODULE_TAGS = ("7AO", "Q2")
 
 
-def build_lookup(extra=()) -> tuple:
-    """extra: ((tag, raw_root), ...) 追加数据源（overnight 后续队列用；默认行为不变）。"""
+def build_lookup(extra=(), extra_alpha=()) -> tuple:
+    """extra: ((tag, raw_root), ...) 追加按 config 名索引的数据源；
+    extra_alpha: ((tag, raw_root), ...) 追加按 (alpha_l2, alpha_l3) 索引的数据源（Q4 α 网格用）。默认行为不变。"""
     data = {}
     for tag, root in HIST.items():
         if root.exists():
             load_dir(root, tag, data)
     load_dir(c7.RAW_DIR, "7AO", data)
     for tag, root in extra:
+        if Path(root).exists():
+            load_dir(Path(root), tag, data)
+    for tag, root in extra_alpha:
         if Path(root).exists():
             load_dir(Path(root), tag, data)
     # 5A per_image_scores.csv（仅 bottle/seed0 的 uniform alpha）

@@ -1,0 +1,3 @@
+method,n_units,mean_defect_dprime,image_auroc,fpr_clean,mean_abs_delta_z_all12,mean_abs_delta_z_medium4,worst_condition_abs_delta_z,runtime_seconds,peak_vram_mb,neg_transfer_count_vs_uniform
+M0_original,5,5.019559,0.986998,1.0,0.522896,0.325599,2.393733,157.3,3474.2,10
+M1_uniform,5,4.802097,0.983961,1.0,0.340352,0.203006,1.48382,154.3,4275.8,0

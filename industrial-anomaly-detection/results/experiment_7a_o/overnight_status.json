@@ -1,13 +1,13 @@
 {
   "started_at": "2026-10-06T22:17:05",
-  "updated_at": "2026-10-07T00:36:36",
+  "updated_at": "2026-10-07T00:52:16",
   "queues": {
     "Q0_7AO_module_screening": "DONE",
     "Q1_winner_local_robustness": "SKIPPED (Q0 = CASE_C -> no CASE_A/B/D candidate; per addendum Q1 startup condition not met)",
     "Q2_layer_representation_composition": "DONE (12 units; promoted = none -> STOP per addendum rule)",
-    "Q3_illumination_stress_test": "RUNNING (10 units: M0_original + M1_uniform x 5 categories x seed0)",
-    "Q4_strong_baseline_extended_validation": "PENDING",
-    "Q5_cpu_paper_assets": "PENDING"
+    "Q3_illumination_stress_test": "DONE stage-1 (10 units; medium-condition equivalence vs history max|dscore| = 0 for all 10 units; seeds 1/2 deferred to Q4-B)",
+    "Q4_strong_baseline_extended_validation": "RUNNING (36 Q4-A alpha-fill + 20 Q4-B stress seeds 1/2 = 56 units)",
+    "Q5_cpu_paper_assets": "IN PROGRESS (CPU-only; re-run after Q4 completes)"
   },
   "q0": {
     "verdict": "CASE_C",
@@ -16,9 +16,9 @@
     "runtime_seconds_total": null,
     "freeze_sha256": "e046a89a852da9aad55d2eafeea1c3bc05a5aff640be4338f7e515e53150f224"
   },
-  "gpu_units_total": 114,
+  "gpu_units_total": 170,
   "notes": [],
-  "gpu_status": "12936 MiB, 100 %",
+  "gpu_status": "8220 MiB, 100 %",
   "disk_usage": "13M",
   "q2": {
     "verdict": "no promotion (0/4 configurations reached Tier S/A/B) -> Q2 STOP",
@@ -33,6 +33,8 @@
       "M1_uniform"
     ],
     "conditions": 12,
-    "gpu_units": 10
+    "gpu_units": 10,
+    "equivalence": "medium conditions reproduce historical raw exactly (max|dscore| = 0)",
+    "headline": "Uniform |dz| lower in 12/12 conditions; pooled degradation slope 1.863 vs 2.914 (Original), i.e. ~36% shallower"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "status": "OK",
+  "queue": "Q3",
+  "method": "M0_original",
+  "category": "screw",
+  "seed": 0,
+  "spec": {
+    "l2": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    }
+  },
+  "tau_val": 24.12681007385254,
+  "n_rows": 672,
+  "expected_rows": 672,
+  "n_conditions": 12,
+  "runtime_seconds": 197.04,
+  "peak_gpu_memory_allocated_mb": 3935.04,
+  "embedding_dim": 1536,
+  "freeze_sha256": "6c4ee3d07c081c23026a82fb3a426494675f76947785e0b32eb8e256144a91ec"
+}

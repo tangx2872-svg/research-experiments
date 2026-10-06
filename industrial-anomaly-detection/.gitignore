@@ -163,3 +163,9 @@ results/experiment_7a_o_q3/logs/*.log
 results/experiment_7a_o_q3/logs/*.txt
 results/experiment_7a_o_q3/raw/**/fit/
 results/experiment_7a_o_q3/raw/**/run.lock
+
+!results/experiment_7a_o_q4/
+results/experiment_7a_o_q4/logs/*.log
+results/experiment_7a_o_q4/logs/*.txt
+results/experiment_7a_o_q4/raw/**/fit/
+results/experiment_7a_o_q4/raw/**/run.lock
