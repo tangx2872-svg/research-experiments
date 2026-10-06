@@ -1,0 +1,155 @@
+{
+  "experiment": "5D",
+  "title": "Matched-Control Gate Validation of Geometry-Guided Safe Normalization",
+  "purpose": "under identical normalization budget / gate size / alpha set, test whether normal-feature geometry selects the categories whose normalization should be suppressed more reliably than a matched sensitivity predictor or the exhaustive matched-gate distribution",
+  "paper_claim": "Normal-feature geometry contains actionable information for deciding when normalization should be suppressed to preserve defect-sensitive representations.",
+  "frozen_predictors": {
+    "primary": "radius_ratio_L3L2",
+    "matched_control": "sens_radius_L2",
+    "secondary_identity_check_only_no_eval": "eff_dim_L3"
+  },
+  "primary_comparison": "GC vs SC_A (primary); GC vs SC_B (secondary, ambiguity-resolving)",
+  "predictor_source_file": "results/experiment_5b_final/summary/normal_only_predictors.csv",
+  "predictor_source_is_normal_only": true,
+  "direction": {
+    "geometry_GC": "low_predictor_is_fragile",
+    "sensitivity_SC_A_primary": "low_predictor_is_fragile",
+    "sensitivity_SC_B_secondary": "high_predictor_is_fragile",
+    "SC_A_rationale": "predictor low end = most fragile -> ascending rank 1..2 maps to alpha=0. This is the mechanical application of the 5C frozen direction (higher_geometry_to_higher_alpha) plus 5C README section 4 (GF/GC/SG share one rank->alpha function) restricted to the legal set [0, 0.5]. It is also consistent with the 5B README section 17.4 measured sign for sens_radius_L2 (rho(C2) = -0.30, same sign as the geometry family).",
+    "SC_B_rationale": "predictor high end = most fragile -> descending rank 1..2 maps to alpha=0. Literal implementation of the 5B registry frozen direction_hypothesis = 'high->fragile' (predictor_registry.csv / group_c_freeze.json, frozen_at 2026-10-06T17:07:27) for sens_radius_L2. It contradicts the sign measured by 5B itself (rho(C2) = -0.30), so in 5D it is only a secondary ambiguity-resolving control.",
+    "protocol_ambiguity_declared": true,
+    "protocol_ambiguity_note": "the conservative direction of the sensitivity predictor is not unique in the historical record: the 5B registry pre-registered direction_hypothesis='high->fragile', while the 5B measured rho(C2)=-0.30 (negative) and the 5C frozen rank->alpha mechanical rule both imply low->fragile. Human decision 2026-10-06: pre-register BOTH; SC_A is the primary comparison and SC_B is reported in full as a symmetric ambiguity-resolving control. The direction was NOT chosen by looking at any target result."
+  },
+  "mapping_type": "rank_monotonic_nearest_rank_quantile",
+  "mapping_formula": "alpha(r) = legal[min(K-1, ceil(r*K/n)-1)], r = fragile-rank (1 = most fragile), n = 5",
+  "alpha_set": [
+    0.0,
+    0.5
+  ],
+  "gate_size": "2/5",
+  "mean_alpha_all_matched_policies": 0.3,
+  "epsilon": 0.1,
+  "epsilon_source": "Experiment 5A-H section 2 (frozen d-prime non-inferiority band), unchanged",
+  "best_fixed_alpha": 0.5,
+  "best_fixed_source": "5C frozen best fixed (5A-H B2), NOT re-selected",
+  "high_damage_subset_frozen": [
+    "bottle",
+    "grid"
+  ],
+  "roles": {
+    "A_original": "reference (all alpha=0, = 5A-H B0)",
+    "B_best_fixed": "frozen baseline (all alpha=0.5, = 5A-H B2)",
+    "GC": "PRIMARY METHOD (geometry conservative)",
+    "SC_A": "PRIMARY MATCHED CONTROL (sensitivity, 5C mechanical orientation)",
+    "SC_B": "SECONDARY MATCHED CONTROL (sensitivity, 5B registry hypothesis orientation)"
+  },
+  "category_assignments": {
+    "GC": {
+      "bottle": 0.0,
+      "cable": 0.5,
+      "grid": 0.0,
+      "hazelnut": 0.5,
+      "screw": 0.5
+    },
+    "SC_A": {
+      "bottle": 0.0,
+      "cable": 0.0,
+      "grid": 0.5,
+      "hazelnut": 0.5,
+      "screw": 0.5
+    },
+    "SC_B": {
+      "bottle": 0.5,
+      "cable": 0.5,
+      "grid": 0.0,
+      "hazelnut": 0.5,
+      "screw": 0.0
+    },
+    "SEC_eff_dim_L3_identity_check_no_eval": {
+      "bottle": 0.0,
+      "cable": 0.5,
+      "grid": 0.0,
+      "hazelnut": 0.5,
+      "screw": 0.5
+    }
+  },
+  "category_fragile_ranks": {
+    "GC": {
+      "bottle": 1,
+      "grid": 2,
+      "cable": 3,
+      "hazelnut": 4,
+      "screw": 5
+    },
+    "SC_A": {
+      "bottle": 1,
+      "cable": 2,
+      "hazelnut": 3,
+      "screw": 4,
+      "grid": 5
+    },
+    "SC_B": {
+      "grid": 1,
+      "screw": 2,
+      "hazelnut": 3,
+      "cable": 4,
+      "bottle": 5
+    }
+  },
+  "predictor_category_values_seed_mean": {
+    "radius_ratio_L3L2": {
+      "bottle": 0.8892786666666667,
+      "cable": 1.1165233333333333,
+      "grid": 0.8976903333333333,
+      "hazelnut": 1.1606400000000001,
+      "screw": 1.355896666666667
+    },
+    "sens_radius_L2": {
+      "bottle": -0.4647763333333333,
+      "cable": -0.42414099999999993,
+      "grid": 0.28908833333333334,
+      "hazelnut": -0.20885233333333333,
+      "screw": -0.16617533333333334
+    },
+    "eff_dim_L3": {
+      "bottle": 9.355883333333333,
+      "cable": 13.065266666666668,
+      "grid": 11.304666666666668,
+      "hazelnut": 23.897733333333335,
+      "screw": 11.758866666666668
+    }
+  },
+  "exhaustive_gates": [
+    "GATE:bottle+cable",
+    "GATE:bottle+grid",
+    "GATE:bottle+hazelnut",
+    "GATE:bottle+screw",
+    "GATE:cable+grid",
+    "GATE:cable+hazelnut",
+    "GATE:cable+screw",
+    "GATE:grid+hazelnut",
+    "GATE:grid+screw",
+    "GATE:hazelnut+screw"
+  ],
+  "exhaustive_gates_rule": "EXHAUSTIVE CONTROLS ARE EVALUATION-ONLY. NO BEST RANDOM GATE MAY REPLACE THE FROZEN GEOMETRY POLICY.",
+  "categories": [
+    "bottle",
+    "cable",
+    "grid",
+    "hazelnut",
+    "screw"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "n_category": 5,
+  "n_seed": 3,
+  "illumination_protocol": "4 photometric shifts (brightness 0.7/1.3, gamma 0.7/1.3), 5A-H frozen",
+  "target_results_read": false,
+  "no_gpu": true,
+  "data_source": "CPU-only recombination of frozen 5A-H raw per-image scores (B0/B2)",
+  "git_head": "1a0245e825f487d7a709f222e012e6b5b1edbc0f",
+  "timestamp": "2026-10-06T20:12:32"
+}

@@ -1,0 +1,16 @@
+policy,role,gated_categories,mean_alpha,mean_defect_dprime,mean_robustness,delta_dprime_vs_fixed,delta_robust_vs_fixed,worst_category,worst_category_gain,negative_transfer_count,high_damage_recovery,pair_win_count,win_tie_loss,pareto_dominated,dominated_by,rank_dprime_within_gates,rank_robust_within_gates,rank_worst_gain_within_gates,rank_neg_transfer_within_gates
+GATE:bottle+cable,exhaustive_control,bottle+cable,0.3,4.8517,0.251406,0.184707,0.043191,grid,0.0,0,0.438416,0,mixed,false,,3,6,1,1
+GATE:bottle+grid,exhaustive_control,bottle+grid,0.3,4.996715,0.264255,0.329722,0.056039,cable,0.0,0,0.824306,0,mixed,false,,1,10,1,1
+GATE:bottle+hazelnut,exhaustive_control,bottle+hazelnut,0.3,4.80021,0.252,0.133218,0.043784,hazelnut,-0.210743,1,0.438416,0,mixed,true,GATE:bottle+cable;GATE:cable+grid;SC_A,6,7,7,7
+GATE:bottle+screw,exhaustive_control,bottle+screw,0.3,4.863697,0.261171,0.196704,0.052955,cable,0.0,0,0.438416,0,mixed,false,,2,9,1,1
+GATE:cable+grid,exhaustive_control,cable+grid,0.3,4.83069,0.244982,0.163697,0.036766,bottle,0.0,0,0.38589,0,mixed,false,,5,4,1,1
+GATE:cable+hazelnut,exhaustive_control,cable+hazelnut,0.3,4.634185,0.232727,-0.032808,0.024511,hazelnut,-0.210743,1,0.0,0,mixed,true,B_best_fixed,10,1,7,7
+GATE:cable+screw,exhaustive_control,cable+screw,0.3,4.697671,0.241898,0.030678,0.033682,bottle,0.0,0,0.0,0,mixed,false,,8,2,1,1
+GATE:grid+hazelnut,exhaustive_control,grid+hazelnut,0.3,4.7792,0.245575,0.112207,0.03736,hazelnut,-0.210743,1,0.38589,0,mixed,true,GATE:cable+grid,7,5,7,7
+GATE:grid+screw,exhaustive_control,grid+screw,0.3,4.842687,0.254746,0.175694,0.046531,bottle,0.0,0,0.38589,0,mixed,true,GATE:bottle+cable;SC_A,4,8,1,1
+GATE:hazelnut+screw,exhaustive_control,hazelnut+screw,0.3,4.646182,0.242491,-0.020811,0.034276,hazelnut,-0.210743,1,0.0,0,mixed,true,B_best_fixed;GATE:cable+screw,9,3,7,7
+A_original,reference,bottle+cable+grid+hazelnut+screw,0.0,4.985245,0.310489,0.318252,0.102273,hazelnut,-0.210743,1,0.824306,0,mixed,true,GATE:bottle+grid;GC,,,,
+B_best_fixed,reference,-,0.5,4.666993,0.208216,0.0,0.0,bottle,0.0,0,0.0,0,tie,false,,,,,
+GC,primary_method,bottle+grid,0.3,4.996715,0.264255,0.329722,0.056039,cable,0.0,0,0.824306,0,mixed,false,,,,,
+SC_A,matched_control_primary,bottle+cable,0.3,4.8517,0.251406,0.184707,0.043191,grid,0.0,0,0.438416,0,mixed,false,,,,,
+SC_B,matched_control_alt,grid+screw,0.3,4.842687,0.254746,0.175694,0.046531,bottle,0.0,0,0.38589,0,mixed,true,GATE:bottle+cable;SC_A,,,,

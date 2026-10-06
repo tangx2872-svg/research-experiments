@@ -1,0 +1,16 @@
+policy,mean_defect_dprime,mean_robustness,is_pareto_efficient,dominated_by,is_geometry_policy,is_sc_a_policy,is_sc_b_policy
+GATE:bottle+cable,4.8517,0.251406,true,,false,true,false
+GATE:bottle+grid,4.996715,0.264255,true,,true,false,false
+GATE:bottle+hazelnut,4.80021,0.252,false,GATE:bottle+cable;GATE:cable+grid;SC_A,false,false,false
+GATE:bottle+screw,4.863697,0.261171,true,,false,false,false
+GATE:cable+grid,4.83069,0.244982,true,,false,false,false
+GATE:cable+hazelnut,4.634185,0.232727,false,B_best_fixed,false,false,false
+GATE:cable+screw,4.697671,0.241898,true,,false,false,false
+GATE:grid+hazelnut,4.7792,0.245575,false,GATE:cable+grid,false,false,false
+GATE:grid+screw,4.842687,0.254746,false,GATE:bottle+cable;SC_A,false,false,true
+GATE:hazelnut+screw,4.646182,0.242491,false,B_best_fixed;GATE:cable+screw,false,false,false
+A_original,4.985245,0.310489,false,GATE:bottle+grid;GC,false,false,false
+B_best_fixed,4.666993,0.208216,true,,false,false,false
+GC,4.996715,0.264255,true,,true,false,false
+SC_A,4.8517,0.251406,true,,false,true,false
+SC_B,4.842687,0.254746,false,GATE:bottle+cable;SC_A,false,false,true

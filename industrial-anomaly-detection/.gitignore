@@ -118,3 +118,7 @@ results/experiment_5b/logs/*.log
 !results/experiment_5c/
 results/experiment_5c/logs/*.log
 results/experiment_5c/raw/**/fit/
+
+# 5D 轻量结果纳入版本控制（reference/summary/sanity/figures）；运行日志不跟踪
+!results/experiment_5d/
+results/experiment_5d/logs/*.log

@@ -1,0 +1,11 @@
+gate_id,gated_categories,kept_categories,alpha_bottle,alpha_cable,alpha_grid,alpha_hazelnut,alpha_screw,gate_size,mean_alpha,is_geometry_gate,is_sc_a_gate,is_sc_b_gate,usage
+GATE:bottle+cable,bottle+cable,grid+hazelnut+screw,0.0,0.0,0.5,0.5,0.5,2,0.3000,false,true,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:bottle+grid,bottle+grid,cable+hazelnut+screw,0.0,0.5,0.0,0.5,0.5,2,0.3000,true,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:bottle+hazelnut,bottle+hazelnut,cable+grid+screw,0.0,0.5,0.5,0.0,0.5,2,0.3000,false,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:bottle+screw,bottle+screw,cable+grid+hazelnut,0.0,0.5,0.5,0.5,0.0,2,0.3000,false,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:cable+grid,cable+grid,bottle+hazelnut+screw,0.5,0.0,0.0,0.5,0.5,2,0.3000,false,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:cable+hazelnut,cable+hazelnut,bottle+grid+screw,0.5,0.0,0.5,0.0,0.5,2,0.3000,false,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:cable+screw,cable+screw,bottle+grid+hazelnut,0.5,0.0,0.5,0.5,0.0,2,0.3000,false,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:grid+hazelnut,grid+hazelnut,bottle+cable+screw,0.5,0.5,0.0,0.0,0.5,2,0.3000,false,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:grid+screw,grid+screw,bottle+cable+hazelnut,0.5,0.5,0.0,0.5,0.0,2,0.3000,false,false,true,EVALUATION-ONLY (no best-random-gate selection allowed)
+GATE:hazelnut+screw,hazelnut+screw,bottle+cable+grid,0.5,0.5,0.5,0.0,0.0,2,0.3000,false,false,false,EVALUATION-ONLY (no best-random-gate selection allowed)

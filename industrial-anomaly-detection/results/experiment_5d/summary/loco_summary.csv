@@ -1,0 +1,6 @@
+held_out,n_categories,remaining,GC_delta_dprime_vs_fixed,GC_delta_robust_vs_fixed,SC_A_delta_dprime_vs_fixed,SC_A_delta_robust_vs_fixed,SC_B_delta_dprime_vs_fixed,GC_minus_SC_A_delta_dprime,GC_minus_SC_A_delta_robust,GC_minus_SC_B_delta_dprime
+bottle,4,cable+grid+hazelnut+screw,0.192945,0.031009,0.011676,0.014949,0.219618,0.18127,0.01606,-0.026672
+cable,4,bottle+grid+hazelnut+screw,0.412153,0.070049,0.219208,0.039039,0.219618,0.192945,0.031009,0.192535
+grid,4,bottle+cable+hazelnut+screw,0.219208,0.039039,0.230883,0.053988,0.026672,-0.011676,-0.014949,0.192535
+hazelnut,4,bottle+cable+grid+screw,0.412153,0.070049,0.230883,0.053988,0.219618,0.18127,0.01606,0.192535
+screw,4,bottle+cable+grid+hazelnut,0.412153,0.070049,0.230883,0.053988,0.192945,0.18127,0.01606,0.219208
