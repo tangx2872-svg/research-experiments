@@ -22,7 +22,8 @@ def remove_unreferenced_file(storage, name):
     def cleanup():
         from assignments.models import SubmitAssignment
         from resources.models import Resource
-        if not SubmitAssignment.objects.filter(assignment_file=name).exists() and not Resource.objects.filter(resource_file=name).exists():
+        from research.models import FileVersion
+        if not SubmitAssignment.objects.filter(assignment_file=name).exists() and not Resource.objects.filter(resource_file=name).exists() and not FileVersion.objects.filter(resource__resource_file=name).exists():
             try:
                 storage.delete(name)
             except OSError:

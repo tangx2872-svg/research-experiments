@@ -22,6 +22,7 @@ from django_lms import views as project_views
 urlpatterns = [
     url(r'^$', project_views.index, name="home"),
     path('admin/', admin.site.urls),
+    path('research/', include('research.urls', namespace='research')),
     url(r'^users/', include('users.urls', namespace='users')),
     url(r'^courses/', include('courses.urls', namespace="courses")),
     url(r'^assignments/', include('assignments.urls', namespace='assignments')),

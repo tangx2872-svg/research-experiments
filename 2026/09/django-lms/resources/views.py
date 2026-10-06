@@ -56,5 +56,9 @@ def delete_view(request, pk):
 @login_required
 def download_resource(request, pk):
     resource = get_object_or_404(Resource, pk=pk)
+    if resource.workspace_id:
+        from research.permissions import require_workspace
+        require_workspace(request.user, resource.workspace)
+        return download_file(resource.resource_file)
     require_member(request.user, resource.course)
     return download_file(resource.resource_file)
