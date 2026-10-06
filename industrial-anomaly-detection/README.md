@@ -4,9 +4,10 @@
 —— 面向光照扰动的特征归一化（α-IN，`F_α = (1−α)F + α·IN(F)`）可能同时**抑制 defect-relevant 信息**；
 本项目用 1B→1J-B 建立机制证据，再用 5A→5C 把机制结论推进为可验证的方法。
 
-> **当前状态**：Stage ⑧ Method Identity / Matched-Control Validation **已完成**（Experiment 5D：
-> 预注册判定链 literal = CASE_D，实质性结论 = **CASE_B — Geometry Useful but Identity Weak**；CASE 归属待人工裁决）。
-> **STOP，不启动 5E / v2 / v3 / 方案②，等待人工 review。**
+> **当前状态**：Stage ⑨ Robustness–Preservation Trade-off 方法改进 **pilot 已完成**（Experiment 6A：
+> **CASE_A — Soft Geometry Gating Works**，α_F=0.25 同时改善 robustness 并保留 64.1% 的 Hard-GC preservation gain）。
+> 5D 的 identity 结论（CASE_B，未确立）**不受影响**。
+> **STOP，不启动 6B / Method 2，等待人工 review。**
 
 ---
 
@@ -14,7 +15,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · **⑧ Method Identity / Matched-Control Validation ✅（当前）** · ⑨ Method v2 / benchmark ⏸ · ⑩ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · **⑨ Trade-off 方法改进 ✅（当前）** · ⑩ Final baseline + ablation ⏸ · ⑪ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -24,9 +25,10 @@
 | **Stage ⑥ 结论** | **仅用 normal training features 的几何即可预测 category 的 normalization tolerance（CASE_A FINAL）**；但 normalization-sensitivity 通道（Group C）**全部 null** → 机制性中介解释**未确立** |
 | **Stage ⑦ 结论** | 用该几何做 adaptive α：**激进重分配（v1A）不优于 best fixed α**（事实上的 CASE_D）；**保守门控形式（v1B）达成 harm avoidance（CASE_B）**：negative transfer 0/5、high-damage recovery +0.824 |
 | **Stage ⑧ 结论** | matched-control 证伪实验（零 GPU，sanity 18/18）：10 个同 budget gate 的 Δd′ 跨度 −0.033…+0.330 → **「随便 gate 都差不多」（CASE_C）被排除**；GC 在 10 个 gate 中 preservation / worst-category harm / negative transfer 均 **1/10**、**Pareto-efficient**，但 **robustness 10/10（最差）**；GC vs matched sensitivity control Δd′ **+0.1450 / +0.1540（≥ε、3/3 seeds）**，但优势**由单一类别（grid）驱动** → **literal CASE_D / 实质 CASE_B**，identity 未确立 |
-| 允许声称 | ① normal-only feature geometry 含有 category-level normalization tolerance 的预测信息（n=5，descriptive）；② 把该几何用于**门控式 safe normalization** 可避免高脆弱类别的归一化损伤；③ **gate 选择本身携带大量信息**（10 个同 budget gate 的 Δd′ 相差 0.36），且 geometry 的 top-2 = 唯一最优 gate |
-| 不允许声称 | 因果机制已被证明；"adaptive α 提升平均性能"；**geometry predictor identity 已确立**（5D：优势为单类别驱动、robustness 为 10 个 gate 中最差）；结论可外推到其他 backbone / detector / 数据集 / 真实光照 |
-| 最新 commit | `31150bd`（5D）；关键历史 commit：`fdd6fa9`(5C) · `5d6ee98`(5B-C) · `24d1b22`(5B) · `ff4a1b2`(5A-H) · `ba11038`(5A) · `1a0245e`(docs 总账) |
+| **Stage ⑨ 结论** | Soft-GC pilot（10 GPU units，sanity 18/18）：在**同一 category identity**下把 fragile 端 α 从 0 提到 **α_F=0.25** → d′ 4.9967→4.8782（仍比 fixed α=0.5 高 **+0.2112**）、\|Δz\| 0.2643→**0.2329**（比 Hard GC 改善 **0.0313**）、worst harm 0、neg transfer 0、**3/3 seeds** 同时满足 → **CASE_A**；保留 Hard-GC preservation gain **64.1%**、回收 robustness penalty **55.9%** |
+| 允许声称 | ① normal-only feature geometry 含有 category-level normalization tolerance 的预测信息（n=5，descriptive）；② 把该几何用于**门控式 safe normalization** 可避免高脆弱类别的归一化损伤；③ **gate 选择本身携带大量信息**（10 个同 budget gate 的 Δd′ 相差 0.36），且 geometry 的 top-2 = 唯一最优 gate；④ **hard gate（fragile 端 α=0）过于极端**：把 fragile 端 α 提到 0.25 可在同一 identity 下同时改善 robustness 并保留大部分 preservation |
+| 不允许声称 | 因果机制已被证明；"adaptive α 提升平均性能"；**geometry predictor identity 已确立**（5D：优势为单类别驱动、robustness 为 10 个 gate 中最差）；**6A 的 CASE_A 是 identity 证据**（6A 只改 fragile 端强度、不改 category identity，且 mean α 0.30→0.40 budget 不 matched、A 的余量仅 5.6%）；需要 category-specific continuous α；结论可外推到其他 backbone / detector / 数据集 / 真实光照 |
+| 最新 commit | `31150bd`（5D）→ 见下方 6A commit；关键历史 commit：`e0bda22`(5D docs) · `fdd6fa9`(5C) · `5d6ee98`(5B-C) · `24d1b22`(5B) · `ff4a1b2`(5A-H) · `ba11038`(5A) |
 
 ---
 
@@ -41,8 +43,8 @@
 ⑥ Improvement Method Screening                 ✅（5B / 5B-C：CASE_A FINAL）
 ⑦ Method Validation                            ✅（5C：CASE_B — Safe Normalization 方向）
 ⑧ Method Identity / Matched-Control Validation ✅（5D：literal CASE_D / 实质 CASE_B — identity 未确立）
-⑨ Method v2 / 更大规模验证                      ⏸ 需人工批准（未启动）
-⑩ Full Experiments / Benchmark                 ⏸
+⑨ Trade-off 方法改进（Soft-GC pilot）           ✅（6A：CASE_A — α_F=0.25 knee）
+⑩ Final baseline + ablation                    ⏸ 需人工批准（未启动）
 ⑪ Writing                                      ⏸
 ```
 
@@ -97,6 +99,13 @@
   GC（bottle+grid，= 唯一最优 gate）在 10 个 gate 中 preservation / worst-harm / neg-transfer 均 1/10、Pareto-efficient，
   但 robustness 10/10（最差）；vs matched sensitivity control（SC-A bottle+cable / SC-B grid+screw）Δd′ +0.1450 / +0.1540
   （≥ε、3/3 seeds）却由单一类别（grid）驱动（LOCO 去掉 grid 后 −0.0117）→ literal CASE_D / 实质 **CASE_B：identity 未确立**
+        ↓
+【⑨ 方法改进】6A
+  保持 identity 冻结，只把 fragile 端 α 从 0 插值到 0.5（α_F ∈ {0, 0.25, 0.40091275, 0.5}；10 个新 GPU unit）：
+  Hard GC 的 robustness 代价（|Δz| 0.2643，10 gate 中最差）可被软化 —— **α_F=0.25** 同时做到
+  Δd′ vs fixed = **+0.2112**（保留 Hard-GC gain 的 64.1%）与 Δ|Δz| vs Hard GC = **−0.0313**（回收 55.9%），
+  worst-category harm 0、negative transfer 0、3/3 seeds 一致 → **CASE_A（Soft Geometry Gating Works）**；
+  但 A 的余量仅 5.6%、mean α 0.30→0.40 budget 不 matched → 属 strength 效应，**不是 identity 证据**
 ```
 
 ---
@@ -105,6 +114,7 @@
 
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
+| [6A](experiments/experiment6a/README.md) | Hard GC 的 robustness 代价能否用 soft gating 回收 | 保持 identity 冻结、只插值 fragile 端 α：**α_F=0.25** → d′ +0.2112 vs fixed、\|Δz\| −0.0313 vs Hard GC、worst harm 0、neg transfer 0、3/3 seeds → 保留 64.1% gain、回收 55.9% penalty | **CASE_A**（Soft Geometry Gating Works） | DONE `6ACOMMIT` |
 | [5D](experiments/experiment5d/README.md) | 5C 的收益是否来自 geometry 的**类别选择信息**（而非「随便 gate」） | CPU-only 重组：10 个同 budget gate 的 Δd′ 跨度 −0.033…+0.330（CASE_C 被排除）；GC preservation / worst-harm / neg-transfer 均 **1/10** 且 Pareto-efficient，但 **robustness 10/10**；vs matched sensitivity control **+0.1450/+0.1540（≥ε、3/3 seeds）** 且由 **grid 单类别**驱动 | **literal CASE_D / 实质 CASE_B**（identity 未确立） | DONE `31150bd` |
 | [5C](experiments/experiment5c/README.md) | 5B 的预测结构能否真正改善 normalization policy | adaptive α 未在两轴同时优于 best fixed（pair-win 0/15）；v1B 零负迁移 + high-damage 恢复 +0.824 | **CASE_B**（Harm Reduction Only） | DONE `fdd6fa9` |
 | [5B-C](experiments/experiment5b/README.md#17-experiment-5b-c--group-c-completion--final-verdict2026-10-06) | 补齐 Group C 后 verdict 是否改变 | 原 geometry 信号不变；Group C 8/8 null（\|ρ\|≤0.30，LOCO ≤ random） | **CASE_A (FINAL)** | DONE `5d6ee98` |
@@ -381,7 +391,66 @@ sanity **S1–S18 = 18/18 PASS**；5C↔5A-H 同 α raw 等价性 `max|Δscore| 
 
 ---
 
-## 8. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
+## 8. Stage ⑨ 方法改进：[6A](experiments/experiment6a/README.md) — Geometry-Guided Soft Gating / Adaptive α Pilot
+
+**实验目的**：5D 的 Hard GC（fragile 端 α=0）最大化 preservation 但牺牲 robustness（|Δz| 0.2643，10 个 gate 中最差）。
+6A 是 **METHOD PILOT**，问的是：
+
+> 保持 category identity 完全冻结（fragile = bottle+grid，tolerant = cable/hazelnut/screw @ 0.5），
+> 只把 **fragile 端的 α（α_F）** 从 0 向 0.5 插值，能否在**保留大部分 preservation** 的同时**恢复 robustness**？
+
+**Frozen protocol**（`results/experiment_6a/reference/policy_freeze.json`，sha256 `d4364457…`，运行前冻结）
+
+| 项 | 值 |
+|---|---|
+| fragile / tolerant（冻结自 5D，未改） | `bottle, grid` @ **α_F** ｜ `cable, hazelnut, screw` @ **0.5** |
+| candidate grid | **{0, 0.25, 0.5}**（0.25 = 历史 5A B1；0 = Hard GC；0.5 = Best Fixed） |
+| 预注册条件扩展 | **0.40091275**（历史 5A C1），人类批准后启用 → 实际评估 4 点 |
+| mean α | (2·α_F + 3·0.5)/5 → **0.30 / 0.40 / 0.4604 / 0.50**（budget 不 matched，须披露） |
+| 历史/GPU provenance | α_F=0 / 0.5 端点与 tolerant 端复用 5A-H frozen raw；α_F=0.25 / 0.40091275 由 **10 个新 GPU unit** 产生（bottle s1/s2 + grid s0/s1/s2 ×2 α） |
+| 执行方式 | tmux 不可用 → **screen detached 3 workers**，逐 unit 落盘 + PID lock + resume；单 unit 46–111 s、~2.9 GB |
+
+**成功判据（预注册 A–D，读取任何 6A target 前冻结）**
+A 保留 `Δd′ vs fixed ≥ +0.20`；B 恢复 `|Δz| ≤ HardGC|Δz| − 0.02 = 0.2443`；C `worst gain ≥ −ε` 且 `neg transfer ≤ 0`；
+D ≥2/3 seeds 同时满足 A&B。
+
+**关键结果**
+
+| policy | α_F | mean α | d′ ↑ | \|Δz\| ↓ | Δd′ vs fixed | Δ\|Δz\| vs HardGC | worst gain | neg transfer | A/B/C/D |
+|---|---|---|---|---|---|---|---|---|---|
+| **Hard GC** | 0 | 0.300 | **4.9967** | 0.2643 | +0.3297 | 0 | 0.0000 | 0 | ✅❌✅❌ |
+| **Soft-GC** | **0.25** | **0.400** | 4.8782 | **0.2329** | **+0.2112** | **−0.0313** | **0.0000** | **0** | **✅✅✅✅** |
+| Soft-GC | 0.40091275 | 0.460 | 4.7522 | 0.2133 | +0.0852 | −0.0509 | 0.0000 | 0 | ❌✅✅❌ |
+| Best Fixed | 0.5 | 0.500 | 4.6670 | **0.2082** | 0（参照） | −0.0560 | 0.0000 | 0 | ❌✅✅❌ |
+| （参照）Original | — | 0.000 | 4.9852 | 0.3105 | +0.3183 | +0.0462 | — | — | — |
+
+- **等价性**：smoke 重跑 `bottle:seed0 @0.25`（5A B1 既有条件）→ **183 keys、`max|Δscore| = 0`**；
+  重算 `α_F=0` 与 5D 冻结 GC 差 `|Δd′| = 2.9e-07`（6 位小数舍入）。**sanity S1–S18 = 18/18 PASS**。
+- **Pareto**：前沿在 α_F∈[0, 0.25] 向外凸出；`SoftGC(0.25)` 与 Hard GC / Best Fixed 同为 Pareto-efficient
+  （Original 被 Hard GC 支配）。
+- **per-category**：bottle d′ 8.1785→7.7383→7.4469→7.3017、|Δz| 0.4422→0.3352→0.2982→0.2860；
+  grid d′ 3.1356→2.9833→2.6444→2.3638、|Δz| 0.2244→0.1747→0.1138→0.1004；tolerant 端按构造完全不变。
+
+**FINAL VERDICT：CASE_A — Soft Geometry Gating Works**（存在 α_F=0.25 使 A+B+C+D 全部满足）。
+**量化**：保留 Hard-GC preservation gain 的 **64.1%**（0.2112/0.3297），回收 robustness penalty 的 **55.9%**（0.0313/0.0560）。
+
+**必须同时声明的限定**
+
+1. **A 的余量很薄**：+0.2112 对阈值 +0.20，余量仅 **5.6%**（B 余量 +0.0114）→ knee 的成立依赖预注册阈值。
+2. **budget 不 matched**：Soft-GC(0.25) mean α = **0.40** > Hard GC **0.30** → 它用了**更强** normalization；
+   6A **只改强度、不改 category identity**，所以这是 **normalization-strength 效应，不是 identity 证据**；
+   历史中也没有 budget-matched 的 uniform α≈0.40 对照。
+3. **Q4**：bottle/grid 的 knee **位置相同**（都在 α_F∈[0,0.25]），但**幅度不同**
+   （该区间每损失 1 单位 d′ 换回的 robustness：grid 0.326 vs bottle 0.243，差 ~34%）
+   → 仅记录为 **未验证假设**「category-specific continuous tolerance may be required」，本实验**不**为类别单独调 α。
+4. n=5、gate size=2、只有 2 个中间点、单 backbone、synthetic illumination 协议；descriptive，不做 causal claim。
+
+**下一步（建议，未启动）**：6B refined validation（更多 α_F 点 + budget-matched 对照 + 检验 tolerant 端是否也应软化），
+需人工批准新协议。
+
+---
+
+## 9. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 
 **事实（实验直接观察到）**
 
@@ -398,12 +467,18 @@ sanity **S1–S18 = 18/18 PASS**；5C↔5A-H 同 α raw 等价性 `max|Δscore| 
    Δd′ 跨度 **−0.033…+0.330**；GC 在 10 个 gate 中 preservation / worst-category harm / negative transfer
    均 **1/10** 且 **Pareto-efficient**，但 **robustness 10/10（最差）**；GC 相对 matched sensitivity control
    Δd′ **+0.1450 / +0.1540**（≥ε、**3/3 seeds**），但优势**由单一类别（grid）驱动**（LOCO 去掉 grid 后 −0.0117）。
+9. 6A（soft-gating pilot，10 GPU units，sanity 18/18）：保持 category identity 冻结、仅插值 fragile 端 α_F ∈ {0, 0.25,
+   0.40091275, 0.5} → **α_F=0.25** 同时满足预注册 A–D：Δd′ vs fixed **+0.2112**、Δ|Δz| vs Hard GC **−0.0313**、
+   worst-category gain **0**、negative transfer **0**、**3/3 seeds**；d′/\|Δz\| 单调整，tolerant 端按构造不变。
 
 **解释（基于事实的推断，且受限定）**
 
 - 机制位于**表征空间的 layer3 几何**，而非图像空间属性。
 - 5B 的预测信息是**通用分散度几何**，不是 normalization-specific 敏感度。
 - 5C 表明 geometry 的可用价值是**"哪些类别不该被 normalization"的门控信息**，而非"更强的 α 分配"。
+- 6A 表明 5D 的 hard gate 在 fragile 端**过于极端**：把 fragile 端 α 从 0 提到 0.25 落在
+  preservation–robustness 前沿的凸起处（保留 64.1% 的 gain、回收 55.9% 的 penalty）。
+  该改善是 **normalization-strength 效应**（mean α 0.30→0.40，identity 未变），**不能**当作 identity 证据。
 
 **假设（尚未被验证）**
 
@@ -411,31 +486,38 @@ sanity **S1–S18 = 18/18 PASS**；5C↔5A-H 同 α raw 等价性 `max|Δscore| 
   （CASE_C 被排除），但 geometry 相对 matched sensitivity control 的优势**由单一类别驱动**，
   **predictor identity 仍未确立**（CASE_A 不可声称）。
 - "高脆弱类别 → α=0" 的规则是否能泛化到 MVTec 其余类别、其他 backbone/detector、真实光照。
+- 6A 的 knee（α_F=0.25）是否在**更多 α_F 点 + budget-matched 对照**下稳定（当前 A 余量仅 5.6%）。
+- bottle 与 grid 的 marginal trade-off 幅度不同（0.243 vs 0.326）是否意味着需要
+  **category-specific continuous tolerance**（仅记录，未验证）。
 
 ---
 
-## 9. 下一步（建议，均未启动，需人工批准）
+## 10. 下一步（建议，均未启动，需人工批准）
 
-0. **5D CASE 归属裁决（人工，必须）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
+0. **5D CASE 归属裁决（人工，仍未决）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
    [5D README §15](experiments/experiment5d/README.md)。
-1. **⑨ Method v2（Safe Normalization 形式化）**：若继续方案①，结论口径须固定为「gate 选择携带信息 +
-   geometry 复现最优 gate，但 identity 未确立」，并需要**扩大类别数**（使 gate size 与类别数不成比例）
-   来解除「单类别驱动」这一设计性限制；仍须预注册 matched control。
-2. **限制声明先行**：任何 v2 结论都必须带着限定（v1A 失败 / identity 未确立 / GC robustness 为 10 gate 中最差 / n=5）。
-3. **不做**：post-hoc 调参救 v1A、根据 exhaustive 结果挑新 gate、调 threshold / gate size / α、新造 predictor、
-   无新证据的机制深挖（1J-C/2A）、启动 5E / v2 / v3 / 方案②（均需人工批准）。
+1. **⑩ 6B refined validation（建议，未启动）**：在同一 category identity 下用**更多 α_F 点 + budget-matched 对照**
+   复核 6A 的 knee 是否稳定（A 余量仅 5.6%），并检验 tolerant 端是否也应软化（需新预注册协议）。
+2. **identity 与 strength 必须分开谈**：6A 只改脆弱端强度，**不构成** identity 证据；identity 若要推进，
+   需要 5D 之后的新证据（例如扩大类别数使 gate size 与类别数不成比例）。
+3. **限制声明先行**：任何后续结论都必须带着限定（v1A 失败 / identity 未确立 / GC robustness 为 10 gate 中最差 /
+   6A budget 不 matched 且 A 余量薄 / n=5）。
+4. **不做**：post-hoc 调参救 v1A、根据 exhaustive 结果挑新 gate、为每个类别单独调 α、dense α sweep、
+   调 threshold / ε / gate size、新造 predictor、新 backbone/dataset、无新证据的机制深挖（1J-C/2A）、
+   启动 6B / Method 2（均需人工批准）。
 
 ---
 
-## 10. 复现与工程约定
+## 11. 复现与工程约定
 
 - 2026-10-06 曾在 AutoDL 完成一次**全量资产恢复复现审计**（1848 NPZ / 30 banks / 1386 intervention rows），
-  详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；此后 5B / 5B-C / 5C 均在新环境内完成并通过等价性检查
+  详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；**6A 的 10 个 GPU unit 亦在同一路径上运行，smoke 重跑 5A B1
+  既有条件得到 `max|Δscore| = 0`**；此后 5B / 5B-C / 5C 均在新环境内完成并通过等价性检查
   （5C 与 5A-H 同 α 的 raw 分数逐位一致）。**5D 为纯 CPU 历史重组**（零 GPU、零新 inference），
   同样复现 `max|Δscore| = 0`（33 keys / 9273 行）。
 - **Git 约定**：`results/` 默认忽略，仅对 `experiment_5a/`、`experiment_5a_h/`、`experiment_5b/`、
-  `experiment_5b_final/`、`experiment_5c/`、`experiment_5d/` 开白名单；数据集、大 NPZ/bank/checkpoint、
-  运行日志（`*.log`）不入库。
+  `experiment_5b_final/`、`experiment_5c/`、`experiment_5d/`、`experiment_6a/` 开白名单（6A 另外排除
+  `raw_new/**/per_image.csv` 与 `fit/`）；数据集、大 NPZ/bank/checkpoint、运行日志（`*.log`）不入库。
 - **实验纪律**：每个正式实验先写预注册 README（四问 + 出口判据）→ 最小 sanity → 运行 → 结果/判定/限定
   写回 README 与根 README → commit（push 需授权）。预注册规则若在运行后发现缺陷，**如实披露并保留原判定**，
   不得回改协议（5D §15.1 为例）。
@@ -1127,7 +1209,7 @@ A1（≥2 新增类别方向分化：cable/screw/hazelnut）+ A2（稳定覆盖 
 ---
 
 > ℹ️ 本节为 **2026-09-25 首个 baseline 里程碑**的历史记录（bottle / broken_large 四联图），
-> 保留作为项目起点证据；研究阶段与当前结论见上文 §0–§8。
+> 保留作为项目起点证据；研究阶段与当前结论见上文 §0–§9。
 
 ## PatchCore Bottle Result
 
@@ -1161,7 +1243,7 @@ A1（≥2 新增类别方向分化：cable/screw/hazelnut）+ A2（稳定覆盖 
 ---
 
 > ⚠️ **以下三节（Current Progress / Next Step / Current Goal）为 2026-09-25 baseline 阶段的原始记录，已过时。**
-> 当前阶段、结论与下一步请以 **§0 当前状态快照 / §8 已冻结结论 / §9 下一步** 为准。
+> 当前阶段、结论与下一步请以 **§0 当前状态快照 / §9 已冻结结论 / §10 下一步** 为准。
 
 # （历史）Current Progress — 2026-09-25 阶段快照
 

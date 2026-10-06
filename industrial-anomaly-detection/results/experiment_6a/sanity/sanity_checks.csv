@@ -1,0 +1,19 @@
+check,status,detail
+S1_historical_frozen_assets_exist,PASS,6/6 tracked assets present
+S2_5D_GC_assignment_unchanged,PASS,"fragile=['bottle', 'grid'] == 5D GC gate; tolerant alpha=0.5"
+S3_fixed_baseline_unchanged,PASS,"best fixed alpha=0.5 (5C/5D frozen); reference read from 5D summary, not hand-typed"
+S4_metric_implementation_unchanged,PASS,"recomputed alpha_F=0 vs 5D frozen GC: |dd-prime|=2.94e-07, |d|dz||=3.08e-07"
+S5_candidate_grid_frozen_before_target_analysis,PASS,"grid=[0.0, 0.25, 0.5] frozen at freeze time; verdict.json written after freeze (mtime order ok)"
+S6_all_required_cat_seed_alpha_keys_exist,PASS,all required keys present
+S7_illumination_protocol_unchanged,PASS,"shifts=['brightness_0.7', 'brightness_1.3', 'gamma_0.7', 'gamma_1.3']"
+S8_historical_score_equivalence,PASS,"5A(bottle/seed0) vs 5A-H same alpha: rows=732, max|dscore|=0.000e+00"
+S9_no_target_derived_category_reassignment,PASS,"fragile/tolerant identity copied from 5D freeze, not derived from 6A targets"
+S10_no_alpha_selected_before_full_candidate_evaluation,PASS,"grid frozen a priori = [0.0, 0.25, 0.5] (endpoints = Hard GC / Best Fixed)"
+S11_mean_alpha_formula,PASS,"mean_alpha=(2*alpha_F+3*0.5)/5 -> [(0.0, 0.3), (0.25, 0.4), (0.5, 0.5)]"
+S12_per_category_aggregation_correct,PASS,per-category recomputation matches eval_policy for 3 available alpha_F
+S13_per_seed_aggregation_correct,PASS,aggregate == mean over the 3 per-seed aggregates (available alpha_F)
+S14_negative_transfer_implementation_unchanged,PASS,"count(gain < -eps), eps from 5A-H/5D frozen band"
+S15_epsilon_unchanged,PASS,eps=0.1 (5A-H section 2 frozen band)
+S16_frozen_asset_hashes_unchanged,PASS,6 tracked frozen assets md5 identical vs freeze time
+S17_no_accidental_gpu_run,PASS,no torch/CUDA import in this script; 0 GPU unit executed
+S18_output_completeness,PASS,reference 2/2; raw/policy_results.csv present
