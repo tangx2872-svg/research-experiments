@@ -1,0 +1,57 @@
+{
+  "sanity_pass": true,
+  "ranking": [
+    {
+      "candidate": "T1_M7_L2a000_L3a025",
+      "impl": "NEW(9B)",
+      "old_9B_rank": "1",
+      "old_9B_verdict": "HOLD",
+      "old_9B_beyond_gain_bottle": "0.0467",
+      "bottle_absdz": 0.332156,
+      "bottle_dprime": 8.178427,
+      "delta_absz_vs_original": -0.17053,
+      "delta_dprime_vs_original": -0.354401,
+      "old_9B_absdz": 0.3355,
+      "old_9B_dprime": 8.0216,
+      "verdict": "HOLD",
+      "verdict_reason": "improvement 存在但不满足强条件（robustness -0.1705 / preservation -0.3544）"
+    },
+    {
+      "candidate": "T2_M10_concat_g100",
+      "impl": "REUSE(7A-O B1_g100)",
+      "old_9B_rank": "2",
+      "old_9B_verdict": "HOLD",
+      "old_9B_beyond_gain_bottle": "0.1911",
+      "bottle_absdz": 0.383351,
+      "bottle_dprime": 8.288066,
+      "delta_absz_vs_original": -0.119335,
+      "delta_dprime_vs_original": -0.244762,
+      "old_9B_absdz": 0.3379,
+      "old_9B_dprime": 8.1708,
+      "verdict": "HOLD",
+      "verdict_reason": "improvement 存在但不满足强条件（robustness -0.1193 / preservation -0.2448）"
+    },
+    {
+      "candidate": "T3_M7_L2a025_L3a000",
+      "impl": "NEW(9B)",
+      "old_9B_rank": "3",
+      "old_9B_verdict": "HOLD",
+      "old_9B_beyond_gain_bottle": "-0.1687",
+      "bottle_absdz": 0.437763,
+      "bottle_dprime": 7.943153,
+      "delta_absz_vs_original": -0.064923,
+      "delta_dprime_vs_original": -0.589675,
+      "old_9B_absdz": 0.3756,
+      "old_9B_dprime": 7.8876,
+      "verdict": "HOLD",
+      "verdict_reason": "improvement 存在但不满足强条件（robustness -0.0649 / preservation -0.5897）"
+    }
+  ],
+  "advaned": [],
+  "held": [
+    "T1_M7_L2a000_L3a025",
+    "T2_M10_concat_g100",
+    "T3_M7_L2a025_L3a000"
+  ],
+  "stopped": []
+}

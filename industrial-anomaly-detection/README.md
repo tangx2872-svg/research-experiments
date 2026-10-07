@@ -17,7 +17,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · **⑩-e 评测协议修正 ✅（9C Matched-RNG Protocol V2：噪声地板 0.020224/0.054211 → **0.000000/0.000000**，equivalent pair 达到 embedding/coreset/memory bank/score 全面逐位一致）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · **⑩-e 评测协议修正 ✅（9C Matched-RNG Protocol V2：噪声地板 0.020224/0.054211 → **0.000000/0.000000**，equivalent pair 达到 embedding/coreset/memory bank/score 全面逐位一致）** · **⑩-f 用 V2 重审 9B ✅（9B-R：0 ADVANCE / 3 HOLD —— 9B 的 robustness 改善**不是** measurement artifact，三候选在 V2 下保留且同号；但全部仍是纯 trade-off 兑换，preservation 损失 0.25–0.59 d′ > EPS_DP=0.10）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -167,6 +167,7 @@
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
 | [9C](results/experiment_9c_rng_calibration/README.md) | 消除「不同方法代码路径消耗不同 RNG → KCenterGreedy 选择不同 coreset」的评测不公 | **5 GPU unit-runs / 483 GPU·s**、P4 sanity **7/7**、0 failed：建立 **Matched-RNG Protocol V2**（两个 replay 点：`Engine.fit` 入口固定 train shuffle 行序 + `select_coreset_idxs` 入口固定 greedy 初始点）。V1 噪声地板 0.020224/0.054211 → **V2.1 = 0.000000/0.000000**（equivalent pair 的 embedding sum_abs / RNG state hash / coreset sha / memory bank sha / tau / per-image score **全部逐位一致**） | **CASE A**（Matched-RNG 成功） | DONE |
+| [9B-R](results/experiment_9b_r_strict_replay/README.md) | 用 9C-v2b 校准好的尺子（Protocol V2）重新审查 9B 候选：候选优势是真实 method effect 还是 measurement artifact | **5 GPU unit-runs / 538.9 GPU·s**、Round 0 sanity **10/10 PASS**、0 failed：Control 1（Original 两次独立进程）embedding/coreset/bank sha 全同、`max\|Δscore\|=0.0`（而 runtime 52.4s vs 133.3s → 一致性非环境巧合）；Control 2 **逐元素 `max\|ΔF\|=0.0`（0/328,728,576 元素）**。Round 1：T1 \(\|Δz\|\) 0.5027→0.3322、T2 →0.3834、T3 →0.4378（改善全保留、与 9B 同号），但 preservation 同时降 0.245–0.590 d′ | **0 ADVANCE / 3 HOLD**（纯 trade-off 兑换）；另发现**既有**协议属性：fit 实际使用全部 209 张 train/good（val 20 张在 bank 内，`dm.setup` 重置了 runner 过滤） | DONE |
 | [9B](results/experiment_9b_screening/README.md) | 9A 无晋级后，是否存在 deployable / normal-only / training-free 的第二批候选（M7–M11）能改善 trade-off | **29 GPU unit-runs / 3461 GPU·s**、sanity **12/12**、0 failed：**无候选 ADVANCE**；bottle 侧存在真实越界（M8_b100 **+0.937** d′、M11_b100 +0.804、M9_g1 +0.705，均 >> 噪声地板），但 cable 侧**无候选越界**且通道门方法 cable Δd′ −0.34…−0.76；M7 出现 **layer×category 交互**（bottle 偏好 L3、cable 偏好 L2，与预注册方向相反）；M10 = 7A-O `B1_g100` 复用；实测 **coreset 轨迹噪声地板 NF=0.020/0.054**（RNG 状态分歧机制已定位） | **无 ADVANCE**（M7–M11 全 HOLD） | DONE |
 | [9A](results/experiment_9a_screening/README.md) | M1–M6 中哪些方法有希望更好地改善 robustness–preservation trade-off（最低 GPU 成本的快速海选） | **8 GPU units / 922.6 GPU·s**、sanity **10/10**、0 failed、B0 与 5A-H **逐位一致**：M1 bottle d′ 8.2904 / \|Δz\| 0.2850 **跑出 frontier**，但 cable \|Δz\| 0.6687（比 B0 恶化 +0.323）；M2/M3 仅单侧；M6 为 **ORACLE**（bottle 跑出、cable 被支配）；M4 表示层 ≡ α_eff（max\|ΔF\|=1.91e-06）→ 冗余 | **无 ADVANCE（9A 本轮无方法晋级）**；STOP = M3/M4，HOLD = M1/M2/M5，M6 = **ORACLE 参照** | DONE `73eb8be` |
 | [8B](experiments/experiment8b/README.md) | pretrained representation 中是否存在「defect-sensitive 但 illumination-stable」的 feature/channel 子空间（决定 Plan C 是否值得做） | **420 GPU units** + 15 cells 特征提取、sanity **13/13**、freeze `5f2bbd54…`、0 failed：D 与 I **近似无关**（pooled ρ 0.0666），**15/15 cells 同时 D↑I↓**，L2-only/L3-only 各 15/15；score-level primary 25% **C6b FAIL**（胜 FULL 5/15、Δd′ −0.2285）；secondary 50% Δd′ +0.1892 / Δ\|Δz\| −0.1610（胜 FULL 11/15、胜 random 15/15）；PARETO mask 崩溃；cable 系统性负迁移 | **CASE_B**（Plan C = **HOLD**） | DONE |
@@ -822,7 +823,65 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 15. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
+## 15. Experiment 9B-R — Strict Replay Re-evaluation（2026-10-07）
+
+**为什么重新审查 9B**：9B（M7–M11）**无候选晋级**，但其所有「frontier 越界」幅度都与当时的
+**V1 coreset 噪声地板**（`NF(|Δz|)=0.0202`、`NF(d′)=0.0542`）同量级或接近 → HOLD 里混入了**不可判读**成分。
+9C 随后证明该噪声来自**未受控的 coreset RNG 轨迹分歧**并建立 **Matched-RNG Protocol V2**
+（equivalent pair 全链路逐位一致，NF → 0.000000/0.000000）。因此 9B 的 HOLD **必须**用 V2 重审。
+
+**9C-v2b 发现了什么**：噪声地板由**两个**未受控 RNG 消费者造成 —— **R2** `KCenterGreedy` 初始点 /
+**R1** train `DataLoader(shuffle=True)` 行序；修好两点后 equivalent pair 的
+embedding / RNG state / coreset / memory bank / tau / per-image score **全部逐位一致**。
+
+**协议**：9B-R **逐字复用** 9C-v2b 的 V2 实现（`experiment9c_rng` 的 `install_matched_rng` + `install_fit_replay`），
+薄驱动重定向输出；未修改 anomalib / 9B / 7A-O / 5A-H 源码。候选机械选自 9B 冻结 ranking 的 **rank #1–#3**：
+`T1_M7_L2a000_L3a025`、`T2_M10_concat_g100`（**≡ 7A-O Family B `B1_g100`**，去重后只跑一次，
+用 7A-O 冻结实现）、`T3_M7_L2a025_L3a000`；外加 `Original α=0` 与理论等价 control。
+
+**strict replay 是否成功**：**是（10/10 PASS）**。
+- **Control 1**（Original 两次独立进程）：embedding sha `6594060903d165aa`、coreset sha `0c7270fb9cccfd68`、
+  bank sha `4f3b8962df8dfbed` 全同，`max|Δscore| = 0.0`；而 runtime **52.4s vs 133.3s** → 一致性不来自相同条件。
+- **Control 2**：**逐元素 `max|ΔF| = 0.0`**（`0 / 328,728,576` 元素，全 209 张训练图，逐 batch 记录）
+  + 9C-v2b 的 coreset/bank/`max|Δscore| = 0.0`。
+- **NF_strict = 0.000e+00 / 0.000e+00**（本轮尺子的零点）。
+
+**Round 1 结果（bottle seed0；参考 `Strict Original α=0` = \|Δz\| 0.5027 / d′ 8.5328）**
+
+| Candidate | Old 9B | Strict 9B-R | Δ\|Δz\| | Δd′ | Verdict |
+|---|---|---|---|---|---|
+| T1 `M7_L2a000_L3a025` | 0.3355 / 8.0216 | 0.3322 / 8.1784 | **−0.1705** | **−0.3544** | HOLD |
+| T2 `M10_concat_g100` | 0.3379 / 8.1708 | 0.3834 / 8.2881 | **−0.1193** | **−0.2448** | HOLD |
+| T3 `M7_L2a025_L3a000` | 0.3756 / 7.8876 | 0.4378 / 7.9432 | **−0.0649** | **−0.5897** | HOLD |
+
+**哪些 improvement 消失 / 哪些保留**
+- **没有任何 improvement 被证伪**：三候选 robustness 改善在 V2 下全部保留，与 V1 **同号同量级**
+  （V1 Δ vs B0 = −0.143/−0.140/−0.103；V2 Δ vs Original = −0.171/−0.119/−0.065）。
+- **V1 噪声地板没有制造这些改善**；它只是限制了**可判读性**。9B 的 HOLD 决定因此**没有被推翻**。
+- 三者同时是**纯 trade-off 兑换**：preservation 损失 −0.245 ~ −0.590 d′，**远超** `EPS_DP = 0.10`
+  → 不满足预注册强条件（也非对称条件）→ **0 ADVANCE / 3 HOLD**，**Round 2 未触发**（按 P7 规则）。
+
+**顺带发现（既有协议属性，跨实验）**：`Engine.fit` 内部会再次 `dm.setup(stage="fit")`，
+**重置** runner 的 train 过滤 → 实际进入 memory bank 的是**全部 209 张 train/good**（含 20 张 val 图，
+与 `run_config` 注释「validation 不进 memory bank」矛盾）。证据：`len(train_data) 189 → 209`、
+`training_step images = 209`、`val` 分数 18.27 ≪ 不在 bank 内的 `clean_good` 24.19。
+**该属性对所有方法一视同仁**（robustness 目标 `shift_good` 不在 bank 内）→ 跨方法比较仍公平、9B-R 与 9C 结论不变；
+它只影响绝对量级。**本轮不修**（修正会破坏与 5A-H→9C 全部历史 raw 的可比性，须作为单独的、经批准的协议变更）。
+
+**当前论文阶段推进到哪里**：从「候选海选」推进到 **「用校准过的尺子复核既有海选结论」**——
+方法侧仍是 **零晋级**，但把「9B 靠不靠谱」这一开放问题**关闭**了：结论是 9B 的 HOLD **正确**，
+失败原因从「噪声不可判读」明确为「**preservation 代价 > robustness 收益**」。
+
+**下一步**：见 §17。要点：0 ADVANCE → 不进入完整实验；若要救 T1/T2/T3，必须先解决 preservation（需机制性理由）；
+并需先建立 **V2 参考 frontier** 才能回答「是否跑出 frontier」。
+
+**入口**：`results/experiment_9b_r_strict_replay/README.md`（§8 sanity / §9 结果 / §11 协议发现 / §12 下一步）；
+产物 `analysis/{sanity_checks,candidate_ranking,strict_vs_9b,cross_process_equivalence,equivalence_evidence,final_verdict,runtime_summary}`、
+`figures/strict_vs_9b_bottle.png`；代码 `scripts/experiment9br_{runner,progress,equiv_check,analysis}.py`。
+
+---
+
+## 16. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 
 **事实（实验直接观察到）**
 
@@ -884,7 +943,7 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 16. 下一步（建议，均未启动，需人工批准）
+## 17. 下一步（建议，均未启动，需人工批准）
 
 0. **5D CASE 归属裁决（人工，仍未决）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
    [5D README §15](experiments/experiment5d/README.md)。
@@ -920,7 +979,7 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 17. 复现与工程约定
+## 18. 复现与工程约定
 
 - 2026-10-06 曾在 AutoDL 完成一次**全量资产恢复复现审计**（1848 NPZ / 30 banks / 1386 intervention rows），
   详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；**6A 的 10 个 GPU unit 亦在同一路径上运行，smoke 重跑 5A B1

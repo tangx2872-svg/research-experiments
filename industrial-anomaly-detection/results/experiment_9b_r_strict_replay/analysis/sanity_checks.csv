@@ -1,0 +1,11 @@
+check,status,detail
+C1_representation_bit_identical_repeat,PASS,embedding sha256 6594060903d165aa (2 independent processes)
+C1_coreset_indices_identical_repeat,PASS,coreset sha 0c7270fb9cccfd68
+C1_memory_bank_sha256_identical_repeat,PASS,bank sha 4f3b8962df8dfbed
+C1_max_abs_delta_score_le_1e-7,PASS,max|dscore|=0.000e+00 (n=183)
+C2_elementwise_max_abs_dF,PASS,max|dF|=0.0 n_diff=0/328728576 (full 209-image train set)
+C2_coreset_indices_identical,PASS,9C-v2b coreset sha a894c7b0c22302b1
+C2_memory_bank_identical,PASS,9C-v2b bank sha cfe4ecff39d6a652
+C2_max_abs_delta_score,PASS,9C-v2b max|dscore|=0.000e+00
+C2_metrics_identical_robustness_preservation,PASS,NF_strict(|dz|)=0.000e+00 NF_strict(d')=0.000e+00
+NF_strict_measured_by_Control1,PASS,NF_strict(|dz|)=0.000e+00 NF_strict(d')=0.000e+00

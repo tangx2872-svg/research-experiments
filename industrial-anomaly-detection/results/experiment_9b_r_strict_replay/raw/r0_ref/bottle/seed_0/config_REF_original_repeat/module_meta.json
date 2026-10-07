@@ -1,0 +1,26 @@
+{
+  "experiment": "9B",
+  "unit": "bottle:0:REF_original_repeat",
+  "config": "REF_original_repeat",
+  "round": "r0_ref",
+  "candidate": true,
+  "spec": {
+    "kind": "alpha",
+    "alpha_l2": 0.0,
+    "alpha_l3": 0.0
+  },
+  "gate_stats": null,
+  "sensitivity_meta": null,
+  "gate_mean_l2": null,
+  "gate_mean_l3": null,
+  "embedding_dim": 1536,
+  "prep_seconds": 34.11,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 133.26,
+  "wallclock_seconds": 133.51,
+  "peak_gpu_memory_allocated_mb": 2605.05,
+  "declared_alpha_l2": 0.0,
+  "declared_alpha_l3": 0.0,
+  "status": "ok",
+  "detail": ""
+}

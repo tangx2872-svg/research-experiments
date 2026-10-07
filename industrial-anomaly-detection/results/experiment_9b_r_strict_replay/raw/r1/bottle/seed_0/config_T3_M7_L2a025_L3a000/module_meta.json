@@ -1,0 +1,26 @@
+{
+  "experiment": "9B",
+  "unit": "bottle:0:T3_M7_L2a025_L3a000",
+  "config": "T3_M7_L2a025_L3a000",
+  "round": "r1",
+  "candidate": true,
+  "spec": {
+    "kind": "alpha",
+    "alpha_l2": 0.25,
+    "alpha_l3": 0.0
+  },
+  "gate_stats": null,
+  "sensitivity_meta": null,
+  "gate_mean_l2": null,
+  "gate_mean_l3": null,
+  "embedding_dim": 1536,
+  "prep_seconds": 34.14,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 132.84,
+  "wallclock_seconds": 133.08,
+  "peak_gpu_memory_allocated_mb": 2605.05,
+  "declared_alpha_l2": 0.25,
+  "declared_alpha_l3": 0.0,
+  "status": "ok",
+  "detail": ""
+}

@@ -1,0 +1,33 @@
+{
+  "round": "r0_ref",
+  "experiment": "9B",
+  "completed": 2,
+  "total": 2,
+  "remaining": 0,
+  "failed": 0,
+  "current_unit": "bottle:0:REF_original_repeat",
+  "workers_active": 2,
+  "elapsed_seconds": 200.9,
+  "avg_unit_seconds": 93.07499999999999,
+  "eta_seconds": 0.0,
+  "eta_basis": "done",
+  "throughput_units_per_min": null,
+  "estimated_finish_time": "2026-10-07 21:52:33",
+  "per_worker": [
+    {
+      "worker": "w0",
+      "pid": 428747,
+      "done": 1,
+      "of": 1,
+      "current": null
+    },
+    {
+      "worker": "w4",
+      "pid": 428693,
+      "done": 1,
+      "of": 1,
+      "current": null
+    }
+  ],
+  "last_update": "2026-10-07 21:52:33"
+}

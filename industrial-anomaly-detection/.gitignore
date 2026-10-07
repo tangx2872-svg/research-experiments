@@ -226,3 +226,9 @@ results/experiment_9c_rng_calibration/progress/
 results/experiment_9c_rng_calibration/**/fit/
 results/experiment_9c_rng_calibration/progress.json
 !results/experiment_9c_rng_calibration/progress.log
+
+# Experiment 9B-R（Strict replay re-evaluation；纳入 raw 证据 + analysis + figures + README/config，排除 logs/progress/reference）
+!results/experiment_9b_r_strict_replay/
+results/experiment_9b_r_strict_replay/logs/
+results/experiment_9b_r_strict_replay/progress/
+results/experiment_9b_r_strict_replay/reference/

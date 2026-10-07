@@ -1,0 +1,52 @@
+{
+  "control1_two_independent_processes": {
+    "embedding_sha256": [
+      "6594060903d165aaf7330e2858417b3c5de655b697326c4194ea922b8b6edaef",
+      "6594060903d165aaf7330e2858417b3c5de655b697326c4194ea922b8b6edaef"
+    ],
+    "coreset_sha256": [
+      "0c7270fb9cccfd68a8d86926d4830de2f1bc6180cab7d14056abdcbed4f798d4",
+      "0c7270fb9cccfd68a8d86926d4830de2f1bc6180cab7d14056abdcbed4f798d4"
+    ],
+    "memory_bank_sha256": [
+      "4f3b8962df8dfbedd143873f3f3d589fba09652179c6ee7d502f282744612c3c",
+      "4f3b8962df8dfbedd143873f3f3d589fba09652179c6ee7d502f282744612c3c"
+    ],
+    "max_abs_delta_score": 0.0,
+    "n_score_rows": 183,
+    "tau": [
+      20.301015853881836,
+      20.301015853881836
+    ],
+    "runtime_seconds": [
+      52.4,
+      133.26
+    ]
+  },
+  "control2_elementwise": {
+    "elementwise_max_abs_dF": 0.0,
+    "elementwise_identical": true,
+    "n_diff_elements": 0,
+    "n_elements_total": 328728576,
+    "scope": "bottle train/good 全部 209 张（与 fit 实际使用的训练集一致），batch=16，同进程逐元素"
+  },
+  "control2_cross_process_from_9C_v2b": {
+    "coreset_identical": true,
+    "memory_bank_identical": true,
+    "max_abs_delta_score": 0.0,
+    "NF_dz": 0.0,
+    "NF_dprime": 0.0
+  },
+  "NF_strict": {
+    "dz": 0.0,
+    "dprime": 0.0
+  },
+  "reference_original_strict": {
+    "absdz": 0.5026857657710249,
+    "dprime": 8.532827674351156,
+    "tau": 20.301015853881836,
+    "image_auroc": 1.0,
+    "pixel_auroc": 0.98544236355,
+    "aupro": 0.9440284371376038
+  }
+}

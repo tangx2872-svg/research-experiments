@@ -1,0 +1,23 @@
+{
+  "unit": "bottle:0:T2_M10_concat_g100",
+  "protocol": "v2",
+  "n_observations": 214016,
+  "embedding_shape": [
+    214016,
+    3072
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_device": "cuda:0",
+  "embedding_sha256": "ffc1ee7a528db7e9fe7d34199f814c6b20f8a901fa7579c291ca7efc663fefa8",
+  "embedding_stats": {
+    "shape": [
+      214016,
+      3072
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 704346240.0,
+    "mean": 0.5226109623908997
+  },
+  "ts": 1791380986.1368248
+}

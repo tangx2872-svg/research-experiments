@@ -1,0 +1,111 @@
+{
+  "control": "Control 2 — theoretically equivalent pair (uniform alpha=0.25 vs constant-gate 0.25)",
+  "scope": "bottle train/good 全部 209 张（与 fit 实际使用的训练集一致），batch=16，同进程逐元素",
+  "elementwise_max_abs_dF": 0.0,
+  "elementwise_identical": true,
+  "n_diff_elements": 0,
+  "n_elements_total": 328728576,
+  "sum_abs_uniform": 290696901.5,
+  "sum_abs_gate": 290696901.5,
+  "per_batch": [
+    {
+      "batch": 0,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 1,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 2,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 3,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 4,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 5,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 6,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 7,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 8,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 9,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 10,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 11,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 12,
+      "n_images": 16,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 25165824
+    },
+    {
+      "batch": 13,
+      "n_images": 1,
+      "max_abs_dF": 0.0,
+      "n_diff_elements": 0,
+      "n_elements": 1572864
+    }
+  ],
+  "note": "9C 只报告聚合量；此处为真正的逐元素检查。跨进程的 bit-level 证据见 9C-v2b coreset / memory bank sha256 与 max|dscore|（analysis/cross_process_equivalence.json）"
+}
