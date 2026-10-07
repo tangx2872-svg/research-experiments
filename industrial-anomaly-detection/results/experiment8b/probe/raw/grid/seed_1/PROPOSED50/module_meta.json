@@ -1,0 +1,16 @@
+{
+  "experiment": "8B",
+  "mask_name": "PROPOSED50",
+  "category": "grid",
+  "seed": 1,
+  "n_channels_l2": 256,
+  "n_channels_l3": 512,
+  "embedding_dim": 768,
+  "alpha": 0.0,
+  "coreset_size": 27033,
+  "tau_val": 13.987751960754395,
+  "runtime_seconds": 137.46,
+  "wallclock_seconds": 137.69,
+  "oracle_probe_only": true,
+  "probe_note": "selection uses test defect masks (oracle); diagnostic evidence only"
+}

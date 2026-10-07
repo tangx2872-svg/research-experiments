@@ -1,0 +1,16 @@
+{
+  "experiment": "8B",
+  "mask_name": "I-ONLY50",
+  "category": "cable",
+  "seed": 2,
+  "n_channels_l2": 256,
+  "n_channels_l3": 512,
+  "embedding_dim": 768,
+  "alpha": 0.0,
+  "coreset_size": 22937,
+  "tau_val": 24.45037078857422,
+  "runtime_seconds": 146.03,
+  "wallclock_seconds": 146.27,
+  "oracle_probe_only": true,
+  "probe_note": "selection uses test defect masks (oracle); diagnostic evidence only"
+}

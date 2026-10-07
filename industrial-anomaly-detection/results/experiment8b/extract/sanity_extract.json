@@ -1,0 +1,6317 @@
+[
+  {
+    "category": "bottle",
+    "seed": 0,
+    "n_train": 189,
+    "n_good": 20,
+    "n_defect_images": 63,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 2,
+    "illum": {
+      "n_images": 20,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6701087951660156,
+        "max_abs_diff": 0.013662338256835938,
+        "median_abs_diff": 0.00017976760864257812,
+        "p99_abs_diff": 0.002788066864013672,
+        "corr": 0.9999999443984827,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5824966430664062,
+        "max_abs_diff": 0.007640838623046875,
+        "median_abs_diff": 0.00010919570922851562,
+        "p99_abs_diff": 0.0021622180938720703,
+        "corr": 0.9999999265995185,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6708736419677734,
+        "max_abs_diff": 0.015848159790039062,
+        "median_abs_diff": 0.0001767575740814209,
+        "p99_abs_diff": 0.002823859453201294,
+        "corr": 0.9999999434807826,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5980262756347656,
+        "max_abs_diff": 0.009565353393554688,
+        "median_abs_diff": 9.535066783428192e-05,
+        "p99_abs_diff": 0.0021654926240444183,
+        "corr": 0.9999999315734167,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6667270660400391,
+        "max_abs_diff": 0.01062774658203125,
+        "median_abs_diff": 0.0001868605613708496,
+        "p99_abs_diff": 0.0028247833251953125,
+        "corr": 0.9999999427895084,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5849075317382812,
+        "max_abs_diff": 0.0099029541015625,
+        "median_abs_diff": 0.00010391324758529663,
+        "p99_abs_diff": 0.0022268295288085938,
+        "corr": 0.9999999278897507,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6240329742431641,
+        "max_abs_diff": 0.011962890625,
+        "median_abs_diff": 0.00021582841873168945,
+        "p99_abs_diff": 0.0032039284706115723,
+        "corr": 0.9999999267996349,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.58880615234375,
+        "max_abs_diff": 0.009975433349609375,
+        "median_abs_diff": 0.00010082125663757324,
+        "p99_abs_diff": 0.0022296905517578125,
+        "corr": 0.9999999283303527,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6116867065429688,
+        "max_abs_diff": 0.011384963989257812,
+        "median_abs_diff": 0.00023227930068969727,
+        "p99_abs_diff": 0.0031526386737823486,
+        "corr": 0.9999999240555996,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.572174072265625,
+        "max_abs_diff": 0.008852958679199219,
+        "median_abs_diff": 0.00011803954839706421,
+        "p99_abs_diff": 0.0023484230041503906,
+        "corr": 0.99999991757407,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6223049163818359,
+        "max_abs_diff": 0.01024627685546875,
+        "median_abs_diff": 0.00021839141845703125,
+        "p99_abs_diff": 0.0032039284706115723,
+        "corr": 0.9999999263327116,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5757408142089844,
+        "max_abs_diff": 0.007740974426269531,
+        "median_abs_diff": 0.00011025555431842804,
+        "p99_abs_diff": 0.002277374267578125,
+        "corr": 0.9999999253856274,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 17.7
+  },
+  {
+    "category": "bottle",
+    "seed": 1,
+    "n_train": 189,
+    "n_good": 20,
+    "n_defect_images": 63,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 2,
+    "illum": {
+      "n_images": 20,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6701087951660156,
+        "max_abs_diff": 0.013662338256835938,
+        "median_abs_diff": 0.00017976760864257812,
+        "p99_abs_diff": 0.002788066864013672,
+        "corr": 0.9999999443984827,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5824966430664062,
+        "max_abs_diff": 0.007640838623046875,
+        "median_abs_diff": 0.00010919570922851562,
+        "p99_abs_diff": 0.0021622180938720703,
+        "corr": 0.9999999265995185,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6708736419677734,
+        "max_abs_diff": 0.015848159790039062,
+        "median_abs_diff": 0.0001767575740814209,
+        "p99_abs_diff": 0.002823859453201294,
+        "corr": 0.9999999434807826,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5980262756347656,
+        "max_abs_diff": 0.009565353393554688,
+        "median_abs_diff": 9.535066783428192e-05,
+        "p99_abs_diff": 0.0021654926240444183,
+        "corr": 0.9999999315734167,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6667270660400391,
+        "max_abs_diff": 0.01062774658203125,
+        "median_abs_diff": 0.0001868605613708496,
+        "p99_abs_diff": 0.0028247833251953125,
+        "corr": 0.9999999427895084,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5849075317382812,
+        "max_abs_diff": 0.0099029541015625,
+        "median_abs_diff": 0.00010391324758529663,
+        "p99_abs_diff": 0.0022268295288085938,
+        "corr": 0.9999999278897507,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6240329742431641,
+        "max_abs_diff": 0.011962890625,
+        "median_abs_diff": 0.00021582841873168945,
+        "p99_abs_diff": 0.0032039284706115723,
+        "corr": 0.9999999267996349,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.58880615234375,
+        "max_abs_diff": 0.009975433349609375,
+        "median_abs_diff": 0.00010082125663757324,
+        "p99_abs_diff": 0.0022296905517578125,
+        "corr": 0.9999999283303527,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6116867065429688,
+        "max_abs_diff": 0.011384963989257812,
+        "median_abs_diff": 0.00023227930068969727,
+        "p99_abs_diff": 0.0031526386737823486,
+        "corr": 0.9999999240555996,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.572174072265625,
+        "max_abs_diff": 0.008852958679199219,
+        "median_abs_diff": 0.00011803954839706421,
+        "p99_abs_diff": 0.0023484230041503906,
+        "corr": 0.99999991757407,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6223049163818359,
+        "max_abs_diff": 0.01024627685546875,
+        "median_abs_diff": 0.00021839141845703125,
+        "p99_abs_diff": 0.0032039284706115723,
+        "corr": 0.9999999263327116,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5757408142089844,
+        "max_abs_diff": 0.007740974426269531,
+        "median_abs_diff": 0.00011025555431842804,
+        "p99_abs_diff": 0.002277374267578125,
+        "corr": 0.9999999253856274,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 18.2
+  },
+  {
+    "category": "bottle",
+    "seed": 2,
+    "n_train": 189,
+    "n_good": 20,
+    "n_defect_images": 63,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 2,
+    "illum": {
+      "n_images": 20,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6701087951660156,
+        "max_abs_diff": 0.013662338256835938,
+        "median_abs_diff": 0.00017976760864257812,
+        "p99_abs_diff": 0.002788066864013672,
+        "corr": 0.9999999443984827,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5824966430664062,
+        "max_abs_diff": 0.007640838623046875,
+        "median_abs_diff": 0.00010919570922851562,
+        "p99_abs_diff": 0.0021622180938720703,
+        "corr": 0.9999999265995185,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6708736419677734,
+        "max_abs_diff": 0.015848159790039062,
+        "median_abs_diff": 0.0001767575740814209,
+        "p99_abs_diff": 0.002823859453201294,
+        "corr": 0.9999999434807826,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5980262756347656,
+        "max_abs_diff": 0.009565353393554688,
+        "median_abs_diff": 9.535066783428192e-05,
+        "p99_abs_diff": 0.0021654926240444183,
+        "corr": 0.9999999315734167,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6667270660400391,
+        "max_abs_diff": 0.01062774658203125,
+        "median_abs_diff": 0.0001868605613708496,
+        "p99_abs_diff": 0.0028247833251953125,
+        "corr": 0.9999999427895084,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5849075317382812,
+        "max_abs_diff": 0.0099029541015625,
+        "median_abs_diff": 0.00010391324758529663,
+        "p99_abs_diff": 0.0022268295288085938,
+        "corr": 0.9999999278897507,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6240329742431641,
+        "max_abs_diff": 0.011962890625,
+        "median_abs_diff": 0.00021582841873168945,
+        "p99_abs_diff": 0.0032039284706115723,
+        "corr": 0.9999999267996349,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.58880615234375,
+        "max_abs_diff": 0.009975433349609375,
+        "median_abs_diff": 0.00010082125663757324,
+        "p99_abs_diff": 0.0022296905517578125,
+        "corr": 0.9999999283303527,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6116867065429688,
+        "max_abs_diff": 0.011384963989257812,
+        "median_abs_diff": 0.00023227930068969727,
+        "p99_abs_diff": 0.0031526386737823486,
+        "corr": 0.9999999240555996,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.572174072265625,
+        "max_abs_diff": 0.008852958679199219,
+        "median_abs_diff": 0.00011803954839706421,
+        "p99_abs_diff": 0.0023484230041503906,
+        "corr": 0.99999991757407,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6223049163818359,
+        "max_abs_diff": 0.01024627685546875,
+        "median_abs_diff": 0.00021839141845703125,
+        "p99_abs_diff": 0.0032039284706115723,
+        "corr": 0.9999999263327116,
+        "s13_pass": true
+      },
+      {
+        "category": "bottle",
+        "defect_type": "contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5757408142089844,
+        "max_abs_diff": 0.007740974426269531,
+        "median_abs_diff": 0.00011025555431842804,
+        "p99_abs_diff": 0.002277374267578125,
+        "corr": 0.9999999253856274,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 18.4
+  },
+  {
+    "category": "cable",
+    "seed": 0,
+    "n_train": 204,
+    "n_good": 58,
+    "n_defect_images": 92,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 4,
+    "illum": {
+      "n_images": 58,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6420669555664062,
+        "max_abs_diff": 0.01103973388671875,
+        "median_abs_diff": 0.0002593994140625,
+        "p99_abs_diff": 0.0027446746826171875,
+        "corr": 0.999999936342928,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5751991271972656,
+        "max_abs_diff": 0.0074176788330078125,
+        "median_abs_diff": 0.00013190507888793945,
+        "p99_abs_diff": 0.0024358220398426056,
+        "corr": 0.9999999126551945,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6430702209472656,
+        "max_abs_diff": 0.01087188720703125,
+        "median_abs_diff": 0.0002582073211669922,
+        "p99_abs_diff": 0.0027189254760742188,
+        "corr": 0.9999999368508014,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5842170715332031,
+        "max_abs_diff": 0.0069293975830078125,
+        "median_abs_diff": 0.00012236833572387695,
+        "p99_abs_diff": 0.0023221969604492188,
+        "corr": 0.9999999206949202,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.64532470703125,
+        "max_abs_diff": 0.011369705200195312,
+        "median_abs_diff": 0.0002568960189819336,
+        "p99_abs_diff": 0.0027303695678710938,
+        "corr": 0.9999999376018431,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5754508972167969,
+        "max_abs_diff": 0.00997161865234375,
+        "median_abs_diff": 0.00012595206499099731,
+        "p99_abs_diff": 0.002310175448656082,
+        "corr": 0.9999999165599013,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 63.3
+  },
+  {
+    "category": "cable",
+    "seed": 1,
+    "n_train": 204,
+    "n_good": 58,
+    "n_defect_images": 92,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 4,
+    "illum": {
+      "n_images": 58,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6420669555664062,
+        "max_abs_diff": 0.01103973388671875,
+        "median_abs_diff": 0.0002593994140625,
+        "p99_abs_diff": 0.0027446746826171875,
+        "corr": 0.999999936342928,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5751991271972656,
+        "max_abs_diff": 0.0074176788330078125,
+        "median_abs_diff": 0.00013190507888793945,
+        "p99_abs_diff": 0.0024358220398426056,
+        "corr": 0.9999999126551945,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6430702209472656,
+        "max_abs_diff": 0.01087188720703125,
+        "median_abs_diff": 0.0002582073211669922,
+        "p99_abs_diff": 0.0027189254760742188,
+        "corr": 0.9999999368508014,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5842170715332031,
+        "max_abs_diff": 0.0069293975830078125,
+        "median_abs_diff": 0.00012236833572387695,
+        "p99_abs_diff": 0.0023221969604492188,
+        "corr": 0.9999999206949202,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.64532470703125,
+        "max_abs_diff": 0.011369705200195312,
+        "median_abs_diff": 0.0002568960189819336,
+        "p99_abs_diff": 0.0027303695678710938,
+        "corr": 0.9999999376018431,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5754508972167969,
+        "max_abs_diff": 0.00997161865234375,
+        "median_abs_diff": 0.00012595206499099731,
+        "p99_abs_diff": 0.002310175448656082,
+        "corr": 0.9999999165599013,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 63.1
+  },
+  {
+    "category": "cable",
+    "seed": 2,
+    "n_train": 204,
+    "n_good": 58,
+    "n_defect_images": 92,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 4,
+    "illum": {
+      "n_images": 58,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6420669555664062,
+        "max_abs_diff": 0.01103973388671875,
+        "median_abs_diff": 0.0002593994140625,
+        "p99_abs_diff": 0.0027446746826171875,
+        "corr": 0.999999936342928,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5751991271972656,
+        "max_abs_diff": 0.0074176788330078125,
+        "median_abs_diff": 0.00013190507888793945,
+        "p99_abs_diff": 0.0024358220398426056,
+        "corr": 0.9999999126551945,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6430702209472656,
+        "max_abs_diff": 0.01087188720703125,
+        "median_abs_diff": 0.0002582073211669922,
+        "p99_abs_diff": 0.0027189254760742188,
+        "corr": 0.9999999368508014,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5842170715332031,
+        "max_abs_diff": 0.0069293975830078125,
+        "median_abs_diff": 0.00012236833572387695,
+        "p99_abs_diff": 0.0023221969604492188,
+        "corr": 0.9999999206949202,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.64532470703125,
+        "max_abs_diff": 0.011369705200195312,
+        "median_abs_diff": 0.0002568960189819336,
+        "p99_abs_diff": 0.0027303695678710938,
+        "corr": 0.9999999376018431,
+        "s13_pass": true
+      },
+      {
+        "category": "cable",
+        "defect_type": "bent_wire",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5754508972167969,
+        "max_abs_diff": 0.00997161865234375,
+        "median_abs_diff": 0.00012595206499099731,
+        "p99_abs_diff": 0.002310175448656082,
+        "corr": 0.9999999165599013,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 63.4
+  },
+  {
+    "category": "grid",
+    "seed": 0,
+    "n_train": 244,
+    "n_good": 21,
+    "n_defect_images": 57,
+    "n_fallback_layer2": 1,
+    "n_fallback_layer3": 30,
+    "illum": {
+      "n_images": 21,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6376171112060547,
+        "max_abs_diff": 0.011281967163085938,
+        "median_abs_diff": 0.00027312152087688446,
+        "p99_abs_diff": 0.0033807754516601562,
+        "corr": 0.9999999425191183,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6817741394042969,
+        "max_abs_diff": 0.011617660522460938,
+        "median_abs_diff": 1.315167173743248e-05,
+        "p99_abs_diff": 0.0026479512453079224,
+        "corr": 0.999999945880093,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6555423736572266,
+        "max_abs_diff": 0.01291656494140625,
+        "median_abs_diff": 0.0002962350845336914,
+        "p99_abs_diff": 0.0034093856811523438,
+        "corr": 0.9999999427180691,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.7049102783203125,
+        "max_abs_diff": 0.010891914367675781,
+        "median_abs_diff": 2.9373914003372192e-06,
+        "p99_abs_diff": 0.0027652415446937084,
+        "corr": 0.9999999520674867,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6427707672119141,
+        "max_abs_diff": 0.012241363525390625,
+        "median_abs_diff": 0.00029146671295166016,
+        "p99_abs_diff": 0.003371298313140869,
+        "corr": 0.9999999395504565,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6876068115234375,
+        "max_abs_diff": 0.010906219482421875,
+        "median_abs_diff": 1.2040138244628906e-05,
+        "p99_abs_diff": 0.0026540756225585938,
+        "corr": 0.9999999497228306,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6554203033447266,
+        "max_abs_diff": 0.012361526489257812,
+        "median_abs_diff": 0.00029969215393066406,
+        "p99_abs_diff": 0.0033931732177734375,
+        "corr": 0.9999999424969227,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6841812133789062,
+        "max_abs_diff": 0.011240005493164062,
+        "median_abs_diff": 1.436471939086914e-05,
+        "p99_abs_diff": 0.0026761479675769806,
+        "corr": 0.999999952437371,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6398849487304688,
+        "max_abs_diff": 0.013044357299804688,
+        "median_abs_diff": 0.00030244141817092896,
+        "p99_abs_diff": 0.0035228729248046875,
+        "corr": 0.9999999426910068,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6881637573242188,
+        "max_abs_diff": 0.01213836669921875,
+        "median_abs_diff": 1.026783138513565e-05,
+        "p99_abs_diff": 0.002826690673828125,
+        "corr": 0.9999999499209691,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6376781463623047,
+        "max_abs_diff": 0.011045455932617188,
+        "median_abs_diff": 0.0002946406602859497,
+        "p99_abs_diff": 0.0033102035522460938,
+        "corr": 0.9999999380611936,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6745529174804688,
+        "max_abs_diff": 0.011707305908203125,
+        "median_abs_diff": 1.8835067749023438e-05,
+        "p99_abs_diff": 0.0027890950441360474,
+        "corr": 0.9999999483630233,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6401290893554688,
+        "max_abs_diff": 0.011522293090820312,
+        "median_abs_diff": 0.00028771162033081055,
+        "p99_abs_diff": 0.0033702850341796875,
+        "corr": 0.9999999387205508,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6855392456054688,
+        "max_abs_diff": 0.012811660766601562,
+        "median_abs_diff": 1.043081283569336e-05,
+        "p99_abs_diff": 0.002618461847305298,
+        "corr": 0.9999999451058512,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6461353302001953,
+        "max_abs_diff": 0.011175155639648438,
+        "median_abs_diff": 0.0003027915954589844,
+        "p99_abs_diff": 0.003348991274833679,
+        "corr": 0.9999999435069749,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6820449829101562,
+        "max_abs_diff": 0.011816024780273438,
+        "median_abs_diff": 1.7197802662849426e-05,
+        "p99_abs_diff": 0.002658367156982422,
+        "corr": 0.9999999518022601,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6406326293945312,
+        "max_abs_diff": 0.010101318359375,
+        "median_abs_diff": 0.00028908252716064453,
+        "p99_abs_diff": 0.0031548142433166504,
+        "corr": 0.9999999393557139,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6824302673339844,
+        "max_abs_diff": 0.01210784912109375,
+        "median_abs_diff": 1.4803372323513031e-05,
+        "p99_abs_diff": 0.0026051364839076996,
+        "corr": 0.9999999478325847,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 15.7
+  },
+  {
+    "category": "grid",
+    "seed": 1,
+    "n_train": 244,
+    "n_good": 21,
+    "n_defect_images": 57,
+    "n_fallback_layer2": 1,
+    "n_fallback_layer3": 30,
+    "illum": {
+      "n_images": 21,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6376171112060547,
+        "max_abs_diff": 0.011281967163085938,
+        "median_abs_diff": 0.00027312152087688446,
+        "p99_abs_diff": 0.0033807754516601562,
+        "corr": 0.9999999425191183,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6817741394042969,
+        "max_abs_diff": 0.011617660522460938,
+        "median_abs_diff": 1.315167173743248e-05,
+        "p99_abs_diff": 0.0026479512453079224,
+        "corr": 0.999999945880093,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6555423736572266,
+        "max_abs_diff": 0.01291656494140625,
+        "median_abs_diff": 0.0002962350845336914,
+        "p99_abs_diff": 0.0034093856811523438,
+        "corr": 0.9999999427180691,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.7049102783203125,
+        "max_abs_diff": 0.010891914367675781,
+        "median_abs_diff": 2.9373914003372192e-06,
+        "p99_abs_diff": 0.0027652415446937084,
+        "corr": 0.9999999520674867,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6427707672119141,
+        "max_abs_diff": 0.012241363525390625,
+        "median_abs_diff": 0.00029146671295166016,
+        "p99_abs_diff": 0.003371298313140869,
+        "corr": 0.9999999395504565,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6876068115234375,
+        "max_abs_diff": 0.010906219482421875,
+        "median_abs_diff": 1.2040138244628906e-05,
+        "p99_abs_diff": 0.0026540756225585938,
+        "corr": 0.9999999497228306,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6554203033447266,
+        "max_abs_diff": 0.012361526489257812,
+        "median_abs_diff": 0.00029969215393066406,
+        "p99_abs_diff": 0.0033931732177734375,
+        "corr": 0.9999999424969227,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6841812133789062,
+        "max_abs_diff": 0.011240005493164062,
+        "median_abs_diff": 1.436471939086914e-05,
+        "p99_abs_diff": 0.0026761479675769806,
+        "corr": 0.999999952437371,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6398849487304688,
+        "max_abs_diff": 0.013044357299804688,
+        "median_abs_diff": 0.00030244141817092896,
+        "p99_abs_diff": 0.0035228729248046875,
+        "corr": 0.9999999426910068,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6881637573242188,
+        "max_abs_diff": 0.01213836669921875,
+        "median_abs_diff": 1.026783138513565e-05,
+        "p99_abs_diff": 0.002826690673828125,
+        "corr": 0.9999999499209691,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6376781463623047,
+        "max_abs_diff": 0.011045455932617188,
+        "median_abs_diff": 0.0002946406602859497,
+        "p99_abs_diff": 0.0033102035522460938,
+        "corr": 0.9999999380611936,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6745529174804688,
+        "max_abs_diff": 0.011707305908203125,
+        "median_abs_diff": 1.8835067749023438e-05,
+        "p99_abs_diff": 0.0027890950441360474,
+        "corr": 0.9999999483630233,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6401290893554688,
+        "max_abs_diff": 0.011522293090820312,
+        "median_abs_diff": 0.00028771162033081055,
+        "p99_abs_diff": 0.0033702850341796875,
+        "corr": 0.9999999387205508,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6855392456054688,
+        "max_abs_diff": 0.012811660766601562,
+        "median_abs_diff": 1.043081283569336e-05,
+        "p99_abs_diff": 0.002618461847305298,
+        "corr": 0.9999999451058512,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6461353302001953,
+        "max_abs_diff": 0.011175155639648438,
+        "median_abs_diff": 0.0003027915954589844,
+        "p99_abs_diff": 0.003348991274833679,
+        "corr": 0.9999999435069749,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6820449829101562,
+        "max_abs_diff": 0.011816024780273438,
+        "median_abs_diff": 1.7197802662849426e-05,
+        "p99_abs_diff": 0.002658367156982422,
+        "corr": 0.9999999518022601,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6406326293945312,
+        "max_abs_diff": 0.010101318359375,
+        "median_abs_diff": 0.00028908252716064453,
+        "p99_abs_diff": 0.0031548142433166504,
+        "corr": 0.9999999393557139,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6824302673339844,
+        "max_abs_diff": 0.01210784912109375,
+        "median_abs_diff": 1.4803372323513031e-05,
+        "p99_abs_diff": 0.0026051364839076996,
+        "corr": 0.9999999478325847,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 15.7
+  },
+  {
+    "category": "grid",
+    "seed": 2,
+    "n_train": 244,
+    "n_good": 21,
+    "n_defect_images": 57,
+    "n_fallback_layer2": 1,
+    "n_fallback_layer3": 30,
+    "illum": {
+      "n_images": 21,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6376171112060547,
+        "max_abs_diff": 0.011281967163085938,
+        "median_abs_diff": 0.00027312152087688446,
+        "p99_abs_diff": 0.0033807754516601562,
+        "corr": 0.9999999425191183,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6817741394042969,
+        "max_abs_diff": 0.011617660522460938,
+        "median_abs_diff": 1.315167173743248e-05,
+        "p99_abs_diff": 0.0026479512453079224,
+        "corr": 0.999999945880093,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6555423736572266,
+        "max_abs_diff": 0.01291656494140625,
+        "median_abs_diff": 0.0002962350845336914,
+        "p99_abs_diff": 0.0034093856811523438,
+        "corr": 0.9999999427180691,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.7049102783203125,
+        "max_abs_diff": 0.010891914367675781,
+        "median_abs_diff": 2.9373914003372192e-06,
+        "p99_abs_diff": 0.0027652415446937084,
+        "corr": 0.9999999520674867,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6427707672119141,
+        "max_abs_diff": 0.012241363525390625,
+        "median_abs_diff": 0.00029146671295166016,
+        "p99_abs_diff": 0.003371298313140869,
+        "corr": 0.9999999395504565,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "glue",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6876068115234375,
+        "max_abs_diff": 0.010906219482421875,
+        "median_abs_diff": 1.2040138244628906e-05,
+        "p99_abs_diff": 0.0026540756225585938,
+        "corr": 0.9999999497228306,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6554203033447266,
+        "max_abs_diff": 0.012361526489257812,
+        "median_abs_diff": 0.00029969215393066406,
+        "p99_abs_diff": 0.0033931732177734375,
+        "corr": 0.9999999424969227,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6841812133789062,
+        "max_abs_diff": 0.011240005493164062,
+        "median_abs_diff": 1.436471939086914e-05,
+        "p99_abs_diff": 0.0026761479675769806,
+        "corr": 0.999999952437371,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6398849487304688,
+        "max_abs_diff": 0.013044357299804688,
+        "median_abs_diff": 0.00030244141817092896,
+        "p99_abs_diff": 0.0035228729248046875,
+        "corr": 0.9999999426910068,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6881637573242188,
+        "max_abs_diff": 0.01213836669921875,
+        "median_abs_diff": 1.026783138513565e-05,
+        "p99_abs_diff": 0.002826690673828125,
+        "corr": 0.9999999499209691,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6376781463623047,
+        "max_abs_diff": 0.011045455932617188,
+        "median_abs_diff": 0.0002946406602859497,
+        "p99_abs_diff": 0.0033102035522460938,
+        "corr": 0.9999999380611936,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "metal_contamination",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6745529174804688,
+        "max_abs_diff": 0.011707305908203125,
+        "median_abs_diff": 1.8835067749023438e-05,
+        "p99_abs_diff": 0.0027890950441360474,
+        "corr": 0.9999999483630233,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6401290893554688,
+        "max_abs_diff": 0.011522293090820312,
+        "median_abs_diff": 0.00028771162033081055,
+        "p99_abs_diff": 0.0033702850341796875,
+        "corr": 0.9999999387205508,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6855392456054688,
+        "max_abs_diff": 0.012811660766601562,
+        "median_abs_diff": 1.043081283569336e-05,
+        "p99_abs_diff": 0.002618461847305298,
+        "corr": 0.9999999451058512,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6461353302001953,
+        "max_abs_diff": 0.011175155639648438,
+        "median_abs_diff": 0.0003027915954589844,
+        "p99_abs_diff": 0.003348991274833679,
+        "corr": 0.9999999435069749,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6820449829101562,
+        "max_abs_diff": 0.011816024780273438,
+        "median_abs_diff": 1.7197802662849426e-05,
+        "p99_abs_diff": 0.002658367156982422,
+        "corr": 0.9999999518022601,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.6406326293945312,
+        "max_abs_diff": 0.010101318359375,
+        "median_abs_diff": 0.00028908252716064453,
+        "p99_abs_diff": 0.0031548142433166504,
+        "corr": 0.9999999393557139,
+        "s13_pass": true
+      },
+      {
+        "category": "grid",
+        "defect_type": "thread",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.6824302673339844,
+        "max_abs_diff": 0.01210784912109375,
+        "median_abs_diff": 1.4803372323513031e-05,
+        "p99_abs_diff": 0.0026051364839076996,
+        "corr": 0.9999999478325847,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 15.6
+  },
+  {
+    "category": "hazelnut",
+    "seed": 0,
+    "n_train": 371,
+    "n_good": 40,
+    "n_defect_images": 70,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 12,
+    "illum": {
+      "n_images": 40,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5717983245849609,
+        "max_abs_diff": 0.007919073104858398,
+        "median_abs_diff": 0.00027358531951904297,
+        "p99_abs_diff": 0.0027060508728027344,
+        "corr": 0.9999999164056821,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5494613647460938,
+        "max_abs_diff": 0.009270191192626953,
+        "median_abs_diff": 0.00013344362378120422,
+        "p99_abs_diff": 0.002336878329515457,
+        "corr": 0.9999998991464157,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5764904022216797,
+        "max_abs_diff": 0.010561943054199219,
+        "median_abs_diff": 0.00027114152908325195,
+        "p99_abs_diff": 0.0027103424072265625,
+        "corr": 0.9999999182403468,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5539703369140625,
+        "max_abs_diff": 0.01007843017578125,
+        "median_abs_diff": 0.0001309514045715332,
+        "p99_abs_diff": 0.0023548342287540436,
+        "corr": 0.9999999032078379,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5870208740234375,
+        "max_abs_diff": 0.010571479797363281,
+        "median_abs_diff": 0.00026485323905944824,
+        "p99_abs_diff": 0.002667948603630066,
+        "corr": 0.9999999238189725,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5490989685058594,
+        "max_abs_diff": 0.00966644287109375,
+        "median_abs_diff": 0.00013709068298339844,
+        "p99_abs_diff": 0.0024204254150390625,
+        "corr": 0.9999998994086156,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 1.0,
+        "max_abs_diff": 0.0077877044677734375,
+        "median_abs_diff": 9.298324584960938e-05,
+        "p99_abs_diff": 0.0018801689147949219,
+        "corr": 0.9999999645186521,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 1.0,
+        "max_abs_diff": 0.0039033889770507812,
+        "median_abs_diff": 2.372264862060547e-05,
+        "p99_abs_diff": 0.0015773773193359375,
+        "corr": 0.9999999711719273,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 54.2
+  },
+  {
+    "category": "hazelnut",
+    "seed": 1,
+    "n_train": 371,
+    "n_good": 40,
+    "n_defect_images": 70,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 12,
+    "illum": {
+      "n_images": 40,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5717983245849609,
+        "max_abs_diff": 0.007919073104858398,
+        "median_abs_diff": 0.00027358531951904297,
+        "p99_abs_diff": 0.0027060508728027344,
+        "corr": 0.9999999164056821,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5494613647460938,
+        "max_abs_diff": 0.009270191192626953,
+        "median_abs_diff": 0.00013344362378120422,
+        "p99_abs_diff": 0.002336878329515457,
+        "corr": 0.9999998991464157,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5764904022216797,
+        "max_abs_diff": 0.010561943054199219,
+        "median_abs_diff": 0.00027114152908325195,
+        "p99_abs_diff": 0.0027103424072265625,
+        "corr": 0.9999999182403468,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5539703369140625,
+        "max_abs_diff": 0.01007843017578125,
+        "median_abs_diff": 0.0001309514045715332,
+        "p99_abs_diff": 0.0023548342287540436,
+        "corr": 0.9999999032078379,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5870208740234375,
+        "max_abs_diff": 0.010571479797363281,
+        "median_abs_diff": 0.00026485323905944824,
+        "p99_abs_diff": 0.002667948603630066,
+        "corr": 0.9999999238189725,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5490989685058594,
+        "max_abs_diff": 0.00966644287109375,
+        "median_abs_diff": 0.00013709068298339844,
+        "p99_abs_diff": 0.0024204254150390625,
+        "corr": 0.9999998994086156,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 1.0,
+        "max_abs_diff": 0.0077877044677734375,
+        "median_abs_diff": 9.298324584960938e-05,
+        "p99_abs_diff": 0.0018801689147949219,
+        "corr": 0.9999999645186521,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 1.0,
+        "max_abs_diff": 0.0039033889770507812,
+        "median_abs_diff": 2.372264862060547e-05,
+        "p99_abs_diff": 0.0015773773193359375,
+        "corr": 0.9999999711719273,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 50.8
+  },
+  {
+    "category": "hazelnut",
+    "seed": 2,
+    "n_train": 371,
+    "n_good": 40,
+    "n_defect_images": 70,
+    "n_fallback_layer2": 0,
+    "n_fallback_layer3": 12,
+    "illum": {
+      "n_images": 40,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5717983245849609,
+        "max_abs_diff": 0.007919073104858398,
+        "median_abs_diff": 0.00027358531951904297,
+        "p99_abs_diff": 0.0027060508728027344,
+        "corr": 0.9999999164056821,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5494613647460938,
+        "max_abs_diff": 0.009270191192626953,
+        "median_abs_diff": 0.00013344362378120422,
+        "p99_abs_diff": 0.002336878329515457,
+        "corr": 0.9999998991464157,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5764904022216797,
+        "max_abs_diff": 0.010561943054199219,
+        "median_abs_diff": 0.00027114152908325195,
+        "p99_abs_diff": 0.0027103424072265625,
+        "corr": 0.9999999182403468,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5539703369140625,
+        "max_abs_diff": 0.01007843017578125,
+        "median_abs_diff": 0.0001309514045715332,
+        "p99_abs_diff": 0.0023548342287540436,
+        "corr": 0.9999999032078379,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5870208740234375,
+        "max_abs_diff": 0.010571479797363281,
+        "median_abs_diff": 0.00026485323905944824,
+        "p99_abs_diff": 0.002667948603630066,
+        "corr": 0.9999999238189725,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5490989685058594,
+        "max_abs_diff": 0.00966644287109375,
+        "median_abs_diff": 0.00013709068298339844,
+        "p99_abs_diff": 0.0024204254150390625,
+        "corr": 0.9999998994086156,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 1.0,
+        "max_abs_diff": 0.0077877044677734375,
+        "median_abs_diff": 9.298324584960938e-05,
+        "p99_abs_diff": 0.0018801689147949219,
+        "corr": 0.9999999645186521,
+        "s13_pass": true
+      },
+      {
+        "category": "hazelnut",
+        "defect_type": "print",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 1.0,
+        "max_abs_diff": 0.0039033889770507812,
+        "median_abs_diff": 2.372264862060547e-05,
+        "p99_abs_diff": 0.0015773773193359375,
+        "corr": 0.9999999711719273,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 50.1
+  },
+  {
+    "category": "screw",
+    "seed": 0,
+    "n_train": 300,
+    "n_good": 41,
+    "n_defect_images": 119,
+    "n_fallback_layer2": 7,
+    "n_fallback_layer3": 83,
+    "illum": {
+      "n_images": 41,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5878982543945312,
+        "max_abs_diff": 0.009908676147460938,
+        "median_abs_diff": 0.00024628639221191406,
+        "p99_abs_diff": 0.002685546875,
+        "corr": 0.9999999242407274,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5572891235351562,
+        "max_abs_diff": 0.010379791259765625,
+        "median_abs_diff": 0.00011174380779266357,
+        "p99_abs_diff": 0.002202887088060379,
+        "corr": 0.9999999184960873,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5869426727294922,
+        "max_abs_diff": 0.011911392211914062,
+        "median_abs_diff": 0.00024594366550445557,
+        "p99_abs_diff": 0.0027260780334472656,
+        "corr": 0.9999999234032949,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.54669189453125,
+        "max_abs_diff": 0.0104522705078125,
+        "median_abs_diff": 0.00011974573135375977,
+        "p99_abs_diff": 0.0022482872009277344,
+        "corr": 0.9999999143840931,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5908718109130859,
+        "max_abs_diff": 0.010723114013671875,
+        "median_abs_diff": 0.0002422332763671875,
+        "p99_abs_diff": 0.0026618242263793945,
+        "corr": 0.9999999258664226,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.561859130859375,
+        "max_abs_diff": 0.014286041259765625,
+        "median_abs_diff": 0.00010883808135986328,
+        "p99_abs_diff": 0.002203363925218582,
+        "corr": 0.9999999191201312,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5894279479980469,
+        "max_abs_diff": 0.009271621704101562,
+        "median_abs_diff": 0.00024186819791793823,
+        "p99_abs_diff": 0.0027194470167160034,
+        "corr": 0.9999999241152662,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5453910827636719,
+        "max_abs_diff": 0.01389312744140625,
+        "median_abs_diff": 0.00011867284774780273,
+        "p99_abs_diff": 0.002300400286912918,
+        "corr": 0.9999999137411845,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5863723754882812,
+        "max_abs_diff": 0.012102127075195312,
+        "median_abs_diff": 0.0002454519271850586,
+        "p99_abs_diff": 0.002686820924282074,
+        "corr": 0.9999999238594323,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5633583068847656,
+        "max_abs_diff": 0.009054183959960938,
+        "median_abs_diff": 0.00011016428470611572,
+        "p99_abs_diff": 0.002266205847263336,
+        "corr": 0.9999999175775914,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5857734680175781,
+        "max_abs_diff": 0.00901031494140625,
+        "median_abs_diff": 0.0002455711364746094,
+        "p99_abs_diff": 0.002633705735206604,
+        "corr": 0.9999999247538469,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5647315979003906,
+        "max_abs_diff": 0.009799003601074219,
+        "median_abs_diff": 0.00011223554611206055,
+        "p99_abs_diff": 0.0022930093109607697,
+        "corr": 0.9999999148926566,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5937614440917969,
+        "max_abs_diff": 0.008945465087890625,
+        "median_abs_diff": 0.00024481862783432007,
+        "p99_abs_diff": 0.0026338398456573486,
+        "corr": 0.9999999253653008,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5490341186523438,
+        "max_abs_diff": 0.0126800537109375,
+        "median_abs_diff": 0.00011968612670898438,
+        "p99_abs_diff": 0.0022782273590564728,
+        "corr": 0.9999999111554239,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5847415924072266,
+        "max_abs_diff": 0.009870529174804688,
+        "median_abs_diff": 0.0002486705780029297,
+        "p99_abs_diff": 0.0026050209999084473,
+        "corr": 0.9999999246814288,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5560646057128906,
+        "max_abs_diff": 0.011356353759765625,
+        "median_abs_diff": 0.00011742115020751953,
+        "p99_abs_diff": 0.0022644363343715668,
+        "corr": 0.9999999119438507,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5941200256347656,
+        "max_abs_diff": 0.010578155517578125,
+        "median_abs_diff": 0.0002384185791015625,
+        "p99_abs_diff": 0.0026979446411132812,
+        "corr": 0.9999999256362241,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5508499145507812,
+        "max_abs_diff": 0.01496124267578125,
+        "median_abs_diff": 0.00011533498764038086,
+        "p99_abs_diff": 0.0022306181490421295,
+        "corr": 0.9999999173138996,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5816535949707031,
+        "max_abs_diff": 0.008027076721191406,
+        "median_abs_diff": 0.0002484321594238281,
+        "p99_abs_diff": 0.0026245415210723877,
+        "corr": 0.9999999238934033,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5600013732910156,
+        "max_abs_diff": 0.008321762084960938,
+        "median_abs_diff": 0.00011777877807617188,
+        "p99_abs_diff": 0.0021660327911376953,
+        "corr": 0.999999921943443,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5907649993896484,
+        "max_abs_diff": 0.008829593658447266,
+        "median_abs_diff": 0.0002453923225402832,
+        "p99_abs_diff": 0.0026311874389648438,
+        "corr": 0.9999999248393749,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5646858215332031,
+        "max_abs_diff": 0.009433746337890625,
+        "median_abs_diff": 0.00010848045349121094,
+        "p99_abs_diff": 0.002119610086083412,
+        "corr": 0.999999924957525,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5949077606201172,
+        "max_abs_diff": 0.010881423950195312,
+        "median_abs_diff": 0.00023843348026275635,
+        "p99_abs_diff": 0.002721846103668213,
+        "corr": 0.9999999260424032,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5567626953125,
+        "max_abs_diff": 0.008451461791992188,
+        "median_abs_diff": 0.00011976435780525208,
+        "p99_abs_diff": 0.002152477391064167,
+        "corr": 0.9999999237245881,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5814266204833984,
+        "max_abs_diff": 0.01148223876953125,
+        "median_abs_diff": 0.0002498626708984375,
+        "p99_abs_diff": 0.0027320683002471924,
+        "corr": 0.9999999216719838,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5557022094726562,
+        "max_abs_diff": 0.011371612548828125,
+        "median_abs_diff": 0.00011527538299560547,
+        "p99_abs_diff": 0.0023275110870599747,
+        "corr": 0.9999999146785125,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5843067169189453,
+        "max_abs_diff": 0.008358478546142578,
+        "median_abs_diff": 0.0002536773681640625,
+        "p99_abs_diff": 0.0027065277099609375,
+        "corr": 0.9999999213190115,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5540428161621094,
+        "max_abs_diff": 0.0114898681640625,
+        "median_abs_diff": 0.00011426210403442383,
+        "p99_abs_diff": 0.002276219427585602,
+        "corr": 0.9999999154307256,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.584564208984375,
+        "max_abs_diff": 0.008396148681640625,
+        "median_abs_diff": 0.00024497509002685547,
+        "p99_abs_diff": 0.0027985572814941406,
+        "corr": 0.9999999203502723,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.553741455078125,
+        "max_abs_diff": 0.011240005493164062,
+        "median_abs_diff": 0.00011968612670898438,
+        "p99_abs_diff": 0.0023259110748767853,
+        "corr": 0.9999999124043046,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.59100341796875,
+        "max_abs_diff": 0.008966445922851562,
+        "median_abs_diff": 0.00024116039276123047,
+        "p99_abs_diff": 0.002738058567047119,
+        "corr": 0.9999999226365844,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5507659912109375,
+        "max_abs_diff": 0.0127716064453125,
+        "median_abs_diff": 0.00011688470840454102,
+        "p99_abs_diff": 0.0022114701569080353,
+        "corr": 0.9999999188940996,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5831947326660156,
+        "max_abs_diff": 0.010013103485107422,
+        "median_abs_diff": 0.0002453923225402832,
+        "p99_abs_diff": 0.0027523040771484375,
+        "corr": 0.9999999206562578,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5628318786621094,
+        "max_abs_diff": 0.016773223876953125,
+        "median_abs_diff": 0.00011673569679260254,
+        "p99_abs_diff": 0.0022170227020978928,
+        "corr": 0.9999999199756485,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5894775390625,
+        "max_abs_diff": 0.008451461791992188,
+        "median_abs_diff": 0.00024139881134033203,
+        "p99_abs_diff": 0.0027494430541992188,
+        "corr": 0.9999999228970682,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 0,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5592269897460938,
+        "max_abs_diff": 0.015216827392578125,
+        "median_abs_diff": 0.0001119375228881836,
+        "p99_abs_diff": 0.002151627093553543,
+        "corr": 0.999999924445498,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 26.2
+  },
+  {
+    "category": "screw",
+    "seed": 1,
+    "n_train": 300,
+    "n_good": 41,
+    "n_defect_images": 119,
+    "n_fallback_layer2": 7,
+    "n_fallback_layer3": 83,
+    "illum": {
+      "n_images": 41,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5878982543945312,
+        "max_abs_diff": 0.009908676147460938,
+        "median_abs_diff": 0.00024628639221191406,
+        "p99_abs_diff": 0.002685546875,
+        "corr": 0.9999999242407274,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5572891235351562,
+        "max_abs_diff": 0.010379791259765625,
+        "median_abs_diff": 0.00011174380779266357,
+        "p99_abs_diff": 0.002202887088060379,
+        "corr": 0.9999999184960873,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5869426727294922,
+        "max_abs_diff": 0.011911392211914062,
+        "median_abs_diff": 0.00024594366550445557,
+        "p99_abs_diff": 0.0027260780334472656,
+        "corr": 0.9999999234032949,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.54669189453125,
+        "max_abs_diff": 0.0104522705078125,
+        "median_abs_diff": 0.00011974573135375977,
+        "p99_abs_diff": 0.0022482872009277344,
+        "corr": 0.9999999143840931,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5908718109130859,
+        "max_abs_diff": 0.010723114013671875,
+        "median_abs_diff": 0.0002422332763671875,
+        "p99_abs_diff": 0.0026618242263793945,
+        "corr": 0.9999999258664226,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.561859130859375,
+        "max_abs_diff": 0.014286041259765625,
+        "median_abs_diff": 0.00010883808135986328,
+        "p99_abs_diff": 0.002203363925218582,
+        "corr": 0.9999999191201312,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5894279479980469,
+        "max_abs_diff": 0.009271621704101562,
+        "median_abs_diff": 0.00024186819791793823,
+        "p99_abs_diff": 0.0027194470167160034,
+        "corr": 0.9999999241152662,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5453910827636719,
+        "max_abs_diff": 0.01389312744140625,
+        "median_abs_diff": 0.00011867284774780273,
+        "p99_abs_diff": 0.002300400286912918,
+        "corr": 0.9999999137411845,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5863723754882812,
+        "max_abs_diff": 0.012102127075195312,
+        "median_abs_diff": 0.0002454519271850586,
+        "p99_abs_diff": 0.002686820924282074,
+        "corr": 0.9999999238594323,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5633583068847656,
+        "max_abs_diff": 0.009054183959960938,
+        "median_abs_diff": 0.00011016428470611572,
+        "p99_abs_diff": 0.002266205847263336,
+        "corr": 0.9999999175775914,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5857734680175781,
+        "max_abs_diff": 0.00901031494140625,
+        "median_abs_diff": 0.0002455711364746094,
+        "p99_abs_diff": 0.002633705735206604,
+        "corr": 0.9999999247538469,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5647315979003906,
+        "max_abs_diff": 0.009799003601074219,
+        "median_abs_diff": 0.00011223554611206055,
+        "p99_abs_diff": 0.0022930093109607697,
+        "corr": 0.9999999148926566,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5937614440917969,
+        "max_abs_diff": 0.008945465087890625,
+        "median_abs_diff": 0.00024481862783432007,
+        "p99_abs_diff": 0.0026338398456573486,
+        "corr": 0.9999999253653008,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5490341186523438,
+        "max_abs_diff": 0.0126800537109375,
+        "median_abs_diff": 0.00011968612670898438,
+        "p99_abs_diff": 0.0022782273590564728,
+        "corr": 0.9999999111554239,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5847415924072266,
+        "max_abs_diff": 0.009870529174804688,
+        "median_abs_diff": 0.0002486705780029297,
+        "p99_abs_diff": 0.0026050209999084473,
+        "corr": 0.9999999246814288,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5560646057128906,
+        "max_abs_diff": 0.011356353759765625,
+        "median_abs_diff": 0.00011742115020751953,
+        "p99_abs_diff": 0.0022644363343715668,
+        "corr": 0.9999999119438507,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5941200256347656,
+        "max_abs_diff": 0.010578155517578125,
+        "median_abs_diff": 0.0002384185791015625,
+        "p99_abs_diff": 0.0026979446411132812,
+        "corr": 0.9999999256362241,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5508499145507812,
+        "max_abs_diff": 0.01496124267578125,
+        "median_abs_diff": 0.00011533498764038086,
+        "p99_abs_diff": 0.0022306181490421295,
+        "corr": 0.9999999173138996,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5816535949707031,
+        "max_abs_diff": 0.008027076721191406,
+        "median_abs_diff": 0.0002484321594238281,
+        "p99_abs_diff": 0.0026245415210723877,
+        "corr": 0.9999999238934033,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5600013732910156,
+        "max_abs_diff": 0.008321762084960938,
+        "median_abs_diff": 0.00011777877807617188,
+        "p99_abs_diff": 0.0021660327911376953,
+        "corr": 0.999999921943443,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5907649993896484,
+        "max_abs_diff": 0.008829593658447266,
+        "median_abs_diff": 0.0002453923225402832,
+        "p99_abs_diff": 0.0026311874389648438,
+        "corr": 0.9999999248393749,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5646858215332031,
+        "max_abs_diff": 0.009433746337890625,
+        "median_abs_diff": 0.00010848045349121094,
+        "p99_abs_diff": 0.002119610086083412,
+        "corr": 0.999999924957525,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5949077606201172,
+        "max_abs_diff": 0.010881423950195312,
+        "median_abs_diff": 0.00023843348026275635,
+        "p99_abs_diff": 0.002721846103668213,
+        "corr": 0.9999999260424032,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5567626953125,
+        "max_abs_diff": 0.008451461791992188,
+        "median_abs_diff": 0.00011976435780525208,
+        "p99_abs_diff": 0.002152477391064167,
+        "corr": 0.9999999237245881,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5814266204833984,
+        "max_abs_diff": 0.01148223876953125,
+        "median_abs_diff": 0.0002498626708984375,
+        "p99_abs_diff": 0.0027320683002471924,
+        "corr": 0.9999999216719838,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5557022094726562,
+        "max_abs_diff": 0.011371612548828125,
+        "median_abs_diff": 0.00011527538299560547,
+        "p99_abs_diff": 0.0023275110870599747,
+        "corr": 0.9999999146785125,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5843067169189453,
+        "max_abs_diff": 0.008358478546142578,
+        "median_abs_diff": 0.0002536773681640625,
+        "p99_abs_diff": 0.0027065277099609375,
+        "corr": 0.9999999213190115,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5540428161621094,
+        "max_abs_diff": 0.0114898681640625,
+        "median_abs_diff": 0.00011426210403442383,
+        "p99_abs_diff": 0.002276219427585602,
+        "corr": 0.9999999154307256,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.584564208984375,
+        "max_abs_diff": 0.008396148681640625,
+        "median_abs_diff": 0.00024497509002685547,
+        "p99_abs_diff": 0.0027985572814941406,
+        "corr": 0.9999999203502723,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.553741455078125,
+        "max_abs_diff": 0.011240005493164062,
+        "median_abs_diff": 0.00011968612670898438,
+        "p99_abs_diff": 0.0023259110748767853,
+        "corr": 0.9999999124043046,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.59100341796875,
+        "max_abs_diff": 0.008966445922851562,
+        "median_abs_diff": 0.00024116039276123047,
+        "p99_abs_diff": 0.002738058567047119,
+        "corr": 0.9999999226365844,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5507659912109375,
+        "max_abs_diff": 0.0127716064453125,
+        "median_abs_diff": 0.00011688470840454102,
+        "p99_abs_diff": 0.0022114701569080353,
+        "corr": 0.9999999188940996,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5831947326660156,
+        "max_abs_diff": 0.010013103485107422,
+        "median_abs_diff": 0.0002453923225402832,
+        "p99_abs_diff": 0.0027523040771484375,
+        "corr": 0.9999999206562578,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5628318786621094,
+        "max_abs_diff": 0.016773223876953125,
+        "median_abs_diff": 0.00011673569679260254,
+        "p99_abs_diff": 0.0022170227020978928,
+        "corr": 0.9999999199756485,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5894775390625,
+        "max_abs_diff": 0.008451461791992188,
+        "median_abs_diff": 0.00024139881134033203,
+        "p99_abs_diff": 0.0027494430541992188,
+        "corr": 0.9999999228970682,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 1,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5592269897460938,
+        "max_abs_diff": 0.015216827392578125,
+        "median_abs_diff": 0.0001119375228881836,
+        "p99_abs_diff": 0.002151627093553543,
+        "corr": 0.999999924445498,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 25.5
+  },
+  {
+    "category": "screw",
+    "seed": 2,
+    "n_train": 300,
+    "n_good": 41,
+    "n_defect_images": 119,
+    "n_fallback_layer2": 7,
+    "n_fallback_layer3": 83,
+    "illum": {
+      "n_images": 41,
+      "n_conditions_total": 14,
+      "s6_identity_max_abs_delta": {
+        "layer2": 0.0,
+        "layer3": 0.0
+      }
+    },
+    "s5": {},
+    "s13": [
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5878982543945312,
+        "max_abs_diff": 0.009908676147460938,
+        "median_abs_diff": 0.00024628639221191406,
+        "p99_abs_diff": 0.002685546875,
+        "corr": 0.9999999242407274,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5572891235351562,
+        "max_abs_diff": 0.010379791259765625,
+        "median_abs_diff": 0.00011174380779266357,
+        "p99_abs_diff": 0.002202887088060379,
+        "corr": 0.9999999184960873,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5869426727294922,
+        "max_abs_diff": 0.011911392211914062,
+        "median_abs_diff": 0.00024594366550445557,
+        "p99_abs_diff": 0.0027260780334472656,
+        "corr": 0.9999999234032949,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.54669189453125,
+        "max_abs_diff": 0.0104522705078125,
+        "median_abs_diff": 0.00011974573135375977,
+        "p99_abs_diff": 0.0022482872009277344,
+        "corr": 0.9999999143840931,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5908718109130859,
+        "max_abs_diff": 0.010723114013671875,
+        "median_abs_diff": 0.0002422332763671875,
+        "p99_abs_diff": 0.0026618242263793945,
+        "corr": 0.9999999258664226,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.561859130859375,
+        "max_abs_diff": 0.014286041259765625,
+        "median_abs_diff": 0.00010883808135986328,
+        "p99_abs_diff": 0.002203363925218582,
+        "corr": 0.9999999191201312,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5894279479980469,
+        "max_abs_diff": 0.009271621704101562,
+        "median_abs_diff": 0.00024186819791793823,
+        "p99_abs_diff": 0.0027194470167160034,
+        "corr": 0.9999999241152662,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5453910827636719,
+        "max_abs_diff": 0.01389312744140625,
+        "median_abs_diff": 0.00011867284774780273,
+        "p99_abs_diff": 0.002300400286912918,
+        "corr": 0.9999999137411845,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5863723754882812,
+        "max_abs_diff": 0.012102127075195312,
+        "median_abs_diff": 0.0002454519271850586,
+        "p99_abs_diff": 0.002686820924282074,
+        "corr": 0.9999999238594323,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5633583068847656,
+        "max_abs_diff": 0.009054183959960938,
+        "median_abs_diff": 0.00011016428470611572,
+        "p99_abs_diff": 0.002266205847263336,
+        "corr": 0.9999999175775914,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5857734680175781,
+        "max_abs_diff": 0.00901031494140625,
+        "median_abs_diff": 0.0002455711364746094,
+        "p99_abs_diff": 0.002633705735206604,
+        "corr": 0.9999999247538469,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "manipulated_front",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5647315979003906,
+        "max_abs_diff": 0.009799003601074219,
+        "median_abs_diff": 0.00011223554611206055,
+        "p99_abs_diff": 0.0022930093109607697,
+        "corr": 0.9999999148926566,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5937614440917969,
+        "max_abs_diff": 0.008945465087890625,
+        "median_abs_diff": 0.00024481862783432007,
+        "p99_abs_diff": 0.0026338398456573486,
+        "corr": 0.9999999253653008,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5490341186523438,
+        "max_abs_diff": 0.0126800537109375,
+        "median_abs_diff": 0.00011968612670898438,
+        "p99_abs_diff": 0.0022782273590564728,
+        "corr": 0.9999999111554239,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5847415924072266,
+        "max_abs_diff": 0.009870529174804688,
+        "median_abs_diff": 0.0002486705780029297,
+        "p99_abs_diff": 0.0026050209999084473,
+        "corr": 0.9999999246814288,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5560646057128906,
+        "max_abs_diff": 0.011356353759765625,
+        "median_abs_diff": 0.00011742115020751953,
+        "p99_abs_diff": 0.0022644363343715668,
+        "corr": 0.9999999119438507,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5941200256347656,
+        "max_abs_diff": 0.010578155517578125,
+        "median_abs_diff": 0.0002384185791015625,
+        "p99_abs_diff": 0.0026979446411132812,
+        "corr": 0.9999999256362241,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5508499145507812,
+        "max_abs_diff": 0.01496124267578125,
+        "median_abs_diff": 0.00011533498764038086,
+        "p99_abs_diff": 0.0022306181490421295,
+        "corr": 0.9999999173138996,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5816535949707031,
+        "max_abs_diff": 0.008027076721191406,
+        "median_abs_diff": 0.0002484321594238281,
+        "p99_abs_diff": 0.0026245415210723877,
+        "corr": 0.9999999238934033,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5600013732910156,
+        "max_abs_diff": 0.008321762084960938,
+        "median_abs_diff": 0.00011777877807617188,
+        "p99_abs_diff": 0.0021660327911376953,
+        "corr": 0.999999921943443,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5907649993896484,
+        "max_abs_diff": 0.008829593658447266,
+        "median_abs_diff": 0.0002453923225402832,
+        "p99_abs_diff": 0.0026311874389648438,
+        "corr": 0.9999999248393749,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5646858215332031,
+        "max_abs_diff": 0.009433746337890625,
+        "median_abs_diff": 0.00010848045349121094,
+        "p99_abs_diff": 0.002119610086083412,
+        "corr": 0.999999924957525,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5949077606201172,
+        "max_abs_diff": 0.010881423950195312,
+        "median_abs_diff": 0.00023843348026275635,
+        "p99_abs_diff": 0.002721846103668213,
+        "corr": 0.9999999260424032,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_side",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5567626953125,
+        "max_abs_diff": 0.008451461791992188,
+        "median_abs_diff": 0.00011976435780525208,
+        "p99_abs_diff": 0.002152477391064167,
+        "corr": 0.9999999237245881,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5814266204833984,
+        "max_abs_diff": 0.01148223876953125,
+        "median_abs_diff": 0.0002498626708984375,
+        "p99_abs_diff": 0.0027320683002471924,
+        "corr": 0.9999999216719838,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "000.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5557022094726562,
+        "max_abs_diff": 0.011371612548828125,
+        "median_abs_diff": 0.00011527538299560547,
+        "p99_abs_diff": 0.0023275110870599747,
+        "corr": 0.9999999146785125,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5843067169189453,
+        "max_abs_diff": 0.008358478546142578,
+        "median_abs_diff": 0.0002536773681640625,
+        "p99_abs_diff": 0.0027065277099609375,
+        "corr": 0.9999999213190115,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "001.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5540428161621094,
+        "max_abs_diff": 0.0114898681640625,
+        "median_abs_diff": 0.00011426210403442383,
+        "p99_abs_diff": 0.002276219427585602,
+        "corr": 0.9999999154307256,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.584564208984375,
+        "max_abs_diff": 0.008396148681640625,
+        "median_abs_diff": 0.00024497509002685547,
+        "p99_abs_diff": 0.0027985572814941406,
+        "corr": 0.9999999203502723,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "002.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.553741455078125,
+        "max_abs_diff": 0.011240005493164062,
+        "median_abs_diff": 0.00011968612670898438,
+        "p99_abs_diff": 0.0023259110748767853,
+        "corr": 0.9999999124043046,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.59100341796875,
+        "max_abs_diff": 0.008966445922851562,
+        "median_abs_diff": 0.00024116039276123047,
+        "p99_abs_diff": 0.002738058567047119,
+        "corr": 0.9999999226365844,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "016.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5507659912109375,
+        "max_abs_diff": 0.0127716064453125,
+        "median_abs_diff": 0.00011688470840454102,
+        "p99_abs_diff": 0.0022114701569080353,
+        "corr": 0.9999999188940996,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5831947326660156,
+        "max_abs_diff": 0.010013103485107422,
+        "median_abs_diff": 0.0002453923225402832,
+        "p99_abs_diff": 0.0027523040771484375,
+        "corr": 0.9999999206562578,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "017.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5628318786621094,
+        "max_abs_diff": 0.016773223876953125,
+        "median_abs_diff": 0.00011673569679260254,
+        "p99_abs_diff": 0.0022170227020978928,
+        "corr": 0.9999999199756485,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer2",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          512,
+          32,
+          32
+        ],
+        "shape_new": [
+          512,
+          32,
+          32
+        ],
+        "float16_identical_fraction": 0.5894775390625,
+        "max_abs_diff": 0.008451461791992188,
+        "median_abs_diff": 0.00024139881134033203,
+        "p99_abs_diff": 0.0027494430541992188,
+        "corr": 0.9999999228970682,
+        "s13_pass": true
+      },
+      {
+        "category": "screw",
+        "defect_type": "thread_top",
+        "seed": 2,
+        "layer": "layer3",
+        "image": "018.png",
+        "status": "OK",
+        "same_shape": true,
+        "shape_ref": [
+          1024,
+          16,
+          16
+        ],
+        "shape_new": [
+          1024,
+          16,
+          16
+        ],
+        "float16_identical_fraction": 0.5592269897460938,
+        "max_abs_diff": 0.015216827392578125,
+        "median_abs_diff": 0.0001119375228881836,
+        "p99_abs_diff": 0.002151627093553543,
+        "corr": 0.999999924445498,
+        "s13_pass": true
+      }
+    ],
+    "wallclock_seconds": 25.9
+  }
+]

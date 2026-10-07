@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "grid",
+  "seed": 0,
+  "config": "PARETO25",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 139.35,
+  "coreset_size": 27033,
+  "tau_val": 0.4219895899295807,
+  "peak_gpu_memory_allocated_mb": 769.62,
+  "train_ids_hash": "87d544e00879",
+  "n_rows": 182,
+  "pixel_auroc": 0.6799601257986091,
+  "aupro": 0.3760690987110138
+}

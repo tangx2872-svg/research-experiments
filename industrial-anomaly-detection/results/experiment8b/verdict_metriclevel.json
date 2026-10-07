@@ -1,0 +1,173 @@
+{
+  "experiment": "8B",
+  "stage": "metric_level_only",
+  "question": "Does a defect-sensitive but illumination-stable feature subspace exist?",
+  "booleans": {
+    "n_cells": 15,
+    "n_z_D_ge2": 15,
+    "n_z_I_le_minus2": 15,
+    "n_directional": 15,
+    "mean_z_D": 18.635371702928488,
+    "mean_z_I": -9.939290899271985,
+    "mean_Dbar_sel": 3.0225095011996337,
+    "mean_Dbar_full": 1.1363445397809775,
+    "mean_Ibar_sel": 0.08394413478929327,
+    "mean_Ibar_full": 0.1307730436428699,
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "C5": true,
+    "C6a": true,
+    "C6b": null,
+    "C7": true,
+    "n_layer2_win": 15,
+    "n_layer3_win": 15
+  },
+  "booleans_nodegenerate_variant": {
+    "n_z_D_ge2": 15,
+    "n_z_I_le_minus2": 15,
+    "n_directional": 15,
+    "mean_z_D": 18.529841040834544,
+    "mean_z_I": -9.7891554875226,
+    "C1": true,
+    "C2": true,
+    "C6a": true
+  },
+  "category_stability": {
+    "bottle": {
+      "n_seeds_win": 3,
+      "cat_win": true,
+      "n_seeds_directional": 3,
+      "mean_z_D": 26.01310806558099,
+      "mean_z_I": -4.347557375689323,
+      "pooled_z_D": 26.453708729084514,
+      "pooled_z_I": -4.392675408132837,
+      "pooled_cell_win": true,
+      "neg_transfer_any_seed": false
+    },
+    "cable": {
+      "n_seeds_win": 3,
+      "cat_win": true,
+      "n_seeds_directional": 3,
+      "mean_z_D": 10.224927616878551,
+      "mean_z_I": -11.30397474112356,
+      "pooled_z_D": 10.233133206664984,
+      "pooled_z_I": -11.54421327559686,
+      "pooled_cell_win": true,
+      "neg_transfer_any_seed": false
+    },
+    "grid": {
+      "n_seeds_win": 3,
+      "cat_win": true,
+      "n_seeds_directional": 3,
+      "mean_z_D": 11.075296215152312,
+      "mean_z_I": -10.247513214250619,
+      "pooled_z_D": 11.004300985758707,
+      "pooled_z_I": -10.368131550553843,
+      "pooled_cell_win": true,
+      "neg_transfer_any_seed": false
+    },
+    "hazelnut": {
+      "n_seeds_win": 3,
+      "cat_win": true,
+      "n_seeds_directional": 3,
+      "mean_z_D": 17.295167515085904,
+      "mean_z_I": -13.28777081376051,
+      "pooled_z_D": 18.427884025326474,
+      "pooled_z_I": -13.292530517436477,
+      "pooled_cell_win": true,
+      "neg_transfer_any_seed": false
+    },
+    "screw": {
+      "n_seeds_win": 3,
+      "cat_win": true,
+      "n_seeds_directional": 3,
+      "mean_z_D": 28.568359101944697,
+      "mean_z_I": -10.509638351535916,
+      "pooled_z_D": 28.74731265183872,
+      "pooled_z_I": -10.267112979565315,
+      "pooled_cell_win": true,
+      "neg_transfer_any_seed": false
+    }
+  },
+  "seed_stability": {
+    "0": {
+      "n_cats_win": 5,
+      "seed_win": true,
+      "mean_z_D": 18.827389078554468,
+      "mean_z_I": -10.01344473490804
+    },
+    "1": {
+      "n_cats_win": 5,
+      "seed_win": true,
+      "mean_z_D": 18.634459086295852,
+      "mean_z_I": -9.849095731685072
+    },
+    "2": {
+      "n_cats_win": 5,
+      "seed_win": true,
+      "mean_z_D": 18.444266943935148,
+      "mean_z_I": -9.955332231222846
+    }
+  },
+  "correlation_pooled": [
+    {
+      "scope": "POOLED",
+      "layer": "layer2",
+      "variant": "all",
+      "n": 7680,
+      "spearman": 0.15094270570022084,
+      "pearson": 0.03194353142552769
+    },
+    {
+      "scope": "POOLED",
+      "layer": "layer3",
+      "variant": "all",
+      "n": 15360,
+      "spearman": 0.023058850362947678,
+      "pearson": -0.0676827830118718
+    },
+    {
+      "scope": "POOLED",
+      "layer": "both",
+      "variant": "all",
+      "n": 23040,
+      "spearman": 0.0666043047913605,
+      "pearson": -0.0472250466272877
+    },
+    {
+      "scope": "POOLED",
+      "layer": "layer2",
+      "variant": "nodegenerate",
+      "n": 7680,
+      "spearman": 0.15094270570022084,
+      "pearson": 0.03194353142552769
+    },
+    {
+      "scope": "POOLED",
+      "layer": "layer3",
+      "variant": "nodegenerate",
+      "n": 15317,
+      "spearman": 0.025792798628235587,
+      "pearson": -0.05698409526151083
+    },
+    {
+      "scope": "POOLED",
+      "layer": "both",
+      "variant": "nodegenerate",
+      "n": 22997,
+      "spearman": 0.06863540935494464,
+      "pearson": -0.03945742925982428
+    }
+  ],
+  "sanity_S4": "PENDING",
+  "C6b_score_level": "PENDING",
+  "case_provisional": "CASE_A_PENDING_C6B",
+  "provisional_assumption": "C6b (score-level probe) treated as TRUE; final verdict after Phase B",
+  "oracle_probe_only": true,
+  "notes": [
+    "metric-level 结论 = oracle/diagnostic，非最终方法性能",
+    "primary ratio 25%；50% 仅 secondary"
+  ]
+}

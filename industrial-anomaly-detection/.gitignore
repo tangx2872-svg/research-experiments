@@ -175,3 +175,22 @@ results/experiment_7a_o_q2/logs/
 results/experiment_7a_o_q3/logs/
 results/experiment_7a_o_q4/logs/
 results/experiment_7a_o/logs/
+
+# Mini Experiment 8B（defect–illumination separability probe）轻量结果入库：
+# reference/audit/analysis/figures/sanity/verdict/final_report/probe 逐图分数；
+# Phase A 特征摘要（extract/cells ~45MB npz）可由 scripts/experiment8b_extract.py 重生成，不入库；
+# smoke / logs / lightning fit 运行目录不入库。
+!results/experiment8b/
+results/experiment8b/logs/
+results/experiment8b/smoke/
+!results/experiment8b/extract/
+results/experiment8b/extract/cells/
+results/experiment8b/probe/raw/**/fit/
+results/experiment8b/probe/raw/**/run.lock
+# 8B probe 随机基线（RANDOM25_*/RANDOM50_*，20 masks/cell = 300 units ≈ 20MB）逐图分数不入库：
+# mask 定义（probe/masks.json，deterministic seed 80002）与全部派生指标（analysis/probe_metrics.csv、
+# probe_vs_reference.csv）已入库，可用 scripts/experiment8b_probe_runner.py 精确重跑；
+# 8 个决策相关 mask（FULL25/PARETO25/PROPOSED25/PROPOSED50/D-ONLY25/D-ONLY50/I-ONLY25/I-ONLY50）
+# 的逐图分数按 5A-H/7A-O 同口径入库。
+results/experiment8b/probe/raw/**/RANDOM25_*/
+results/experiment8b/probe/raw/**/RANDOM50_*/

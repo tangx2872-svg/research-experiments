@@ -1,0 +1,16 @@
+{
+  "experiment": "8B",
+  "mask_name": "FULL25",
+  "category": "bottle",
+  "seed": 0,
+  "n_channels_l2": 512,
+  "n_channels_l3": 1024,
+  "embedding_dim": 1536,
+  "alpha": 0.0,
+  "coreset_size": 21401,
+  "tau_val": 20.19022560119629,
+  "runtime_seconds": 73.69,
+  "wallclock_seconds": 73.93,
+  "oracle_probe_only": true,
+  "probe_note": "selection uses test defect masks (oracle); diagnostic evidence only"
+}

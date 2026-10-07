@@ -1,0 +1,16 @@
+{
+  "experiment": "8B",
+  "mask_name": "D-ONLY50",
+  "category": "screw",
+  "seed": 0,
+  "n_channels_l2": 256,
+  "n_channels_l3": 512,
+  "embedding_dim": 768,
+  "alpha": 0.0,
+  "coreset_size": 32768,
+  "tau_val": 16.890121459960938,
+  "runtime_seconds": 174.99,
+  "wallclock_seconds": 175.21,
+  "oracle_probe_only": true,
+  "probe_note": "selection uses test defect masks (oracle); diagnostic evidence only"
+}

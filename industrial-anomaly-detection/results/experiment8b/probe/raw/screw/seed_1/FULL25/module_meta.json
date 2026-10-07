@@ -1,0 +1,16 @@
+{
+  "experiment": "8B",
+  "mask_name": "FULL25",
+  "category": "screw",
+  "seed": 1,
+  "n_channels_l2": 512,
+  "n_channels_l3": 1024,
+  "embedding_dim": 1536,
+  "alpha": 0.0,
+  "coreset_size": 32768,
+  "tau_val": 24.00419044494629,
+  "runtime_seconds": 200.2,
+  "wallclock_seconds": 200.45,
+  "oracle_probe_only": true,
+  "probe_note": "selection uses test defect masks (oracle); diagnostic evidence only"
+}

@@ -1,0 +1,916 @@
+{
+  "normal_banks": {
+    "n_assets_expected": 30,
+    "n_assets_found": 30,
+    "per_asset": {
+      "bottle_seed0_layer2": {
+        "shape": [
+          19353,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.006454439146600801,
+        "sigma_median": 1.1343518308861178,
+        "sigma_max": 6.3626343063173785,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "bottle_seed0_layer3": {
+        "shape": [
+          4838,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.003415855495806369,
+        "sigma_median": 0.4617147438603001,
+        "sigma_max": 4.389181027977178,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "bottle_seed1_layer2": {
+        "shape": [
+          19353,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.006006504850171192,
+        "sigma_median": 1.1364828679376457,
+        "sigma_max": 6.13130576459025,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "bottle_seed1_layer3": {
+        "shape": [
+          4838,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.003554737706928896,
+        "sigma_median": 0.46848497185300564,
+        "sigma_max": 4.386367067634506,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "bottle_seed2_layer2": {
+        "shape": [
+          19353,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.006636176044763421,
+        "sigma_median": 1.1387134164115662,
+        "sigma_max": 6.284080807279676,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "bottle_seed2_layer3": {
+        "shape": [
+          4838,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.003308151243546544,
+        "sigma_median": 0.46204477765031643,
+        "sigma_max": 4.392815100840351,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "cable_seed0_layer2": {
+        "shape": [
+          20889,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.026187690911014472,
+        "sigma_median": 1.3851818304218126,
+        "sigma_max": 4.055054998804704,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "cable_seed0_layer3": {
+        "shape": [
+          5222,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.0038402261951474823,
+        "sigma_median": 0.7659887839753667,
+        "sigma_max": 4.842480639952815,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "cable_seed1_layer2": {
+        "shape": [
+          20889,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.023915853516346463,
+        "sigma_median": 1.384524852046312,
+        "sigma_max": 4.0636548195689715,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "cable_seed1_layer3": {
+        "shape": [
+          5222,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.004886156245889771,
+        "sigma_median": 0.7645392320360043,
+        "sigma_max": 4.879525259796613,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "cable_seed2_layer2": {
+        "shape": [
+          20889,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.023054608695487474,
+        "sigma_median": 1.3866489959975787,
+        "sigma_max": 4.068361395092587,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "cable_seed2_layer3": {
+        "shape": [
+          5222,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.00463034388135876,
+        "sigma_median": 0.7642893127116115,
+        "sigma_max": 4.770761728774103,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "grid_seed0_layer2": {
+        "shape": [
+          24985,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.001794845135775887,
+        "sigma_median": 0.8927713020223236,
+        "sigma_max": 5.279606293074505,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "grid_seed0_layer3": {
+        "shape": [
+          6246,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.0,
+        "sigma_median": 0.2521422136942526,
+        "sigma_max": 6.648885525562575,
+        "n_ch_sigma_lt_1e-3": 21,
+        "n_ch_sigma_lt_1e-6": 14
+      },
+      "grid_seed1_layer2": {
+        "shape": [
+          24985,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.0016638428124849543,
+        "sigma_median": 0.8871580650141884,
+        "sigma_max": 5.240629889216382,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "grid_seed1_layer3": {
+        "shape": [
+          6246,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.0,
+        "sigma_median": 0.25459535565134933,
+        "sigma_max": 6.96986673274689,
+        "n_ch_sigma_lt_1e-3": 20,
+        "n_ch_sigma_lt_1e-6": 15
+      },
+      "grid_seed2_layer2": {
+        "shape": [
+          24985,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.0016555552339916862,
+        "sigma_median": 0.8944363619862064,
+        "sigma_max": 5.200412649849835,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "grid_seed2_layer3": {
+        "shape": [
+          6246,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.0,
+        "sigma_median": 0.2551368477704157,
+        "sigma_max": 6.877681515475713,
+        "n_ch_sigma_lt_1e-3": 21,
+        "n_ch_sigma_lt_1e-6": 14
+      },
+      "hazelnut_seed0_layer2": {
+        "shape": [
+          37990,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.007397991775429406,
+        "sigma_median": 1.1724058167278295,
+        "sigma_max": 3.5329716334064236,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "hazelnut_seed0_layer3": {
+        "shape": [
+          9497,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.022483197433672712,
+        "sigma_median": 0.7645536736172096,
+        "sigma_max": 3.754530875173596,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "hazelnut_seed1_layer2": {
+        "shape": [
+          37990,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.007417908958114824,
+        "sigma_median": 1.170743737422649,
+        "sigma_max": 3.517946292567315,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "hazelnut_seed1_layer3": {
+        "shape": [
+          9497,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.018058698052016597,
+        "sigma_median": 0.7666403796000357,
+        "sigma_max": 3.7230498731110813,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "hazelnut_seed2_layer2": {
+        "shape": [
+          37990,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.007504884543876348,
+        "sigma_median": 1.1640257618648635,
+        "sigma_max": 3.549243219051104,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "hazelnut_seed2_layer3": {
+        "shape": [
+          9497,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.022465015959077864,
+        "sigma_median": 0.7649596629558828,
+        "sigma_max": 3.7221158198058544,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "screw_seed0_layer2": {
+        "shape": [
+          30720,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.003938580384271001,
+        "sigma_median": 1.3312871504259043,
+        "sigma_max": 4.40583178254262,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "screw_seed0_layer3": {
+        "shape": [
+          7680,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.025988991800765273,
+        "sigma_median": 0.8370404492018861,
+        "sigma_max": 6.92016586333657,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "screw_seed1_layer2": {
+        "shape": [
+          30720,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.0040814356317716155,
+        "sigma_median": 1.334492793773387,
+        "sigma_max": 4.319436402621326,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "screw_seed1_layer3": {
+        "shape": [
+          7680,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.02520510867339771,
+        "sigma_median": 0.8312858771429907,
+        "sigma_max": 6.710611359589962,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "screw_seed2_layer2": {
+        "shape": [
+          30720,
+          512
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.004039261561684351,
+        "sigma_median": 1.3277092315750485,
+        "sigma_max": 4.263840262599616,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      },
+      "screw_seed2_layer3": {
+        "shape": [
+          7680,
+          1024
+        ],
+        "dtype": "float32",
+        "sigma_min": 0.025901899143905515,
+        "sigma_median": 0.8312952159140432,
+        "sigma_max": 6.4832765363495435,
+        "n_ch_sigma_lt_1e-3": 0,
+        "n_ch_sigma_lt_1e-6": 0
+      }
+    },
+    "sigma_pooled": {
+      "n": 23040,
+      "min": 0.0,
+      "p01": 0.007950031680012735,
+      "median": 0.8199268754694364,
+      "max": 6.96986673274689,
+      "n_lt_1e-3": 62,
+      "n_lt_1e-6": 43
+    }
+  },
+  "defect_side_1j": {
+    "n_npz_found": 1848,
+    "per_cell": {
+      "bottle_seed0_layer2": 42,
+      "bottle_seed0_layer3": 42,
+      "bottle_seed1_layer2": 42,
+      "bottle_seed1_layer3": 42,
+      "bottle_seed2_layer2": 42,
+      "bottle_seed2_layer3": 42,
+      "cable_seed0_layer2": 26,
+      "cable_seed0_layer3": 26,
+      "cable_seed1_layer2": 26,
+      "cable_seed1_layer3": 26,
+      "cable_seed2_layer2": 26,
+      "cable_seed2_layer3": 26,
+      "grid_seed0_layer2": 66,
+      "grid_seed0_layer3": 66,
+      "grid_seed1_layer2": 66,
+      "grid_seed1_layer3": 66,
+      "grid_seed2_layer2": 66,
+      "grid_seed2_layer3": 66,
+      "hazelnut_seed0_layer2": 34,
+      "hazelnut_seed0_layer3": 34,
+      "hazelnut_seed1_layer2": 34,
+      "hazelnut_seed1_layer3": 34,
+      "hazelnut_seed2_layer2": 34,
+      "hazelnut_seed2_layer3": 34,
+      "screw_seed0_layer2": 140,
+      "screw_seed0_layer3": 140,
+      "screw_seed1_layer2": 140,
+      "screw_seed1_layer3": 140,
+      "screw_seed2_layer2": 140,
+      "screw_seed2_layer3": 140
+    },
+    "shape_samples": {
+      "bottle_seed0_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "bottle_seed0_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "bottle_seed1_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "bottle_seed1_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "bottle_seed2_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "bottle_seed2_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "cable_seed0_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "cable_seed0_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "cable_seed1_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "cable_seed1_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "cable_seed2_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "cable_seed2_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "grid_seed0_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "grid_seed0_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "grid_seed1_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "grid_seed1_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "grid_seed2_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "grid_seed2_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "hazelnut_seed0_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "hazelnut_seed0_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "hazelnut_seed1_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "hazelnut_seed1_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "hazelnut_seed2_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "hazelnut_seed2_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "screw_seed0_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "screw_seed0_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "screw_seed1_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "screw_seed1_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ],
+      "screw_seed2_layer2": [
+        [
+          512,
+          32,
+          32
+        ],
+        "float16"
+      ],
+      "screw_seed2_layer3": [
+        [
+          1024,
+          16,
+          16
+        ],
+        "float16"
+      ]
+    },
+    "alpha_a0": 924,
+    "alpha_a1": 924
+  },
+  "illumination_side": {
+    "all_feature_files_in_results": 1878,
+    "feature_files_outside_1j": [],
+    "q3_has_npy_or_npz": false,
+    "q4_has_npy_or_npz": false,
+    "q0_has_npy_or_npz": false,
+    "verdict": "NO feature-level illumination asset: brightness/gamma perturbation only stored as per-image anomaly scores in 7A-O Q3/Q4; no paired feature representation exists"
+  },
+  "data_coverage": {
+    "bottle": {
+      "defect_types": {
+        "broken_large": {
+          "n_images": 20,
+          "n_mask_present": 20,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "broken_small": {
+          "n_images": 22,
+          "n_mask_present": 22,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "contamination": {
+          "n_images": 21,
+          "n_mask_present": 21,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 21,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 2
+        }
+      },
+      "n_test_good": 20
+    },
+    "cable": {
+      "defect_types": {
+        "bent_wire": {
+          "n_images": 13,
+          "n_mask_present": 13,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 13,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "cable_swap": {
+          "n_images": 12,
+          "n_mask_present": 12,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "combined": {
+          "n_images": 11,
+          "n_mask_present": 11,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "cut_inner_insulation": {
+          "n_images": 14,
+          "n_mask_present": 14,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "cut_outer_insulation": {
+          "n_images": 10,
+          "n_mask_present": 10,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "missing_cable": {
+          "n_images": 12,
+          "n_mask_present": 12,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "missing_wire": {
+          "n_images": 10,
+          "n_mask_present": 10,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "poke_insulation": {
+          "n_images": 10,
+          "n_mask_present": 10,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        }
+      },
+      "n_test_good": 58
+    },
+    "grid": {
+      "defect_types": {
+        "bent": {
+          "n_images": 12,
+          "n_mask_present": 12,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "broken": {
+          "n_images": 12,
+          "n_mask_present": 12,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "glue": {
+          "n_images": 11,
+          "n_mask_present": 11,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 11,
+          "n_l2_zero_defect_patch": 1,
+          "n_l3_zero_defect_patch": 2
+        },
+        "metal_contamination": {
+          "n_images": 11,
+          "n_mask_present": 11,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 11,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 8
+        },
+        "thread": {
+          "n_images": 11,
+          "n_mask_present": 11,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 11,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 4
+        }
+      },
+      "n_test_good": 21
+    },
+    "hazelnut": {
+      "defect_types": {
+        "crack": {
+          "n_images": 18,
+          "n_mask_present": 18,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "cut": {
+          "n_images": 17,
+          "n_mask_present": 17,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "hole": {
+          "n_images": 18,
+          "n_mask_present": 18,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "print": {
+          "n_images": 17,
+          "n_mask_present": 17,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 17,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        }
+      },
+      "n_test_good": 40
+    },
+    "screw": {
+      "defect_types": {
+        "manipulated_front": {
+          "n_images": 24,
+          "n_mask_present": 24,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 24,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 17
+        },
+        "scratch_head": {
+          "n_images": 24,
+          "n_mask_present": 24,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "scratch_neck": {
+          "n_images": 25,
+          "n_mask_present": 25,
+          "n_empty_mask": 0,
+          "frozen_primary": false,
+          "n_primary_checked": 0,
+          "n_l2_zero_defect_patch": 0,
+          "n_l3_zero_defect_patch": 0
+        },
+        "thread_side": {
+          "n_images": 23,
+          "n_mask_present": 23,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 23,
+          "n_l2_zero_defect_patch": 5,
+          "n_l3_zero_defect_patch": 19
+        },
+        "thread_top": {
+          "n_images": 23,
+          "n_mask_present": 23,
+          "n_empty_mask": 0,
+          "frozen_primary": true,
+          "n_primary_checked": 23,
+          "n_l2_zero_defect_patch": 1,
+          "n_l3_zero_defect_patch": 11
+        }
+      },
+      "n_test_good": 41
+    }
+  }
+}

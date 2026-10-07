@@ -17,7 +17,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C，当前）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -31,8 +31,9 @@
 | **Stage ⑩ 结论（7A-O 模块筛选）** | 92 GPU units、sanity 18/18、freeze `e046a89a…`：4 family × 14 config 的 simple module **无一达到预注册 Tier S/A/B**（Round 1 晋级集为空）；full panel 5×3 下 **A3_lam050** Δd′ **+0.5612** / Δ\|Δz\| **+0.0619**、B1_g100 +0.5104/+0.0717、D1 +0.1739/+0.1164、C3 +0.0219/+0.0115 → **CASE_C**；**无 candidate 与 Uniform 相互支配**，但 **A3_lam050 严格支配 Original** |
 | **Stage ⑩ 结论（7A-O 模块筛选，overnight）** | **92 GPU units**、sanity 18/18、freeze `e046a89a…`：residual/dual/layer-selective/alternative-norm 四类共 14 个冻结 config **无一达到预注册 Tier S/A/B**（Round 1 晋级集为空，full panel 5×3 一致）。full panel vs Uniform(0.40091275) d′=4.7940 / \|Δz\|=0.2134：A3_lam050 Δd′ **+0.5612**/Δ\|Δz\| +0.0619、B1_g100 +0.5104/+0.0717、D1 +0.1739/+0.1164、C3 +0.0219/+0.0115 → **CASE_C**；**无 candidate 与 Uniform 相互支配**，唯一正面事实是 **A3_lam050 严格支配 Original**（+0.3700/−0.0352）→ 简单模块只能沿既有 frontier 移动，停止 feature-fusion 路线 |
 | **Stage ⑨-b 结论（6B confirmatory）** | 27 GPU units + 1 smoke，sanity 20/20：在 α_F=0.25 周围补 {0.125, 0.20, 0.30} 后，**A∧B∧C∧D 只在 α_F=0.25 成立（region length = 1，孤立点）**；放宽到聚合级 A∧B∧C 也只有 [0.20, 0.25]（长度 2）→ **CASE_C**（6A 的 CASE_A 不构成区域，且任何口径下 CASE_A 都不可达）。**mean-α matched Uniform(0.40091275) 对照**：Soft(0.25) d′ +0.0842（< ε）但 \|Δz\| 反而差 +0.0195 → **优势主要来自整体 strength（60.1%）而非 selective allocation（39.9%）**，且 allocation 的 preservation/robustness 兑换率比 strength 差 **5.7 倍** |
+| **Stage ⑩-b 结论（8B 特征子空间探针）** | 420 GPU units（+ 15 cells 特征提取）、sanity **13/13 PASS**、freeze `5f2bbd54…`、0 failed：**defect sensitivity 与 illumination sensitivity 在 pretrained channel 上近似无关**（pooled Spearman 0.0666；layer2 0.151 / layer3 0.023），15/15 cells 同时 D↑I↓，L2-only 与 L3-only **各自 15/15**（非 layer identity 效应）；但 score-level probe（复用 5A-H 完整路径）显示 **primary ratio 25% 下 C6b 失败**（胜 FULL 仅 5/15，mean Δd′ −0.2285）→ **CASE_B，Plan C = HOLD**；**secondary ratio 50% 出现预注册阈值外的正向信号**（PROPOSED50 Δd′ +0.1892 / Δ\|Δz\| −0.1610，胜 FULL 11/15、胜 matched-size random 15/15，d′ 5.1744 / \|Δz\| 0.1495），但 **cable 是系统性负迁移类别**（Δd′ −0.274），且该信号按冻结规则**不得**用于升级 verdict |
 | 允许声称 | ① normal-only feature geometry 含有 category-level normalization tolerance 的预测信息（n=5，descriptive）；② 把该几何用于**门控式 safe normalization** 可避免高脆弱类别的归一化损伤；③ **gate 选择本身携带大量信息**（10 个同 budget gate 的 Δd′ 相差 0.36），且 geometry 的 top-2 = 唯一最优 gate；④ **hard gate（fragile 端 α=0）过于极端**：把 fragile 端 α 提到 0.25 可在同一 identity 下同时改善 robustness 并保留大部分 preservation（**但 6B 显示这一点不构成区域，且收益主要是 strength 效应**）；⑤ **单纯把全局 α 从 0.5 降到 ~0.40**（Uniform）在 preservation/robustness 兑换率上优于任何 geometry gating（Δd′ +0.1270 / Δ\|Δz\| +0.0052）；⑥ **在 PatchCore + α-IN 框架下，简单 feature fusion / residual / dual / layer-selective / alternative-norm 模块不能突破 Uniform 定义的 frontier**（7A-O）；⑦ A3_lam050（energy-preserving residual, λ=0.5）**严格支配无 normalization baseline** |
-| 不允许声称 | 因果机制已被证明；"adaptive α 提升平均性能"；**geometry predictor identity 已确立**（5D：优势为单类别驱动、robustness 为 10 个 gate 中最差）；**6A 的 CASE_A 是 identity 证据**（6A 只改 fragile 端强度、不改 category identity，且 mean α 0.30→0.40 budget 不 matched、A 的余量仅 5.6%）；需要 category-specific continuous α；**6A 的 α_F=0.25 是稳定 knee region**（6B：region length = 1）；**6A/6B 的收益是 selective allocation 的证据**（6B：60.1% 来自 strength）；**7A-O 的 A3_lam050 是可用于论文的新方法**（它只支配 Original，未超过 Uniform）；结论可外推到其他 backbone / detector / 数据集 / 真实光照 |
+| 不允许声称 | 因果机制已被证明；"adaptive α 提升平均性能"；**geometry predictor identity 已确立**（5D：优势为单类别驱动、robustness 为 10 个 gate 中最差）；**6A 的 CASE_A 是 identity 证据**（6A 只改 fragile 端强度、不改 category identity，且 mean α 0.30→0.40 budget 不 matched、A 的余量仅 5.6%）；需要 category-specific continuous α；**6A 的 α_F=0.25 是稳定 knee region**（6B：region length = 1）；**6A/6B 的收益是 selective allocation 的证据**（6B：60.1% 来自 strength）；**7A-O 的 A3_lam050 是可用于论文的新方法**（它只支配 Original，未超过 Uniform）；结论可外推到其他 backbone / detector / 数据集 / 真实光照；**8B 的 channel-selection 是可用于论文的方法 / 是 Plan C 已被验证**（8B 的 ranking 使用 test defect mask，全部 score-level 结果只是 **oracle diagnostic**；CASE_B 意味着 Plan C 仅 HOLD）；**8B 的 50% ratio 信号是已确认结论**（negative 未确认、random 仅 10 draws、cable 负迁移） |
 | 最新 commit | **`ad26ec5`（6B）** · `7d6c691`(6B docs)；关键历史 commit：`1b3edd2`(6A) · `b28f3a2`(6A docs) · `31150bd`(5D) · `e0bda22`(5D docs) · `fdd6fa9`(5C) · `5d6ee98`(5B-C) · `24d1b22`(5B) · `ff4a1b2`(5A-H) · `ba11038`(5A) |
 
 ---
@@ -50,8 +51,11 @@
 ⑧ Method Identity / Matched-Control Validation ✅（5D：literal CASE_D / 实质 CASE_B — identity 未确立）
 ⑨ Trade-off 方法改进（Soft-GC pilot + confirm）  ✅（6A：CASE_A → 6B：CASE_C）
 ⑩ 模块筛选（overnight，7A-O）                   ✅（CASE_C — 简单模块无法超过 Uniform；A3_lam050 仅支配 Original）
+⑩-b 新方法选型（8B feature-subspace probe）     ✅（CASE_B — 子空间存在但 primary ratio 下无法变现；Plan C HOLD）
+   Plan C（Illumination-Stable Anomaly Feature Selection）  ⏸ HOLD（需一次 confirmatory 实验才可继续）
+   Plan A（Defect-Preserving Illumination Consistency）     ⏸ 备选（8B 未否定其必要性）
 ⑪ Final baseline + ablation                    ⏸ 需人工批准（未启动）
-⑪ Writing                                      ⏸
+⑫ Writing                                      ⏸
 ```
 
 ---
@@ -133,6 +137,27 @@
         **无任何 candidate 与 Uniform 相互支配** → 简单模块只能沿既有 frontier 移动工作点
         **唯一正面事实：A3_lam050 严格支配 B0_original**（Δd′ +0.3700 且 Δ|Δz| −0.0352）
         → **CASE_C（NO USEFUL MODULE）**；Round 3 未运行（条件不满足）
+        ↓
+【⑩-b 方法选型】8B（Defect–Illumination Feature Separability Probe，2026-10-07）
+  问题：pretrained representation 里是否存在「defect-sensitive 但 illumination-stable」的
+  **feature/layer/channel 子空间**？（若存在 → Plan C；若不存在 → Plan A）
+  Phase A：15/15 cells 重新提取 channel 级 D_c / I_c（无 fit/无 bank，524 s）；
+           **S13（vs 1J 历史资产）240/240 PASS（corr ≥ 0.9999999）**，S6 identity Δ≡0
+  Round 1（CPU，oracle/diagnostic）：**15/15 cells 同时 z_D ≥ +2 且 z_I ≤ −2**
+           mean z_D 18.64 / z_I −9.94；**pooled Spearman(|D|, I) = 0.0666**（近似无关）
+           L2-only 15/15、L3-only 15/15（**不是 layer identity 效应**）
+           Pareto frontier 大小 ≈ i.i.d. 的 ln(n) 期望（frontier 本身不是特殊结构）
+  Round 2（Phase B，420 units，复用 5A-H 完整评估路径 + channel mask；S4 `max|Δscore| = 0`）
+           primary ratio 25%：胜 FULL **5/15**、mean Δd′ **−0.2285**、Δ|Δz| −0.1545
+                             → **C6b FAIL（(i)(iii) 不成立）**
+           secondary ratio 50%（**不参与判定**）：Δd′ **+0.1892**、Δ|Δz| **−0.1610**
+                             → 胜 FULL **11/15**、胜 matched-size random **15/15**
+           PARETO ranking 作 mask 失败（d′ 1.1712 / |Δz| 3.9865，0/15，因其为极值点集合）
+           cable 是唯一系统性负迁移类别（Δd′ −0.909 @25% / −0.274 @50%）
+  → **CASE_B（WEAK BUT STRUCTURED）**：**Plan C = HOLD**（只允许一次非常小的 confirmatory 实验）
+     事实：子空间存在且稳定（metric level），但在预注册 primary ratio 下无法在
+     PatchCore score 上同时保值与增益；50% ratio 的正向信号需确认（含 random 抽样噪声）
+     最值得看的图：Fig 1（D–I 2D 结构）、Fig 4b（score-level 逐 cell 星/方/圆）、Fig 3b/Fig 4c
 ```
 
 ---
@@ -141,6 +166,7 @@
 
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
+| [8B](experiments/experiment8b/README.md) | pretrained representation 中是否存在「defect-sensitive 但 illumination-stable」的 feature/channel 子空间（决定 Plan C 是否值得做） | **420 GPU units** + 15 cells 特征提取、sanity **13/13**、freeze `5f2bbd54…`、0 failed：D 与 I **近似无关**（pooled ρ 0.0666），**15/15 cells 同时 D↑I↓**，L2-only/L3-only 各 15/15；score-level primary 25% **C6b FAIL**（胜 FULL 5/15、Δd′ −0.2285）；secondary 50% Δd′ +0.1892 / Δ\|Δz\| −0.1610（胜 FULL 11/15、胜 random 15/15）；PARETO mask 崩溃；cable 系统性负迁移 | **CASE_B**（Plan C = **HOLD**） | DONE |
 | [7A-O Q4](results/experiment_7a_o_q4/README.md) | uniform normalization strength 响应图 + illumination condition × seed 补齐 | 9 个历史 α 点补齐到 **15/15**（5 cat × 3 seeds）：\|Δz\| 0.3105(α=0) → 0.1895(α=0.601) → 0.1902(α=0.802)，d′ 4.9852 → 4.5078；**α=0.20 支配 α=0**；**α=0.8018 被 α=0.6014 支配**；Q4-B 补 20 个 stress 单元 | **asset completion**（非方法） | DONE `b726476` |
 | [7A-O Q3](results/experiment_7a_o_q3/README.md) | 最强 baseline 在更系统 illumination severity 下的退化 | 12 conditions（复用历史唯一实现 brightness/gamma，severity 扩展到 ±10/30/50%）：medium 档与历史 **`max\|Δscore\|=0`**；Uniform 12/12 条件 \|Δz\| 更低；slope **1.886 vs 2.825**（−33%） | **baseline stress-test** | DONE `b726476` |
 | [7A-O Q2](results/experiment_7a_o_q2/README.md) | Original / invariant representation 的组合是否应发生在特定 layer | 4 个机械配置 × 3 cat × seed0：**0/4 达 Tier → STOP**；Q2L2（L2 residual + L3 uniform）+0.5793/+0.0429（兑换率 13.5）vs Q2L3 −0.0489/+0.1184 → **L2 槽位有效、L3 槽位有害** | **STOP** | DONE `7ffb3aa` |
@@ -607,7 +633,68 @@ smoke：α=0 与 Uniform 相对历史均为 **`max|Δscore| = 0`**。
 3. **strength 有甜点区间**：\(\|Δz\|\) 随 α 单调下降并在 α≈0.6 饱和，**α=0.20 同时优于 α=0**
    （d′ 5.0094 vs 4.9852 且 \|Δz\| 0.2777 vs 0.3105），α≥0.8 反而被 α≈0.60 支配（Q4-A）。
 
-## 11. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
+## 11. Mini Experiment 8B — Defect–Illumination Feature Separability Probe（2026-10-07）
+
+**入口**：[experiments/experiment8b/README.md](experiments/experiment8b/README.md)（PRE-RUN PLAN + A1 amendment + POST-RUN）·
+完整报告 [`results/experiment8b/final_report.md`](results/experiment8b/final_report.md) ·
+机械判定 [`results/experiment8b/verdict.json`](results/experiment8b/verdict.json) ·
+sanity [`results/experiment8b/sanity/sanity_report.md`](results/experiment8b/sanity/sanity_report.md)
+
+### 11.1 实验目的
+
+回答一个决定后续路线的问题：**PatchCore pretrained representation 中是否存在一组对 defect/anomaly 高敏感、
+但对 illumination variation 相对稳定的 feature/layer/channel 子空间？** 存在 → Plan C（Illumination-Stable
+Anomaly Feature Selection）；不存在 → 立即 STOP Plan C，转 Plan A（Defect-Preserving Illumination Consistency）。
+本实验**不是**新方法，也**不**以 AUROC 为目标；它只测「可选择性」是否存在。
+
+### 11.2 执行规模与冻结
+
+| 项 | 值 |
+|---|---|
+| 冻结协议 | `results/experiment8b/reference/protocol_freeze.json` sha256 `5f2bbd54…`（阈值/ranking/ratio/CASE 规则先于结果冻结） |
+| 预注册修正 | A1：S13 判据由 bit-exact 改为数值容差（触发早于任何目标结果；原因＝`feature_pooler` 缺失 + GPU batch 相关非确定性） |
+| Phase A（特征提取） | 15/15 cells（5 cat × 3 seeds），524 s，无 fit / 无 bank；defect 图 1203 张；fallback l2 24 / l3 393 |
+| Phase B（score-level probe） | **420 units**（15 cells × 28 masks），0 failed；single-unit 累计 19.67 GPU·hour，wall-clock 6.64 h（3 workers，**预注册估计 ~2 h，实际 3.3×**） |
+| sanity | **13/13 PASS**（S1–S13；S5 曾因分析脚本键名 bug 误判 FAIL，全 15 cells 复算后 PASS；S4 `max\|Δscore\| = 0`） |
+| leakage | ranking 使用 **test defect mask**（oracle）→ 所有 score-level 结果标 `oracle_probe_only`，**不得**作为方法性能主张 |
+
+### 11.3 核心结果（事实）
+
+| 层 | 结果 |
+|---|---|
+| Metric level | **15/15 cells 同时 z_D ≥ +2 且 z_I ≤ −2**；mean z_D 18.64 / z_I −9.94 |
+| 相关性 | **pooled Spearman(\|D\|, I) = 0.0666**（layer2 0.151 / layer3 0.023）→ 两轴近似无关 |
+| Layer control | L2-only **15/15**、L3-only **15/15** → **不是 layer identity 效应**（C7 = True） |
+| 稳定性 | 5/5 categories × 3/3 seeds 全胜；pooled-3-seed 后 5/5 仍胜；剔除 degenerate channel 不变 |
+| 结构 | Pareto frontier 占比 l2 1.6% / l3 0.6% ≈ i.i.d. 的 ln(n) 期望 → frontier 本身不是特殊结构；D_abs 重尾（top 1% channel 占 34% 质量） |
+| Score level（primary 25%） | 胜 FULL **5/15**、Δd′ **−0.2285**、Δ\|Δz\| **−0.1545**、胜 matched-size random 12/15 → **C6b FAIL** |
+| Score level（secondary 50%） | Δd′ **+0.1892**、Δ\|Δz\| **−0.1610**、胜 FULL **11/15**、胜 random **15/15**（**不参与判定**） |
+| Negative results | PARETO ranking 作 mask 崩溃（0/15，d′ 1.171）；D-ONLY 无稳健性收益；I-ONLY 有明显 d′ 损失；**cable 为唯一系统性负迁移类别** |
+
+### 11.4 判定（机械执行）→ CASE_B，Plan C = **HOLD**
+
+C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 FULL ≥10/15 与 (iii) mean Δd′ ≥ 0 均不成立）
+→ 按 §4.2 判定顺序落 **CASE_B（WEAK BUT STRUCTURED）**。
+
+- **事实**：可选择的子空间在 metric level 上确实存在且极稳定（近似无关的两轴、两个 layer 独立成立、无失败类别/seed）。
+- **解释**：该子空间在 **primary ratio（25%）** 下无法在 PatchCore score 上同时保值与增益；
+  但在 **50% ratio** 下出现了相对 α=0 的 Pareto 改善信号（须用 7A-O 历史口径注意：C1_l2_030_l3_050 也支配 α=0，
+  且二者互不支配，故不能称为「第一次推动 frontier」）。
+- **假设（未验证）**：50% 信号是否稳定（random 仅 10 draws）、是否能由 **normal-only proxy** 近似复现该 channel 排序。
+
+### 11.5 本实验推进了论文证据链的哪一格 / 下一格是什么
+
+- **完成/推进的格子**：Phase 5（Solution Selection）中「**Plan C 是否有科学依据**」这一前置格 —— 由
+  「未知」变为「**子空间存在，但 primary 口径下不可变现 → 需一次确认实验**」。
+- **没有推进**：没有产生任何方法性能主张（oracle diagnostic）；没有改变 7A-O 的 CASE_C 结论。
+- **下一格（建议，未执行）**：**8C-a**（最小确认：把 50% 的 random 基线从 10 扩到 ≥100 draws 并单独报告 cable）；
+  或 **8C-b**（真正关键：检验 normal-only proxy 能否复现 8B 的 desirable channel 排序）。
+  **禁止**直接进入大规模 feature-selection 方法开发（CASE_B 规则）。
+- **若 8C 失败**：Plan C 停止，转 **Plan A（Defect-Preserving Illumination Consistency）**。
+
+---
+
+## 12. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 
 **事实（实验直接观察到）**
 
@@ -669,7 +756,7 @@ smoke：α=0 与 Uniform 相对历史均为 **`max|Δscore| = 0`**。
 
 ---
 
-## 12. 下一步（建议，均未启动，需人工批准）
+## 13. 下一步（建议，均未启动，需人工批准）
 
 0. **5D CASE 归属裁决（人工，仍未决）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
    [5D README §15](experiments/experiment5d/README.md)。
@@ -692,10 +779,20 @@ smoke：α=0 与 Uniform 相对历史均为 **`max|Δscore| = 0`**。
    新造 predictor、新 backbone/dataset、无新证据的机制深挖（1J-C/2A）、启动 6C / 7B / Final experiments（均需人工批准）。
 5. **7A-O 遗留资产**：`A3_lam050`（energy-preserving residual fusion, λ=0.5）严格支配 Original，
    可作为"最强的弱归一化参考点"保留用于未来方法对照；**不得**当作论文方法（它未超过 Uniform）。
+6. **8B 之后的路线裁决（人工，必须）——Plan C 是否继续**：8B 结论为 **CASE_B / Plan C = HOLD**。
+   按 CASE_B 规则**只允许一次非常小的 confirmatory experiment**，候选（均需人工批准，均未启动）：
+   (a) **8C-a（最小确认）**：仅用已完成的 50% ratio 单元，把 matched-size random 基线从 10 draws 扩到 ≥100 draws，
+       并对 cable 单独报告；只回答「50% 信号是否稳定」，仍是 oracle diagnostic；
+   (b) **8C-b（真正关键）**：检验 **normal-only proxy**（synthetic anomaly / feature perturbation / RealNet-style）
+       能否近似复现 8B 的 desirable channel 排序；若不能，Plan C 在方法层面不可实现，应转 Plan A；
+   (c) **禁止**：直接进入大规模 feature-selection 方法开发、调 selection ratio / score weight / layer weight /
+       threshold / ranking formula（这些正是 8B 冻结协议明令禁止的动作）；
+   (d) **备选 Plan A**：Defect-Preserving Illumination Consistency（8B 未否定其必要性；它不依赖 channel 选择）。
+   另：若 Plan C 启动，必须内建 category-adaptive 机制，否则 cable 会重演 7A-O 的 negative transfer（系统性负迁移）。
 
 ---
 
-## 13. 复现与工程约定
+## 14. 复现与工程约定
 
 - 2026-10-06 曾在 AutoDL 完成一次**全量资产恢复复现审计**（1848 NPZ / 30 banks / 1386 intervention rows），
   详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；**6A 的 10 个 GPU unit 亦在同一路径上运行，smoke 重跑 5A B1

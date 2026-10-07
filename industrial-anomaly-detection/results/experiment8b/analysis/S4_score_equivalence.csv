@@ -1,0 +1,16 @@
+category,seed,n_compared,max_abs_diff,max_rel_diff,pass
+bottle,0,183,0.0,0.0,True
+bottle,1,183,0.0,0.0,True
+bottle,2,183,0.0,0.0,True
+cable,0,402,0.0,0.0,True
+cable,1,402,0.0,0.0,True
+cable,2,402,0.0,0.0,True
+grid,0,182,0.0,0.0,True
+grid,1,182,0.0,0.0,True
+grid,2,182,0.0,0.0,True
+hazelnut,0,290,0.0,0.0,True
+hazelnut,1,290,0.0,0.0,True
+hazelnut,2,290,0.0,0.0,True
+screw,0,344,0.0,0.0,True
+screw,1,344,0.0,0.0,True
+screw,2,344,0.0,0.0,True

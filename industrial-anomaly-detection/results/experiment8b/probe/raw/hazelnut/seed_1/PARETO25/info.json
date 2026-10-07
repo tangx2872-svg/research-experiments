@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "hazelnut",
+  "seed": 1,
+  "config": "PARETO25",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 312.06,
+  "coreset_size": 40038,
+  "tau_val": 1.1507186889648438,
+  "peak_gpu_memory_allocated_mb": 1121.16,
+  "train_ids_hash": "8281c84393a1",
+  "n_rows": 290,
+  "pixel_auroc": 0.7549274249275588,
+  "aupro": 0.5446015000343323
+}
