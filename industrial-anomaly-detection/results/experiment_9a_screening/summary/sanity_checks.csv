@@ -1,0 +1,11 @@
+check,status,detail
+S1_dataset_completeness,PASS,bottle/cable train+test present
+S2_required_sources_present,PASS,28 required; missing=[]
+S3_no_nan_inf_scores,PASS,8556 scores finite
+S4_row_count_consistency,PASS,"{'bottle': [183], 'cable': [402]}"
+S5_baseline_pipeline_intact_9A_vs_5AH,PASS,bottle:0 B0 vs 5A-H B0: n=183 max|dscore|=0.000e+00
+S6_m4_equiv_repr_exact_and_pipeline_deterministic,PASS,"repr max|dF|=1.91e-06 (2.09e-06 rel, float32 eps-scale) | repeat-run max|dscore|={'bottle': '0.0e+00'} (same config twice) | score gap between the two equivalent forms = max 1.773 (amplified by KCenterGreedy coreset selection)"
+S7_m6_reuse_matches_8B_frozen_metrics,PASS,bottle/PROPOSED25 0.0e+00/0.0e+00; cable/PROPOSED25 0.0e+00/0.0e+00; bottle/PROPOSED50 0.0e+00/0.0e+00; cable/PROPOSED50 0.0e+00/0.0e+00
+S8_m2_reuse_is_frozen_7AO_B1_g100,PASS,d'=5.30439 |dz|=0.28503 (15 units)
+S9_all_9A_units_OK,PASS,8 units; statuses=['OK']
+S10_no_target_leakage_in_new_methods,PASS,M1 stats / M3 basis from train-normal only (n_train recorded)

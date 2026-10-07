@@ -1,0 +1,28 @@
+{
+  "repr_level": {
+    "max_abs_delta_feature": 1.9073486328125e-06,
+    "rel_delta": 2.0877005146638454e-06,
+    "alpha_prime": 0.40091275,
+    "lambda": 0.5,
+    "effective_alpha": 0.200456375,
+    "n_patches": 1024
+  },
+  "score_level_diagnostic": {
+    "bottle": {
+      "n_keys": 183,
+      "max_abs_delta_score": 1.7733383178710938,
+      "mean_delta_score": -0.03262621978593003,
+      "pearson_r": 0.999486465847314,
+      "max_rel_delta": 0.05057432336217797,
+      "mean_abs_score_scale": 35.06400481468993,
+      "tau_equiv": 19.029850006103516,
+      "tau_resid": 19.19168472290039,
+      "alpha_prime": 0.40091275,
+      "lambda": 0.5,
+      "effective_alpha": 0.200456375
+    }
+  },
+  "determinism_repeat_max_abs_delta": {
+    "bottle": 0.0
+  }
+}

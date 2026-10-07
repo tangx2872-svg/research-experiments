@@ -1,0 +1,26 @@
+{
+  "experiment": "9A",
+  "unit": "bottle:0:M4_equiv_lam050_a040091275",
+  "config": "M4_equiv_lam050_a040091275",
+  "round": "round0",
+  "spec": {
+    "kind": "alpha",
+    "alpha_l2": 0.200456375,
+    "alpha_l3": 0.200456375,
+    "name": "M4_equiv_lam050_a040091275"
+  },
+  "embedding_dim": 1536,
+  "prep_seconds": 34.66,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 94.11,
+  "wallclock_seconds": 94.35,
+  "peak_gpu_memory_allocated_mb": 2605.04,
+  "declared_alpha_l2": 0.200456375,
+  "declared_alpha_l3": 0.200456375,
+  "lambda_m4": 0.5,
+  "alpha_robust_m4": 0.40091275,
+  "m1_reference_stats": null,
+  "m3_basis_meta": null,
+  "status": "ok",
+  "detail": ""
+}

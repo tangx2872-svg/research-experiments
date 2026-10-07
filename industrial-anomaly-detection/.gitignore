@@ -194,3 +194,18 @@ results/experiment8b/probe/raw/**/run.lock
 # 的逐图分数按 5A-H/7A-O 同口径入库。
 results/experiment8b/probe/raw/**/RANDOM25_*/
 results/experiment8b/probe/raw/**/RANDOM50_*/
+
+# Experiment 9A 结果（M1–M6 Method Screening Round-1；纳入 raw 逐图分数/info/module_meta + summary + figures + README/config，排除 cache/logs/progress）
+!results/experiment_9a_screening/
+results/experiment_9a_screening/cache/
+results/experiment_9a_screening/logs/
+results/experiment_9a_screening/progress/
+
+# Experiment 9A：保留 progress.log（进度/ETA 记录）与逐图分数，排除 Lightning fit 日志、临时状态与 cache
+!results/experiment_9a_screening/progress.log
+results/experiment_9a_screening/**/fit/
+results/experiment_9a_screening/progress.json
+
+# 监控器运行时状态（只保留脚本）
+monitor/logs/
+monitor/state/

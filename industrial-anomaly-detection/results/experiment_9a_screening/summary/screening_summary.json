@@ -1,0 +1,282 @@
+{
+  "experiment": "9A",
+  "round": "round1",
+  "date": "2026-10-07",
+  "categories": [
+    "bottle",
+    "cable"
+  ],
+  "seed": 0,
+  "criteria": {
+    "EPS_DP": 0.1,
+    "EPS_RZ": 0.02,
+    "robustness": "mean |dNormalScore_z| (lower better)",
+    "preservation": "mean defect d-prime (higher better)"
+  },
+  "m4_equivalence": {
+    "repr_level": {
+      "max_abs_delta_feature": 1.9073486328125e-06,
+      "rel_delta": 2.0877005146638454e-06,
+      "alpha_prime": 0.40091275,
+      "lambda": 0.5,
+      "effective_alpha": 0.200456375,
+      "n_patches": 1024
+    },
+    "score_level_diagnostic": {
+      "bottle": {
+        "n_keys": 183,
+        "max_abs_delta_score": 1.7733383178710938,
+        "mean_delta_score": -0.03262621978593003,
+        "pearson_r": 0.999486465847314,
+        "max_rel_delta": 0.05057432336217797,
+        "mean_abs_score_scale": 35.06400481468993,
+        "tau_equiv": 19.029850006103516,
+        "tau_resid": 19.19168472290039,
+        "alpha_prime": 0.40091275,
+        "lambda": 0.5,
+        "effective_alpha": 0.200456375
+      }
+    },
+    "determinism_repeat_max_abs_delta": {
+      "bottle": 0.0
+    }
+  },
+  "m4_pass": true,
+  "methods": [
+    {
+      "method": "M1_illum_standard",
+      "tag": "9A:M1_illum_standard",
+      "type": "NEW",
+      "per_category": {
+        "bottle": {
+          "mean_dprime": 8.290403952480997,
+          "mean_abs_delta_z": 0.2849695448938279,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.985284090125,
+          "aupro": 0.9438936710357666,
+          "delta_dprime_vs_B0": 0.02542728191012067,
+          "delta_absz_vs_B0": -0.193245878240424,
+          "delta_dprime_vs_B2": 1.0265839603013163,
+          "delta_absz_vs_B2": 0.00036677734547002627,
+          "delta_dprime_vs_uniform": 0.8266150284107416,
+          "delta_absz_vs_uniform": 0.014692213966074341,
+          "frontier_interp_dprime": 7.593116432212677,
+          "beyond_frontier_gain": 0.6972875202683193,
+          "dominated_by_uniform_alpha": "",
+          "runtime_seconds": 105.47,
+          "peak_vram_mb": 2605.04,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_9a_screening/raw/round1/cable/seed_0/config_M1_illum_standard"
+        },
+        "cable": {
+          "mean_dprime": 4.84275794484546,
+          "mean_abs_delta_z": 0.6686687039601388,
+          "image_auroc": 0.981071964017991,
+          "pixel_auroc": 0.9839859135,
+          "aupro": 0.9285082817077637,
+          "delta_dprime_vs_B0": -0.303537224915849,
+          "delta_absz_vs_B0": 0.3231783267236105,
+          "delta_dprime_vs_B2": -0.07251486717121214,
+          "delta_absz_vs_B2": 0.4105622064498739,
+          "delta_dprime_vs_uniform": -0.20604514709086708,
+          "delta_absz_vs_uniform": 0.4046012162948527,
+          "frontier_interp_dprime": 5.272330063910597,
+          "beyond_frontier_gain": -0.4295721190651367,
+          "dominated_by_uniform_alpha": "5AH:B0;Q4:Q4a0125;Q4:Q4a02;Q4:Q4a025;Q4:Q4a03;6B:a040091275;5AH:B2",
+          "runtime_seconds": 157.84,
+          "peak_vram_mb": 2785.04,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_9a_screening/raw/round1/cable/seed_0/config_M1_illum_standard"
+        }
+      },
+      "verdict": "HOLD",
+      "verdict_reason": "类别间不一致：robustness 改善仅在 bottle，cable 无改善；cable 同时出现明确恶化 -> cross-category unstable"
+    },
+    {
+      "method": "M2_dual_concat_B1_g100",
+      "tag": "7AO:B1_g100",
+      "type": "REUSE",
+      "per_category": {
+        "bottle": {
+          "mean_dprime": 8.170815609102377,
+          "mean_abs_delta_z": 0.3379078246414426,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.985486335775,
+          "aupro": 0.9486674070358276,
+          "delta_dprime_vs_B0": -0.09416106146849934,
+          "delta_absz_vs_B0": -0.14030759849280933,
+          "delta_dprime_vs_B2": 0.9069956169226963,
+          "delta_absz_vs_B2": 0.053305057093084696,
+          "delta_dprime_vs_uniform": 0.7070266850321216,
+          "delta_absz_vs_uniform": 0.06763049371368901,
+          "frontier_interp_dprime": 7.9797297184968325,
+          "beyond_frontier_gain": 0.19108589060554415,
+          "dominated_by_uniform_alpha": "",
+          "runtime_seconds": 102.7,
+          "peak_vram_mb": 5113.04,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_7a_o/raw/cable/seed_0/config_B1_g100"
+        },
+        "cable": {
+          "mean_dprime": 5.100779579760442,
+          "mean_abs_delta_z": 0.32747112685671687,
+          "image_auroc": 0.9878185907046477,
+          "pixel_auroc": 0.98639035835,
+          "aupro": 0.9401955604553223,
+          "delta_dprime_vs_B0": -0.04551559000086769,
+          "delta_absz_vs_B0": -0.01801925037981139,
+          "delta_dprime_vs_B2": 0.18550676774376917,
+          "delta_absz_vs_B2": 0.06936462934645199,
+          "delta_dprime_vs_uniform": 0.05197648782411424,
+          "delta_absz_vs_uniform": 0.06340363919143077,
+          "frontier_interp_dprime": 5.272330063910597,
+          "beyond_frontier_gain": -0.1715504841501554,
+          "dominated_by_uniform_alpha": "Q4:Q4a02;Q4:Q4a025;Q4:Q4a03",
+          "runtime_seconds": 126.29,
+          "peak_vram_mb": 5473.04,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_7a_o/raw/cable/seed_0/config_B1_g100"
+        }
+      },
+      "verdict": "HOLD",
+      "verdict_reason": "类别间不一致：robustness 改善仅在 bottle，cable 无改善 -> cross-category unstable"
+    },
+    {
+      "method": "M3_nuis_k16",
+      "tag": "9A:M3_nuis_k16",
+      "type": "NEW",
+      "per_category": {
+        "bottle": {
+          "mean_dprime": 8.390887406690506,
+          "mean_abs_delta_z": 0.4694634238602584,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.985494749825,
+          "aupro": 0.944697916507721,
+          "delta_dprime_vs_B0": 0.12591073611963033,
+          "delta_absz_vs_B0": -0.008751999273993505,
+          "delta_dprime_vs_B2": 1.127067414510826,
+          "delta_absz_vs_B2": 0.18486065631190052,
+          "delta_dprime_vs_uniform": 0.9270984826202513,
+          "delta_absz_vs_uniform": 0.19918609293250483,
+          "frontier_interp_dprime": 8.247183755970772,
+          "beyond_frontier_gain": 0.14370365071973445,
+          "dominated_by_uniform_alpha": "",
+          "runtime_seconds": 121.2,
+          "peak_vram_mb": 2613.25,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_9a_screening/raw/round1/cable/seed_0/config_M3_nuis_k16"
+        },
+        "cable": {
+          "mean_dprime": 5.20940579087159,
+          "mean_abs_delta_z": 0.3808095432020727,
+          "image_auroc": 0.9840704647676162,
+          "pixel_auroc": 0.984525967275,
+          "aupro": 0.9287856817245483,
+          "delta_dprime_vs_B0": 0.06311062111028054,
+          "delta_absz_vs_B0": 0.03531916596554446,
+          "delta_dprime_vs_B2": 0.2941329788549174,
+          "delta_absz_vs_B2": 0.12270304569180784,
+          "delta_dprime_vs_uniform": 0.16060269893526247,
+          "delta_absz_vs_uniform": 0.11674205553678663,
+          "frontier_interp_dprime": 5.272330063910597,
+          "beyond_frontier_gain": -0.06292427303900716,
+          "dominated_by_uniform_alpha": "Q4:Q4a02;Q4:Q4a025",
+          "runtime_seconds": 167.11,
+          "peak_vram_mb": 2793.25,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_9a_screening/raw/round1/cable/seed_0/config_M3_nuis_k16"
+        }
+      },
+      "verdict": "STOP",
+      "verdict_reason": "两类别均无 robustness 改善（Delta|dz| > -0.02）-> 不构成 trade-off 改善，preservation-only 提升不改变 frontier 形状"
+    },
+    {
+      "method": "M6_oracle_mask25",
+      "tag": "8B:PROPOSED25",
+      "type": "REUSE",
+      "per_category": {
+        "bottle": {
+          "mean_dprime": 7.732102826083833,
+          "mean_abs_delta_z": 0.12757336291377872,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.98097023235,
+          "aupro": 0.9415341019630432,
+          "delta_dprime_vs_B0": -0.5328738444870433,
+          "delta_absz_vs_B0": -0.3506420602204732,
+          "delta_dprime_vs_B2": 0.46828283390415226,
+          "delta_absz_vs_B2": -0.15702940463457918,
+          "delta_dprime_vs_uniform": 0.26831390201357763,
+          "delta_absz_vs_uniform": -0.14270396801397486,
+          "frontier_interp_dprime": 6.502542267766824,
+          "beyond_frontier_gain": 1.2295605583170088,
+          "dominated_by_uniform_alpha": "",
+          "runtime_seconds": 71.47,
+          "peak_vram_mb": 927.69,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment8b/probe/raw/cable/seed_0/PROPOSED25"
+        },
+        "cable": {
+          "mean_dprime": 4.139219806383556,
+          "mean_abs_delta_z": 0.21398764046132235,
+          "image_auroc": 0.972263868065967,
+          "pixel_auroc": 0.977778576225,
+          "aupro": 0.8933101892471313,
+          "delta_dprime_vs_B0": -1.0070753633777532,
+          "delta_absz_vs_B0": -0.1315027367752059,
+          "delta_dprime_vs_B2": -0.7760530056331163,
+          "delta_absz_vs_B2": -0.04411885704894253,
+          "delta_dprime_vs_uniform": -0.9095832855527712,
+          "delta_absz_vs_uniform": -0.050079847203963745,
+          "frontier_interp_dprime": 4.7955731175643415,
+          "beyond_frontier_gain": -0.6563533111807853,
+          "dominated_by_uniform_alpha": "",
+          "runtime_seconds": 111.43,
+          "peak_vram_mb": 986.56,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment8b/probe/raw/cable/seed_0/PROPOSED25"
+        }
+      },
+      "verdict": "ORACLE_REFERENCE",
+      "verdict_reason": "ORACLE UPPER BOUND（selection 使用 test defect mask）—— 不是 deployable 候选、不计入晋级；原始判定: 两类别 robustness 均改善但 preservation 在两类别同时明显下降 -> 纯 trade-off 兑换，不是改善"
+    },
+    {
+      "method": "M6_oracle_mask50",
+      "tag": "8B:PROPOSED50",
+      "type": "REUSE",
+      "per_category": {
+        "bottle": {
+          "mean_dprime": 8.859449512505533,
+          "mean_abs_delta_z": 0.16219620577001465,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.9829131215,
+          "aupro": 0.9443264603614807,
+          "delta_dprime_vs_B0": 0.5944728419346568,
+          "delta_absz_vs_B0": -0.31601921736423727,
+          "delta_dprime_vs_B2": 1.5956295203258524,
+          "delta_absz_vs_B2": -0.12240656177834325,
+          "delta_dprime_vs_uniform": 1.3956605884352777,
+          "delta_absz_vs_uniform": -0.10808112515773893,
+          "frontier_interp_dprime": 6.502542267766824,
+          "beyond_frontier_gain": 2.356907244738709,
+          "dominated_by_uniform_alpha": "",
+          "runtime_seconds": 81.83,
+          "peak_vram_mb": 1352.04,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment8b/probe/raw/cable/seed_0/PROPOSED50"
+        },
+        "cable": {
+          "mean_dprime": 4.774302762653287,
+          "mean_abs_delta_z": 0.17499192454969015,
+          "image_auroc": 0.9795727136431784,
+          "pixel_auroc": 0.978718102125,
+          "aupro": 0.9129971861839294,
+          "delta_dprime_vs_B0": -0.3719924071080225,
+          "delta_absz_vs_B0": -0.1704984526868381,
+          "delta_dprime_vs_B2": -0.14097004936338564,
+          "delta_absz_vs_B2": -0.08311457296057473,
+          "delta_dprime_vs_uniform": -0.2745003292830406,
+          "delta_absz_vs_uniform": -0.08907556311559595,
+          "frontier_interp_dprime": 4.7955731175643415,
+          "beyond_frontier_gain": -0.021270354911054667,
+          "dominated_by_uniform_alpha": "",
+          "runtime_seconds": 150.27,
+          "peak_vram_mb": 1441.04,
+          "source": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment8b/probe/raw/cable/seed_0/PROPOSED50"
+        }
+      },
+      "verdict": "ORACLE_REFERENCE",
+      "verdict_reason": "ORACLE UPPER BOUND（selection 使用 test defect mask）—— 不是 deployable 候选、不计入晋级；原始判定: 两类别 robustness 均改善但 preservation 在两类别同时明显下降 -> 纯 trade-off 兑换，不是改善"
+    }
+  ]
+}

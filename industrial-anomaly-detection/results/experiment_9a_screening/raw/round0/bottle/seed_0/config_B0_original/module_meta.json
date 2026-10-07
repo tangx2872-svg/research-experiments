@@ -1,0 +1,26 @@
+{
+  "experiment": "9A",
+  "unit": "bottle:0:B0_original",
+  "config": "B0_original",
+  "round": "round0",
+  "spec": {
+    "kind": "alpha",
+    "alpha_l2": 0.0,
+    "alpha_l3": 0.0,
+    "name": "B0_original"
+  },
+  "embedding_dim": 1536,
+  "prep_seconds": 34.64,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 93.56,
+  "wallclock_seconds": 93.82,
+  "peak_gpu_memory_allocated_mb": 2605.04,
+  "declared_alpha_l2": 0.0,
+  "declared_alpha_l3": 0.0,
+  "lambda_m4": null,
+  "alpha_robust_m4": null,
+  "m1_reference_stats": null,
+  "m3_basis_meta": null,
+  "status": "ok",
+  "detail": ""
+}

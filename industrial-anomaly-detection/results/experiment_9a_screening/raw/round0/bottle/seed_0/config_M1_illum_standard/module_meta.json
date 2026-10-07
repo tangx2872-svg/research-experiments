@@ -1,0 +1,37 @@
+{
+  "experiment": "9A",
+  "unit": "bottle:0:M1_illum_standard",
+  "config": "M1_illum_standard",
+  "round": "round0",
+  "spec": {
+    "kind": "m1",
+    "alpha_l2": 0.0,
+    "alpha_l3": 0.0,
+    "name": "M1_illum_standard"
+  },
+  "embedding_dim": 1536,
+  "prep_seconds": 50.75,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 105.47,
+  "wallclock_seconds": 105.71,
+  "peak_gpu_memory_allocated_mb": 2605.04,
+  "declared_alpha_l2": 0.0,
+  "declared_alpha_l3": 0.0,
+  "lambda_m4": null,
+  "alpha_robust_m4": null,
+  "m1_reference_stats": {
+    "mu_ref": [
+      0.5353327393531799,
+      0.5315831303596497,
+      0.5479039549827576
+    ],
+    "sigma_ref": [
+      0.3656361997127533,
+      0.3659796416759491,
+      0.34920716285705566
+    ]
+  },
+  "m3_basis_meta": null,
+  "status": "ok",
+  "detail": ""
+}
