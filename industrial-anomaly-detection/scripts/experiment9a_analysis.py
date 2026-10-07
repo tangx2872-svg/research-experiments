@@ -567,7 +567,8 @@ def main():
              "STOP": 4, "BASELINE": 5}
     out_rows.sort(key=lambda r: (order.get(r["verdict"], 5),
                                  -(r["delta_dprime_vs_B0_2cat"]
-                                   if np.isfinite(r["delta_dprime_vs_B0_2cat"]) else 0.0)))
+                                   if np.isfinite(r["delta_dprime_vs_B0_2cat"])
+                                   else float("-inf"))))
 
     # ---------------- 落盘 ----------------
     wcsv(SUM / "raw_results.csv", raw_rows)
@@ -577,8 +578,8 @@ def main():
     ranking, rk = [], 0
     for r in out_rows:
         rr = dict(r)
-        if r.get("deployable") and r["verdict"] in ("ADVANCE", "HOLD", "STOP",
-                                                    "NOT_ENOUGH_EVIDENCE"):
+        if (r.get("deployable") and np.isfinite(r.get("mean_dprime_2cat", float("nan")))
+                and r["verdict"] in ("ADVANCE", "HOLD", "STOP", "NOT_ENOUGH_EVIDENCE")):
             rk += 1
             rr["rank"] = rk
         else:
