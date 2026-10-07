@@ -1,0 +1,26 @@
+{
+  "experiment": "9B",
+  "unit": "screw:0:P10_ORIG_a000",
+  "config": "P10_ORIG_a000",
+  "round": "s3",
+  "candidate": true,
+  "spec": {
+    "kind": "alpha",
+    "alpha_l2": 0.0,
+    "alpha_l3": 0.0
+  },
+  "gate_stats": null,
+  "sensitivity_meta": null,
+  "gate_mean_l2": null,
+  "gate_mean_l3": null,
+  "embedding_dim": 1536,
+  "prep_seconds": 5.82,
+  "memory_bank_size": 30720,
+  "runtime_seconds": 158.72,
+  "wallclock_seconds": 158.95,
+  "peak_gpu_memory_allocated_mb": 3697.05,
+  "declared_alpha_l2": 0.0,
+  "declared_alpha_l3": 0.0,
+  "status": "ok",
+  "detail": ""
+}

@@ -1,0 +1,33 @@
+{
+  "family_A_collapsed": [
+    {
+      "id": "P10_A1_resid025",
+      "family": "A",
+      "gpu": false,
+      "effective": "alpha_L3 = 0.25*(1-0.25) = 0.1875",
+      "proof": "F_R+lam(F_O-F_R) = (1-a)F+a*IN + lam*a(F-IN) = (1-a(1-lam))F + a(1-lam)IN  => 等价于 per-layer alpha a'=a(1-lam)"
+    },
+    {
+      "id": "P10_A2_resid050",
+      "family": "A",
+      "gpu": false,
+      "effective": "alpha_L3 = 0.25*(1-0.50) = 0.125",
+      "proof": "同 A1（lam=0.5）"
+    },
+    {
+      "id": "P10_A3_resid075",
+      "family": "A",
+      "gpu": false,
+      "effective": "alpha_L3 = 0.25*(1-0.75) = 0.0625",
+      "proof": "同 A1（lam=0.75）"
+    }
+  ],
+  "note": "Family A（F_R+λ(F_O−F_R)）代数上等价于 per-layer α（α'=α(1−λ)），即已探索过的 M7 α-family -> 标记 EQUIVALENT，不消耗 GPU",
+  "other_dedup": [
+    {
+      "id": "P10_B1/B2",
+      "note": "与 7A-O Family B / M10 的 cat([F, g*N_hat]) **不同**：M10 拼的是标准化副本，这里拼的是 robust 分支（含 Original block）"
+    }
+  ],
+  "n_unique_gpu": 9
+}

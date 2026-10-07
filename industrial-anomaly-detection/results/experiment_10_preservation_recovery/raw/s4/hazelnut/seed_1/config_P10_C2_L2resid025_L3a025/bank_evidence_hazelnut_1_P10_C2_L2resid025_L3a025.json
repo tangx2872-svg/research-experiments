@@ -1,0 +1,21 @@
+{
+  "unit": "hazelnut:1:P10_C2_L2resid025_L3a025",
+  "protocol": "v2",
+  "memory_bank_sha256": "3a84f524c8ce7b6115c006aa140642cd1f3d0ffcae02f783c266c38d333d32a9",
+  "memory_bank_shape": [
+    37990,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      37990,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 69000688.0,
+    "mean": 1.0680054426193237
+  },
+  "embedding_dim": 1536,
+  "ts": 1791387585.2167997
+}

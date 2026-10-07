@@ -1,0 +1,21 @@
+{
+  "mode": "corrected189",
+  "category": "screw",
+  "seed": 2,
+  "n_train_ids": 300,
+  "filter_log": [
+    {
+      "ts": 1791387522.960906,
+      "n_before": 300,
+      "n_after": 300,
+      "kept_all_train_ids": true
+    },
+    {
+      "ts": 1791387523.0161655,
+      "n_before": 320,
+      "n_after": 300,
+      "kept_all_train_ids": true
+    }
+  ],
+  "images_embedded_at_fit": 300
+}

@@ -1,0 +1,281 @@
+{
+  "stage05": {
+    "T1_minus_Original_209": {
+      "absdz": -0.17053,
+      "dprime": -0.354401
+    },
+    "T1_minus_Original_189": {
+      "absdz": -0.097972,
+      "dprime": -0.140407
+    },
+    "direction_consistent": true,
+    "tradeoff_judgement_unchanged": true,
+    "CASE": "P-A",
+    "criterion": "CASE P-A: 209->189 改变绝对值但 T1 vs Original 的 robustness/preservation 增量同方向且 trade-off 判断不变 -> 从 Exp10 起冻结 corrected-189；CASE P-B: trade-off 判断改变 -> 必须重建 corrected-189 baseline/frontier"
+  },
+  "frontier": [
+    {
+      "absdz": 0.23141,
+      "dprime": 6.508446
+    },
+    {
+      "absdz": 0.242931,
+      "dprime": 6.91228
+    },
+    {
+      "absdz": 0.252206,
+      "dprime": 7.031895
+    },
+    {
+      "absdz": 0.259817,
+      "dprime": 7.282282
+    },
+    {
+      "absdz": 0.320991,
+      "dprime": 7.334223
+    },
+    {
+      "absdz": 0.325743,
+      "dprime": 7.733656
+    },
+    {
+      "absdz": 0.345474,
+      "dprime": 7.768669
+    },
+    {
+      "absdz": 0.476872,
+      "dprime": 8.043989
+    }
+  ],
+  "original_189": {
+    "absdz": 0.47687164164419826,
+    "dprime": 8.043989112882235,
+    "tau": 30.01397132873535
+  },
+  "stage2A": {
+    "n_advance": 2,
+    "n_frontier_break": 5
+  },
+  "stage2B": {
+    "n_advance": 2
+  },
+  "stage3": {
+    "n_advance": 1,
+    "table": [
+      {
+        "Method": "C3_L2dual_L3a025",
+        "bottle": "-0.2189 / -0.0535",
+        "cable": "-0.0160 / -0.4298",
+        "hazelnut": "-0.0094 / -0.4640",
+        "screw": "-0.0524 / +0.0702",
+        "grid": "-0.0684 / +0.9965",
+        "Wins": "3/5",
+        "Verdict": "HOLD"
+      },
+      {
+        "Method": "C2_L2resid025_L3a025",
+        "bottle": "-0.2113 / -0.0653",
+        "cable": "+0.0247 / -0.0696",
+        "hazelnut": "-0.0210 / +0.0211",
+        "screw": "-0.1073 / +0.0962",
+        "grid": "-0.1068 / +0.4978",
+        "Wins": "4/5",
+        "Verdict": "ADVANCE"
+      }
+    ]
+  },
+  "stage4": {
+    "n_units": 15,
+    "mean_dR": -0.0854381372754052,
+    "mean_dP": 0.12652860215946912,
+    "worst_dP": -0.3285715799783695,
+    "worst_dR": 0.024699304782960674,
+    "cats_pass": 4,
+    "n_cats": 5,
+    "catastrophic": [
+      "cable"
+    ]
+  },
+  "final_ranking": [
+    {
+      "rank": 1,
+      "method": "C2_L2resid025_L3a025",
+      "family": "C",
+      "stage2A_verdict": "ADVANCE",
+      "stage2B_verdict": "ADVANCE",
+      "stage3_verdict": "ADVANCE",
+      "bottle_absdz": 0.265585,
+      "bottle_dprime": 7.978731,
+      "delta_absz_vs_original": -0.211286,
+      "delta_dprime_vs_original": -0.065259,
+      "mean_delta_dprime_3seed": 0.0324,
+      "worst_delta_dprime_3seed": -0.0653,
+      "mean_delta_absz_3seed": -0.1902,
+      "beyond_frontier_bottle_s0": 0.691551,
+      "frontier_break": true,
+      "seeds_evaluated": "3",
+      "categories_evaluated": "4/5",
+      "final_verdict": "ADVANCE"
+    },
+    {
+      "rank": 2,
+      "method": "D2_L3m8z_ab050_b100",
+      "family": "D",
+      "stage2A_verdict": "HOLD",
+      "stage2B_verdict": "-",
+      "stage3_verdict": "-",
+      "bottle_absdz": 0.301938,
+      "bottle_dprime": 7.707892,
+      "delta_absz_vs_original": -0.174933,
+      "delta_dprime_vs_original": -0.336097,
+      "mean_delta_dprime_3seed": null,
+      "worst_delta_dprime_3seed": null,
+      "mean_delta_absz_3seed": null,
+      "beyond_frontier_bottle_s0": 0.389846,
+      "frontier_break": true,
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)",
+      "final_verdict": "HOLD"
+    },
+    {
+      "rank": 3,
+      "method": "D1_L3m9pow_g1",
+      "family": "D",
+      "stage2A_verdict": "HOLD",
+      "stage2B_verdict": "-",
+      "stage3_verdict": "-",
+      "bottle_absdz": 0.303745,
+      "bottle_dprime": 7.737814,
+      "delta_absz_vs_original": -0.173127,
+      "delta_dprime_vs_original": -0.306175,
+      "mean_delta_dprime_3seed": null,
+      "worst_delta_dprime_3seed": null,
+      "mean_delta_absz_3seed": null,
+      "beyond_frontier_bottle_s0": 0.418235,
+      "frontier_break": true,
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)",
+      "final_verdict": "HOLD"
+    },
+    {
+      "rank": 4,
+      "method": "D3_L3m8z_ab025_b050",
+      "family": "D",
+      "stage2A_verdict": "HOLD",
+      "stage2B_verdict": "HOLD",
+      "stage3_verdict": "-",
+      "bottle_absdz": 0.264315,
+      "bottle_dprime": 7.838318,
+      "delta_absz_vs_original": -0.212557,
+      "delta_dprime_vs_original": -0.205671,
+      "mean_delta_dprime_3seed": -0.2436,
+      "worst_delta_dprime_3seed": -0.3877,
+      "mean_delta_absz_3seed": -0.2073,
+      "beyond_frontier_bottle_s0": 0.552217,
+      "frontier_break": true,
+      "seeds_evaluated": "3",
+      "categories_evaluated": "1 (bottle)",
+      "final_verdict": "HOLD"
+    },
+    {
+      "rank": 5,
+      "method": "C3_L2dual_L3a025",
+      "family": "C",
+      "stage2A_verdict": "ADVANCE",
+      "stage2B_verdict": "ADVANCE",
+      "stage3_verdict": "HOLD",
+      "bottle_absdz": 0.258016,
+      "bottle_dprime": 7.990467,
+      "delta_absz_vs_original": -0.218856,
+      "delta_dprime_vs_original": -0.053522,
+      "mean_delta_dprime_3seed": 0.1351,
+      "worst_delta_dprime_3seed": -0.0535,
+      "mean_delta_absz_3seed": -0.1911,
+      "beyond_frontier_bottle_s0": 0.76745,
+      "frontier_break": true,
+      "seeds_evaluated": "3",
+      "categories_evaluated": "3/5",
+      "final_verdict": "HOLD"
+    },
+    {
+      "rank": 6,
+      "method": "B2_L3concat_rscale_a025",
+      "family": "B",
+      "stage2A_verdict": "HOLD",
+      "stage2B_verdict": "-",
+      "stage3_verdict": "-",
+      "bottle_absdz": 0.454797,
+      "bottle_dprime": 7.555246,
+      "delta_absz_vs_original": -0.022075,
+      "delta_dprime_vs_original": -0.488743,
+      "mean_delta_dprime_3seed": null,
+      "worst_delta_dprime_3seed": null,
+      "mean_delta_absz_3seed": null,
+      "beyond_frontier_bottle_s0": -0.442488,
+      "frontier_break": false,
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)",
+      "final_verdict": "HOLD"
+    },
+    {
+      "rank": 7,
+      "method": "E1_L3energy025",
+      "family": "E",
+      "stage2A_verdict": "HOLD",
+      "stage2B_verdict": "-",
+      "stage3_verdict": "-",
+      "bottle_absdz": 0.418356,
+      "bottle_dprime": 7.760205,
+      "delta_absz_vs_original": -0.058516,
+      "delta_dprime_vs_original": -0.283784,
+      "mean_delta_dprime_3seed": null,
+      "worst_delta_dprime_3seed": null,
+      "mean_delta_absz_3seed": null,
+      "beyond_frontier_bottle_s0": -0.161174,
+      "frontier_break": false,
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)",
+      "final_verdict": "HOLD"
+    },
+    {
+      "rank": 8,
+      "method": "B1_L3concat_robust_a025",
+      "family": "B",
+      "stage2A_verdict": "STOP",
+      "stage2B_verdict": "-",
+      "stage3_verdict": "-",
+      "bottle_absdz": 0.462729,
+      "bottle_dprime": 7.557144,
+      "delta_absz_vs_original": -0.014143,
+      "delta_dprime_vs_original": -0.486846,
+      "mean_delta_dprime_3seed": null,
+      "worst_delta_dprime_3seed": null,
+      "mean_delta_absz_3seed": null,
+      "beyond_frontier_bottle_s0": -0.457211,
+      "frontier_break": false,
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)",
+      "final_verdict": "STOP"
+    },
+    {
+      "rank": 9,
+      "method": "E2_L3energy050",
+      "family": "E",
+      "stage2A_verdict": "STOP",
+      "stage2B_verdict": "-",
+      "stage3_verdict": "-",
+      "bottle_absdz": 0.506962,
+      "bottle_dprime": 7.882037,
+      "delta_absz_vs_original": 0.030091,
+      "delta_dprime_vs_original": -0.161952,
+      "mean_delta_dprime_3seed": null,
+      "worst_delta_dprime_3seed": null,
+      "mean_delta_absz_3seed": null,
+      "beyond_frontier_bottle_s0": -0.161952,
+      "frontier_break": false,
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)",
+      "final_verdict": "STOP"
+    }
+  ]
+}

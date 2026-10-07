@@ -1,0 +1,53 @@
+{
+  "candidate": "P10_C2_L2resid025_L3a025",
+  "missing": [],
+  "overall": {
+    "n_units": 15,
+    "mean_dR": -0.0854381372754052,
+    "mean_dP": 0.12652860215946912,
+    "worst_dP": -0.3285715799783695,
+    "worst_dR": 0.024699304782960674,
+    "cats_pass": 4,
+    "n_cats": 5,
+    "catastrophic": [
+      "cable"
+    ]
+  },
+  "per_category": {
+    "bottle": {
+      "mean_dR": -0.19021516430120436,
+      "mean_dP": 0.032362973382969784,
+      "n_seeds": 3,
+      "all_seeds_pass": true,
+      "worst_dP": -0.06525852043818414
+    },
+    "cable": {
+      "mean_dR": -0.03966660342124623,
+      "mean_dP": -0.11228099480997589,
+      "n_seeds": 3,
+      "all_seeds_pass": false,
+      "worst_dP": -0.3285715799783695
+    },
+    "hazelnut": {
+      "mean_dR": -0.0326079535434985,
+      "mean_dP": 0.014911589362127367,
+      "n_seeds": 3,
+      "all_seeds_pass": false,
+      "worst_dP": -0.22077445130062223
+    },
+    "screw": {
+      "mean_dR": -0.09645749374160832,
+      "mean_dP": 0.15665821392072873,
+      "n_seeds": 3,
+      "all_seeds_pass": true,
+      "worst_dP": 0.09620502096746009
+    },
+    "grid": {
+      "mean_dR": -0.06824347136946862,
+      "mean_dP": 0.5409912289414956,
+      "n_seeds": 3,
+      "all_seeds_pass": false,
+      "worst_dP": 0.4481681070772785
+    }
+  }
+}

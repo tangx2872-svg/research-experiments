@@ -1,0 +1,51 @@
+{
+  "current_stage": "DONE",
+  "completed": 57,
+  "total": 57,
+  "percent": 100.0,
+  "elapsed_seconds": 3861.9,
+  "eta_seconds": 0.0,
+  "avg_seconds_per_unit": 117.4,
+  "running_units": [],
+  "failed_units": {},
+  "per_stage": {
+    "s1_frontier": {
+      "done": 8,
+      "total": 8
+    },
+    "s2a": {
+      "done": 9,
+      "total": 9
+    },
+    "s0_audit": {
+      "done": 2,
+      "total": 2
+    },
+    "s2b": {
+      "done": 6,
+      "total": 6
+    },
+    "s2b_ref": {
+      "done": 4,
+      "total": 4
+    },
+    "s3_ref": {
+      "done": 4,
+      "total": 4
+    },
+    "s3": {
+      "done": 8,
+      "total": 8
+    },
+    "s4": {
+      "done": 8,
+      "total": 8
+    },
+    "s4_ref": {
+      "done": 8,
+      "total": 8
+    }
+  },
+  "gpu_util": 0.0,
+  "timestamp": 1791387961.742804
+}

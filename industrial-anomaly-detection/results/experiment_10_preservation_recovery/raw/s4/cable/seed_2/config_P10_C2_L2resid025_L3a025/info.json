@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "cable",
+  "seed": 2,
+  "config": "P10_C2_L2resid025_L3a025",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 179.72,
+  "coreset_size": 20889,
+  "tau_val": 56.985008239746094,
+  "peak_gpu_memory_allocated_mb": 2545.05,
+  "train_ids_hash": "a146719cbf49",
+  "n_rows": 402,
+  "pixel_auroc": 0.984618846425,
+  "aupro": 0.9351964592933655
+}

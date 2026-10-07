@@ -1,0 +1,22 @@
+{
+  "unit": "bottle:0:P10_D3_L3m8z_ab025_b050",
+  "protocol": "v2",
+  "n_observations": 193536,
+  "embedding_shape": [
+    193536,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "5ea0eb50fdfe2c29c5c0360c925f680b6d63f56f9444defaa6fbaf3e136b3cd1",
+  "embedding_stats": {
+    "shape": [
+      193536,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 249318368.0,
+    "mean": 0.7550168633460999
+  },
+  "ts": 1791385003.0625198
+}

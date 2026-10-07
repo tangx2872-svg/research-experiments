@@ -1,0 +1,67 @@
+{
+  "experiment": "9B",
+  "unit": "bottle:1:P10_D3_L3m8z_ab025_b050",
+  "config": "P10_D3_L3m8z_ab025_b050",
+  "round": "s2b",
+  "candidate": true,
+  "spec": {
+    "kind": "gate",
+    "alpha_l2": -1.0,
+    "alpha_l3": -1.0,
+    "gate_l2": [
+      "const",
+      {
+        "value": 0.0
+      }
+    ],
+    "gate_l3": [
+      "m8_zmap",
+      {
+        "a_bar": 0.25,
+        "beta": 0.5
+      }
+    ]
+  },
+  "gate_stats": {
+    "layer2": {
+      "map": "const",
+      "desc": "constant gate = 0",
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "frac_ge_1": 0.0,
+      "frac_le_0": 1.0
+    },
+    "layer3": {
+      "map": "m8_zmap",
+      "desc": "clip(a_bar + beta*z_c, 0, 1); a_bar=0.25 beta=0.5",
+      "mean": 0.24445988092888865,
+      "std": 0.298382635348329,
+      "min": 0.0,
+      "max": 1.0,
+      "frac_ge_1": 0.046875,
+      "frac_le_0": 0.322265625
+    }
+  },
+  "sensitivity_meta": {
+    "category": "bottle",
+    "seed": 1,
+    "hash": "4197ae273039c818",
+    "n_train": 189,
+    "reused": false,
+    "source": "train/good only (normal-only)"
+  },
+  "gate_mean_l2": 0.0,
+  "gate_mean_l3": 0.24445988237857819,
+  "embedding_dim": 1536,
+  "prep_seconds": 23.1,
+  "memory_bank_size": 19353,
+  "runtime_seconds": 112.72,
+  "wallclock_seconds": 112.97,
+  "peak_gpu_memory_allocated_mb": 2365.05,
+  "declared_alpha_l2": -1.0,
+  "declared_alpha_l3": -1.0,
+  "status": "ok",
+  "detail": ""
+}

@@ -1,0 +1,26 @@
+{
+  "experiment": "9B",
+  "unit": "bottle:2:P10_T1_L2a000_L3a025",
+  "config": "P10_T1_L2a000_L3a025",
+  "round": "s2b",
+  "candidate": true,
+  "spec": {
+    "kind": "alpha",
+    "alpha_l2": 0.0,
+    "alpha_l3": 0.25
+  },
+  "gate_stats": null,
+  "sensitivity_meta": null,
+  "gate_mean_l2": null,
+  "gate_mean_l3": null,
+  "embedding_dim": 1536,
+  "prep_seconds": 6.56,
+  "memory_bank_size": 19353,
+  "runtime_seconds": 62.99,
+  "wallclock_seconds": 63.23,
+  "peak_gpu_memory_allocated_mb": 2365.05,
+  "declared_alpha_l2": 0.0,
+  "declared_alpha_l3": 0.25,
+  "status": "ok",
+  "detail": ""
+}

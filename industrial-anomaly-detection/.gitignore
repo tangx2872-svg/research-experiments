@@ -233,3 +233,10 @@ results/experiment_9b_r_strict_replay/logs/
 results/experiment_9b_r_strict_replay/progress/
 results/experiment_9b_r_strict_replay/reference/
 results/experiment_9b_r_strict_replay/**/fit/
+
+# Experiment 10（Preservation Recovery；纳入 raw 轻量证据 + analysis + figures + config + README，排除 logs/progress/reference/fit）
+!results/experiment_10_preservation_recovery/
+results/experiment_10_preservation_recovery/logs/
+results/experiment_10_preservation_recovery/progress/
+results/experiment_10_preservation_recovery/reference/
+results/experiment_10_preservation_recovery/**/fit/

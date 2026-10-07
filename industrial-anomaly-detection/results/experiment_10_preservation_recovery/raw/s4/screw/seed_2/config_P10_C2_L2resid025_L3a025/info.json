@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "screw",
+  "seed": 2,
+  "config": "P10_C2_L2resid025_L3a025",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 195.63,
+  "coreset_size": 30720,
+  "tau_val": 41.95087814331055,
+  "peak_gpu_memory_allocated_mb": 3697.05,
+  "train_ids_hash": "a913671ad699",
+  "n_rows": 344,
+  "pixel_auroc": 0.9906230773789043,
+  "aupro": 0.9529353976249695
+}

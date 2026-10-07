@@ -1,0 +1,21 @@
+{
+  "unit": "cable:0:P10_ORIG_a000",
+  "protocol": "v2",
+  "memory_bank_sha256": "514e5d8a8d910189a27b4f69248c8689ff1fc5773d65a2db324251488b12fcf3",
+  "memory_bank_shape": [
+    20889,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      20889,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 41381056.0,
+    "mean": 1.289711833000183
+  },
+  "embedding_dim": 1536,
+  "ts": 1791385654.3139205
+}

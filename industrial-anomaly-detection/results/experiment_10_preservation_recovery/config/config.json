@@ -1,0 +1,49 @@
+{
+  "experiment": "10",
+  "title": "Preservation Recovery Tournament（overnight）",
+  "date": "2026-10-07/08",
+  "git_head_at_freeze": "569f6d8",
+  "paper_stage": "方法发现 / Method Screening（T1 已证明 robustness，今晚补 preservation）",
+  "scientific_question": "能否在保留 robustness gain 的同时把 defect preservation 损失补回来？",
+  "note_on_freeze_honesty": "本文件是事后汇总的协议记录。**真正的预注册冻结物**是 scripts/experiment10_candidates.py（候选与参数在首次 Exp10 GPU 运行之前写定）与各阶段 results/.../plan.json；判据带 EPS_RZ=0.02 / EPS_DP=0.10 沿用 5A-H/7A-O 冻结值，Stage2B 聚合规则在读取 seeds 1/2 结果之前写定，全程未在读取结果后修改任何阈值。",
+  "protocol": "Matched-RNG Protocol V2（逐字复用 9C-v2b：R1 Engine.fit 入口 + R2 select_coreset_idxs 入口）+ corrected-189 train filter",
+  "protocol_change_reason": "9B-R §11：Engine.fit 内部 dm.setup 重置过滤 -> bank 实际 209 张（含 20 val）；本轮修复并证明 189",
+  "verdict_rules": {
+    "ADVANCE": "Δ|Δz| <= -0.02 且 Δd' >= -0.10（或对称：Δd' >= +0.10 且 Δ|Δz| <= +0.02）",
+    "HOLD": "robustness gain 保留但 Δd' < -0.10；或方向一致但未达 ADVANCE",
+    "STOP": "robustness gain 消失 / 两指标均无优势 / 明显劣于 Original",
+    "FRONTIER_BREAK": "相对 corrected uniform-α frontier，在相近 |Δz| 下 d' 更高（frontier_interp 比较）",
+    "stage3": "每类 pass=(ΔR<=-EPS_RZ 且 Δd'>=-EPS_DP)；ADVANCE=wins>=3/5 且无 Δd'<=-0.25 的 catastrophic",
+    "no_threshold_change_after_results": true
+  },
+  "alpha_grid_historical_frozen": [
+    0.0,
+    0.125,
+    0.2,
+    0.25,
+    0.3,
+    0.40091275,
+    0.5,
+    0.601369125,
+    0.8018255
+  ],
+  "reuse_zero_gpu": [
+    "Family A（3 个）代数等价于 per-layer α -> 未跑 GPU",
+    "α=0 工作点复用 Original 单元；bottle seed0 的 T1/Original 的 209 版本复用 9B-R raw"
+  ],
+  "scope_forbidden": [
+    "5x3 之外的扩展",
+    "参数 fishing（同一 family 只跑冻结参数）",
+    "为失败方案反复调参",
+    "读取结果后修改阈值",
+    "机制深挖单个失败方案"
+  ],
+  "budget_actual": {
+    "gpu_units": 57,
+    "gpu_seconds": 6691.9,
+    "gpu_hours": 1.86,
+    "failed_units": 0,
+    "peak_vram_mb": 6033,
+    "wallclock_gpu_phase_minutes": 64.4
+  }
+}

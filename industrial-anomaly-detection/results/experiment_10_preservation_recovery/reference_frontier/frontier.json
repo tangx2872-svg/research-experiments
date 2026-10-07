@@ -1,0 +1,117 @@
+{
+  "category": "bottle",
+  "seed": 0,
+  "original_189": {
+    "absdz": 0.47687164164419826,
+    "dprime": 8.043989112882235,
+    "tau": 30.01397132873535
+  },
+  "workpoints": [
+    {
+      "alpha": 0.0,
+      "absdz": 0.476872,
+      "dprime": 8.043989,
+      "delta_absdz_vs_original": 0.0,
+      "delta_dprime_vs_original": 0.0,
+      "cfg": "P10_ORIG_a000"
+    },
+    {
+      "alpha": 0.125,
+      "absdz": 0.345474,
+      "dprime": 7.768669,
+      "delta_absdz_vs_original": -0.131398,
+      "delta_dprime_vs_original": -0.27532,
+      "cfg": "P10_uniform_a0125"
+    },
+    {
+      "alpha": 0.2,
+      "absdz": 0.347213,
+      "dprime": 7.600605,
+      "delta_absdz_vs_original": -0.129658,
+      "delta_dprime_vs_original": -0.443384,
+      "cfg": "P10_uniform_a02"
+    },
+    {
+      "alpha": 0.25,
+      "absdz": 0.325743,
+      "dprime": 7.733656,
+      "delta_absdz_vs_original": -0.151129,
+      "delta_dprime_vs_original": -0.310333,
+      "cfg": "P10_uniform_a025"
+    },
+    {
+      "alpha": 0.3,
+      "absdz": 0.320991,
+      "dprime": 7.334223,
+      "delta_absdz_vs_original": -0.155881,
+      "delta_dprime_vs_original": -0.709766,
+      "cfg": "P10_uniform_a03"
+    },
+    {
+      "alpha": 0.40091275,
+      "absdz": 0.259817,
+      "dprime": 7.282282,
+      "delta_absdz_vs_original": -0.217055,
+      "delta_dprime_vs_original": -0.761707,
+      "cfg": "P10_uniform_a040091275"
+    },
+    {
+      "alpha": 0.5,
+      "absdz": 0.252206,
+      "dprime": 7.031895,
+      "delta_absdz_vs_original": -0.224666,
+      "delta_dprime_vs_original": -1.012094,
+      "cfg": "P10_uniform_a05"
+    },
+    {
+      "alpha": 0.601369125,
+      "absdz": 0.242931,
+      "dprime": 6.91228,
+      "delta_absdz_vs_original": -0.233941,
+      "delta_dprime_vs_original": -1.131709,
+      "cfg": "P10_uniform_a0601369125"
+    },
+    {
+      "alpha": 0.8018255,
+      "absdz": 0.23141,
+      "dprime": 6.508446,
+      "delta_absdz_vs_original": -0.245462,
+      "delta_dprime_vs_original": -1.535543,
+      "cfg": "P10_uniform_a08018255"
+    }
+  ],
+  "envelope": [
+    {
+      "absdz": 0.23141,
+      "dprime": 6.508446
+    },
+    {
+      "absdz": 0.242931,
+      "dprime": 6.91228
+    },
+    {
+      "absdz": 0.252206,
+      "dprime": 7.031895
+    },
+    {
+      "absdz": 0.259817,
+      "dprime": 7.282282
+    },
+    {
+      "absdz": 0.320991,
+      "dprime": 7.334223
+    },
+    {
+      "absdz": 0.325743,
+      "dprime": 7.733656
+    },
+    {
+      "absdz": 0.345474,
+      "dprime": 7.768669
+    },
+    {
+      "absdz": 0.476872,
+      "dprime": 8.043989
+    }
+  ]
+}

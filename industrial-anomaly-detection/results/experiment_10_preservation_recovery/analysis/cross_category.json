@@ -1,0 +1,169 @@
+{
+  "candidates": [
+    {
+      "candidate": "P10_C2_L2resid025_L3a025",
+      "per_category": {
+        "bottle": {
+          "absdz": 0.26558546244601533,
+          "dprime": 7.978730592444051,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.21128617919818293,
+          "dP": -0.06525852043818414,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.98667005515,
+          "aupro": 0.9536613821983337
+        },
+        "cable": {
+          "absdz": 0.308919500545563,
+          "dprime": 4.949073285588815,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": 0.024699304782960674,
+          "dP": -0.06963822794012753,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.983969883275,
+          "aupro": 0.9327343702316284
+        },
+        "hazelnut": {
+          "absdz": 0.1715737384189165,
+          "dprime": 5.905738312135388,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.020967767079058203,
+          "dP": 0.021078495308812784,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9883107111578893,
+          "aupro": 0.9582787156105042
+        },
+        "screw": {
+          "absdz": 0.2414799216908341,
+          "dprime": 2.7620491677735344,
+          "orig_absdz": 0.34875804772673125,
+          "orig_dprime": 2.6658441468060743,
+          "dR": -0.10727812603589715,
+          "dP": 0.09620502096746009,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9905853276369614,
+          "aupro": 0.9493821263313293
+        },
+        "grid": {
+          "absdz": 0.1604483158356423,
+          "dprime": 3.6533231149825793,
+          "orig_absdz": 0.26726738173250275,
+          "orig_dprime": 3.155569927961664,
+          "dR": -0.10681906589686044,
+          "dP": 0.49775318702091553,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9891167808277266,
+          "aupro": 0.9512685537338257
+        }
+      },
+      "wins": 4,
+      "catastrophic_cats": 0,
+      "verdict": "ADVANCE",
+      "verdict_reason": "wins 4/5 且无 catastrophic collapse",
+      "mean_dR_5cat": -0.08433036668540761,
+      "mean_dP_5cat": 0.09602799098377535
+    },
+    {
+      "candidate": "P10_C3_L2dual_L3a025",
+      "per_category": {
+        "bottle": {
+          "absdz": 0.25801552840531855,
+          "dprime": 7.990466649509833,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.2188561132388797,
+          "dP": -0.05352246337240185,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.98735007135,
+          "aupro": 0.958167552947998
+        },
+        "cable": {
+          "absdz": 0.2681773676399368,
+          "dprime": 4.5889022601448435,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": -0.016042828122665498,
+          "dP": -0.42980925338409914,
+          "pass": false,
+          "catastrophic": true,
+          "pixel_auroc": 0.984286126375,
+          "aupro": 0.940150797367096
+        },
+        "hazelnut": {
+          "absdz": 0.1831414290877822,
+          "dprime": 5.420636950572877,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.009400076410192498,
+          "dP": -0.46402286625369804,
+          "pass": false,
+          "catastrophic": true,
+          "pixel_auroc": 0.9887939078925142,
+          "aupro": 0.9615795612335205
+        },
+        "screw": {
+          "absdz": 0.29633319461914864,
+          "dprime": 2.7360816404609887,
+          "orig_absdz": 0.34875804772673125,
+          "orig_dprime": 2.6658441468060743,
+          "dR": -0.0524248531075826,
+          "dP": 0.07023749365491438,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.992413042206675,
+          "aupro": 0.9598909616470337
+        },
+        "grid": {
+          "absdz": 0.19889914652332003,
+          "dprime": 4.152061184333922,
+          "orig_absdz": 0.26726738173250275,
+          "orig_dprime": 3.155569927961664,
+          "dR": -0.06836823520918273,
+          "dP": 0.9964912563722583,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9912878159099904,
+          "aupro": 0.9645696878433228
+        }
+      },
+      "wins": 3,
+      "catastrophic_cats": 2,
+      "verdict": "HOLD",
+      "verdict_reason": "wins 3/5 但存在 catastrophic collapse (2 cats)",
+      "mean_dR_5cat": -0.07301842121770061,
+      "mean_dP_5cat": 0.023874833403394736
+    }
+  ],
+  "table": [
+    {
+      "Method": "C3_L2dual_L3a025",
+      "bottle": "-0.2189 / -0.0535",
+      "cable": "-0.0160 / -0.4298",
+      "hazelnut": "-0.0094 / -0.4640",
+      "screw": "-0.0524 / +0.0702",
+      "grid": "-0.0684 / +0.9965",
+      "Wins": "3/5",
+      "Verdict": "HOLD"
+    },
+    {
+      "Method": "C2_L2resid025_L3a025",
+      "bottle": "-0.2113 / -0.0653",
+      "cable": "+0.0247 / -0.0696",
+      "hazelnut": "-0.0210 / +0.0211",
+      "screw": "-0.1073 / +0.0962",
+      "grid": "-0.1068 / +0.4978",
+      "Wins": "4/5",
+      "Verdict": "ADVANCE"
+    }
+  ],
+  "n_advance": 1
+}

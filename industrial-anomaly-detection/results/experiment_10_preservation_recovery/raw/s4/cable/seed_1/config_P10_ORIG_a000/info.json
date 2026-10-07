@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "cable",
+  "seed": 1,
+  "config": "P10_ORIG_a000",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 93.56,
+  "coreset_size": 20889,
+  "tau_val": 44.46279525756836,
+  "peak_gpu_memory_allocated_mb": 2545.05,
+  "train_ids_hash": "4c5c8885f208",
+  "n_rows": 402,
+  "pixel_auroc": 0.98447580405,
+  "aupro": 0.9299263954162598
+}

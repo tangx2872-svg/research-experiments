@@ -1,0 +1,21 @@
+{
+  "unit": "bottle:1:P10_T1_L2a000_L3a025",
+  "protocol": "v2",
+  "memory_bank_sha256": "03bff41169605d640c8aac65accc7dc12c38da4ed7c57502573c1ab4d33707db",
+  "memory_bank_shape": [
+    19353,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      19353,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 32911676.0,
+    "mean": 1.0304417610168457
+  },
+  "embedding_dim": 1536,
+  "ts": 1791385415.6279206
+}

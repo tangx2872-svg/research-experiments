@@ -1,0 +1,77 @@
+{
+  "s1_frontier": [
+    "bottle:0:P10_uniform_a0125",
+    "bottle:0:P10_uniform_a02",
+    "bottle:0:P10_uniform_a025",
+    "bottle:0:P10_uniform_a03",
+    "bottle:0:P10_uniform_a040091275",
+    "bottle:0:P10_uniform_a05",
+    "bottle:0:P10_uniform_a0601369125",
+    "bottle:0:P10_uniform_a08018255"
+  ],
+  "s2a": [
+    "bottle:0:P10_B1_L3concat_robust_a025",
+    "bottle:0:P10_B2_L3concat_rscale_a025",
+    "bottle:0:P10_C2_L2resid025_L3a025",
+    "bottle:0:P10_C3_L2dual_L3a025",
+    "bottle:0:P10_D1_L3m9pow_g1",
+    "bottle:0:P10_D2_L3m8z_ab050_b100",
+    "bottle:0:P10_D3_L3m8z_ab025_b050",
+    "bottle:0:P10_E1_L3energy025",
+    "bottle:0:P10_E2_L3energy050"
+  ],
+  "s0_audit": [
+    "bottle:0:P10_ORIG_a000",
+    "bottle:0:P10_T1_L2a000_L3a025"
+  ],
+  "s2b": [
+    "bottle:1:P10_C3_L2dual_L3a025",
+    "bottle:2:P10_C3_L2dual_L3a025",
+    "bottle:1:P10_C2_L2resid025_L3a025",
+    "bottle:2:P10_C2_L2resid025_L3a025",
+    "bottle:1:P10_D3_L3m8z_ab025_b050",
+    "bottle:2:P10_D3_L3m8z_ab025_b050"
+  ],
+  "s2b_ref": [
+    "bottle:1:P10_ORIG_a000",
+    "bottle:2:P10_ORIG_a000",
+    "bottle:1:P10_T1_L2a000_L3a025",
+    "bottle:2:P10_T1_L2a000_L3a025"
+  ],
+  "s3_ref": [
+    "cable:0:P10_ORIG_a000",
+    "hazelnut:0:P10_ORIG_a000",
+    "screw:0:P10_ORIG_a000",
+    "grid:0:P10_ORIG_a000"
+  ],
+  "s3": [
+    "cable:0:P10_C3_L2dual_L3a025",
+    "hazelnut:0:P10_C3_L2dual_L3a025",
+    "screw:0:P10_C3_L2dual_L3a025",
+    "grid:0:P10_C3_L2dual_L3a025",
+    "cable:0:P10_C2_L2resid025_L3a025",
+    "hazelnut:0:P10_C2_L2resid025_L3a025",
+    "screw:0:P10_C2_L2resid025_L3a025",
+    "grid:0:P10_C2_L2resid025_L3a025"
+  ],
+  "s4": [
+    "cable:1:P10_C2_L2resid025_L3a025",
+    "cable:2:P10_C2_L2resid025_L3a025",
+    "hazelnut:1:P10_C2_L2resid025_L3a025",
+    "hazelnut:2:P10_C2_L2resid025_L3a025",
+    "screw:1:P10_C2_L2resid025_L3a025",
+    "screw:2:P10_C2_L2resid025_L3a025",
+    "grid:1:P10_C2_L2resid025_L3a025",
+    "grid:2:P10_C2_L2resid025_L3a025"
+  ],
+  "s4_ref": [
+    "cable:1:P10_ORIG_a000",
+    "cable:2:P10_ORIG_a000",
+    "hazelnut:1:P10_ORIG_a000",
+    "hazelnut:2:P10_ORIG_a000",
+    "screw:1:P10_ORIG_a000",
+    "screw:2:P10_ORIG_a000",
+    "grid:1:P10_ORIG_a000",
+    "grid:2:P10_ORIG_a000"
+  ]
+}

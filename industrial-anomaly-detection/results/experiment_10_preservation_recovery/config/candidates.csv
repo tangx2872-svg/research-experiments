@@ -1,0 +1,13 @@
+id,family,backend,gpu,defn
+P10_B1_L3concat_robust_a025,B,7ao,True,"L2 identity; L3 = cat([F, 0.75F+0.25*IN(F)]) —— Original block + robust block"
+P10_B2_L3concat_rscale_a025,B,7ao,True,"L2 identity; L3 = cat([F, 0.75F+0.25*IN(F)*rms(F)]) —— 尺度匹配版（仅 per-sample RMS）"
+P10_C2_L2resid025_L3a025,C,7ao,True,L2 = F+0.25*IN(F)*rms(F)（scale-matched residual，非 alpha 插值）; L3 = 0.75F+0.25*IN(F)
+P10_C3_L2dual_L3a025,C,7ao,True,"L2 = cat([F, IN(F)*rms(F)])（dual representation）; L3 = 0.75F+0.25*IN(F)"
+P10_D1_L3m9pow_g1,D,9b,True,L2 identity; L3 per-channel gate w_c=(s_c/p90)^1（仅 train/good 统计）
+P10_D2_L3m8z_ab050_b100,D,9b,True,L2 identity; L3 gate a_c=clip(0.5+1.0*z_c)（仅 train/good 统计）
+P10_D3_L3m8z_ab025_b050,D,9b,True,L2 identity; L3 gate a_c=clip(0.25+0.5*z_c)（仅 train/good 统计）
+P10_E1_L3energy025,E,7ao,True,L2 identity; L3 = (F+0.25*IN(F)*rms(F)) * rms(F)/rms(mix) —— 能量保持
+P10_E2_L3energy050,E,7ao,True,L2 identity; L3 = (F+0.50*IN(F)*rms(F)) * rms(F)/rms(mix) —— 能量保持（更强）
+P10_A1_resid025,A,-,False,EQUIVALENT: F_R+lam(F_O-F_R) = (1-a)F+a*IN + lam*a(F-IN) = (1-a(1-lam))F + a(1-lam)IN  => 等价于 per-layer alpha a'=a(1-lam) (effective alpha_L3 = 0.25*(1-0.25) = 0.1875)
+P10_A2_resid050,A,-,False,EQUIVALENT: 同 A1（lam=0.5） (effective alpha_L3 = 0.25*(1-0.50) = 0.125)
+P10_A3_resid075,A,-,False,EQUIVALENT: 同 A1（lam=0.75） (effective alpha_L3 = 0.25*(1-0.75) = 0.0625)

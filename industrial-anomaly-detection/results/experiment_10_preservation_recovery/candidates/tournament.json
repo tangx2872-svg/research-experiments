@@ -1,0 +1,232 @@
+{
+  "category": "bottle",
+  "seed": 0,
+  "original": {
+    "absdz": 0.47687164164419826,
+    "dprime": 8.043989112882235
+  },
+  "T1": {
+    "absdz": 0.3788994208294238,
+    "dprime": 7.9035821221914295
+  },
+  "candidates": [
+    {
+      "candidate": "P10_C3_L2dual_L3a025",
+      "family": "C",
+      "defn": "L2 = cat([F, IN(F)*rms(F)])（dual representation）; L3 = 0.75F+0.25*IN(F)",
+      "absdz": 0.258016,
+      "dprime": 7.990467,
+      "delta_absdz_vs_original": -0.218856,
+      "delta_dprime_vs_original": -0.053522,
+      "delta_absdz_vs_T1": -0.120884,
+      "delta_dprime_vs_T1": 0.086885,
+      "frontier_interp_dprime": 7.223017,
+      "beyond_frontier": 0.76745,
+      "frontier_break": true,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.98735,
+      "aupro": 0.958168,
+      "tau": 51.592124938964844,
+      "memory_bank_size": [
+        19353,
+        2048
+      ],
+      "verdict": "ADVANCE",
+      "verdict_reason": "robustness gain 保留 且 preservation loss <= 0.10"
+    },
+    {
+      "candidate": "P10_C2_L2resid025_L3a025",
+      "family": "C",
+      "defn": "L2 = F+0.25*IN(F)*rms(F)（scale-matched residual，非 alpha 插值）; L3 = 0.75F+0.25*IN(F)",
+      "absdz": 0.265585,
+      "dprime": 7.978731,
+      "delta_absdz_vs_original": -0.211286,
+      "delta_dprime_vs_original": -0.065259,
+      "delta_absdz_vs_T1": -0.113314,
+      "delta_dprime_vs_T1": 0.075148,
+      "frontier_interp_dprime": 7.28718,
+      "beyond_frontier": 0.691551,
+      "frontier_break": true,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.98667,
+      "aupro": 0.953661,
+      "tau": 42.99169921875,
+      "memory_bank_size": [
+        19353,
+        1536
+      ],
+      "verdict": "ADVANCE",
+      "verdict_reason": "robustness gain 保留 且 preservation loss <= 0.10"
+    },
+    {
+      "candidate": "P10_D3_L3m8z_ab025_b050",
+      "family": "D",
+      "defn": "L2 identity; L3 gate a_c=clip(0.25+0.5*z_c)（仅 train/good 统计）",
+      "absdz": 0.264315,
+      "dprime": 7.838318,
+      "delta_absdz_vs_original": -0.212557,
+      "delta_dprime_vs_original": -0.205671,
+      "delta_absdz_vs_T1": -0.114585,
+      "delta_dprime_vs_T1": -0.065264,
+      "frontier_interp_dprime": 7.286101,
+      "beyond_frontier": 0.552217,
+      "frontier_break": true,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.985662,
+      "aupro": 0.9494,
+      "tau": 28.896913528442383,
+      "memory_bank_size": [
+        19353,
+        1536
+      ],
+      "verdict": "HOLD",
+      "verdict_reason": "robustness gain 保留但 preservation loss > 0.10（未达今晚目标）"
+    },
+    {
+      "candidate": "P10_D1_L3m9pow_g1",
+      "family": "D",
+      "defn": "L2 identity; L3 per-channel gate w_c=(s_c/p90)^1（仅 train/good 统计）",
+      "absdz": 0.303745,
+      "dprime": 7.737814,
+      "delta_absdz_vs_original": -0.173127,
+      "delta_dprime_vs_original": -0.306175,
+      "delta_absdz_vs_T1": -0.075155,
+      "delta_dprime_vs_T1": -0.165768,
+      "frontier_interp_dprime": 7.31958,
+      "beyond_frontier": 0.418235,
+      "frontier_break": true,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.985781,
+      "aupro": 0.951441,
+      "tau": 29.320701599121094,
+      "memory_bank_size": [
+        19353,
+        1536
+      ],
+      "verdict": "HOLD",
+      "verdict_reason": "robustness gain 保留但 preservation loss > 0.10（未达今晚目标）"
+    },
+    {
+      "candidate": "P10_D2_L3m8z_ab050_b100",
+      "family": "D",
+      "defn": "L2 identity; L3 gate a_c=clip(0.5+1.0*z_c)（仅 train/good 统计）",
+      "absdz": 0.301938,
+      "dprime": 7.707892,
+      "delta_absdz_vs_original": -0.174933,
+      "delta_dprime_vs_original": -0.336097,
+      "delta_absdz_vs_T1": -0.076961,
+      "delta_dprime_vs_T1": -0.19569,
+      "frontier_interp_dprime": 7.318046,
+      "beyond_frontier": 0.389846,
+      "frontier_break": true,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.985874,
+      "aupro": 0.950763,
+      "tau": 32.25068664550781,
+      "memory_bank_size": [
+        19353,
+        1536
+      ],
+      "verdict": "HOLD",
+      "verdict_reason": "robustness gain 保留但 preservation loss > 0.10（未达今晚目标）"
+    },
+    {
+      "candidate": "P10_E1_L3energy025",
+      "family": "E",
+      "defn": "L2 identity; L3 = (F+0.25*IN(F)*rms(F)) * rms(F)/rms(mix) —— 能量保持",
+      "absdz": 0.418356,
+      "dprime": 7.760205,
+      "delta_absdz_vs_original": -0.058516,
+      "delta_dprime_vs_original": -0.283784,
+      "delta_absdz_vs_T1": 0.039456,
+      "delta_dprime_vs_T1": -0.143377,
+      "frontier_interp_dprime": 7.921379,
+      "beyond_frontier": -0.161174,
+      "frontier_break": false,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.984771,
+      "aupro": 0.943069,
+      "tau": 31.166553497314453,
+      "memory_bank_size": [
+        19353,
+        1536
+      ],
+      "verdict": "HOLD",
+      "verdict_reason": "robustness gain 保留但 preservation loss > 0.10（未达今晚目标）"
+    },
+    {
+      "candidate": "P10_B2_L3concat_rscale_a025",
+      "family": "B",
+      "defn": "L2 identity; L3 = cat([F, 0.75F+0.25*IN(F)*rms(F)]) —— 尺度匹配版（仅 per-sample RMS）",
+      "absdz": 0.454797,
+      "dprime": 7.555246,
+      "delta_absdz_vs_original": -0.022075,
+      "delta_dprime_vs_original": -0.488743,
+      "delta_absdz_vs_T1": 0.075897,
+      "delta_dprime_vs_T1": -0.348336,
+      "frontier_interp_dprime": 7.997734,
+      "beyond_frontier": -0.442488,
+      "frontier_break": false,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.983428,
+      "aupro": 0.9365,
+      "tau": 34.59278869628906,
+      "memory_bank_size": [
+        19353,
+        2560
+      ],
+      "verdict": "HOLD",
+      "verdict_reason": "robustness gain 保留但 preservation loss > 0.10（未达今晚目标）"
+    },
+    {
+      "candidate": "P10_E2_L3energy050",
+      "family": "E",
+      "defn": "L2 identity; L3 = (F+0.50*IN(F)*rms(F)) * rms(F)/rms(mix) —— 能量保持（更强）",
+      "absdz": 0.506962,
+      "dprime": 7.882037,
+      "delta_absdz_vs_original": 0.030091,
+      "delta_dprime_vs_original": -0.161952,
+      "delta_absdz_vs_T1": 0.128063,
+      "delta_dprime_vs_T1": -0.021545,
+      "frontier_interp_dprime": 8.043989,
+      "beyond_frontier": -0.161952,
+      "frontier_break": false,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.984327,
+      "aupro": 0.942041,
+      "tau": 31.737064361572266,
+      "memory_bank_size": [
+        19353,
+        1536
+      ],
+      "verdict": "STOP",
+      "verdict_reason": "robustness gain 消失或两指标均无优势"
+    },
+    {
+      "candidate": "P10_B1_L3concat_robust_a025",
+      "family": "B",
+      "defn": "L2 identity; L3 = cat([F, 0.75F+0.25*IN(F)]) —— Original block + robust block",
+      "absdz": 0.462729,
+      "dprime": 7.557144,
+      "delta_absdz_vs_original": -0.014143,
+      "delta_dprime_vs_original": -0.486846,
+      "delta_absdz_vs_T1": 0.083829,
+      "delta_dprime_vs_T1": -0.346439,
+      "frontier_interp_dprime": 8.014355,
+      "beyond_frontier": -0.457211,
+      "frontier_break": false,
+      "image_auroc": 1.0,
+      "pixel_auroc": 0.983745,
+      "aupro": 0.937666,
+      "tau": 34.83681106567383,
+      "memory_bank_size": [
+        19353,
+        2560
+      ],
+      "verdict": "STOP",
+      "verdict_reason": "robustness gain 消失或两指标均无优势"
+    }
+  ],
+  "n_advance": 2,
+  "n_frontier_break": 5
+}

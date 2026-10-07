@@ -1,0 +1,190 @@
+{
+  "alpha_grid_historical_frozen": [
+    0.0,
+    0.125,
+    0.2,
+    0.25,
+    0.3,
+    0.40091275,
+    0.5,
+    0.601369125,
+    0.8018255
+  ],
+  "references": [
+    {
+      "id": "P10_ORIG_a000",
+      "role": "corrected-189 Original（Stage 0.5 与 Stage 1 共用）"
+    },
+    {
+      "id": "P10_T1_L2a000_L3a025",
+      "role": "corrected-189 T1 reference（9B-R 已知最优 robustness）"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P10_B1_L3concat_robust_a025",
+      "family": "B",
+      "backend": "7ao",
+      "gpu": true,
+      "defn": "L2 identity; L3 = cat([F, 0.75F+0.25*IN(F)]) —— Original block + robust block"
+    },
+    {
+      "id": "P10_B2_L3concat_rscale_a025",
+      "family": "B",
+      "backend": "7ao",
+      "gpu": true,
+      "defn": "L2 identity; L3 = cat([F, 0.75F+0.25*IN(F)*rms(F)]) —— 尺度匹配版（仅 per-sample RMS）"
+    },
+    {
+      "id": "P10_C2_L2resid025_L3a025",
+      "family": "C",
+      "backend": "7ao",
+      "gpu": true,
+      "defn": "L2 = F+0.25*IN(F)*rms(F)（scale-matched residual，非 alpha 插值）; L3 = 0.75F+0.25*IN(F)"
+    },
+    {
+      "id": "P10_C3_L2dual_L3a025",
+      "family": "C",
+      "backend": "7ao",
+      "gpu": true,
+      "defn": "L2 = cat([F, IN(F)*rms(F)])（dual representation）; L3 = 0.75F+0.25*IN(F)"
+    },
+    {
+      "id": "P10_D1_L3m9pow_g1",
+      "family": "D",
+      "backend": "9b",
+      "gpu": true,
+      "defn": "L2 identity; L3 per-channel gate w_c=(s_c/p90)^1（仅 train/good 统计）"
+    },
+    {
+      "id": "P10_D2_L3m8z_ab050_b100",
+      "family": "D",
+      "backend": "9b",
+      "gpu": true,
+      "defn": "L2 identity; L3 gate a_c=clip(0.5+1.0*z_c)（仅 train/good 统计）"
+    },
+    {
+      "id": "P10_D3_L3m8z_ab025_b050",
+      "family": "D",
+      "backend": "9b",
+      "gpu": true,
+      "defn": "L2 identity; L3 gate a_c=clip(0.25+0.5*z_c)（仅 train/good 统计）"
+    },
+    {
+      "id": "P10_E1_L3energy025",
+      "family": "E",
+      "backend": "7ao",
+      "gpu": true,
+      "defn": "L2 identity; L3 = (F+0.25*IN(F)*rms(F)) * rms(F)/rms(mix) —— 能量保持"
+    },
+    {
+      "id": "P10_E2_L3energy050",
+      "family": "E",
+      "backend": "7ao",
+      "gpu": true,
+      "defn": "L2 identity; L3 = (F+0.50*IN(F)*rms(F)) * rms(F)/rms(mix) —— 能量保持（更强）"
+    }
+  ],
+  "equivalents_deduped": [
+    {
+      "id": "P10_A1_resid025",
+      "family": "A",
+      "gpu": false,
+      "effective": "alpha_L3 = 0.25*(1-0.25) = 0.1875",
+      "proof": "F_R+lam(F_O-F_R) = (1-a)F+a*IN + lam*a(F-IN) = (1-a(1-lam))F + a(1-lam)IN  => 等价于 per-layer alpha a'=a(1-lam)"
+    },
+    {
+      "id": "P10_A2_resid050",
+      "family": "A",
+      "gpu": false,
+      "effective": "alpha_L3 = 0.25*(1-0.50) = 0.125",
+      "proof": "同 A1（lam=0.5）"
+    },
+    {
+      "id": "P10_A3_resid075",
+      "family": "A",
+      "gpu": false,
+      "effective": "alpha_L3 = 0.25*(1-0.75) = 0.0625",
+      "proof": "同 A1（lam=0.75）"
+    }
+  ],
+  "n_candidates_gpu": 9,
+  "n_equivalents_no_gpu": 3,
+  "uniform_workpoints": [
+    "P10_uniform_a00",
+    "P10_uniform_a0125",
+    "P10_uniform_a02",
+    "P10_uniform_a025",
+    "P10_uniform_a03",
+    "P10_uniform_a040091275",
+    "P10_uniform_a05",
+    "P10_uniform_a0601369125",
+    "P10_uniform_a08018255"
+  ],
+  "resolved": [
+    {
+      "id": "C2_L2resid025_L3a025",
+      "family": "C",
+      "final_verdict": "ADVANCE",
+      "seeds_evaluated": "3",
+      "categories_evaluated": "4/5"
+    },
+    {
+      "id": "D2_L3m8z_ab050_b100",
+      "family": "D",
+      "final_verdict": "HOLD",
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)"
+    },
+    {
+      "id": "D1_L3m9pow_g1",
+      "family": "D",
+      "final_verdict": "HOLD",
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)"
+    },
+    {
+      "id": "D3_L3m8z_ab025_b050",
+      "family": "D",
+      "final_verdict": "HOLD",
+      "seeds_evaluated": "3",
+      "categories_evaluated": "1 (bottle)"
+    },
+    {
+      "id": "C3_L2dual_L3a025",
+      "family": "C",
+      "final_verdict": "HOLD",
+      "seeds_evaluated": "3",
+      "categories_evaluated": "3/5"
+    },
+    {
+      "id": "B2_L3concat_rscale_a025",
+      "family": "B",
+      "final_verdict": "HOLD",
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)"
+    },
+    {
+      "id": "E1_L3energy025",
+      "family": "E",
+      "final_verdict": "HOLD",
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)"
+    },
+    {
+      "id": "B1_L3concat_robust_a025",
+      "family": "B",
+      "final_verdict": "STOP",
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)"
+    },
+    {
+      "id": "E2_L3energy050",
+      "family": "E",
+      "final_verdict": "STOP",
+      "seeds_evaluated": "1 (seed0)",
+      "categories_evaluated": "1 (bottle)"
+    }
+  ],
+  "family_A_note": "Family A (residual recovery) 代数等价于 per-layer alpha -> 未跑 GPU"
+}

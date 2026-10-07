@@ -1,0 +1,22 @@
+{
+  "unit": "cable:0:P10_ORIG_a000",
+  "protocol": "v2",
+  "n_observations": 208896,
+  "embedding_shape": [
+    208896,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "c0fe749d24ef5212225a7d15edbcb2b8478fa6fdf27b21bc18a980b70d3eeb58",
+  "embedding_stats": {
+    "shape": [
+      208896,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 375674944.0,
+    "mean": 1.170822024345398
+  },
+  "ts": 1791385616.8705502
+}

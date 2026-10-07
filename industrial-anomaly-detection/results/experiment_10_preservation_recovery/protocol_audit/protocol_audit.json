@@ -1,0 +1,74 @@
+{
+  "bottle_seed0": {
+    "units": [
+      {
+        "method": "Original",
+        "absdz_209": 0.502686,
+        "dprime_209": 8.532828,
+        "absdz_189": 0.476872,
+        "dprime_189": 8.043989,
+        "delta_absdz_189_minus_209": -0.025814,
+        "delta_dprime_189_minus_209": -0.488839,
+        "images_embedded_189": 189,
+        "filter_log_189": "[(189, 189), (209, 189)]",
+        "embedding_shape_209": [
+          214016,
+          1536
+        ],
+        "embedding_shape_189": [
+          193536,
+          1536
+        ],
+        "n_observations_209": 214016,
+        "n_observations_189": 193536,
+        "coreset_sha_209": "0c7270fb9cccfd68",
+        "coreset_sha_189": "0f39bce0b45bf045",
+        "tau_209": 20.301015853881836,
+        "tau_189": 30.01397132873535,
+        "image_auroc_189": 1.0,
+        "pixel_auroc_189": 0.985321,
+        "aupro_189": 0.944721
+      },
+      {
+        "method": "T1",
+        "absdz_209": 0.332156,
+        "dprime_209": 8.178427,
+        "absdz_189": 0.378899,
+        "dprime_189": 7.903582,
+        "delta_absdz_189_minus_209": 0.046743,
+        "delta_dprime_189_minus_209": -0.274845,
+        "images_embedded_189": 189,
+        "filter_log_189": "[(189, 189), (209, 189)]",
+        "embedding_shape_209": [
+          214016,
+          1536
+        ],
+        "embedding_shape_189": [
+          193536,
+          1536
+        ],
+        "n_observations_209": 214016,
+        "n_observations_189": 193536,
+        "coreset_sha_209": "518e689dd18f2394",
+        "coreset_sha_189": "3f1dc861d7a21adf",
+        "tau_209": 19.63138771057129,
+        "tau_189": 30.517908096313477,
+        "image_auroc_189": 1.0,
+        "pixel_auroc_189": 0.985545,
+        "aupro_189": 0.947537
+      }
+    ],
+    "T1_minus_Original_209": {
+      "absdz": -0.17053,
+      "dprime": -0.354401
+    },
+    "T1_minus_Original_189": {
+      "absdz": -0.097972,
+      "dprime": -0.140407
+    },
+    "direction_consistent": true,
+    "tradeoff_judgement_unchanged": true,
+    "CASE": "P-A",
+    "criterion": "CASE P-A: 209->189 改变绝对值但 T1 vs Original 的 robustness/preservation 增量同方向且 trade-off 判断不变 -> 从 Exp10 起冻结 corrected-189；CASE P-B: trade-off 判断改变 -> 必须重建 corrected-189 baseline/frontier"
+  }
+}

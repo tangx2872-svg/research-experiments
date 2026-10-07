@@ -1,0 +1,10 @@
+rank,method,family,stage2A_verdict,stage2B_verdict,stage3_verdict,bottle_absdz,bottle_dprime,delta_absz_vs_original,delta_dprime_vs_original,mean_delta_dprime_3seed,worst_delta_dprime_3seed,mean_delta_absz_3seed,beyond_frontier_bottle_s0,frontier_break,seeds_evaluated,categories_evaluated,final_verdict
+1,C2_L2resid025_L3a025,C,ADVANCE,ADVANCE,ADVANCE,0.265585,7.978731,-0.211286,-0.065259,0.0324,-0.0653,-0.1902,0.691551,True,3,4/5,ADVANCE
+2,D2_L3m8z_ab050_b100,D,HOLD,-,-,0.301938,7.707892,-0.174933,-0.336097,,,,0.389846,True,1 (seed0),1 (bottle),HOLD
+3,D1_L3m9pow_g1,D,HOLD,-,-,0.303745,7.737814,-0.173127,-0.306175,,,,0.418235,True,1 (seed0),1 (bottle),HOLD
+4,D3_L3m8z_ab025_b050,D,HOLD,HOLD,-,0.264315,7.838318,-0.212557,-0.205671,-0.2436,-0.3877,-0.2073,0.552217,True,3,1 (bottle),HOLD
+5,C3_L2dual_L3a025,C,ADVANCE,ADVANCE,HOLD,0.258016,7.990467,-0.218856,-0.053522,0.1351,-0.0535,-0.1911,0.76745,True,3,3/5,HOLD
+6,B2_L3concat_rscale_a025,B,HOLD,-,-,0.454797,7.555246,-0.022075,-0.488743,,,,-0.442488,False,1 (seed0),1 (bottle),HOLD
+7,E1_L3energy025,E,HOLD,-,-,0.418356,7.760205,-0.058516,-0.283784,,,,-0.161174,False,1 (seed0),1 (bottle),HOLD
+8,B1_L3concat_robust_a025,B,STOP,-,-,0.462729,7.557144,-0.014143,-0.486846,,,,-0.457211,False,1 (seed0),1 (bottle),STOP
+9,E2_L3energy050,E,STOP,-,-,0.506962,7.882037,0.030091,-0.161952,,,,-0.161952,False,1 (seed0),1 (bottle),STOP
