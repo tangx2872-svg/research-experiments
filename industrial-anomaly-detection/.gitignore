@@ -232,3 +232,4 @@ results/experiment_9c_rng_calibration/progress.json
 results/experiment_9b_r_strict_replay/logs/
 results/experiment_9b_r_strict_replay/progress/
 results/experiment_9b_r_strict_replay/reference/
+results/experiment_9b_r_strict_replay/**/fit/
