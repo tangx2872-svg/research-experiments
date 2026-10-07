@@ -1,0 +1,38 @@
+{
+  "experiment": "9C",
+  "comparison": "mathematically equivalent pair (uniform alpha=0.25 vs const-gate 0.25)",
+  "category": "bottle",
+  "seed": 0,
+  "H1": "不同代码路径的 score 差异主要来自 fit 前 RNG state 不一致",
+  "H2": "在 coreset selection 前恢复相同 RNG state => 相同 coreset / 相同 score",
+  "H3": "Matched-RNG 不改变 representation 本身",
+  "V1_H1_supported": true,
+  "V2.1_H2_supported": true,
+  "H3_check": {
+    "V2.1_embedding_identical_to_each_other": true,
+    "note": "V2.1 的两个实现 embedding 逐位一致（sum_abs 相等）"
+  },
+  "cases": {
+    "V1": {
+      "case": "B (RNG state 仍不同)",
+      "rng_state_identical": false,
+      "coreset_identical": false,
+      "score_bit_exact": false,
+      "embedding_identical": true
+    },
+    "V2.0_coreset_replay_only": {
+      "case": "B (RNG 相同但 coreset 不同 -> 行序等其他 RNG 消费者)",
+      "rng_state_identical": true,
+      "coreset_identical": false,
+      "score_bit_exact": false,
+      "embedding_identical": false
+    },
+    "V2.1_coreset_plus_fit_replay": {
+      "case": "A (完全一致: embedding/RNG/coreset/bank/score 全部一致)",
+      "rng_state_identical": true,
+      "coreset_identical": true,
+      "score_bit_exact": true,
+      "embedding_identical": true
+    }
+  }
+}

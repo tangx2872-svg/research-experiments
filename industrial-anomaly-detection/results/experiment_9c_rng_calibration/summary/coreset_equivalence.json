@@ -1,0 +1,164 @@
+{
+  "per_case": {
+    "V1": {
+      "coreset_sha256": {
+        "A": null,
+        "B": null
+      },
+      "coreset_first20": {
+        "A": null,
+        "B": null
+      },
+      "coreset_n": {
+        "A": null,
+        "B": null
+      },
+      "coreset_identical": false,
+      "memory_bank_sha256": {
+        "A": null,
+        "B": null
+      },
+      "memory_bank_identical": true,
+      "tau": {
+        "A": 19.013771057128906,
+        "B": 19.00691032409668
+      },
+      "tau_identical": false
+    },
+    "V2.0_coreset_replay_only": {
+      "coreset_sha256": {
+        "A": "027e9c1abd7661f806fd4cc7a99c496052ecbb0b6b55b2427d3df17b89acf888",
+        "B": "93ed123e3a145c32d0ade22f2114a16668c90c5b57737ee69bb48318155a058d"
+      },
+      "coreset_first20": {
+        "A": [
+          51413,
+          3633,
+          111715,
+          154302,
+          170662,
+          93847,
+          11916,
+          203693,
+          28083,
+          96771,
+          53295,
+          78644,
+          210363,
+          52025,
+          72703,
+          64264,
+          121190,
+          16668,
+          35119,
+          195143
+        ],
+        "B": [
+          51413,
+          201264,
+          160634,
+          35939,
+          31316,
+          88742,
+          190222,
+          166402,
+          127671,
+          99112,
+          135244,
+          15803,
+          67950,
+          7167,
+          86408,
+          129845,
+          71601,
+          68175,
+          189033,
+          169244
+        ]
+      },
+      "coreset_n": {
+        "A": 21401,
+        "B": 21401
+      },
+      "coreset_identical": false,
+      "memory_bank_sha256": {
+        "A": "872b49b5f8c8cd8d8da0c808a79614f33c7e5536accbf65836def3850f7783f8",
+        "B": "b15577589e81f1c30359061c029a3f60310ce4b25acb8c13ec2ed5a781b79c93"
+      },
+      "memory_bank_identical": false,
+      "tau": {
+        "A": 20.088314056396484,
+        "B": 19.613370895385742
+      },
+      "tau_identical": false
+    },
+    "V2.1_coreset_plus_fit_replay": {
+      "coreset_sha256": {
+        "A": "a894c7b0c22302b1319888c35429a134d75a4f2ee6b46884942e9a4e141ae23b",
+        "B": "a894c7b0c22302b1319888c35429a134d75a4f2ee6b46884942e9a4e141ae23b"
+      },
+      "coreset_first20": {
+        "A": [
+          51413,
+          194096,
+          186467,
+          28300,
+          82810,
+          183974,
+          53911,
+          58768,
+          58192,
+          35887,
+          165346,
+          183079,
+          169403,
+          94759,
+          34385,
+          81919,
+          167702,
+          183901,
+          213462,
+          109491
+        ],
+        "B": [
+          51413,
+          194096,
+          186467,
+          28300,
+          82810,
+          183974,
+          53911,
+          58768,
+          58192,
+          35887,
+          165346,
+          183079,
+          169403,
+          94759,
+          34385,
+          81919,
+          167702,
+          183901,
+          213462,
+          109491
+        ]
+      },
+      "coreset_n": {
+        "A": 21401,
+        "B": 21401
+      },
+      "coreset_identical": true,
+      "memory_bank_sha256": {
+        "A": "cfe4ecff39d6a65254dc62c0d73c38a774aa2496ca20ec9f18b50eaba17ab961",
+        "B": "cfe4ecff39d6a65254dc62c0d73c38a774aa2496ca20ec9f18b50eaba17ab961"
+      },
+      "memory_bank_identical": true,
+      "tau": {
+        "A": 18.88035774230957,
+        "B": 18.88035774230957
+      },
+      "tau_identical": true
+    }
+  },
+  "diagnosis": "V2.0 中 RNG state 已一致、coreset 首个索引相同（51413），但后续索引分叉。主因已定位：train DataLoader(shuffle=True，无 generator) 的行序仍由全局 RNG 决定，行序不同 -> embedding 行置换（aggregate sum_abs 差 32/290M ≈ 1.1e-7，无法区分行序归约舍入 vs 数值本身差异）-> k-center-greedy 轨迹不同。V2.1 增加 Engine.fit 入口 replay 后 embedding/coreset/memory bank 逐位一致，证明主因确实是行序（CASE B）。"
+}

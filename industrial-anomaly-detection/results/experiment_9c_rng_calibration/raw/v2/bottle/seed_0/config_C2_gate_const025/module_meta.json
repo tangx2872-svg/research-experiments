@@ -1,0 +1,67 @@
+{
+  "experiment": "9B",
+  "unit": "bottle:0:C2_gate_const025",
+  "config": "C2_gate_const025",
+  "round": "v2",
+  "candidate": true,
+  "spec": {
+    "kind": "gate",
+    "alpha_l2": -1.0,
+    "alpha_l3": -1.0,
+    "gate_l2": [
+      "const",
+      {
+        "value": 0.25
+      }
+    ],
+    "gate_l3": [
+      "const",
+      {
+        "value": 0.25
+      }
+    ],
+    "smoke": true
+  },
+  "gate_stats": {
+    "layer2": {
+      "map": "const",
+      "desc": "constant gate = 0.25",
+      "mean": 0.25,
+      "std": 0.0,
+      "min": 0.25,
+      "max": 0.25,
+      "frac_ge_1": 0.0,
+      "frac_le_0": 0.0
+    },
+    "layer3": {
+      "map": "const",
+      "desc": "constant gate = 0.25",
+      "mean": 0.25,
+      "std": 0.0,
+      "min": 0.25,
+      "max": 0.25,
+      "frac_ge_1": 0.0,
+      "frac_le_0": 0.0
+    }
+  },
+  "sensitivity_meta": {
+    "category": "bottle",
+    "seed": 0,
+    "hash": "5416a18c4e4aa543",
+    "n_train": 189,
+    "reused": true,
+    "source": "train/good only (normal-only)"
+  },
+  "gate_mean_l2": 0.25,
+  "gate_mean_l3": 0.25,
+  "embedding_dim": 1536,
+  "prep_seconds": 7.19,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 98.05,
+  "wallclock_seconds": 98.3,
+  "peak_gpu_memory_allocated_mb": 2605.05,
+  "declared_alpha_l2": -1.0,
+  "declared_alpha_l3": -1.0,
+  "status": "ok",
+  "detail": ""
+}

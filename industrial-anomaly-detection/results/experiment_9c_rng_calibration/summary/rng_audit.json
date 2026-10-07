@@ -1,0 +1,19 @@
+{
+  "seed": 0,
+  "synthetic_embedding": [
+    2000,
+    48
+  ],
+  "coreset_size": 200,
+  "streams_consumed_by_coreset": {
+    "torch_cpu": true,
+    "numpy": true,
+    "python": false,
+    "cuda": false
+  },
+  "same_seed_same_coreset": true,
+  "extra_rng_consumption_changes_coreset": true,
+  "replay_before_coreset_restores_equality": true,
+  "n_extra_consumption_steps_simulated": 5,
+  "note": "torch/numpy 被 coreset 消耗；python random 未被消耗。V1 的差异来自上游消耗数量不同；在 coreset 入口重放 RNG 可完全恢复一致。"
+}

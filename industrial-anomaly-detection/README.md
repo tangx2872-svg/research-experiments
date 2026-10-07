@@ -17,7 +17,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · **⑩-e 评测协议修正 ✅（9C Matched-RNG Protocol V2：噪声地板 0.020224/0.054211 → **0.000000/0.000000**，equivalent pair 达到 embedding/coreset/memory bank/score 全面逐位一致）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -166,6 +166,7 @@
 
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
+| [9C](results/experiment_9c_rng_calibration/README.md) | 消除「不同方法代码路径消耗不同 RNG → KCenterGreedy 选择不同 coreset」的评测不公 | **5 GPU unit-runs / 483 GPU·s**、P4 sanity **7/7**、0 failed：建立 **Matched-RNG Protocol V2**（两个 replay 点：`Engine.fit` 入口固定 train shuffle 行序 + `select_coreset_idxs` 入口固定 greedy 初始点）。V1 噪声地板 0.020224/0.054211 → **V2.1 = 0.000000/0.000000**（equivalent pair 的 embedding sum_abs / RNG state hash / coreset sha / memory bank sha / tau / per-image score **全部逐位一致**） | **CASE A**（Matched-RNG 成功） | DONE |
 | [9B](results/experiment_9b_screening/README.md) | 9A 无晋级后，是否存在 deployable / normal-only / training-free 的第二批候选（M7–M11）能改善 trade-off | **29 GPU unit-runs / 3461 GPU·s**、sanity **12/12**、0 failed：**无候选 ADVANCE**；bottle 侧存在真实越界（M8_b100 **+0.937** d′、M11_b100 +0.804、M9_g1 +0.705，均 >> 噪声地板），但 cable 侧**无候选越界**且通道门方法 cable Δd′ −0.34…−0.76；M7 出现 **layer×category 交互**（bottle 偏好 L3、cable 偏好 L2，与预注册方向相反）；M10 = 7A-O `B1_g100` 复用；实测 **coreset 轨迹噪声地板 NF=0.020/0.054**（RNG 状态分歧机制已定位） | **无 ADVANCE**（M7–M11 全 HOLD） | DONE |
 | [9A](results/experiment_9a_screening/README.md) | M1–M6 中哪些方法有希望更好地改善 robustness–preservation trade-off（最低 GPU 成本的快速海选） | **8 GPU units / 922.6 GPU·s**、sanity **10/10**、0 failed、B0 与 5A-H **逐位一致**：M1 bottle d′ 8.2904 / \|Δz\| 0.2850 **跑出 frontier**，但 cable \|Δz\| 0.6687（比 B0 恶化 +0.323）；M2/M3 仅单侧；M6 为 **ORACLE**（bottle 跑出、cable 被支配）；M4 表示层 ≡ α_eff（max\|ΔF\|=1.91e-06）→ 冗余 | **无 ADVANCE（9A 本轮无方法晋级）**；STOP = M3/M4，HOLD = M1/M2/M5，M6 = **ORACLE 参照** | DONE `73eb8be` |
 | [8B](experiments/experiment8b/README.md) | pretrained representation 中是否存在「defect-sensitive 但 illumination-stable」的 feature/channel 子空间（决定 Plan C 是否值得做） | **420 GPU units** + 15 cells 特征提取、sanity **13/13**、freeze `5f2bbd54…`、0 failed：D 与 I **近似无关**（pooled ρ 0.0666），**15/15 cells 同时 D↑I↓**，L2-only/L3-only 各 15/15；score-level primary 25% **C6b FAIL**（胜 FULL 5/15、Δd′ −0.2285）；secondary 50% Δd′ +0.1892 / Δ\|Δz\| −0.1610（胜 FULL 11/15、胜 random 15/15）；PARETO mask 崩溃；cable 系统性负迁移 | **CASE_B**（Plan C = **HOLD**） | DONE |
@@ -780,7 +781,48 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 14. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
+## 14. Experiment 9C — Matched-RNG Calibration（2026-10-07）
+
+**为什么做**：9B 发现评测方法学缺陷 —— 两个生成**完全相同 embedding** 的方法，因代码路径消耗的 RNG 数量不同，进入 `KCenterGreedy` 时 RNG state 不同 → 选择不同 coreset → 产生非零 score/robustness/d′ 差异（V1 噪声地板 **NF(\|Δz\|)=0.0202 / NF(d′)=0.0542**）。这使所有「frontier 越界」类结论都受一个本可消除的噪声限制。9C **只做一件事**：建立公平、可复现的 **Matched-RNG Protocol V2**。
+
+**审计结论（P0/P2，实测）**：coreset 的 RNG 消费者有两个，且都在 `fit_dual_model` 入口 seed **之后**：
+- **R2** `KCenterGreedy.select_coreset_idxs`：`SparseRandomProjection`（torch Binomial + sklearn `sample_without_replacement`(numpy)）+ `torch.randint(device=features.device)`（CUDA）→ 决定 greedy **初始点**
+- **R1** train `DataLoader(shuffle=True)`（无显式 generator）→ 行序由全局 RNG 决定 → 决定 **embedding 行序**
+
+**V2 冻结定义**：在两个点恢复 canonical RNG state（wrapper 注入，**不改 anomalib / 9B / 5A-H 源码**）：**R1 = `Engine.fit` 入口**，**R2 = `select_coreset_idxs` 入口**。canonical state 只由 `(category, seed)` 决定，不含任何 test/defect 信息。
+
+**三方对照（bottle seed0；uniform α=0.25 vs constant-gate 0.25，数学等价）**
+
+| 协议 | RNG state 一致 | coreset 一致 | score bit-exact | NF(\|Δz\|) | NF(d′) | CASE |
+|---|---|---|---|---|---|---|
+| V1（无 replay，9B raw 复用） | ✗ | ✗ | ✗（max\|Δscore\|=1.330） | 0.020224 | 0.054211 | B |
+| V2.0（仅 R2） | ✓ | ✗（首个索引相同 51413，其后分叉） | ✗ | 0.027988 | 0.005269 | B（暴露 R1） |
+| **V2.1（R1+R2）** | ✓ | **✓** | **✓（max\|Δscore\| = 0.0）** | **0.000000** | **0.000000** | **A** |
+
+**V2.1 的逐位一致证据链**：embedding `sum_abs` 相等 + RNG state hash 全同（`torch_cpu 1ccf1725…` / `numpy 012a3189…` / `cuda 374708ff…`）+ coreset indices sha 相同（`a894c7b0c22302b1`）+ memory bank sha 相同（`cfe4ecff39d6a652`）+ tau 相同（18.88035774）+ **per-image score max\|Δ\| = 0.0** + AUROC/AUPRO 全 0 差异。
+
+**结论**：**CASE A — Matched-RNG 成功**。9B 观察到噪声地板的根因是**未受控的 coreset RNG 轨迹分歧**，由 R2（初始点）与 R1（行序）两个消费者共同造成；两处 replay 后 equivalent pair 达到 bit-exact。
+**H1/H2/H3** 全部支持（H2 需注意：**两个** replay 点，不是一个）。未放宽任何冻结阈值（A–E 五条标准全部满足）。
+
+**Protocol V2 政策（写入仓库约定）**
+> From Experiment 9C onward, new method comparisons use **Matched-RNG Protocol V2** for fair coreset selection. Historical Protocol V1 assets remain frozen and are not overwritten.
+
+- 后续新方法筛选默认启用：`r9c.install_matched_rng(seed=…, out_dir=…, protocol="v2")` + `r9c.install_fit_replay()`。
+- **V2 结果与历史 V1 raw 不可逐位比较**（coreset 不同）→ 与 V1 baseline 比较时必须同时报告 V1 噪声地板。
+- **V1 raw / CSV / JSON 全部冻结**，不覆盖、不重算、不重跑。
+
+**对 9A/9B 历史结论的处理（P13）**
+- **不宣布 9A/9B 无效**。远大于 V1 噪声地板的强信号仍然成立：9B `M8_gate_b100` bottle 越界 **+0.937**、`M11_b100` +0.804、`M9_sw_g1` +0.705（≫ NF(d′)=0.0542）。
+- **与噪声地板同量级的边际结果标记为 `requires V2 re-evaluation before promotion`**：9B `M7_L2a000_L3a025`（bottle +0.047 / cable +0.019）、`M9_sw_gamma1`（cable +0.013）。**本轮不重跑**。
+- **对 9A M4 归因的最终确认**：score 差异来自未受控的 coreset 轨迹分歧（R1+R2），与「fit 路径放大 1e-6 级表示扰动」无关；9A 的 M4 代数冗余结论由 embedding 级等价确立，**不受影响、无需重跑**。
+
+**成本**：5 GPU unit-runs / 483 GPU·s（`v2` 3 units + `v2b` 2 units），failed = 0；P4 CPU sanity 7/7 PASS；V1 对照 0 GPU（复用 9B raw）。
+
+**入口**：`results/experiment_9c_rng_calibration/README.md`（§7 三方对照 / §8 CASE 判定 / §10 V2 定义 / §11 历史结论影响 / §12 后续协议）；产物 `summary/{rng_equivalence, rng_state_hashes, coreset_equivalence, score_equivalence, noise_floor_v1_vs_v2, sanity_checks, rng_audit, runtime_summary}` 与 `figures/noise_floor_v1_vs_v2.png`；代码 `scripts/experiment9c_{rng,runner,sanity,analysis}.py`。
+
+---
+
+## 15. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 
 **事实（实验直接观察到）**
 
@@ -842,7 +884,7 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 15. 下一步（建议，均未启动，需人工批准）
+## 16. 下一步（建议，均未启动，需人工批准）
 
 0. **5D CASE 归属裁决（人工，仍未决）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
    [5D README §15](experiments/experiment5d/README.md)。
@@ -878,7 +920,7 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 16. 复现与工程约定
+## 17. 复现与工程约定
 
 - 2026-10-06 曾在 AutoDL 完成一次**全量资产恢复复现审计**（1848 NPZ / 30 banks / 1386 intervention rows），
   详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；**6A 的 10 个 GPU unit 亦在同一路径上运行，smoke 重跑 5A B1

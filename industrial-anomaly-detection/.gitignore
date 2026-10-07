@@ -218,3 +218,11 @@ results/experiment_9b_screening/progress/
 results/experiment_9b_screening/**/fit/
 results/experiment_9b_screening/progress.json
 !results/experiment_9b_screening/progress.log
+
+# Experiment 9C 结果（Matched-RNG calibration；纳入 raw 证据 + summary + figures + README/config，排除 logs/progress）
+!results/experiment_9c_rng_calibration/
+results/experiment_9c_rng_calibration/logs/
+results/experiment_9c_rng_calibration/progress/
+results/experiment_9c_rng_calibration/**/fit/
+results/experiment_9c_rng_calibration/progress.json
+!results/experiment_9c_rng_calibration/progress.log

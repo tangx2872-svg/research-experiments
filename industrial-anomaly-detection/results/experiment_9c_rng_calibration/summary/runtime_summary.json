@@ -1,0 +1,62 @@
+{
+  "experiment": "9C",
+  "gpu_units": [
+    {
+      "round": "v2",
+      "unit": "bottle:0:C0_orig_a000",
+      "config": "C0_orig_a000",
+      "runtime_seconds": 92.65,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "peak_vram_mb": 2605.05,
+      "status": "ok"
+    },
+    {
+      "round": "v2",
+      "unit": "bottle:0:C1_uniform_a025",
+      "config": "C1_uniform_a025",
+      "runtime_seconds": 98.06,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "peak_vram_mb": 2605.05,
+      "status": "ok"
+    },
+    {
+      "round": "v2",
+      "unit": "bottle:0:C2_gate_const025",
+      "config": "C2_gate_const025",
+      "runtime_seconds": 98.05,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "peak_vram_mb": 2605.05,
+      "status": "ok"
+    },
+    {
+      "round": "v2b",
+      "unit": "bottle:0:C1_uniform_a025",
+      "config": "C1_uniform_a025",
+      "runtime_seconds": 55.66,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "peak_vram_mb": 2605.05,
+      "status": "ok"
+    },
+    {
+      "round": "v2b",
+      "unit": "bottle:0:C2_gate_const025",
+      "config": "C2_gate_const025",
+      "runtime_seconds": 61.14,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "peak_vram_mb": 2605.05,
+      "status": "ok"
+    }
+  ],
+  "gpu_units_count": 5,
+  "gpu_seconds_total": 405.6,
+  "budget_frozen": {
+    "gpu_main_units": 3,
+    "gpu_diagnostic_units_max": 2
+  },
+  "note": "V1 对照复用 9B raw，0 GPU"
+}
