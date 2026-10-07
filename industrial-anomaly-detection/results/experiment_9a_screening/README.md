@@ -103,6 +103,8 @@
 | — | M4 residual compensation | SANITY | 7.8499 | — | — | — | 与 α_eff 同一方法 | 97 s/unit | **STOP — ALGEBRAICALLY REDUNDANT** |
 | — | M5 selective bypass | HOLD | — | — | — | — | 无公平 selection rule | — | **HOLD — IMPLEMENTATION_UNRESOLVED** |
 
+**最终统一判定（ADVANCE / HOLD / STOP / ORACLE_REFERENCE）以 §15–§16 为准**：M1/M2 = HOLD，M3 = STOP（两类别均无 robustness 改善），M4 = STOP（代数冗余），M5 = HOLD（不可实现），M6 = ORACLE_REFERENCE（不计入晋级）。
+
 判定规则（由冻结判据带机械产生，未事后调整）：STOP 需「两类别同时恶化」或「两类别都被 uniform-α frontier 支配」；PROMOTE 需「两类别同时满足预注册 trade-off 条件且至少一侧跑出 frontier」；其余为 HOLD。
 
 ## 8. 关键观察（事实 → 解释 → 假设）
@@ -191,3 +193,69 @@ results/experiment_9a_screening/
 ```
 
 复现：`python -u scripts/experiment9a_analysis.py`（CPU-only，读上述 raw + 历史 frozen raw，0 GPU）。
+
+---
+
+## 15. Experiment 9A — Candidate Screening Table（M1–M6 + B0）
+
+统一口径：robustness = `mean |ΔNormalScore_z|`（低好）；preservation = `mean defect d′`（高好）；均为 seed 0、bottle/cable。
+`Robustness` / `Preservation` 两列为 2 类别均值（bottle 分数更高，均值受 bottle 主导，故同时给出分列数字）。
+"beyond" = 该类别上是否位于既有 uniform-α Pareto frontier 之外（未被任何 uniform-α 工作点支配）。
+
+| Method | Literature motivation | Bottle result (d′ / \|Δz\|) | Cable / cross-category evidence (d′ / \|Δz\|) | Robustness (2cat \|Δz\|) | Preservation (2cat d′) | Runtime / cost | Stability | Final decision | Reason |
+|---|---|---|---|---|---|---|---|---|---|
+| **M1** illumination-robust representation (input-space per-image standardization) | 经典图像级光照归一化（per-image photometric standardization） | 8.2904 / **0.2850**（beyond：+0.83 d′ vs frontier @同 robustness；亦高于 B0 的 8.2650） | 4.8428 / **0.6687**（被 frontier 支配；robustness 比 B0 恶化 **+0.323 = +94%**） | 0.4768 | 6.5666 | **132 s/unit（真跑 2 units，新 GPU）** | **cross-category unstable**（σ→0 数值退化已排除：scale ∈ [0.83, 1.20]） | **HOLD（第二梯队）** | category-dependent：bottle 强越界、cable 反向恶化，未达「两类别同时改善」的晋级阈值 |
+| **M2** dual concat（7A-O Family B `B1_g100`） | multi-scale feature fusion（PatchCore concat 变体） | 8.1708 / 0.3379（beyond） | 5.1008 / 0.3275（被 frontier 支配） | 0.3327 | 6.6358 | **0 GPU（历史复用）**，历史 103 s/unit | cross-category unstable | **HOLD（第二梯队）** | 两类别 robustness 均未恶化但只有 bottle 越界 → 沿 frontier 移动，与 7A-O「无 candidate 与 Uniform 相互支配」一致 |
+| **M3** nuisance subspace suppression（k=16，逐层） | 去 style/lighting 方向的 feature 子空间抑制 | 8.3909 / 0.4695（beyond） | 5.2094 / 0.3808（被 frontier 支配） | 0.4251 | 6.8001 | **144 s/unit（真跑 2 units，新 GPU）** | cross-category unstable | **STOP（淘汰）** | **两类别均无 robustness 改善**（bottle −0.009、cable +0.035，均未过 −0.02 阈值）→ preservation-only 提升不改变 frontier 形状；与 8B「D/I 近似独立但 primary 口径不可变现」一致 |
+| **M4** residual compensation（λ=0.5，α′=0.40091275） | 残差补偿：混合回原始 feature 以兼顾両者 | 7.8499 / 0.3520（= 直接 α_eff 实现，同一方法） | —（无需跑） | — | — | 97 s/unit（1 unit）+ 86 s（诊断重复） | 表示层严格等价 + 管线 bit-deterministic | **STOP（淘汰 — algebraically redundant）** | `F_r+λ(F−F_r) ≡ (1−α)F+αIN(F)`，α=(1−λ)α′；max\|ΔF\| = **1.91e-06**（float32 舍入级）；score 级 1.773 差异来自 fit 路径对 1e-6 扰动的放大，**不能作为方法改善证据** |
+| **M5** selective bypass | 只对 illumination-sensitive 通道做归一化 | —（未运行） | — | — | — | 0 GPU | n/a | **HOLD（第二梯队 — implementation unresolved）** | 只有 oracle channel selection，无公平 lightweight deterministic rule；本轮不实现、不发明 heuristic |
+| **M6** channel-selective 25% mask | defect-sensitive / illumination-stable 通道子集（8B） | 7.7321 / 0.1276（beyond，锐利上界） | 4.1392 / 0.2140（被 frontier 支配，**低于 B0**） | 0.1708 | 5.9357 | **0 GPU（历史复用）** | cross-category unstable | **ORACLE_REFERENCE（不是 deployable 方法，不计入晋级）** | selection 使用 **test defect mask** → oracle upper bound；其数字不能作为方法性能（8B primary 25% 已 FAIL） |
+| **M6** channel-selective 50% mask | 同上（8B secondary ratio） | 8.8594 / 0.1622（beyond） | 4.7743 / 0.1750（被 frontier 支配） | 0.1686 | 6.8169 | **0 GPU（历史复用）** | cross-category unstable | **ORACLE_REFERENCE（同上）** | 纯 trade-off 兑换：robustness 改善以两类别 preservation 明显下降为代价 |
+| *B0* Original PatchCore（α=0） | baseline | 8.2650 / 0.4782 | 5.1463 / 0.3455 | 0.4119 | 6.7056 | **0 GPU（5A-H 复用，逐位一致）** | reference | BASELINE | 管线完整性锚点：`bottle:0` 与历史 5A-H max\|Δscore\| = **0.0** |
+| *B1* fixed α=0.5 | baseline | 7.2638 / 0.2846 | 4.9153 / 0.2581 | 0.2714 | 6.0895 | 0 GPU（5A-H 复用） | reference | BASELINE | 历史 best fixed |
+| *B2* Uniform α=0.40091275 | baseline（6B 强 baseline） | 7.4638 / 0.2703 | 5.0488 / 0.2641 | 0.2672 | 6.2563 | 0 GPU（6B 复用） | reference | BASELINE | 本项目最强 layer-uniform baseline |
+
+## 16. 最终梯队（统一规则，冻结于判定前）
+
+| 梯队 | 成员 | 说明 |
+|---|---|---|
+| **第一梯队：建议进入 Round-2** | **（空）** | **9A 本轮无方法晋级** —— 没有任何候选在两类别上同时满足预注册 trade-off 条件并跑出既有 frontier。不强行选一个「最好看」的方法。 |
+| 第二梯队：暂时 HOLD | **M1**、**M2**、**M5** | M1：唯一有真实 frontier 越界幅度的新方法（bottle），但类别依赖、cable 反向；若用户批准，**只能作为「条件性候选」进入 Round-2 的 cross-category 验证**，且必须先验证不稳定性是否系统性。M2：沿 frontier 移动（历史已被 7A-O 判定过一次）。M5：不可实现，仅在无更好候选时再议。 |
+| 淘汰方法：STOP | **M3**、**M4** | M3：两类别均无 robustness 改善 → 不构成 trade-off 改善。M4：代数上与 α_eff 同一方法。 |
+| 参照（不参与晋级） | **M6**（oracle 25%/50%） | ORACLE UPPER BOUND：提供 frontier 之外的理想上界，**不是 deployable 方法**，不得与真实候选混列。 |
+
+## 17. 专项记录（按用户要求，仅记录，不再深挖）
+
+### 17.1 M1（唯一有 frontier 越界幅度的新方法，但类别依赖）
+
+- bottle：**进入/跑出 frontier** —— d′ = 8.2904、|Δz| = **0.2850**；同 robustness 下既有 uniform-α frontier 的最好 d′ ≈ 7.46（α=0.4009）/ 7.26（α=0.5）；同时 d′ 高于 B0（8.2650）。
+- cable：**robustness 明显恶化** —— |Δz| = **0.6687** vs B0 = **0.3455**（+0.323，+94%）；d′ 4.8428（−0.303）。
+- **已排除数值退化**：per-image σ 与 train 参考 σ 之比 bottle ∈ [0.98, 1.02]、cable ∈ [0.83, 1.20]，无 σ→0（`M1_EPS = 1e-6` clamp 未触发）→ 不是实现/数值 bug。
+- **判定：HOLD（第二梯队），定性为 `category-dependent / cross-category unstable`。**
+- **本轮不再做机制实验**（不追因、不变体、不调参）。
+
+### 17.2 M3（robustness 轴近似无效 → 淘汰）
+
+- Round-0（bottle）robustness 改善**极小**（Δ|Δz| = **−0.0087**）；Round-1（cable）为 **+0.0354（更差）**。
+- 与 8B「defect / illumination 两个 channel 轴近似独立，但 primary 口径下不可变现」的证据方向一致 → 抑制 top-16 光照差分方向并不能改变 robustness–preservation 形状。
+- **判定：STOP**（统一规则：两类别均无 robustness 改善 → 不构成 trade-off 改善）。**不为该结论做救援实验。**
+
+### 17.3 M4（代数冗余 → 永久 STOP）
+
+- **tensor-level 代数等价 PASS**：`F_r + λ(F − F_r)` 与直接 `(1−α)F + α·IN(F)`（α = (1−λ)α′ = 0.200456375）在真实图像上生成同一 embedding，`max|ΔF| = 1.906e-06`（相对 2.09e-06），**仅 float32 rounding 级**。
+- **相同配置重复运行 bit-identical**：`round1` 与 `m4diag` 的 `M4_resid` 两次运行 `max|Δscore| = 0.0` → 管线在相同模型定义下完全确定。
+- **score-level 1.773 差异的归因**：来自 PatchCore fit 路径（KCenterGreedy 在 ~2.1×10⁵ patch 上 21401 步顺序选择）对 1e-6 级表示扰动的放大（两实现 score 相关 0.99949、均值差 −0.033）。**该差异不能作为方法改善证据。**
+- **判定：STOP — algebraically redundant，永久关闭，不再追加实验。**
+
+## 18. 完整性检查（收尾）
+
+| 检查 | 结果 |
+|---|---|
+| 预期产物齐全 | README.md / config.json / progress.log / summary/{raw_results, screening_summary, ranking, uniform_alpha_frontier, progress_units} + JSON{m4_equivalence, runtime_summary, sanity_checks} / figures/fig1…png —— 全部存在 |
+| CSV/JSON 可读取 | 全部通过 `csv.DictReader` / `json.loads` 校验 |
+| figure 可打开 | `fig1_robustness_preservation_plane.png`（PNG，可被 PIL 打开，非 0 字节） |
+| failed units | **0**（8/8 GPU unit status = OK） |
+| 0-byte 关键文件 | 无（曾出现 0 字节的 `scripts/experiment9a_analysis.py` 草稿与临时文件已删除） |
+| baseline 管线未破坏 | `bottle:0 B0_original` 与历史 5A-H B0 逐位一致（max\|Δscore\| = 0.0） |
+| reuse 一致性 | M6 与 8B 冻结指标逐位一致；M2 = 7A-O 冻结 `B1_g100` |
+| 提交范围 | 仅 source/config/README/summary CSV+JSON/小型 figure + 小体积 raw 主证据；不提交 cache / logs / progress / 大文件 |

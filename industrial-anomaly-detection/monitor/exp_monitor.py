@@ -182,6 +182,48 @@ def scan_errors(root: Path, tail_bytes: int = 400_000) -> list[str]:
     return errs[-10:]
 
 
+def finished_rounds() -> dict:
+    """扫描所有 results/*/ 下已完成的 round。
+
+    目的：有些 round 总时长 < 轮询间隔（如 9A round1 只跑 3 分钟），
+    进程可能在两次 tick 之间就退出，光靠 ps 会漏报。这里用落盘的
+    progress.json / raw/<round>/ 结果目录补齐检测。
+    """
+    out: dict[str, dict] = {}
+    base = ROOT / "results"
+    if not base.is_dir():
+        return out
+    for root in sorted(base.iterdir()):
+        if not root.is_dir() or root.name.startswith("_"):
+            continue
+        rounds: dict[str, dict] = {}
+        pj = root / "progress.json"
+        if pj.exists():
+            try:
+                j = json.loads(pj.read_text())
+            except Exception:
+                j = {}
+            if j.get("round"):
+                rounds[j["round"]] = {
+                    "done": j.get("completed"), "total": j.get("total"),
+                    "remaining": j.get("remaining"), "failed": j.get("failed", 0),
+                    "elapsed": j.get("elapsed_seconds"), "last": j.get("last_update"),
+                }
+        rawd = root / "raw"
+        if rawd.is_dir():
+            for rd in sorted(rawd.iterdir()):
+                if not rd.is_dir():
+                    continue
+                st = rounds.setdefault(rd.name, {})
+                st["n_units"] = len(list(rd.rglob("info.json")))
+        for r, st in rounds.items():
+            fin = (st.get("remaining") == 0) or (
+                st.get("done") is not None and st.get("total") and st["done"] >= st["total"])
+            st.update(root=str(root), round=r, finished=bool(fin))
+            out[f"{root.name}::{r}"] = st
+    return out
+
+
 def gpu_line() -> str:
     try:
         out = subprocess.run(["nvidia-smi", "--query-gpu=utilization.gpu,memory.used,memory.total",
@@ -219,12 +261,28 @@ def main() -> int:
     last_done = None
     last_change_ts = None
     idle_since = time.time()
+    # 启动前就已完成的 round 不告警，只关心之后新完成的
+    seen_rounds = {k for k, v in finished_rounds().items() if v["finished"]}
+    print(f"[watcher] pre-finished rounds ignored: {sorted(seen_rounds)}", flush=True)
 
     while True:
         now = time.time()
         if now - t_start > args.max_total:
             emit("TIMEOUT", {"note": "watcher reached max-total, stopped"})
             return 0
+
+        # 1) 先扫已完成 round（补齐短任务漏报）
+        for key, st in finished_rounds().items():
+            if st["finished"] and key not in seen_rounds:
+                seen_rounds.add(key)
+                if cur is not None and st["round"] == cur.get("round"):
+                    cur["emitted"] = True
+                emit("COMPLETE", {
+                    "script": "round-scan", "root": st["root"], "round": st["round"],
+                    "done": st.get("total") if st.get("done") is None else st.get("done"),
+                    "total": st.get("total"), "failed": st.get("failed", 0),
+                    "elapsed_s": st.get("elapsed"), "last_update": st.get("last"),
+                    "progress_source": "progress.json/raw", "gpu": gpu_line()})
 
         exps = find_experiments()
 
@@ -259,6 +317,10 @@ def main() -> int:
 
         root = cur["root"] or infer_root(cur["script"])
         pr = read_progress(root)
+        try:
+            cur["round"] = json.loads((root / "progress.json").read_text()).get("round")
+        except Exception:
+            pass
         act = newest_mtime(root) if root else 0.0
         done, total = pr["done"], pr["total"]
 
@@ -280,6 +342,9 @@ def main() -> int:
         print("[tick] " + json.dumps(snap, ensure_ascii=False), flush=True)
 
         if not alive:
+            if cur.get("emitted"):
+                print("[watcher] process exited; round already reported, stop.", flush=True)
+                return 0
             errs = scan_errors(root)
             ok = (total is not None and done is not None and done >= total) or bool(
                 re.search(r"DONE|finished", " ".join(

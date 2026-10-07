@@ -17,7 +17,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6 Round-1：无 PROMOTE；M4 STOP 冗余；其余 HOLD）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6 Round-1：9A 本轮无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE 参照）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -166,7 +166,7 @@
 
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
-| [9A](results/experiment_9a_screening/README.md) | M1–M6 中哪些方法有希望更好地改善 robustness–preservation trade-off（最低 GPU 成本的快速海选） | **8 GPU units / 922.6 GPU·s**、sanity **10/10**、0 failed、B0 与 5A-H **逐位一致**：M1 bottle d′ 8.2904 / \|Δz\| 0.2850 **跑出 frontier**，但 cable \|Δz\| 0.6687（比 B0 恶化 +0.323）；M2/M3 仅单侧；M6 为 **ORACLE**（bottle 跑出、cable 被支配）；M4 表示层 ≡ α_eff（max\|ΔF\|=1.91e-06）→ 冗余 | **无 PROMOTE**（M4 **STOP**，M1/M2/M3/M6/M5 HOLD） | DONE |
+| [9A](results/experiment_9a_screening/README.md) | M1–M6 中哪些方法有希望更好地改善 robustness–preservation trade-off（最低 GPU 成本的快速海选） | **8 GPU units / 922.6 GPU·s**、sanity **10/10**、0 failed、B0 与 5A-H **逐位一致**：M1 bottle d′ 8.2904 / \|Δz\| 0.2850 **跑出 frontier**，但 cable \|Δz\| 0.6687（比 B0 恶化 +0.323）；M2/M3 仅单侧；M6 为 **ORACLE**（bottle 跑出、cable 被支配）；M4 表示层 ≡ α_eff（max\|ΔF\|=1.91e-06）→ 冗余 | **无 ADVANCE（9A 本轮无方法晋级）**；STOP = M3/M4，HOLD = M1/M2/M5，M6 = **ORACLE 参照** | DONE `73eb8be` |
 | [8B](experiments/experiment8b/README.md) | pretrained representation 中是否存在「defect-sensitive 但 illumination-stable」的 feature/channel 子空间（决定 Plan C 是否值得做） | **420 GPU units** + 15 cells 特征提取、sanity **13/13**、freeze `5f2bbd54…`、0 failed：D 与 I **近似无关**（pooled ρ 0.0666），**15/15 cells 同时 D↑I↓**，L2-only/L3-only 各 15/15；score-level primary 25% **C6b FAIL**（胜 FULL 5/15、Δd′ −0.2285）；secondary 50% Δd′ +0.1892 / Δ\|Δz\| −0.1610（胜 FULL 11/15、胜 random 15/15）；PARETO mask 崩溃；cable 系统性负迁移 | **CASE_B**（Plan C = **HOLD**） | DONE |
 | [7A-O Q4](results/experiment_7a_o_q4/README.md) | uniform normalization strength 响应图 + illumination condition × seed 补齐 | 9 个历史 α 点补齐到 **15/15**（5 cat × 3 seeds）：\|Δz\| 0.3105(α=0) → 0.1895(α=0.601) → 0.1902(α=0.802)，d′ 4.9852 → 4.5078；**α=0.20 支配 α=0**；**α=0.8018 被 α=0.6014 支配**；Q4-B 补 20 个 stress 单元 | **asset completion**（非方法） | DONE `b726476` |
 | [7A-O Q3](results/experiment_7a_o_q3/README.md) | 最强 baseline 在更系统 illumination severity 下的退化 | 12 conditions（复用历史唯一实现 brightness/gamma，severity 扩展到 ±10/30/50%）：medium 档与历史 **`max\|Δscore\|=0`**；Uniform 12/12 条件 \|Δz\| 更低；slope **1.886 vs 2.825**（−33%） | **baseline stress-test** | DONE `b726476` |
@@ -705,22 +705,27 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 | 候选 | type | bottle d′ / \|Δz\| | cable d′ / \|Δz\| | Verdict |
 |---|---|---|---|---|
-| M1 illumination-robust representation | NEW | **8.2904 / 0.2850**（B0 = 8.2650 / 0.4782）→ **跑出 frontier** | 4.8428 / **0.6687**（robustness 恶化 +0.323） | 🟡 HOLD（方向相反） |
+| M1 illumination-robust representation | NEW | **8.2904 / 0.2850**（B0 = 8.2650 / 0.4782）→ **跑出 frontier** | 4.8428 / **0.6687**（robustness 恶化 +0.323） | 🟡 **HOLD — category-dependent / cross-category unstable** |
 | M2 dual concat（复用 7A-O） | REUSE | 8.1708 / 0.3379 → 跑出 frontier | 5.1008 / 0.3275 → 被支配 | 🟡 HOLD |
-| M3 nuisance 子空间抑制 k=16 | NEW | 8.3909 / 0.4695 | 5.2094 / 0.3808 → 被支配 | 🟡 HOLD |
+| M3 nuisance 子空间抑制 k=16 | NEW | 8.3909 / 0.4695（Δ\|Δz\| = −0.009，无实质 robustness 改善） | 5.2094 / 0.3808 → 被支配（Δ\|Δz\| = +0.035） | 🔴 **STOP — 两类别均无 robustness 改善** |
 | M4 residual compensation | SANITY | 表示层 ≡ α_eff=(1−λ)α′（max\|ΔF\|=1.91e-06） | — | 🔴 **STOP — algebraically redundant** |
 | M5 selective bypass | HOLD | — | — | 🟡 **HOLD — implementation unresolved** |
-| M6 channel-selective 25%/50% | REUSE | 7.7321 / 0.1276 · 8.8594 / 0.1622（bottle 跑出 frontier） | 4.1392 / 0.2140 · 4.7743 / 0.1750（被支配） | 🟡 HOLD — **ORACLE UPPER BOUND**（selection 用 test mask，非 deployable） |
+| M6 channel-selective 25%/50% | REUSE | 7.7321 / 0.1276 · 8.8594 / 0.1622（bottle 跑出 frontier） | 4.1392 / 0.2140 · 4.7743 / 0.1750（被支配） | **ORACLE_REFERENCE — ORACLE UPPER BOUND**（selection 用 test mask；**不是 deployable 方法，不计入晋级**） |
 
 - **M4 补充事实**：两种等价实现的 **score** 并不逐位相同（max\|Δscore\|=1.773，r=0.99949，mean Δ=−0.033），但**同配置重复运行 bit-identical（max\|Δscore\|=0.0）** → score 差异来自 PatchCore fit 路径（KCenterGreedy coreset 顺序选择）对 1e-6 级表示扰动的放大，而非实现错误。sanity 判据据此由「score 逐位相等」修正为「表示层等价 + 管线确定性」（已在实验 README §9.2 完整披露）。
 
-**淘汰了谁 / 晋级了谁**：🔴 STOP = **M4**（代数冗余，永久）；🟡 HOLD = **M5**（无公平 selection rule，本轮不实现）+ **M1 / M2 / M3 / M6**（全部单侧：bottle 跑出 frontier、cable 被支配或恶化）；🟢 **PROMOTE = 无**。10/10 sanity PASS，其中 `bottle:0 B0_original` 与历史 5A-H B0 **逐位一致（max\|Δscore\|=0.0）**，证明新 runner 未破坏 baseline 管线。
+**淘汰了谁 / 晋级了谁（最终统一判定 ADVANCE / HOLD / STOP / ORACLE_REFERENCE）**：
+- 🟢 **第一梯队（ADVANCE）= 空 → 9A 本轮无方法晋级**：没有任何候选在两类别上同时满足预注册 trade-off 条件并跑出既有 frontier（不强行选「最好看」的方法）。
+- 🟡 第二梯队（HOLD）= **M1**（唯一有真实 frontier 越界幅度，但类别依赖：bottle 强越界 / cable 反向恶化）、**M2**（沿 frontier 移动）、**M5**（无公平 selection rule，本轮不实现）。
+- 🔴 淘汰（STOP）= **M3**（两类别均无 robustness 改善 → 不构成 trade-off 改善）、**M4**（代数冗余，永久关闭）。
+- 参照 = **M6**（oracle 25%/50%，不计入晋级）。
+- 详细 10 列候选筛选表与梯队理由见 `results/experiment_9a_screening/README.md` §15–§16。10/10 sanity PASS，其中 `bottle:0 B0_original` 与历史 5A-H B0 **逐位一致（max\|Δscore\|=0.0）**，证明新 runner 未破坏 baseline 管线。
 
 **推进了哪一格**：完成第 **⑩-c 格「M1–M6 统一海选结论」**；并第四次独立强化「改 representation 只能选择工作点、不能改变 frontier 形状」（唯一例外 M1-bottle 被 M1-cable 反向结果抵消）。**未推进方法贡献格**。
 
 **下一步（未启动，需人工批准）**：仅建议 **M1 进入 Round-2 候选验证**（5 类别 × ≥2 seed；把「类别统计同质性」作为预注册调节变量检验 H1/H2）；M2/M3 已被本轮 + 7A-O 双重判定为沿 frontier 移动，建议不再投入；M6 仅作 oracle 参照；M4 永久 STOP；M5 视 Round-2 结果再定。
 
-**入口**：`results/experiment_9a_screening/README.md`（P0 审计 / frozen protocol / 异常披露 / negative results / 复现命令）；产物 `summary/{raw_results, screening_summary, uniform_alpha_frontier, runtime_summary, m4_equivalence, sanity_checks}` 与 `figures/fig1_robustness_preservation_plane.png`；代码 `scripts/experiment9a_{model,runner,analysis}.py`、`scripts/experiment_progress.py`、`monitor_progress.py`。
+**入口**：`results/experiment_9a_screening/README.md`（P0 审计 / frozen protocol / **§15 候选筛选表 / §16 梯队 / §17 M1·M3·M4 专项记录** / 异常披露 / negative results / 复现命令）；产物 `summary/{raw_results, screening_summary, ranking, uniform_alpha_frontier, progress_units, runtime_summary, m4_equivalence, sanity_checks}` 与 `figures/fig1_robustness_preservation_plane.png`；代码 `scripts/experiment9a_{model,runner,analysis}.py`、`scripts/experiment_progress.py`、`monitor_progress.py`。
 
 ---
 
