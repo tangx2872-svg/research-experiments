@@ -1,0 +1,53 @@
+Experiment 9B — Second Method Screening (M7-M11) | progress log
+date 2026-10-07 | RTX 3090 | conda base
+
+================================================================================================
+[round] smoke
+================================================================================================
+worker w0 pid=418797 units_total=2 closed=True started=20:03:00
+  done: bottle:0:SMOKE_gate_const025                 73.94s ok 
+  done: bottle:0:M8_gate_ab025_b050                  72.93s ok 
+worker w1 pid=418798 units_total=2 closed=True started=20:02:59
+  done: bottle:0:M9_sw_gamma1                        74.95s ok 
+  done: bottle:0:M11_L2heavy_b050                    72.08s ok 
+worker w2 pid=418799 units_total=2 closed=True started=20:03:00
+  done: bottle:0:SMOKE_orig_a000                     71.78s ok resume-skip
+  done: bottle:0:M7_L2a025_L3a000                    71.63s ok resume-skip
+
+================================================================================================
+[round] round0
+================================================================================================
+worker w0 pid=419467 units_total=5 closed=True started=20:08:37
+  done: cable:0:M7_L2a000_L3a025                    189.40s ok 
+  done: cable:0:M7_L2a000_L3a050                    179.90s ok 
+  done: bottle:0:M7_L2a000_L3a025                    94.10s ok 
+  done: cable:0:M8_gate_ab025_b050                  122.51s ok 
+  done: bottle:0:SMOKE_uniform_a025                  80.33s ok 
+worker w1 pid=419468 units_total=5 closed=True started=20:08:37
+  done: cable:0:M7_L2a025_L3a000                    190.97s ok 
+  done: cable:0:M7_L2a025_L3a050                    185.49s ok 
+  done: bottle:0:M7_L2a000_L3a050                   120.22s ok 
+  done: bottle:0:M7_L2a025_L3a050                    99.72s ok 
+  done: cable:0:M9_sw_gamma1                        135.60s ok 
+worker w2 pid=419469 units_total=5 closed=True started=20:08:37
+  done: cable:0:M7_L2a050_L3a000                    189.93s ok 
+  done: cable:0:M7_L2a050_L3a025                    188.57s ok 
+  done: bottle:0:M7_L2a050_L3a000                   116.19s ok 
+  done: cable:0:M11_L2heavy_b050                    145.20s ok 
+  done: bottle:0:M7_L2a050_L3a025                    87.01s ok 
+worker w3 pid=419470 units_total=6 closed=True started=20:08:38
+  done: cable:0:M8_gate_ab025_b100                  191.34s ok 
+  done: cable:0:M9_sw_gamma2                        186.68s ok 
+  done: cable:0:M11_L2heavy_b100                    156.75s ok 
+  done: bottle:0:M8_gate_ab025_b100                  89.01s ok 
+  done: bottle:0:M9_sw_gamma2                        95.78s ok 
+  done: bottle:0:M11_L2heavy_b100                    48.19s ok 
+
+================================================================================================
+[round] diag
+================================================================================================
+worker w0 pid=421207 units_total=1 closed=True started=20:24:19
+  done: bottle:0:SMOKE_gate_const025                 69.75s ok 
+worker w1 pid=421208 units_total=1 closed=True started=20:24:22
+  done: bottle:0:SMOKE_uniform_a025                  68.70s ok 
+

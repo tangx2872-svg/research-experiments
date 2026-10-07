@@ -1,0 +1,13 @@
+check,status,detail
+S1_dataset_completeness,PASS,bottle/cable train+test present
+S2_required_sources_present,PASS,"9B-run sources all present; reused-historical coverage gaps (expected): [('cable', 0, '7AO:B1_g025'), ('cable', 0, '7AO:B1_g050')]"
+S3_no_nan_inf_scores,PASS,13785 scores finite
+S4_row_count_consistency,PASS,"{'bottle': [183], 'cable': [402]}"
+S5_baseline_pipeline_intact_smoke_a0_vs_5AH_B0,PASS,bottle:0 alpha=0: n=183 max|dscore|=0.000e+00
+S6_const_gate_equals_uniform_alpha_metric_level,PASS,"const gate .25 vs 9B uniform .25 (bottle:0): |d|dz||=0.0202 |dd'|=0.0542 (score max|d|=1.330e+00, n=183; score 级差异 = coreset 轨迹差, 见 README)"
+S6b_coreset_trajectory_noise_floor_measured,PASS,"NF(|dz|)=0.0202  NF(d')=0.0542  (bottle seed0, identical embedding math)"
+S6c_alpha_path_bit_exact_vs_6A,PASS,9B uniform alpha=0.25 vs 6A aF025000000: n=183 max|dscore|=0.000e+00
+S7_M10_reuse_from_frozen_7AO_B1_family,PASS,bottle: d'=8.1708 |dz|=0.3379 (7A-O frozen raw); cable: d'=5.1008 |dz|=0.3275 (7A-O frozen raw)
+S8_gate_stats_recorded_and_non_degenerate,PASS,12 candidate gate units non-degenerate; 2 constant-gate control units (std=0 expected)
+S9_all_9B_units_OK,PASS,27 units; statuses=['OK']
+S10_sensitivity_train_only_no_target_leakage,PASS,"n_train/hash/source recorded: [('train/good only (normal-only)', 189, '5416a18c4e4aa543'), ('train/good only (normal-only)', 204, '2226e4c2ab35a17f')]"

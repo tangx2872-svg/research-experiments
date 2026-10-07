@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "cable",
+  "seed": 0,
+  "config": "M8_gate_ab025_b100",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 191.1,
+  "coreset_size": 22937,
+  "tau_val": 28.036771774291992,
+  "peak_gpu_memory_allocated_mb": 2785.04,
+  "train_ids_hash": "ccdde4e50e23",
+  "n_rows": 402,
+  "pixel_auroc": 0.98110835425,
+  "aupro": 0.9212409853935242
+}

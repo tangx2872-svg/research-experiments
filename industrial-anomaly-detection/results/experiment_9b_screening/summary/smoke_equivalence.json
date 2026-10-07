@@ -1,0 +1,49 @@
+{
+  "_purpose": "9B P3 sanity: 管线完整性 / gate-path 等价性 / coreset 轨迹噪声地板",
+  "S5_smoke_alpha0_vs_5AH_B0": {
+    "n": 183,
+    "max_abs_delta_score": 0.0,
+    "bit_exact": true
+  },
+  "S6c_9B_alpha025_vs_6A_alpha025": {
+    "n": 183,
+    "max_abs_delta_score": 0.0,
+    "bit_exact": true
+  },
+  "S6_gate_const025_vs_alpha025_same_runner": {
+    "n": 183,
+    "max_abs_delta_score": 1.3298530578613281,
+    "bit_exact": false
+  },
+  "gate_repeat_run1_vs_run2": {
+    "n": 183,
+    "max_abs_delta_score": 0.0,
+    "bit_exact": true
+  },
+  "alpha_repeat_run1_vs_run2": {
+    "n": 183,
+    "max_abs_delta_score": 0.0,
+    "bit_exact": true
+  },
+  "noise_floor": {
+    "definition": "same embedding math (gate const 0.25 == alpha 0.25, embedding max|d|=0.0 on GPU), different RNG state at KCenterGreedy",
+    "NF_absz": 0.0202239841198954,
+    "NF_dprime": 0.054211192406529385,
+    "gate_absz": 0.31676461764975705,
+    "alpha_absz": 0.33698860176965245,
+    "gate_dprime": 7.69471703641923,
+    "alpha_dprime": 7.640505844012701,
+    "rng_diagnostics": {
+      "alpha_branch_after_model_construction": {
+        "torch_rand": 0.950907766819,
+        "torch_randint": 78637
+      },
+      "gate_branch_after_model_construction": {
+        "torch_rand": 0.5424310564995,
+        "torch_randint": 3666
+      },
+      "identical": false,
+      "explanation": "gate 分支比 α 分支多构造一个 PatchcoreModel（timm 权重加载消耗全局 torch RNG）"
+    }
+  }
+}

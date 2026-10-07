@@ -17,7 +17,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6 Round-1：9A 本轮无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE 参照）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -166,6 +166,7 @@
 
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
+| [9B](results/experiment_9b_screening/README.md) | 9A 无晋级后，是否存在 deployable / normal-only / training-free 的第二批候选（M7–M11）能改善 trade-off | **29 GPU unit-runs / 3461 GPU·s**、sanity **12/12**、0 failed：**无候选 ADVANCE**；bottle 侧存在真实越界（M8_b100 **+0.937** d′、M11_b100 +0.804、M9_g1 +0.705，均 >> 噪声地板），但 cable 侧**无候选越界**且通道门方法 cable Δd′ −0.34…−0.76；M7 出现 **layer×category 交互**（bottle 偏好 L3、cable 偏好 L2，与预注册方向相反）；M10 = 7A-O `B1_g100` 复用；实测 **coreset 轨迹噪声地板 NF=0.020/0.054**（RNG 状态分歧机制已定位） | **无 ADVANCE**（M7–M11 全 HOLD） | DONE |
 | [9A](results/experiment_9a_screening/README.md) | M1–M6 中哪些方法有希望更好地改善 robustness–preservation trade-off（最低 GPU 成本的快速海选） | **8 GPU units / 922.6 GPU·s**、sanity **10/10**、0 failed、B0 与 5A-H **逐位一致**：M1 bottle d′ 8.2904 / \|Δz\| 0.2850 **跑出 frontier**，但 cable \|Δz\| 0.6687（比 B0 恶化 +0.323）；M2/M3 仅单侧；M6 为 **ORACLE**（bottle 跑出、cable 被支配）；M4 表示层 ≡ α_eff（max\|ΔF\|=1.91e-06）→ 冗余 | **无 ADVANCE（9A 本轮无方法晋级）**；STOP = M3/M4，HOLD = M1/M2/M5，M6 = **ORACLE 参照** | DONE `73eb8be` |
 | [8B](experiments/experiment8b/README.md) | pretrained representation 中是否存在「defect-sensitive 但 illumination-stable」的 feature/channel 子空间（决定 Plan C 是否值得做） | **420 GPU units** + 15 cells 特征提取、sanity **13/13**、freeze `5f2bbd54…`、0 failed：D 与 I **近似无关**（pooled ρ 0.0666），**15/15 cells 同时 D↑I↓**，L2-only/L3-only 各 15/15；score-level primary 25% **C6b FAIL**（胜 FULL 5/15、Δd′ −0.2285）；secondary 50% Δd′ +0.1892 / Δ\|Δz\| −0.1610（胜 FULL 11/15、胜 random 15/15）；PARETO mask 崩溃；cable 系统性负迁移 | **CASE_B**（Plan C = **HOLD**） | DONE |
 | [7A-O Q4](results/experiment_7a_o_q4/README.md) | uniform normalization strength 响应图 + illumination condition × seed 补齐 | 9 个历史 α 点补齐到 **15/15**（5 cat × 3 seeds）：\|Δz\| 0.3105(α=0) → 0.1895(α=0.601) → 0.1902(α=0.802)，d′ 4.9852 → 4.5078；**α=0.20 支配 α=0**；**α=0.8018 被 α=0.6014 支配**；Q4-B 补 20 个 stress 单元 | **asset completion**（非方法） | DONE `b726476` |
@@ -729,7 +730,57 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 13. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
+## 13. Experiment 9B — Second Method Screening（M7–M11，2026-10-07）
+
+**为什么做**：9A 的 M1–M6 **无一晋级**（M3/M4 STOP、M1/M2/M5 HOLD、M6 仅 oracle），方法侧仍缺一个「可用」候选。9B 在**更严格的可用性约束**下测试第二批候选：全部必须 **deployable（无 oracle / 无 test defect mask / 无 test label）、normal-only（统计量只来自 train/good）、training-free（无梯度、无 learned fusion）**。
+
+**候选（协议在读取任何 9B 结果前冻结于 `results/experiment_9b_screening/config.json`）**
+
+| 候选 | 机制 | 冻结参数 |
+|---|---|---|
+| **M7** Layer-Selective Normalization | 逐层独立 α-IN | `α_L2, α_L3 ∈ {0, 0.25, 0.5}`，排除 `α_L2 = α_L3` → 6 configs |
+| **M8** Normal-Only Channel Gate | 由 train-only `s_c` 构造软门 `F'_c=(1−a_c)F_c+a_c·IN(F)_c` | `a_c = clip(0.25 + β·z_c, 0, 1)`，β ∈ {0.5, 1.0} |
+| **M9** Soft Channel Weighting | M3 hard projection 的温和替代（绝对标度映射） | `w_c = clip((s_c/p90_c)^γ, 0, 1)`，γ ∈ {1, 2} |
+| **M10** Original + Robust Concat | fixed concat(original, robust) | **REUSE：与 7A-O Family B `dual_step(γ)` 定义等价 → 0 GPU** |
+| **M11** Layer × Channel Gate | M7 层级强度 × M8 channel 门 | `(a_bar_L2, a_bar_L3) = (0.5, 0.0)`，β ∈ {0.5, 1.0} |
+
+**规模与成本**：`smoke` 6 + `round0` 21 + `diag` 2 = **29 GPU unit-runs / 3461 GPU·s（串行 57.7 min；4 workers 墙钟 ≈ 21 min）**，failed = **0**；M10 与全部 baseline/frontier **0 GPU 复用**；峰值显存 2605–2785 MB；**sanity 12/12 PASS**。
+
+**关键数字（bottle / cable seed0；robustness = mean\|Δz\| 低好，preservation = mean d′ 高好）**
+
+| 候选 | bottle d′ / \|Δz\| | cable d′ / \|Δz\| | 越界 (bottle / cable) | Decision |
+|---|---|---|---|---|
+| M7_L2a000_L3a025 | 8.0216 / 0.3355 | 5.2912 / 0.3154 | +0.047 / +0.019（**均 ≤ 噪声地板**） | HOLD |
+| M7_L2a000_L3a050 | 7.8422 / 0.2806 | 4.9804 / 0.2930 | +0.287 / −0.227 | HOLD |
+| M7_L2a025_L3a000 | 7.8876 / 0.3756 | 5.3635 / 0.3594 | −0.169 / +0.091 | HOLD |
+| M8_gate_ab025_b050 | 7.5498 / 0.2487 | 4.6218 / 0.1907 | **+0.690** / −0.174 | HOLD |
+| M8_gate_ab025_b100 | 7.4397 / 0.1929 | 4.3830 / 0.2043 | **+0.937** / −0.413 | HOLD |
+| M9_sw_gamma1 | 7.2072 / 0.2251 | 4.8089 / 0.2107 | **+0.705** / +0.013 | HOLD |
+| M9_sw_gamma2 | 7.5761 / 0.2596 | 4.7507 / 0.2208 | +0.413 / −0.045 | HOLD |
+| M11_L2heavy_b050 | 7.5118 / 0.2562 | 4.7732 / 0.2022 | +0.442 / −0.022 | HOLD |
+| M11_L2heavy_b100 | 7.3069 / 0.2272 | 4.5688 / 0.1872 | +0.804 / −0.227 | HOLD |
+| M10_concat_g100（复用） | 8.1708 / 0.3379 | 5.1008 / 0.3275 | +0.191 / −0.172 | HOLD |
+| *B0 (α=0)* | 8.2650 / 0.4782 | 5.1463 / 0.3455 | — | BASELINE（与 5A-H **逐位一致**） |
+| *B2 Uniform (α=0.4009)* | 7.4638 / 0.2703 | 5.0488 / 0.2641 | — | BASELINE |
+
+**结论**：> **Experiment 9B: no candidate promoted.** 第一梯队（ADVANCE）为空；**M7/M8/M9/M10/M11 全部 HOLD**。
+- bottle 侧存在**真实越界**（M8_b100 +0.937、M11_b100 +0.804、M9_g1 +0.705 d′，全部 >> 噪声地板）；
+- cable 侧**无候选越界**，且通道门方法（M8/M9/M11）cable Δd′ = −0.34 … −0.76 → 严重跨类别不一致；
+- 唯一两类别同时非支配的是 **M7_L2a000_L3a025**，但两侧越界均 ≤ 噪声地板；
+- **M10 第三次独立确认**（= 9A M2 = 7A-O `B1_g100`）：bottle 越界、cable 被支配。
+- **预注册方向假设被反驳**：1H 预测 α_L2-heavy 更优，实测 **bottle 偏好 L3 归一化、cable 偏好 L2 归一化**（layer × category 交互）。
+
+**方法学副产物（重要）**：实测 **coreset 轨迹噪声地板 NF(\|Δz\|) = 0.0202、NF(d′) = 0.0542**，由「embedding 完全一致（max\|ΔE\| = 0.0）、仅 fit 路径 RNG 状态不同」的受控对照测得；机制已验证：**gate 分支比 α 分支多构造一个模型 → timm 权重加载消耗全局 torch RNG → KCenterGreedy 初始点不同**（`torch.rand` 0.9509 vs 0.5424、`randint` 78637 vs 3666）。这为所有「frontier 越界」结论提供了判读阈值，并**更正了 9A 对 M4 score 级差异的归因**（结论不变、无需重跑）。
+
+**本轮推进了什么**：完成「第二批候选海选」格（deployable/normal-only/training-free 下 **无候选晋级**）+ 一个可复用的噪声地板判读框架 + 一条被反驳的预注册假设 + cable 弱侧的第三次独立证据。
+
+**下一步（未启动，需人工批准）**：不启动 5 类别 full validation；若继续，先解决判读阈值（`engine.fit` 前重播 seed 或 matched-RNG 对照，二者均需新协议）；M7 的 layer × category 交互可作 H1/H2 检验对象；M8/M9/M11 需先在 cable 上解决 preservation 崩溃。
+
+**入口**：`results/experiment_9b_screening/README.md`（§8 候选筛选表 / §9 事实-解释-假设 / §12 bug 与更正 / §14 下一步）；产物 `summary/*` 与 `figures/robustness_preservation_plane.png`；代码 `scripts/experiment9b_{model,runner,analysis}.py`。
+
+---
+
+## 14. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 
 **事实（实验直接观察到）**
 
@@ -791,7 +842,7 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 14. 下一步（建议，均未启动，需人工批准）
+## 15. 下一步（建议，均未启动，需人工批准）
 
 0. **5D CASE 归属裁决（人工，仍未决）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
    [5D README §15](experiments/experiment5d/README.md)。
@@ -827,7 +878,7 @@ C1–C5、C6a、C7 全部成立，**C6b（score-level probe）FAIL**（(i) 胜 F
 
 ---
 
-## 15. 复现与工程约定
+## 16. 复现与工程约定
 
 - 2026-10-06 曾在 AutoDL 完成一次**全量资产恢复复现审计**（1848 NPZ / 30 banks / 1386 intervention rows），
   详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；**6A 的 10 个 GPU unit 亦在同一路径上运行，smoke 重跑 5A B1

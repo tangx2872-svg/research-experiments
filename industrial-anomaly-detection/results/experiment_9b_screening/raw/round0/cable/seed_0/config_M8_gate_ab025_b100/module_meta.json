@@ -1,0 +1,68 @@
+{
+  "experiment": "9B",
+  "unit": "cable:0:M8_gate_ab025_b100",
+  "config": "M8_gate_ab025_b100",
+  "round": "round0",
+  "candidate": true,
+  "spec": {
+    "kind": "gate",
+    "alpha_l2": -1.0,
+    "alpha_l3": -1.0,
+    "gate_l2": [
+      "m8_zmap",
+      {
+        "a_bar": 0.25,
+        "beta": 1.0
+      }
+    ],
+    "gate_l3": [
+      "m8_zmap",
+      {
+        "a_bar": 0.25,
+        "beta": 1.0
+      }
+    ]
+  },
+  "gate_stats": {
+    "layer2": {
+      "map": "m8_zmap",
+      "desc": "clip(a_bar + beta*z_c, 0, 1); a_bar=0.25 beta=1",
+      "mean": 0.27542652455148064,
+      "std": 0.35825829517550983,
+      "min": 0.0,
+      "max": 1.0,
+      "frac_ge_1": 0.111328125,
+      "frac_le_0": 0.466796875
+    },
+    "layer3": {
+      "map": "m8_zmap",
+      "desc": "clip(a_bar + beta*z_c, 0, 1); a_bar=0.25 beta=1",
+      "mean": 0.3080861723547407,
+      "std": 0.39899377922766205,
+      "min": 0.0,
+      "max": 1.0,
+      "frac_ge_1": 0.169921875,
+      "frac_le_0": 0.4990234375
+    }
+  },
+  "sensitivity_meta": {
+    "category": "cable",
+    "seed": 0,
+    "hash": "2226e4c2ab35a17f",
+    "n_train": 204,
+    "reused": true,
+    "source": "train/good only (normal-only)"
+  },
+  "gate_mean_l2": 0.2754265367984772,
+  "gate_mean_l3": 0.30808618664741516,
+  "embedding_dim": 1536,
+  "prep_seconds": 7.41,
+  "memory_bank_size": 22937,
+  "runtime_seconds": 191.1,
+  "wallclock_seconds": 191.34,
+  "peak_gpu_memory_allocated_mb": 2785.04,
+  "declared_alpha_l2": -1.0,
+  "declared_alpha_l3": -1.0,
+  "status": "ok",
+  "detail": ""
+}

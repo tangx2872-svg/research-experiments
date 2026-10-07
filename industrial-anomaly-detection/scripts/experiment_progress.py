@@ -17,6 +17,8 @@ from pathlib import Path
 PROGRESS_DIRNAME = "progress"
 BAR_WIDTH = 22
 RECENT_WINDOW = 8
+# throughput 基需要足够长的时间跨度，否则「多个 unit 几乎同时完成」会算出荒谬的速率
+MIN_RATE_SPAN = 20.0   # seconds
 
 
 def progress_dir(root: Path) -> Path:
@@ -109,8 +111,9 @@ def estimate(shards, now=None, window=RECENT_WINDOW, alive_workers=None) -> dict
     if len(ts) >= 3:
         win = ts[-window:]
         span = win[-1] - win[0]
-        if span > 1e-6:
+        if span >= MIN_RATE_SPAN:
             rate = (len(win) - 1) / span
+        # span 过短时 rate=None -> 自动退回 duration/worker 基（更稳健）
     eta_rate = (remaining / rate) if (rate and rate > 0) else None
     eta_dur = (remaining * avg_unit / workers) if (avg_unit is not None) else None
 

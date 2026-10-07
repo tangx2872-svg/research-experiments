@@ -259,3 +259,19 @@ results/experiment_9a_screening/
 | baseline 管线未破坏 | `bottle:0 B0_original` 与历史 5A-H B0 逐位一致（max\|Δscore\| = 0.0） |
 | reuse 一致性 | M6 与 8B 冻结指标逐位一致；M2 = 7A-O 冻结 `B1_g100` |
 | 提交范围 | 仅 source/config/README/summary CSV+JSON/小型 figure + 小体积 raw 主证据；不提交 cache / logs / progress / 大文件 |
+
+## 19. 后续更正（由 Experiment 9B 的受控实验发现，2026-10-07）
+
+§17.3 曾把「M4 组合形式 vs 直接 α_eff」的 score 级差异（max|Δscore| = 1.773）归因于
+「PatchCore fit 路径对 1e-6 级表示扰动的放大」。
+
+**更正**：9B 的受控对照（const-gate 0.25 vs uniform α=0.25，embedding 差异 **0.0**，却仍出现 score 差异 1.330）
+证明真正的机制是 **全局 torch RNG 状态分歧**：gate 分支比 α 分支多构造一个模型，而 timm 权重加载会消耗全局 RNG，
+导致 KCenterGreedy 的初始采样点不同（实测 `torch.rand` 0.9509 vs 0.5424、`randint` 78637 vs 3666）→ coreset 轨迹不同。
+与「表示层扰动的放大」无关（也表示层扰动本身并不足以导致该差异）。
+
+**对 9A 结论的影响**：**无**。
+- M4 的「代数冗余」由 embedding 级等价（max|ΔF| = 1.906e-06）确立，与 score 级差异无关；
+- score 级差异在 9A 中就**未被**当作任何证据（§17.3 明确写了「不能作为方法改善证据」）；
+- **无需重跑任何 9A 单元**；`diag` 重复运行与同配置 bit-exact（0.0）的事实仍然成立。
+- 仅归因句子更正。详见 `../experiment_9b_screening/README.md` §12.4 与 `summary/smoke_equivalence.json`。

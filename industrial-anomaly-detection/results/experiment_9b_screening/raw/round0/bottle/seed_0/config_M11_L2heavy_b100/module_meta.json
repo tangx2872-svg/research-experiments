@@ -1,0 +1,68 @@
+{
+  "experiment": "9B",
+  "unit": "bottle:0:M11_L2heavy_b100",
+  "config": "M11_L2heavy_b100",
+  "round": "round0",
+  "candidate": true,
+  "spec": {
+    "kind": "gate",
+    "alpha_l2": -1.0,
+    "alpha_l3": -1.0,
+    "gate_l2": [
+      "m8_zmap",
+      {
+        "a_bar": 0.5,
+        "beta": 1.0
+      }
+    ],
+    "gate_l3": [
+      "m8_zmap",
+      {
+        "a_bar": 0.0,
+        "beta": 1.0
+      }
+    ]
+  },
+  "gate_stats": {
+    "layer2": {
+      "map": "m8_zmap",
+      "desc": "clip(a_bar + beta*z_c, 0, 1); a_bar=0.5 beta=1",
+      "mean": 0.41483298222551146,
+      "std": 0.4152295527779726,
+      "min": 0.0,
+      "max": 1.0,
+      "frac_ge_1": 0.23828125,
+      "frac_le_0": 0.345703125
+    },
+    "layer3": {
+      "map": "m8_zmap",
+      "desc": "clip(a_bar + beta*z_c, 0, 1); a_bar=0 beta=1",
+      "mean": 0.20310002461968674,
+      "std": 0.34567201512484586,
+      "min": 0.0,
+      "max": 1.0,
+      "frac_ge_1": 0.1005859375,
+      "frac_le_0": 0.6484375
+    }
+  },
+  "sensitivity_meta": {
+    "category": "bottle",
+    "seed": 0,
+    "hash": "5416a18c4e4aa543",
+    "n_train": 189,
+    "reused": true,
+    "source": "train/good only (normal-only)"
+  },
+  "gate_mean_l2": 0.4148329496383667,
+  "gate_mean_l3": 0.2031000256538391,
+  "embedding_dim": 1536,
+  "prep_seconds": 8.73,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 47.95,
+  "wallclock_seconds": 48.19,
+  "peak_gpu_memory_allocated_mb": 2605.04,
+  "declared_alpha_l2": -1.0,
+  "declared_alpha_l3": -1.0,
+  "status": "ok",
+  "detail": ""
+}
