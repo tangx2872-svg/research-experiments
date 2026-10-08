@@ -1,0 +1,19 @@
+{
+  "extract": [
+    "bottle:0",
+    "bottle:1",
+    "bottle:2",
+    "cable:0",
+    "cable:1",
+    "cable:2",
+    "hazelnut:0",
+    "hazelnut:1",
+    "hazelnut:2",
+    "screw:0",
+    "screw:1",
+    "screw:2",
+    "grid:0",
+    "grid:1",
+    "grid:2"
+  ]
+}

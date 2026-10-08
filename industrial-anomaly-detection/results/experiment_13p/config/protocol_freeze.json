@@ -1,0 +1,22 @@
+{
+  "frozen": true,
+  "data": {"dataset": "MVTec AD", "categories": ["bottle", "cable", "hazelnut", "screw", "grid"],
+           "subspace_estimation_source": "train/good ONLY",
+           "test_defect_usage": "仅用于冻结 subspace 之后的只读 overlap diagnostic（不参与 PCA/选 K/选 augmentation）"},
+  "sampling": {"primary_seed": 0, "stability_seeds": [0, 1, 2],
+               "N_primary": "min(64, n_train_good)", "N_if_over_budget": "min(32, n_train_good)",
+               "n_decision_point": "在任何 target statistic 之前决定；不得因结果改 N",
+               "record": "实际 sampled filenames 落盘"},
+  "features": {"backbone": "wide_resnet50_2", "layers": ["layer2", "layer3"],
+               "space": "pooled / pre-concat（与 generate_embedding 输入一致）",
+               "spatial": "layer2 32x32, layer3 upsample→32x32；每图 1024 个空间位置",
+               "paired_difference": "dF_l,k(x,u) = F_l(T_k(x))[u] - F_l(x)[u]，**同一图同一空间位置严格对应**；禁止跨图/跨位置相减",
+               "secondary": "post-concat embedding 仅作可选诊断，不替代 layer2/layer3"},
+  "pca": {"definitions": {"PRIMARY_centered": "对 D 先 center（减全局均值）再 PCA（任务书 §8 规定）",
+                          "SECONDARY_uncentered": "D 的未中心化二阶矩（= 9A nuisance_basis 的定义，含平均 illumination 响应方向）"},
+           "why_both": "center 会移除平均 illumination 响应方向（通常是亮度响应的主方向）；两者都预注册，verdict 以 PRIMARY 为准，若二者结论不一致必须如实报告",
+           "K_grid": [1, 2, 4, 8, 16, 32], "solver": "eigh（C<=1024，精确解）",
+           "covariance_accumulation": "在线累加 sum_d (C,) 与 sum_ddT (C,C)（float64）；centered cov = sum_ddT - sum_d sum_d^T / n；逐 perturbation 分别累加"},
+  "stop_rules": {"hard_minutes": 45, "on_over_budget": ["N 64→32（仅在 target statistic 之前）", "减少 secondary diagnostics", "保留 Primary A/B/C"],
+                 "no_auto_exp13": true}
+}

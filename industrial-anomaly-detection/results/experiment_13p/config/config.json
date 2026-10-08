@@ -1,0 +1,26 @@
+{
+  "experiment": "13-P",
+  "title": "Illumination-Nuisance Subspace Feasibility Probe",
+  "date": "2026-10-08",
+  "git_head_at_freeze": "ae9aec5",
+  "nature": "Feasibility Probe（不是正式方法实验；不追求 AUROC；不允许围绕结果调参）",
+  "paper_stage": "Method Candidate Search — New Family Feasibility Probe（前一 family: Fixed C2 -> Adaptive B2 -> Category x Channel = STOP）",
+  "question": "能否仅用 normal/train 图像在受控 illumination perturbation 下产生的 feature differences，估计一个稳定的 illumination-nuisance subspace？",
+  "sub_questions": [
+    "是否明显低维（EV@K / K80）",
+    "是否在 augmentation / category / sampling seed 下稳定",
+    "是否与 defect-sensitive representation 存在（且特异的）可测关系"
+  ],
+  "frozen_files": {
+    "protocol_freeze.json": "数据/采样/特征/pairing/PCA 定义",
+    "augmentation_registry.json": "4 个 photometric 扰动 + 禁止事项",
+    "analysis_plan.json": "指标 A-E + CASE A/B/C/D 判据 + 禁止事项"
+  },
+  "config_summary": {"categories": ["bottle", "cable", "hazelnut", "screw", "grid"],
+                     "layers": ["layer2", "layer3"], "backbone": "wide_resnet50_2",
+                     "N_per_category": 64, "sampling_seeds": [0, 1, 2], "K_grid": [1, 2, 4, 8, 16, 32],
+                     "K_main_subspace": 8, "random_subspace_draws": 100},
+  "verdict_criteria_source": "analysis_plan.json (frozen; no threshold change after results)",
+  "budget": {"target_minutes": "20-40", "hard_minutes": 45, "workers_default": 4, "workers_hard_cap_global": 4},
+  "data_volume_note": "中间产物 raw/*/seed_*/stats.npz（逐 perturbation 的 sum_d/sum_ddT）与 analysis/defect_stats_*.npz（S=Σdd^T 矩阵）体积较大（合计 ~860MB），属 feature dump，不入库；可用已提交的 scripts/experiment13p_{extract,defect}.py 复现。"
+}

@@ -254,3 +254,11 @@ results/experiment_12/logs/
 results/experiment_12/progress/
 results/experiment_12/reference/
 results/experiment_12/**/fit/
+
+# Experiment 13-P（Feasibility Probe；纳入 raw 轻量统计 + analysis + figures + config + README，排除 logs/progress）
+!results/experiment_13p/
+results/experiment_13p/logs/
+results/experiment_13p/progress/
+results/experiment_13p/**/fit/
+results/experiment_13p/raw/*/seed_*/stats.npz
+results/experiment_13p/analysis/defect_stats_*.npz

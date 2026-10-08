@@ -1,0 +1,40 @@
+{
+  "frozen": true,
+  "pre_registered_before_any_target_statistic": true,
+  "metrics": {
+    "A_low_dimensionality": {"EV@K": "cumulative explained variance ratio（K=1,2,4,8,16,32）",
+                             "K80": "达到 80% explained variance 的最小 PC 数（若 32 仍 <80% 记 >32）",
+                             "per": "category × layer × {PRIMARY_centered, SECONDARY_uncentered}"},
+    "B_cross_augmentation_stability": {"definition": "gamma 子空间(T1+T2, top-8) vs brightness 子空间(T3+T4, top-8)",
+                                       "primary_index": "mean cos^2(principal angles)（=||Ug^T Ub||_F^2 / K）",
+                                       "K": 8, "rank_fallback": "若 rank<8 用共同合法 rank 并记录",
+                                       "note": "不得只把四种 augmentation 混起来 PCA 后声称稳定"},
+    "C_cross_category_structure": {"per_category": ["EV spectrum", "K80", "gamma-vs-brightness similarity"],
+                                   "cross_category": "category pair 的 K=8 子空间相似度矩阵（同一 layer）",
+                                   "cases": {"Case1": "类内低维且稳定、类间不同 -> category-specific illumination subspace",
+                                             "Case2": "类内与类间都稳定 -> shared illumination structure",
+                                             "Case3": "类内都不稳定 -> 不支持该路线"}},
+    "D_seed_stability": {"seeds": [0, 1, 2], "compare": ["EV@8", "K80", "gamma-vs-brightness similarity", "seed 间子空间相似度"]},
+    "E_defect_overlap": {"frozen_K": 8, "definition": "对 defect patch 方向 d = F_defect - mu_normal(category,layer)：overlap = ||P_illum d||^2 / ||d||^2",
+                          "controls": ["normal patch 方向（同定义）", "100 个随机 K=8 正交子空间对照"],
+                          "outputs": ["defect overlap 分布", "normal/control overlap", "defect-type breakdown", "layer2 vs layer3", "percentile / z-score / empirical p-value"],
+                          "claim_limit": "只能写 Defect-sensitive directions show measurable alignment with the estimated illumination-response subspace；不得写成因果"},
+    "negative_control": {"random_subspaces": 100, "matched": ["dimension K", "ambient dimension C"], "cpu_only": true}
+  },
+  "verdicts": {
+    "CASE_A_STRONG_FEASIBILITY": {"criteria": ["大多数 category×layer 的 EV@8 >= 0.70", "gamma-vs-brightness similarity >= 0.60",
+                                               "sampling seeds 稳定", "defect overlap 相对 random control 有明显 elevation"],
+                                  "action": "ADVANCE to formal Exp13 INSS"},
+    "CASE_B_USABLE_CATEGORY_SPECIFIC": {"criteria": ["类内 EV@8 较高", "augmentation stability 较高", "cross-category similarity 低"],
+                                        "action": "允许 category-specific INSS Mini"},
+    "CASE_C_LOW_DIM_NO_DEFECT_OVERLAP": {"criteria": ["subspace 稳定低维", "defect overlap 与 random control 无明显差异"],
+                                         "action": "可做 very small suppression Mini；不得以 defect entanglement 作为机制结论"},
+    "CASE_D_NO_STABLE_SUBSPACE": {"criteria": ["EV@8 普遍低", "gamma/brightness similarity 低", "seed stability 差"],
+                                  "action": "STOP INSS family；下一候选 = Dual-Path Original + Robust Feature"},
+    "no_threshold_change_after_seeing_results": true
+  },
+  "prohibited": ["看结果后改 gamma", "看结果后加曝光强度", "看结果后挑漂亮 K", "删除差类别",
+                 "用 defect data 拟合 PCA", "按 defect overlap 反选 illumination PCs",
+                 "EV 不高就扩大 augmentation", "某层不好就只报另一层", "Probe 失败后自动启动正式 INSS",
+                 "Probe 成功后未报告就跑长实验"]
+}

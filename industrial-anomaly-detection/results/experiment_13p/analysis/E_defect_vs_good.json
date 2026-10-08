@@ -1,0 +1,62 @@
+{
+  "bottle_layer2": {
+    "good": 0.79582,
+    "defect_mean": 0.78089,
+    "contrast": -0.01494,
+    "random": 0.01588
+  },
+  "bottle_layer3": {
+    "good": 0.59578,
+    "defect_mean": 0.57086,
+    "contrast": -0.02492,
+    "random": 0.00773
+  },
+  "cable_layer2": {
+    "good": 0.67747,
+    "defect_mean": 0.67331,
+    "contrast": -0.00416,
+    "random": 0.0152
+  },
+  "cable_layer3": {
+    "good": 0.55278,
+    "defect_mean": 0.54726,
+    "contrast": -0.00552,
+    "random": 0.00778
+  },
+  "grid_layer2": {
+    "good": 0.96406,
+    "defect_mean": 0.95507,
+    "contrast": -0.00899,
+    "random": 0.01669
+  },
+  "grid_layer3": {
+    "good": 0.95154,
+    "defect_mean": 0.94431,
+    "contrast": -0.00724,
+    "random": 0.008
+  },
+  "hazelnut_layer2": {
+    "good": 0.78658,
+    "defect_mean": 0.77141,
+    "contrast": -0.01517,
+    "random": 0.01525
+  },
+  "hazelnut_layer3": {
+    "good": 0.61695,
+    "defect_mean": 0.60081,
+    "contrast": -0.01614,
+    "random": 0.00783
+  },
+  "screw_layer2": {
+    "good": 0.78811,
+    "defect_mean": 0.79044,
+    "contrast": 0.00233,
+    "random": 0.0156
+  },
+  "screw_layer3": {
+    "good": 0.54059,
+    "defect_mean": 0.53938,
+    "contrast": -0.00121,
+    "random": 0.00771
+  }
+}

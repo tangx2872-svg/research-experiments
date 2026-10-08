@@ -1,0 +1,88 @@
+{
+  "K": 8,
+  "definition": "PRIMARY_centered",
+  "seed": 0,
+  "layers": {
+    "bottle": {
+      "layer2": {
+        "shape": [
+          512,
+          8
+        ],
+        "sha256": "7a5521c11481007dcd2fb3ea3f5d445af8467132350c0063c41e62765a59dffd"
+      },
+      "layer3": {
+        "shape": [
+          1024,
+          8
+        ],
+        "sha256": "ada0f0f9723c036b93ccfade4f2b062a35e8919dff9373db3314b2e94d7893ec"
+      }
+    },
+    "cable": {
+      "layer2": {
+        "shape": [
+          512,
+          8
+        ],
+        "sha256": "39bd70d15d45abba13b07457d10253a688406ea0e7f34238b15895e544deef01"
+      },
+      "layer3": {
+        "shape": [
+          1024,
+          8
+        ],
+        "sha256": "c7d25d38a4008e78bb2d3bdd3b1c5c1bd9a04d494a732cc7c3fac5b90e5a952a"
+      }
+    },
+    "hazelnut": {
+      "layer2": {
+        "shape": [
+          512,
+          8
+        ],
+        "sha256": "d05d399a5dd9362c4ef0ee34d188bd23819702245c6b2121e79697fbb655de2f"
+      },
+      "layer3": {
+        "shape": [
+          1024,
+          8
+        ],
+        "sha256": "32b18b1197624606cefb6d9ae9ecec73d5048480bc3843fb3cd9634aec1f4d19"
+      }
+    },
+    "screw": {
+      "layer2": {
+        "shape": [
+          512,
+          8
+        ],
+        "sha256": "799fe5c2e12faf98023354a6f8235ef76c1b683c7da0e9ed9fc900c5ed53e77b"
+      },
+      "layer3": {
+        "shape": [
+          1024,
+          8
+        ],
+        "sha256": "e281d0e6d9c1c5918b246e9ad787b77ea6b7e0775fd203be2eff39d9db39f4db"
+      }
+    },
+    "grid": {
+      "layer2": {
+        "shape": [
+          512,
+          8
+        ],
+        "sha256": "003f8a42b1ecdb21a8ace4361d3cfba05498b59e2d2973e69b95e2f85821a691"
+      },
+      "layer3": {
+        "shape": [
+          1024,
+          8
+        ],
+        "sha256": "d5030c845b49953ff0de717f9cfdefb549fce5270082cc2d8bc30ffe466096ba"
+      }
+    }
+  },
+  "sha256": {}
+}

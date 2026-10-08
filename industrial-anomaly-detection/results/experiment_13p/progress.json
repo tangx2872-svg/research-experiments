@@ -1,0 +1,14 @@
+{
+  "stage": "feature_extraction",
+  "completed": 15,
+  "total": 15,
+  "percent": 100.0,
+  "elapsed_seconds": 128.4,
+  "eta_seconds": 0.0,
+  "avg_seconds_per_unit": 6.87,
+  "running_units": 1,
+  "failed_units": 0,
+  "gpu_util": 0.0,
+  "vram_used_mb": 1.0,
+  "timestamp": 1791427544.0367026
+}

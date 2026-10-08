@@ -1,0 +1,14 @@
+{
+  "frozen": true,
+  "note": "只用最基础的 photometric perturbation；几何/resize/crop 管线不变；deterministic；不加 blur/noise/color-jitter/spatial transform",
+  "implementation": "experiment1_illumination_tradeoff.apply_photometric(img,'brightness'|'gamma',level) 后接 experiment1b_defect_sensitivity.preprocess_for_model（Resize(256,antialias)+ImageNet Normalize）",
+  "gamma_convention": "apply_photometric 中 gamma: out = clamp(in ** (1/level))；level>1 提亮、level<1 压暗（与历史 1/1H/9A/9B 一致）",
+  "perturbations": [
+    {"id": "T1", "type": "gamma", "level": 0.8, "label": "gamma_dark_0.8"},
+    {"id": "T2", "type": "gamma", "level": 1.2, "label": "gamma_bright_1.2"},
+    {"id": "T3", "type": "brightness", "level": 0.8, "label": "brightness_down_0.8"},
+    {"id": "T4", "type": "brightness", "level": 1.2, "label": "brightness_up_1.2"}
+  ],
+  "groups": {"gamma": ["T1", "T2"], "brightness": ["T3", "T4"]},
+  "forbidden_after_freeze": ["新增 gamma=0.6/1.4 等强度", "更换 level", "新增 blur/noise/color-jitter/spatial"]
+}
