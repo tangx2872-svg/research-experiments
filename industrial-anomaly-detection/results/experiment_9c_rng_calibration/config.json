@@ -1,0 +1,62 @@
+{
+  "experiment": "9C",
+  "title": "Matched-RNG Calibration — eliminate coreset RNG trajectory divergence",
+  "date": "2026-10-07",
+  "paper_stage": "Method Discovery / Method Screening（建立公平可复现的评测协议，不做新方法）",
+  "why": "9B 发现：两个生成完全相同 embedding 的方法，因代码路径消耗不同数量的 torch/NumPy RNG，进入 KCenterGreedy 时 RNG state 不同 -> 选择不同 coreset -> 产生非零 score/robustness/d' 差异（V1 噪声地板 NF(|dz|)=0.0202, NF(d')=0.0542）。9C 只验证并消除这一件事。",
+  "scope_frozen": {
+    "categories": ["bottle"], "seed": 0,
+    "forbidden": ["M12/M13/M14", "5-category validation", "multi-seed",
+                  "re-running 9B / 9A / 5A-H", "re-running the full uniform-alpha frontier",
+                  "any new method", "mechanism extension experiments"]
+  },
+  "hypotheses_frozen": {
+    "H1": "representation 完全一致时，不同代码路径的 score 差异主要来自 fit 前 RNG state 不一致",
+    "H2": "若在进入 coreset selection 前显式恢复完全相同的 RNG state，则 equivalent representations 应产生相同 coreset，score 达到 bit-exact / machine-precision 等价",
+    "H3": "Matched-RNG 不改变 representation 本身"
+  },
+  "primary_success_criteria_frozen": {
+    "A_embedding": "max|dF| <= 1e-7 (ideal 0.0)",
+    "B_coreset": "selected indices 完全一致（exact equality）",
+    "C_score": "max|dscore| <= 1e-7 (ideal 0.0)",
+    "D_robustness": "|d mean|dNormalScore_z|| <= 1e-6",
+    "E_preservation": "|d mean defect d'| <= 1e-6",
+    "no_threshold_relaxation": true
+  },
+  "protocol_versioning": {
+    "V1": "Frozen Protocol V1 = 5A-H / 6A / 7A-O / 9A / 9B（seed 一次于 fit 入口，不重播）。历史 raw/CSV/JSON 全部冻结、不覆盖、不重算。",
+    "V2": "Matched-RNG Protocol V2 = 在 coreset selection 入口处恢复 canonical RNG state（本实验建立）。",
+    "policy": "V1 结果保留为历史证据；V2 成功则后续新方法筛选默认使用 V2；不为 V2 重跑全部历史实验。"
+  },
+  "rng_audit_frozen": {
+    "call_chain": "run_config -> fit_dual_model(seeds at entry) -> Engine.fit -> Patchcore Lightning fit -> MemoryBankMixin.fit -> PatchcoreModel.subsample_embedding -> KCenterGreedy.sample_coreset -> select_coreset_idxs",
+    "first_coreset_rng_consumer": "KCenterGreedy.select_coreset_idxs: SparseRandomProjection.fit -> _sparse_random_matrix (torch Binomial [torch CPU RNG] + sklearn sample_without_replacement(random_state=None) [NumPy global RNG] + torch Binomial), then torch.randint(device=self.features.device) [CUDA RNG when embedding is on GPU]",
+    "streams_consumed": {"torch_cpu": true, "torch_cuda": "yes on GPU (torch.randint device=features.device)",
+                         "numpy": true, "python_random": false},
+    "empirical_audit_cpu": "verified: torch + numpy state changed by select_coreset_idxs; python random unchanged; extra pre-consumption changes the coreset; replay-before-coreset restores exact equality"
+  },
+  "replay_point_frozen": {
+    "location": "KCenterGreedy.select_coreset_idxs 入口（wrapper，不改 anomalib 源码）",
+    "why": "这是「最晚但仍能保证 coreset selection 一致」的点：所有 coreset RNG 消耗（投影矩阵生成 + 初始点采样）都发生在其内部；在入口恢复 canonical state 可完全屏蔽上游方法构造路径的 RNG 消耗差异，且不触碰 feature extraction / embedding / bank ratio / kNN / illumination / split",
+    "controls": ["torch CPU RNG", "torch CUDA RNG", "numpy global RNG", "python random (含入快照，审计确认 coreset 未消耗)"],
+    "not_touched": ["模型数学定义", "feature 值", "train split", "coreset ratio(0.1)", "kNN(9)", "illumination shifts", "test labels / defect mask"],
+    "canonical_state_definition": "capture_rng_state() 在 torch.manual_seed(seed) + torch.cuda.manual_seed_all(seed) + numpy.random.seed(seed) + random.seed(seed) 之后；对同一 (category, seed) 是一个固定快照，所有方法共享",
+    "no_test_information": "canonical state 只依赖 (category, seed) 常量；不读取任何 test/defect 数据"
+  },
+  "calibration_units_frozen": {
+    "C0_orig_a000": "Original alpha=0（runner sanity；V2 下不等于历史 V1 B0，属预期）",
+    "C1_uniform_a025": "Uniform alpha=0.25（既有 uniform implementation）",
+    "C2_gate_const025": "Constant gate = 0.25（数学上与 C1 representation 等价）",
+    "core_comparison": "C1 vs C2",
+    "v1_reference_reuse": "V1 现象直接复用 9B raw（SMOKE_uniform_a025 / SMOKE_gate_const025），不重跑 V1"
+  },
+  "v1_noise_floor_reference": {"NF_dz": 0.020224, "NF_dprime": 0.054211,
+    "source": "results/experiment_9b_screening/summary/smoke_equivalence.json"},
+  "budget_frozen": {"gpu_main_units": 3, "gpu_diagnostic_units_max": 2,
+                    "expected_gpu_wallclock_minutes": "5-10", "expected_total_minutes": "10-20",
+                    "hard_stop": "total wallclock > 30 min or GPU units > 5 -> stop and report"},
+  "outputs_frozen": ["summary/rng_equivalence.json", "summary/rng_state_hashes.json",
+                     "summary/coreset_equivalence.json", "summary/score_equivalence.json",
+                     "summary/noise_floor_v1_vs_v2.csv", "summary/sanity_checks.csv",
+                     "summary/runtime_summary.json", "figures/noise_floor_v1_vs_v2.png"]
+}

@@ -1,0 +1,70 @@
+Experiment 9A — M1-M6 Method Screening Round-1 | progress log
+date 2026-10-07 | RTX 3090 | conda base (python 3.12.3 / torch 2.8.0+cu128 / anomalib 2.6.2)
+runner: scripts/experiment9a_runner.py --round <r> --worker-tag <w> --units ...
+ETA 口径: experiment_progress.estimate（throughput 优先, duration/worker 兜底, 多 worker 感知）
+
+====================================================================================================
+[round] round0
+====================================================================================================
+worker w0 pid=408978 units_total=2 closed=True started=18:57:56
+  unit_ids : bottle:0:B0_original, bottle:0:M3_nuis_k16
+  done     : bottle:0:B0_original                         93.82s  ok 
+  done     : bottle:0:M3_nuis_k16                        121.44s  ok 
+worker w1 pid=409047 units_total=2 closed=True started=18:58:02
+  unit_ids : bottle:0:M4_equiv_lam050_a040091275, bottle:0:M1_illum_standard
+  done     : bottle:0:M4_equiv_lam050_a040091275          94.35s  ok 
+  done     : bottle:0:M1_illum_standard                  105.71s  ok 
+  --- round0_w0.log ---
+  [bottle:0:B0_original] OK rows=183 runtime=93.56s tau=20.1902 pxAUROC=0.9854 AUPRO=0.9443
+  [progress] 1/2 | 50.0% | elapsed 01:33 | avg/unit 94s | ETA 00:46 (duration/worker) | finish ~19:00 | last bottle:0:B0_original
+  [bottle:0:M3_nuis_k16] OK rows=183 runtime=121.2s tau=19.6640 pxAUROC=0.9855 AUPRO=0.9447
+  [progress] 4/2 | 200.0% | elapsed 03:35 | avg/unit 104s | ETA 00:00 (done) | finish ~19:01 | last bottle:0:M3_nuis_k16
+
+====================================================================================================
+[round] round1
+====================================================================================================
+worker w0 pid=412198 units_total=1 closed=True started=19:19:16
+  unit_ids : cable:0:M1_illum_standard
+  done     : cable:0:M1_illum_standard                   158.11s  ok 
+worker w1 pid=412199 units_total=1 closed=True started=19:19:16
+  unit_ids : cable:0:M3_nuis_k16
+  done     : cable:0:M3_nuis_k16                         167.36s  ok 
+worker w2 pid=412200 units_total=1 closed=True started=19:19:16
+  unit_ids : bottle:0:M4_resid_lam050_a040091275
+  done     : bottle:0:M4_resid_lam050_a040091275          97.52s  ok 
+  --- round1_w0.log ---
+  [cable:0:M1_illum_standard] OK rows=402 runtime=157.84s tau=31.9559 pxAUROC=0.9840 AUPRO=0.9285
+  [progress] 2/3 | 66.7% | elapsed 02:38 | avg/unit 128s | ETA 00:42 (duration/worker) | finish ~19:22 | last cable:0:M1_illum_standard
+  --- round1_w1.log ---
+  [cable:0:M3_nuis_k16] OK rows=402 runtime=167.11s tau=32.8342 pxAUROC=0.9845 AUPRO=0.9288
+  [progress] 3/3 | 100.0% | elapsed 02:47 | avg/unit 141s | ETA 00:00 (done) | finish ~19:22 | last cable:0:M3_nuis_k16
+  --- round1_w2.log ---
+  [bottle:0:M4_resid_lam050_a040091275] OK rows=183 runtime=97.27s tau=19.1917 pxAUROC=0.9854 AUPRO=0.9467
+  [progress] 1/3 | 33.3% | elapsed 01:37 | avg/unit 98s | ETA 01:05 (duration/worker) | finish ~19:21 | last bottle:0:M4_resid_lam050_a040091275
+
+====================================================================================================
+[round] m4diag
+====================================================================================================
+worker w0 pid=413819 units_total=1 closed=True started=19:32:11
+  unit_ids : bottle:0:M4_resid_lam050_a040091275
+  done     : bottle:0:M4_resid_lam050_a040091275          86.27s  ok 
+  --- m4diag_w0.log ---
+  [bottle:0:M4_resid_lam050_a040091275] OK rows=183 runtime=86.02s tau=19.1917 pxAUROC=0.9854 AUPRO=0.9467
+  [progress] 1/1 | 100.0% | elapsed 01:26 | avg/unit 86s | ETA 00:00 (done) | finish ~19:33 | last bottle:0:M4_resid_lam050_a040091275
+
+====================================================================================================
+[totals]
+====================================================================================================
+gpu units (9A, 全部 status=OK): 8 | gpu seconds total: 922.6
+  m4diag   bottle:0:M4_resid_lam050_a040091275          86.02s
+  round0   bottle:0:B0_original                         93.56s
+  round0   bottle:0:M1_illum_standard                  105.47s
+  round0   bottle:0:M3_nuis_k16                        121.20s
+  round0   bottle:0:M4_equiv_lam050_a040091275          94.11s
+  round1   bottle:0:M4_resid_lam050_a040091275          97.27s
+  round1   cable:0:M1_illum_standard                   157.84s
+  round1   cable:0:M3_nuis_k16                         167.11s
+reused with 0 GPU: M2 (7A-O B1_g100) / M6 (8B PROPOSED25|PROPOSED50) / baselines + uniform-alpha frontier (5A-H, 6A, 6B, 7A-O Q4) 全部由历史 frozen raw 重组，0 GPU
+
+wallclock: round0 = 215s (2 workers) | round1 = 211s (3 workers) | m4diag = 86s (1 worker)
+failed units: 0

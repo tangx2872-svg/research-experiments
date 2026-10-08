@@ -1,0 +1,16 @@
+{
+  "experiment": "8B",
+  "mask_name": "PARETO25",
+  "category": "grid",
+  "seed": 2,
+  "n_channels_l2": 10,
+  "n_channels_l3": 10,
+  "embedding_dim": 20,
+  "alpha": 0.0,
+  "coreset_size": 27033,
+  "tau_val": 1.3620742559432983,
+  "runtime_seconds": 148.15,
+  "wallclock_seconds": 148.32,
+  "oracle_probe_only": true,
+  "probe_note": "selection uses test defect masks (oracle); diagnostic evidence only"
+}

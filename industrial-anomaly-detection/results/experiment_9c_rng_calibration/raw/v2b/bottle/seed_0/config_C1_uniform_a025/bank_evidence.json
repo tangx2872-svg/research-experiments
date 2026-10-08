@@ -1,0 +1,24 @@
+{
+  "unit": "bottle:0:C1_uniform_a025",
+  "protocol": "v2",
+  "memory_bank_sha256": "cfe4ecff39d6a65254dc62c0d73c38a774aa2496ca20ec9f18b50eaba17ab961",
+  "memory_bank_shape": [
+    21401,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      21401,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 32946128.0,
+    "mean": 0.899457573890686
+  },
+  "tau_val": null,
+  "coreset_size": null,
+  "train_ids_hash": null,
+  "embedding_dim": 1536,
+  "ts": 1791378227.2904692
+}

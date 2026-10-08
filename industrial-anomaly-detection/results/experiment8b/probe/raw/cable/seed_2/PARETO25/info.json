@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "cable",
+  "seed": 2,
+  "config": "PARETO25",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 148.87,
+  "coreset_size": 22937,
+  "tau_val": 2.1850314140319824,
+  "peak_gpu_memory_allocated_mb": 663.25,
+  "train_ids_hash": "a146719cbf49",
+  "n_rows": 402,
+  "pixel_auroc": 0.787311863825,
+  "aupro": 0.45892614126205444
+}

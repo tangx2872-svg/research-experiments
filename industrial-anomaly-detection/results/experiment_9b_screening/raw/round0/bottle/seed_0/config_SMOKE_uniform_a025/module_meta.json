@@ -1,0 +1,27 @@
+{
+  "experiment": "9B",
+  "unit": "bottle:0:SMOKE_uniform_a025",
+  "config": "SMOKE_uniform_a025",
+  "round": "round0",
+  "candidate": false,
+  "spec": {
+    "kind": "alpha",
+    "alpha_l2": 0.25,
+    "alpha_l3": 0.25,
+    "smoke": true
+  },
+  "gate_stats": null,
+  "sensitivity_meta": null,
+  "gate_mean_l2": null,
+  "gate_mean_l3": null,
+  "embedding_dim": 1536,
+  "prep_seconds": 6.4,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 80.09,
+  "wallclock_seconds": 80.33,
+  "peak_gpu_memory_allocated_mb": 2605.04,
+  "declared_alpha_l2": 0.25,
+  "declared_alpha_l3": 0.25,
+  "status": "ok",
+  "detail": ""
+}

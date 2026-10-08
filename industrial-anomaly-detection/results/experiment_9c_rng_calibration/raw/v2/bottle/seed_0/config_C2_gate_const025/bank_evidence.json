@@ -1,0 +1,24 @@
+{
+  "unit": "bottle:0:C2_gate_const025",
+  "protocol": "v2",
+  "memory_bank_sha256": "b15577589e81f1c30359061c029a3f60310ce4b25acb8c13ec2ed5a781b79c93",
+  "memory_bank_shape": [
+    21401,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      21401,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 32945292.0,
+    "mean": 0.8994334936141968
+  },
+  "tau_val": null,
+  "coreset_size": null,
+  "train_ids_hash": null,
+  "embedding_dim": 1536,
+  "ts": 1791377809.7376347
+}

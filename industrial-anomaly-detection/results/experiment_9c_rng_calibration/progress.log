@@ -1,0 +1,25 @@
+Experiment 9C — Matched-RNG Calibration | progress log
+date 2026-10-07 | RTX 3090 | conda base
+
+protocol V2 = R1 Engine.fit 入口 replay + R2 KCenterGreedy.select_coreset_idxs 入口 replay
+
+==========================================================================================
+[round] v2  (V2.0: coreset replay only)
+==========================================================================================
+worker w0 pid=424194 units_total=1 closed=True
+  done: bottle:0:C0_orig_a000              92.98s ok 
+worker w1 pid=424195 units_total=1 closed=True
+  done: bottle:0:C1_uniform_a025           98.39s ok 
+worker w2 pid=424196 units_total=1 closed=True
+  done: bottle:0:C2_gate_const025          98.30s ok 
+
+==========================================================================================
+[round] v2b  (V2.1: coreset + fit replay)
+==========================================================================================
+worker w1 pid=425192 units_total=1 closed=True
+  done: bottle:0:C1_uniform_a025           55.99s ok 
+worker w2 pid=425193 units_total=1 closed=True
+  done: bottle:0:C2_gate_const025          61.38s ok 
+
+[P4 CPU sanity] see summary/sanity_checks.csv (7/7 PASS)
+[P0 RNG audit] see summary/rng_audit.json

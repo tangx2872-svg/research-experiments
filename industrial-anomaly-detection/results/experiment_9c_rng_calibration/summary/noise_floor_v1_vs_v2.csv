@@ -1,0 +1,4 @@
+protocol,pair,NF_absz,NF_dprime,max_abs_delta_score,coreset_identical,rng_state_identical,source
+V1 (no replay),uniform a=0.25 vs const-gate 0.25,0.020224,0.054211,1.329853,False,False,9B frozen raw (reused)
+V2.0 (coreset replay only),uniform a=0.25 vs const-gate 0.25,0.027988,0.005269,2.117155,False,True,9C round v2
+V2.1 (coreset + fit replay),uniform a=0.25 vs const-gate 0.25,0.0,0.0,0.0,True,True,9C round v2b

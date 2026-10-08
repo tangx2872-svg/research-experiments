@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "bottle",
+  "seed": 1,
+  "config": "A3_lam050",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 95.34,
+  "coreset_size": 21401,
+  "tau_val": 26.003971099853516,
+  "peak_gpu_memory_allocated_mb": 2605.04,
+  "train_ids_hash": "ae058d1aea8a",
+  "n_rows": 183,
+  "pixel_auroc": 0.985632477325,
+  "aupro": 0.947773814201355
+}

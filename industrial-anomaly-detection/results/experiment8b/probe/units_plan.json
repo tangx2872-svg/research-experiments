@@ -1,0 +1,9 @@
+{
+  "n_units": 420,
+  "per_worker": [
+    140,
+    140,
+    140
+  ],
+  "unite_order": "masks.json iteration order, round-robin i::3"
+}

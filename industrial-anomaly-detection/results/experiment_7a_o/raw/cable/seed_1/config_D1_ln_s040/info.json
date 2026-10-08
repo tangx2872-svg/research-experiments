@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "cable",
+  "seed": 1,
+  "config": "D1_ln_s040",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 75.49,
+  "coreset_size": 22937,
+  "tau_val": 25.978412628173828,
+  "peak_gpu_memory_allocated_mb": 2785.04,
+  "train_ids_hash": "4c5c8885f208",
+  "n_rows": 402,
+  "pixel_auroc": 0.98464047475,
+  "aupro": 0.9267097115516663
+}

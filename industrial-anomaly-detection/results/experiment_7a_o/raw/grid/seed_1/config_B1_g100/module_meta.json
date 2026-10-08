@@ -1,0 +1,28 @@
+{
+  "config": "B1_g100",
+  "family": "B",
+  "spec": {
+    "l2": {
+      "kind": "concat_dual",
+      "gamma": 1.0,
+      "norm": "instance",
+      "scale_match": "per_sample_per_channel_rms(f)",
+      "eps": 1e-05
+    },
+    "l3": {
+      "kind": "concat_dual",
+      "gamma": 1.0,
+      "norm": "instance",
+      "scale_match": "per_sample_per_channel_rms(f)",
+      "eps": 1e-05
+    }
+  },
+  "embedding_dim": 3072,
+  "memory_bank_size": 27033,
+  "runtime_seconds": 102.48,
+  "wallclock_seconds": 102.69,
+  "peak_gpu_memory_allocated_mb": 6433.04,
+  "declared_alpha_l2": -1.0,
+  "declared_alpha_l3": -1.0,
+  "embedding_dim_note": "3072 for concat_dual (doubled), 1536 otherwise"
+}

@@ -1,0 +1,95 @@
+{
+  "gpu_units_9A": [
+    {
+      "round": "m4diag",
+      "unit": "bottle:0:M4_resid_lam050_a040091275",
+      "config": "M4_resid_lam050_a040091275",
+      "runtime_seconds": 86.02,
+      "wallclock_seconds": 86.27,
+      "peak_vram_mb": 2605.04,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "status": "ok"
+    },
+    {
+      "round": "round0",
+      "unit": "bottle:0:B0_original",
+      "config": "B0_original",
+      "runtime_seconds": 93.56,
+      "wallclock_seconds": 93.82,
+      "peak_vram_mb": 2605.04,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "status": "ok"
+    },
+    {
+      "round": "round0",
+      "unit": "bottle:0:M1_illum_standard",
+      "config": "M1_illum_standard",
+      "runtime_seconds": 105.47,
+      "wallclock_seconds": 105.71,
+      "peak_vram_mb": 2605.04,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "status": "ok"
+    },
+    {
+      "round": "round0",
+      "unit": "bottle:0:M3_nuis_k16",
+      "config": "M3_nuis_k16",
+      "runtime_seconds": 121.2,
+      "wallclock_seconds": 121.44,
+      "peak_vram_mb": 2613.25,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "status": "ok"
+    },
+    {
+      "round": "round0",
+      "unit": "bottle:0:M4_equiv_lam050_a040091275",
+      "config": "M4_equiv_lam050_a040091275",
+      "runtime_seconds": 94.11,
+      "wallclock_seconds": 94.35,
+      "peak_vram_mb": 2605.04,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "status": "ok"
+    },
+    {
+      "round": "round1",
+      "unit": "bottle:0:M4_resid_lam050_a040091275",
+      "config": "M4_resid_lam050_a040091275",
+      "runtime_seconds": 97.27,
+      "wallclock_seconds": 97.52,
+      "peak_vram_mb": 2605.04,
+      "embedding_dim": 1536,
+      "memory_bank_size": 21401,
+      "status": "ok"
+    },
+    {
+      "round": "round1",
+      "unit": "cable:0:M1_illum_standard",
+      "config": "M1_illum_standard",
+      "runtime_seconds": 157.84,
+      "wallclock_seconds": 158.11,
+      "peak_vram_mb": 2785.04,
+      "embedding_dim": 1536,
+      "memory_bank_size": 22937,
+      "status": "ok"
+    },
+    {
+      "round": "round1",
+      "unit": "cable:0:M3_nuis_k16",
+      "config": "M3_nuis_k16",
+      "runtime_seconds": 167.11,
+      "wallclock_seconds": 167.36,
+      "peak_vram_mb": 2793.25,
+      "embedding_dim": 1536,
+      "memory_bank_size": 22937,
+      "status": "ok"
+    }
+  ],
+  "gpu_units_9A_count": 8,
+  "gpu_seconds_total": 922.6,
+  "reuse_zero_gpu": "M2 (7A-O B1_g100) / M6 (8B PROPOSED25|PROPOSED50) / baselines + uniform-alpha frontier (5A-H, 6A, 6B, 7A-O Q4) 全部由历史 frozen raw 重组，0 GPU"
+}

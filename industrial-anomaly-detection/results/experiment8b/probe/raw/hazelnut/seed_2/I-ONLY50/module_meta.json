@@ -1,0 +1,16 @@
+{
+  "experiment": "8B",
+  "mask_name": "I-ONLY50",
+  "category": "hazelnut",
+  "seed": 2,
+  "n_channels_l2": 256,
+  "n_channels_l3": 512,
+  "embedding_dim": 768,
+  "alpha": 0.0,
+  "coreset_size": 40038,
+  "tau_val": 20.691335678100586,
+  "runtime_seconds": 284.17,
+  "wallclock_seconds": 284.38,
+  "oracle_probe_only": true,
+  "probe_note": "selection uses test defect masks (oracle); diagnostic evidence only"
+}

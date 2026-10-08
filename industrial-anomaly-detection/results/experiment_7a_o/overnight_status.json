@@ -1,0 +1,51 @@
+{
+  "started_at": "2026-10-06T22:17:05",
+  "updated_at": "2026-10-07T02:08:31",
+  "queues": {
+    "Q0_7AO_module_screening": "DONE",
+    "Q1_winner_local_robustness": "SKIPPED (Q0 = CASE_C -> no CASE_A/B/D candidate; per addendum Q1 startup condition not met)",
+    "Q2_layer_representation_composition": "DONE (12 units; promoted = none -> STOP per addendum rule)",
+    "Q3_illumination_stress_test": "DONE stage-1 (10 units; medium-condition equivalence vs history max|dscore| = 0 for all 10 units; seeds 1/2 deferred to Q4-B)",
+    "Q4_strong_baseline_extended_validation": "DONE (56 units: Q4-A 36 + Q4-B 20)",
+    "Q5_cpu_paper_assets": "DONE (registry / evidence map / negative results / figure inventory / main table)"
+  },
+  "q0": {
+    "verdict": "CASE_C",
+    "gpu_units": 92,
+    "sanity": "18/18 PASS",
+    "runtime_seconds_total": null,
+    "freeze_sha256": "e046a89a852da9aad55d2eafeea1c3bc05a5aff640be4338f7e515e53150f224"
+  },
+  "gpu_units_total": 170,
+  "notes": [],
+  "gpu_status": "1 MiB, 0 %",
+  "disk_usage": "13M",
+  "q2": {
+    "verdict": "no promotion (0/4 configurations reached Tier S/A/B) -> Q2 STOP",
+    "freeze_sha256": "c76ee8f358e6d159e78df7fff8f9dc30e295df175167141c44fd9de3ee3c0d7c",
+    "headline": "Q2L2_l2res50_l3uni dprime +0.5793 / |dz| +0.0429 (exchange rate 13.5) on 3cat x seed0; strong L2/L3 asymmetry: same intervention at L3 hurts both axes",
+    "gpu_units": 12
+  },
+  "q3": {
+    "freeze_sha256": "6c4ee3d07c081c23026a82fb3a426494675f76947785e0b32eb8e256144a91ec",
+    "methods": [
+      "M0_original",
+      "M1_uniform"
+    ],
+    "conditions": 12,
+    "gpu_units": 10,
+    "equivalence": "medium conditions reproduce historical raw exactly (max|dscore| = 0)",
+    "headline": "Uniform |dz| lower in 12/12 conditions; pooled degradation slope 1.863 vs 2.914 (Original), i.e. ~36% shallower"
+  },
+  "q4": {
+    "freeze_sha256": "36c4115262fa70fb112a189a0363d317a7605d5e05c1f8cec7fa89db59c2bab2",
+    "q4a_units": 36,
+    "q4b_units": 20,
+    "headline": "9 uniform-alpha points now complete at 15/15 (5 cat x 3 seeds); |dz| falls monotonically with alpha until ~0.6 then saturates; alpha=0.20 Pareto-dominates alpha=0; alpha=0.8018 dominated by alpha=0.6014",
+    "incidents": [
+      "first Q4 launch had a unit-argument-order bug -> 12 accidental stress runs quarantined",
+      "Q4-B completed 20/20 after re-running 14 missing units"
+    ]
+  },
+  "elapsed_note": "Q0 22:17 -> Q4 finished 02:07 (approx 3h50m wall clock); well inside the 8-10h budget"
+}

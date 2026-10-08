@@ -1,0 +1,492 @@
+{
+  "experiment": "7A-O",
+  "title": "Overnight Module Screening \u2014 pluggable defect-preserving representation modules",
+  "paper_stage": "Stage 7 \u2014 Method Candidate Screening (EXPLORATORY, not confirmatory)",
+  "status": "EXPLORATORY SCREENING. The selected winner is NOT a final confirmatory result; it must be frozen and re-validated under an independent confirmation protocol.",
+  "research_question": "Is there a simple feature-intervention / fusion module that yields a better defect-preservation vs illumination-robustness trade-off than the strong Uniform baseline alpha=0.40091275?",
+  "strong_baseline": {
+    "name": "B2_uniform_040091275",
+    "alpha_l2": 0.40091275,
+    "alpha_l3": 0.40091275,
+    "origin": "Experiment 6B (commit ad26ec5), reused without rerun"
+  },
+  "baselines": {
+    "B0_original": {
+      "type": "alpha",
+      "a_l2": 0.0,
+      "a_l3": 0.0,
+      "note": "= 5A-H B0 (alpha=0), reused"
+    },
+    "B1_fixed_050": {
+      "type": "alpha",
+      "a_l2": 0.5,
+      "a_l3": 0.5,
+      "note": "= 5A-H B2 (alpha=0.5), reused"
+    },
+    "B2_uniform_040091275": {
+      "type": "alpha",
+      "a_l2": 0.40091275,
+      "a_l3": 0.40091275,
+      "note": "= 6B/6A Uniform baseline, reused (no rerun)"
+    },
+    "B3_soft_gc_af025": {
+      "type": "cat_gate",
+      "fragile": [
+        "bottle",
+        "grid"
+      ],
+      "a_fragile": 0.25,
+      "a_other": 0.5,
+      "note": "= 6A Soft-GC, reconstructed from 6A raw + 5A-H B2"
+    }
+  },
+  "module_families": {
+    "A_residual_original_preserving": {
+      "A1_additive_normalized_residual": "F_out = F + lambda*N_hat, N=IN(F), N_hat = N * rms_spatial(F) per (sample,channel)",
+      "A3_energy_preserving": "F_out = (F + lambda*N_hat) rescaled to rms_spatial(F)",
+      "A2_concat_fixed_projection": "NOT SAFE / NOT IMPLEMENTED. A training-free fixed linear projection from the 2C-dim concat back to C-dim is either (i) P=[I|I]/sqrt(2), which is mathematically an alpha-interpolation in disguise (explicitly forbidden by the protocol), or (ii) an arbitrary hand-designed operator without principled justification (also forbidden). The concat representation itself is covered by Family B1 with a measured dimensionality change instead.",
+      "note": "F + lambda*(IN(F)-F) is mathematically identical to alpha-interpolation and is therefore NOT used; lambda scales are frozen below."
+    },
+    "B_dual_representation": {
+      "B1_concat": "F_out = concat([F, gamma*N_hat], dim=1); embedding dim doubles",
+      "B2_grouped_projection": "NOT RUN. B1 concat was affordable within the runtime/VRAM budget (measured in Round 0), so the fallback dimension-balancing variant was unnecessary; running it would have added an untested arbitrary operator.",
+      "dimensionality_change": "layer2 512->1024, layer3 1024->2048, concatenated 1536->3072",
+      "fairness": "coreset ratio 0.1, num_neighbors 9, split, illumination and scoring unchanged; embedding dim / bank size / runtime / VRAM recorded per unit"
+    },
+    "C_layer_selective": {
+      "grid": {
+        "C1_l2_030_l3_050": {
+          "l2": {
+            "kind": "alpha_in",
+            "alpha": 0.3
+          },
+          "l3": {
+            "kind": "alpha_in",
+            "alpha": 0.5
+          }
+        },
+        "C2_l2_035_l3_045": {
+          "l2": {
+            "kind": "alpha_in",
+            "alpha": 0.35
+          },
+          "l3": {
+            "kind": "alpha_in",
+            "alpha": 0.45
+          }
+        },
+        "C3_l2_045_l3_035": {
+          "l2": {
+            "kind": "alpha_in",
+            "alpha": 0.45
+          },
+          "l3": {
+            "kind": "alpha_in",
+            "alpha": 0.35
+          }
+        },
+        "C4_l2_050_l3_030": {
+          "l2": {
+            "kind": "alpha_in",
+            "alpha": 0.5
+          },
+          "l3": {
+            "kind": "alpha_in",
+            "alpha": 0.3
+          }
+        }
+      },
+      "C0_equivalence": "C0 = Uniform alpha both layers -> must reproduce the historical Uniform raw scores exactly"
+    },
+    "D_alternative_normalization": {
+      "grid": {
+        "D1_ln_s040": {
+          "l2": {
+            "kind": "altnorm_strength",
+            "altnorm": "layernorm_all_dims",
+            "strength": 0.40091275,
+            "eps": 1e-05,
+            "affine": false
+          },
+          "l3": {
+            "kind": "altnorm_strength",
+            "altnorm": "layernorm_all_dims",
+            "strength": 0.40091275,
+            "eps": 1e-05,
+            "affine": false
+          }
+        },
+        "D2_gn8_s040": {
+          "l2": {
+            "kind": "altnorm_strength",
+            "altnorm": "groupnorm_channels",
+            "groups": 8,
+            "strength": 0.40091275,
+            "eps": 1e-05,
+            "affine": false
+          },
+          "l3": {
+            "kind": "altnorm_strength",
+            "altnorm": "groupnorm_channels",
+            "groups": 8,
+            "strength": 0.40091275,
+            "eps": 1e-05,
+            "affine": false
+          }
+        }
+      },
+      "strength": 0.40091275,
+      "affine": false,
+      "groups_for_D2": 8,
+      "stats_source": "input tensor itself only (no target/test statistics)"
+    }
+  },
+  "frozen_assumptions": [
+    "instance_norm == F.instance_norm (affine=False), identical to 5A/5A-H/5C/6A/6B",
+    "residual: N=IN(F); N_hat = N * rms_spatial(F) per (sample, channel); F_out = F + lambda*N_hat",
+    "energy: F_out = (F + lambda*N_hat) * rms_spatial(F)/rms_spatial(F + lambda*N_hat) per (sample, channel)",
+    "concat_dual: F_out = concat([F, gamma*N_hat], dim=1) -> channel dim doubles (512->1024, 1024->2048)",
+    "altnorm layernorm_all_dims: mean/var over (C,H,W) per sample",
+    "altnorm groupnorm_channels: G=8 groups of channels, mean/var over (C/G,H,W) per sample, affine=False",
+    "all norms use the input's own statistics only; no trainable parameters; no target/test-side statistics",
+    "PatchCore bank / coreset(0.1) / kNN(9) / illumination / scoring / metrics are byte-identical to 5A-H"
+  ],
+  "parameter_grid": {
+    "A1_lam010": {
+      "l2": {
+        "kind": "residual",
+        "lambda": 0.1,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "residual",
+        "lambda": 0.1,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "A1_lam025": {
+      "l2": {
+        "kind": "residual",
+        "lambda": 0.25,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "residual",
+        "lambda": 0.25,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "A1_lam050": {
+      "l2": {
+        "kind": "residual",
+        "lambda": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "residual",
+        "lambda": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "A3_lam025": {
+      "l2": {
+        "kind": "energy",
+        "lambda": 0.25,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "energy",
+        "lambda": 0.25,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "A3_lam050": {
+      "l2": {
+        "kind": "energy",
+        "lambda": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "energy",
+        "lambda": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "B1_g025": {
+      "l2": {
+        "kind": "concat_dual",
+        "gamma": 0.25,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "concat_dual",
+        "gamma": 0.25,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "B1_g050": {
+      "l2": {
+        "kind": "concat_dual",
+        "gamma": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "concat_dual",
+        "gamma": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "B1_g100": {
+      "l2": {
+        "kind": "concat_dual",
+        "gamma": 1.0,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "concat_dual",
+        "gamma": 1.0,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    },
+    "C1_l2_030_l3_050": {
+      "l2": {
+        "kind": "alpha_in",
+        "alpha": 0.3
+      },
+      "l3": {
+        "kind": "alpha_in",
+        "alpha": 0.5
+      }
+    },
+    "C2_l2_035_l3_045": {
+      "l2": {
+        "kind": "alpha_in",
+        "alpha": 0.35
+      },
+      "l3": {
+        "kind": "alpha_in",
+        "alpha": 0.45
+      }
+    },
+    "C3_l2_045_l3_035": {
+      "l2": {
+        "kind": "alpha_in",
+        "alpha": 0.45
+      },
+      "l3": {
+        "kind": "alpha_in",
+        "alpha": 0.35
+      }
+    },
+    "C4_l2_050_l3_030": {
+      "l2": {
+        "kind": "alpha_in",
+        "alpha": 0.5
+      },
+      "l3": {
+        "kind": "alpha_in",
+        "alpha": 0.3
+      }
+    },
+    "D1_ln_s040": {
+      "l2": {
+        "kind": "altnorm_strength",
+        "altnorm": "layernorm_all_dims",
+        "strength": 0.40091275,
+        "eps": 1e-05,
+        "affine": false
+      },
+      "l3": {
+        "kind": "altnorm_strength",
+        "altnorm": "layernorm_all_dims",
+        "strength": 0.40091275,
+        "eps": 1e-05,
+        "affine": false
+      }
+    },
+    "D2_gn8_s040": {
+      "l2": {
+        "kind": "altnorm_strength",
+        "altnorm": "groupnorm_channels",
+        "groups": 8,
+        "strength": 0.40091275,
+        "eps": 1e-05,
+        "affine": false
+      },
+      "l3": {
+        "kind": "altnorm_strength",
+        "altnorm": "groupnorm_channels",
+        "groups": 8,
+        "strength": 0.40091275,
+        "eps": 1e-05,
+        "affine": false
+      }
+    }
+  },
+  "no_dense_sweep": true,
+  "no_per_category_tuning": true,
+  "categories": [
+    "bottle",
+    "cable",
+    "grid",
+    "hazelnut",
+    "screw"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "primary_metrics": {
+    "preservation": "mean defect d-prime (higher better)",
+    "robustness": "mean |Delta NormalScore_z| (lower better)",
+    "secondary": [
+      "per-category",
+      "per-seed",
+      "worst-category change",
+      "negative transfer count (eps=0.10)",
+      "image AUROC",
+      "pixel AUROC / AUPRO",
+      "runtime",
+      "peak VRAM",
+      "memory-bank size",
+      "embedding dimension"
+    ]
+  },
+  "epsilon": 0.1,
+  "ranking_rule": {
+    "tiers": {
+      "S": {
+        "delta_dprime_min": 0.0,
+        "delta_abs_z_max": 0.0,
+        "neg_transfer_may_increase": false
+      },
+      "A": {
+        "delta_dprime_min": 0.1,
+        "delta_abs_z_max": 0.02,
+        "neg_transfer_may_increase": false
+      },
+      "B": {
+        "delta_dprime_min": -0.05,
+        "delta_abs_z_max": -0.02,
+        "neg_transfer_may_increase": true
+      }
+    },
+    "promote_tiers": [
+      "S",
+      "A",
+      "B"
+    ],
+    "primary_axis": "Pareto over (mean |Delta z| lower, mean d-prime higher) vs Uniform",
+    "tie_break": "higher d-prime, then lower |Delta z|"
+  },
+  "schedule": {
+    "round0_smoke": {
+      "categories": [
+        "bottle"
+      ],
+      "seeds": [
+        0
+      ],
+      "purpose": "pipeline runnability + alpha=0 identity equivalence + Uniform equivalence + NaN/Inf/determinism/keys",
+      "units": [
+        [
+          "bottle",
+          0,
+          "SMOKE_ORIG_a000"
+        ],
+        [
+          "bottle",
+          0,
+          "SMOKE_UNIFORM_a040091275"
+        ]
+      ]
+    },
+    "round1_broad": {
+      "categories": [
+        "bottle",
+        "grid",
+        "hazelnut"
+      ],
+      "seeds": [
+        0
+      ],
+      "units": 42
+    },
+    "round2_confirm_like": {
+      "categories": [
+        "bottle",
+        "cable",
+        "grid",
+        "hazelnut",
+        "screw"
+      ],
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "max_configs": 4,
+      "rule": "at most Top-1 per family among promoted configs"
+    },
+    "round3_combination": {
+      "condition": ">=2 different families promoted in Round 2",
+      "rule": "exactly ONE combination of the top-2 family winners; composition order = (Winner-A step) then (Winner-B step)",
+      "gate": "bottle/grid/hazelnut x seed0 first; extend only if clearly better than the best single module"
+    }
+  },
+  "stop_rules": [
+    "data corruption",
+    "baseline equivalence FAIL",
+    "mass NaN/Inf",
+    "frozen protocol mutation",
+    "unresolvable OOM (3->2->1 workers, then STOP)",
+    "unknown manual repo changes",
+    "definition ambiguity unresolvable without reading targets"
+  ],
+  "leakage_guard": {
+    "selection_set": "Round1/Round2 (exploration)",
+    "confirmation_set": "MUST be designed separately after freezing structure/params/metrics",
+    "no_threshold_change_after_results": true
+  },
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 3090 24GB",
+    "workers": 3,
+    "backend": "anomalib PatchCore wide_resnet50_2 [layer2,layer3], coreset 0.1, k=9"
+  },
+  "target_results_read": false,
+  "git_head": "bc70a9fa910c10a9dee9d633b5f01e8e1256f997",
+  "timestamp": "2026-10-06T22:15:07"
+}

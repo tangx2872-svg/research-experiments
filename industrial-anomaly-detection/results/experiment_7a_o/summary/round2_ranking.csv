@@ -1,0 +1,9 @@
+config,family,n_units,mean_defect_dprime,mean_abs_delta_z,uniform_dprime,uniform_abs_delta_z,delta_dprime_vs_uniform,delta_abs_z_vs_uniform,worst_category,worst_category_delta,negative_transfer_count,image_auroc,type,tier
+A3_lam050,A,15,5.355173,0.275298,4.793959,0.213367,0.561214,0.061931,screw,-0.049273,0,0.988613,candidate,-
+B1_g100,B,15,5.30439,0.28503,4.793959,0.213367,0.510431,0.071663,hazelnut,-5.4e-05,0,0.989161,candidate,-
+D1_ln_s040,D,15,4.967839,0.329769,4.793959,0.213367,0.17388,0.116402,hazelnut,-0.2796,1,0.987294,candidate,-
+C3_l2_045_l3_035,C,15,4.815873,0.224837,4.793959,0.213367,0.021914,0.01147,hazelnut,-0.053831,0,0.983727,candidate,-
+B0_original,baseline,15,4.985245,0.310489,4.793959,0.213367,0.191286,0.097122,hazelnut,-0.310384,1,0.986613,baseline,
+B3_soft_gc_af025,baseline,15,4.878197,0.232915,4.793959,0.213367,0.084237,0.019548,hazelnut,-0.09964,0,0.985047,baseline,
+B2_uniform_040091275,baseline,15,4.793959,0.213367,4.793959,0.213367,0.0,0.0,bottle,0.0,0,0.982713,baseline,
+B1_fixed_050,baseline,15,4.666993,0.208216,4.793959,0.213367,-0.126967,-0.005151,grid,-0.280619,2,0.975746,baseline,

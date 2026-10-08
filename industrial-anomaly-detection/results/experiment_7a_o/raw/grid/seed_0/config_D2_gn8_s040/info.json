@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "grid",
+  "seed": 0,
+  "config": "D2_gn8_s040",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 87.58,
+  "coreset_size": 27033,
+  "tau_val": 14.676414489746094,
+  "peak_gpu_memory_allocated_mb": 3265.04,
+  "train_ids_hash": "87d544e00879",
+  "n_rows": 182,
+  "pixel_auroc": 0.98037660400294,
+  "aupro": 0.9072152376174927
+}

@@ -1,0 +1,25 @@
+{
+  "status": "OK",
+  "queue": "Q3",
+  "method": "M0_original",
+  "category": "bottle",
+  "seed": 0,
+  "spec": {
+    "l2": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    }
+  },
+  "tau_val": 20.19022560119629,
+  "n_rows": 343,
+  "expected_rows": 343,
+  "n_conditions": 12,
+  "runtime_seconds": 128.52,
+  "peak_gpu_memory_allocated_mb": 2603.04,
+  "embedding_dim": 1536,
+  "freeze_sha256": "6c4ee3d07c081c23026a82fb3a426494675f76947785e0b32eb8e256144a91ec"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "screw",
+  "seed": 2,
+  "config": "PARETO25",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 203.05,
+  "coreset_size": 32768,
+  "tau_val": 0.4332413673400879,
+  "peak_gpu_memory_allocated_mb": 923.05,
+  "train_ids_hash": "a913671ad699",
+  "n_rows": 344,
+  "pixel_auroc": 0.6009367458041824,
+  "aupro": 0.26518478989601135
+}

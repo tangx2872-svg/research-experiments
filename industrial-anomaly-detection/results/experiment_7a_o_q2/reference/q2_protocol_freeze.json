@@ -1,0 +1,102 @@
+{
+  "queue": "Q2",
+  "title": "Layer x Representation Composition",
+  "parent_experiment": "7A-O (Q0: CASE_C)",
+  "status": "EXPLORATORY screening",
+  "research_question": "Should the composition of Original vs invariant representation happen at a specific layer instead of uniformly at all layers?",
+  "relation_to_1H": "1H/1H-S showed layer-specific normalization response; Q2 tests whether that translates into a layer-selective representation composition advantage",
+  "configs": {
+    "Q2L0_l2org_l3uni": {
+      "l2": {
+        "kind": "alpha_in",
+        "alpha": 0.0
+      },
+      "l3": {
+        "kind": "alpha_in",
+        "alpha": 0.40091275
+      }
+    },
+    "Q2L1_l2uni_l3org": {
+      "l2": {
+        "kind": "alpha_in",
+        "alpha": 0.40091275
+      },
+      "l3": {
+        "kind": "alpha_in",
+        "alpha": 0.0
+      }
+    },
+    "Q2L2_l2res50_l3uni": {
+      "l2": {
+        "kind": "residual",
+        "lambda": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      },
+      "l3": {
+        "kind": "alpha_in",
+        "alpha": 0.40091275
+      }
+    },
+    "Q2L3_l2uni_l3res50": {
+      "l2": {
+        "kind": "alpha_in",
+        "alpha": 0.40091275
+      },
+      "l3": {
+        "kind": "residual",
+        "lambda": 0.5,
+        "norm": "instance",
+        "scale_match": "per_sample_per_channel_rms(f)",
+        "eps": 1e-05
+      }
+    }
+  },
+  "canonical_residual": {
+    "name": "A3_lam050",
+    "formula": {
+      "kind": "residual",
+      "lambda": 0.5,
+      "norm": "instance",
+      "scale_match": "per_sample_per_channel_rms(f)",
+      "eps": 1e-05
+    },
+    "selection_rule": "Q0 PRE-RUN grid \u4e2d\u6700\u7b80\u5355\u3001\u5b9a\u4e49\u660e\u786e\u3001\u65e0\u8bad\u7ec3\u7684 A-family canonical residual\uff1b\u4e0d\u4f9d\u636e Q0/Q2 target performance \u91cd\u65b0\u8bbe\u8ba1"
+  },
+  "uniform_alpha": 0.40091275,
+  "screen": {
+    "categories": [
+      "bottle",
+      "grid",
+      "hazelnut"
+    ],
+    "seeds": [
+      0
+    ],
+    "units": 12
+  },
+  "promotion": {
+    "rule": "identical to Q0 section 14 tiers vs Uniform on the same subset",
+    "on_promotion": "extend promoted configs to 5 categories x 3 seeds"
+  },
+  "historical_coverage_of_screen_units": {
+    "Q2L0_l2org_l3uni": 0,
+    "Q2L1_l2uni_l3org": 0,
+    "Q2L2_l2res50_l3uni": 0,
+    "Q2L3_l2uni_l3res50": 0
+  },
+  "frozen_assumptions": [
+    "Original == alpha_in with alpha=0 (\u4e25\u683c short-circuit, \u5df2\u9a8c\u8bc1\u4e0e 5A-H B0 \u9010\u4f4d\u7b49\u4ef7)",
+    "Uniform-Norm == alpha_in alpha=0.40091275 (\u5df2\u9a8c\u8bc1\u4e0e 6B \u9010\u4f4d\u7b49\u4ef7)",
+    "canonical residual == A3 energy-preserving: F_out = (F + 0.5*N_hat) * rms(F)/rms(F_out_raw), N_hat = IN(F)*rms(F)",
+    "step \u65bd\u52a0\u4f4d\u7f6e\u4e0e Q0 \u5b8c\u5168\u4e00\u81f4\uff1alayer2 \u4e8e concat \u524d\u3001layer3 \u4e8e bilinear upsample \u524d",
+    "bank / coreset 0.1 / kNN 9 / split / illumination / scoring \u4e0e Q0 \u5b8c\u5168\u76f8\u540c\uff08\u540c\u4e00 run_config \u4ee3\u7801\u8def\u5f84\uff09",
+    "promotion rule \u4e0e Q0 \u76f8\u540c\uff08Tier S/A/B vs Uniform \u03b1=0.40091275\uff0c\u540c\u4e00\u5b50\u96c6\uff09"
+  ],
+  "baseline": "Uniform alpha=0.40091275 (restricted to the same subset for screening)",
+  "no_dense_sweep": true,
+  "target_results_read": false,
+  "git_head": "f118e1ebc0f7c5462145bf95df6092fb9b083408",
+  "timestamp": "2026-10-07T00:21:19"
+}

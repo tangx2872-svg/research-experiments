@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "screw",
+  "seed": 1,
+  "config": "D-ONLY25",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 182.5,
+  "coreset_size": 32768,
+  "tau_val": 11.229048728942871,
+  "peak_gpu_memory_allocated_mb": 1388.49,
+  "train_ids_hash": "34b6f5ebdfa3",
+  "n_rows": 344,
+  "pixel_auroc": 0.9911104279925068,
+  "aupro": 0.9583123326301575
+}

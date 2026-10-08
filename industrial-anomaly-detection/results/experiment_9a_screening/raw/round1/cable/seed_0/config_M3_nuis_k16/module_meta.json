@@ -1,0 +1,110 @@
+{
+  "experiment": "9A",
+  "unit": "cable:0:M3_nuis_k16",
+  "config": "M3_nuis_k16",
+  "round": "round1",
+  "spec": {
+    "kind": "m3",
+    "alpha_l2": 0.0,
+    "alpha_l3": 0.0,
+    "name": "M3_nuis_k16"
+  },
+  "embedding_dim": 1536,
+  "prep_seconds": 72.07,
+  "memory_bank_size": 22937,
+  "runtime_seconds": 167.11,
+  "wallclock_seconds": 167.36,
+  "peak_gpu_memory_allocated_mb": 2793.25,
+  "declared_alpha_l2": 0.0,
+  "declared_alpha_l3": 0.0,
+  "lambda_m4": null,
+  "alpha_robust_m4": null,
+  "m4_alpha_prime": null,
+  "m4_lambda": null,
+  "m4_effective_alpha": null,
+  "m1_reference_stats": null,
+  "m3_basis_meta": {
+    "category": "cable",
+    "seed": 0,
+    "k": 16,
+    "hash": "024f25f7d42cd317",
+    "n_train": 204,
+    "per_layer": {
+      "layer2": {
+        "C": 512,
+        "k": 16,
+        "topk_eig": [
+          9586337.174175236,
+          3626568.6594224665,
+          2470731.7533737766,
+          1080381.8322486333,
+          878217.6246854787,
+          837733.4824879885,
+          654564.7985451807,
+          624567.0792063134,
+          556408.9398973589,
+          501508.01376202994,
+          488247.24016540305,
+          463305.22805262456,
+          427255.6790727394,
+          409621.9817473698,
+          408342.96516650723,
+          360703.7866056041
+        ],
+        "trace": 34614394.30300489,
+        "topk_share_of_trace": 0.6752825438458
+      },
+      "layer3": {
+        "C": 1024,
+        "k": 16,
+        "topk_eig": [
+          574871.5283764497,
+          532907.6818009418,
+          486485.3477764534,
+          406451.2034965123,
+          202410.50637342499,
+          192089.14020289516,
+          179062.98233689507,
+          161578.50681239492,
+          152927.484785653,
+          132019.07682094976,
+          130868.07426677062,
+          126150.77516774788,
+          117282.22509975254,
+          116797.62298981588,
+          110230.06038402105,
+          109534.1756444835
+        ],
+        "trace": 8494721.748185018,
+        "topk_share_of_trace": 0.4392923632998891
+      }
+    },
+    "shifts": [
+      [
+        "brightness_0.7",
+        "brightness",
+        0.7
+      ],
+      [
+        "brightness_1.3",
+        "brightness",
+        1.3
+      ],
+      [
+        "gamma_0.7",
+        "gamma",
+        0.7
+      ],
+      [
+        "gamma_1.3",
+        "gamma",
+        1.3
+      ]
+    ],
+    "reused": false,
+    "npz": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/experiment_9a_screening/cache/nuisance_basis_cable_seed0_k16_024f25f7d42cd317.npz",
+    "created_at": 1791371983.3921967
+  },
+  "status": "ok",
+  "detail": ""
+}

@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "screw",
+  "seed": 2,
+  "config": "A3_lam050",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 180.49,
+  "coreset_size": 32768,
+  "tau_val": 33.38020324707031,
+  "peak_gpu_memory_allocated_mb": 3937.04,
+  "train_ids_hash": "a913671ad699",
+  "n_rows": 344,
+  "pixel_auroc": 0.9878700212180296,
+  "aupro": 0.9395648837089539
+}

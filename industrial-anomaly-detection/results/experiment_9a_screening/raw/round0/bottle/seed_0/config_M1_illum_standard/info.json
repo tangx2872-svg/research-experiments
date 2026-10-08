@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "bottle",
+  "seed": 0,
+  "config": "M1_illum_standard",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 105.47,
+  "coreset_size": 21401,
+  "tau_val": 19.56878662109375,
+  "peak_gpu_memory_allocated_mb": 2605.04,
+  "train_ids_hash": "4e89d97b0d21",
+  "n_rows": 183,
+  "pixel_auroc": 0.985284090125,
+  "aupro": 0.9438936710357666
+}

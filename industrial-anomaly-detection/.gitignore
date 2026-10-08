@@ -141,3 +141,88 @@ results/experiment_6b/logs/runner_pid_*.txt
 results/experiment_6b/logs/sanity_pre_*.csv
 results/experiment_6b/raw_new/**/fit/
 results/experiment_6b/raw_new/**/run.lock
+
+# 7A-O 轻量结果纳入版本控制（reference/configs/raw/summary/figures/README）；
+# 逐图分数 ~0.4MB/92unit 与 5A-H/6A/6B 同口径入库；运行日志/fit cache/lock 不入库
+!results/experiment_7a_o/
+results/experiment_7a_o/logs/*.log
+results/experiment_7a_o/logs/*.json
+results/experiment_7a_o/logs/runner_pid_*.txt
+results/experiment_7a_o/logs/sanity_pre_*.csv
+results/experiment_7a_o/raw/**/fit/
+results/experiment_7a_o/raw/**/run.lock
+
+# overnight 后续队列 Q2 / Q3 轻量结果入库（reference/configs/raw/README）；日志/fit/lock 不入库
+!results/experiment_7a_o_q2/
+results/experiment_7a_o_q2/logs/*.log
+results/experiment_7a_o_q2/logs/*.txt
+results/experiment_7a_o_q2/raw/**/fit/
+results/experiment_7a_o_q2/raw/**/run.lock
+!results/experiment_7a_o_q3/
+results/experiment_7a_o_q3/logs/*.log
+results/experiment_7a_o_q3/logs/*.txt
+results/experiment_7a_o_q3/raw/**/fit/
+results/experiment_7a_o_q3/raw/**/run.lock
+
+!results/experiment_7a_o_q4/
+results/experiment_7a_o_q4/logs/*.log
+results/experiment_7a_o_q4/logs/*.txt
+results/experiment_7a_o_q4/raw/**/fit/
+results/experiment_7a_o_q4/raw/**/run.lock
+
+# overnight 队列：lightning 生成的 logs 子树（含 latest 符号链接）不入库
+results/experiment_7a_o_q2/logs/
+results/experiment_7a_o_q3/logs/
+results/experiment_7a_o_q4/logs/
+results/experiment_7a_o/logs/
+
+# Mini Experiment 8B（defect–illumination separability probe）轻量结果入库：
+# reference/audit/analysis/figures/sanity/verdict/final_report/probe 逐图分数；
+# Phase A 特征摘要（extract/cells ~45MB npz）可由 scripts/experiment8b_extract.py 重生成，不入库；
+# smoke / logs / lightning fit 运行目录不入库。
+!results/experiment8b/
+results/experiment8b/logs/
+results/experiment8b/smoke/
+!results/experiment8b/extract/
+results/experiment8b/extract/cells/
+results/experiment8b/probe/raw/**/fit/
+results/experiment8b/probe/raw/**/run.lock
+# 8B probe 随机基线（RANDOM25_*/RANDOM50_*，20 masks/cell = 300 units ≈ 20MB）逐图分数不入库：
+# mask 定义（probe/masks.json，deterministic seed 80002）与全部派生指标（analysis/probe_metrics.csv、
+# probe_vs_reference.csv）已入库，可用 scripts/experiment8b_probe_runner.py 精确重跑；
+# 8 个决策相关 mask（FULL25/PARETO25/PROPOSED25/PROPOSED50/D-ONLY25/D-ONLY50/I-ONLY25/I-ONLY50）
+# 的逐图分数按 5A-H/7A-O 同口径入库。
+results/experiment8b/probe/raw/**/RANDOM25_*/
+results/experiment8b/probe/raw/**/RANDOM50_*/
+
+# Experiment 9A 结果（M1–M6 Method Screening Round-1；纳入 raw 逐图分数/info/module_meta + summary + figures + README/config，排除 cache/logs/progress）
+!results/experiment_9a_screening/
+results/experiment_9a_screening/cache/
+results/experiment_9a_screening/logs/
+results/experiment_9a_screening/progress/
+
+# Experiment 9A：保留 progress.log（进度/ETA 记录）与逐图分数，排除 Lightning fit 日志、临时状态与 cache
+!results/experiment_9a_screening/progress.log
+results/experiment_9a_screening/**/fit/
+results/experiment_9a_screening/progress.json
+
+# 监控器运行时状态（只保留脚本）
+monitor/logs/
+monitor/state/
+
+# Experiment 9B 结果（M7–M11 second screening；纳入 raw 逐图分数/info/module_meta + summary + figures + README/config，排除 cache/logs/progress/fit）
+!results/experiment_9b_screening/
+results/experiment_9b_screening/cache/
+results/experiment_9b_screening/logs/
+results/experiment_9b_screening/progress/
+results/experiment_9b_screening/**/fit/
+results/experiment_9b_screening/progress.json
+!results/experiment_9b_screening/progress.log
+
+# Experiment 9C 结果（Matched-RNG calibration；纳入 raw 证据 + summary + figures + README/config，排除 logs/progress）
+!results/experiment_9c_rng_calibration/
+results/experiment_9c_rng_calibration/logs/
+results/experiment_9c_rng_calibration/progress/
+results/experiment_9c_rng_calibration/**/fit/
+results/experiment_9c_rng_calibration/progress.json
+!results/experiment_9c_rng_calibration/progress.log

@@ -1,0 +1,21 @@
+{
+  "promoted": [],
+  "rule": "Q0 tier rule vs Uniform on the same subset",
+  "tiers": {
+    "S": {
+      "delta_dprime_min": 0.0,
+      "delta_abs_z_max": 0.0,
+      "neg_transfer_may_increase": false
+    },
+    "A": {
+      "delta_dprime_min": 0.1,
+      "delta_abs_z_max": 0.02,
+      "neg_transfer_may_increase": false
+    },
+    "B": {
+      "delta_dprime_min": -0.05,
+      "delta_abs_z_max": -0.02,
+      "neg_transfer_may_increase": true
+    }
+  }
+}

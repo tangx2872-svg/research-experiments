@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "hazelnut",
+  "seed": 0,
+  "config": "A1_lam010",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 211.59,
+  "coreset_size": 40038,
+  "tau_val": 29.941577911376953,
+  "peak_gpu_memory_allocated_mb": 4789.04,
+  "train_ids_hash": "950ab84418ec",
+  "n_rows": 290,
+  "pixel_auroc": 0.9882065246754765,
+  "aupro": 0.955406904220581
+}

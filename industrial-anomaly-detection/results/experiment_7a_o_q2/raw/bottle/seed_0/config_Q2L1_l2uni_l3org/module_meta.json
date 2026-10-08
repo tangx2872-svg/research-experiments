@@ -1,0 +1,22 @@
+{
+  "config": "Q2L1_l2uni_l3org",
+  "family": "Q2",
+  "spec": {
+    "l2": {
+      "kind": "alpha_in",
+      "alpha": 0.40091275
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    }
+  },
+  "embedding_dim": 1536,
+  "memory_bank_size": 21401,
+  "runtime_seconds": 104.39,
+  "wallclock_seconds": 104.63,
+  "peak_gpu_memory_allocated_mb": 2603.04,
+  "declared_alpha_l2": 0.40091275,
+  "declared_alpha_l3": 0.0,
+  "embedding_dim_note": "3072 for concat_dual (doubled), 1536 otherwise"
+}

@@ -1,0 +1,25 @@
+{
+  "status": "OK",
+  "queue": "Q3",
+  "method": "M0_original",
+  "category": "cable",
+  "seed": 0,
+  "spec": {
+    "l2": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    }
+  },
+  "tau_val": 33.469356536865234,
+  "n_rows": 866,
+  "expected_rows": 866,
+  "n_conditions": 12,
+  "runtime_seconds": 154.4,
+  "peak_gpu_memory_allocated_mb": 2783.04,
+  "embedding_dim": 1536,
+  "freeze_sha256": "6c4ee3d07c081c23026a82fb3a426494675f76947785e0b32eb8e256144a91ec"
+}

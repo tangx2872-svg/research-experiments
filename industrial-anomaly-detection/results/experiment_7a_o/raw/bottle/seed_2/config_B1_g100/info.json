@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "bottle",
+  "seed": 2,
+  "config": "B1_g100",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 86.4,
+  "coreset_size": 21401,
+  "tau_val": 40.02077102661133,
+  "peak_gpu_memory_allocated_mb": 5113.04,
+  "train_ids_hash": "a8c2eecb889f",
+  "n_rows": 183,
+  "pixel_auroc": 0.98550896875,
+  "aupro": 0.9484467506408691
+}

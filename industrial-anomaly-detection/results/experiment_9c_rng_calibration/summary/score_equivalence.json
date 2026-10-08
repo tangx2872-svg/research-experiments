@@ -1,0 +1,81 @@
+{
+  "per_case": {
+    "V1": {
+      "n_rows": 183,
+      "max_abs_delta_score": 1.3298530578613281,
+      "score_bit_exact": false,
+      "metrics": {
+        "A": {
+          "mean_abs_delta_z": 0.33698860176965245,
+          "mean_dprime": 7.640505844012701,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.985224827425,
+          "aupro": 0.9470301270484924
+        },
+        "B": {
+          "mean_abs_delta_z": 0.31676461764975705,
+          "mean_dprime": 7.69471703641923,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.985324021,
+          "aupro": 0.9476751685142517
+        }
+      },
+      "NF_dz": 0.0202239841198954,
+      "NF_dprime": 0.054211192406529385
+    },
+    "V2.0_coreset_replay_only": {
+      "n_rows": 183,
+      "max_abs_delta_score": 2.117155075073242,
+      "score_bit_exact": false,
+      "metrics": {
+        "A": {
+          "mean_abs_delta_z": 0.383705259257334,
+          "mean_dprime": 7.896481398254919,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.985334724575,
+          "aupro": 0.9472448229789734
+        },
+        "B": {
+          "mean_abs_delta_z": 0.3557173240569317,
+          "mean_dprime": 7.901750210297841,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.9852664874,
+          "aupro": 0.9475668668746948
+        }
+      },
+      "NF_dz": 0.027987935200402325,
+      "NF_dprime": 0.005268812042921844
+    },
+    "V2.1_coreset_plus_fit_replay": {
+      "n_rows": 183,
+      "max_abs_delta_score": 0.0,
+      "score_bit_exact": true,
+      "metrics": {
+        "A": {
+          "mean_abs_delta_z": 0.34577458906964265,
+          "mean_dprime": 7.97028496058563,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.9852513122,
+          "aupro": 0.947292685508728
+        },
+        "B": {
+          "mean_abs_delta_z": 0.34577458906964265,
+          "mean_dprime": 7.97028496058563,
+          "image_auroc": 1.0,
+          "pixel_auroc": 0.9852513122,
+          "aupro": 0.947292685508728
+        }
+      },
+      "NF_dz": 0.0,
+      "NF_dprime": 0.0
+    }
+  },
+  "criteria_frozen": {
+    "A_embedding": "max|dF| <= 1e-7",
+    "B_coreset": "exact",
+    "C_score": "max|dscore| <= 1e-7",
+    "D_robustness": "|d| <= 1e-6",
+    "E_preservation": "|d| <= 1e-6"
+  },
+  "V2.1_meets_all_criteria": true
+}

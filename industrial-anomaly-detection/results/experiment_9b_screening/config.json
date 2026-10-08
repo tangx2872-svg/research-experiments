@@ -1,0 +1,209 @@
+{
+  "experiment": "9B",
+  "title": "Second Method Screening - M7-M11 (deployable / normal-only / training-free)",
+  "date": "2026-10-07",
+  "paper_stage": "方法发现 / Method Discovery（继 9A「无方法晋级」之后的第二批候选海选）",
+  "question": "在 9A 无方法晋级后，是否存在 deployable / normal-only / training-free / PatchCore-compatible 的第二批候选（M7-M11）能改善 robustness-preservation trade-off？",
+  "environment": {
+    "conda_env": "base",
+    "python": "3.12.3",
+    "torch": "2.8.0+cu128",
+    "anomalib": "2.6.2",
+    "gpu": "NVIDIA GeForce RTX 3090 24GB"
+  },
+  "metrics_frozen": {
+    "primary_robustness": "mean |DeltaNormalScore_z|  (LOWER is better)",
+    "primary_preservation": "mean defect d-prime  (HIGHER is better)",
+    "recompute_implementation": "experiment5a_h_analysis.unit_metrics (CPU, from per_image.csv)",
+    "epsilon": {
+      "EPS_DP": 0.1,
+      "EPS_RZ": 0.02,
+      "note": "EPS_DP = 5A-H frozen preservation band; EPS_RZ = 7A-O Tier-A robustness band"
+    },
+    "reference": [
+      "B0 (alpha=0) from 5A-H frozen raw",
+      "Experiment 9A frozen uniform-alpha frontier (results/experiment_9a_screening/summary/uniform_alpha_frontier.csv)"
+    ]
+  },
+  "data_frozen": {
+    "dataset": "MVTec AD",
+    "root": "data/mvtec_ad",
+    "categories": [
+      "bottle",
+      "cable"
+    ],
+    "seed": 0,
+    "split": "experiment1b_defect_sensitivity.make_validation_split (val=20; train=189 bottle / 204 cable)",
+    "test_good": {
+      "bottle": 20,
+      "cable": 58
+    },
+    "defect_types": {
+      "bottle": 3,
+      "cable": 8
+    }
+  },
+  "candidate_constraints_frozen": [
+    "normal-only: every parameter/statistic estimated from train/good images only",
+    "deployable: no oracle / no test defect mask / no test anomaly labels",
+    "training-free: no gradient training, no learned fusion",
+    "no parameter selection from 9B target results",
+    "no per-category parameter tuning"
+  ],
+  "frozen_pipeline": {
+    "runner": "scripts/experiment9b_runner.py (monkey-patch experiment5a_h_runner.fit_dual_model)",
+    "bank_coreset_knn_illumination_scoring": "identical to 5A-H / 7A-O / 9A path (coreset 0.1, kNN 9, 4 frozen photometric shifts)",
+    "illumination_shifts": [
+      "brightness_0.7",
+      "brightness_1.3",
+      "gamma_0.7",
+      "gamma_1.3"
+    ],
+    "IN_definition": "torch.nn.functional.instance_norm, affine=False (identical to 5A/5A-H/6A/6B/7A-O)",
+    "insertion_points": "layer2 before concat; layer3 before upsample (identical to all historical alpha-IN work)"
+  },
+  "normal_only_illumination_sensitivity_frozen": {
+    "name": "s_c (per-channel illumination sensitivity)",
+    "estimated_on": "train/good images only (bottle 189 / cable 204), the 4 frozen shifts",
+    "definition": "s_c = mean over (train image, shift) of mean_spatial |pooled_feature(T(x))_c - pooled_feature(x)_c|",
+    "feature_space": "after PatchcoreModel.feature_pooler (AvgPool2d(3,1,1)), per layer (layer2 C=512, layer3 C=1024)",
+    "cached": "results/experiment_9b_screening/cache/illum_sensitivity_<cat>_seed0_<hash>.npz (reused by M8/M9/M11; ONE estimation per category)",
+    "forbidden": [
+      "test defect mask",
+      "test anomaly labels",
+      "test defect statistics",
+      "per-category re-tuning"
+    ]
+  },
+  "candidates_frozen": {
+    "M7_layer_selective_normalization": {
+      "mechanism": "per-layer independent alpha-IN strength, alpha_L2 != alpha_L3 (existing FAlphaDualLayerPatchcoreModel, no new code)",
+      "grid": {
+        "alpha_L2": [
+          0.0,
+          0.25,
+          0.5
+        ],
+        "alpha_L3": [
+          0.0,
+          0.25,
+          0.5
+        ],
+        "excluded": "alpha_L2 == alpha_L3 (uniform baseline)"
+      },
+      "configs": [
+        "M7_L2a000_L3a025",
+        "M7_L2a000_L3a050",
+        "M7_L2a025_L3a000",
+        "M7_L2a025_L3a050",
+        "M7_L2a050_L3a000",
+        "M7_L2a050_L3a025"
+      ],
+      "preregistered_direction": "1H: layer2 is the sensitive layer for bottle/cable defects (preferred_sensitive_layer=layer2); Q2: residual in L2 slot helps (+0.5793 d-prime), in L3 slot hurts. Prediction: alpha_L2-heavy > alpha_L3-heavy."
+    },
+    "M8_normal_only_channel_gate": {
+      "mechanism": "soft per-layer per-channel gate from normal-only s_c; F'_c = (1-a_c)*F_c + a_c*IN(F)_c",
+      "weight_map": "a_c = clip(a_bar + beta * z_c, 0, 1), z_c = (s_c - mean_c s)/(std_c s + 1e-8) per layer",
+      "frozen": {
+        "a_bar": 0.25,
+        "beta": [
+          0.5,
+          1.0
+        ]
+      },
+      "configs": [
+        "M8_gate_ab025_b050",
+        "M8_gate_ab025_b100"
+      ],
+      "a_bar_rationale": "0.25 = 6A/6B historical knee (alpha_F=0.25), chosen from HISTORY before any 9B result; beta=0 reduces exactly to uniform alpha=0.25",
+      "soft_continuous": true,
+      "hard_topk": false
+    },
+    "M9_soft_channel_weighting": {
+      "mechanism": "mild alternative to M3 hard projection: keep all directions, re-weight channels by absolute normal-only sensitivity",
+      "weight_map": "w_c = clip((s_c / p90_c(s))^gamma, 0, 1) per layer (scale-free absolute map, NOT mean-preserving)",
+      "frozen": {
+        "gamma": [
+          1.0,
+          2.0
+        ]
+      },
+      "configs": [
+        "M9_sw_gamma1",
+        "M9_sw_gamma2"
+      ],
+      "note": "gamma=2 sharpens emphasis on high-sensitivity channels; average strength is data-determined (recorded in gate statistics)"
+    },
+    "M10_original_robust_concat": {
+      "mechanism": "dual branch = fixed concat(original, robust) with pre-registered ratio gamma",
+      "EQUIVALENT_HISTORICAL_ASSET": "7A-O Family B dual_step(gamma) = concat([F, gamma*IN_hat(F)]) -> identical frozen definition",
+      "source": "results/experiment_7a_o/raw/<cat>/seed_0/config_B1_g025|g050|g100",
+      "decision": "REUSE - 0 GPU (no re-run); channel dim doubles 1536->3072 (7A-O recorded ~5.1 GB peak, 2 OOM events at 3 workers)",
+      "configs_reused": [
+        "B1_g025 (gamma=0.25)",
+        "B1_g050 (gamma=0.50)",
+        "B1_g100 (gamma=1.00)"
+      ]
+    },
+    "M11_layer_x_channel_gate": {
+      "mechanism": "M7 (layer-specific strength) x M8 (normal-only channel gate): per-layer base strength (a_bar_L2, a_bar_L3) = (0.50, 0.00) + per-layer channel gate",
+      "weight_map": "a_c = clip(a_bar_layer + beta * z_c_layer, 0, 1)",
+      "frozen": {
+        "a_bar_l2": 0.5,
+        "a_bar_l3": 0.0,
+        "beta": [
+          0.5,
+          1.0
+        ]
+      },
+      "configs": [
+        "M11_L2heavy_b050",
+        "M11_L2heavy_b100"
+      ],
+      "rationale": "1H layer-specific evidence (layer2 sensitive) + M8 channel evidence; no learned network, no target-driven gate"
+    }
+  },
+  "sanity_required": [
+    "S1 alpha=0 / gate=0 strictly reduces to original PatchcoreModel.generate_embedding (bit-exact)",
+    "S2 tensor shapes unchanged (embedding 1536 x 32 x 32 for non-concat candidates)",
+    "S3 no NaN / Inf in embeddings, gates, scores",
+    "S4 gate range legal (0 <= a_c <= 1) and constant-gate equivalence: constant a_c equals uniform alpha",
+    "S5 no defect GT / test data used in fit (s_c from train/good only; n_train recorded)",
+    "S6 M7 uniform setting (alpha_L2 == alpha_L3) equals historical uniform alpha baseline",
+    "S7 M8/M9/M11 gate statistics independent of test data (train-only cache hash recorded)",
+    "S8 baseline equivalence on GPU smoke: bottle seed0 (alpha=0) == historical 5A-H B0 bit-exact",
+    "S9 per-unit row counts match (183 bottle / 402 cable)",
+    "S10 no failed unit silently excluded"
+  ],
+  "budget_estimate_frozen": {
+    "new_gpu_units": 24,
+    "breakdown": {
+      "M7": 12,
+      "M8": 4,
+      "M9": 4,
+      "M11": 4,
+      "M10": 0
+    },
+    "smoke_gpu_units": 5,
+    "estimated_gpu_minutes": "15-20 (3-4 workers)",
+    "total_target_minutes": "20-35",
+    "hard_stop": "if measured ETA > 45 min, keep only the core configs and report"
+  },
+  "exit_conditions_frozen": {
+    "ADVANCE": "bottle+cable 整体支持 trade-off 改善（至少一侧跑出 uniform-alpha frontier），且不存在严重跨类别反向恶化",
+    "HOLD": "存在真实改善，但有轻度 category dependency，值得下一轮验证",
+    "STOP": [
+      "robustness 无改善",
+      "preservation-only improvement",
+      "被 uniform-alpha frontier 支配",
+      "严重 cross-category instability",
+      "algebraically redundant",
+      "数值不稳定",
+      "需要 oracle / test labels",
+      "runtime/memory 成本明显不合理"
+    ],
+    "no_forced_winner": "如果 M7-M11 全部失败，明确输出 'Experiment 9B: no candidate promoted.'"
+  },
+  "git_head_at_freeze": "80dabd5",
+  "_key_order_note": "frozen 2026-10-07 before reading any 9B target result"
+}

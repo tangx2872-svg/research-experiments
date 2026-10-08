@@ -1,0 +1,22 @@
+{
+  "config": "Q4a03",
+  "family": "combination",
+  "spec": {
+    "l2": {
+      "kind": "alpha_in",
+      "alpha": 0.3
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.3
+    }
+  },
+  "embedding_dim": 1536,
+  "memory_bank_size": 22937,
+  "runtime_seconds": 121.41,
+  "wallclock_seconds": 121.64,
+  "peak_gpu_memory_allocated_mb": 2783.04,
+  "declared_alpha_l2": 0.3,
+  "declared_alpha_l3": 0.3,
+  "embedding_dim_note": "3072 for concat_dual (doubled), 1536 otherwise"
+}

@@ -1,0 +1,8 @@
+check,status,detail
+S1_snapshot_restore_reproduces_rng_stream,PASS,probe equal=True
+S2_canonical_restore_after_arbitrary_consumption,PASS,restore-canonical reproduces canonical: True; un-restored stream differs (probe sensitive): True
+S3_numpy_python_replay_exact,PASS,numpy_equal=True python_equal=True
+S4_helper_does_not_modify_input,PASS,embedding unchanged by tensor_stats/tensor_sha256
+S5_v1_mode_preserves_original_behaviour,PASS,v1-wrapped == unwrapped: True
+S6_v2_matched_rng_removes_upstream_rng_divergence,PASS,extra=0/5/11 identical: True
+S7_fit_entry_replay_fixes_train_dataloader_order,PASS,extra-consumption changes row order: True; fit-entry replay restores it: True

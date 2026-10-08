@@ -1,0 +1,7 @@
+method,scope,mean_defect_dprime,mean_abs_delta_z,delta_dprime_vs_uniform,delta_abs_z_vs_uniform,image_auroc,status,note
+"Original (alpha=0, no normalization intervention)",5cat x 3seed,4.985245,0.310489,0.191286,0.097122,0.986613,reused historical raw,baseline
+Fixed alpha=0.5 (historical baseline),5cat x 3seed,4.666993,0.208216,-0.126967,-0.005151,0.975746,reused historical raw,baseline
+Strong Uniform alpha=0.40091275 (6B baseline),5cat x 3seed,4.793959,0.213367,0.0,0.0,0.982713,reused historical raw,baseline
+"Soft-GC alpha_F=0.25 (6A, reference only)",5cat x 3seed,4.878197,0.232915,0.084237,0.019548,0.985047,reused historical raw,baseline
+7A-O best-preservation config: A3_lam050 (NOT a winner; Tier = none),5cat x 3seed,5.355173,0.275298,0.561214,0.061931,0.988613,reused historical raw,exploratory; strictly dominates Original but not Uniform
+Q2 best composition: Q2L2_l2res50_l3uni (NOT a winner),3cat x 1seed,6.026047,0.208889,0.579331,0.042878,0.999165,reused historical raw,exploratory; 3cat x seed0 only
