@@ -164,3 +164,27 @@ X6c − C2 = **+0.048 [0.034, 0.062]（显著）**；X6c − C6 = **+0.052 [0.04
 2. **E4 held-out 验证**（唯一实质缺口）：按 `HELD_OUT_VALIDATION_PLAN.md` 执行（需人工批准与下载）。
 3. **论文阶段**：使用 `results/paper_assets/`（主表草稿 / evidence map / ablation inventory / Fig1–5）与根 README 总账。
 4. **不再新增方法实验**；后续只允许 E4 与统计功效扩展（seeds 10–19）。
+
+---
+
+## 13. Git 状态说明（**STOP + REPORT 项**：历史分叉，不影响本轮科学结论）
+
+Exp16 结束时检查到 **`origin/main` 与本地 `main` 已分叉**，且分歧内容与本项目无关：
+
+| 项 | 事实 |
+|---|---|
+| 共同祖先 | `608a81b`（Exp9C：establish matched-rng calibration protocol） |
+| 本地 `main`（HEAD = `cd33224`） | 其后 **11 个提交**，全部为本项目实验工作（Exp9B-R → Exp16） |
+| `origin/main` | 其后 **4 个提交**，内容为 **LMS 项目**（`feat(lms): add experiment submissions, code review and group grading`、`docs(lms): record product QA audit…`、`merge: integrate remote experiment updates with LMS audit`、`docs(lms): align audit checksums…`） |
+| 该 ref 的更新来源 | `git reflog origin/main` 显示 `fetch: fast-forward` —— 由**外部 fetch**更新（**本轮实验从未执行 fetch/push/merge**） |
+| 双方向差异规模 | `git diff --stat HEAD origin/main` = 2289 files changed, +12984 / −357369（LMS 侧缺失大量研究产物，与其 "sanitized evidence / normalized Git contents" 提交信息一致） |
+
+**本轮采取的行动：无。** 明确**未执行** `push` / `merge` / `rebase` / `reset` / `checkout` / `cherry-pick`，
+**未修改**任何远端提交或用户文件（`monitor/exp_monitor.py`、`scripts/_lockprobe.txt`、`scripts/_probe2.py` 保持原状）。
+
+**影响评估**：① **对本轮科学结论零影响** —— Exp16 的全部 artifact 均在本地、经完整性检查（30/30 units OK、0 problems）并已本地提交；
+② 仅影响**最终推送策略**（需要人工决定：把研究历史与 LMS 历史如何合并，或改用独立远端/分支）；
+③ 按协议「发现 git/history inconsistency → STOP + REPORT」，**未擅自修复**。
+
+**建议（人工决策）**：把本项目的研究提交推到一个**独立分支**（如 `research/method-freeze`）或**独立远端**，
+避免与 LMS 分支的既有历史做自动合并；在合并前先人工审阅 `git log --oneline origin/main` 与差异规模。
