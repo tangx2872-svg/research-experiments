@@ -1,0 +1,35 @@
+{
+  "B2": {
+    "decision": "STOP",
+    "d_auroc": 0.00031999999999998696,
+    "R_ratio": 1.0215455351002083,
+    "GO_pattern_A": false,
+    "GO_pattern_B": false,
+    "stop_s1_both_flat": true,
+    "stop_s2_one_axis_harm": false,
+    "stop_s3_nearly_identical": true,
+    "stop_s6_single_illumination": false,
+    "d_auroc_excluding_best_illumination": -0.004111111111111065,
+    "best_illumination": "01"
+  },
+  "X6c": {
+    "decision": "STOP",
+    "d_auroc": 0.0012400000000000189,
+    "R_ratio": 1.0046378385777501,
+    "GO_pattern_A": false,
+    "GO_pattern_B": false,
+    "stop_s1_both_flat": true,
+    "stop_s2_one_axis_harm": false,
+    "stop_s3_nearly_identical": true,
+    "stop_s6_single_illumination": false,
+    "d_auroc_excluding_best_illumination": -0.00044444444444424747,
+    "best_illumination": "01"
+  },
+  "thresholds": {
+    "eps_det": 0.03,
+    "delta_robust": 0.05,
+    "eps_robust": 0.05,
+    "meaningful_gain": 0.03,
+    "note": "SCREENING THRESHOLD - NOT FINAL STATISTICAL CLAIM"
+  }
+}

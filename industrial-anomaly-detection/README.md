@@ -1471,6 +1471,19 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **工程适配（不改方法）**：`Folder` 需目录 → symlink farm；**bank 由 3,600 降为 1,200**（`embedding_store` 无界，实测 12.485 MB/bank 图 ⇒ 3,600 图峰值 ≈45 GB，24 GB 必 OOM —— **E4-A 必须显式规定 bank 规模**）；Engine 关 Lightning 验证。
    - **成本外推**：完整冻结协议每 (category, seed) ≈ **65 min** ⇒ E4-A Mini（3×3）≈ **9.7 h**、E4-A Full（10×3）≈ **32.5 h**。固定 view 可把 scoring 降至 ~1/12。
    - **下一步 = `E4-D2`（由人工决定）**；本 smoke **不评价 X6c**。
+10. **E4-X M²AD Bird Real-Illumination Candidate Kill Test — B2 / X6c 双双 KILLED（2026-10-08）**：
+   协议先冻结于 `docs/E4_X_PROTOCOL.md`；结果见 [`results/e4_x/README.md`](results/e4_x/README.md)。
+   **只跑 Original（复用 E4-D1，0 GPU）＋ B2（1 GPU unit，fit 778 s）＋ X6c（score-level，0 GPU）**；未改方法/阈值/权重。
+   - **Frozen view = `120`**（`VIEW_SELECTION_SEED=20261008` 机械抽取，未更换）；**`beta_Bird = 0.198045`**（由冻结公式 `clip(0.25·(q/q_ref)³,0.05,0.50)` 从 Bird normal-only `q=1.455177` 机械得出）。**Sanity 12/12 PASS**（原 `5a_h_runner` sha256 未变 ⇒ AUPRO 未被修）。
+   - **总 wall-clock 13.7 min**（q_Bird 95 s ＋ fit 778 s ＋ scoring 44 s）；peak VRAM 14,497 MB alloc / 18,258 MB reserved。
+   - **结果（view 120）**：Original AUROC **0.7677** / d′ 1.2068 / R_all **0.6754**；
+     B2 **0.7680** / 1.1833 / **0.6900**（ΔAUROC **+0.0003**，dispersion 反差 2.2%）→ **STOP**；
+     X6c **0.7689** / 1.2059 / **0.6786**（ΔAUROC **+0.0012**，dispersion 反差 0.5%）→ **STOP**。
+   - **判定依据**：预注册筛选带 `eps_det=0.03` / `delta_robust=eps_robust=0.05`（机械取自 E4-D1 实测变异）。
+     两候选均触发 S1（两轴均平）＋ S3（与 Original 几乎相同）。剔除最好一档 illumination 后 ΔAUROC 反而转负（B2 −0.0041 / X6c −0.0004）⇒ **连单档驱动都算不上**。
+   - **结论**：`B2 STOPPED. X6c STOPPED. No rescue experiment is authorized.`（详见 `results/e4_x/README.md` §6）
+   - **限定**：单类别 × 单 seed × 单 view（不外推）；bank 1,200 图（显存所迫）；阈值是 screening band 非统计结论；AUPRO 仍为 KNOWN ISSUE。
+   - **论文阶段推进**：由此进入 **Phase III — Module Composition Screening**；**E4-X 后禁止继续围绕 X6c 自动实验**。
 
 ---
 

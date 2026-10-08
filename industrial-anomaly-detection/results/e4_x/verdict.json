@@ -1,0 +1,29 @@
+{
+  "experiment": "E4-X",
+  "dataset": "M2AD-Bird",
+  "seed": 0,
+  "view": "120",
+  "original": {
+    "decision": "REFERENCE",
+    "image_auroc": 0.76766,
+    "d_prime": 1.20675723022252,
+    "R_all": 0.675426893622813
+  },
+  "B2": {
+    "decision": "STOP",
+    "image_auroc": 0.76798,
+    "d_prime": 1.1833034385338985,
+    "R_all": 0.6899793274669881,
+    "d_auroc": 0.00031999999999998696,
+    "R_ratio": 1.0215455351002083
+  },
+  "X6c": {
+    "decision": "STOP",
+    "image_auroc": 0.7689,
+    "d_prime": 1.2059484784430632,
+    "R_all": 0.6785594145265068,
+    "d_auroc": 0.0012400000000000189,
+    "R_ratio": 1.0046378385777501
+  },
+  "next_phase": "MODULE_COMPOSITION_SCREENING"
+}

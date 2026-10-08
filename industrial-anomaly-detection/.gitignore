@@ -294,3 +294,10 @@ results/e4_d1_smoke/run.log
 results/e4_d1_smoke/run.pid
 results/e4_d1_smoke/fit/
 results/e4_d1_smoke/benchmark/fit_b*/
+
+# E4-X (M2AD Bird kill test): README / summary / verdict / illumination / per-image scores /
+# sanity / info / figures tracked; run log, pid and Lightning fit dir excluded.
+!results/e4_x/
+results/e4_x/run.log
+results/e4_x/run.pid
+results/e4_x/fit/

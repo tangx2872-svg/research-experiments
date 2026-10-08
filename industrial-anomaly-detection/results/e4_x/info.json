@@ -1,0 +1,57 @@
+{
+  "status": "OK",
+  "experiment": "E4-X",
+  "dataset": "M2AD-Bird",
+  "seed": 0,
+  "frozen_view": "120",
+  "view_selection_seed": 20261008,
+  "n_scoring_images": 700,
+  "coreset_size": 122880,
+  "beta_bird": {
+    "q_Bird": 1.4551770687103271,
+    "q_ref_bottle": 1.5726841688159168,
+    "beta_Bird": 0.19804459329299784,
+    "n_train_images": 3600,
+    "S_IN_L2": 1.520953893661499,
+    "S_IN_L3": 1.0452018976211548,
+    "q_formula": "clip(BETA0*(q/q_ref)^3, 0.05, 0.50), BETA0=0.25",
+    "seconds": 95.16
+  },
+  "b2_spec": {
+    "l2": {
+      "kind": "residual",
+      "lambda": 0.19804459329299784,
+      "norm": "instance",
+      "scale_match": "per_sample_per_channel_rms(f)",
+      "eps": 1e-05
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.25
+    }
+  },
+  "original_reused_from": "results/e4_d1_smoke/per_image.csv",
+  "original_gpu_units": 0,
+  "gpu_units_this_run": 1,
+  "stages_seconds": {
+    "b2_fit_s": 778.41,
+    "b2_score_s": 43.91,
+    "peak_vram_alloc_mb": 14497.0,
+    "peak_vram_reserved_mb": 18258.0,
+    "peak_ram_mb": 2567.1,
+    "total_s": 822.92
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3090",
+    "total_MiB": 24126.2
+  },
+  "thresholds": {
+    "eps_det": 0.03,
+    "delta_robust": 0.05,
+    "eps_robust": 0.05,
+    "meaningful_gain": 0.03,
+    "note": "SCREENING THRESHOLD - NOT FINAL STATISTICAL CLAIM"
+  },
+  "R_definition": "PRIMARY R = mean over (specimen x frozen view) of std_illum(z), z=(s-mu_g)/sigma_g with mu_g/sigma_g from the method's own Good scores",
+  "Rraw_definition": "raw-score dispersion (literal task wording); NOT primary; raw score scales are NOT comparable across methods"
+}

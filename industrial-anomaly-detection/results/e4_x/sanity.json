@@ -1,0 +1,42 @@
+{
+  "S1_dataset_scope": {
+    "pass": true,
+    "detail": "records=12000 illuminations=10 view=120"
+  },
+  "S2_frozen_view": {
+    "pass": true,
+    "detail": "VIEW_SELECTION_SEED=20261008 -> 120"
+  },
+  "S3_original_reuse": {
+    "pass": true,
+    "detail": "reused 700 rows from e4_d1_smoke/per_image.csv sha256=5dc8db3a93371210 ; Original GPU units = 0"
+  },
+  "S4_b2_frozen": {
+    "pass": true,
+    "detail": "{\"l2\": {\"kind\": \"residual\", \"lambda\": 0.19804459329299784, \"norm\": \"instance\", \"scale_match\": \"per_sample_per_channel_rms(f)\", \"eps\": 1e-05}, \"l3\": {\"kind\": \"alpha_in\", \"alpha\": 0.25}}"
+  },
+  "S5_x6c_frozen": {
+    "pass": true,
+    "detail": "z_C2=0.35*z_o+0.65*z_b ; z_C6=max ; X6c=mean(z_C2,z_C6)"
+  },
+  "S8_no_param_search": {
+    "pass": true,
+    "detail": "no alpha/lambda/gamma/weight search; beta_Bird from frozen formula only"
+  },
+  "S9_aupro_untouched": {
+    "pass": true,
+    "detail": "compute_aupro source sha256=43921a763135e837 unchanged"
+  },
+  "S10_no_extra": {
+    "pass": true,
+    "detail": "single category (Bird), single seed (0), single view (120)"
+  },
+  "S11_output_isolation": {
+    "pass": true,
+    "detail": "OUT=/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/e4_x"
+  },
+  "S12_thresholds_fixed": {
+    "pass": true,
+    "detail": "eps_det=0.03 delta_robust=0.05 eps_robust=0.05 meaningful_gain=0.03 (hard-coded)"
+  }
+}

@@ -10,9 +10,9 @@
 
 | 项 | 状态 |
 |---|---|
-| 阶段 | **Phase II — Paper Validation** |
+| 阶段 | **Phase III — Module Composition Screening**（2026-10-08 由 E4-X 触发） |
 | Method discovery / search | **CLOSED（已正式结束）** |
-| 冻结方法 | **X6c**（`results/experiment_16_final_validation/`，verdict `A — FREEZE X6c`） |
+| 冻结方法 | **X6c** — 内部 `A — FREEZE X6c`；但 **E4-X 外部（M²AD Bird）已 KILLED**，见 §13 |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
 | 下一步 | **E4-D2（人工决定）**；E4-D0 integrity PASS、E4-D1 Original smoke PASS（见下方 §13） |
 
@@ -232,8 +232,24 @@ Primary E4 dataset = M²AD
 Dataset selection  = CLOSED
 Integrity audit    = PASS   (E4-D0)
 Original GPU smoke = PASS   (E4-D1, pipeline feasibility only)
-Next               = E4-D2 (human decision)
+Candidate kill test= DONE   (E4-X: B2 STOP, X6c STOP)
+Next               = Phase III — Module Composition Screening
 ```
+
+### E4-X 结果（`results/e4_x/`，协议 `docs/E4_X_PROTOCOL.md`）
+
+M²AD **Bird × seed 0 × frozen view 120 × illumination 01–10**（700 张评分图）。
+**Original 复用 E4-D1（0 GPU）**；B2 = 1 GPU unit（fit 778 s）；X6c = score-level 融合（0 GPU）。总 13.7 min，sanity 12/12 PASS。
+
+| Method | Image AUROC | d′ | R_all ↓ | Decision |
+|---|---:|---:|---:|---|
+| Original | 0.7677 | 1.2068 | 0.6754 | REFERENCE |
+| B2 | 0.7680 | 1.1833 | 0.6900 | **STOP** |
+| X6c | 0.7689 | 1.2059 | 0.6786 | **STOP** |
+
+**`B2 STOPPED. X6c STOPPED. No rescue experiment is authorized.`**
+限定：单类别 × 单 seed × 单 view（不外推）；bank 1,200 图（显存所迫，非全量 train）；阈值是 screening band（`eps_det=0.03` / `delta_robust=0.05`，机械取自 E4-D1 实测变异）**不是统计结论**；AUPRO 仍为 KNOWN ISSUE（协议禁止本轮修复）。
+**E4-X 之后禁止继续围绕 X6c 自动实验。**
 
 ### E4-D1 实测（`results/e4_d1_smoke/`，协议 `docs/E4_D1_PROTOCOL.md`）
 
