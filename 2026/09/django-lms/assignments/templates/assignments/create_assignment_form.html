@@ -17,6 +17,10 @@
       {% bootstrap_field form.assignment_description %}
       {% bootstrap_field form.due_date %}
       {% bootstrap_field form.course %}
+      {% bootstrap_field form.submission_mode %}
+      {% bootstrap_field form.required_materials %}
+      {% bootstrap_field form.rubric_text %}
+      {% bootstrap_form_errors form %}
       {{ form.name.errors }}
       <input type="submit" value="提交" class="btn btn-success btn-lg">
     </form>

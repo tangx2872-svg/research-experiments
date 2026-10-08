@@ -23,18 +23,22 @@ BUSINESS = {
 }
 
 
-def snapshot():
+def snapshot(projection=None):
     result = {}
     with connection.cursor() as cursor:
         tables = set(connection.introspection.table_names(cursor))
         for table, fields in BUSINESS.items():
             if table not in tables:
                 raise CommandError('Missing expected legacy table: {}'.format(table))
-            columns = ', '.join(connection.ops.quote_name(f) for f in fields) if fields else '*'
+            if projection:
+                fields = projection[table]
+            elif fields is None:
+                fields = [column.name for column in connection.introspection.get_table_description(cursor, table)]
+            columns = ', '.join(connection.ops.quote_name(f) for f in fields)
             cursor.execute('SELECT {} FROM {} ORDER BY id'.format(columns, connection.ops.quote_name(table)))
             rows = cursor.fetchall()
             payload = json.dumps(rows, ensure_ascii=False, default=str).encode('utf-8')
-            result[table] = {'count': len(rows), 'sha256': hashlib.sha256(payload).hexdigest()}
+            result[table] = {'count': len(rows), 'sha256': hashlib.sha256(payload).hexdigest(), 'fields': fields}
     return result
 
 
@@ -86,7 +90,7 @@ class Command(BaseCommand):
             raise CommandError('Existing records changed during backup; pause writers and try again. No migration applied.')
         call_command('migrate', interactive=False)
         call_command('check')
-        after = snapshot()
+        after = snapshot({table: value['fields'] for table, value in before.items()})
         media_after = media_snapshot()
         report = {'before': before, 'after': after, 'business_preserved': before == after, 'media_preserved': media_before == media_after}
         (destination / 'verification.json').write_text(json.dumps(report, indent=2), encoding='utf-8')

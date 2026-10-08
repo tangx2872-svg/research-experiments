@@ -2,7 +2,6 @@ from django import forms
 from django.utils import timezone
 from assignments.models import SubmitAssignment, Assignment
 from courses.models import Course
-from django_lms.files import validate_upload
 
 
 class GradeAssignmentForm(forms.ModelForm):
@@ -35,18 +34,3 @@ class CreateAssignmentForm(forms.ModelForm):
         if value <= self.instance.start_date:
             raise forms.ValidationError('截止时间必须晚于发布时间。')
         return value
-
-
-class SubmitAssignmentForm(forms.ModelForm):
-    class Meta:
-        model = SubmitAssignment
-        fields = ('topic', 'description', 'assignment_file')
-        labels = {'topic': '提交标题', 'description': '作业说明', 'assignment_file': '作业文件'}
-        help_texts = {'assignment_file': '最大 20 MB；支持常见文档、图片、ZIP、.py、.ipynb。更新时不选择文件即可保留原附件。'}
-        widgets = {'assignment_file': forms.FileInput()}
-
-    def clean_assignment_file(self):
-        file = self.cleaned_data['assignment_file']
-        if 'assignment_file' in self.files:
-            validate_upload(file)
-        return file

@@ -82,7 +82,7 @@ class WorkflowTests(TestCase):
         self.login(self.outsider)
         self.assertEqual(self.client.post('/courses/new/', {'course_name': '非法', 'course_description': 'x'}).status_code, 403)
         self.assertEqual(self.client.post(reverse('assignments:grade', args=[self.submission.pk]), {'grade': 100}).status_code, 403)
-        self.assertEqual(self.client.post(reverse('assignments:submit_delete', args=[self.submission.pk])).status_code, 404)
+        self.assertEqual(self.client.post(reverse('assignments:submit_delete', args=[self.submission.pk])).status_code, 403)
         self.assertEqual(self.client.post(reverse('resources:delete', args=[self.resource.pk])).status_code, 403)
         self.submission.refresh_from_db()
         self.assertFalse(self.submission.graded)
@@ -111,15 +111,17 @@ class WorkflowTests(TestCase):
         other = Assignment.objects.create(assignment_name='另一个作业', assignment_description='x', course=self.course, due_date=timezone.now() + timedelta(days=3))
         self.client.get(other.get_absolute_url())
         url = reverse('assignments:submit', args=[self.assignment.pk])
-        self.assertEqual(self.client.post(url, {'topic': '新版', 'description': '更新', 'author': self.outsider.pk, 'assignment_ques': other.pk}).status_code, 302)
+        self.assertEqual(self.client.post(url, {'topic': '新版', 'description': '更新', 'keep_existing': 'on', 'author': self.outsider.pk, 'assignment_ques': other.pk}).status_code, 302)
         self.submission.refresh_from_db()
-        self.assertEqual(self.submission.topic, '新版')
+        self.assertEqual(self.submission.topic, '报告')
+        self.assertIsNone(self.submission.current_slot)
+        self.assertEqual(SubmitAssignment.objects.get(assignment_ques=self.assignment, current_slot=1).topic, '新版')
         self.assertEqual(self.submission.author_id, self.student.pk)
         self.assertEqual(self.submission.assignment_ques_id, self.assignment.pk)
         self.assertEqual(SubmitAssignment.objects.filter(assignment_ques=self.assignment, author=self.student, current_slot=1).count(), 1)
         self.assertEqual(self.client.get(url).status_code, 200)
 
-    def test_deadline_and_graded_submission_cannot_be_bypassed(self):
+    def test_deadline_is_enforced_and_graded_version_is_preserved(self):
         self.login(self.student)
         url = reverse('assignments:submit', args=[self.assignment.pk])
         self.assignment.due_date = timezone.now() - timedelta(seconds=1)
@@ -129,9 +131,11 @@ class WorkflowTests(TestCase):
         self.assignment.due_date = timezone.now() + timedelta(days=1)
         self.assignment.save()
         self.submission.grade_assignment(80)
-        self.assertEqual(self.client.post(url, {'topic': '改分后内容'}).status_code, 403)
+        self.assertEqual(self.client.post(url, {'topic': '改分后内容', 'description': '继续完善', 'keep_existing': 'on'}).status_code, 302)
         self.submission.refresh_from_db()
         self.assertEqual(self.submission.topic, '报告')
+        self.assertEqual(self.submission.grade, 80)
+        self.assertTrue(self.submission.graded)
 
     def test_unenrolled_and_teacher_cannot_submit(self):
         for user in [self.outsider, self.teacher]:
@@ -141,14 +145,16 @@ class WorkflowTests(TestCase):
     def test_file_validation_and_missing_file(self):
         self.login(self.student)
         url = reverse('assignments:submit', args=[self.assignment.pk])
-        for name, data in [('payload.html', b'<script>'), ('empty.txt', b''), ('large.txt', b'x' * (20 * 1024 * 1024 + 1))]:
+        for name, data in [('payload.exe', b'<script>'), ('empty.txt', b''), ('large.txt', b'x' * (20 * 1024 * 1024 + 1))]:
             response = self.client.post(url, {'topic': '非法附件', 'description': 'x', 'assignment_file': self.file(name, data)})
             self.assertEqual(response.status_code, 200)
             self.assertTrue(response.context['form'].errors)
         self.submission.assignment_file.storage.delete(self.submission.assignment_file.name)
         self.assertEqual(self.client.get(reverse('assignments:download', args=[self.submission.pk])).status_code, 404)
         self.assertEqual(self.client.post(reverse('assignments:submit_delete', args=[self.submission.pk])).status_code, 302)
-        self.assertFalse(SubmitAssignment.objects.filter(pk=self.submission.pk).exists())
+        self.submission.refresh_from_db()
+        self.assertTrue(self.submission.withdrawn)
+        self.assertIsNone(self.submission.current_slot)
 
     def test_assignment_edit_and_delete_preserve_submissions(self):
         self.login(self.teacher)

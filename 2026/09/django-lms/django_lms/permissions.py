@@ -25,7 +25,11 @@ def require_member(user, course):
 
 
 def require_submission_reader(user, submission):
+    if not user.is_authenticated:
+        raise PermissionDenied
     if user.user_type == 1 and submission.author_id == user.pk:
+        return
+    if user.user_type == 1 and any(member.get('id') == user.pk for member in submission.participant_snapshot):
         return
     if submission.assignment_ques_id:
         require_teacher(user, submission.assignment_ques.course)

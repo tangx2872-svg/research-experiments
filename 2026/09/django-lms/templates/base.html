@@ -9,7 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="{% static 'django_lms/images/learning-mark.svg' %}">
     <link rel="stylesheet" href="{% static 'django_lms/vendor/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'django_lms/vendor/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'django_lms/css/master.css' %}?v=20261006-3">
+    <link rel="stylesheet" href="{% static 'django_lms/css/master.css' %}?v=20261008-1">
     <script defer src="{% static 'django_lms/js/navigation.js' %}?v=20260922-3"></script>
 </head>
 <body>
@@ -63,7 +63,7 @@
         {% for message in messages %}<div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}" role="status">{{ message }}</div>{% endfor %}
         <div class="page-panel">{% block body_content %}{% endblock %}</div>
     </main>
-    <footer class="workspace-footer">苏州工学院 · 教学与科研协作平台 <span>界面版本 2026.10 · 课程 / 科研 / 成果版本</span></footer>
+    <footer class="workspace-footer">苏州工学院 · 教学与科研协作平台 <span>界面版本 2026.10 · 实验提交 / 代码对比 / 小组协作</span></footer>
 </div>
 </body>
 </html>

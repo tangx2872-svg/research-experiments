@@ -27,7 +27,8 @@ class UserProfile(LoginRequiredMixin, generic.ListView):
         context['course_count'] = courses.count()
         context['assignment_count'] = Assignment.objects.filter(course__in=courses).count()
         if self.request.user.user_type == 1:
-            context['my_submissions'] = SubmitAssignment.objects.filter(author=self.request.user).select_related('assignment_ques__course').order_by('-updated_at', '-pk')
+            from assignments.submission_service import visible_to
+            context['my_submissions'] = SubmitAssignment.objects.filter(visible_to(self.request.user)).distinct().select_related('assignment_ques__course').order_by('-updated_at', '-pk')
             current = context['my_submissions'].filter(current_slot=1)
         else:
             current = SubmitAssignment.objects.filter(assignment_ques__course__teacher=self.request.user, current_slot=1)

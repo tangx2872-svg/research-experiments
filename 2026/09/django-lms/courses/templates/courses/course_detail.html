@@ -4,6 +4,7 @@
 <h1>{{ course.course_name }} {% if course.is_archived %}<span class="badge badge-secondary">已归档</span>{% endif %}</h1>
 <p>授课教师：{{ course.teacher }} · {{ course.students.count }} 人选课</p>
 <p>{{ course.course_description|linebreaksbr }}</p>
+{% if can_view_content %}<a class="btn btn-outline-primary mb-3" href="{% url 'assignments:groups' course_id=course.pk %}">实验小组{% if is_teacher %}管理{% endif %}</a>{% endif %}
 {% if course.is_archived %}<p class="alert alert-info">课程已归档：保留内容、提交与成绩，停止新选课及教学修改。教师可恢复课程。</p>{% endif %}
 {% if is_teacher %}
 {% if not course.is_archived %}

@@ -7,6 +7,8 @@ from django.utils import timezone
 
 from assignments.models import Assignment, SubmitAssignment
 from courses.models import Course
+from .submission_service import visible_to
+from .models import GroupMember
 
 
 def owned_courses(user):
@@ -35,7 +37,7 @@ def assignment_center(request):
             graded_count=Count('question', filter=Q(question__current_slot=1, question__graded=True)))
         options = [('all', '全部'), ('pending', '待批改'), ('open', '进行中'), ('closed', '已截止'), ('archived', '已归档')]
     else:
-        current = SubmitAssignment.objects.filter(author=request.user, current_slot=1)
+        current = SubmitAssignment.objects.filter(visible_to(request.user), current_slot=1).distinct()
         assignments = assignments.prefetch_related(Prefetch('question', queryset=current, to_attr='my_current'))
         options = [('all', '全部'), ('todo', '待提交'), ('pending', '待评分'), ('graded', '已评分'), ('missed', '已截止未交'), ('archived', '已归档')]
     selected_course = request.GET.get('course', '')
@@ -51,7 +53,7 @@ def assignment_center(request):
         elif selected_status == 'closed':
             assignments = assignments.filter(course__is_archived=False, due_date__lte=now)
     else:
-        current = SubmitAssignment.objects.filter(author=request.user, current_slot=1)
+        current = SubmitAssignment.objects.filter(visible_to(request.user), current_slot=1).distinct()
         if selected_status in ('pending', 'graded'):
             assignments = assignments.filter(pk__in=current.filter(graded=selected_status == 'graded').values('assignment_ques_id'))
         elif selected_status in ('todo', 'missed'):
@@ -77,7 +79,7 @@ def assignment_center(request):
             assignment.center_status = '未开始'
         else:
             assignment.center_status = '待提交'
-        assignment.can_submit_here = not teacher and assignment.is_open and not (assignment.my_submission and assignment.my_submission.graded)
+        assignment.can_submit_here = not teacher and assignment.is_open and (assignment.submission_mode != 'group' or GroupMember.objects.filter(course_id=assignment.course_id, user=request.user).exists())
     return render(request, 'assignments/center.html', {
         'page_obj': page, 'courses': courses, 'selected_course': selected_course,
         'selected_status': selected_status, 'status_options': options, 'is_teacher': teacher,
@@ -92,7 +94,7 @@ def feedback_center(request):
         submissions = submissions.filter(assignment_ques__course__teacher=request.user)
         courses = owned_courses(request.user)
     else:
-        submissions = submissions.filter(author=request.user)
+        submissions = submissions.filter(visible_to(request.user)).distinct()
         # Include courses the student left; historical feedback remains accessible.
         courses = Course.objects.filter(pk__in=submissions.values('assignment_ques__course_id'))
     options = [('all', '全部'), ('pending', '待评分'), ('graded', '已评分'), ('history', '历史版本')]
@@ -108,6 +110,8 @@ def feedback_center(request):
     elif selected_status == 'history':
         submissions = submissions.filter(current_slot__isnull=True)
     page = Paginator(submissions.order_by('-updated_at', '-pk'), 12).get_page(request.GET.get('page'))
+    for submission in page:
+        submission.display_grade = submission.grade if teacher else next((row['final_grade'] for row in submission.participant_grades if row['id'] == request.user.pk), submission.grade)
     return render(request, 'assignments/feedback_center.html', {
         'page_obj': page, 'courses': courses, 'is_teacher': teacher,
         'selected_course': selected_course, 'selected_status': selected_status, 'status_options': options,
