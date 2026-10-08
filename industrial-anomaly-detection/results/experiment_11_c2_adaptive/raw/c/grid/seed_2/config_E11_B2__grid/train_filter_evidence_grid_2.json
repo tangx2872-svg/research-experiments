@@ -1,0 +1,21 @@
+{
+  "mode": "corrected189",
+  "category": "grid",
+  "seed": 2,
+  "n_train_ids": 244,
+  "filter_log": [
+    {
+      "ts": 1791418648.9595506,
+      "n_before": 244,
+      "n_after": 244,
+      "kept_all_train_ids": true
+    },
+    {
+      "ts": 1791418649.0039878,
+      "n_before": 264,
+      "n_after": 244,
+      "kept_all_train_ids": true
+    }
+  ],
+  "images_embedded_at_fit": 244
+}

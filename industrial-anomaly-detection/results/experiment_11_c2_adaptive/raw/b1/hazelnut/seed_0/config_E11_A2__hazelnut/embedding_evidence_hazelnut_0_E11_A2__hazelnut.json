@@ -1,0 +1,22 @@
+{
+  "unit": "hazelnut:0:E11_A2__hazelnut",
+  "protocol": "v2",
+  "n_observations": 379904,
+  "embedding_shape": [
+    379904,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "c43bc6a4e9d7e8455286f51f17b0893b636851f0afd8e07c8efcc25082549ebb",
+  "embedding_stats": {
+    "shape": [
+      379904,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 586901440.0,
+    "mean": 0.9014358520507812
+  },
+  "ts": 1791417374.3458388
+}

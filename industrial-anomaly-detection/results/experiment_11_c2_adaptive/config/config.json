@@ -1,0 +1,37 @@
+{
+  "experiment": "11",
+  "title": "C2 Adaptive Preservation（normal-only, training-free）",
+  "date": "2026-10-08",
+  "git_head_at_freeze": "600865a",
+  "question": "能否仅用 normal-training statistics 把 C2 的固定 L2 compensation 强度 beta=0.25 改成 category-adaptive，使 9/15 提升到跨类别稳定，且不破坏 bottle/screw？",
+  "subject": "C2 = L2 scale-matched residual(F + beta*IN(F)*rms(F)) + L3 alpha_in(0.25)；本轮只改 L2 的 beta（或加 channel 权重），L3 恒为 alpha_in(0.25)",
+  "protocol": {
+    "train": "corrected-189（Exp10 冻结实现，images_embedded=189 已证）",
+    "rng_coreset": "strict-V2（experiment9c_rng：R1 Engine.fit 入口 + R2 select_coreset_idxs 入口）",
+    "eps_rz": 0.02, "eps_dp": 0.10,
+    "categories": ["bottle", "cable", "hazelnut", "screw", "grid"],
+    "seeds": [0, 1, 2],
+    "pass_rule": "dR <= -eps_rz AND dP >= -eps_dp（相对同 category,seed 的 corrected Original）",
+    "catastrophic": "dP <= -0.25",
+    "reuse": "Exp10 的 Original-189 / T1 / C2-fixed（5 cats x 3 seeds，15 units）与 corrected uniform frontier 全部复用，0 GPU"
+  },
+  "success_criteria_frozen": {
+    "strong_advance": "PASS >= 12/15 且 bottle>=3/3, screw>=2/3, grid>=2/3, hazelnut>=2/3, cable>=2/3，且 0 catastrophic",
+    "final_method_candidate": "PASS >= 13/15 且 cable >= 2/3 且 bottle 3/3",
+    "no_post_hoc_threshold_change": true
+  },
+  "adaptive_families_frozen": {
+    "scope": "只改 L2 preservation 强度；L3 不动（robustness 支路固定 alpha_in(0.25)）",
+    "beta_bounds": {"beta_min": 0.05, "beta_max": 0.50},
+    "A_rms_calibrated": "beta_c = clip(k*tau/s_c, beta_min, beta_max)；s_c = L2 normalization-response magnitude（train/good）；A1 mean、A2 robust median；k 由五类 pooled normal 统计机械确定",
+    "B_layer_sensitivity_ratio": "beta_c = clip(beta0*(q_c/q_bar)^p, beta_min, beta_max)，q = s_L2/(s_L3+eps)；B1 p=1，B2 二值化 clip 版本",
+    "C_channel_adaptive": "F_L2' = F + beta*g_j*IN(F)*rms(F)；g_j 来自 normal channel 统计；C1 g 归一化到均值 1，C2 g in [0,1]",
+    "forbidden": ["defect label/mask/test 数据参与 adaptive rule", "learned MLP / attention", "按 test defect performance 反向调 beta", "parameter fishing", "隐藏失败类别"]
+  },
+  "budget_frozen": {
+    "soft_minutes": 120, "checkpoint_minutes": 100, "hard_minutes": 150,
+    "stage_units_max": {"11A_short_gpu_runs": 5, "11B1": 18, "11B2": 6, "11C": 20, "ablation": 8, "optional_seeds": 6},
+    "workers_default": 4, "workers_max": 5, "workers_reduce_if_vram_above_mb": 22000
+  },
+  "figures_frozen": ["fig1_fixed_vs_adaptive_plane.png", "fig2_heatmap_5cat_x_seed.png", "fig3_fixed_vs_adaptive_consistency.png"]
+}

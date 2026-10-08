@@ -1,0 +1,3 @@
+candidate,PASS_15,n_cata,bottle_pass,cable_pass,hazelnut_pass,screw_pass,grid_pass,mean_dR,mean_dP,worst_dP,strong_advance,final_method_candidate
+E11_B2,12,1,3,2,1,3,3,-0.0807470231539143,0.19016980002971653,-0.2852088349936288,False,False
+E11_C2,4,0,1,0,1,1,1,-0.057521854366103,0.15294276231860549,-0.08171612778966342,False,False

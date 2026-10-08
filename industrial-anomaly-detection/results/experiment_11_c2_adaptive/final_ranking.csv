@@ -1,0 +1,3 @@
+rank,method,family,PASS_15,cata,bottle_pass,cable_pass,hazelnut_pass,screw_pass,grid_pass,worst_dP,strong_advance,final_method_candidate
+1,Adaptive C2 (E11_B2),B (category-adaptive β),12,1,3,2,1,3,3,-0.2852088349936288,False,False
+2,C2 fixed (Exp10),fixed β=0.25,9,1,3,0,1,3,2,-0.3285715799783695,False,False

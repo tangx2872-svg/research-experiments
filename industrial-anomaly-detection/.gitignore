@@ -240,3 +240,10 @@ results/experiment_10_preservation_recovery/logs/
 results/experiment_10_preservation_recovery/progress/
 results/experiment_10_preservation_recovery/reference/
 results/experiment_10_preservation_recovery/**/fit/
+
+# Experiment 11（C2 adaptive；纳入 raw 轻量证据 + stats + analysis + figures + config + README，排除 logs/progress/reference/fit）
+!results/experiment_11_c2_adaptive/
+results/experiment_11_c2_adaptive/logs/
+results/experiment_11_c2_adaptive/progress/
+results/experiment_11_c2_adaptive/reference/
+results/experiment_11_c2_adaptive/**/fit/

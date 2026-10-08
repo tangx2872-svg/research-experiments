@@ -1,0 +1,85 @@
+{
+  "unit": "hazelnut:2:E11_B2__hazelnut",
+  "protocol": "v2",
+  "reason": "train DataLoader 使用 shuffle=True 且无显式 generator -> 行序由全局 RNG 决定；在 Engine.fit 入口 replay 可固定行序，使 embedding 逐位一致",
+  "calls": [
+    {
+      "ts": 1791418895.698748,
+      "rng_hash_before_fit_replay": {
+        "torch_cpu": "cbba7d73608d8aa0",
+        "numpy": "1e7ecec0db049c0f",
+        "numpy_pos": 624,
+        "python": "1bde6feb70f9a75d",
+        "cuda": "b1535c7783ea8829"
+      },
+      "rng_hash_after_fit_replay": {
+        "torch_cpu": "0f9cd7b642a3f8f6",
+        "numpy": "1e7ecec0db049c0f",
+        "numpy_pos": 624,
+        "python": "1bde6feb70f9a75d",
+        "cuda": "b1535c7783ea8829"
+      },
+      "rng_probe_after_fit_replay": {
+        "torch_rand": [
+          0.6146950721740723,
+          0.38101285696029663,
+          0.6371143460273743
+        ],
+        "torch_randint": [
+          937544,
+          782358,
+          471979
+        ],
+        "numpy_rand": [
+          0.43599490214200376,
+          0.025926231827891333,
+          0.5496624778787091
+        ],
+        "cuda_rand": [
+          0.42544740438461304,
+          0.8305437564849854,
+          0.337015837430954
+        ]
+      }
+    },
+    {
+      "ts": 1791418994.2583807,
+      "rng_hash_before_fit_replay": {
+        "torch_cpu": "cbba7d73608d8aa0",
+        "numpy": "1e7ecec0db049c0f",
+        "numpy_pos": 624,
+        "python": "1bde6feb70f9a75d",
+        "cuda": "b1535c7783ea8829"
+      },
+      "rng_hash_after_fit_replay": {
+        "torch_cpu": "0f9cd7b642a3f8f6",
+        "numpy": "1e7ecec0db049c0f",
+        "numpy_pos": 624,
+        "python": "1bde6feb70f9a75d",
+        "cuda": "b1535c7783ea8829"
+      },
+      "rng_probe_after_fit_replay": {
+        "torch_rand": [
+          0.6146950721740723,
+          0.38101285696029663,
+          0.6371143460273743
+        ],
+        "torch_randint": [
+          937544,
+          782358,
+          471979
+        ],
+        "numpy_rand": [
+          0.43599490214200376,
+          0.025926231827891333,
+          0.5496624778787091
+        ],
+        "cuda_rand": [
+          0.42544740438461304,
+          0.8305437564849854,
+          0.337015837430954
+        ]
+      }
+    }
+  ]
+}

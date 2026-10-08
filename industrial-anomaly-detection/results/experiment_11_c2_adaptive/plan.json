@@ -1,0 +1,49 @@
+{
+  "s11_sanity": [
+    "bottle:0:E11_A1__bottle"
+  ],
+  "b1": [
+    "bottle:0:E11_A1__bottle",
+    "bottle:0:E11_A2__bottle",
+    "bottle:0:E11_B1__bottle",
+    "bottle:0:E11_B2__bottle",
+    "bottle:0:E11_C1__bottle",
+    "bottle:0:E11_C2__bottle",
+    "cable:0:E11_A1__cable",
+    "cable:0:E11_A2__cable",
+    "cable:0:E11_B1__cable",
+    "cable:0:E11_B2__cable",
+    "cable:0:E11_C1__cable",
+    "cable:0:E11_C2__cable",
+    "hazelnut:0:E11_A1__hazelnut",
+    "hazelnut:0:E11_A2__hazelnut",
+    "hazelnut:0:E11_B1__hazelnut",
+    "hazelnut:0:E11_B2__hazelnut",
+    "hazelnut:0:E11_C1__hazelnut",
+    "hazelnut:0:E11_C2__hazelnut"
+  ],
+  "b2": [
+    "screw:0:E11_B2__screw",
+    "screw:0:E11_C2__screw",
+    "screw:0:E11_A1__screw",
+    "grid:0:E11_B2__grid",
+    "grid:0:E11_C2__grid",
+    "grid:0:E11_A1__grid"
+  ],
+  "c": [
+    "bottle:1:E11_B2__bottle",
+    "bottle:2:E11_B2__bottle",
+    "cable:1:E11_B2__cable",
+    "cable:2:E11_B2__cable",
+    "hazelnut:1:E11_B2__hazelnut",
+    "hazelnut:2:E11_B2__hazelnut",
+    "screw:1:E11_B2__screw",
+    "screw:2:E11_B2__screw",
+    "grid:1:E11_B2__grid",
+    "grid:2:E11_B2__grid"
+  ],
+  "abl": [
+    "bottle:0:E11_B2_L2only__bottle",
+    "cable:0:E11_B2_L2only__cable"
+  ]
+}

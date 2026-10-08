@@ -1,0 +1,104 @@
+{
+  "frozen_before_target_results": true,
+  "reference_anchor": "bottle",
+  "beta_bounds": [
+    0.05,
+    0.5
+  ],
+  "L3_fixed": {
+    "kind": "alpha_in",
+    "alpha": 0.25
+  },
+  "candidates": [
+    {
+      "id": "E11_A1",
+      "family": "A",
+      "level": "category",
+      "formula": "beta_c = clip(k1/RATIO_c, 0.05, 0.50), k1 = 0.25*RATIO_bottle, RATIO = mean_j(||IN(F)_j - F_j||/||F_j||)",
+      "stat_source": "normal_statistics.csv RATIO_L2 (train/good only)",
+      "rationale": "让各类的补偿项相对能量 beta_c*RATIO_c 与参考类(bottle)对齐",
+      "beta_per_category": {
+        "bottle": 0.25,
+        "cable": 0.25135193883796175,
+        "hazelnut": 0.20752594796629445,
+        "screw": 0.12015056025272591,
+        "grid": 0.06525429194296328
+      }
+    },
+    {
+      "id": "E11_A2",
+      "family": "A",
+      "level": "category",
+      "formula": "beta_c = clip(k2/median_j(RATIO_j), 0.05, 0.50), k2 = 0.25*median_j(RATIO_bottle,j)",
+      "stat_source": "per_channel_<cat>.npz ratio (robust median)",
+      "rationale": "同 A1 但用稳健中位数，抗离群通道",
+      "beta_per_category": {
+        "bottle": 0.25,
+        "cable": 0.2538107119955595,
+        "hazelnut": 0.24475149399291732,
+        "screw": 0.24063250023755364,
+        "grid": 0.19843927278601797
+      }
+    },
+    {
+      "id": "E11_B1",
+      "family": "B",
+      "level": "category",
+      "formula": "beta_c = clip(0.25*(q_c/q_bottle)^1, 0.05, 0.50), q = S_IN_L2/S_IN_L3",
+      "stat_source": "normal_statistics.csv q_L2_over_L3",
+      "rationale": "层敏感度比越高说明 L2 已被归一化压制越多 -> 线性补偿",
+      "beta_per_category": {
+        "bottle": 0.25,
+        "cable": 0.2641262194023315,
+        "hazelnut": 0.24239662657130334,
+        "screw": 0.2382596011364223,
+        "grid": 0.3063776285412667
+      }
+    },
+    {
+      "id": "E11_B2",
+      "family": "B",
+      "level": "category",
+      "formula": "beta_c = clip(0.25*(q_c/q_bottle)^3, 0.05, 0.50)",
+      "stat_source": "同 B1（更尖锐的单调映射）",
+      "rationale": "检验 sharpness 的影响（预注册的第二个单调版本）",
+      "beta_per_category": {
+        "bottle": 0.25,
+        "cable": 0.29481836131239764,
+        "hazelnut": 0.22787658219094892,
+        "screw": 0.21640695481973235,
+        "grid": 0.46014121347143305
+      }
+    },
+    {
+      "id": "E11_C1",
+      "family": "C",
+      "level": "channel",
+      "formula": "F_L2' = F + 0.25 * g_j * IN(F)*rms(F), g_j = (mean_j RATIO_j / RATIO_j) / mean(...)",
+      "stat_source": "per_channel_<cat>.npz ratio",
+      "rationale": "补偿响应弱的通道给更高权重（channel-level 精细化）",
+      "g_mean": 1.0
+    },
+    {
+      "id": "E11_C2",
+      "family": "C",
+      "level": "channel",
+      "formula": "F_L2' = F + 0.25 * g_j * IN(F)*rms(F), g_j = 1 - clip(RATIO_j/p90_j, 0, 1)",
+      "stat_source": "per_channel_<cat>.npz ratio",
+      "rationale": "在归一化响应已很强的通道上**关闭**额外补偿",
+      "g_range": [
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "equivalence_checks": {
+    "E11_*_bottle_vs_C2_fixed": "所有规则在 bottle 上退化为 beta=0.25（C1/C2 的 g 在 bottle 上不退化，属 channel-level，不是等价）",
+    "E11_A1_bottle == C2_fixed": true,
+    "E11_A2_bottle_approx": true,
+    "E11_B1_bottle == C2_fixed": true,
+    "E11_B2_bottle == C2_fixed": true
+  },
+  "n_candidates": 6,
+  "n_specs": 30
+}

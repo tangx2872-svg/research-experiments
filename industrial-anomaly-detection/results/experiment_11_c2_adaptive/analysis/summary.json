@@ -1,0 +1,254 @@
+{
+  "b1": {
+    "top3": [
+      "E11_B2",
+      "E11_C2",
+      "E11_A1"
+    ],
+    "rows": [
+      {
+        "candidate": "E11_B2",
+        "n_units": 3,
+        "n_pass": 3,
+        "n_cata": 0,
+        "worst_dP": -0.06525852043818414,
+        "mean_dR": -0.09739977754490235,
+        "mean_dP": -0.02056632259222635,
+        "hard_pass": 3,
+        "bottle_not_broken": true,
+        "weak_improved": false,
+        "weak_robust_kept": true,
+        "B1_advance": false,
+        "rank": 1
+      },
+      {
+        "candidate": "E11_C2",
+        "n_units": 3,
+        "n_pass": 2,
+        "n_cata": 0,
+        "worst_dP": -0.08171612778966342,
+        "mean_dR": -0.048472334798861906,
+        "mean_dP": 0.03172056616985852,
+        "hard_pass": 2,
+        "bottle_not_broken": true,
+        "weak_improved": true,
+        "weak_robust_kept": true,
+        "B1_advance": true,
+        "rank": 2
+      },
+      {
+        "candidate": "E11_A1",
+        "n_units": 3,
+        "n_pass": 2,
+        "n_cata": 0,
+        "worst_dP": -0.0884968567498543,
+        "mean_dR": -0.08003622887454648,
+        "mean_dP": -0.013207610076876541,
+        "hard_pass": 2,
+        "bottle_not_broken": true,
+        "weak_improved": false,
+        "weak_robust_kept": true,
+        "B1_advance": false,
+        "rank": 3
+      },
+      {
+        "candidate": "E11_B1",
+        "n_units": 3,
+        "n_pass": 2,
+        "n_cata": 0,
+        "worst_dP": -0.2001608655014131,
+        "mean_dR": -0.08506712800514431,
+        "mean_dP": -0.027909311995887975,
+        "hard_pass": 2,
+        "bottle_not_broken": true,
+        "weak_improved": true,
+        "weak_robust_kept": true,
+        "B1_advance": true,
+        "rank": 4
+      },
+      {
+        "candidate": "E11_A2",
+        "n_units": 3,
+        "n_pass": 1,
+        "n_cata": 0,
+        "worst_dP": -0.1451372095687926,
+        "mean_dR": -0.08353237494932912,
+        "mean_dP": -0.0788242980259956,
+        "hard_pass": 1,
+        "bottle_not_broken": true,
+        "weak_improved": false,
+        "weak_robust_kept": true,
+        "B1_advance": false,
+        "rank": 5
+      },
+      {
+        "candidate": "E11_C1",
+        "n_units": 3,
+        "n_pass": 1,
+        "n_cata": 0,
+        "worst_dP": -0.18989248790998392,
+        "mean_dR": -0.03957504637585168,
+        "mean_dP": 0.014617913183251416,
+        "hard_pass": 1,
+        "bottle_not_broken": true,
+        "weak_improved": true,
+        "weak_robust_kept": false,
+        "B1_advance": false,
+        "rank": 6
+      }
+    ]
+  },
+  "b2": {
+    "top2": [
+      "E11_B2",
+      "E11_C2"
+    ],
+    "rows": [
+      {
+        "candidate": "E11_B2",
+        "n_units": 5,
+        "n_pass": 5,
+        "n_cata": 0,
+        "worst_dP": -0.06525852043818414,
+        "mean_dR": -0.0979895336984968,
+        "mean_dP": 0.17032745950327807,
+        "B2_advance": true,
+        "cable_catastrophic": false,
+        "deg_vs_c2_bottle": 0.0,
+        "deg_vs_c2_screw": -0.00385692756475553
+      },
+      {
+        "candidate": "E11_C2",
+        "n_units": 5,
+        "n_pass": 4,
+        "n_cata": 0,
+        "worst_dP": -0.08171612778966342,
+        "mean_dR": -0.057521854366103,
+        "mean_dP": 0.15294276231860549,
+        "B2_advance": true,
+        "cable_catastrophic": false,
+        "deg_vs_c2_bottle": -0.016457607351479275,
+        "deg_vs_c2_screw": 0.030148876909752875
+      },
+      {
+        "candidate": "E11_A1",
+        "n_units": 5,
+        "n_pass": 3,
+        "n_cata": 0,
+        "worst_dP": -0.1105681514737431,
+        "mean_dR": -0.08898249110244327,
+        "mean_dP": -0.03698805070161484,
+        "B2_advance": false,
+        "cable_catastrophic": false,
+        "deg_vs_c2_bottle": 0.0,
+        "deg_vs_c2_screw": -0.2067731724412032
+      }
+    ]
+  },
+  "c": {
+    "rows": [
+      {
+        "candidate": "E11_B2",
+        "n_units": 15,
+        "n_pass": 12,
+        "n_cata": 1,
+        "worst_dP": -0.2852088349936288,
+        "mean_dR": -0.0807470231539143,
+        "mean_dP": 0.19016980002971653,
+        "per_cat_pass": {
+          "bottle": 3,
+          "cable": 2,
+          "hazelnut": 1,
+          "screw": 3,
+          "grid": 3
+        },
+        "strong_advance": false,
+        "final_method_candidate": false
+      },
+      {
+        "candidate": "E11_C2",
+        "n_units": 5,
+        "n_pass": 4,
+        "n_cata": 0,
+        "worst_dP": -0.08171612778966342,
+        "mean_dR": -0.057521854366103,
+        "mean_dP": 0.15294276231860549,
+        "per_cat_pass": {
+          "bottle": 1,
+          "cable": 0,
+          "hazelnut": 1,
+          "screw": 1,
+          "grid": 1
+        },
+        "strong_advance": false,
+        "final_method_candidate": false
+      }
+    ]
+  },
+  "c2fixed_baseline": {
+    "candidate": "C2_fixed(Exp10)",
+    "n_pass": 9,
+    "n_cata": 1,
+    "per_cat_pass": {
+      "bottle": 3,
+      "cable": 0,
+      "hazelnut": 1,
+      "screw": 3,
+      "grid": 2
+    },
+    "worst_dP": -0.3285715799783695,
+    "mean_dP": 0.12652860215946912
+  },
+  "ablation": {
+    "candidate": "E11_B2",
+    "per_category": {
+      "bottle": {
+        "original": [
+          0.47687164164419826,
+          8.043989112882235
+        ],
+        "L3_only_dR": -0.09797222081477447,
+        "L3_only_dP": -0.14040699069080542,
+        "L2_only_dR": -0.14616227804443277,
+        "L2_only_dP": 0.10794159587538132,
+        "full_dR": -0.21128617919818293,
+        "full_dP": -0.06525852043818414,
+        "complementary": true
+      }
+    },
+    "complementarity_rule": "Full 的 robustness gain 优于 L2-only（L3 提供 robustness）且 Full 的 preservation 优于 L3-only（L2 提供 preservation）",
+    "complementarity_supported": true
+  },
+  "final_ranking": [
+    {
+      "rank": 1,
+      "method": "Adaptive C2 (E11_B2)",
+      "family": "B (category-adaptive β)",
+      "PASS_15": 12,
+      "cata": 1,
+      "bottle_pass": 3,
+      "cable_pass": 2,
+      "hazelnut_pass": 1,
+      "screw_pass": 3,
+      "grid_pass": 3,
+      "worst_dP": -0.2852088349936288,
+      "strong_advance": false,
+      "final_method_candidate": false
+    },
+    {
+      "rank": 2,
+      "method": "C2 fixed (Exp10)",
+      "family": "fixed β=0.25",
+      "PASS_15": 9,
+      "cata": 1,
+      "bottle_pass": 3,
+      "cable_pass": 0,
+      "hazelnut_pass": 1,
+      "screw_pass": 3,
+      "grid_pass": 2,
+      "worst_dP": -0.3285715799783695,
+      "strong_advance": false,
+      "final_method_candidate": false
+    }
+  ]
+}

@@ -1,0 +1,620 @@
+{
+  "candidates": [
+    {
+      "candidate": "E11_B2",
+      "n_units": 3,
+      "n_pass": 3,
+      "n_cata": 0,
+      "worst_dP": -0.06525852043818414,
+      "mean_dR": -0.09739977754490235,
+      "mean_dP": -0.02056632259222635,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.21128617919818293,
+          "mean_dP": -0.06525852043818414,
+          "worst_dP": -0.06525852043818414
+        },
+        "cable": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.042611608869173284,
+          "mean_dP": -0.029770633707856042,
+          "worst_dP": -0.029770633707856042
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.038301544567350854,
+          "mean_dP": 0.03333018636936114,
+          "worst_dP": 0.03333018636936114
+        }
+      },
+      "units": [
+        {
+          "category": "bottle",
+          "seed": 0,
+          "cfg": "E11_B2__bottle",
+          "absdz": 0.26558546244601533,
+          "dprime": 7.978730592444051,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.21128617919818293,
+          "dP": -0.06525852043818414,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.98667005515,
+          "aupro": 0.9536613821983337,
+          "tau": 42.99169921875,
+          "dR_vs_c2fixed": 0.0,
+          "dP_vs_c2fixed": 0.0
+        },
+        {
+          "category": "cable",
+          "seed": 0,
+          "cfg": "E11_B2__cable",
+          "absdz": 0.24160858689342904,
+          "dprime": 4.988940879821087,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": -0.042611608869173284,
+          "dP": -0.029770633707856042,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.984479896,
+          "aupro": 0.9358101487159729,
+          "tau": 60.36956024169922,
+          "dR_vs_c2fixed": -0.06731091365213396,
+          "dP_vs_c2fixed": 0.039867594232271486
+        },
+        {
+          "category": "hazelnut",
+          "seed": 0,
+          "cfg": "E11_B2__hazelnut",
+          "absdz": 0.15423996093062384,
+          "dprime": 5.9179900031959365,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.038301544567350854,
+          "dP": 0.03333018636936114,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9882824285658598,
+          "aupro": 0.9587257504463196,
+          "tau": 56.17491149902344,
+          "dR_vs_c2fixed": -0.01733377748829265,
+          "dP_vs_c2fixed": 0.012251691060548353
+        }
+      ],
+      "hard_pass": 3,
+      "weak_gain": {
+        "cable": 0.039867594232271486,
+        "hazelnut": 0.012251691060548353
+      },
+      "bottle_not_broken": true,
+      "weak_improved": false,
+      "weak_robust_kept": true,
+      "B1_advance": false,
+      "rank": 1
+    },
+    {
+      "candidate": "E11_C2",
+      "n_units": 3,
+      "n_pass": 2,
+      "n_cata": 0,
+      "worst_dP": -0.08171612778966342,
+      "mean_dR": -0.048472334798861906,
+      "mean_dP": 0.03172056616985852,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.15360006769196866,
+          "mean_dP": -0.08171612778966342,
+          "worst_dP": -0.08171612778966342
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": 0.06268079468620502,
+          "mean_dP": 0.16293005335563127,
+          "worst_dP": 0.16293005335563127
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.05449773139082209,
+          "mean_dP": 0.013947772943607717,
+          "worst_dP": 0.013947772943607717
+        }
+      },
+      "units": [
+        {
+          "category": "bottle",
+          "seed": 0,
+          "cfg": "E11_C2__bottle",
+          "absdz": 0.3232715739522296,
+          "dprime": 7.9622729850925715,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.15360006769196866,
+          "dP": -0.08171612778966342,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.986148720725,
+          "aupro": 0.9514594674110413,
+          "tau": 33.16896438598633,
+          "dR_vs_c2fixed": 0.05768611150621428,
+          "dP_vs_c2fixed": -0.016457607351479275
+        },
+        {
+          "category": "cable",
+          "seed": 0,
+          "cfg": "E11_C2__cable",
+          "absdz": 0.34690099044880734,
+          "dprime": 5.181641566884574,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": 0.06268079468620502,
+          "dP": 0.16293005335563127,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.98396339265,
+          "aupro": 0.9295499920845032,
+          "tau": 48.566463470458984,
+          "dR_vs_c2fixed": 0.03798148990324435,
+          "dP_vs_c2fixed": 0.2325682812957588
+        },
+        {
+          "category": "hazelnut",
+          "seed": 0,
+          "cfg": "E11_C2__hazelnut",
+          "absdz": 0.1380437741071526,
+          "dprime": 5.898607589770183,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.05449773139082209,
+          "dP": 0.013947772943607717,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9882017505100118,
+          "aupro": 0.9576088786125183,
+          "tau": 49.54050064086914,
+          "dR_vs_c2fixed": -0.03352996431176389,
+          "dP_vs_c2fixed": -0.007130722365205067
+        }
+      ],
+      "hard_pass": 2,
+      "weak_gain": {
+        "cable": 0.2325682812957588,
+        "hazelnut": -0.007130722365205067
+      },
+      "bottle_not_broken": true,
+      "weak_improved": true,
+      "weak_robust_kept": true,
+      "B1_advance": true,
+      "rank": 2
+    },
+    {
+      "candidate": "E11_A1",
+      "n_units": 3,
+      "n_pass": 2,
+      "n_cata": 0,
+      "worst_dP": -0.0884968567498543,
+      "mean_dR": -0.08003622887454648,
+      "mean_dP": -0.013207610076876541,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.21128617919818293,
+          "mean_dP": -0.06525852043818414,
+          "worst_dP": -0.06525852043818414
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.00629068834390184,
+          "mean_dP": -0.0884968567498543,
+          "worst_dP": -0.0884968567498543
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.02253181908155466,
+          "mean_dP": 0.11413254695740882,
+          "worst_dP": 0.11413254695740882
+        }
+      },
+      "units": [
+        {
+          "category": "bottle",
+          "seed": 0,
+          "cfg": "E11_A1__bottle",
+          "absdz": 0.26558546244601533,
+          "dprime": 7.978730592444051,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.21128617919818293,
+          "dP": -0.06525852043818414,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.98667005515,
+          "aupro": 0.9536613821983337,
+          "tau": 42.99169921875,
+          "dR_vs_c2fixed": 0.0,
+          "dP_vs_c2fixed": 0.0
+        },
+        {
+          "category": "cable",
+          "seed": 0,
+          "cfg": "E11_A1__cable",
+          "absdz": 0.2779295074187005,
+          "dprime": 4.930214656779088,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": -0.00629068834390184,
+          "dP": -0.0884968567498543,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.984162366575,
+          "aupro": 0.9344603419303894,
+          "tau": 57.0681266784668,
+          "dR_vs_c2fixed": -0.030989993126862514,
+          "dP_vs_c2fixed": -0.018858628809726774
+        },
+        {
+          "category": "hazelnut",
+          "seed": 0,
+          "cfg": "E11_A1__hazelnut",
+          "absdz": 0.17000968641642003,
+          "dprime": 5.998792363783984,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.02253181908155466,
+          "dP": 0.11413254695740882,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9882879920152289,
+          "aupro": 0.9585978388786316,
+          "tau": 54.469730377197266,
+          "dR_vs_c2fixed": -0.0015640520024964577,
+          "dP_vs_c2fixed": 0.09305405164859604
+        }
+      ],
+      "hard_pass": 2,
+      "weak_gain": {
+        "cable": -0.018858628809726774,
+        "hazelnut": 0.09305405164859604
+      },
+      "bottle_not_broken": true,
+      "weak_improved": false,
+      "weak_robust_kept": true,
+      "B1_advance": false,
+      "rank": 3
+    },
+    {
+      "candidate": "E11_B1",
+      "n_units": 3,
+      "n_pass": 2,
+      "n_cata": 0,
+      "worst_dP": -0.2001608655014131,
+      "mean_dR": -0.08506712800514431,
+      "mean_dP": -0.027909311995887975,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.21128617919818293,
+          "mean_dP": -0.06525852043818414,
+          "worst_dP": -0.06525852043818414
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.015382902735178616,
+          "mean_dP": -0.2001608655014131,
+          "worst_dP": -0.2001608655014131
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.02853230208207133,
+          "mean_dP": 0.18169144995193331,
+          "worst_dP": 0.18169144995193331
+        }
+      },
+      "units": [
+        {
+          "category": "bottle",
+          "seed": 0,
+          "cfg": "E11_B1__bottle",
+          "absdz": 0.26558546244601533,
+          "dprime": 7.978730592444051,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.21128617919818293,
+          "dP": -0.06525852043818414,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.98667005515,
+          "aupro": 0.9536613821983337,
+          "tau": 42.99169921875,
+          "dR_vs_c2fixed": 0.0,
+          "dP_vs_c2fixed": 0.0
+        },
+        {
+          "category": "cable",
+          "seed": 0,
+          "cfg": "E11_B1__cable",
+          "absdz": 0.2688372930274237,
+          "dprime": 4.8185506480275295,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": -0.015382902735178616,
+          "dP": -0.2001608655014131,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.984189373275,
+          "aupro": 0.9358785152435303,
+          "tau": 57.90768051147461,
+          "dR_vs_c2fixed": -0.04008220751813929,
+          "dP_vs_c2fixed": -0.13052263756128557
+        },
+        {
+          "category": "hazelnut",
+          "seed": 0,
+          "cfg": "E11_B1__hazelnut",
+          "absdz": 0.16400920341590336,
+          "dprime": 6.066351266778509,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.02853230208207133,
+          "dP": 0.18169144995193331,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9883021237931886,
+          "aupro": 0.9587016105651855,
+          "tau": 55.73112106323242,
+          "dR_vs_c2fixed": -0.007564535003013129,
+          "dP_vs_c2fixed": 0.16061295464312053
+        }
+      ],
+      "hard_pass": 2,
+      "weak_gain": {
+        "cable": -0.13052263756128557,
+        "hazelnut": 0.16061295464312053
+      },
+      "bottle_not_broken": true,
+      "weak_improved": true,
+      "weak_robust_kept": true,
+      "B1_advance": true,
+      "rank": 4
+    },
+    {
+      "candidate": "E11_A2",
+      "n_units": 3,
+      "n_pass": 1,
+      "n_cata": 0,
+      "worst_dP": -0.1451372095687926,
+      "mean_dR": -0.08353237494932912,
+      "mean_dP": -0.0788242980259956,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.21128617919818293,
+          "mean_dP": -0.06525852043818414,
+          "worst_dP": -0.06525852043818414
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.020691909976688683,
+          "mean_dP": -0.1451372095687926,
+          "worst_dP": -0.1451372095687926
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.018619035673115708,
+          "mean_dP": -0.026077164071010017,
+          "worst_dP": -0.026077164071010017
+        }
+      },
+      "units": [
+        {
+          "category": "bottle",
+          "seed": 0,
+          "cfg": "E11_A2__bottle",
+          "absdz": 0.26558546244601533,
+          "dprime": 7.978730592444051,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.21128617919818293,
+          "dP": -0.06525852043818414,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.98667005515,
+          "aupro": 0.9536613821983337,
+          "tau": 42.99169921875,
+          "dR_vs_c2fixed": 0.0,
+          "dP_vs_c2fixed": 0.0
+        },
+        {
+          "category": "cable",
+          "seed": 0,
+          "cfg": "E11_A2__cable",
+          "absdz": 0.26352828578591364,
+          "dprime": 4.87357430396015,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": -0.020691909976688683,
+          "dP": -0.1451372095687926,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.98447435735,
+          "aupro": 0.9357457160949707,
+          "tau": 60.36060333251953,
+          "dR_vs_c2fixed": -0.045391214759649356,
+          "dP_vs_c2fixed": -0.07549898162866508
+        },
+        {
+          "category": "hazelnut",
+          "seed": 0,
+          "cfg": "E11_A2__hazelnut",
+          "absdz": 0.17392246982485898,
+          "dprime": 5.858582652755565,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.018619035673115708,
+          "dP": -0.026077164071010017,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.9883791141386973,
+          "aupro": 0.9593746662139893,
+          "tau": 55.84188461303711,
+          "dR_vs_c2fixed": 0.0023487314059424946,
+          "dP_vs_c2fixed": -0.0471556593798228
+        }
+      ],
+      "hard_pass": 1,
+      "weak_gain": {
+        "cable": -0.07549898162866508,
+        "hazelnut": -0.0471556593798228
+      },
+      "bottle_not_broken": true,
+      "weak_improved": false,
+      "weak_robust_kept": true,
+      "B1_advance": false,
+      "rank": 5
+    },
+    {
+      "candidate": "E11_C1",
+      "n_units": 3,
+      "n_pass": 1,
+      "n_cata": 0,
+      "worst_dP": -0.18989248790998392,
+      "mean_dR": -0.03957504637585168,
+      "mean_dP": 0.014617913183251416,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.13911704210886333,
+          "mean_dP": 0.031000963645771762,
+          "worst_dP": 0.031000963645771762
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": 0.03785411635236374,
+          "mean_dP": -0.18989248790998392,
+          "worst_dP": -0.18989248790998392
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.01746221337105544,
+          "mean_dP": 0.2027452638139664,
+          "worst_dP": 0.2027452638139664
+        }
+      },
+      "units": [
+        {
+          "category": "bottle",
+          "seed": 0,
+          "cfg": "E11_C1__bottle",
+          "absdz": 0.33775459953533493,
+          "dprime": 8.074990076528007,
+          "orig_absdz": 0.47687164164419826,
+          "orig_dprime": 8.043989112882235,
+          "dR": -0.13911704210886333,
+          "dP": 0.031000963645771762,
+          "pass": true,
+          "catastrophic": false,
+          "pixel_auroc": 0.9866805877,
+          "aupro": 0.9540342688560486,
+          "tau": 38.64199447631836,
+          "dR_vs_c2fixed": 0.0721691370893196,
+          "dP_vs_c2fixed": 0.0962594840839559
+        },
+        {
+          "category": "cable",
+          "seed": 0,
+          "cfg": "E11_C1__cable",
+          "absdz": 0.32207431211496607,
+          "dprime": 4.828819025618959,
+          "orig_absdz": 0.2842201957626023,
+          "orig_dprime": 5.018711513528943,
+          "dR": 0.03785411635236374,
+          "dP": -0.18989248790998392,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.983943620975,
+          "aupro": 0.9349276423454285,
+          "tau": 58.04551696777344,
+          "dR_vs_c2fixed": 0.013154811569403069,
+          "dP_vs_c2fixed": -0.12025425996985639
+        },
+        {
+          "category": "hazelnut",
+          "seed": 0,
+          "cfg": "E11_C1__hazelnut",
+          "absdz": 0.17507929212691925,
+          "dprime": 6.087405080640542,
+          "orig_absdz": 0.1925415054979747,
+          "orig_dprime": 5.884659816826575,
+          "dR": -0.01746221337105544,
+          "dP": 0.2027452638139664,
+          "pass": false,
+          "catastrophic": false,
+          "pixel_auroc": 0.9882422988539352,
+          "aupro": 0.9580563902854919,
+          "tau": 57.28244400024414,
+          "dR_vs_c2fixed": 0.003505553708002762,
+          "dP_vs_c2fixed": 0.18166676850515362
+        }
+      ],
+      "hard_pass": 1,
+      "weak_gain": {
+        "cable": -0.12025425996985639,
+        "hazelnut": 0.18166676850515362
+      },
+      "bottle_not_broken": true,
+      "weak_improved": true,
+      "weak_robust_kept": false,
+      "B1_advance": false,
+      "rank": 6
+    }
+  ],
+  "advanced_top3": [
+    "E11_B2",
+    "E11_C2",
+    "E11_A1"
+  ],
+  "thresholds": {
+    "B1_WEAK_GAIN_vs_c2fixed": 0.1,
+    "weak_robust_kept": "dR <= -EPS_RZ",
+    "note": "阈值在 11B-1 完成 2/18 units 时写定，未查看候选数值"
+  }
+}

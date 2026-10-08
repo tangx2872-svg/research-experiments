@@ -1,0 +1,20 @@
+{
+  "candidate": "E11_B2",
+  "per_category": {
+    "bottle": {
+      "original": [
+        0.47687164164419826,
+        8.043989112882235
+      ],
+      "L3_only_dR": -0.09797222081477447,
+      "L3_only_dP": -0.14040699069080542,
+      "L2_only_dR": -0.14616227804443277,
+      "L2_only_dP": 0.10794159587538132,
+      "full_dR": -0.21128617919818293,
+      "full_dP": -0.06525852043818414,
+      "complementary": true
+    }
+  },
+  "complementarity_rule": "Full 的 robustness gain 优于 L2-only（L3 提供 robustness）且 Full 的 preservation 优于 L3-only（L2 提供 preservation）",
+  "complementarity_supported": true
+}
