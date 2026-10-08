@@ -17,7 +17,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · **⑩-e 评测协议修正 ✅（9C Matched-RNG Protocol V2：噪声地板 0.020224/0.054211 → **0.000000/0.000000**，equivalent pair 达到 embedding/coreset/memory bank/score 全面逐位一致）** · **⑩-f 用 V2 重审 9B ✅（9B-R：0 ADVANCE / 3 HOLD —— 9B 的 robustness 改善**不是** measurement artifact，三候选在 V2 下保留且同号；但全部仍是纯 trade-off 兑换，preservation 损失 0.25–0.59 d′ > EPS_DP=0.10）** · **⑩-g 协议修正 + preservation recovery 锦标赛 ✅（Exp10：corrected-189 冻结；9 个 unique 候选 → **C2 = L2 scale-matched residual + L3 α=0.25 为首个 FRONTIER-BREAK 候选**（bottle 3/3 seeds 达 ADVANCE，beyond frontier +0.69，preservation 损失 worst −0.065；跨类别 4/5，cable 为弱侧））** · **⑩-h C2 adaptive preservation ✅（Exp11：normal-only category-adaptive β 把 C2 从 **9/15 → 12/15**，**cable 0/3 → 2/3**、grid 2/3 → 3/3、bottle/screw 零退化；hazelnut 1/3 未改善 + 1 个 catastrophic 未消除 → 未达 Strong ADVANCE；**L2+L3 互补性 ablation 成立**）** · **⑩-i Category × Channel 组合 ❌（Exp12：M1/M2/M3 全部触发硬性淘汰 → 0 ADVANCE → STOP 该组合；**Adaptive B2（12/15）保持为当前最佳**）** · **⑩-j illumination-nuisance subspace 可行性 ❌/⚠️（Exp13-P：subspace 在 layer2 **可复现且 gamma/brightness 方向一致**，但 **EV@8 仅 2/10 ≥0.70（非「大多」）**，且 **defect overlap 与 normal 对照无差异 → 不支持 defect entanglement**；verdict = **B（category-specific）+ 否决机制叙事**，未进入 INSS）** · **⑩-l 赢家扩展与组合锦标赛 ✅（Exp15：PATH A；**26 GPU units / 1.20 GPU·h**、wall ≈45 min）——**35 单元（5 类 × seeds 0–6, E3+）**：**X6c = mean(z_C2, z_C6) 27/35 (77.1%)、0 catastrophic、worst Δd′ −0.110**，vs **Adaptive B2 23/35 (65.7%)、4 catastrophic (11.4%)、worst −0.410**；worst-case bootstrap CI **不重叠**；但 PASS 优势不显著（Δ+0.114, CI [−0.03,+0.29]）且 robustness 代价显著（ΔR +0.034）→ **🔶 B — HOLD WINNER（one final validation needed）**；X4 层强度组合与 X2b 三路融合均被淘汰，X5（normal-only category-adaptive）未超过固定权重）** · ——**late score fusion 胜出**：**C2 = 0.35·z_orig + 0.65·z_B2** 在 **25 单元（5 类 × seeds 0–4）** 上 **PASS 19/25、catastrophic 0、worst Δd′ −0.182**，而 **Adaptive B2 为 19/25 但 catastrophic 3（12%）、worst Δd′ −0.410** → **同为 19/25 却把 downside 风险清零**；Dual-Path（Family A）被证明**代数上等价于 B2 强度重参数化**（无 Pareto 改进）；**Tiny INSS（Family B）全家族 STOP**（λ=0.5 反使 robustness 变差）**）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · **⑩-e 评测协议修正 ✅（9C Matched-RNG Protocol V2：噪声地板 0.020224/0.054211 → **0.000000/0.000000**，equivalent pair 达到 embedding/coreset/memory bank/score 全面逐位一致）** · **⑩-f 用 V2 重审 9B ✅（9B-R：0 ADVANCE / 3 HOLD —— 9B 的 robustness 改善**不是** measurement artifact，三候选在 V2 下保留且同号；但全部仍是纯 trade-off 兑换，preservation 损失 0.25–0.59 d′ > EPS_DP=0.10）** · **⑩-g 协议修正 + preservation recovery 锦标赛 ✅（Exp10：corrected-189 冻结；9 个 unique 候选 → **C2 = L2 scale-matched residual + L3 α=0.25 为首个 FRONTIER-BREAK 候选**（bottle 3/3 seeds 达 ADVANCE，beyond frontier +0.69，preservation 损失 worst −0.065；跨类别 4/5，cable 为弱侧））** · **⑩-h C2 adaptive preservation ✅（Exp11：normal-only category-adaptive β 把 C2 从 **9/15 → 12/15**，**cable 0/3 → 2/3**、grid 2/3 → 3/3、bottle/screw 零退化；hazelnut 1/3 未改善 + 1 个 catastrophic 未消除 → 未达 Strong ADVANCE；**L2+L3 互补性 ablation 成立**）** · **⑩-i Category × Channel 组合 ❌（Exp12：M1/M2/M3 全部触发硬性淘汰 → 0 ADVANCE → STOP 该组合；**Adaptive B2（12/15）保持为当前最佳**）** · **⑩-j illumination-nuisance subspace 可行性 ❌/⚠️（Exp13-P：subspace 在 layer2 **可复现且 gamma/brightness 方向一致**，但 **EV@8 仅 2/10 ≥0.70（非「大多」）**，且 **defect overlap 与 normal 对照无差异 → 不支持 defect entanglement**；verdict = **B（category-specific）+ 否决机制叙事**，未进入 INSS）** · **⑩-m 最终冻结验证 ✅（Exp16：债务审计 **CLEAN**；5 类 × seeds 0–9 = **50 单元**）——**`A — FREEZE X6c`**：**X6c = mean(z_C2, z_C6) 38/50 (76%)、0 catastrophic、worst Δd′ −0.142**，vs **Adaptive B2 30/50 (60%)、8 catastrophic (16%)、worst −0.494**；**unseen block D（seeds 7–9）X6c 无崩溃（11/15）而 B2 崩溃（7/15、4 cat）**；bootstrap **ΔPASS +0.160 [0.020,0.300]（显著）**、tail-5 均值显著优于 B2/C2/C6；robustness cost 为真实代价（保留 B2 增益 61%）→ **方法海选阶段结束**）** · **35 单元（5 类 × seeds 0–6, E3+）**：**X6c = mean(z_C2, z_C6) 27/35 (77.1%)、0 catastrophic、worst Δd′ −0.110**，vs **Adaptive B2 23/35 (65.7%)、4 catastrophic (11.4%)、worst −0.410**；worst-case bootstrap CI **不重叠**；但 PASS 优势不显著（Δ+0.114, CI [−0.03,+0.29]）且 robustness 代价显著（ΔR +0.034）→ **🔶 B — HOLD WINNER（one final validation needed）**；X4 层强度组合与 X2b 三路融合均被淘汰，X5（normal-only category-adaptive）未超过固定权重）** · ——**late score fusion 胜出**：**C2 = 0.35·z_orig + 0.65·z_B2** 在 **25 单元（5 类 × seeds 0–4）** 上 **PASS 19/25、catastrophic 0、worst Δd′ −0.182**，而 **Adaptive B2 为 19/25 但 catastrophic 3（12%）、worst Δd′ −0.410** → **同为 19/25 却把 downside 风险清零**；Dual-Path（Family A）被证明**代数上等价于 B2 强度重参数化**（无 Pareto 改进）；**Tiny INSS（Family B）全家族 STOP**（λ=0.5 反使 robustness 变差）**）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -167,6 +167,7 @@
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
 | [9C](results/experiment_9c_rng_calibration/README.md) | 消除「不同方法代码路径消耗不同 RNG → KCenterGreedy 选择不同 coreset」的评测不公 | **5 GPU unit-runs / 483 GPU·s**、P4 sanity **7/7**、0 failed：建立 **Matched-RNG Protocol V2**（两个 replay 点：`Engine.fit` 入口固定 train shuffle 行序 + `select_coreset_idxs` 入口固定 greedy 初始点）。V1 噪声地板 0.020224/0.054211 → **V2.1 = 0.000000/0.000000**（equivalent pair 的 embedding sum_abs / RNG state hash / coreset sha / memory bank sha / tau / per-image score **全部逐位一致**） | **CASE A**（Matched-RNG 成功） | DONE |
+| [16](results/experiment_16_final_validation/README.md) | **最终冻结验证 + 方法冻结决策**（50 单元；含 P0.5 债务审计） | **30 new GPU units / 0.99 GPU·h**（avg 120s/unit、3 workers、peak VRAM 14.7GB、0 failed）+ **0 GPU score-side**；P0.5 审计 **CLEAN（0 TRUE MISSING）**；P3 sanity **4/4 PASS**；50 单元结果：**X6c 38/50、0 cat、worst −0.142** vs B2 **30/50、8 cat (16%)、worst −0.494**；unseen block D：X6c 11/15 vs B2 7/15（4 cat）；bootstrap ΔPASS **+0.160 [0.020,0.300]**；tail-5 优势 vs B2/C2/C6 全部显著 | **`A — FREEZE X6c`（方法海选结束）** | DONE |
 | [15](results/experiment_15/README.md) | **赢家扩展 + 组合锦标赛**（PATH A：6 类组合合法性审计 + 敏感度 + 跨 seed 泛化） | **26 GPU units / 4308 GPU·s（1.20 GPU·h）**、wall ≈45 min、0 failed（1 次 OOM 已降并发补跑）：X4a/X4b（层强度组合）R1 **0/3 · 1/3** 且被 B2 支配 → 淘汰**不扩展**；score-side（0 GPU）覆盖 C1–C6/X5/X6c/X2b；O1-ext 补 seeds 5,6 的 Original/B2 → **35 单元（5 类 × seeds 0–6, E3+）**：**X6c 27/35、0 cat、worst −0.110** vs **B2 23/35、4 cat、worst −0.410**（worst-case CI 不重叠）；敏感度曲线**宽峰单调、无尖锐峰**；held-out category **不可得（本机仅 5 类）**已记录 | **🔶 B — HOLD WINNER（需一次最终验证）**；Top1=X6c，并列组含 C6/C2/X5 | DONE |
 | [14](results/experiment_14/README.md) | **下午广度方法海选**（BROAD FIRST, DEEP LATER；3 family / 19 候选 / 统一协议） | **73 GPU units / avg 149.7s**、0 failed（含 1 次 OOM 已按规则降并发补跑）、peak VRAM 22.6GB：Family A（Dual-Path，含**代数等价改写**：线性融合 ≡ B2 强度缩放）bottle/cable/hazelnut seed0；Family B（Tiny INSS，K∈{8,16,32}×λ∈{0.25,0.5}，layer2-only，Exp13-P 冻结 basis）；Family C（late score fusion，**0 GPU**，复用 Exp10 Original + Exp11 B2）。**5×3 结果**：C1 12/15（0 catastrophic）、C2 11/15（0 cat）、A3 11/15（2 cat）、B2 12/15（1 cat）；**Optional O1（seeds 3,4）后 25 单元**：**C2 19/25（0 cat，worst −0.182）** vs **B2 19/25（3 cat，worst −0.410）** vs C1 18/25（1 cat） | **Tier A：C1（按冻结规则）**；**报告性建议：C2 更稳，建议下一轮以 C2 做完整验证** | DONE |
 | [13-P](results/experiment_13p/README.md) | **Illumination-Nuisance Subspace Feasibility Probe**（新 family 可行性；不做正式方法、不调参） | **15 GPU units / 103 GPU·s（1.72 GPU-min）**、0 failed、peak VRAM ~0.5GB：冻结 4 个 photometric 扰动（gamma/brightness ±0.8/±1.2）、N=64/类、layer2+layer3 paired-difference（严格同位置）。**A**：EV@8 = 0.32–0.82（仅 2/10 ≥0.70），K80 = 5–79，**layer2 一致优于 layer3**；**B**：gamma-vs-brightness 子空间相似度 8/10 ≥0.60（layer2 5/5）；**C**：跨类相似度 0.34–0.69 → category-specific；**D**：seed 稳定性 0.84–0.9996（极佳）。**E（关键 negative）**：defect overlap 相对 100 个随机子空间极大（0.32–0.96 vs ≈0.01），**但 normal 对照相同（9/10 contrast 在 ±0.02 内）→ 非 defect 特异** | **B — CATEGORY-SPECIFIC FEASIBILITY（+ 否决 defect-entanglement 机制）**；STOP，未启动 INSS | DONE |
@@ -1239,7 +1240,67 @@ score-side 全部 0 GPU；`o1ext_b2_56` 阶段 4-worker 并发再次触发 **CUD
 
 ---
 
-## 22. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
+## 22. Experiment 16 — Final Frozen Validation & Method Freeze Decision（2026-10-08）
+
+**为什么做**：Exp15 的 verdict 是 `HOLD — one final validation needed`（Top1 X6c 27/35、0 catastrophic，
+但无 held-out 数据、PASS 优势不显著、Top1 与同族候选不可区分）。Exp16 做**最终冻结验证**，并**必须三选一**（不允许再 HOLD）。
+
+**前置：P0.5 实验债务审计**（`results/experiment_16_final_validation/EXPERIMENT_DEBT_AUDIT.md` + csv）
+逐项核对 Exp14/15 的 README/config/plan/runner/progress/leaderboard/ERROR_REPORT 与 raw unit：
+**23 COMPLETE / 3 PRUNED（按预注册规则停止）/ 5 CLOSED（重复或前提不满足）/ 3 DEFERRED / 0 TRUE MISSING**
+→ **VERDICT: CLEAN**。关键核查：Exp14+15 共 **100 个 `info.json`，非 OK = 0**（OOM 的 3 个单元全部补跑成功）、
+Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `sanity_eq`（冗余占位）与 `x4_r2`（X4 未晋级）；
+60/90/110 min checkpoint 未执行**仅因 Exp15 在 40 min 完成**。
+本轮另用**已有 unit**（0 GPU）补齐一处证据缺口：`E14_A6` ≡ Exp11 `E11_B2_L2only` → **bit-exact（max\|Δscore\|=0.0）**。
+
+**冻结协议**（`PRE_RUN_PROTOCOL.md`，5 类 × **seeds 0–9 = 50 units**；方法仅 Original/Adaptive B2/C2/C6/X6c；
+阈值 `EPS_RZ=0.02`/`EPS_DP=0.10`/catastrophic `−0.25` 与历史完全一致）。
+**复用审计**：`REUSED = 70`（5 类 × 7 seeds × {Original,B2}）、**`NEW GPU = 30`**（seeds 7,8,9）、**`SCORE-SIDE = 150`（0 GPU）**。
+**Sanity 4/4 PASS**：历史重建（15 个三元组 `max|Δ| ≤ 1e-9`，PASS/catastrophic 标志一致）、X6c 定义、阈值 bit-exact、输出隔离。
+**GPU**：30/30 OK、0 failed、avg 120 s/unit、墙钟 22.1 min、**3 workers（Exp15 曾 4 worker OOM；本轮 peak 14.7/24GB）**。
+
+**最终 50-unit 结果（E3+）**
+
+| method | PASS/50 | catastrophic | worst Δd′ | mean Δd′ | mean ΔR |
+|---|---|---|---|---|---|
+| *Adaptive B2* | *30 (60.0%)* | ***8 (16.0%)*** | ***−0.4944*** | *0.1438* | *−0.0811* |
+| C2 | 35 (70.0%) | 0 | −0.1817 | **0.1857** | −0.0545 |
+| C6 | 38 (76.0%) | 0 | −0.2142 | 0.1468 | −0.0455 |
+| **X6c** | **38 (76.0%)** | **0** | **−0.1416** | 0.1831 | −0.0493 |
+
+**Seed-block 稳定性（关键）**：**X6c 在 unseen block D（seeds 7–9）无崩溃**（11/15，worst −0.142），
+而 **Adaptive B2 在 block D 崩溃**（7/15，**4 个 catastrophic**，worst **−0.494**）；B2 的 catastrophic 率随 seed block 递增（1→2→1→4）。
+**统计（bootstrap 10000，paired）**：**X6c vs B2：ΔPASS +0.160 [0.020, 0.300]（显著）**、Δmean Δd′ +0.039（显著）、
+Δmean ΔR +0.032 [0.020, 0.044]（显著代价）；**X6c vs C6**：PASS 相同但 mean Δd′ **+0.036（显著优于 C6）**；
+**X6c vs C2**：PASS/preservation 不可区分，C2 的 robustness cost 略小（+0.005）。
+**Tail（worst-5 均值）**：X6c **−0.0954** vs C2 −0.1431 vs C6 −0.1471 vs B2 −0.4012；
+配对 bootstrap：X6c−B2 **+0.306 [0.289,0.331]**、X6c−C2 **+0.048 [0.034,0.062]**、X6c−C6 **+0.052 [0.041,0.063]**（**全部显著**）。
+**Robustness cost 决策**：X6c 保留 B2 鲁棒性增益的 **61%**，换得 **catastrophic 16% → 0%** 与 **worst Δd′ 3.5× 改善**，
+且 preservation 不劣于 B2（+0.039）→ 在"缺陷保持 + 尾部安全"优先的场景下代价可接受。
+
+**Verdict**
+
+> # `A — FREEZE X6c`
+> 判据逐条满足：50 单元稳定（76%，并列最高）｜unseen block D 无崩溃｜catastrophic 8→0｜tail 优势显著（vs B2/C2/C6 全部 CI 不含 0）｜
+> robustness cost 未恶化到不可接受｜相对 C2/C6 的额外复杂度有可测 tail 收益支撑。
+> **未选 B（SIMPLE WINNER）**：其前提「X6c 与 C2/C6 统计不可区分」不成立（worst-5 均值显著优于两者）。
+> **未选 C（STOP）**：X6c 相对 B2 的 PASS 优势已统计显著，非"优势消失"。
+> **保留意见**：C2 仍是「最简 + 最低 robustness cost」的备选，可由人工改选。
+
+**论文阶段推进**：**方法海选结束（Method FREEZE）** → 进入 **论文写作 / E4 外部验证**。
+**方法是否冻结**：**是**（X6c；本文档为唯一冻结依据，禁止在 Exp16 之后以任何新候选替代，除非 E4 失败）。
+**下一步**：① 按 `HELD_OUT_VALIDATION_PLAN.md` 执行 **E4**（推荐 **MPDD**，光照/油污变化为其设计变量；**本轮不下载、不运行**）；
+② 使用 `results/paper_assets/`（主表草稿 O3 / evidence map O2 / ablation inventory O4 / Fig1–5）撰写论文；
+③ 若审稿人要求更强统计功效，扩到 seeds 10–19。**不再新增方法实验。**
+
+**入口**：`results/experiment_16_final_validation/README.md`、`PRE_RUN_PROTOCOL.md`、`EXPERIMENT_DEBT_AUDIT.md`；
+产物 `analysis/{final_50unit_table,final_leaderboard,seed_block_stability,robustness_cost,statistics,per_unit_50,sanity_checks}`、
+`reuse_manifest.csv`、`figures/fig1..fig5`（PNG+PDF）；代码 `scripts/experiment16_{fusion,sanity,runner,launch,analysis,figs,paper_assets}.py`；
+论文资产 `results/paper_assets/`；计划 `HELD_OUT_VALIDATION_PLAN.md`、`PAPER_EVIDENCE_MAP.md`。
+
+---
+
+## 23. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 
 **事实（实验直接观察到）**
 
@@ -1301,7 +1362,7 @@ score-side 全部 0 GPU；`o1ext_b2_56` 阶段 4-worker 并发再次触发 **CUD
 
 ---
 
-## 23. 下一步（建议，均未启动，需人工批准）
+## 24. 下一步（建议，均未启动，需人工批准）
 
 0. **5D CASE 归属裁决（人工，仍未决）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
    [5D README §15](experiments/experiment5d/README.md)。
@@ -1337,7 +1398,7 @@ score-side 全部 0 GPU；`o1ext_b2_56` 阶段 4-worker 并发再次触发 **CUD
 
 ---
 
-## 24. 复现与工程约定
+## 25. 复现与工程约定
 
 - 2026-10-06 曾在 AutoDL 完成一次**全量资产恢复复现审计**（1848 NPZ / 30 banks / 1386 intervention rows），
   详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；**6A 的 10 个 GPU unit 亦在同一路径上运行，smoke 重跑 5A B1

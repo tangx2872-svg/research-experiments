@@ -1,0 +1,25 @@
+{
+  "config": "E14_A1__grid",
+  "family": "combination",
+  "spec": {
+    "l2": {
+      "kind": "residual",
+      "lambda": 0.46014121347143305,
+      "norm": "instance",
+      "scale_match": "per_sample_per_channel_rms(f)",
+      "eps": 1e-05
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.25
+    }
+  },
+  "embedding_dim": 1536,
+  "memory_bank_size": 24985,
+  "runtime_seconds": 70.22,
+  "wallclock_seconds": 70.47,
+  "peak_gpu_memory_allocated_mb": 3025.05,
+  "declared_alpha_l2": -1.0,
+  "declared_alpha_l3": -1.0,
+  "embedding_dim_note": "3072 for concat_dual (doubled), 1536 otherwise"
+}

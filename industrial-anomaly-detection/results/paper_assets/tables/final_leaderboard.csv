@@ -1,0 +1,6 @@
+method,PASS,n_units,pass_rate,catastrophic,cat_rate,mean_ddp,median_ddp,worst_ddp,mean_dR,absz,dprime,complexity,evidence
+X6c,38,50,0.76,0,0.0,0.1831,0.0991,-0.1416,-0.0493,0.265,5.1695,medium (mean of 2 rules),E3+ (5 cats x 10 seeds)
+C6,38,50,0.76,0,0.0,0.1468,0.0511,-0.2142,-0.0455,0.2689,5.1332,"low (max, 1 rule)",E3+ (5 cats x 10 seeds)
+C2,35,50,0.7,0,0.0,0.1857,0.1129,-0.1817,-0.0545,0.2598,5.1721,low (1 fixed weight),E3+ (5 cats x 10 seeds)
+Adaptive B2,30,50,0.6,8,0.16,0.1438,0.0763,-0.4944,-0.0811,0.2332,5.1302,"low (1 unit, category-adaptive beta)",E3+ (5 cats x 10 seeds)
+Original,0,50,0.0,0,0.0,0.0,0.0,0.0,0.0,0.3143,4.9864,low (1 unit),E3+ (5 cats x 10 seeds)

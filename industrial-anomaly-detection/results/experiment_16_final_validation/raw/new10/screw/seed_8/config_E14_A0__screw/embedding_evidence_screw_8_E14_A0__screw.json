@@ -1,0 +1,22 @@
+{
+  "unit": "screw:8:E14_A0__screw",
+  "protocol": "v2",
+  "n_observations": 307200,
+  "embedding_shape": [
+    307200,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "119736a8c9fa53fb10352a3bb9ea4bf5862dcf52f049af7f80bf4603723a03aa",
+  "embedding_stats": {
+    "shape": [
+      307200,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 479548960.0,
+    "mean": 1.0162967443466187
+  },
+  "ts": 1791449512.4593654
+}

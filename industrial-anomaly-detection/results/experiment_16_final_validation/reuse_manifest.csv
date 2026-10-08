@@ -1,0 +1,251 @@
+category,seed,method,source_experiment,source_path,protocol_match,hash_evidence,reuse_status,reason
+bottle,0,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s0_audit/bottle/seed_0/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,0,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/b1/bottle/seed_0/config_E11_B2__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,0,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,0,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,0,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,1,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s2b/bottle/seed_1/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,1,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/bottle/seed_1/config_E11_B2__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,1,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,1,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,1,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,2,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s2b/bottle/seed_2/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,2,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/bottle/seed_2/config_E11_B2__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,2,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,2,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,2,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,3,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/bottle/seed_3/config_E14_A0__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,3,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/bottle/seed_3/config_E14_A1__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,3,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,3,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,3,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,4,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/bottle/seed_4/config_E14_A0__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,4,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/bottle/seed_4/config_E14_A1__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,4,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,4,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,4,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,5,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/bottle/seed_5/config_E14_A0__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,5,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/bottle/seed_5/config_E14_A1__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,5,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,5,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,5,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,6,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/bottle/seed_6/config_E14_A0__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,6,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/bottle/seed_6/config_E14_A1__bottle,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+bottle,6,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,6,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,6,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,7,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+bottle,7,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+bottle,7,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,7,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,7,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,8,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+bottle,8,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+bottle,8,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,8,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,8,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,9,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+bottle,9,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+bottle,9,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,9,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+bottle,9,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,0,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s3/cable/seed_0/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,0,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/b1/cable/seed_0/config_E11_B2__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,0,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,0,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,0,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,1,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/cable/seed_1/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,1,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/cable/seed_1/config_E11_B2__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,1,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,1,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,1,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,2,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/cable/seed_2/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,2,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/cable/seed_2/config_E11_B2__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,2,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,2,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,2,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,3,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/cable/seed_3/config_E14_A0__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,3,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/cable/seed_3/config_E14_A1__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,3,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,3,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,3,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,4,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/cable/seed_4/config_E14_A0__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,4,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/cable/seed_4/config_E14_A1__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,4,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,4,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,4,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,5,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/cable/seed_5/config_E14_A0__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,5,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/cable/seed_5/config_E14_A1__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,5,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,5,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,5,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,6,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/cable/seed_6/config_E14_A0__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,6,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/cable/seed_6/config_E14_A1__cable,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+cable,6,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,6,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,6,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,7,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+cable,7,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+cable,7,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,7,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,7,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,8,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+cable,8,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+cable,8,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,8,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,8,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,9,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+cable,9,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+cable,9,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,9,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+cable,9,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,0,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s3/hazelnut/seed_0/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,0,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/b1/hazelnut/seed_0/config_E11_B2__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,0,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,0,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,0,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,1,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/hazelnut/seed_1/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,1,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/hazelnut/seed_1/config_E11_B2__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,1,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,1,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,1,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,2,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/hazelnut/seed_2/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,2,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/hazelnut/seed_2/config_E11_B2__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,2,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,2,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,2,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,3,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/hazelnut/seed_3/config_E14_A0__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,3,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/hazelnut/seed_3/config_E14_A1__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,3,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,3,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,3,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,4,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/hazelnut/seed_4/config_E14_A0__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,4,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/hazelnut/seed_4/config_E14_A1__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,4,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,4,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,4,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,5,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/hazelnut/seed_5/config_E14_A0__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,5,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/hazelnut/seed_5/config_E14_A1__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,5,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,5,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,5,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,6,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/hazelnut/seed_6/config_E14_A0__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,6,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/hazelnut/seed_6/config_E14_A1__hazelnut,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+hazelnut,6,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,6,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,6,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,7,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+hazelnut,7,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+hazelnut,7,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,7,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,7,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,8,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+hazelnut,8,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+hazelnut,8,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,8,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,8,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,9,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+hazelnut,9,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+hazelnut,9,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,9,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+hazelnut,9,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,0,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s3/screw/seed_0/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,0,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/b2/screw/seed_0/config_E11_B2__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,0,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,0,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,0,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,1,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/screw/seed_1/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,1,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/screw/seed_1/config_E11_B2__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,1,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,1,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,1,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,2,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/screw/seed_2/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,2,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/screw/seed_2/config_E11_B2__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,2,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,2,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,2,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,3,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/screw/seed_3/config_E14_A0__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,3,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/screw/seed_3/config_E14_A1__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,3,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,3,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,3,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,4,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/screw/seed_4/config_E14_A0__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,4,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/screw/seed_4/config_E14_A1__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,4,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,4,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,4,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,5,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/screw/seed_5/config_E14_A0__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,5,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/screw/seed_5/config_E14_A1__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,5,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,5,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,5,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,6,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/screw/seed_6/config_E14_A0__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,6,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/screw/seed_6/config_E14_A1__screw,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+screw,6,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,6,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,6,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,7,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+screw,7,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+screw,7,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,7,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,7,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,8,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+screw,8,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+screw,8,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,8,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,8,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,9,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+screw,9,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+screw,9,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,9,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+screw,9,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,0,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s3/grid/seed_0/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,0,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/b2/grid/seed_0/config_E11_B2__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,0,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,0,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,0,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,1,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/grid/seed_1/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,1,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/grid/seed_1/config_E11_B2__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,1,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,1,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,1,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,2,Original,Exp10 P10_ORIG_a000,results/experiment_10_preservation_recovery/raw/s4/grid/seed_2/config_P10_ORIG_a000,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,2,Adaptive B2,Exp11 E11_B2,results/experiment_11_c2_adaptive/raw/c/grid/seed_2/config_E11_B2__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,2,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,2,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,2,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,3,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/grid/seed_3/config_E14_A0__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,3,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/grid/seed_3/config_E14_A1__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,3,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,3,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,3,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,4,Original,Exp14 o1_orig_34 E14_A0,results/experiment_14/raw/o1_orig_34/grid/seed_4/config_E14_A0__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,4,Adaptive B2,Exp14 o1_b2_34 E14_A1,results/experiment_14/raw/o1_b2_34/grid/seed_4/config_E14_A1__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,4,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,4,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,4,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,5,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/grid/seed_5/config_E14_A0__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,5,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/grid/seed_5/config_E14_A1__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,5,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,5,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,5,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,6,Original,Exp15 o1ext_orig E14_A0,results/experiment_15/raw/o1ext_orig/grid/seed_6/config_E14_A0__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,6,Adaptive B2,Exp15 o1ext_b2 E14_A1,results/experiment_15/raw/o1ext_b2/grid/seed_6/config_E14_A1__grid,YES (corrected-189 + strict-V2),info.json status=OK,REUSE,同数据/同预处理/同 PatchCore/同 RNG 协议
+grid,6,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,6,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,6,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,7,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+grid,7,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+grid,7,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,7,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,7,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,8,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+grid,8,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+grid,8,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,8,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,8,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,9,Original,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+grid,9,Adaptive B2,Exp16 P4 (new),results/experiment_16_final_validation/raw/new10/,YES (同上),待生成,NEW GPU,seed 7-9 尚无任何合法来源
+grid,9,C2,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,9,C6,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建
+grid,9,X6c,score-side reconstruction,scripts/experiment16_fusion.py,YES（定义逐字取自 Exp14/15）,P3 sanity 逐单元比对 Exp15 artifact,SCORE-SIDE (0 GPU),由 Original+B2 的 per-image score 重建

@@ -1,0 +1,42 @@
+[
+  {
+    "w_orig": 0.2,
+    "PASS": 25,
+    "catastrophic": 1,
+    "worst_ddp": -0.2694,
+    "mean_dR": -0.0663,
+    "n_units": 35
+  },
+  {
+    "w_orig": 0.35,
+    "PASS": 26,
+    "catastrophic": 0,
+    "worst_ddp": -0.1817,
+    "mean_dR": -0.0547,
+    "n_units": 35
+  },
+  {
+    "w_orig": 0.5,
+    "PASS": 23,
+    "catastrophic": 0,
+    "worst_ddp": -0.1108,
+    "mean_dR": -0.041,
+    "n_units": 35
+  },
+  {
+    "w_orig": 0.65,
+    "PASS": 18,
+    "catastrophic": 0,
+    "worst_ddp": -0.0574,
+    "mean_dR": -0.027,
+    "n_units": 35
+  },
+  {
+    "w_orig": 0.8,
+    "PASS": 11,
+    "catastrophic": 0,
+    "worst_ddp": -0.0215,
+    "mean_dR": -0.0139,
+    "n_units": 35
+  }
+]

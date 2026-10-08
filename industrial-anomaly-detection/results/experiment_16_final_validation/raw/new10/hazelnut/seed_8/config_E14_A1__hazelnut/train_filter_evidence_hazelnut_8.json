@@ -1,0 +1,21 @@
+{
+  "mode": "corrected189",
+  "category": "hazelnut",
+  "seed": 8,
+  "n_train_ids": 371,
+  "filter_log": [
+    {
+      "ts": 1791449474.9128315,
+      "n_before": 371,
+      "n_after": 371,
+      "kept_all_train_ids": true
+    },
+    {
+      "ts": 1791449475.295864,
+      "n_before": 391,
+      "n_after": 371,
+      "kept_all_train_ids": true
+    }
+  ],
+  "images_embedded_at_fit": 371
+}

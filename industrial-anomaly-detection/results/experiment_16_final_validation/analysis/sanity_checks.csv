@@ -1,0 +1,5 @@
+check,status,detail
+S3_thresholds_bit_exact,PASS,EPS_RZ=0.02 EPS_DP=0.1 catastrophic=-0.25 | Exp15 config: PASS = ΔR ≤ -0.02 且 Δd′ ≥ -0.10
+S4_output_isolated,PASS,Exp16 root = results/experiment_16_final_validation
+S2_X6c_definition,PASS,"X6c = mean(z_C2, z_C6); C2 = 0.35/0.65; C6 = max"
+S1_historical_reconstruction,PASS,"compared 15 (cat,seed,method) triples against Exp15 artifacts; max|Δ|<=1e-9 and identical PASS/catastrophic flags"

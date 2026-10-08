@@ -274,3 +274,12 @@ results/experiment_14/**/fit/
 results/experiment_15/logs/
 results/experiment_15/progress/
 results/experiment_15/**/fit/
+
+# Experiment 16（Final Validation；纳入 config/analysis/figures/README + 轻量 raw，排除 logs/progress）
+!results/experiment_16_final_validation/
+results/experiment_16_final_validation/logs/
+results/experiment_16_final_validation/progress/
+results/experiment_16_final_validation/**/fit/
+
+# Paper assets（论文资产：轻量 CSV/JSON/PNG/PDF/MD）
+!results/paper_assets/

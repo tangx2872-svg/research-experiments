@@ -1,0 +1,21 @@
+{
+  "unit": "grid:7:E14_A1__grid",
+  "protocol": "v2",
+  "memory_bank_sha256": "57c664a3172c849a92a2752b8fb0d8c11792fc1d543d249c4db1876d27326096",
+  "memory_bank_shape": [
+    24985,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      24985,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 45820168.0,
+    "mean": 0.9748315811157227
+  },
+  "embedding_dim": 1536,
+  "ts": 1791449350.0777981
+}

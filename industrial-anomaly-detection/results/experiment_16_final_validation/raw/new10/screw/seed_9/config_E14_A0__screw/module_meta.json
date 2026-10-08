@@ -1,0 +1,22 @@
+{
+  "config": "E14_A0__screw",
+  "family": "combination",
+  "spec": {
+    "l2": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    },
+    "l3": {
+      "kind": "alpha_in",
+      "alpha": 0.0
+    }
+  },
+  "embedding_dim": 1536,
+  "memory_bank_size": 30720,
+  "runtime_seconds": 175.73,
+  "wallclock_seconds": 175.98,
+  "peak_gpu_memory_allocated_mb": 3697.05,
+  "declared_alpha_l2": 0.0,
+  "declared_alpha_l3": 0.0,
+  "embedding_dim_note": "3072 for concat_dual (doubled), 1536 otherwise"
+}

@@ -1,0 +1,159 @@
+{
+  "unit": "hazelnut:9:E14_A0__hazelnut",
+  "category": "hazelnut",
+  "seed": 9,
+  "protocol": "v2",
+  "n_select_calls": 1,
+  "select_calls": [
+    {
+      "protocol": "v2",
+      "ts": 1791449865.98742,
+      "n_observations": 379904,
+      "coreset_size": 37990,
+      "embedding_device": "cuda:0",
+      "embedding_stats": {
+        "shape": [
+          379904,
+          1536
+        ],
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "sum_abs": 603539328.0,
+        "mean": 1.0342856645584106
+      },
+      "rng_hash_before_restore": {
+        "torch_cpu": "0dc45d10898e2767",
+        "numpy": "92e6bbcbadb544de",
+        "numpy_pos": 624,
+        "python": "3c608e51b4628c72",
+        "cuda": "d6370cab1c1a5afa"
+      },
+      "rng_probe_before_restore": {
+        "torch_rand": [
+          0.2603604197502136,
+          0.9534238576889038,
+          0.3804395794868469
+        ],
+        "torch_randint": [
+          217601,
+          702358,
+          636404
+        ],
+        "numpy_rand": [
+          0.010374153885699955,
+          0.5018745921487388,
+          0.4957732931341461
+        ],
+        "cuda_rand": [
+          0.8419533967971802,
+          0.6347468495368958,
+          0.22474069893360138
+        ]
+      },
+      "rng_hash_after_restore": {
+        "torch_cpu": "10eeb496e28bee1a",
+        "numpy": "92e6bbcbadb544de",
+        "numpy_pos": 624,
+        "python": "3c608e51b4628c72",
+        "cuda": "d6370cab1c1a5afa"
+      },
+      "rng_probe_after_restore": {
+        "torch_rand": [
+          0.6557844877243042,
+          0.30202269554138184,
+          0.4798964262008667
+        ],
+        "torch_randint": [
+          748597,
+          330102,
+          397368
+        ],
+        "numpy_rand": [
+          0.010374153885699955,
+          0.5018745921487388,
+          0.4957732931341461
+        ],
+        "cuda_rand": [
+          0.8419533967971802,
+          0.6347468495368958,
+          0.22474069893360138
+        ]
+      },
+      "rng_hash_at_real_sampling": {
+        "torch_cpu": "10eeb496e28bee1a",
+        "numpy": "92e6bbcbadb544de",
+        "numpy_pos": 624,
+        "python": "3c608e51b4628c72",
+        "cuda": "d6370cab1c1a5afa"
+      },
+      "coreset": {
+        "n": 37990,
+        "first20": [
+          235952,
+          296817,
+          361078,
+          170486,
+          53543,
+          136565,
+          378571,
+          305642,
+          178052,
+          215440,
+          217326,
+          108272,
+          159983,
+          71225,
+          78609,
+          75120,
+          251119,
+          92685,
+          274799,
+          15894
+        ],
+        "last5": [
+          29487,
+          292085,
+          86222,
+          241031,
+          296917
+        ],
+        "sha256": "52ca8b09eb188671e46d951ef8c5608773f800c5f46e13dd27f32b1ca716403a",
+        "sorted_first20": [
+          94,
+          132,
+          178,
+          181,
+          211,
+          213,
+          237,
+          239,
+          241,
+          244,
+          247,
+          274,
+          278,
+          301,
+          303,
+          308,
+          337,
+          339,
+          342,
+          344
+        ]
+      },
+      "memory_bank": {
+        "sha256": "c21540fc792dc183eec5721d90c39087cbcd1425b7127e8c36850f5230d65588",
+        "stats": {
+          "shape": [
+            37990,
+            1536
+          ],
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "sum_abs": 68362992.0,
+          "mean": 1.1715493202209473
+        }
+      }
+    }
+  ]
+}

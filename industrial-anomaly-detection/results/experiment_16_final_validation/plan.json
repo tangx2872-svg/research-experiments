@@ -1,0 +1,37 @@
+{
+  "new10": {
+    "round": "new10",
+    "units": [
+      "bottle:7:E14_A0__bottle",
+      "bottle:7:E14_A1__bottle",
+      "cable:7:E14_A0__cable",
+      "cable:7:E14_A1__cable",
+      "hazelnut:7:E14_A0__hazelnut",
+      "hazelnut:7:E14_A1__hazelnut",
+      "screw:7:E14_A0__screw",
+      "screw:7:E14_A1__screw",
+      "grid:7:E14_A0__grid",
+      "grid:7:E14_A1__grid",
+      "bottle:8:E14_A0__bottle",
+      "bottle:8:E14_A1__bottle",
+      "cable:8:E14_A0__cable",
+      "cable:8:E14_A1__cable",
+      "hazelnut:8:E14_A0__hazelnut",
+      "hazelnut:8:E14_A1__hazelnut",
+      "screw:8:E14_A0__screw",
+      "screw:8:E14_A1__screw",
+      "grid:8:E14_A0__grid",
+      "grid:8:E14_A1__grid",
+      "bottle:9:E14_A0__bottle",
+      "bottle:9:E14_A1__bottle",
+      "cable:9:E14_A0__cable",
+      "cable:9:E14_A1__cable",
+      "hazelnut:9:E14_A0__hazelnut",
+      "hazelnut:9:E14_A1__hazelnut",
+      "screw:9:E14_A0__screw",
+      "screw:9:E14_A1__screw",
+      "grid:9:E14_A0__grid",
+      "grid:9:E14_A1__grid"
+    ]
+  }
+}
