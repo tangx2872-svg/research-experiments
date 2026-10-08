@@ -51,3 +51,40 @@
 - [ ] 磁盘/网络可用性确认
 - [ ] 冻结 `results/experiment_17_heldout_mpdd/PRE_RUN_PROTOCOL.md` 并给出 SHA256
 - [ ] 先跑 1 类 smoke 验证数据加载与掩码解析，再全量
+
+---
+
+## 5. 状态更新（2026-10-08 追加；**不改写以上任何历史记录**）
+
+```text
+Historical candidate:
+MPDD was the initial held-out candidate.
+
+Superseding protocol decision:
+E4-0C protocol-first screening selected M²AD as the primary E4 dataset
+because it satisfied 8/8 frozen MUST criteria and provides explicit
+specimen/view/illumination metadata with local GT.
+
+MPDD remains an optional generic external-generalization dataset,
+not the primary illumination-specific E4.
+```
+
+**附：本轮（E4-0C / E4-D0）相关的正式文档**
+
+| 文档 | 作用 |
+|---|---|
+| `docs/E4_DATASET_SELECTION_CRITERIA.md` | E4 数据集选择判据（预注册，先于任何数据集检视写定） |
+| `docs/E4_LL_IAD_M2AD_PROTOCOL_AUDIT.md` | E4-0C 协议审计（LL-IAD vs M²AD，verdict = M²AD WIN） |
+| `docs/E4_M2AD_INTEGRITY_AUDIT.md` | E4-D0 真实数据完整性审计（本轮） |
+
+**E4 数据集状态一览（只标状态，不删除历史）**：
+- `M²AD` —— **PRIMARY E4**（E4-0C 选出；E4-D0 做完整性审计）
+- `MPDD` —— **optional generic external-generalization dataset**（不再是 illumination-specific 主 E4）
+- `MVTec AD 2` —— **pending / 暂不作主 E4**（public test 无 illumination condition label；private/mixed 无本地 GT → Exp16 ΔR 无法原义计算）
+- `LL-IAD` —— **UNKNOWN，暂不使用**（无官方数据分发入口 / 正文不可达；非证伪，若官方发布数据应重评）
+
+> 本节 §3「预注册执行协议（冻结）」针对的是 **MPDD**。若将来执行 MPDD，仍以 §3 原文为准。
+> **主 E4（M²AD）的协议必须另行预注册，不得沿用 §3。**
+
+**重要提醒**：本文件的 §1 表格与 §2 推荐仍是 MPDD 视角，属历史记录，保留不改。
+未来任何会话在选定 E4 数据集时，**必须先读本节 §5**。

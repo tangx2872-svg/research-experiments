@@ -1442,6 +1442,21 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - `M²AD` —— **本轮 winner，待人工批准后进入 `M²AD lightweight subset download + integrity audit`**（仍未下载、未运行）。
    **尚未解决、必须在开工前人工确认**：M²AD 的 **license 未声明**、**总体积未声明**、**哪一个 illumination id 是 regular/well-lit 未在正文定义**（仅 Fig. 10），
    以及 `mean_dprime` 在 M²AD 上因官方 metadata 无 defect_type 字段而**退化为池化 d′**。
+8. **E4-D0 M²AD integrity audit — PASS（2026-10-08，0 GPU，未运行模型）**：下载并实测校验官方 M²AD。
+   - 来源 `ChengYuQi99/M2AD`（HF，作者 Yuqi Cheng；license tag `apache-2.0`）；经 `hf-mirror.com`（`huggingface.co` 在本机不可达）。
+   - **无 M2AD-256**（Google Drive 不可达）⇒ 按 Priority 2 下载**单个 category**：`Bird.zip` 15,506,344,175 B，
+     **SHA256 = 官方 `x-linked-etag`**（`b5bb22a9…abace7`）逐字相等；解包 `EXIT=0`，12,910 文件 / 15 GB。
+   - **实测结果全部 PASS**：真实树 vs 官方 metadata **0 不匹配**；filename parser `view=[1:4]`、`illumination=[6:8]` **0/119,760 偏差**；
+     illumination **01–10 完整且均衡**（每档 600 Good + 600 NG）；每 specimen **12 views × 10 illuminations = 120 配置 100/100 完整**；
+     **same specimen + same view 配对率 Good 1.000 / NG 1.000**；**DEFECT PAIRING = LEVEL 4**（同 view 的 10 档光照共用同一张 mask）；
+     mask **20/20** 存在 / 分辨率一致（1024×1024）/ 非空 / 命名规则正确；**官方 split specimen 重叠 = 0**（无泄漏）。
+   - **一条 E4-0C 结论被修正**：metadata 虽无 `defect_type` 字段，但**缺陷类型可从 NG specimen 目录名恢复**（`damage/hole/scratch/abrasion/bending`，含多缺陷复合名）⇒ `mean_dprime` **可按 defect type 分层**，不需退化。
+   - **两处与论文的数字差异（以实测为准）**：总图 **119,760**（论文 119,880）、specimen **998**（论文 999）；normal 59,880 / anomaly 59,880（论文 69,070 / 50,810）——口径可能含 `image_anomaly=0` 的 NG 图，**不得混引**。
+   - **`REFERENCE ILLUMINATION = UNDEFINED`**：官方未定义哪档是"常规照明"，目视亦无明显的良好照明档 ⇒ E4-B 不得擅自指定 illumination 01。
+   - **E4-A 冻结协议原义复现可行性 = YES**（无需改 X6c/C2/C6/阈值）；**E4-B 真实光照协议可构造 = YES**（指标待预注册）。
+   - **成本警示**：单 category Bird ≈ 21,600 图/unit（约为 MVTec 单类的 58×）⇒ 粗估 E4-A Full 10 类 × 3 seeds 需 **15–37 GPU-h**（上限风险）；固定 view 可降至约 1/12。**正式 runtime 必须等 E4-D1 实测。**
+   - 产物：`docs/E4_M2AD_INTEGRITY_AUDIT.md` ＋ 6 个 audit CSV ＋ `docs/figures/e4_m2ad_pairing_sanity.png` ＋ `scripts/e4d0_m2ad_audit.py`。
+   - **下一步 = `E4-D1 Original-only GPU smoke`（需人工批准）。**
 
 ---
 

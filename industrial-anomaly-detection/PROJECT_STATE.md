@@ -223,5 +223,27 @@ Adaptive B2 **7/15（4 catastrophic，worst −0.494）** → **X6c 不崩溃，
 >
 > **在读取上述文件之前，不应设计新的实验。**
 
+---
+
+## 13. E4 / 主数据集状态（2026-10-08 更新，E4-D0）
+
+```text
+Primary E4 dataset = M²AD
+Dataset selection  = CLOSED
+Integrity audit    = PASS
+Next               = E4-D1 Original-only GPU smoke
+```
+
+| 项 | 状态 |
+|---|---|
+| E4 数据集选择 | **CLOSED** — `docs/E4_DATASET_SELECTION_CRITERIA.md`（预注册判据）+ `docs/E4_LL_IAD_M2AD_PROTOCOL_AUDIT.md`（E4-0C，M²AD WIN） |
+| M²AD 完整性审计 | **PASS** — `docs/E4_M2AD_INTEGRITY_AUDIT.md`（E4-D0，0 GPU，未运行模型） |
+| 本地数据 | `data/m2ad/`（gitignored）：official metadata（`meta_unsupervised.json`）＋ category **Bird**（12,910 文件 / 15 GB，SHA256 = 官方 etag） |
+| 已完成实测校验 | 真实树 vs metadata **0 不匹配**；parser `view=[1:4]`/`illumination=[6:8]` **0/119,760 偏差**；illumination **01–10 完整均衡**；每 specimen **12×10=120 配置 100/100 完整**；**same-view 配对 Good/NG 均 1.000**；`DEFECT PAIRING = LEVEL 4`；mask **20/20** 匹配；**官方 split specimen 重叠 = 0** |
+| 关键约定 | **`REFERENCE ILLUMINATION = UNDEFINED`** —— 官方未定义哪档是常规照明，**禁止**擅自指定 illumination 01；E4-B 指标不得沿用 Exp16 冻结 ΔR 的语义，须另立预注册 |
+| 尚未解决（开工前人工确认） | M²AD 数据集 license（HF tag `apache-2.0`，论文/README 未声明）；`df` 报 used 36 G / avail 15 G 而内容实为 21.6 GB（疑 XFS prjquota 记账滞后，未验证） |
+| 成本警示 | Bird 单类 ≈ 21,600 图/unit（≈ MVTec 单类 58×）⇒ E4-A Full 粗估 **15–37 GPU-h**；固定 view 可降至 ~1/12。**正式 runtime 待 E4-D1 实测** |
+| 被取代/搁置的候选 | `MPDD` = optional generic external-generalization dataset（见 `HELD_OUT_VALIDATION_PLAN.md` §5）；`MVTec AD 2` = pending/暂不作主 E4；`LL-IAD` = UNKNOWN 暂不使用 |
+
 **补充提醒（仓库结构）**：Exp1C–8B 的正式实验文档位于 **`experiments/<exp>/README.md`**，其 artifacts 位于 `results/<exp>/`；
 Exp9A 及以后实验的 README 位于 **`results/<exp>/README.md`**。查找实验文档时两个目录都要看。

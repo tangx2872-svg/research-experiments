@@ -1,0 +1,46 @@
+{
+  "category": "Bird",
+  "n_records": 12000,
+  "n_tree_files": 12910,
+  "n_mismatch": 0,
+  "n_mismatch_informational": 455,
+  "split": {
+    "n_train_specimens": 299,
+    "n_test_specimens": 699,
+    "n_overlap": 0,
+    "overlap": []
+  },
+  "pairing_rate_good": 1.0,
+  "pairing_rate_ng": 1.0,
+  "illuminations": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10"
+  ],
+  "views": [
+    "000",
+    "030",
+    "060",
+    "090",
+    "120",
+    "150",
+    "180",
+    "210",
+    "240",
+    "270",
+    "300",
+    "330"
+  ],
+  "defect_types": [
+    "damage",
+    "hole",
+    "scratch"
+  ]
+}

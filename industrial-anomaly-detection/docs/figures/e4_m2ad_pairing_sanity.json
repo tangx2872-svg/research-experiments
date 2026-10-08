@@ -1,0 +1,20 @@
+{
+  "category": "Bird",
+  "normal_specimen": "024",
+  "defect_specimen": "scratch_3_040",
+  "view": "000",
+  "illuminations": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10"
+  ],
+  "mask_exists": true,
+  "seg_exists": true
+}
