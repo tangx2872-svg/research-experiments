@@ -286,3 +286,11 @@ results/experiment_16_final_validation/**/fit/
 
 # Recovery audit 证据（由 scripts/recovery_audit.py 生成）
 !results/recovery_audit_raw.json
+
+# E4-D1（M²AD Bird × seed0 × Original smoke）：纳入 README / 逐图分数 / illumination+view 指标 /
+# dispersion / sanity / info / benchmark；排除运行日志、pid 与 Lightning fit 运行目录。
+!results/e4_d1_smoke/
+results/e4_d1_smoke/run.log
+results/e4_d1_smoke/run.pid
+results/e4_d1_smoke/fit/
+results/e4_d1_smoke/benchmark/fit_b*/

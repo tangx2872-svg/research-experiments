@@ -1,0 +1,106 @@
+{
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3090",
+    "total_MiB": 24126.2
+  },
+  "scope": {
+    "n_train_specimens": 30,
+    "bank_specimens": [
+      "000",
+      "009",
+      "012",
+      "019",
+      "022",
+      "025",
+      "029",
+      "033",
+      "039",
+      "043"
+    ],
+    "val_specimens": [
+      "003",
+      "010"
+    ],
+    "n_bank_images": 1200,
+    "n_val_images": 240,
+    "n_scoring_images": 8400,
+    "scoring_views": [
+      "000",
+      "030",
+      "060",
+      "090",
+      "120",
+      "150",
+      "180",
+      "210",
+      "240",
+      "270",
+      "300",
+      "330"
+    ],
+    "n_test_specimens": 70
+  },
+  "fits": [
+    {
+      "tag": "b50",
+      "n_bank_images_requested": 50,
+      "n_train_data": 50,
+      "datamodule_setup_s": 0.02,
+      "fit_s": 3.41,
+      "coreset_size": 5120,
+      "vram_alloc_mb": 0.0,
+      "vram_reserved_mb": 0.0,
+      "peak_alloc_mb": 697.0,
+      "peak_reserved_mb": 1144.0,
+      "coreset_per_bank_image": 102.4
+    },
+    {
+      "tag": "b100",
+      "n_bank_images_requested": 100,
+      "n_train_data": 100,
+      "datamodule_setup_s": 0.03,
+      "fit_s": 8.22,
+      "coreset_size": 10240,
+      "vram_alloc_mb": 0.0,
+      "vram_reserved_mb": 0.0,
+      "peak_alloc_mb": 1297.0,
+      "peak_reserved_mb": 1960.0,
+      "coreset_per_bank_image": 102.4
+    },
+    {
+      "tag": "b200",
+      "n_bank_images_requested": 200,
+      "n_train_data": 200,
+      "datamodule_setup_s": 0.04,
+      "fit_s": 24.94,
+      "coreset_size": 20480,
+      "vram_alloc_mb": 0.0,
+      "vram_reserved_mb": 0.0,
+      "peak_alloc_mb": 2497.0,
+      "peak_reserved_mb": 3390.0,
+      "coreset_per_bank_image": 102.4
+    }
+  ],
+  "scores": [
+    {
+      "label": "200bank_100imgs",
+      "n_images": 100,
+      "seconds": 3.654,
+      "s_per_image": 0.0365,
+      "images_per_s": 27.368,
+      "anomaly_map_MB_per_image": 0.25,
+      "score_mean": 54.2535,
+      "score_std": 8.3357
+    }
+  ],
+  "extrapolation": {
+    "peak_alloc_MB_per_bank_image": 12.485,
+    "coreset_size_per_bank_image": 102.4,
+    "max_bank_images_for_3GiB_headroom": 1692,
+    "note": "peak_alloc scales ~linearly with bank size (embedding_store + vstack)",
+    "fit_s_at_1200_bank_est": 149.6,
+    "score_minutes_full_test_8400": 5.1,
+    "score_minutes_views_000_090_180_270_2800": 1.7,
+    "score_minutes_single_view_700": 0.4
+  }
+}

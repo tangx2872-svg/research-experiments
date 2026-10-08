@@ -1457,6 +1457,20 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **成本警示**：单 category Bird ≈ 21,600 图/unit（约为 MVTec 单类的 58×）⇒ 粗估 E4-A Full 10 类 × 3 seeds 需 **15–37 GPU-h**（上限风险）；固定 view 可降至约 1/12。**正式 runtime 必须等 E4-D1 实测。**
    - 产物：`docs/E4_M2AD_INTEGRITY_AUDIT.md` ＋ 6 个 audit CSV ＋ `docs/figures/e4_m2ad_pairing_sanity.png` ＋ `scripts/e4d0_m2ad_audit.py`。
    - **下一步 = `E4-D1 Original-only GPU smoke`（需人工批准）。**
+9. **E4-D1 M²AD Bird × seed0 × Original GPU smoke — PIPELINE FEASIBILITY PASS（2026-10-08）**：
+   协议先冻结于 `docs/E4_D1_PROTOCOL.md`；结果见 [`results/e4_d1_smoke/README.md`](results/e4_d1_smoke/README.md)。
+   **只跑 Original（α=0）**，未运行 B2/X6c，未扩展 seed/category，未改方法与阈值。**Sanity 9/9 PASS**（α=0 与 plain PatchCore **max|Δ|=0.000e+00**）。
+   - **真实 runtime**：fit（bank 1,200）**774.2 s**（coreset 主导，122,880 候选项）、val 14.5 s、scoring（8,400 图）**541.7 s @15.5 img/s**、analysis 41.8 s，**总计 1,378 s = 23.0 min**。
+   - **资源峰值**：VRAM **14,497 MB alloc / 18,258 MB reserved**（24,126 MB）；RAM **34.7 GB**；fit 期间 GPU 100%。
+   - **原始表现**：overall image AUROC **0.7633**、d′ **1.2658**、pixel AUROC **0.9638**。
+     **illumination**（01–10）AUROC 0.7327–0.8260（range **0.0933**，最好 03 / 最差 10）；
+     **view**（12 个）AUROC 0.7157–0.8303（range **0.1145**，最好 090 / 最差 180）。
+     跨光照 score 离散度：Good mean std **1.948** / NG **1.777**。
+   - **异常（如实记录）**：**AUPRO = NaN** —— 根因已实验确认：Bird 的 NG 图 **1,450/6,000 无 mask**（75.8% 有 mask，与论文一致），runner 传入 `np.zeros((1,1))` 占位，`resize_mask` 的 `squeeze()` 使其变 0 维 → `IndexError`。属 reused-helper 与 M²AD "detectable 子集"不兼容，**执行链未断裂**；`pixel_auroc_from_maps` 未受影响。**未修改任何冻结 helper**，需在 E4-A 协议中显式规定「无 mask NG」策略。
+   - **micro-benchmark 外推失败（教训）**：以 200 图 bank 的 24.9 s 线性外推 1,200 图 ≈150 s，实测 **774 s（5.2×）**——coreset 代价对 bank 规模**超线性**，不可小规模外推。
+   - **工程适配（不改方法）**：`Folder` 需目录 → symlink farm；**bank 由 3,600 降为 1,200**（`embedding_store` 无界，实测 12.485 MB/bank 图 ⇒ 3,600 图峰值 ≈45 GB，24 GB 必 OOM —— **E4-A 必须显式规定 bank 规模**）；Engine 关 Lightning 验证。
+   - **成本外推**：完整冻结协议每 (category, seed) ≈ **65 min** ⇒ E4-A Mini（3×3）≈ **9.7 h**、E4-A Full（10×3）≈ **32.5 h**。固定 view 可把 scoring 降至 ~1/12。
+   - **下一步 = `E4-D2`（由人工决定）**；本 smoke **不评价 X6c**。
 
 ---
 

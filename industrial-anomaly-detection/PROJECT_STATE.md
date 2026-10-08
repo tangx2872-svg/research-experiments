@@ -14,7 +14,7 @@
 | Method discovery / search | **CLOSED（已正式结束）** |
 | 冻结方法 | **X6c**（`results/experiment_16_final_validation/`，verdict `A — FREEZE X6c`） |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
-| 下一步 | **E4 — 冻结的 held-out 外部验证**（计划已写，**未执行**） |
+| 下一步 | **E4-D2（人工决定）**；E4-D0 integrity PASS、E4-D1 Original smoke PASS（见下方 §13） |
 
 ---
 
@@ -230,9 +230,19 @@ Adaptive B2 **7/15（4 catastrophic，worst −0.494）** → **X6c 不崩溃，
 ```text
 Primary E4 dataset = M²AD
 Dataset selection  = CLOSED
-Integrity audit    = PASS
-Next               = E4-D1 Original-only GPU smoke
+Integrity audit    = PASS   (E4-D0)
+Original GPU smoke = PASS   (E4-D1, pipeline feasibility only)
+Next               = E4-D2 (human decision)
 ```
+
+### E4-D1 实测（`results/e4_d1_smoke/`，协议 `docs/E4_D1_PROTOCOL.md`）
+
+- 仅 **Original（α=0）**，Bird × seed0；**未运行 B2/X6c**，未改方法与阈值。**Sanity 9/9 PASS**，α=0 等价性 `max|Δ|=0.000e+00`。
+- runtime：fit(bank 1,200) **774.2 s** ＋ val 14.5 s ＋ scoring(8,400 图) **541.7 s @15.5 img/s** ＋ analysis 41.8 s = **1,378 s / 23.0 min**。
+- 峰值：VRAM **14,497 MB alloc / 18,258 MB reserved**（24 GB 卡）；RAM **34.7 GB**。
+- 原始表现：image AUROC **0.7633**、d′ **1.2658**、pixel AUROC **0.9638**；illumination AUROC range **0.0933**、view AUROC range **0.1145**；跨光照 score std：Good 1.948 / NG 1.777。
+- **未决问题（E4-A 协议必须先解决）**：① **AUPRO NaN** —— M²AD 有 1,450/6,000 无 mask NG 图，`resize_mask` 对 `(1,1)` 占位 mask 抛 `IndexError`（根因已实验确认）；需显式「无 mask NG」策略。② **bank 规模未定** —— 显存所迫本 smoke 用 1,200 图，`embedding_store` 无界使全量 3,600 图不可行（峰值 ≈45 GB）。③ **coreset 代价对 bank 规模超线性**（小规模测速不可外推）。④ τ_val 口径不适配（τ_val 落在 defect 分布内）。
+- **成本外推**：每 (category, seed) ≈65 min ⇒ E4-A Mini（3×3）≈9.7 GPU-h、Full（10×3）≈32.5 GPU-h。
 
 | 项 | 状态 |
 |---|---|

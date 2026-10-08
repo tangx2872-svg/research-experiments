@@ -1,0 +1,70 @@
+{
+  "status": "OK",
+  "category": "Bird",
+  "seed": 0,
+  "method": "Original (alpha_l2=0, alpha_l3=0)",
+  "coreset_size": 122880,
+  "tau_val": 48.188743591308594,
+  "n_bank": 1200,
+  "n_val": 240,
+  "n_scoring": 8400,
+  "bank_specimens": [
+    "000",
+    "009",
+    "012",
+    "019",
+    "022",
+    "025",
+    "029",
+    "033",
+    "039",
+    "043"
+  ],
+  "val_specimens": [
+    "003",
+    "010"
+  ],
+  "stages_seconds": {
+    "datamodule_setup_s": 0.24,
+    "fit_s": 774.22,
+    "peak_vram_after_fit_mb": 14497.0,
+    "val_scoring_s": 14.52,
+    "scoring_s": 541.72,
+    "peak_vram_alloc_mb": 14497.0,
+    "peak_vram_reserved_mb": 18258.0,
+    "peak_ram_mb": 34685.0,
+    "analysis_s": 41.77,
+    "total_s": 1378.15
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 3090",
+    "total_MiB": 24126.2
+  },
+  "overall": {
+    "image_auroc": 0.7632827083333333,
+    "d_prime": 1.26578699458831,
+    "n_good": 2400,
+    "n_defect": 6000,
+    "pixel_auroc": 0.963751840175,
+    "aupro": NaN
+  },
+  "dispersion_summary": {
+    "Good": {
+      "n_pairs": 240,
+      "mean_std": 1.9483773073494508,
+      "median_std": 1.7973279769629258,
+      "max_std": 5.152033585126179
+    },
+    "NG": {
+      "n_pairs": 600,
+      "mean_std": 1.7769562345437175,
+      "median_std": 1.6908688277772947,
+      "max_std": 4.77396542747931
+    }
+  },
+  "images_per_s_scoring": 15.506,
+  "illumination_auroc_min": 0.7326805555555556,
+  "illumination_auroc_max": 0.8259861111111111,
+  "view_auroc_min": 0.71573,
+  "view_auroc_max": 0.83027
+}
