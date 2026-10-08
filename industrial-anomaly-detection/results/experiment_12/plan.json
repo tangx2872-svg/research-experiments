@@ -1,0 +1,16 @@
+{
+  "s12_sanity": [
+    "bottle:0:E12_G1__bottle"
+  ],
+  "r1": [
+    "bottle:0:E12_M1__bottle",
+    "cable:0:E12_M1__cable",
+    "hazelnut:0:E12_M1__hazelnut",
+    "bottle:0:E12_M2__bottle",
+    "cable:0:E12_M2__cable",
+    "hazelnut:0:E12_M2__hazelnut",
+    "bottle:0:E12_M3__bottle",
+    "cable:0:E12_M3__cable",
+    "hazelnut:0:E12_M3__hazelnut"
+  ]
+}

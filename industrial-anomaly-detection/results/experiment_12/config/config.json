@@ -1,0 +1,54 @@
+{
+  "experiment": "12",
+  "title": "Category × Channel Adaptive Compensation",
+  "date": "2026-10-08",
+  "git_head_at_freeze": "ba9653d",
+  "hypothesis": "Category-level 决定补多少（beta_c）、Channel-level 决定补哪些通道（g_k），二者正交；组合应优于单用 category-level（Exp11 B2）",
+  "baselines_reused": {
+    "FixedC2": "results/experiment_10_preservation_recovery（9/15）",
+    "AdaptiveB2": "results/experiment_11_c2_adaptive（12/15）",
+    "gpu": "0（全部复用）"
+  },
+  "protocol": {
+    "train": "corrected-189",
+    "rng_coreset": "strict-V2",
+    "eps_rz": 0.02,
+    "eps_dp": 0.1,
+    "catastrophic": "dP <= -0.25",
+    "thresholds_unchanged_from_exp11": true
+  },
+  "candidates_frozen": [
+    "M0(=B2, reuse)",
+    "M1(g=0.75+0.25g_C2)",
+    "M2(g=0.50+0.50g_C2)",
+    "M3(g=g_C2)",
+    "G1(sanity,g=1)"
+  ],
+  "m4_skipped_by_rule": true,
+  "forbidden": [
+    "按 Cable seed2=-0.285 反推参数",
+    "按 Hazelnut seed1/2 手调参数",
+    "看结果后新增救某 seed 的候选",
+    "扩大 grid search",
+    "修改 PASS/HOLD/FAIL 判据",
+    "修改 C2/B2 baseline 数值",
+    "重跑可严格复用的 Exp10/11 units",
+    "为凑 13/15 调阈值",
+    "一次性大量机制实验"
+  ],
+  "budget": {
+    "expected_minutes": "45-75",
+    "soft_minutes": 90,
+    "round1_units_max": 12,
+    "round2_units_max": 6,
+    "round3_units_max": 10,
+    "ablation_units_max": 8,
+    "workers_default": 4,
+    "workers_hard_cap": 4
+  },
+  "figures": [
+    "fig1_gate_strength_plane.png",
+    "fig2_heatmap_round3.png",
+    "fig3_baseline_comparison.png"
+  ]
+}

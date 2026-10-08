@@ -1,0 +1,167 @@
+{
+  "baseline_M0_B2": {
+    "bottle": {
+      "n": 1,
+      "pass": 1,
+      "cata": 0,
+      "mean_dR": -0.21128617919818293,
+      "mean_dP": -0.06525852043818414,
+      "worst_dP": -0.06525852043818414
+    },
+    "cable": {
+      "n": 1,
+      "pass": 1,
+      "cata": 0,
+      "mean_dR": -0.042611608869173284,
+      "mean_dP": -0.029770633707856042,
+      "worst_dP": -0.029770633707856042
+    },
+    "hazelnut": {
+      "n": 1,
+      "pass": 1,
+      "cata": 0,
+      "mean_dR": -0.038301544567350854,
+      "mean_dP": 0.03333018636936114,
+      "worst_dP": 0.03333018636936114
+    }
+  },
+  "candidates": [
+    {
+      "prefix": "E12_M1",
+      "n_pass": 1,
+      "n_cata": 0,
+      "cable_imp_vs_B2": 0.06628665506752718,
+      "haze_imp_vs_B2": 0.12614449418850082,
+      "worst_dP": 0.036516021359671136,
+      "mean_dR": -0.05992187066233084,
+      "bottle_pass": true,
+      "eliminated": true,
+      "kill_reasons": [
+        "robustness materially worse"
+      ],
+      "ADVANCE_A": false,
+      "ADVANCE_B": false,
+      "ADVANCE_C": true,
+      "advance": false,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.20374297576686073,
+          "mean_dP": 0.08557779128544496,
+          "worst_dP": 0.08557779128544496
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": 0.028929861074964758,
+          "mean_dP": 0.036516021359671136,
+          "worst_dP": 0.036516021359671136
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.004952497295096531,
+          "mean_dP": 0.15947468055786196,
+          "worst_dP": 0.15947468055786196
+        }
+      }
+    },
+    {
+      "prefix": "E12_M2",
+      "n_pass": 0,
+      "n_cata": 0,
+      "cable_imp_vs_B2": 0.0017702106435262266,
+      "haze_imp_vs_B2": -0.08104250734925156,
+      "worst_dP": -0.18706607095663053,
+      "mean_dR": -0.05898673406533347,
+      "bottle_pass": false,
+      "eliminated": true,
+      "kill_reasons": [
+        "bottle PASS->FAIL",
+        "robustness materially worse",
+        "cable & hazelnut both no improvement"
+      ],
+      "ADVANCE_A": false,
+      "ADVANCE_B": false,
+      "ADVANCE_C": false,
+      "advance": false,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.18695878505445168,
+          "mean_dP": -0.18706607095663053,
+          "worst_dP": -0.18706607095663053
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": 0.018486172130659062,
+          "mean_dP": -0.028000423064329816,
+          "worst_dP": -0.028000423064329816
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.008487589272207774,
+          "mean_dP": -0.04771232097989042,
+          "worst_dP": -0.04771232097989042
+        }
+      }
+    },
+    {
+      "prefix": "E12_M3",
+      "n_pass": 1,
+      "n_cata": 1,
+      "cable_imp_vs_B2": -0.3140439166138602,
+      "haze_imp_vs_B2": 0.14866018435636885,
+      "worst_dP": -0.34381455032171626,
+      "mean_dR": -0.05895548487458064,
+      "bottle_pass": true,
+      "eliminated": true,
+      "kill_reasons": [
+        "new catastrophic"
+      ],
+      "ADVANCE_A": false,
+      "ADVANCE_B": false,
+      "ADVANCE_C": false,
+      "advance": false,
+      "per_cat": {
+        "bottle": {
+          "n": 1,
+          "pass": 1,
+          "cata": 0,
+          "mean_dR": -0.15360006769196866,
+          "mean_dP": -0.08171612778966342,
+          "worst_dP": -0.08171612778966342
+        },
+        "cable": {
+          "n": 1,
+          "pass": 0,
+          "cata": 1,
+          "mean_dR": -0.00858075575283529,
+          "mean_dP": -0.34381455032171626,
+          "worst_dP": -0.34381455032171626
+        },
+        "hazelnut": {
+          "n": 1,
+          "pass": 0,
+          "cata": 0,
+          "mean_dR": -0.01468563117893798,
+          "mean_dP": 0.18199037072573,
+          "worst_dP": 0.18199037072573
+        }
+      }
+    }
+  ],
+  "top2": [],
+  "ranking": [],
+  "n_advance": 0
+}

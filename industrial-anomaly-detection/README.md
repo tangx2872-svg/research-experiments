@@ -17,7 +17,7 @@
 
 | 项目 | 内容 |
 |---|---|
-| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · **⑩-e 评测协议修正 ✅（9C Matched-RNG Protocol V2：噪声地板 0.020224/0.054211 → **0.000000/0.000000**，equivalent pair 达到 embedding/coreset/memory bank/score 全面逐位一致）** · **⑩-f 用 V2 重审 9B ✅（9B-R：0 ADVANCE / 3 HOLD —— 9B 的 robustness 改善**不是** measurement artifact，三候选在 V2 下保留且同号；但全部仍是纯 trade-off 兑换，preservation 损失 0.25–0.59 d′ > EPS_DP=0.10）** · **⑩-g 协议修正 + preservation recovery 锦标赛 ✅（Exp10：corrected-189 冻结；9 个 unique 候选 → **C2 = L2 scale-matched residual + L3 α=0.25 为首个 FRONTIER-BREAK 候选**（bottle 3/3 seeds 达 ADVANCE，beyond frontier +0.69，preservation 损失 worst −0.065；跨类别 4/5，cable 为弱侧））** · **⑩-h C2 adaptive preservation ✅（Exp11：normal-only category-adaptive β 把 C2 从 **9/15 → 12/15**，**cable 0/3 → 2/3**、grid 2/3 → 3/3、bottle/screw 零退化；hazelnut 1/3 未改善 + 1 个 catastrophic 未消除 → 未达 Strong ADVANCE；**L2+L3 互补性 ablation 成立**）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
+| 论文阶段 | ① Problem ✅ · ② Theory/Literature ✅ · ③ Phenomenon ✅ · ④ Mechanism ✅ FROZEN · ⑤ Method Design ✅ · ⑥ Improvement Screening ✅ · ⑦ Method Validation ✅ · ⑧ Method Identity / Matched-Control Validation ✅ · ⑨ Trade-off 方法改进 ✅（6A pilot + 6B confirmatory：CASE_C） · **⑩ 模块筛选 ✅（7A-O overnight：CASE_C）** · **⑩-b 方法选型 ✅（8B 特征子空间探针：CASE_B，Plan C = HOLD，当前）** · **⑩-c 方法海选 ✅（9A M1–M6：无方法晋级；HOLD = M1/M2/M5；STOP = M3/M4；M6 = ORACLE）** · **⑩-d 第二批方法海选 ✅（9B M7–M11：无候选晋级；实测 coreset 噪声地板 0.020\|Δz\| / 0.054 d′）** · **⑩-e 评测协议修正 ✅（9C Matched-RNG Protocol V2：噪声地板 0.020224/0.054211 → **0.000000/0.000000**，equivalent pair 达到 embedding/coreset/memory bank/score 全面逐位一致）** · **⑩-f 用 V2 重审 9B ✅（9B-R：0 ADVANCE / 3 HOLD —— 9B 的 robustness 改善**不是** measurement artifact，三候选在 V2 下保留且同号；但全部仍是纯 trade-off 兑换，preservation 损失 0.25–0.59 d′ > EPS_DP=0.10）** · **⑩-g 协议修正 + preservation recovery 锦标赛 ✅（Exp10：corrected-189 冻结；9 个 unique 候选 → **C2 = L2 scale-matched residual + L3 α=0.25 为首个 FRONTIER-BREAK 候选**（bottle 3/3 seeds 达 ADVANCE，beyond frontier +0.69，preservation 损失 worst −0.065；跨类别 4/5，cable 为弱侧））** · **⑩-h C2 adaptive preservation ✅（Exp11：normal-only category-adaptive β 把 C2 从 **9/15 → 12/15**，**cable 0/3 → 2/3**、grid 2/3 → 3/3、bottle/screw 零退化；hazelnut 1/3 未改善 + 1 个 catastrophic 未消除 → 未达 Strong ADVANCE；**L2+L3 互补性 ablation 成立**）** · **⑩-i Category × Channel 组合 ❌（Exp12：M1/M2/M3 全部触发硬性淘汰 → 0 ADVANCE → STOP 该组合；**Adaptive B2（12/15）保持为当前最佳**）** · ⑪ Final baseline + ablation ⏸ · ⑫ Writing ⏸ |
 | 研究载体 | PatchCore（`wide_resnet50_2`，layer2+layer3，coreset 0.1，k=9）+ α-IN 层级干预 |
 | 数据规模 | MVTec AD 五类：bottle / cable / grid / hazelnut / screw × seeds {0,1,2}；train/good 209 / 224 / 264 / 391 / 320 |
 | 扰动协议 | 冻结 synthetic photometric：brightness 0.7/1.3、gamma 0.7/1.3（`apply_photometric`） |
@@ -167,6 +167,7 @@
 | 编号 | 问题 | 关键结果 | 判定 | 状态 |
 |---|---|---|---|---|
 | [9C](results/experiment_9c_rng_calibration/README.md) | 消除「不同方法代码路径消耗不同 RNG → KCenterGreedy 选择不同 coreset」的评测不公 | **5 GPU unit-runs / 483 GPU·s**、P4 sanity **7/7**、0 failed：建立 **Matched-RNG Protocol V2**（两个 replay 点：`Engine.fit` 入口固定 train shuffle 行序 + `select_coreset_idxs` 入口固定 greedy 初始点）。V1 噪声地板 0.020224/0.054211 → **V2.1 = 0.000000/0.000000**（equivalent pair 的 embedding sum_abs / RNG state hash / coreset sha / memory bank sha / tau / per-image score **全部逐位一致**） | **CASE A**（Matched-RNG 成功） | DONE |
+| [12](results/experiment_12/README.md) | **Category × Channel Adaptive Compensation**：验证 category-level「补多少」与 channel-level「补哪些通道」是否**正交增益** | **10 GPU unit-runs / 1337 GPU·s**、0 failed：Sanity B（g≡1）与 Exp11 B2 **逐位一致**、M3__bottle 与 E11_C2__bottle **逐位一致**；Round 1（bottle/cable/hazelnut × seed0）**M1/M2/M3 全部淘汰**（M1：cable robustness gain 丢失 ΔR=+0.029；M2：bottle PASS→FAIL Δd′=−0.187；M3：cable 新增 catastrophic −0.344）→ **0 ADVANCE，Round 2/3/Ablation 均未触发**；得到结论 **Category × Channel 不是正交增益**（有效强度主导，position 变化等价于强度变化）+ **cable preservation 对 (β,g) 高度敏感（族内跨度 0.507）** | **C — STOP this combination**（最佳仍为 Adaptive B2：12/15） | DONE |
 | [11](results/experiment_11_c2_adaptive/README.md) | **C2 Adaptive Preservation**：检验 C2 的 category dependency 能否被**预注册、normal-only、training-free** 的 adaptive 机制解决 | **37 GPU unit-runs / 1.66 GPU·h**、0 failed（含 1 次 OOM 后修复重跑）：11A normal 统计（无单一统计量能分开 PASS/FAIL，bottle 1.294 与 cable 1.287 的 `RATIO_L2` 几乎相同）；6 个冻结候选（A/B category-level、C channel-level，锚点=bottle）；**Winner `E11_B2`（β_c = clip(0.25·(q_c/q_bottle)³, 0.05, 0.50)）：PASS 9/15 → 12/15，cable 0/3→2/3，grid 2/3→3/3，bottle/screw 3/3 零退化**；hazelnut 1/3 未改善、cable seed2 仍有 1 个 catastrophic(−0.285) → **未达 Strong ADVANCE / FINAL-METHOD-CANDIDATE**（候选记为 HOLD）；**Ablation：L2-only 给 preservation、L3-only 给 robustness、Full 同时优于两者 → 互补性成立** | **1 HOLD-ADVANCE（改善显著但未达标）** | DONE |
 | [10](results/experiment_10_preservation_recovery/README.md) | **Preservation Recovery Tournament**：T1 已证明「normalization 换 robustness」，今晚补回被抑制的 defect 信息 | **57 GPU unit-runs / ~1.07 GPU·h**、0 failed、avg 117s/unit：①**Protocol Audit = CASE P-A**（corrected-189：`Engine.fit` 内 `dm.setup` 重置过滤的既有 bug，已修并证明 `images_embedded=189`；T1−Original 方向不变，缺口由 −0.354 缩到 **−0.140**）② corrected V2 frontier（历史冻结 α grid，0 新 α 值）③12 个想法去重后 **9 unique**（Family A 代数等价于 per-layer α，0 GPU）④**`C2 = L2 scale-matched residual(F+0.25·IN(F)·rms) + L3 α=0.25`：bottle 3/3 seeds 满足（Δ\|Δz\| −0.177~−0.211、Δd′ worst **−0.065**）、beyond corrected frontier **+0.69** → FRONTIER-BREAK**；5 cats 4/5 通过（screw/grid 强，cable 0/3 含一次 −0.33 collapse）⑤负结果：Family B/E 无效（污染层事后补偿），Family D 越界但 preservation 仍越界 | **1 ADVANCE (C2) / 5 HOLD / 2 STOP / 3 EQUIVALENT** | DONE |
 | [9B-R](results/experiment_9b_r_strict_replay/README.md) | 用 9C-v2b 校准好的尺子（Protocol V2）重新审查 9B 候选：候选优势是真实 method effect 还是 measurement artifact | **5 GPU unit-runs / 538.9 GPU·s**、Round 0 sanity **10/10 PASS**、0 failed：Control 1（Original 两次独立进程）embedding/coreset/bank sha 全同、`max\|Δscore\|=0.0`（而 runtime 52.4s vs 133.3s → 一致性非环境巧合）；Control 2 **逐元素 `max\|ΔF\|=0.0`（0/328,728,576 元素）**。Round 1：T1 \(\|Δz\|\) 0.5027→0.3322、T2 →0.3834、T3 →0.4378（改善全保留、与 9B 同号），但 preservation 同时降 0.245–0.590 d′ | **0 ADVANCE / 3 HOLD**（纯 trade-off 兑换）；另发现**既有**协议属性：fit 实际使用全部 209 张 train/good（val 20 张在 bank 内，`dm.setup` 重置了 runner 过滤） | DONE |
@@ -990,7 +991,51 @@ hazelnut 的失败模式与补偿强度无关（β 调动无效）→ **normal-s
 
 ---
 
-## 18. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
+## 18. Experiment 12 — Category × Channel Adaptive Compensation（2026-10-08）
+
+**为什么做**：Exp11 的 `Adaptive B2` 把 PASS 从 9/15 提到 **12/15**（cable 0/3→2/3、grid 2/3→3/3、bottle/screw 零退化），
+但 hazelnut 1/3 未改善、仍有 1 个 catastrophic。Exp11 同时显示 **channel-level gate（E11_C2）能在 cable 上消除 catastrophic**
+（preservation +0.163）却牺牲 robustness。本轮检验假设：**Category-level 决定"补多少"（β_c）、Channel-level 决定"补哪些通道"（g_k），二者正交 → 组合应更优。**
+
+**冻结候选（M4 按规则跳过）**：`L2 = β_c × g_k × IN(F)_k×rms(F)`，L3 恒 `alpha_in(0.25)`，**零新模型代码**（复用 Exp11 `residual_gated`）。
+M0 = B2（g≡1，复用）；M1 = `0.75+0.25·g_C2`；M2 = `0.50+0.50·g_C2`；M3 = `g_C2`。
+（M4 跳过依据：Exp11 的 C2 gate 本身已是**连续**映射 —— 90% 通道 g>0、仅 10.2% 恰为 0 —— 任务书规定不得为凑 M4 发明新公式。）
+
+**Strict replay sanity（全 PASS）**：`E12_G1__bottle`（g≡1）与 Exp11 `E11_B2__bottle` **逐位一致**
+（embedding/coreset/bank sha 相同、`max|Δscore| = 0.0`、`images_embedded=189`）；额外发现 `E12_M3__bottle` 与 `E11_C2__bottle`
+**逐位一致**（同 spec，跨实验一致性 ✓）。
+
+**Round 1（bottle/cable/hazelnut × seed0，9 units，0 failed）**
+
+| cand | PASS | cata | cable Δd′ vs B2 | hazelnut Δd′ vs B2 | **淘汰原因** |
+|---|---|---|---|---|---|
+| M1 | 1 | 0 | **+0.066** | **+0.126** | robustness 明显退化（cable ΔR = **+0.029** → gain 丢失） |
+| M2 | 0 | 0 | +0.002 | −0.081 | **bottle PASS→FAIL**（Δd′ −0.187） |
+| M3 | 1 | **1** | **−0.314** | +0.149 | **新增 catastrophic**（cable Δd′ **−0.344**） |
+
+→ **0 ADVANCE，按 §11 规则 STOP 该组合**：`Category × Channel combination did not outperform Adaptive B2 under frozen protocol.`
+**Round 2 / Round 3 / Ablation 均未触发**（无 ADVANCE；ablation 条件 ≥13/15 也未满足）。**未新增任何参数、未围绕 cable seed2 / hazelnut 调参。**
+
+**关键读数（可解释）**
+1. **不是正交增益**：gate 越具选择性并不单调改善 preservation（M1 ḡ≈0.86 三类全改善、M2 ḡ≈0.66 bottle/hazelnut 变差、M3 ḡ≈0.43 cable 崩溃）
+   → **"补哪些通道"的效果被补偿的"有效强度"（β_c×g）主导**；改变位置等价于改变强度，而强度的任何移动都沿同一条兑换曲线滑动。
+2. **M1 方向与预期相反**：mild gate 使 preservation 上升、robustness 下降 → 仍是同一 frontier 上的兑换。
+3. **⚠️ 稳定性 caution**：`cable seed0` 的 Δd′ 在 C2 家族**窄参数区间内跨度 0.507**
+   （−0.070 / −0.030 / −0.028 / +0.036 / **+0.163** / **−0.344**）→ **Exp11 的 cable 改善不宜单独当作机制性结论**（仅作观察事实）。
+
+**Verdict：C — Category × Channel 组合在冻结协议下未带来净收益，停止该组合路线。**
+**当前最佳仍是 `Adaptive B2`（12/15，cable 2/3、grid 3/3、bottle/screw 3/3）**，交人工决策是否接受；
+若继续方法侧，应换**另一条成熟模块路线**，而非继续 C2 家族变体。
+
+**成本**：10 GPU unit-runs / 1337 GPU·s（0.37 GPU·h），0 failed，全局并发 = 4 = `--workers` 上限（smoke VRAM 20640 MiB，未升 5）。
+
+**入口**：`results/experiment_12/README.md`（§3 协议 / §4 候选冻结 / §7 sanity / §8 Round1 / §9 未触发说明 / §10 横截面 / §11 稳定性 / §13 verdict）；
+产物 `config/{config.json,candidate_registry.json}`、`analysis/{round1,round1_hard_category.csv,family_cross_section.csv}`、`figures/{fig1_gate_strength_plane,fig2_candidate_comparison}.png`、`progress.json`；
+代码 `scripts/experiment12_{candidates,runner,batch,progress,analysis}.py`。
+
+---
+
+## 19. 已冻结的结论与边界（Fact / Interpretation / Hypothesis 分离）
 
 **事实（实验直接观察到）**
 
@@ -1052,7 +1097,7 @@ hazelnut 的失败模式与补偿强度无关（β 调动无效）→ **normal-s
 
 ---
 
-## 19. 下一步（建议，均未启动，需人工批准）
+## 20. 下一步（建议，均未启动，需人工批准）
 
 0. **5D CASE 归属裁决（人工，仍未决）**：literal CASE_D vs 实质 CASE_B —— 见 §7 与
    [5D README §15](experiments/experiment5d/README.md)。
@@ -1088,7 +1133,7 @@ hazelnut 的失败模式与补偿强度无关（β 调动无效）→ **normal-s
 
 ---
 
-## 20. 复现与工程约定
+## 21. 复现与工程约定
 
 - 2026-10-06 曾在 AutoDL 完成一次**全量资产恢复复现审计**（1848 NPZ / 30 banks / 1386 intervention rows），
   详见 [OVERNIGHT_REPORT.md](OVERNIGHT_REPORT.md)；**6A 的 10 个 GPU unit 亦在同一路径上运行，smoke 重跑 5A B1

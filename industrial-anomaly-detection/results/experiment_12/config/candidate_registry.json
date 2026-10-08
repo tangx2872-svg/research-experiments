@@ -1,0 +1,115 @@
+{
+  "frozen_before_target_results": true,
+  "hypothesis": "Category-level (β_c) 决定补多少、Channel-level (g_k) 决定补哪些通道，组合应优于单用 category-level（Exp11 B2）",
+  "m4_skipped_by_rule": "Exp11 的 C2 gate 已是连续 soft 映射（1 - clip(RATIO_j/p90,0,1)；90% 通道 g>0，仅 10.2% 恰为 0）→ 按任务书不得为凑 M4 发明新公式",
+  "components_reused": {
+    "beta": "Exp11 B2 frozen beta_table (train/good only)",
+    "gate": "Exp11 E11_C2 original channel gate (train/good only)",
+    "l2_operator": "experiment11_model residual_gated (zero new model code)",
+    "l3": "alpha_in(0.25) fixed"
+  },
+  "candidates": [
+    {
+      "id": "M0",
+      "spec_prefix": "E11_B2",
+      "gate": "g=1 (category-only)",
+      "beta": {
+        "bottle": 0.25,
+        "cable": 0.29481836131239764,
+        "hazelnut": 0.22787658219094892,
+        "screw": 0.21640695481973235,
+        "grid": 0.46014121347143305
+      },
+      "units": 0,
+      "note": "复用 Exp11 B2（15 units 已存在）"
+    },
+    {
+      "id": "M1",
+      "spec_prefix": "E12_M1",
+      "gate": "g = 0.75 + 0.25*g_C2",
+      "beta": {
+        "bottle": 0.25,
+        "cable": 0.29481836131239764,
+        "hazelnut": 0.22787658219094892,
+        "screw": 0.21640695481973235,
+        "grid": 0.46014121347143305
+      },
+      "gate_mean": {
+        "bottle": 0.8568304353781517,
+        "cable": 0.794773299649024,
+        "hazelnut": 0.8475125978244877,
+        "screw": 0.8658676687704895,
+        "grid": 0.9207734164966623
+      }
+    },
+    {
+      "id": "M2",
+      "spec_prefix": "E12_M2",
+      "gate": "g = 0.50 + 0.50*g_C2",
+      "beta": {
+        "bottle": 0.25,
+        "cable": 0.29481836131239764,
+        "hazelnut": 0.22787658219094892,
+        "screw": 0.21640695481973235,
+        "grid": 0.46014121347143305
+      },
+      "gate_mean": {
+        "bottle": 0.7136608707563034,
+        "cable": 0.589546599298048,
+        "hazelnut": 0.6950251956489754,
+        "screw": 0.731735337540979,
+        "grid": 0.8415468329933248
+      }
+    },
+    {
+      "id": "M3",
+      "spec_prefix": "E12_M3",
+      "gate": "g = g_C2",
+      "beta": {
+        "bottle": 0.25,
+        "cable": 0.29481836131239764,
+        "hazelnut": 0.22787658219094892,
+        "screw": 0.21640695481973235,
+        "grid": 0.46014121347143305
+      },
+      "gate_mean": {
+        "bottle": 0.4273217415126067,
+        "cable": 0.17909319859609596,
+        "hazelnut": 0.39005039129795077,
+        "screw": 0.46347067508195783,
+        "grid": 0.6830936659866496
+      }
+    },
+    {
+      "id": "G1(sanity)",
+      "spec_prefix": "E12_G1",
+      "gate": "g = 1（必须逐位等于 M0/B2）",
+      "beta": {
+        "bottle": 0.25,
+        "cable": 0.29481836131239764,
+        "hazelnut": 0.22787658219094892,
+        "screw": 0.21640695481973235,
+        "grid": 0.46014121347143305
+      },
+      "units": 1
+    }
+  ],
+  "n_specs": 20,
+  "beta_by_category": {
+    "bottle": 0.25,
+    "cable": 0.29481836131239764,
+    "hazelnut": 0.22787658219094892,
+    "screw": 0.21640695481973235,
+    "grid": 0.46014121347143305
+  },
+  "gate_c2_mean": {
+    "bottle": 0.4273217415126067,
+    "cable": 0.17909319859609596,
+    "hazelnut": 0.39005039129795077,
+    "screw": 0.46347067508195783,
+    "grid": 0.6830936659866496
+  },
+  "equivalence_checks": {
+    "E12_G1__<cat> == E11_B2__<cat>": "required (Sanity B)"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unit": "cable:0:E12_M2__cable",
+  "protocol": "v2",
+  "memory_bank_sha256": "2400d0261d6c6007e2f9cc845c1237eeaac809ab934a9c423f708facd4780aaa",
+  "memory_bank_shape": [
+    20889,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      20889,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 40121168.0,
+    "mean": 1.168398141860962
+  },
+  "embedding_dim": 1536,
+  "ts": 1791425673.1922972
+}

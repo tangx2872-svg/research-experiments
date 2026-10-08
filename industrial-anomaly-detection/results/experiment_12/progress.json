@@ -1,0 +1,23 @@
+{
+  "current_stage": "DONE",
+  "completed": 10,
+  "total": 10,
+  "percent": 100.0,
+  "elapsed_seconds": 537.7,
+  "eta_seconds": 0.0,
+  "avg_seconds_per_unit": 136.4,
+  "running_units": [],
+  "failed_units": {},
+  "per_stage": {
+    "s12_sanity": {
+      "done": 1,
+      "total": 1
+    },
+    "r1": {
+      "done": 9,
+      "total": 9
+    }
+  },
+  "gpu_util": 0.0,
+  "timestamp": 1791425866.359288
+}

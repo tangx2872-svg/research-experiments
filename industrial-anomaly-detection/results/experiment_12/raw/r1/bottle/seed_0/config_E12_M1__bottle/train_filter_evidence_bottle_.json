@@ -1,0 +1,21 @@
+{
+  "mode": "corrected189",
+  "category": "bottle",
+  "seed": 0,
+  "n_train_ids": 189,
+  "filter_log": [
+    {
+      "ts": 1791425449.303537,
+      "n_before": 189,
+      "n_after": 189,
+      "kept_all_train_ids": true
+    },
+    {
+      "ts": 1791425449.5663943,
+      "n_before": 209,
+      "n_after": 189,
+      "kept_all_train_ids": true
+    }
+  ],
+  "images_embedded_at_fit": 189
+}

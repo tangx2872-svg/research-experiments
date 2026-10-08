@@ -247,3 +247,10 @@ results/experiment_11_c2_adaptive/logs/
 results/experiment_11_c2_adaptive/progress/
 results/experiment_11_c2_adaptive/reference/
 results/experiment_11_c2_adaptive/**/fit/
+
+# Experiment 12（Category × Channel；纳入 raw 轻量证据 + analysis + figures + config + README，排除 logs/progress/reference/fit）
+!results/experiment_12/
+results/experiment_12/logs/
+results/experiment_12/progress/
+results/experiment_12/reference/
+results/experiment_12/**/fit/

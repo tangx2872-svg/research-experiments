@@ -1,0 +1,21 @@
+{
+  "unit": "bottle:0:E12_G1__bottle",
+  "protocol": "v2",
+  "memory_bank_sha256": "4d3575e88d2ffcbea217cbad6f15937afea694c18f1fc9c7b166d6782301eeca",
+  "memory_bank_shape": [
+    19353,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      19353,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 35396868.0,
+    "mean": 1.0651086568832397
+  },
+  "embedding_dim": 1536,
+  "ts": 1791425319.8869822
+}
