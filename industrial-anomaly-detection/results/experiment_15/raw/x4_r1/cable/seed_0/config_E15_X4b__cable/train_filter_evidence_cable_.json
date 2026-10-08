@@ -1,0 +1,21 @@
+{
+  "mode": "corrected189",
+  "category": "cable",
+  "seed": 0,
+  "n_train_ids": 204,
+  "filter_log": [
+    {
+      "ts": 1791433751.234559,
+      "n_before": 204,
+      "n_after": 204,
+      "kept_all_train_ids": true
+    },
+    {
+      "ts": 1791433751.5509555,
+      "n_before": 224,
+      "n_after": 204,
+      "kept_all_train_ids": true
+    }
+  ],
+  "images_embedded_at_fit": 204
+}

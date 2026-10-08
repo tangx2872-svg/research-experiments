@@ -1,0 +1,21 @@
+{
+  "unit": "hazelnut:5:E14_A1__hazelnut",
+  "protocol": "v2",
+  "memory_bank_sha256": "35a7502c4521882ac0f0dba7e4f672639bea6522d4f95e33c31e272b4cf0dc8c",
+  "memory_bank_shape": [
+    37990,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      37990,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 68424760.0,
+    "mean": 1.0635932683944702
+  },
+  "embedding_dim": 1536,
+  "ts": 1791434923.3623898
+}

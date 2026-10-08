@@ -1,7 +1,7 @@
 {
   "total_done": 73,
   "total_units": 73,
-  "elapsed_seconds": 4732.2,
+  "elapsed_seconds": 4985.5,
   "avg_seconds_per_unit": 149.68,
   "eta_seconds": 0.0,
   "gpu_workers": 1,
@@ -39,5 +39,5 @@
       "total": 10
     }
   },
-  "timestamp": 1791433132.3355627
+  "timestamp": 1791433385.5810463
 }

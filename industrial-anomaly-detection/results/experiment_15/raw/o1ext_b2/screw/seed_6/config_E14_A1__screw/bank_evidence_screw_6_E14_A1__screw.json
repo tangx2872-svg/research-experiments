@@ -1,0 +1,21 @@
+{
+  "unit": "screw:6:E14_A1__screw",
+  "protocol": "v2",
+  "memory_bank_sha256": "30d19ad2b0b18a822e2605e70d4b152d93c06da417ed8e3f8f34ea318a4e5bfb",
+  "memory_bank_shape": [
+    30720,
+    1536
+  ],
+  "memory_bank_stats": {
+    "shape": [
+      30720,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cpu",
+    "sum_abs": 55675456.0,
+    "mean": 1.0840784311294556
+  },
+  "embedding_dim": 1536,
+  "ts": 1791435259.942708
+}

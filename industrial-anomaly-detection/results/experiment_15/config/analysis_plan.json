@@ -1,0 +1,46 @@
+{
+  "frozen": true,
+  "evaluation": {
+    "primary": [
+      "ΔR = Δ mean|ΔNormalScore_z|（vs 同 (cat,seed) corrected Original）",
+      "Δd′ = Δ mean defect d′",
+      "PASS = ΔR ≤ -0.02 且 Δd′ ≥ -0.10",
+      "catastrophic = Δd′ ≤ -0.25"
+    ],
+    "advance_rule": {
+      "R1": "Pareto-positive（一侧改善且另一侧基本不退）或明显减少 catastrophic；纯 trade-off 不算晋级；最多 Top3",
+      "R2": "+screw/grid → 需 ≥4/5 PASS 且无新增 catastrophic；最多 Top2",
+      "R3": "+seeds1,2 → 5×3 统一比较"
+    },
+    "no_threshold_change": true
+  },
+  "parameter_sensitivity": {
+    "hyperparameter": "fusion weight w",
+    "grid_used_in_exp14": [
+      0.2,
+      0.35,
+      0.5,
+      0.65,
+      0.8
+    ],
+    "further_refinement_allowed": false,
+    "note": "§17：winner 已来自该 grid → 禁止细化（0.45/0.48…）；§18：输出 coarse sensitivity curve，尖锐孤立峰 => HIGH OVERFITTING RISK"
+  },
+  "evidence_levels": {
+    "E1": "seed0 only",
+    "E2": "5 cats × 3 seeds",
+    "E3": "5 cats × 5 seeds",
+    "E4": "held-out category verified（本轮不可得）"
+  },
+  "budget": {
+    "target_min": 90,
+    "soft_max_min": 120,
+    "hard_max_min": 135,
+    "workers": 4
+  },
+  "auto_stop": {
+    "S1": "出现 ≥13/15 + 0 catastrophic 且参数稳定 => 转 stability validation",
+    "S2": "所有候选均不超过 B2 => STOP METHOD SEARCH",
+    "S3": "性能并列 => 取更简单者"
+  }
+}

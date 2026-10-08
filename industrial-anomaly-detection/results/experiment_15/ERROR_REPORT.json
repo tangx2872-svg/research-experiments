@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-10-08T12:49+08:00",
+  "stage": "o1ext_b2_56",
+  "type": "CUDA_OUT_OF_MEMORY",
+  "failed_units": ["grid:5:E14_A1__grid", "grid:6:E14_A1__grid", "screw:6:E14_A1__screw"],
+  "evidence": "torch.OutOfMemoryError at memory_bank = torch.vstack(embedding_store); tried 1.43-1.76 GiB; 2 并发进程各 7.35 GiB + 其余 → 23.5 GiB 用尽",
+  "root_cause": "4 workers 并发；hazelnut/screw/grid 单进程峰值 ~7.4 GiB → 4×7.4 > 24 GiB（与 Exp14 同一根因）",
+  "concurrency_before": 4,
+  "concurrency_after": 2,
+  "protocol_changed": false,
+  "action": "按规则：降并发至 2 + 只重跑 3 个失败单元（同 spec/同 round/同协议），不改变任何阈值或定义",
+  "note": "其余 17/20 单元 0 failed；已成功单元不受影响（runner 仅在成功时写 info.json）"
+}

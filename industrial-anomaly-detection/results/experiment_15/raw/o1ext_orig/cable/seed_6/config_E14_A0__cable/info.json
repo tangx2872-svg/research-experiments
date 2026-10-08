@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "cable",
+  "seed": 6,
+  "config": "E14_A0__cable",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.0,
+  "runtime_seconds": 162.3,
+  "coreset_size": 20889,
+  "tau_val": 44.68207550048828,
+  "peak_gpu_memory_allocated_mb": 2545.05,
+  "train_ids_hash": "b8507f9dfc9a",
+  "n_rows": 402,
+  "pixel_auroc": 0.984428105275,
+  "aupro": 0.9274609684944153
+}

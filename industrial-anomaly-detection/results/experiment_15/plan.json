@@ -1,0 +1,52 @@
+{
+  "x4_r1": {
+    "round": "x4_r1",
+    "units": [
+      "bottle:0:E15_X4a__bottle",
+      "cable:0:E15_X4a__cable",
+      "hazelnut:0:E15_X4a__hazelnut",
+      "bottle:0:E15_X4b__bottle",
+      "cable:0:E15_X4b__cable",
+      "hazelnut:0:E15_X4b__hazelnut"
+    ]
+  },
+  "x4_r2": {
+    "round": "x4_r2",
+    "units": [
+      "screw:0:E15_X4a__screw",
+      "grid:0:E15_X4a__grid",
+      "screw:0:E15_X4b__screw",
+      "grid:0:E15_X4b__grid"
+    ]
+  },
+  "o1ext_orig_56": {
+    "round": "o1ext_orig",
+    "units": [
+      "bottle:5:E14_A0__bottle",
+      "bottle:6:E14_A0__bottle",
+      "cable:5:E14_A0__cable",
+      "cable:6:E14_A0__cable",
+      "hazelnut:5:E14_A0__hazelnut",
+      "hazelnut:6:E14_A0__hazelnut",
+      "screw:5:E14_A0__screw",
+      "screw:6:E14_A0__screw",
+      "grid:5:E14_A0__grid",
+      "grid:6:E14_A0__grid"
+    ]
+  },
+  "o1ext_b2_56": {
+    "round": "o1ext_b2",
+    "units": [
+      "bottle:5:E14_A1__bottle",
+      "bottle:6:E14_A1__bottle",
+      "cable:5:E14_A1__cable",
+      "cable:6:E14_A1__cable",
+      "hazelnut:5:E14_A1__hazelnut",
+      "hazelnut:6:E14_A1__hazelnut",
+      "screw:5:E14_A1__screw",
+      "screw:6:E14_A1__screw",
+      "grid:5:E14_A1__grid",
+      "grid:6:E14_A1__grid"
+    ]
+  }
+}

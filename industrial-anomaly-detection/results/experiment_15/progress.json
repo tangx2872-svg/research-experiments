@@ -1,0 +1,16 @@
+{
+  "stage": "o1ext_b2_56",
+  "completed": 7,
+  "total": 10,
+  "percent": 70.0,
+  "elapsed_seconds": 395.1,
+  "avg_seconds_per_unit": 180.46,
+  "eta_seconds": 0.0,
+  "workers": 1,
+  "failed_units": [
+    "screw:6:E14_A1__screw",
+    "grid:5:E14_A1__grid",
+    "grid:6:E14_A1__grid"
+  ],
+  "timestamp": 1791434962.6362078
+}

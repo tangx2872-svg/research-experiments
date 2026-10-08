@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "screw",
+  "seed": 6,
+  "config": "E14_A1__screw",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 114.53,
+  "coreset_size": 30720,
+  "tau_val": 40.45845413208008,
+  "peak_gpu_memory_allocated_mb": 3697.05,
+  "train_ids_hash": "4524d31bac0e",
+  "n_rows": 344,
+  "pixel_auroc": 0.9903022177619758,
+  "aupro": 0.9496749043464661
+}

@@ -1,0 +1,7 @@
+method,category,seed,dR,ddp,PASS,catastrophic,pareto_pos,dR_vs_B2,ddp_vs_B2,absz,dprime,image_auroc
+E15_X4a,bottle,0,-0.21619,-0.241248,False,False,False,-0.004904,-0.17599,0.260682,7.802741,1.0
+E15_X4b,bottle,0,-0.151123,-0.10314,False,False,False,0.060163,-0.037882,0.325749,7.940849,1.0
+E15_X4a,cable,0,0.019471,0.035785,False,False,True,0.062082,0.065555,0.303691,5.054496,0.984258
+E15_X4b,cable,0,-0.000693,-0.069758,False,False,False,0.041919,-0.039988,0.283528,4.948953,0.980697
+E15_X4a,hazelnut,0,-0.017024,0.140941,False,False,True,0.021277,0.107611,0.175517,6.025601,1.0
+E15_X4b,hazelnut,0,-0.024811,0.100962,True,False,True,0.01349,0.067632,0.16773,5.985622,1.0

@@ -1,0 +1,46 @@
+{
+  "unit": "hazelnut:5:E14_A1__hazelnut",
+  "protocol": "v2",
+  "reason": "train DataLoader 使用 shuffle=True 且无显式 generator -> 行序由全局 RNG 决定；在 Engine.fit 入口 replay 可固定行序，使 embedding 逐位一致",
+  "calls": [
+    {
+      "ts": 1791434699.2779028,
+      "rng_hash_before_fit_replay": {
+        "torch_cpu": "ddf563a651ec97df",
+        "numpy": "e2e9d3640835a9bc",
+        "numpy_pos": 624,
+        "python": "194df3e255cb9f48",
+        "cuda": "966a28d35016032e"
+      },
+      "rng_hash_after_fit_replay": {
+        "torch_cpu": "f4ef6f460154679c",
+        "numpy": "e2e9d3640835a9bc",
+        "numpy_pos": 624,
+        "python": "194df3e255cb9f48",
+        "cuda": "966a28d35016032e"
+      },
+      "rng_probe_after_fit_replay": {
+        "torch_rand": [
+          0.8302518725395203,
+          0.12611091136932373,
+          0.9074696898460388
+        ],
+        "torch_randint": [
+          525885,
+          852006,
+          238070
+        ],
+        "numpy_rand": [
+          0.22199317108973948,
+          0.8707323061773764,
+          0.20671915533942642
+        ],
+        "cuda_rand": [
+          0.7659821510314941,
+          0.3874756097793579,
+          0.7304975986480713
+        ]
+      }
+    }
+  ]
+}

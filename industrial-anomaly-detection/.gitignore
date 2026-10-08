@@ -268,3 +268,9 @@ results/experiment_13p/analysis/defect_stats_*.npz
 results/experiment_14/logs/
 results/experiment_14/progress/
 results/experiment_14/**/fit/
+
+# Experiment 15（Winner Expansion；纳入 config/analysis/figures/README + 轻量 raw，排除 logs/progress）
+!results/experiment_15/
+results/experiment_15/logs/
+results/experiment_15/progress/
+results/experiment_15/**/fit/

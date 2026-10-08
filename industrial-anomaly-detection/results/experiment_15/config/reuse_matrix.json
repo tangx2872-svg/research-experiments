@@ -1,0 +1,30 @@
+{
+  "0_GPU": [
+    {
+      "asset": "Exp10 P10_ORIG_a000 (seeds0-2) + Exp14 E14_A0 (seeds3,4)",
+      "use": "Original 参考（25 单元）"
+    },
+    {
+      "asset": "Exp11 E11_B2 (seeds0-2) + Exp14 E14_A1 (seeds3,4)",
+      "use": "Adaptive B2 参考（25 单元，A1 与 B2 bit-exact 已核验）"
+    },
+    {
+      "asset": "Exp14 E14_A6 (5 cats × seed0)",
+      "use": "X2b 第三路 detector（唯一 bottle Pareto 的 feature method）"
+    },
+    {
+      "asset": "Exp11 冻结 beta_table()",
+      "use": "X5 规则与 X4 层强度（normal-only）"
+    }
+  ],
+  "GPU": [
+    {
+      "X4a": "L2 residual(beta_c) + L3 alpha_in(0.125)",
+      "units": "3 cats × seed0"
+    },
+    {
+      "X4b": "L2 residual(0.5*beta_c) + L3 alpha_in(0.25)",
+      "units": "3 cats × seed0"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "frozen": true,
+  "experiment": "15",
+  "branch": {
+    "path": "A",
+    "reason": "Exp14 最高 12/15（无 Tier S ≥13/15），但 Top1 满足 §4 的显式示例：12/15 + 0 catastrophic + worst Δd′ 明显优于 B2（-0.134 vs -0.285）→ PATH A（Winner × Complementary Module Tournament）",
+    "tier_S_present": false,
+    "exp14_official_winner": "C1 (0.20/0.35 grid)",
+    "exp14_recommended": "C2 (0.35/0.65)",
+    "exp14_champion_reference": "Adaptive B2"
+  },
+  "combination_legality_audit": {
+    "X1": "SKIP —— Exp14 已证 Family A（dual-path 线性融合）严格等价于 B2 残差强度重参数化（A1 与 E11_B2 bit-exact），与 B2 组合数学重复",
+    "X2": "ALREADY REALIZED —— Exp14 的 C1/C2 本身就是 Top feature detector + late fusion 的组合（输入为 Original 与 B2）；新增 X2b = 三路 mean(z_orig,z_B2,z_A6)（A6 是 Exp14 唯一 bottle Pareto 的 feature method；仅 seed0 有 A6）",
+    "X3": "FORBIDDEN —— Exp14 Family B（INSS）无任何 Pareto-positive candidate（全家族单边 trade-off）→ §6 前提不满足",
+    "X4": "A5/A6 已跑（不重跑）；新增 X4a/X4b 两个层强度组合，两个强度各自在 Exp14 独立验证过（L2 β_c 来自 B2；L3 α=0.125 来自 A3；L3 α=0.25 来自 B2；L2 0.5β_c 来自 A3）",
+    "X5": "RUN —— category-adaptive fusion weight，规则**只依赖 train/good normal statistic**（Exp11 冻结 β_c），看到任何结果前冻结",
+    "X6": "RUN —— 保守组合：X6a=mean(z_orig,z_B2)（== C3，已有）、X6b=max（== C6，已有）、X6c=mean(C2,C6)（新，两个组件均 0 catastrophic 且 PASS 良好）"
+  },
+  "x5_frozen_rule": {
+    "formula": "w_orig(c) = clip(0.35 * (beta_ref/beta_c), 0.20, 0.50), beta_ref=0.25",
+    "rationale": "β_c 越大 = B2 在该类别的残差越激进 = catastrophic 风险越高 → 给更多 Original 权重（更保守）",
+    "normal_only": true,
+    "no_test_or_defect_data": true,
+    "frozen_before_results": true,
+    "w_per_category": {
+      "bottle": 0.35,
+      "cable": 0.29679291211880315,
+      "hazelnut": 0.3839797804527342,
+      "screw": 0.4043308130872585,
+      "grid": 0.2
+    },
+    "beta_c": {
+      "bottle": 0.25,
+      "cable": 0.294818,
+      "hazelnut": 0.227877,
+      "screw": 0.216407,
+      "grid": 0.460141
+    }
+  },
+  "new_weights_allowed": false,
+  "reuse_no_rerun": "Exp10/11/14 已有等价 units 一律复用（0 GPU）",
+  "held_out_category": {
+    "status": "SKIPPED",
+    "reason": "本机仅有 bottle/cable/grid/hazelnut/screw 五个类别（= 方法开发用过的全部）；§19 要求不得临时下载 → 跳过，改用 seeds 0-4（E3 级）作为泛化证据"
+  }
+}

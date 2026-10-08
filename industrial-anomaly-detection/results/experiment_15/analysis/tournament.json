@@ -1,0 +1,201 @@
+{
+  "leaderboard": [
+    {
+      "method": "X6c",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 27,
+      "catastrophic": 0,
+      "worst_ddp": -0.1097,
+      "mean_dR": -0.0471,
+      "mean_ddp": 0.1931,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "C6",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 26,
+      "catastrophic": 0,
+      "worst_ddp": -0.1414,
+      "mean_dR": -0.0413,
+      "mean_ddp": 0.156,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "C2",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 26,
+      "catastrophic": 0,
+      "worst_ddp": -0.1817,
+      "mean_dR": -0.0547,
+      "mean_ddp": 0.1972,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "X5",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 26,
+      "catastrophic": 0,
+      "worst_ddp": -0.211,
+      "mean_dR": -0.053,
+      "mean_ddp": 0.2099,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "C1",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 25,
+      "catastrophic": 1,
+      "worst_ddp": -0.2694,
+      "mean_dR": -0.0663,
+      "mean_ddp": 0.1949,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "C3",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 23,
+      "catastrophic": 0,
+      "worst_ddp": -0.1108,
+      "mean_dR": -0.041,
+      "mean_ddp": 0.1815,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "Adaptive B2 (reference)",
+      "side": "reference",
+      "n_units": 35,
+      "PASS": 23,
+      "catastrophic": 4,
+      "worst_ddp": -0.41,
+      "mean_dR": -0.0814,
+      "mean_ddp": 0.165,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "C4",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 18,
+      "catastrophic": 0,
+      "worst_ddp": -0.0574,
+      "mean_dR": -0.027,
+      "mean_ddp": 0.1475,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "C5",
+      "side": "score",
+      "n_units": 35,
+      "PASS": 11,
+      "catastrophic": 0,
+      "worst_ddp": -0.0215,
+      "mean_dR": -0.0139,
+      "mean_ddp": 0.0956,
+      "evidence": "E3+",
+      "pareto_units": ""
+    },
+    {
+      "method": "X2b",
+      "side": "score",
+      "n_units": 5,
+      "PASS": 3,
+      "catastrophic": 0,
+      "worst_ddp": 0.0815,
+      "mean_dR": -0.0528,
+      "mean_ddp": 0.2424,
+      "evidence": "E1",
+      "pareto_units": ""
+    },
+    {
+      "method": "E15_X4b",
+      "side": "feature",
+      "n_units": 3,
+      "PASS": 1,
+      "catastrophic": 0,
+      "worst_ddp": -0.1031,
+      "mean_dR": -0.0589,
+      "mean_ddp": -0.024,
+      "evidence": "E1",
+      "pareto_units": 1
+    },
+    {
+      "method": "E15_X4a",
+      "side": "feature",
+      "n_units": 3,
+      "PASS": 0,
+      "catastrophic": 0,
+      "worst_ddp": -0.2412,
+      "mean_dR": -0.0712,
+      "mean_ddp": -0.0215,
+      "evidence": "E1",
+      "pareto_units": 2
+    }
+  ],
+  "x4": {
+    "E15_X4a": {
+      "method": "E15_X4a",
+      "n_units": 3,
+      "PASS": 0,
+      "catastrophic": 0,
+      "worst_ddp": -0.2412,
+      "mean_dR": -0.0712,
+      "mean_ddp": -0.0215,
+      "pareto_units": 2,
+      "s0_5cat_PASS": 0,
+      "s0_5cat_n": 3,
+      "evidence": "E1"
+    },
+    "E15_X4b": {
+      "method": "E15_X4b",
+      "n_units": 3,
+      "PASS": 1,
+      "catastrophic": 0,
+      "worst_ddp": -0.1031,
+      "mean_dR": -0.0589,
+      "mean_ddp": -0.024,
+      "pareto_units": 1,
+      "s0_5cat_PASS": 1,
+      "s0_5cat_n": 3,
+      "evidence": "E1"
+    }
+  },
+  "adaptive_b2_reference": {
+    "n_units": 35,
+    "PASS": 23,
+    "pass_rate": 0.6571,
+    "pass_rate_CI": [
+      0.4857,
+      0.8
+    ],
+    "catastrophic": 4,
+    "mean_dR": -0.0814,
+    "mean_dR_CI": [
+      -0.1042,
+      -0.0604
+    ],
+    "mean_ddp": 0.165,
+    "mean_ddp_CI": [
+      0.0485,
+      0.2913
+    ],
+    "worst_ddp": -0.41,
+    "worst_ddp_boot_CI": [
+      -0.41,
+      -0.2584
+    ]
+  }
+}
