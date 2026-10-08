@@ -1,0 +1,3 @@
+Could not fetch URL https://pypi.org/simple/aniso8601/: There was a problem confirming the ssl certificate: HTTPSConnectionPool(host='pypi.org', port=443): Max retries exceeded with url: /simple/aniso8601/ (Caused by SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:1149)'))) - skipping
+ERROR: Could not find a version that satisfies the requirement aniso8601==7.0.0 (from versions: none)
+ERROR: No matching distribution found for aniso8601==7.0.0

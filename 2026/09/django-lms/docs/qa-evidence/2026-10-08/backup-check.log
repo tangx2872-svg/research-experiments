@@ -1,0 +1,7 @@
+Verified backup: D:\Research\research-experiments\2026\09\django-lms\.local\research-upgrade\20261008-115105-861517
+Operations to perform:
+  Apply all migrations: admin, assignments, auth, contenttypes, courses, research, resources, sessions, users
+Running migrations:
+  No migrations to apply.
+System check identified no issues (0 silenced).
+Migration complete: all existing teaching rows and media checksums preserved.

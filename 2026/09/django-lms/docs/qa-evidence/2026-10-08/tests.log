@@ -1,0 +1,12 @@
+Creating test database for alias 'default'...
+
+System check identified no issues (0 silenced).
+Already prepared: illumination-demo-v1 (1)
+Already prepared: reading-demo-v1 (2)
+Guest demo ready: /research/demo/
+.............................................................................
+----------------------------------------------------------------------
+Ran 77 tests in 10.997s
+
+OK
+Destroying test database for alias 'default'...
