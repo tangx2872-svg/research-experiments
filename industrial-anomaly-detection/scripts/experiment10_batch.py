@@ -75,11 +75,14 @@ def main() -> None:
     attempt = 0
     while pending and attempt < 2 and fails_in_row < 3:
         attempt += 1
-        # 按 seed 分组再轮询：runner 要求单 worker 单 seed（Exp10 bug-3）
+        # 按 seed 分组再轮询（runner 要求单 worker 单 seed），且**总并发不得超过 --workers**
+        # （Exp11 bug-5：2 seeds x 4 workers 曾同时起 8 个进程 -> CUDA OOM）
+        _seeds = sorted({u.split(":")[1] for u in pending})
+        _per = max(1, a.workers // len(_seeds))
         groups = []
-        for _seed in sorted({u.split(":")[1] for u in pending}):
+        for _seed in _seeds:
             _us = [u for u in pending if u.split(":")[1] == _seed]
-            groups += [_us[i::a.workers] for i in range(min(a.workers, len(_us)))]
+            groups += [_us[i::_per] for i in range(min(_per, len(_us)))]
         groups = [g for g in groups if g]
         print(f"[batch:{a.stage}] attempt {attempt}: launching {len(groups)} workers "
               f"for {len(pending)} units", flush=True)
