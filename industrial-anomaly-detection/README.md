@@ -1430,6 +1430,18 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
        threshold / ranking formula（这些正是 8B 冻结协议明令禁止的动作）；
    (d) **备选 Plan A**：Defect-Preserving Illumination Consistency（8B 未否定其必要性；它不依赖 channel 选择）。
    另：若 Plan C 启动，必须内建 category-adaptive 机制，否则 cable 会重演 7A-O 的 negative transfer（系统性负迁移）。
+7. **E4 dataset protocol screening（2026-10-08，0 GPU，未下载数据）**：为 E4 冻结外部验证筛选数据集。
+   判据预注册于 [`docs/E4_DATASET_SELECTION_CRITERIA.md`](docs/E4_DATASET_SELECTION_CRITERIA.md)（先于任何数据集检视写定）；
+   审计报告 [`docs/E4_LL_IAD_M2AD_PROTOCOL_AUDIT.md`](docs/E4_LL_IAD_M2AD_PROTOCOL_AUDIT.md)。
+   结论：**M²AD WIN**（8/8 MUST PASS；ΔR = Exact、Δd′ = Equivalent；官方 metadata 含 `view`/`illumination` 字段，
+   可构造 same-specimen + same-view + 10 illuminations 的受控配对；官方 split 为 specimen 级 → 泄漏可控）。
+   LL-IAD = **UNKNOWN（非证伪）**：无官方分发入口、正文不可达 ⇒ 4/8 MUST 未 PASS。
+   **E4 数据集现状（不删除历史，仅标状态）**：
+   - `MPDD`（`HELD_OUT_VALIDATION_PLAN.md` 原推荐）—— **pending（未决，被本轮比较取代为候选之一）**；
+   - `MVTec AD 2` —— **pending / 暂不作主 E4**（E4-1 预审：public test 无 illumination label、private/mixed 无本地 GT）；
+   - `M²AD` —— **本轮 winner，待人工批准后进入 `M²AD lightweight subset download + integrity audit`**（仍未下载、未运行）。
+   **尚未解决、必须在开工前人工确认**：M²AD 的 **license 未声明**、**总体积未声明**、**哪一个 illumination id 是 regular/well-lit 未在正文定义**（仅 Fig. 10），
+   以及 `mean_dprime` 在 M²AD 上因官方 metadata 无 defect_type 字段而**退化为池化 d′**。
 
 ---
 
