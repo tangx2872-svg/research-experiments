@@ -283,3 +283,6 @@ results/experiment_16_final_validation/**/fit/
 
 # Paper assets（论文资产：轻量 CSV/JSON/PNG/PDF/MD）
 !results/paper_assets/
+
+# Recovery audit 证据（由 scripts/recovery_audit.py 生成）
+!results/recovery_audit_raw.json

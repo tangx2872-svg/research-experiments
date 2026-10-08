@@ -4,12 +4,47 @@
 —— 面向光照扰动的特征归一化（α-IN，`F_α = (1−α)F + α·IN(F)`）可能同时**抑制 defect-relevant 信息**；
 本项目用 1B→1J-B 建立机制证据，再用 5A→5C 把机制结论推进为可验证的方法。
 
+> ## 🔎 恢复入口（Recovery Entry — 新会话请先读这里）
+>
+> **本仓库支持「无对话上下文」恢复**：仅凭文件即可恢复研究问题、实验历史、结论、失败路线、冻结方法与下一步。
+>
+> | 项 | 内容 |
+> |---|---|
+> | **唯一快速恢复入口** | **[`PROJECT_STATE.md`](PROJECT_STATE.md)**（1–3 页：阶段 / 研究问题 / 证据链 / 冻结方法 / E4 政策 / DO-NOT-DO） |
+> | 论文证据对照 | [`PAPER_EVIDENCE_MAP.md`](PAPER_EVIDENCE_MAP.md)（叙事 × 实验/图表 + 负结果清单 + 协议可信度） |
+> | 恢复审计 | [`docs/RESEARCH_RECOVERY_AUDIT.md`](docs/RESEARCH_RECOVERY_AUDIT.md)（Exp1–16 README coverage + traceability） |
+> | E4 计划（**未执行**） | [`HELD_OUT_VALIDATION_PLAN.md`](HELD_OUT_VALIDATION_PLAN.md) |
+> | 论文资产 | [`results/paper_assets/`](results/paper_assets/)（主表草稿 / ablation inventory / Fig1–5 PNG+PDF） |
+>
+> **当前状态（2026-10-08 · 最新）**：**Phase II — Paper Validation**；
+> **Method discovery / search = CLOSED**。冻结方法 = **X6c = `mean(z_C2, z_C6)`**
+> （C2 = `0.35·z_o+0.65·z_b`；C6 = `max(z_o,z_b)`；z 各自 normal-only 校准；
+> 正式定义见 [`PRE_RUN_PROTOCOL.md`](results/experiment_16_final_validation/PRE_RUN_PROTOCOL.md) 与
+> [`scripts/experiment16_fusion.py`](scripts/experiment16_fusion.py)）。
+> **最终内部验证（Exp16，5 类 × 10 seeds = 50 单元）**：X6c **38/50、0 catastrophic、worst Δd′ −0.142**
+> vs Adaptive B2 **30/50、8 catastrophic (16%)、worst −0.494**；bootstrap ΔPASS **+0.160 [0.020, 0.300]**；
+> unseen seed block（7–9）X6c 不崩溃而 B2 崩溃 → verdict **`A — FREEZE X6c`**
+> （[Exp16 README](results/experiment_16_final_validation/README.md)）。
+> **下一步 = `E4 — Frozen Held-out External Validation`**（计划已写，**未下载、未运行**；禁止新增候选/调权/改阈值）。
+>
+> **目录约定提醒**：**Exp1C–8B 的正式实验文档在 `experiments/<exp>/README.md`**（其 artifacts 在 `results/<exp>/`）；
+> **Exp9A 及以后在 `results/<exp>/README.md`**。查实验文档时两个目录都要看。
+>
+> **Git 状态提醒**：本地 `main` 与 `origin/main` **已分叉**（origin 侧含无关的 LMS 提交）；
+> **禁止 push / merge / rebase / reset**，需人工决策（详见 Exp16 README §13）。
+>
+> ---
+>
+> <details><summary><b>历史状态块（2026-10-07 · 7A-O 时期，保留原文，已被上方最新状态取代）</b></summary>
+>
 > **当前状态**：几何引导路线已在 5D/6A/6B 连续三次被削弱并停止；今晚完成 **7A-O overnight 模块筛选**
 > （92 GPU units，sanity 18/18）→ **CASE_C — NO USEFUL MODULE**：residual / dual / layer-selective /
 > alternative-norm 四类简单模块**都无法超过 Uniform α=0.40091275**，只能沿既有 frontier 移动工作点；
 > 唯一正面事实：**A3_lam050（energy-preserving residual fusion, λ=0.5）严格支配无 normalization 的 Original**
 > （Δd′ +0.3700 且 Δ\|Δz\| −0.0352）。
 > **STOP，不启动 6C / 7B / Final experiments / Method 2，等待人工 review。**
+>
+> </details>
 
 ---
 
