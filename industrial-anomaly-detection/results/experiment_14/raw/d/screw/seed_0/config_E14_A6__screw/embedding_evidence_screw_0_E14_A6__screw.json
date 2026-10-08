@@ -1,0 +1,22 @@
+{
+  "unit": "screw:0:E14_A6__screw",
+  "protocol": "v2",
+  "n_observations": 307200,
+  "embedding_shape": [
+    307200,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "bdc19421f71c768b79a8e1f69456794ed5aa25bcd1d7f986de35a32b7981995c",
+  "embedding_stats": {
+    "shape": [
+      307200,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 492653696.0,
+    "mean": 1.0163863897323608
+  },
+  "ts": 1791430912.5283127
+}

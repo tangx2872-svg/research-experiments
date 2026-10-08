@@ -1,0 +1,104 @@
+{
+  "B2_seeds34": {
+    "PASS": 7,
+    "catastrophic": 2,
+    "worst_ddp": -0.41004496502670484,
+    "per_unit": [
+      {
+        "method": "Adaptive B2",
+        "category": "bottle",
+        "seed": 3,
+        "dR": -0.16903454265769596,
+        "ddp": 0.0038919379316411096,
+        "PASS": true,
+        "cat": false
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "cable",
+        "seed": 3,
+        "dR": -0.04862158273255196,
+        "ddp": -0.02685213739567338,
+        "PASS": true,
+        "cat": false
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "hazelnut",
+        "seed": 3,
+        "dR": -0.06399116639348901,
+        "ddp": 0.11112949147247964,
+        "PASS": true,
+        "cat": false
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "screw",
+        "seed": 3,
+        "dR": -0.0860241933069992,
+        "ddp": 0.09824797287285447,
+        "PASS": true,
+        "cat": false
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "grid",
+        "seed": 3,
+        "dR": -0.008373693317600128,
+        "ddp": 0.7853603295929923,
+        "PASS": false,
+        "cat": false
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "bottle",
+        "seed": 4,
+        "dR": -0.18222923845772418,
+        "ddp": -0.25835978623758216,
+        "PASS": false,
+        "cat": true
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "cable",
+        "seed": 4,
+        "dR": -0.06154264738135584,
+        "ddp": -0.41004496502670484,
+        "PASS": false,
+        "cat": true
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "hazelnut",
+        "seed": 4,
+        "dR": -0.023530840587073026,
+        "ddp": 0.10953410409658115,
+        "PASS": true,
+        "cat": false
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "screw",
+        "seed": 4,
+        "dR": -0.13458628851299473,
+        "ddp": 0.11472562103907613,
+        "PASS": true,
+        "cat": false
+      },
+      {
+        "method": "Adaptive B2",
+        "category": "grid",
+        "seed": 4,
+        "dR": -0.06820287787877014,
+        "ddp": 0.8487015723559299,
+        "PASS": true,
+        "cat": false
+      }
+    ]
+  },
+  "B2_seeds0_4": {
+    "PASS": 19,
+    "total": 25,
+    "catastrophic": 3
+  }
+}

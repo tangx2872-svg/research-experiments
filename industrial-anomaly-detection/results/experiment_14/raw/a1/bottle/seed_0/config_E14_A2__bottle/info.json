@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "bottle",
+  "seed": 0,
+  "config": "E14_A2__bottle",
+  "alpha_l2": -1.0,
+  "alpha_l3": -1.0,
+  "runtime_seconds": 119.6,
+  "coreset_size": 19353,
+  "tau_val": 35.88361358642578,
+  "peak_gpu_memory_allocated_mb": 2365.05,
+  "train_ids_hash": "4e89d97b0d21",
+  "n_rows": 183,
+  "pixel_auroc": 0.986450036625,
+  "aupro": 0.9529628753662109
+}

@@ -1,0 +1,22 @@
+{
+  "unit": "cable:1:E14_A3__cable",
+  "protocol": "v2",
+  "n_observations": 208896,
+  "embedding_shape": [
+    208896,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "388d22bfeb6f5218da9345c827d479c0d97be211f8f15552f93f151d95c072c7",
+  "embedding_stats": {
+    "shape": [
+      208896,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 368808704.0,
+    "mean": 1.0987434387207031
+  },
+  "ts": 1791431217.3207526
+}

@@ -1,0 +1,19 @@
+{
+  "family_A": {
+    "survivors": [
+      "E14_A3",
+      "E14_A6"
+    ],
+    "eliminated": {
+      "E14_A4": "0/3 PASS；robustness 无改善（mean ΔR +0.0024）且 preservation 未补偿",
+      "E14_A5": "0/3 PASS；bottle PASS→FAIL，cable/hazelnut 仅 trade-off",
+      "E14_A2": "1/3；cable 上 preservation 明显退化（Δd′ -0.196）而 robustness 仅 -0.028 → 冻结规则淘汰",
+      "E14_A7": "与 A2 严格代数等价（0.75F_B2+0.25F_orig == w=0.25 线性融合）→ 未运行"
+    }
+  },
+  "family_B": {
+    "status": "STOP",
+    "reason": "全部候选单边 trade-off：λ=0.50 时 ΔR>0（robustness 比 Original 更差）而 Δd′>0；λ=0.25 时 ΔR≈0（无 robustness 收益）。最佳 B3 仅 1/3 PASS。无候选达到 >=4/5 PASS + 0 catastrophic → 按冻结规则 STOP，不扩展 screw/grid",
+    "note": "INSS 在 layer2 抑制 illumination 子空间后 robustness 不升反降（λ=0.5），这是本轮重要的 negative 发现"
+  }
+}

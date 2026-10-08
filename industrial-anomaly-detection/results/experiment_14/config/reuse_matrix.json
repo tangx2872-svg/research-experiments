@@ -1,0 +1,43 @@
+{
+  "frozen": true,
+  "0_GPU": [
+    {
+      "asset": "Exp10 P10_ORIG_a000 (Original-189)",
+      "coverage": "15/15",
+      "use": "Original 基准 + Family C 左路"
+    },
+    {
+      "asset": "Exp11 E11_B2 (Adaptive B2)",
+      "coverage": "15/15",
+      "use": "冠军基准 + Family C 右路"
+    },
+    {
+      "asset": "Exp10 P10_C2_L2resid025_L3a025 (Fixed C2)",
+      "coverage": "15/15",
+      "use": "Tier 比较基线"
+    },
+    {
+      "asset": "Exp13-P analysis/illum_subspace_*_k8.npz + raw/*/stats.npz",
+      "use": "Family B basis(K=8/16/32)+mu（K=8 逐位一致 0.0）"
+    }
+  ],
+  "partial": [
+    {
+      "asset": "Exp10 P10_T1_L2a000_L3a025 (== A5)",
+      "coverage": "3/15 (bottle s0-2)",
+      "use": "A5 等价 sanity 对照"
+    }
+  ],
+  "full_GPU": [
+    {
+      "candidate": "Family A A2/A3/A4",
+      "why": "强度缩放 B2（新工作点）",
+      "units": "3 cats x seed0"
+    },
+    {
+      "candidate": "Family B B1..B6",
+      "why": "INSS 投影为新算子",
+      "units": "3 cats x seed0"
+    }
+  ]
+}

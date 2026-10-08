@@ -1,0 +1,9 @@
+{
+  "AMENDMENTS.json": "9fc1af606230110bd969eef3fd04aa9bdf168064cefca95bab1337139081ec95",
+  "analysis_plan.json": "1116f2a93902b88fb02b508f79637fa9f59ef34b974a03379f089ced356fcae4",
+  "candidate_registry.json": "025ff9fee19fbc4dbe89a262389fe39a45f311477bb4f2cef0dce34f611bdb38",
+  "config.json": "10bd06c9afe506d6dd3bd9711957f53740c35b44f2e29bf6d6a468322b9ee461",
+  "inss_basis_meta.json": "83bcbc7e77868a354eaa6c9a4e7586c2364326aab37a81fdc7944aea821a69d0",
+  "reuse_matrix.json": "c1527e3661ab1e16d3c60f8138dc0ee5afbfb27b1d9838d8d8f4eafa2d8e8be4",
+  "sha256_frozen.json": "19709e08cb8fd553e94c1157516382ad087df0ab08984b76788a967615ea9600"
+}

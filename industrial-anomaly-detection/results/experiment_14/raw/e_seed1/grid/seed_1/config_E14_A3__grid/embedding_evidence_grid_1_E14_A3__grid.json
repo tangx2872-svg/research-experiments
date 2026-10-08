@@ -1,0 +1,22 @@
+{
+  "unit": "grid:1:E14_A3__grid",
+  "protocol": "v2",
+  "n_observations": 249856,
+  "embedding_shape": [
+    249856,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "91499b7285f19939b5fab2bcfb27ebe6d9c6e2444f8bb3ad0dd1b15157155831",
+  "embedding_stats": {
+    "shape": [
+      249856,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 446682944.0,
+    "mean": 1.1259208917617798
+  },
+  "ts": 1791431356.3700378
+}

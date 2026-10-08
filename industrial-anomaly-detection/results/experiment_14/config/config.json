@@ -1,0 +1,36 @@
+{
+  "experiment": "14",
+  "title": "Afternoon Broad Method Screening (BROAD FIRST, DEEP LATER)",
+  "date": "2026-10-08",
+  "start_head": "66488f3 (exp13p)",
+  "start_time": "11:00",
+  "deadline": "14:00",
+  "champion_frozen": "Adaptive B2 (E11_B2, Exp11) = 12/15 PASS, 1 catastrophic, worst dd'=-0.2852",
+  "families": [
+    "A: Dual-Path Original+Robust (feature-level)",
+    "B: Tiny category-specific INSS (K=8/16/32, lam=0.25/0.50, layer2-only)",
+    "C: Late/score-level dual fusion (0 GPU)"
+  ],
+  "protocol": {
+    "train": "corrected-189 (Exp10 冻结)",
+    "rng": "strict-V2 (experiment9c_rng: R1 Engine.fit + R2 select_coreset_idxs)",
+    "metrics": "experiment5a_h_analysis.unit_metrics (与历史同一实现)",
+    "basis": "Family A/B 只复用既有 kind / Exp13-P 冻结 basis，禁止 protocol drift"
+  },
+  "budget": {
+    "soft_minutes": "150-180",
+    "hard_minutes": 210,
+    "workers_max": 4,
+    "workers_peak_vram_mb": 17382
+  },
+  "non_negotiables": [
+    "不围绕 Cable seed2 / Hazelnut seeds1,2 调参",
+    "看结果不新增 fusion weight",
+    "失败 candidate 不救援",
+    "不改 PASS threshold",
+    "不只汇报最好 seed",
+    "不删失败类别",
+    "不用 test defect 训练/校准",
+    "不为跑满时间造无意义实验"
+  ]
+}

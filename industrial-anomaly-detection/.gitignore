@@ -262,3 +262,9 @@ results/experiment_13p/progress/
 results/experiment_13p/**/fit/
 results/experiment_13p/raw/*/seed_*/stats.npz
 results/experiment_13p/analysis/defect_stats_*.npz
+
+# Experiment 14（Broad Screening；纳入 raw 轻量证据 + analysis + figures + config + README，排除 logs/progress）
+!results/experiment_14/
+results/experiment_14/logs/
+results/experiment_14/progress/
+results/experiment_14/**/fit/

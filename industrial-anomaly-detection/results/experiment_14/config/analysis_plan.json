@@ -1,0 +1,47 @@
+{
+  "frozen": true,
+  "primary": {
+    "robustness": "ΔR = Δ mean|ΔNormalScore_z|（相对同 (category,seed) corrected Original；越低越好）",
+    "preservation": "Δd′ = Δ mean defect d′（越高越好）",
+    "PASS": "ΔR <= -EPS_RZ(0.02) 且 Δd′ >= -EPS_DP(0.10)（5A-H/7A-O/Exp10/11 冻结带）",
+    "catastrophic": "Δd′ <= -0.25（Exp10 Stage3 冻结定义）",
+    "HOLD": "同 PASS 带内但幅度 <= 1 个 EPS 或一好一坏且无法判定",
+    "threshold_change_after_results": "禁止"
+  },
+  "secondary": [
+    "image AUROC",
+    "tau",
+    "fpr_shift",
+    "pixel AUROC / AUPRO（Family C 不可得，标记 NA）"
+  ],
+  "ranking_priority": [
+    "1 Pareto improvement over B2",
+    "2 PASS count",
+    "3 catastrophic=0",
+    "4 worst Δd′",
+    "5 robustness",
+    "6 preservation",
+    "7 cross-category consistency",
+    "8 simplicity",
+    "9 compute cost"
+  ],
+  "elimination": {
+    "family_A": "bottle PASS→FAIL / 新 catastrophic / robustness 退化且仅 trade-off / preservation 明显退化而 robustness 仅小幅改善 → 淘汰；最多 Top3 补 screw/grid，Top2 进入 cross-family",
+    "family_B": "全部只是单边 trade-off → STOP FAMILY B；出现 Pareto → 补 screw/grid；>=4/5 PASS 且 0 catastrophic 才进 cross-family",
+    "family_C": "阈值投机翻转标记 threshold-sensitive 并降排名"
+  },
+  "tiers": {
+    "S": "≥13/15 + 0 catastrophic + cable≥2/3 + hazelnut≥2/3 + bottle 3/3 + screw 3/3 → FINAL METHOD CANDIDATE",
+    "A": "12/15 但 catastrophic 1→0 或 worst Δd′ 明显改善或 cable/hazelnut consistency 改善 → SERIOUS FINAL CANDIDATE",
+    "B": "11-12/15 且无明显优于 B2 → 归档",
+    "C": "<=10/15 或明显 trade-off → STOP"
+  },
+  "stages": {
+    "A": "3 cats x seed0 (快速淘汰)",
+    "B": "同",
+    "C": "0 GPU 复用 score",
+    "D": "Top4 x 5 cats x seed0 (需 >=4/5 PASS 且 0 catastrophic)",
+    "E": "Top2 x 5 cats x seeds{1,2}（5x3 最终确认）",
+    "O": "Top1 seeds{3,4}（可选，若时间允许）"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "amendments": [
+    {
+      "time": "2026-10-08T11:47+08:00",
+      "change": "candidate_registry: 新增 A1（w=0 端点 = B2 算子）",
+      "reason": "O1（Top1=C1 的 seeds 3,4）需要 B2 参考；同时提供跨路径等价核验。A1 是冻结线性 family 的端点，不是新权重、不是竞争者",
+      "before_any_result": true,
+      "affects_existing_candidates": false
+    },
+    {
+      "time": "2026-10-08T12:11+08:00",
+      "change": "candidate_registry: 新增 A0（w=1 端点 = Original）",
+      "reason": "O1 需要 seeds 3,4 的 Original 参考；原计划误用 9B 风格配置名 P10_ORIG_a000（不是 7A-O spec，runner 正确拒绝）。A0 是冻结线性 family 的 w=1 端点",
+      "before_any_result": true,
+      "affects_existing_candidates": false,
+      "failed_units_and_action": "o1_orig_34 的 10 单元因 spec 名校验失败（协议保护生效，未写入任何结果）；改用 A0 后重跑"
+    }
+  ]
+}

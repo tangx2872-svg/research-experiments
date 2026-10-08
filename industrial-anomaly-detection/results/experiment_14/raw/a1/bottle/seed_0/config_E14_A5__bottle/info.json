@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "category": "bottle",
+  "seed": 0,
+  "config": "E14_A5__bottle",
+  "alpha_l2": 0.0,
+  "alpha_l3": 0.25,
+  "runtime_seconds": 121.12,
+  "coreset_size": 19353,
+  "tau_val": 30.517908096313477,
+  "peak_gpu_memory_allocated_mb": 2365.05,
+  "train_ids_hash": "4e89d97b0d21",
+  "n_rows": 183,
+  "pixel_auroc": 0.9855450529,
+  "aupro": 0.947537362575531
+}

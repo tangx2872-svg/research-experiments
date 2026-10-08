@@ -1,0 +1,181 @@
+{
+  "baselines": {
+    "Original": {
+      "n": 15,
+      "absz": 0.3189584898527531,
+      "dprime": 4.953108650750962
+    },
+    "Fixed C2": {
+      "n": 15,
+      "absz": 0.23352035257734785,
+      "dprime": 5.079637252910431
+    },
+    "Adaptive B2": {
+      "n": 15,
+      "absz": 0.23821146669883878,
+      "dprime": 5.143278450780678
+    }
+  },
+  "candidates": {
+    "C1": {
+      "family": "C_late_fusion",
+      "n": 15,
+      "absz": 0.2529228666666667,
+      "dprime": 5.166363866666667,
+      "PASS": 12,
+      "cat": 0,
+      "worst_ddp": -0.133938
+    },
+    "C2": {
+      "family": "C_late_fusion",
+      "n": 15,
+      "absz": 0.26517633333333335,
+      "dprime": 5.164455933333334,
+      "PASS": 11,
+      "cat": 0,
+      "worst_ddp": -0.046445
+    },
+    "C3": {
+      "family": "C_late_fusion",
+      "n": 15,
+      "absz": 0.2790170666666667,
+      "dprime": 5.144963866666666,
+      "PASS": 10,
+      "cat": 0,
+      "worst_ddp": 0.014004
+    },
+    "C4": {
+      "family": "C_late_fusion",
+      "n": 15,
+      "absz": 0.2923876666666667,
+      "dprime": 5.107537466666666,
+      "PASS": 9,
+      "cat": 0,
+      "worst_ddp": 0.029687
+    },
+    "C5": {
+      "family": "C_late_fusion",
+      "n": 15,
+      "absz": 0.3052092666666667,
+      "dprime": 5.052467466666665,
+      "PASS": 5,
+      "cat": 0,
+      "worst_ddp": 0.026328
+    },
+    "C6": {
+      "family": "C_late_fusion",
+      "n": 15,
+      "absz": 0.27755273333333336,
+      "dprime": 5.116712266666667,
+      "PASS": 10,
+      "cat": 0,
+      "worst_ddp": -0.141368
+    },
+    "E14_A2": {
+      "family": "A_dual_path",
+      "n": 5,
+      "absz": 0.2400448,
+      "dprime": 5.104605,
+      "PASS": 3,
+      "cat": 0,
+      "worst_ddp": -0.195575
+    },
+    "E14_A3": {
+      "family": "A_dual_path",
+      "n": 15,
+      "absz": 0.2583395333333334,
+      "dprime": 5.1047872,
+      "PASS": 11,
+      "cat": 2,
+      "worst_ddp": -0.471319
+    },
+    "E14_A4": {
+      "family": "A_dual_path",
+      "n": 3,
+      "absz": 0.3202523333333333,
+      "dprime": 6.389742666666667,
+      "PASS": 0,
+      "cat": 0,
+      "worst_ddp": -0.105008
+    },
+    "E14_A5": {
+      "family": "A_layerwise",
+      "n": 3,
+      "absz": 0.30528066666666664,
+      "dprime": 6.370899333333333,
+      "PASS": 0,
+      "cat": 0,
+      "worst_ddp": -0.140407
+    },
+    "E14_A6": {
+      "family": "A_layerwise",
+      "n": 5,
+      "absz": 0.2575614,
+      "dprime": 5.227032799999999,
+      "PASS": 3,
+      "cat": 0,
+      "worst_ddp": 0.023348
+    },
+    "E14_B1": {
+      "family": "B_tiny_inss",
+      "n": 3,
+      "absz": 0.313928,
+      "dprime": 6.220222666666667,
+      "PASS": 0,
+      "cat": 0,
+      "worst_ddp": -0.194049
+    },
+    "E14_B2": {
+      "family": "B_tiny_inss",
+      "n": 3,
+      "absz": 0.3703006666666666,
+      "dprime": 6.502388333333333,
+      "PASS": 0,
+      "cat": 0,
+      "worst_ddp": 0.111191
+    },
+    "E14_B3": {
+      "family": "B_tiny_inss",
+      "n": 3,
+      "absz": 0.31388866666666665,
+      "dprime": 6.278758333333333,
+      "PASS": 1,
+      "cat": 0,
+      "worst_ddp": -0.119536
+    },
+    "E14_B4": {
+      "family": "B_tiny_inss",
+      "n": 3,
+      "absz": 0.342063,
+      "dprime": 6.422841333333333,
+      "PASS": 0,
+      "cat": 0,
+      "worst_ddp": 0.079136
+    },
+    "E14_B5": {
+      "family": "B_tiny_inss",
+      "n": 3,
+      "absz": 0.3401673333333333,
+      "dprime": 6.366651333333333,
+      "PASS": 0,
+      "cat": 0,
+      "worst_ddp": 0.0453
+    },
+    "E14_B6": {
+      "family": "B_tiny_inss",
+      "n": 3,
+      "absz": 0.36241133333333336,
+      "dprime": 6.4103710000000005,
+      "PASS": 0,
+      "cat": 0,
+      "worst_ddp": 0.047881
+    }
+  },
+  "top5": [
+    "C1",
+    "C2",
+    "E14_A3",
+    "C3",
+    "C6"
+  ]
+}

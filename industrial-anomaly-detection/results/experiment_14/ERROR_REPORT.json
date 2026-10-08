@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-10-08T11:22+08:00",
+  "stage": "a1",
+  "type": "CUDA_OUT_OF_MEMORY",
+  "failed_units": ["hazelnut:0:E14_A5__hazelnut", "hazelnut:0:E14_A6__hazelnut"],
+  "evidence": "torch.OutOfMemoryError: Tried to allocate 64/96 MiB; 3 concurrent processes x 7.35 GiB + 4th process; GPU 23.56 GiB total",
+  "root_cause": "hazelnut n_train_good=391（最大类别）-> 单进程峰值 ~7.4 GiB；4 workers 并发需 ~29.6 GiB > 24 GiB",
+  "concurrency_before": 4,
+  "concurrency_after": 2,
+  "protocol_changed": false,
+  "action": "按规则：降并发 + 只重跑失败单元（同命令、同 round、同 spec），不改变任何协议/阈值",
+  "note": "其余 31/33 单元 0 failed；已成功的单元结果不受影响（runner 仅在成功时写 info.json）"
+}

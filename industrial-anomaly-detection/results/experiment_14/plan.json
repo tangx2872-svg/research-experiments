@@ -1,0 +1,122 @@
+{
+  "a1": {
+    "round": "a1",
+    "units": [
+      "bottle:0:E14_A2__bottle",
+      "bottle:0:E14_A3__bottle",
+      "bottle:0:E14_A4__bottle",
+      "bottle:0:E14_A5__bottle",
+      "bottle:0:E14_A6__bottle",
+      "cable:0:E14_A2__cable",
+      "cable:0:E14_A3__cable",
+      "cable:0:E14_A4__cable",
+      "cable:0:E14_A5__cable",
+      "cable:0:E14_A6__cable",
+      "hazelnut:0:E14_A2__hazelnut",
+      "hazelnut:0:E14_A3__hazelnut",
+      "hazelnut:0:E14_A4__hazelnut",
+      "hazelnut:0:E14_A5__hazelnut",
+      "hazelnut:0:E14_A6__hazelnut"
+    ]
+  },
+  "b1": {
+    "round": "b1",
+    "units": [
+      "bottle:0:E14_B1__bottle",
+      "bottle:0:E14_B2__bottle",
+      "bottle:0:E14_B3__bottle",
+      "bottle:0:E14_B4__bottle",
+      "bottle:0:E14_B5__bottle",
+      "bottle:0:E14_B6__bottle",
+      "cable:0:E14_B1__cable",
+      "cable:0:E14_B2__cable",
+      "cable:0:E14_B3__cable",
+      "cable:0:E14_B4__cable",
+      "cable:0:E14_B5__cable",
+      "cable:0:E14_B6__cable",
+      "hazelnut:0:E14_B1__hazelnut",
+      "hazelnut:0:E14_B2__hazelnut",
+      "hazelnut:0:E14_B3__hazelnut",
+      "hazelnut:0:E14_B4__hazelnut",
+      "hazelnut:0:E14_B5__hazelnut",
+      "hazelnut:0:E14_B6__hazelnut"
+    ]
+  },
+  "sanity_eq": {
+    "round": "sanity_eq",
+    "units": [
+      "bottle:0:E14_A5__bottle",
+      "bottle:0:E14_A6__bottle"
+    ]
+  },
+  "d": {
+    "round": "d",
+    "units": [
+      "grid:0:E14_A2__grid",
+      "grid:0:E14_A3__grid",
+      "grid:0:E14_A6__grid",
+      "hazelnut:0:E14_A6__hazelnut",
+      "screw:0:E14_A2__screw",
+      "screw:0:E14_A3__screw",
+      "screw:0:E14_A6__screw"
+    ]
+  },
+  "e_seed1": {
+    "round": "e_seed1",
+    "units": [
+      "bottle:1:E14_A3__bottle",
+      "cable:1:E14_A3__cable",
+      "hazelnut:1:E14_A3__hazelnut",
+      "screw:1:E14_A3__screw",
+      "grid:1:E14_A3__grid"
+    ]
+  },
+  "e_seed2": {
+    "round": "e_seed2",
+    "units": [
+      "bottle:2:E14_A3__bottle",
+      "cable:2:E14_A3__cable",
+      "hazelnut:2:E14_A3__hazelnut",
+      "screw:2:E14_A3__screw",
+      "grid:2:E14_A3__grid"
+    ]
+  },
+  "o1_orig_34": {
+    "round": "o1_orig_34",
+    "units": [
+      "bottle:3:E14_A0__bottle",
+      "bottle:4:E14_A0__bottle",
+      "cable:3:E14_A0__cable",
+      "cable:4:E14_A0__cable",
+      "hazelnut:3:E14_A0__hazelnut",
+      "hazelnut:4:E14_A0__hazelnut",
+      "screw:3:E14_A0__screw",
+      "screw:4:E14_A0__screw",
+      "grid:3:E14_A0__grid",
+      "grid:4:E14_A0__grid"
+    ]
+  },
+  "o1_b2_34": {
+    "round": "o1_b2_34",
+    "units": [
+      "bottle:3:E14_A1__bottle",
+      "bottle:4:E14_A1__bottle",
+      "cable:3:E14_A1__cable",
+      "cable:4:E14_A1__cable",
+      "hazelnut:3:E14_A1__hazelnut",
+      "hazelnut:4:E14_A1__hazelnut",
+      "screw:3:E14_A1__screw",
+      "screw:4:E14_A1__screw",
+      "grid:3:E14_A1__grid",
+      "grid:4:E14_A1__grid"
+    ]
+  },
+  "sanity_a1": {
+    "round": "sanity_a1",
+    "units": [
+      "bottle:0:E14_A1__bottle",
+      "cable:0:E14_A1__cable",
+      "hazelnut:0:E14_A1__hazelnut"
+    ]
+  }
+}

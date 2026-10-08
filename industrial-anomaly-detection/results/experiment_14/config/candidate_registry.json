@@ -1,0 +1,367 @@
+{
+  "frozen": true,
+  "families": {
+    "A_dual_path": {
+      "candidates": {
+        "A2": {
+          "family": "A_dual_path",
+          "form": "F = w*F_original + (1-w)*F_B2 (pre-concat, both layers)",
+          "w_original": 0.25,
+          "algebraic_equivalence": "F + (1-w)*beta_c*IN(F)*rms(F)  [L2] ; alpha_in((1-w)*0.25) [L3]",
+          "spec": {
+            "bottle": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.1875,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.1875
+              }
+            },
+            "cable": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.22111377098429824,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.1875
+              }
+            },
+            "hazelnut": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.17090743664321167,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.1875
+              }
+            },
+            "screw": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.16230521611479926,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.1875
+              }
+            },
+            "grid": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.3451059101035748,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.1875
+              }
+            }
+          }
+        },
+        "A3": {
+          "family": "A_dual_path",
+          "form": "F = w*F_original + (1-w)*F_B2 (pre-concat, both layers)",
+          "w_original": 0.5,
+          "algebraic_equivalence": "F + (1-w)*beta_c*IN(F)*rms(F)  [L2] ; alpha_in((1-w)*0.25) [L3]",
+          "spec": {
+            "bottle": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.125,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.125
+              }
+            },
+            "cable": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.14740918065619882,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.125
+              }
+            },
+            "hazelnut": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.11393829109547446,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.125
+              }
+            },
+            "screw": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.10820347740986618,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.125
+              }
+            },
+            "grid": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.23007060673571653,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.125
+              }
+            }
+          }
+        },
+        "A4": {
+          "family": "A_dual_path",
+          "form": "F = w*F_original + (1-w)*F_B2 (pre-concat, both layers)",
+          "w_original": 0.75,
+          "algebraic_equivalence": "F + (1-w)*beta_c*IN(F)*rms(F)  [L2] ; alpha_in((1-w)*0.25) [L3]",
+          "spec": {
+            "bottle": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.0625,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.0625
+              }
+            },
+            "cable": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.07370459032809941,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.0625
+              }
+            },
+            "hazelnut": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.05696914554773723,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.0625
+              }
+            },
+            "screw": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.05410173870493309,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.0625
+              }
+            },
+            "grid": {
+              "l2": {
+                "kind": "residual",
+                "lambda": 0.11503530336785826,
+                "norm": "instance",
+                "scale_match": "per_sample_per_channel_rms(f)",
+                "eps": 1e-05
+              },
+              "l3": {
+                "kind": "alpha_in",
+                "alpha": 0.0625
+              }
+            }
+          }
+        },
+        "A5": {
+          "family": "A_layerwise",
+          "form": "L2 Original + L3 B2(alpha_in 0.25)",
+          "note": "== historical T1 (P10_T1_L2a000_L3a025)",
+          "duplicate_of": "Exp10 T1"
+        },
+        "A6": {
+          "family": "A_layerwise",
+          "form": "L2 B2(residual beta_c) + L3 Original",
+          "note": "== historical E11_B2_L2only (ablation)",
+          "duplicate_of": "Exp11 abl"
+        },
+        "A7": {
+          "family": "A_residual_preserving",
+          "form": "F_B2 + 0.25*(F_original-F_B2)",
+          "status": "DELETED",
+          "reason": "与 A2 (w_original=0.25) 严格代数等价：0.75*F_B2+0.25*F_orig == w=0.25 的线性融合"
+        },
+        "A1": {
+          "family": "A_dual_path",
+          "form": "w_original=0 端点（F = F_B2）",
+          "role": "REFERENCE / equivalence check（非竞争者）",
+          "spec_note": "l2 residual(beta_c) + l3 alpha_in(0.25)；用于 (a) 与 Exp11 E11_B2 的跨路径等价核验 (b) Optional O1 所需的 B2 参考",
+          "added_before_any_result": "2026-10-08T11:47+08:00（在任何 O1 / 等价核验结果出现之前加入）"
+        },
+        "A0": {
+          "family": "A_dual_path",
+          "form": "w_original=1 端点（F = F_original）",
+          "role": "REFERENCE（非竞争者）",
+          "spec_note": "l2/l3 alpha_in(0) → 严格 short-circuit，与 plain PatchCore bit-exact；用于 O1 所需 seeds 3,4 的 Original 参考",
+          "added_before_any_result": "2026-10-08T12:11+08:00"
+        }
+      },
+      "baseline_equivalences": {
+        "A0": "Original (reuse Exp10 P10_ORIG_a000, 0 GPU)",
+        "A1": "Adaptive B2 (reuse Exp11 E11_B2, 0 GPU)"
+      }
+    },
+    "B_tiny_inss": {
+      "candidates": {
+        "B1": {
+          "family": "B_tiny_inss",
+          "K": 8,
+          "lambda": 0.25,
+          "layer": "layer2 only",
+          "form": "F' = F - lambda * P_illum(F - mu)",
+          "basis": "Exp13-P frozen (PRIMARY_centered, train/good only, seed0)",
+          "note": "禁止 defect-entanglement 叙事；basis 不重新设计；禁止 lambda>=0.75"
+        },
+        "B2": {
+          "family": "B_tiny_inss",
+          "K": 8,
+          "lambda": 0.5,
+          "layer": "layer2 only",
+          "form": "F' = F - lambda * P_illum(F - mu)",
+          "basis": "Exp13-P frozen (PRIMARY_centered, train/good only, seed0)",
+          "note": "禁止 defect-entanglement 叙事；basis 不重新设计；禁止 lambda>=0.75"
+        },
+        "B3": {
+          "family": "B_tiny_inss",
+          "K": 16,
+          "lambda": 0.25,
+          "layer": "layer2 only",
+          "form": "F' = F - lambda * P_illum(F - mu)",
+          "basis": "Exp13-P frozen (PRIMARY_centered, train/good only, seed0)",
+          "note": "禁止 defect-entanglement 叙事；basis 不重新设计；禁止 lambda>=0.75"
+        },
+        "B4": {
+          "family": "B_tiny_inss",
+          "K": 16,
+          "lambda": 0.5,
+          "layer": "layer2 only",
+          "form": "F' = F - lambda * P_illum(F - mu)",
+          "basis": "Exp13-P frozen (PRIMARY_centered, train/good only, seed0)",
+          "note": "禁止 defect-entanglement 叙事；basis 不重新设计；禁止 lambda>=0.75"
+        },
+        "B5": {
+          "family": "B_tiny_inss",
+          "K": 32,
+          "lambda": 0.25,
+          "layer": "layer2 only",
+          "form": "F' = F - lambda * P_illum(F - mu)",
+          "basis": "Exp13-P frozen (PRIMARY_centered, train/good only, seed0)",
+          "note": "禁止 defect-entanglement 叙事；basis 不重新设计；禁止 lambda>=0.75"
+        },
+        "B6": {
+          "family": "B_tiny_inss",
+          "K": 32,
+          "lambda": 0.5,
+          "layer": "layer2 only",
+          "form": "F' = F - lambda * P_illum(F - mu)",
+          "basis": "Exp13-P frozen (PRIMARY_centered, train/good only, seed0)",
+          "note": "禁止 defect-entanglement 叙事；basis 不重新设计；禁止 lambda>=0.75"
+        }
+      }
+    },
+    "C_late_fusion": {
+      "candidates": {
+        "C1": {
+          "family": "C_late_fusion",
+          "form": "score = w*z_orig + (1-w)*z_B2",
+          "w_orig": 0.2,
+          "calibration": "normal-based only (clean_good, train/good); no defect labels",
+          "gpu": "0 (reuse scores)"
+        },
+        "C2": {
+          "family": "C_late_fusion",
+          "form": "score = w*z_orig + (1-w)*z_B2",
+          "w_orig": 0.35,
+          "calibration": "normal-based only (clean_good, train/good); no defect labels",
+          "gpu": "0 (reuse scores)"
+        },
+        "C3": {
+          "family": "C_late_fusion",
+          "form": "score = w*z_orig + (1-w)*z_B2",
+          "w_orig": 0.5,
+          "calibration": "normal-based only (clean_good, train/good); no defect labels",
+          "gpu": "0 (reuse scores)"
+        },
+        "C4": {
+          "family": "C_late_fusion",
+          "form": "score = w*z_orig + (1-w)*z_B2",
+          "w_orig": 0.65,
+          "calibration": "normal-based only (clean_good, train/good); no defect labels",
+          "gpu": "0 (reuse scores)"
+        },
+        "C5": {
+          "family": "C_late_fusion",
+          "form": "score = w*z_orig + (1-w)*z_B2",
+          "w_orig": 0.8,
+          "calibration": "normal-based only (clean_good, train/good); no defect labels",
+          "gpu": "0 (reuse scores)"
+        },
+        "C6": {
+          "family": "C_late_fusion",
+          "form": "score = max(z_orig, z_B2)",
+          "status": "PRE-REGISTERED",
+          "compat_note": "z 为 normal-calibrated 标准分，两路同量纲；max 在 anomaly-scoring protocol 中语义合法（保守取大）→ 保留"
+        }
+      }
+    }
+  }
+}

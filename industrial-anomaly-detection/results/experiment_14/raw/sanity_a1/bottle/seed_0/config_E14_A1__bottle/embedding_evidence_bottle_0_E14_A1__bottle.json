@@ -1,0 +1,22 @@
+{
+  "unit": "bottle:0:E14_A1__bottle",
+  "protocol": "v2",
+  "n_observations": 193536,
+  "embedding_shape": [
+    193536,
+    1536
+  ],
+  "embedding_dtype": "torch.float32",
+  "embedding_sha256": "5efd325ab11f7e82250c7086a5bc7036cd1446ec26a073f8cebe14e2f6d8ae9c",
+  "embedding_stats": {
+    "shape": [
+      193536,
+      1536
+    ],
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "sum_abs": 309889920.0,
+    "mean": 0.9142043590545654
+  },
+  "ts": 1791431853.6683207
+}
