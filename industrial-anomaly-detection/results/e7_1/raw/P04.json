@@ -1,0 +1,39 @@
+{
+  "pipeline": "P04",
+  "desc": "Retinex->CLAHE mild->PatchCore",
+  "spec": {
+    "family": "patchcore",
+    "image": "retinex_clahe_mild"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.77662,
+    "image_aupr": 0.9099318928469985,
+    "d_prime": 1.1328171680755548,
+    "good_mean": 45.58513488769531,
+    "good_std": 2.6505851787203834,
+    "ng_mean": 49.59500300598145,
+    "ng_std": 4.2466210337101975,
+    "pixel_auroc": 0.971121937361419,
+    "aupro": 0.8340119123458862,
+    "n_masked_ng": 380
+  },
+  "stages": {
+    "setup_s": 0.06633257865905762,
+    "fit_s": 47.02262496948242,
+    "coreset_size": 30720,
+    "scoring_s": 16.95820164680481,
+    "total_s": 98.40423703193665,
+    "peak_vram_alloc_mb": 4527.1,
+    "peak_vram_reserved_mb": 5720.0
+  },
+  "runtime_s": 108.3,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

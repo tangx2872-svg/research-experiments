@@ -216,3 +216,14 @@ no E7-3 · no multi-seed · no second category · no paper writing.
 | # | time | item | status |
 |---|---|---|---|
 | A1–A6 | at freeze | §12 assumptions | open for designer confirmation |
+| E1 | during Stage 0 | `E7.Bar` lacked `__call__` (pipelines called `bar(i)`) | fixed, engineering only |
+| E2 | during Stage 0 | SoftPatch `common.py` imports **faiss** at module level; absent in this environment | **installed `faiss-cpu` 1.15.1** (declared dependency of both upstream repos) — dependency fix permitted by §13 |
+| E3 | during Stage 0 | SoftPatch module loader returned the class instead of the module | fixed, engineering only |
+| E4 | during Stage 0 | official SoftPatch substitutes `WeightedGreedyCoresetSampler` (`softpatch.py:85`) for whatever sampler `main.py` builds, and that is the class implementing `set_sampling_weight` | used the official class — matches the official code path |
+| E5 | during Stage 0 | `_compute_patch_weight` requires `feature_shape`; unset in our adapter | set to the real `(32,32)` embedding grid |
+| E6 | during Stage 0 | smoke `score_direction` spanned only **1 specimen per class** (10 images = one specimen's 10 illuminations), making the check meaningless | smoke now takes **one image per distinct specimen**; additionally the direction was re-verified at the real bank scale (`results/e7_1/logs/smoke_direction_diagnostic.json`: dinov2_vits14 AUROC 0.71172, vitb14 0.73158, both with correct direction) ⇒ **no implementation defect** |
+| V1 | before any E7-2 result | E7-2 additional views drawn mechanically per §15 with `VIEW_SEED=20261009` from the 11 remaining views | **frozen set = `['120', '090', '240', '330']`** (primary 120 + **090, 240, 330**). Drawn and recorded before any E7-2 metric was read. |
+| O1 | before E7-2 run | PatchCore-family models are fitted on the **view-independent** normal bank, so fitting once per pipeline and scoring every view yields identical models to fitting per view | applied as an engineering optimisation (12 fits → 3); no method change |
+
+**No metric definition, tier threshold, gate rule or pipeline definition was changed at any point.**
+

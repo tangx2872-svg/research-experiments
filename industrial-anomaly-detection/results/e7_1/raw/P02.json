@@ -1,0 +1,39 @@
+{
+  "pipeline": "P02",
+  "desc": "CLAHE mild->PatchCore",
+  "spec": {
+    "family": "patchcore",
+    "image": "clahe_mild"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.79458,
+    "image_aupr": 0.9173560357925313,
+    "d_prime": 1.2156957185167176,
+    "good_mean": 44.23011430740357,
+    "good_std": 2.699208546803622,
+    "ng_mean": 48.48626831817627,
+    "ng_std": 4.150700330967727,
+    "pixel_auroc": 0.9732715030487805,
+    "aupro": 0.8347792029380798,
+    "n_masked_ng": 380
+  },
+  "stages": {
+    "setup_s": 0.06168317794799805,
+    "fit_s": 45.92156624794006,
+    "coreset_size": 30720,
+    "scoring_s": 15.177806377410889,
+    "total_s": 96.15299201011658,
+    "peak_vram_alloc_mb": 3973.1,
+    "peak_vram_reserved_mb": 5168.0
+  },
+  "runtime_s": 106.5,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

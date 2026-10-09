@@ -1,0 +1,39 @@
+{
+  "pipeline": "P01",
+  "desc": "Retinex->PatchCore",
+  "spec": {
+    "family": "patchcore",
+    "image": "retinex"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.77483,
+    "image_aupr": 0.9119709699736078,
+    "d_prime": 1.1445083172560513,
+    "good_mean": 44.88349700927734,
+    "good_std": 2.709162551168764,
+    "ng_mean": 49.27754343414307,
+    "ng_std": 4.70531866053553,
+    "pixel_auroc": 0.9724035315964523,
+    "aupro": 0.837397038936615,
+    "n_masked_ng": 380
+  },
+  "stages": {
+    "setup_s": 0.059679269790649414,
+    "fit_s": 46.649749517440796,
+    "coreset_size": 30720,
+    "scoring_s": 16.75025200843811,
+    "total_s": 98.06289458274841,
+    "peak_vram_alloc_mb": 3973.1,
+    "peak_vram_reserved_mb": 5160.0
+  },
+  "runtime_s": 108.4,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

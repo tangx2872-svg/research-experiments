@@ -1,0 +1,39 @@
+{
+  "pipeline": "P09",
+  "desc": "CLAHE mild->DINOv2-S->NN",
+  "spec": {
+    "family": "dinov2",
+    "image": "clahe_mild",
+    "model": "dinov2_vits14"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.68634,
+    "image_aupr": 0.8708880366757221,
+    "d_prime": 0.7992970315511138,
+    "good_mean": 0.20884509958326816,
+    "good_std": 0.03714282960098058,
+    "ng_mean": 0.2514610524773598,
+    "ng_std": 0.06561837124806036,
+    "pixel_auroc": NaN,
+    "aupro": NaN,
+    "n_masked_ng": 0
+  },
+  "stages": {
+    "model_load_s": 1.2279093265533447,
+    "n_bank_patches": 307200,
+    "scoring_s": 22.498199462890625,
+    "total_s": 29.98701810836792,
+    "peak_vram_alloc_mb": 4527.1,
+    "peak_vram_reserved_mb": 5720.0
+  },
+  "runtime_s": 30.1,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

@@ -1,0 +1,524 @@
+{
+  "experiment": "e7_1",
+  "pipelines": {
+    "P00": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:18:31",
+      "runtime_s": 130.8,
+      "desc": "Original PatchCore",
+      "spec": {
+        "family": "patchcore",
+        "image": null
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.78089,
+        "image_aupr": 0.9172272557040083,
+        "d_prime": 1.2257874665294168,
+        "good_mean": 42.42879817962646,
+        "good_std": 2.5665744256021545,
+        "ng_mean": 47.40899234008789,
+        "ng_std": 5.140646171054376,
+        "pixel_auroc": 0.9722932779933481,
+        "aupro": 0.8431811928749084,
+        "n_masked_ng": 380
+      },
+      "artifact": "results/e7_1/raw/P00.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P01": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:20:20",
+      "runtime_s": 108.4,
+      "desc": "Retinex->PatchCore",
+      "spec": {
+        "family": "patchcore",
+        "image": "retinex"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.77483,
+        "image_aupr": 0.9119709699736078,
+        "d_prime": 1.1445083172560513,
+        "good_mean": 44.88349700927734,
+        "good_std": 2.709162551168764,
+        "ng_mean": 49.27754343414307,
+        "ng_std": 4.70531866053553,
+        "pixel_auroc": 0.9724035315964523,
+        "aupro": 0.837397038936615,
+        "n_masked_ng": 380
+      },
+      "artifact": "results/e7_1/raw/P01.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P02": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:22:06",
+      "runtime_s": 106.5,
+      "desc": "CLAHE mild->PatchCore",
+      "spec": {
+        "family": "patchcore",
+        "image": "clahe_mild"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.79458,
+        "image_aupr": 0.9173560357925313,
+        "d_prime": 1.2156957185167176,
+        "good_mean": 44.23011430740357,
+        "good_std": 2.699208546803622,
+        "ng_mean": 48.48626831817627,
+        "ng_std": 4.150700330967727,
+        "pixel_auroc": 0.9732715030487805,
+        "aupro": 0.8347792029380798,
+        "n_masked_ng": 380
+      },
+      "artifact": "results/e7_1/raw/P02.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P03": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:23:52",
+      "runtime_s": 105.7,
+      "desc": "CLAHE medium->PatchCore",
+      "spec": {
+        "family": "patchcore",
+        "image": "clahe_medium"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.79591,
+        "image_aupr": 0.9147941683411804,
+        "d_prime": 1.2175134029961008,
+        "good_mean": 44.54870475769043,
+        "good_std": 2.741725088834969,
+        "ng_mean": 48.6978899307251,
+        "ng_std": 3.9636783729834937,
+        "pixel_auroc": 0.971746072616408,
+        "aupro": 0.82772296667099,
+        "n_masked_ng": 380
+      },
+      "artifact": "results/e7_1/raw/P03.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P04": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:25:40",
+      "runtime_s": 108.3,
+      "desc": "Retinex->CLAHE mild->PatchCore",
+      "spec": {
+        "family": "patchcore",
+        "image": "retinex_clahe_mild"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.77662,
+        "image_aupr": 0.9099318928469985,
+        "d_prime": 1.1328171680755548,
+        "good_mean": 45.58513488769531,
+        "good_std": 2.6505851787203834,
+        "ng_mean": 49.59500300598145,
+        "ng_std": 4.2466210337101975,
+        "pixel_auroc": 0.971121937361419,
+        "aupro": 0.8340119123458862,
+        "n_masked_ng": 380
+      },
+      "artifact": "results/e7_1/raw/P04.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P05": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:26:38",
+      "runtime_s": 57.6,
+      "desc": "DINOv2-S->NN",
+      "spec": {
+        "family": "dinov2",
+        "image": null,
+        "model": "dinov2_vits14"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.71172,
+        "image_aupr": 0.8831799735728523,
+        "d_prime": 0.9082594709649174,
+        "good_mean": 0.19730996400117873,
+        "good_std": 0.033689928089911,
+        "ng_mean": 0.24287512977421283,
+        "ng_std": 0.062438432402936846,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P05.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P06": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:27:59",
+      "runtime_s": 81.1,
+      "desc": "DINOv2-B->NN",
+      "spec": {
+        "family": "dinov2",
+        "image": null,
+        "model": "dinov2_vitb14"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.73158,
+        "image_aupr": 0.895265609200145,
+        "d_prime": 1.0111928758179711,
+        "good_mean": 0.21828654214739798,
+        "good_std": 0.03245137720581314,
+        "ng_mean": 0.2755596924126148,
+        "ng_std": 0.07323185707533153,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P06.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P07": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:28:30",
+      "runtime_s": 31.6,
+      "desc": "Retinex->DINOv2-S->NN",
+      "spec": {
+        "family": "dinov2",
+        "image": "retinex",
+        "model": "dinov2_vits14"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.66963,
+        "image_aupr": 0.856389009692297,
+        "d_prime": 0.7240456365828576,
+        "good_mean": 0.21814816109836102,
+        "good_std": 0.04121753662662644,
+        "ng_mean": 0.2572179952859879,
+        "ng_std": 0.06422286771033899,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P07.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P08": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:29:28",
+      "runtime_s": 57.4,
+      "desc": "Retinex->DINOv2-B->NN",
+      "spec": {
+        "family": "dinov2",
+        "image": "retinex",
+        "model": "dinov2_vitb14"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.68052,
+        "image_aupr": 0.8621002012704865,
+        "d_prime": 0.753105578547791,
+        "good_mean": 0.2448918405920267,
+        "good_std": 0.039720189450372,
+        "ng_mean": 0.2866780237257481,
+        "ng_std": 0.06767209466146344,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P08.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P09": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:29:58",
+      "runtime_s": 30.1,
+      "desc": "CLAHE mild->DINOv2-S->NN",
+      "spec": {
+        "family": "dinov2",
+        "image": "clahe_mild",
+        "model": "dinov2_vits14"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.68634,
+        "image_aupr": 0.8708880366757221,
+        "d_prime": 0.7992970315511138,
+        "good_mean": 0.20884509958326816,
+        "good_std": 0.03714282960098058,
+        "ng_mean": 0.2514610524773598,
+        "ng_std": 0.06561837124806036,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P09.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P10": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:31:26",
+      "runtime_s": 87.7,
+      "desc": "SoftPatch nearest",
+      "spec": {
+        "family": "softpatch",
+        "image": null,
+        "weight": "nearest"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.74126,
+        "image_aupr": 0.8415041707826298,
+        "d_prime": 0.892188681836927,
+        "good_mean": 608.9345074462891,
+        "good_std": 55.29983417139974,
+        "ng_mean": 653.8291424560547,
+        "ng_std": 44.78912347718794,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P10.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P11": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:33:09",
+      "runtime_s": 103.9,
+      "desc": "SoftPatch LOF",
+      "spec": {
+        "family": "softpatch",
+        "image": null,
+        "weight": "lof"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.70932,
+        "image_aupr": 0.860582647260055,
+        "d_prime": 0.8013515325801446,
+        "good_mean": 96.91780616760254,
+        "good_std": 7.252743302307941,
+        "ng_mean": 103.39140406799316,
+        "ng_std": 8.827070966117713,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P11.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P12": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:34:16",
+      "runtime_s": 66.1,
+      "desc": "Retinex->SoftPatch nearest",
+      "spec": {
+        "family": "softpatch",
+        "image": "retinex",
+        "weight": "nearest"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.67432,
+        "image_aupr": 0.792042925808367,
+        "d_prime": 0.21776697913137985,
+        "good_mean": 871.1952667236328,
+        "good_std": 190.68051256443505,
+        "ng_mean": 910.7775373535156,
+        "ng_std": 172.38761758635957,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P12.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    },
+    "P13": {
+      "status": "DONE",
+      "end_time": "2026-10-09 19:35:36",
+      "runtime_s": 80.3,
+      "desc": "Retinex->SoftPatch LOF",
+      "spec": {
+        "family": "softpatch",
+        "image": "retinex",
+        "weight": "lof"
+      },
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.69566,
+        "image_aupr": 0.8211730204952765,
+        "d_prime": 0.6637843769785932,
+        "good_mean": 100.94505950927734,
+        "good_std": 7.711467284320553,
+        "ng_mean": 106.11096881103515,
+        "ng_std": 7.852912281446005,
+        "pixel_auroc": NaN,
+        "aupro": NaN,
+        "n_masked_ng": 0
+      },
+      "artifact": "results/e7_1/raw/P13.json",
+      "git_head": "af56dd3",
+      "seed": 0
+    }
+  },
+  "protocol_commit": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "BANK_SUBSET_SEED": 20261009,
+  "bank_n": 300,
+  "test_n": 700,
+  "sanity": {
+    "S1_test_unreduced": true,
+    "S1b_bank_subset": true,
+    "S2_normal_only": true,
+    "S3_no_leakage": true,
+    "S4_illuminations": true
+  },
+  "analysis": {
+    "baseline": {
+      "image_auroc": 0.78089,
+      "image_aupr": 0.9172272557040083,
+      "d_prime": 1.2257874665294168
+    },
+    "tiers": {
+      "P00": "REFERENCE",
+      "P01": "STOP",
+      "P02": "KEEP",
+      "P03": "KEEP",
+      "P04": "STOP",
+      "P05": "STOP",
+      "P06": "STOP",
+      "P07": "STOP",
+      "P08": "STOP",
+      "P09": "STOP",
+      "P10": "STOP",
+      "P11": "STOP",
+      "P12": "STOP",
+      "P13": "STOP"
+    },
+    "synergy": [
+      {
+        "A": "P01",
+        "B": "P02",
+        "A_plus_B": "P04",
+        "d_auroc_A": -0.006059999999999954,
+        "d_auroc_B": 0.01368999999999998,
+        "d_auroc_AB": -0.004269999999999996,
+        "synergy_gain": -0.017959999999999976,
+        "positive_composition": false,
+        "decision_AB": "STOP"
+      },
+      {
+        "A": "P01",
+        "B": "P05",
+        "A_plus_B": "P07",
+        "d_auroc_A": -0.006059999999999954,
+        "d_auroc_B": -0.06916999999999995,
+        "d_auroc_AB": -0.11126000000000003,
+        "synergy_gain": -0.10520000000000007,
+        "positive_composition": false,
+        "decision_AB": "STOP"
+      },
+      {
+        "A": "P01",
+        "B": "P06",
+        "A_plus_B": "P08",
+        "d_auroc_A": -0.006059999999999954,
+        "d_auroc_B": -0.049309999999999965,
+        "d_auroc_AB": -0.10036999999999996,
+        "synergy_gain": -0.09431,
+        "positive_composition": false,
+        "decision_AB": "STOP"
+      },
+      {
+        "A": "P02",
+        "B": "P05",
+        "A_plus_B": "P09",
+        "d_auroc_A": 0.01368999999999998,
+        "d_auroc_B": -0.06916999999999995,
+        "d_auroc_AB": -0.09455000000000002,
+        "synergy_gain": -0.10824,
+        "positive_composition": false,
+        "decision_AB": "STOP"
+      },
+      {
+        "A": "P01",
+        "B": "P10",
+        "A_plus_B": "P12",
+        "d_auroc_A": -0.006059999999999954,
+        "d_auroc_B": -0.03962999999999994,
+        "d_auroc_AB": -0.10656999999999994,
+        "synergy_gain": -0.10050999999999999,
+        "positive_composition": false,
+        "decision_AB": "STOP"
+      },
+      {
+        "A": "P01",
+        "B": "P11",
+        "A_plus_B": "P13",
+        "d_auroc_A": -0.006059999999999954,
+        "d_auroc_B": -0.07157000000000002,
+        "d_auroc_AB": -0.08523000000000003,
+        "synergy_gain": -0.07917000000000007,
+        "positive_composition": false,
+        "decision_AB": "STOP"
+      }
+    ],
+    "gate": {
+      "advance": [],
+      "keep": [
+        "P03",
+        "P02"
+      ],
+      "backup": [],
+      "stop": [
+        "P04",
+        "P01",
+        "P10",
+        "P06",
+        "P05",
+        "P11",
+        "P13",
+        "P09",
+        "P08",
+        "P12",
+        "P07"
+      ],
+      "selected": [
+        "P03",
+        "P02"
+      ],
+      "filled_from_backup": null,
+      "proceed_to_e7_2": true
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "pipeline": "P08",
+  "desc": "Retinex->DINOv2-B->NN",
+  "spec": {
+    "family": "dinov2",
+    "image": "retinex",
+    "model": "dinov2_vitb14"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.68052,
+    "image_aupr": 0.8621002012704865,
+    "d_prime": 0.753105578547791,
+    "good_mean": 0.2448918405920267,
+    "good_std": 0.039720189450372,
+    "ng_mean": 0.2866780237257481,
+    "ng_std": 0.06767209466146344,
+    "pixel_auroc": NaN,
+    "aupro": NaN,
+    "n_masked_ng": 0
+  },
+  "stages": {
+    "model_load_s": 1.5068659782409668,
+    "n_bank_patches": 307200,
+    "scoring_s": 43.80572152137756,
+    "total_s": 57.32966136932373,
+    "peak_vram_alloc_mb": 4527.1,
+    "peak_vram_reserved_mb": 5720.0
+  },
+  "runtime_s": 57.4,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

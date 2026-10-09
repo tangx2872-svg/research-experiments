@@ -1,0 +1,39 @@
+{
+  "pipeline": "P00",
+  "desc": "Original PatchCore",
+  "spec": {
+    "family": "patchcore",
+    "image": null
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.78089,
+    "image_aupr": 0.9172272557040083,
+    "d_prime": 1.2257874665294168,
+    "good_mean": 42.42879817962646,
+    "good_std": 2.5665744256021545,
+    "ng_mean": 47.40899234008789,
+    "ng_std": 5.140646171054376,
+    "pixel_auroc": 0.9722932779933481,
+    "aupro": 0.8431811928749084,
+    "n_masked_ng": 380
+  },
+  "stages": {
+    "setup_s": 0.06823062896728516,
+    "fit_s": 52.0892436504364,
+    "coreset_size": 30720,
+    "scoring_s": 33.858054637908936,
+    "total_s": 120.7952733039856,
+    "peak_vram_alloc_mb": 3697.0,
+    "peak_vram_reserved_mb": 4900.0
+  },
+  "runtime_s": 130.8,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

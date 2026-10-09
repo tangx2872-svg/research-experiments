@@ -1,0 +1,27 @@
+{
+  "advance": [],
+  "keep": [
+    "P03",
+    "P02"
+  ],
+  "backup": [],
+  "stop": [
+    "P04",
+    "P01",
+    "P10",
+    "P06",
+    "P05",
+    "P11",
+    "P13",
+    "P09",
+    "P08",
+    "P12",
+    "P07"
+  ],
+  "selected": [
+    "P03",
+    "P02"
+  ],
+  "filled_from_backup": null,
+  "proceed_to_e7_2": true
+}

@@ -1,0 +1,5 @@
+pipeline,PASS,seconds,good_mean,ng_mean,family,shape,finite,dependency,score_direction,normal_only,no_leakage,reason
+P10,True,13.6,1066.19447,1847.642877,softpatch,True,True,True,True,True,True,
+P11,True,13.5,103.239312,152.515798,softpatch,True,True,True,True,True,True,
+P12,True,12.2,1305.834998,2164.284595,softpatch,True,True,True,True,True,True,
+P13,True,12.8,116.308865,147.473627,softpatch,True,True,True,True,True,True,

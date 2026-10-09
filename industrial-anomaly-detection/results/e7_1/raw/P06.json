@@ -1,0 +1,39 @@
+{
+  "pipeline": "P06",
+  "desc": "DINOv2-B->NN",
+  "spec": {
+    "family": "dinov2",
+    "image": null,
+    "model": "dinov2_vitb14"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.73158,
+    "image_aupr": 0.895265609200145,
+    "d_prime": 1.0111928758179711,
+    "good_mean": 0.21828654214739798,
+    "good_std": 0.03245137720581314,
+    "ng_mean": 0.2755596924126148,
+    "ng_std": 0.07323185707533153,
+    "pixel_auroc": NaN,
+    "aupro": NaN,
+    "n_masked_ng": 0
+  },
+  "stages": {
+    "model_load_s": 1.6597802639007568,
+    "n_bank_patches": 307200,
+    "scoring_s": 59.47527480125427,
+    "total_s": 81.04332447052002,
+    "peak_vram_alloc_mb": 4527.1,
+    "peak_vram_reserved_mb": 5720.0
+  },
+  "runtime_s": 81.1,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

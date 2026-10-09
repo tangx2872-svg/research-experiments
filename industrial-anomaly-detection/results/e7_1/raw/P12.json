@@ -1,0 +1,41 @@
+{
+  "pipeline": "P12",
+  "desc": "Retinex->SoftPatch nearest",
+  "spec": {
+    "family": "softpatch",
+    "image": "retinex",
+    "weight": "nearest"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.67432,
+    "image_aupr": 0.792042925808367,
+    "d_prime": 0.21776697913137985,
+    "good_mean": 871.1952667236328,
+    "good_std": 190.68051256443505,
+    "ng_mean": 910.7775373535156,
+    "ng_std": 172.38761758635957,
+    "pixel_auroc": NaN,
+    "aupro": NaN,
+    "n_masked_ng": 0
+  },
+  "stages": {
+    "bank_embed_s": 7.024541139602661,
+    "n_bank_patches": 307200,
+    "weight_coreset_s": 32.830596685409546,
+    "coreset_size": 30720,
+    "scoring_s": 14.374764204025269,
+    "total_s": 65.95733690261841,
+    "peak_vram_alloc_mb": 4527.1,
+    "peak_vram_reserved_mb": 5720.0
+  },
+  "runtime_s": 66.1,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}

@@ -1,0 +1,41 @@
+{
+  "pipeline": "P10",
+  "desc": "SoftPatch nearest",
+  "spec": {
+    "family": "softpatch",
+    "image": null,
+    "weight": "nearest"
+  },
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.74126,
+    "image_aupr": 0.8415041707826298,
+    "d_prime": 0.892188681836927,
+    "good_mean": 608.9345074462891,
+    "good_std": 55.29983417139974,
+    "ng_mean": 653.8291424560547,
+    "ng_std": 44.78912347718794,
+    "pixel_auroc": NaN,
+    "aupro": NaN,
+    "n_masked_ng": 0
+  },
+  "stages": {
+    "bank_embed_s": 13.506325006484985,
+    "n_bank_patches": 307200,
+    "weight_coreset_s": 32.899051904678345,
+    "coreset_size": 30720,
+    "scoring_s": 29.701042413711548,
+    "total_s": 87.62087106704712,
+    "peak_vram_alloc_mb": 4527.1,
+    "peak_vram_reserved_mb": 5720.0
+  },
+  "runtime_s": 87.7,
+  "git_head": "af56dd3",
+  "protocol_sha256": "bb5dc56c31958ed83c20910e8987c2e9de1c79067132d5b5af5fe51fabcede7e",
+  "seed": 0,
+  "frozen_view": "120",
+  "bank_n": 300,
+  "test_n": 700,
+  "has_maps": true
+}
