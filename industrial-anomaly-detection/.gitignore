@@ -301,3 +301,6 @@ results/e4_d1_smoke/benchmark/fit_b*/
 results/e4_x/run.log
 results/e4_x/run.pid
 results/e4_x/fit/
+
+# external reference sources fetched at E5-1P (never commit third-party code/weights)
+third_party/
