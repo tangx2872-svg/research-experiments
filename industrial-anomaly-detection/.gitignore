@@ -310,3 +310,6 @@ third_party/
 results/e5_1/logs/
 results/e5_1/**/fit/
 results/e5_1/raw/*.pt
+
+# E5 failure audit: CPU-only analysis artifacts (no weights, no logs)
+!results/e5_failure_audit/

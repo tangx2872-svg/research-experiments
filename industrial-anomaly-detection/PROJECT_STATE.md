@@ -16,7 +16,7 @@
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
 | Module composition | **E5-1 BROAD SCREENING 已完成（2026-10-09）** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ 协议 §17 **case C**：**STOP Module Composition 分支**（见 §13） |
 | 主 E4 数据集 | **M²AD**（E4-0C winner；E4-D0 integrity **PASS**；E4-D1 Original smoke **PASS**） |
-| 下一步 | **人工裁决**：唯一非失败方向 = input-photometric（C01，HOLD，`ΔAUROC +0.0128` / `Δd′ +0.0988` / `R_ratio 1.0307`）；须先解释"Δd′ 升但鲁棒性未升"并评估是否更换 `R_all` 指标。**禁止自动进入 E5-2、禁止 rescue C06/C07/C08、禁止补 C10。** |
+| 下一步 | **人工裁决**（E5-FAILURE-AUDIT 已完成，CPU-only）：① 先解释 **C01 的指标符号矛盾**（原始光照占比 −31% 而 `R_all` +3.1%）并重验鲁棒性指标；② 只有 **input-level / 免训练** 方向有证据支撑（C01，HOLD，`ΔAUROC +0.0128` / `Δd′ +0.0988` / `R_ratio 1.0307`）。**禁止自动进入 E5-2、禁止 rescue C06/C07/C08、禁止调参、禁止补 C10。** |
 
 ---
 
@@ -236,9 +236,35 @@ Integrity audit    = PASS   (E4-D0)
 Original GPU smoke = PASS   (E4-D1, pipeline feasibility only)
 Candidate kill test= DONE   (E4-X: B2 STOP, X6c STOP)
 E5-1 broad screening= DONE  (0 GO / 1 HOLD / 3 STOP -> protocol §17 case C)
+E5-2A branch read  = CASE C (0 GO) -> E5-2A NOT EXECUTABLE (no survivor)
+E5-FAILURE-AUDIT   = DONE   (CPU-only, GPU idle)
 Module composition = STOPPED (this branch)
 Next               = human review required (no auto E5-2, no rescue, no C10)
 ```
+
+### E5-FAILURE-AUDIT 结果（`docs/E5_FAILURE_AUDIT.md`，2026-10-09，**CPU-only，GPU = 0**）
+
+由 E5-2A 协议 §2 **CASE C** 机械触发（`SURVIVORS (GO) = []`；安全门 6/6 PASS；GPU 全程空闲 1 MiB / 0%）。
+
+**失败机理已定位（不只是记录）**：
+
+| 候选 | 插入点 | 判定 | ΔAUROC | d′ | R_ratio | σ 比 | ρ vs Original | NG 光照方差占比 |
+|---|---|---|---|---|---|---|---|---|
+| **Original** | 参考 | REFERENCE | 0 | 1.20676 | 1.0000 | 1.000 | +1.000 | **0.1120** |
+| C01 | input | HOLD | +0.01277 | 1.30552 | 1.0307 | 0.947 | **+0.904** | 0.0981 |
+| C06 | post-concat | STOP | −0.27946 | −0.05534 | 0.7529 | 0.031 | **−0.343** | **0.3649** |
+| C07 | post-concat | STOP | −0.21211 | 0.14363 | 0.9962 | 0.322 | +0.480 | **0.4000** |
+| C08 | memory | STOP | −0.30569 | −0.11035 | 0.4652 | 4.422 | **−0.402** | 0.1745 |
+
+- **Q1**：**C06/C08 反向了异常排序**（ρ −0.343 / −0.402）；C06 分数尺度坍缩 0.031×，C08 反而放大 **4.422×** ⇒ **C08 低 `R_ratio` 不是"压扁分数"**（更正 README 条目 13 的简写），而是"对光照与缺陷都不响应"的表示。C07 保住一半排序但 d′ 崩 −88%。C01 与 Original ρ=+0.904 ⇒ 基本是同一探测器。
+- **Q2**：C06/C07/C08 逐光照 ΔAUROC **10/10 全负** ⇒ **全局失败**，非光照驱动；且三者把 NG 光照依赖放大到 **1.6–3.6×**。
+- **Q3**：三类插入点**并非全灭**——input HOLD 未失败，post-concat 2/2 失败，memory 失败。**真正分界是"是否需要拟合"：三个需拟合的模块全败，唯一免训练模块存活。**
+- **Q4**：在冻结包络内，**已拟合的特征/记忆级模块无一改善 trade-off**（负结果）；但**不等于** module insertion 普遍不可行（C01 即反例）。
+- **Q5**：下一步优先级 = ① input-level / 免训练方向（先解释 C01 指标符号矛盾）→ ② 先重验鲁棒性指标 → ③ 仅允许免训练或不能被"忽略输入"满足的目标 → ④ C06/C07/C08 及调优变体明确降级禁止重跑。
+- **新指标风险（本轮最重要的产出）**：C01 的**原始尺度**光照方差占比 0.463 → **0.319（−31%）**，而冻结首要指标 `R_all` 却报 **+3.1% 恶化** —— **符号相反**。且 `R_all` 可被"对光照与缺陷都不响应"的表示刷低（C08）。
+  ⇒ **`R_all` 不得单独作为鲁棒性目标**，必须与 Δd′/ΔAUROC 联读，且需先解决 C01 的符号矛盾。
+- **限定**：1 类别 × 1 view × 1 seed × 1 backbone × 4 候选；**负结果**，非"不可能"证明。
+- **E5-2A 状态**：**未执行**（无 survivor）；**未创建** `docs/E5_2A_FROZEN_PROTOCOL.md`（为空 survivor 冻 view 属空流程）；接力调度器 `scripts/run_e5_2a_after_e5_1.sh` 已就绪且 **CASE C 下拒绝启动 GPU**（默认 dry-run）。
 
 ### E5-1P + E5-1 Broad Mini Screening 结果（`docs/E5_1_FROZEN_PROTOCOL.md` / `results/e5_1/`，2026-10-09）
 
