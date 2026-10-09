@@ -236,6 +236,28 @@ Candidate kill test= DONE   (E4-X: B2 STOP, X6c STOP)
 Next               = Phase III — Module Composition Screening
 ```
 
+### E5-0B 结果（追加于 `docs/MODULE_CANDIDATE_REGISTRY.md` §B1–B13，2026-10-09，CPU-only，GPU = 0）
+
+对 shortlist 做一级来源核验 + 实现审计。**E5-0 的两处实质误判被推翻并保留 negative result**：
+
+- **C05（原 76 分/第 3 名）→ HOLD**：实为 **OCR-GAN 重建框架**（FD 作用于**输入图像**、CS 作用于**多 encoder 之间**）⇒ **NOT_DIRECTLY_PORTABLE**。教训：**评分不能替代可移植性核验**。
+- **C04（原 78 分/第 2 名）→ HOLD**：**机制审判通过**（REB = DefectMaker 合成缺陷+自监督域适应 ＋ **LDKNN 局部密度 KNN**；**不使用** mean/std/channel 归一化或 IN/LN/BN ⇒ **非 closed-family**；venue = **Knowledge-Based Systems 290(C) 2024**），但**官方代码 NOT FOUND** 且机制含训练式流水线 ⇒ 实现来源不足。
+- 核实升级：C07 = **WACV 2024**（代码为 **Unofficial**，疑无官方仓库）；C08 = **ECCV 2024**（arXiv 2402.18293，官方仓库 `tae-mo/CRAD`，**可学习特征网格+双线性插值取代离散 bank**，O(1)/无 NN 搜索，normal-only）；C06 官方仓库 `DonaldRR/SimpleNet`。
+
+**E5-1 FROZEN CANDIDATES = 4**：
+
+| # | Module | Insertion point | Runtime/unit | Role |
+|---|---|---|---|---|
+| 1 | C01 PIAD-Retinex | **input** | ≈18 min | NOVELTY-BEARING（input-photometric） |
+| 2 | C06 SimpleNet | post-concat | ≈17 min | **SUPPORTING_COMPONENT（不承担 novelty）** |
+| 3 | C07 ReConPatch | post-concat | ≈15 min | NOVELTY-BEARING（弱）；须披露 from-paper 实现 |
+| 4 | C08 CRAD | **memory bank**（从未探索的插入点） | ≈40 min | NOVELTY-BEARING（强）；须披露适配到 wide_resnet50_2 |
+
+**HOLD**：C04、C05、C02（**HOLD_REDUNDANT**：Filter ≈ Exp13-P，已证非 defect 特异）、C09（**HOLD_PROTOCOL**）。**STOP：无。**
+**VACANCY = 1–2 slots**（不自动补位；C10 是否补位由下一轮决定）。
+**Composition**：C01×C06 = **++**；C01×C08 = **++**；C06×C07 = **–（冗余）**。
+**E5-1 预算**：GPU units **4（+1 备用）**，runtime **≈1.5–2.5 h**，peak VRAM **≈16–19 GB**，1 worker。
+
 ### E5-0 结果（`docs/MODULE_CANDIDATE_REGISTRY.md`，2026-10-09，CPU-only，GPU = 0）
 
 Phase III 首个任务：候选模块文献/资产审计。

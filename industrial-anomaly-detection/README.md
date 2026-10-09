@@ -1504,6 +1504,18 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **重大缺口（如实记录）**：除 C01 外，shortlist 其余候选的**官方代码 URL 均未从一级来源取到** ⇒ **E5-1 开跑前必须先做 CPU-only「代码 URL 补齐」子任务**。
    - **E5-1 预算估算**（基于 E4-X 实测 fit 778 s / 700 图 44 s）：**GPU units 8（+2 备用）**，**wall-clock ≈2.5–4.5 h**，**peak VRAM ≈15–17 GB alloc**，**强制 1 worker**，Original 复用 E4-X（0 GPU）。
    - **下一步 = `E5-1 — Broad Mini Screening`**（**未启动**，需人工批准 + 完成 4 项 CPU 前置任务）。
+12. **E5-0B Shortlist Verification & Implementation Audit（2026-10-09，CPU-only，GPU = 0）**：
+  追加于 [`docs/MODULE_CANDIDATE_REGISTRY.md`](docs/MODULE_CANDIDATE_REGISTRY.md) **§B1–B13**（**不覆盖 E5-0 原始判断**）。
+   - **E5-0 的两处实质误判被本轮推翻并如实记录**：
+     **C05（Omni-Frequency）原 76 分/第 3 名 → HOLD**：其实质是 **OCR-GAN 重建框架**（FD 作用于**输入图像**、CS 作用于**多 encoder 之间**）⇒ 按 §6 判据为 **NOT_DIRECTLY_PORTABLE**；
+     **C04（REB）原 78 分/第 2 名 → HOLD**：**机制审判通过**（REB = DefectMaker 合成缺陷+自监督域适应 ＋ **LDKNN 局部密度 KNN**，**不使用** mean/std/channel 归一化或 IN/LN/BN 统计 ⇒ **非 closed-family**），但 **官方代码 NOT FOUND 且机制含训练式流水线**，不满足 from-paper 最小实现条件。
+   - **核实升级**：C04 venue = **Knowledge-Based Systems 290(C), Elsevier, 2024**（DOI 10.1016/j.knosys.2024.111563）；C07 = **WACV 2024** 但代码被标注 **"Unofficial Code"（可能无官方仓库）**；C08 = **ECCV 2024**，arXiv 2402.18293，官方仓库 `tae-mo/CRAD`，机制为**可学习特征网格+双线性插值取代离散 bank（O(1)、无 NN 搜索）**，normal-only、无需异常样本/分割标注；C06 官方仓库 `DonaldRR/SimpleNet`（PyTorch）。
+   - **E5-1 FROZEN CANDIDATES = 4**：**C01 PIAD-Retinex**（insertion=input，≈18 min）｜**C06 SimpleNet**（post-concat，≈17 min，**ROLE = SUPPORTING_COMPONENT，不承担 novelty**）｜**C07 ReConPatch**（post-concat，≈15 min，**须披露 from-paper 实现**）｜**C08 CRAD**（**memory bank，本项目从未探索的插入点**，≈40 min，**须披露适配到 wide_resnet50_2**）。
+   - **VACANCY = 1–2 slots**（C05/C04 淘汰所致）；**不自动补位**，C10 是否补位由下一轮单独决定。
+   - **HOLD**：C04（实现来源不足）、C05（NOT_DIRECTLY_PORTABLE）、C02（**HOLD_REDUNDANT**：Filter ≈ Exp13-P 且 Exp13-P 已证非 defect 特异）、C09（**HOLD_PROTOCOL**：改动 fixed-test 口径）。**STOP：无。**
+   - **Composition（重新核实）**：**C01×C06 = ++**（去除 nuisance ＋ 补偿 defect preservation）；**C01×C08 = ++**（input photometric ＋ bank 容量/覆盖，直击 bank 1,200 图的真实约束）；C05×C06 原 ++ **失去载体**；C06×C07 为 **–（冗余）**。
+   - **E5-1 预算（下调）**：**GPU units 4（+1 备用）**，**runtime ≈1.5–2.5 h**，**peak VRAM ≈16–19 GB**，1 worker，Original 复用 E4-X。**不为凑时间增加无意义实验。**
+   - **保留的 negative result**：① **评分不能替代可移植性核验**（C05 高分掩盖致命工程事实）；② **C02 使"滤除 nuisance 方向"路线的负面证据被加强**，不得因外部论文采用而翻案；③ **C06 novelty collision = D 维持**。
 
 ---
 
