@@ -236,6 +236,18 @@ Candidate kill test= DONE   (E4-X: B2 STOP, X6c STOP)
 Next               = Phase III — Module Composition Screening
 ```
 
+### E5-0 结果（`docs/MODULE_CANDIDATE_REGISTRY.md`，2026-10-09，CPU-only，GPU = 0）
+
+Phase III 首个任务：候选模块文献/资产审计。
+初始候选 **17**（C01–C17）→ 审计 **10**（C01–C10）→ **Shortlist 8**（GO 6 + HOLD 2），family 多样性合规。
+**VERIFIED 5 / PARTIALLY VERIFIED 12 / UNVERIFIED 0**；除 C01（PIAD-Retinex，MIT 代码）外，其余候选**官方代码 URL 未一级确认** ⇒ E5-1 前必须先做代码补齐子任务。
+
+Shortlist（Score）：**C01 PIAD-Retinex 88**（input-photometric）｜C04 REB 78（bank bias）｜C05 Omni-Frequency 76（frequency）｜C02 FiCo 70（HOLD，与 Exp13-P 同思路）｜C06 SimpleNet 70（**撞车 D**）｜C07 ReConPatch 66｜C08 Continuous Memory 66｜C09 On-The-Fly 64（HOLD，协议耦合）。
+
+**硬约束**：已关闭 family（α-IN 及变体 / residual 重标定 / score 融合 / illumination subspace 投影 / category×channel gating / dual-path 代数）**一律禁止重复**。
+**新颖性结论**：可承担新颖性来源的只有 C01/C04/C05/C08（等级 B）；论文新颖性须建立在 **input-photometric × frequency × memory-bank 的组合逻辑**上。
+**E5-1 预算**：GPU units **8（+2 备用）**，wall-clock **≈2.5–4.5 h**，peak VRAM **≈15–17 GB**，**1 worker**，Original 复用 E4-X。
+
 ### E4-X 结果（`results/e4_x/`，协议 `docs/E4_X_PROTOCOL.md`）
 
 M²AD **Bird × seed 0 × frozen view 120 × illumination 01–10**（700 张评分图）。

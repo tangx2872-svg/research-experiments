@@ -1484,6 +1484,26 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **结论**：`B2 STOPPED. X6c STOPPED. No rescue experiment is authorized.`（详见 `results/e4_x/README.md` §6）
    - **限定**：单类别 × 单 seed × 单 view（不外推）；bank 1,200 图（显存所迫）；阈值是 screening band 非统计结论；AUPRO 仍为 KNOWN ISSUE。
    - **论文阶段推进**：由此进入 **Phase III — Module Composition Screening**；**E4-X 后禁止继续围绕 X6c 自动实验**。
+11. **E5-0 Module Candidate Registry & Literature Audit（2026-10-09，CPU-only，GPU = 0）**：
+   产出 [`docs/MODULE_CANDIDATE_REGISTRY.md`](docs/MODULE_CANDIDATE_REGISTRY.md)。**未跑任何模型、未占 GPU。**
+   - **初始候选 17（C01–C17）**，其中 **10 个（C01–C10）**通过审计并统一评分；**VERIFIED 5 / PARTIALLY VERIFIED 12 / UNVERIFIED 0**（未核实者不进入候选池，不凑数）。
+   - **硬约束**：已关闭 family（α-IN 及其变体、residual 重标定、score 融合、illumination subspace 投影、category×channel gating、dual-path 代数）**一律禁止重复**。
+   - **Shortlist 8（GO 6 + HOLD 2）**，family 多样性合规（7 family，单 family ≤2 席）：
+     | Rank | ID | Module | Family | Score |
+     |---:|---|---|---|---:|
+     | 1 | C01 | **PIAD-Retinex**（输入级 Retinex 光照分解） | input-photometric | **88** |
+     | 2 | C04 | REB（表示偏差抑制，bank 侧） | memory-bank bias | 78 |
+     | 3 | C05 | Omni-Frequency FD+CS（TIP 2023） | frequency | 76 |
+     | 4 | C02 | FiCo（filter/compensate，AAAI 2025） | invariant-rep | 70 |
+     | 5 | C06 | SimpleNet 判别器（CVPR 2023） | synthetic-anomaly | 70 |
+     | 6 | C07 | ReConPatch 表示投影 | learned-projection | 66 |
+     | 7 | C08 | Continuous Memory Representation | memory-bank repr | 66 |
+     | 8 | C09 | On-The-Fly AD（ECCV 2024） | test-time adaptation | 64 |
+   - **Top composition opportunities**：C01×C04（输入去 nuisance ＋ bank 纠偏）、C01×C05（低频照度抑制 ＋ 高频缺陷保护）、**C01×C06**（去 nuisance ＋ 特征空间补偿 preservation）、C05×C06。
+   - **新颖性碰撞警告**：**C06 = 等级 D（几乎完全撞车）**、**C02/C07 = 等级 C（接近撞车）**；真正可承担新颖性来源的只有 **C01/C04/C05/C08（等级 B）**。论文新颖性应建立在 **input-photometric × frequency × memory-bank 的组合逻辑**上。
+   - **重大缺口（如实记录）**：除 C01 外，shortlist 其余候选的**官方代码 URL 均未从一级来源取到** ⇒ **E5-1 开跑前必须先做 CPU-only「代码 URL 补齐」子任务**。
+   - **E5-1 预算估算**（基于 E4-X 实测 fit 778 s / 700 图 44 s）：**GPU units 8（+2 备用）**，**wall-clock ≈2.5–4.5 h**，**peak VRAM ≈15–17 GB alloc**，**强制 1 worker**，Original 复用 E4-X（0 GPU）。
+   - **下一步 = `E5-1 — Broad Mini Screening`**（**未启动**，需人工批准 + 完成 4 项 CPU 前置任务）。
 
 ---
 
