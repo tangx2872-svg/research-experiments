@@ -1,0 +1,309 @@
+{
+  "experiment": "e7_2",
+  "pipelines": {
+    "P00@120": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.76963,
+        "image_aupr": 0.9130079430302542,
+        "d_prime": 1.2210482284036093,
+        "good_mean": 39.53311231613159,
+        "good_std": 2.8787563401472687,
+        "ng_mean": 45.07255066680908,
+        "ng_std": 5.733646407649424,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "120",
+      "artifact": "results/e7_2/raw/P00_view120.json"
+    },
+    "P00@090": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.82964,
+        "image_aupr": 0.936051422483773,
+        "d_prime": 1.4821382774039638,
+        "good_mean": 38.79311450958252,
+        "good_std": 2.9757212372366664,
+        "ng_mean": 46.17064814758301,
+        "ng_std": 6.379549579950624,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "090",
+      "artifact": "results/e7_2/raw/P00_view090.json"
+    },
+    "P00@240": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.7689,
+        "image_aupr": 0.9134436598778028,
+        "d_prime": 1.401942905550954,
+        "good_mean": 39.36383506774902,
+        "good_std": 2.4488696497341778,
+        "ng_mean": 50.17906543731689,
+        "ng_std": 10.631499304062254,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "240",
+      "artifact": "results/e7_2/raw/P00_view240.json"
+    },
+    "P00@330": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.75465,
+        "image_aupr": 0.906502683840982,
+        "d_prime": 1.3030152274754434,
+        "good_mean": 40.0901612663269,
+        "good_std": 2.7521646285632,
+        "ng_mean": 48.29122189331055,
+        "ng_std": 8.464762083337918,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "330",
+      "artifact": "results/e7_2/raw/P00_view330.json"
+    },
+    "P03@120": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.81062,
+        "image_aupr": 0.9279450402805737,
+        "d_prime": 1.368036235327553,
+        "good_mean": 41.37393218994141,
+        "good_std": 2.50889811663315,
+        "ng_mean": 46.405536209106444,
+        "ng_std": 4.556362652454498,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "120",
+      "artifact": "results/e7_2/raw/P03_view120.json"
+    },
+    "P03@090": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.81536,
+        "image_aupr": 0.9286045322981682,
+        "d_prime": 1.3695762428878546,
+        "good_mean": 41.06502683639526,
+        "good_std": 2.8109954144494176,
+        "ng_mean": 47.12955255126953,
+        "ng_std": 5.595821421892474,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "090",
+      "artifact": "results/e7_2/raw/P03_view090.json"
+    },
+    "P03@240": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.80133,
+        "image_aupr": 0.9252684648778233,
+        "d_prime": 1.4713081108742943,
+        "good_mean": 41.174062442779544,
+        "good_std": 2.1502338896977413,
+        "ng_mean": 52.238024406433105,
+        "ng_std": 10.41497342607408,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "240",
+      "artifact": "results/e7_2/raw/P03_view240.json"
+    },
+    "P03@330": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.79992,
+        "image_aupr": 0.9252857321848966,
+        "d_prime": 1.4543878188335273,
+        "good_mean": 41.73052425384522,
+        "good_std": 2.275867666516295,
+        "ng_mean": 50.428084915161136,
+        "ng_std": 8.145336959263494,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "330",
+      "artifact": "results/e7_2/raw/P03_view330.json"
+    },
+    "P02@120": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.79543,
+        "image_aupr": 0.9218706687450409,
+        "d_prime": 1.2978864544290332,
+        "good_mean": 41.0797011756897,
+        "good_std": 2.7214411718760623,
+        "ng_mean": 46.09685710906982,
+        "ng_std": 4.741311353359159,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "120",
+      "artifact": "results/e7_2/raw/P02_view120.json"
+    },
+    "P02@090": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.8106,
+        "image_aupr": 0.9270075463794174,
+        "d_prime": 1.3507234083647255,
+        "good_mean": 40.66863092422486,
+        "good_std": 2.8295348495491632,
+        "ng_mean": 46.7718659286499,
+        "ng_std": 5.729511358138789,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "090",
+      "artifact": "results/e7_2/raw/P02_view090.json"
+    },
+    "P02@240": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.78714,
+        "image_aupr": 0.9210200703715179,
+        "d_prime": 1.446889109547066,
+        "good_mean": 40.867148838043214,
+        "good_std": 2.063600143352399,
+        "ng_mean": 51.7848865814209,
+        "ng_std": 10.469747717199493,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "240",
+      "artifact": "results/e7_2/raw/P02_view240.json"
+    },
+    "P02@330": {
+      "status": "DONE",
+      "metrics": {
+        "n_good": 200,
+        "n_defect": 500,
+        "image_auroc": 0.79276,
+        "image_aupr": 0.9220866301755698,
+        "d_prime": 1.4299940304756855,
+        "good_mean": 41.40778907775879,
+        "good_std": 2.3777011107520765,
+        "ng_mean": 50.15105478668213,
+        "ng_std": 8.313444283254967,
+        "pixel_auroc": NaN,
+        "aupro": NaN
+      },
+      "view": "330",
+      "artifact": "results/e7_2/raw/P02_view330.json"
+    }
+  },
+  "views": [
+    "120",
+    "090",
+    "240",
+    "330"
+  ],
+  "VIEW_SEED": 20261009,
+  "candidates": [
+    "P03",
+    "P02"
+  ],
+  "bank_n": 1200,
+  "protocol_commit": "af56dd3",
+  "protocol_sha256": "3495427fa1c9463af8ada657e448c1d9252c80bbbbd6a95789261d36207fef89",
+  "analysis": {
+    "per_view": {
+      "P00@120": 0.76963,
+      "P00@090": 0.82964,
+      "P00@240": 0.7689,
+      "P00@330": 0.75465,
+      "P03@120": 0.81062,
+      "P03@090": 0.81536,
+      "P03@240": 0.80133,
+      "P03@330": 0.79992,
+      "P02@120": 0.79543,
+      "P02@090": 0.8106,
+      "P02@240": 0.78714,
+      "P02@330": 0.79276
+    },
+    "cross_view": [
+      {
+        "pipeline": "P03",
+        "view_auroc": [
+          0.81062,
+          0.81536,
+          0.80133,
+          0.79992
+        ],
+        "view_d_auroc": [
+          0.04098999999999997,
+          -0.01428000000000007,
+          0.03242999999999996,
+          0.04526999999999992
+        ],
+        "mean_auroc": 0.8068074999999999,
+        "median_auroc": 0.805975,
+        "mean_d_auroc": 0.026102499999999945,
+        "median_d_auroc": 0.036709999999999965,
+        "positive_views": 3,
+        "n_views": 4,
+        "worst_view": "330",
+        "worst_auroc": 0.79992,
+        "worst_d_auroc": -0.01428000000000007,
+        "verdict": "FINALIST (Path A)",
+        "synergy_positive": true
+      },
+      {
+        "pipeline": "P02",
+        "view_auroc": [
+          0.79543,
+          0.8106,
+          0.78714,
+          0.79276
+        ],
+        "view_d_auroc": [
+          0.025799999999999934,
+          -0.019040000000000057,
+          0.018239999999999923,
+          0.03810999999999998
+        ],
+        "mean_auroc": 0.7964825,
+        "median_auroc": 0.794095,
+        "mean_d_auroc": 0.015777499999999944,
+        "median_d_auroc": 0.02201999999999993,
+        "positive_views": 3,
+        "n_views": 4,
+        "worst_view": "240",
+        "worst_auroc": 0.78714,
+        "worst_d_auroc": -0.019040000000000057,
+        "verdict": "FINALIST (Path A)",
+        "synergy_positive": true
+      }
+    ],
+    "finalists": [
+      "P03",
+      "P02"
+    ]
+  }
+}

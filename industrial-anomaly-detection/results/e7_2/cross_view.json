@@ -1,0 +1,54 @@
+[
+  {
+    "pipeline": "P03",
+    "view_auroc": [
+      0.81062,
+      0.81536,
+      0.80133,
+      0.79992
+    ],
+    "view_d_auroc": [
+      0.04098999999999997,
+      -0.01428000000000007,
+      0.03242999999999996,
+      0.04526999999999992
+    ],
+    "mean_auroc": 0.8068074999999999,
+    "median_auroc": 0.805975,
+    "mean_d_auroc": 0.026102499999999945,
+    "median_d_auroc": 0.036709999999999965,
+    "positive_views": 3,
+    "n_views": 4,
+    "worst_view": "330",
+    "worst_auroc": 0.79992,
+    "worst_d_auroc": -0.01428000000000007,
+    "verdict": "FINALIST (Path A)",
+    "synergy_positive": true
+  },
+  {
+    "pipeline": "P02",
+    "view_auroc": [
+      0.79543,
+      0.8106,
+      0.78714,
+      0.79276
+    ],
+    "view_d_auroc": [
+      0.025799999999999934,
+      -0.019040000000000057,
+      0.018239999999999923,
+      0.03810999999999998
+    ],
+    "mean_auroc": 0.7964825,
+    "median_auroc": 0.794095,
+    "mean_d_auroc": 0.015777499999999944,
+    "median_d_auroc": 0.02201999999999993,
+    "positive_views": 3,
+    "n_views": 4,
+    "worst_view": "240",
+    "worst_auroc": 0.78714,
+    "worst_d_auroc": -0.019040000000000057,
+    "verdict": "FINALIST (Path A)",
+    "synergy_positive": true
+  }
+]

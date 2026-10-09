@@ -1579,6 +1579,35 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **C01 复评 = `SUPPORTS FOLLOW-UP`**（按 §11 冻结规则：检测未退化 ✓、有非 REJECT 指标改善且 L1oO ≥9/10 一致 ✓、不依赖 REJECT 指标 ✓、所用指标通过病理 ✓）。**附条件（非改规则）**：`M4_ng` 与 `M1_R_all` 反号，C01 **只能与"先解释该符号分歧"的预注册计划一同推进**，不得作为无保留的鲁棒性胜利。
    - **B2/X6c 的历史 STOP 不改变**（在全部 KEEP 指标上与 Original 不可区分，`M5_A` 0.3778/0.3566 **均劣于** 0.3480）；**C06/C07/C08 仍为 STOP**（三者均未过检测门，换指标不能复活已坍缩的检测器）。
    - **限定**：1 类别 × 1 view × 1 seed × 7 方法 × 1 backbone；且 7 个方法中 3 个是**坍缩检测器**，故指标排序部分由"指标如何处理坍缩"决定（这正是审计目的，但排序**不是**干净的工作检测器鲁棒性排名）。**未启动 GPU**、未跑 multi-view/multi-seed、未调参、未 rescue、未组合、未搜新候选。
+16. **E7-1 + E7-2 Lightweight Composition Broad Screening — 2 FINALIST（2026-10-09）**：
+   论文阶段 = **Lightweight Module Composition Screening**。协议先冻结于 [`docs/E7_1_FROZEN_PROTOCOL.md`](docs/E7_1_FROZEN_PROTOCOL.md)（commit `af56dd3`，**先于任何候选最终指标**）；结果 [`results/e7_1/README.md`](results/e7_1/README.md)、[`results/e7_2/README.md`](results/e7_2/README.md)。**本轮仅实现并执行上游冻结的设计**：未增删候选、未改阈值、未调参。
+   - **E7-1 运行 19 min 15 s**（+323 s 缓存），**14/14 pipeline 全部执行完毕**；M²AD Bird / seed 0 / **view 120** / test **700 图不缩减** / normal bank = **E5-1 bank 的 25% 机械子集（300 图，`BANK_SUBSET_SEED=20261009`）**。Scope sanity **5/5 PASS**（含 bank∩test 标本重叠 = 0）。主指标 = **image AUROC**（R_all 等降为 diagnostic）。
+   - **E7-1 结果**（相对同协议 P00 = 0.78089）：
+
+     | ID | pipeline | AUROC | ΔAUROC | AUPR | d′ | 判定 |
+     |---|---|---|---|---|---|---|
+     | **P03** | **CLAHE medium → PatchCore** | **0.79591** | **+0.01502** | 0.91479 | 1.2175 | **KEEP (B)** |
+     | **P02** | **CLAHE mild → PatchCore** | **0.79458** | **+0.01369** | 0.91736 | 1.2157 | **KEEP (B)** |
+     | P00 | Original PatchCore | 0.78089 | 0 | 0.91723 | 1.2258 | REFERENCE |
+     | P04/P01 | Retinex→CLAHE-mild / Retinex | 0.77662/0.77483 | −0.0043/−0.0061 | — | — | STOP (D) |
+     | P10/P06/P05/P11/P13/P09/P08/P12/P07 | SoftPatch / DINOv2 家族 | 0.7413→0.6696 | −0.040→−0.111 | — | — | STOP (D) |
+
+     `ADVANCE=[]`、`KEEP=[P03,P02]`、`BACKUP=[]`、`STOP=11 条`。像素级（380 张有 mask 的 NG）：P00 pixel 0.9723/AUPRO 0.8432、P02 0.9733/0.8348、P03 0.9717/0.8277。
+   - **组合 synergy 全负（6/6）**：`P01|P02|P04 = −0.01796`、`P01|P05|P07 = −0.10520`、`P01|P06|P08 = −0.09431`、`P02|P05|P09 = −0.10824`、`P01|P10|P12 = −0.10051`、`P01|P11|P13 = −0.07917` ⇒ **无 POSITIVE_COMPOSITION**；每个 A+B 都**劣于其最好的单一 parent**。"模块叠加"在本轮再次被否证。
+   - **Stage 0 smoke 14/14 执行**；工程检查（shape/finite/dependency/normal-only/no-leakage）**全部 PASS**。P05/P06/P07/P08 的 `score_direction` 在 **10 图 smoke bank** 下报 FAIL —— **已定位为采样规模伪影而非实现缺陷**：在真实 bank 规模下重测，dinov2_vits14 **AUROC 0.71172**（方向正确）、dinov2_vitb14 **0.73158**（方向正确）。如实记录，未隐藏。
+   - **E7-2（gate 机械选出 2 个候选）运行 46 min 25 s（+630 s 缓存）**：恢复**全量 1200 图 bank**；views 在读取任何结果前由 `VIEW_SEED=20261009` 机械冻结为 **`['120','090','240','330']`**。
+
+     | candidate | v120 | v090 | v240 | v330 | mean AUROC | **mean ΔAUROC** | **正 view** | worst Δ | 判定 |
+     |---|---|---|---|---|---|---|---|---|---|
+     | P00 baseline | 0.76963 | 0.82964 | 0.76890 | 0.75465 | 0.78071 | — | — | — | REFERENCE |
+     | **P03** | 0.81062 | 0.81536 | 0.80133 | 0.79992 | **0.80681** | **+0.02610** | **3/4** | −0.01428 | **FINALIST (Path A)** |
+     | **P02** | 0.79543 | 0.81060 | 0.78714 | 0.79276 | **0.79648** | **+0.01578** | **3/4** | −0.01904 | **FINALIST (Path A)** |
+
+   - **E7-2 结论**：baseline 自身跨 view 摆动 **0.7547→0.8296（±0.037）**，故单 view 结果本就不足以取证。CLAHE 效应**跨 view 存活**（4 个 view 中 3 个为正），且 **`medium` 在全部 4 个 view 上均优于 `mild`** ⇒ **本轮最佳 pipeline = `P03 = CLAHE(clipLimit=2.0, tile 8×8) → PatchCore`**（mean ΔAUROC **+0.0261**，三项指标均值同时改善：AUPR +0.0066、d′ +0.0616）。但 **view 090 上两者均输给 baseline**（−0.014/−0.019）⇒ 增益是 **view 条件性但可重复**，非单 view 偶然。P02 的 AUPR 均值略负（−0.0031）。
+   - **论文意义（本轮推进的格子）**：一个**极小、文献常规、免训练**的输入预处理（OpenCV CLAHE）加在标准 PatchCore 前，能在冻结 view 与 3 个新增 view 上给出**小但可重复**的 image-AUROC 增益 —— 这正是上游设计所要的"小改进型、A/B 分工明确"的形态；诚实限定：收益仅数个 AUROC 点、幅度依 view 而变、`mild` 变体的 AUPR 基本持平。
+   - **工程修复 6 项（§G 允许，全部已 logged 于协议 §17）**：`E7.Bar.__call__`；**安装 `faiss-cpu 1.15.1`**（SoftPatch/DINOv2 官方声明依赖，本环境缺失）——按 §G「dependency issue 允许修复」；SoftPatch 模块加载返回类→模块；改用官方 `WeightedGreedyCoresetSampler`（`softpatch.py:85` 的真实路径）；补 `feature_shape`；smoke 采样改为每类 ≥10 个**不同**标本。**无任何方法定义/架构/loss/特征层/打分规则被改动。**
+   - **假设 A1–A6 仍待设计者确认**（bank 子集基准、缓存分辨率 448、DINOv2 关闭 masking、无 τ_val、SoftPatch 作用于共享表示、faiss 缺失改用精确 kNN）。
+   - **限定**：1 类别 × 1 seed × 4 views × 1 backbone 家族；bank 300 图（E7-1）/1200 图（E7-2），**两者绝对 AUROC 不可直接互比**，仅 E7 内部可比。**未启动 E7-3、未跑 multi-seed、未做第二类别、未搜新模块、未做参数 rescue、未写论文。**
 
 ---
 

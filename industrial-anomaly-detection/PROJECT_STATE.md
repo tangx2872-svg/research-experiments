@@ -10,13 +10,13 @@
 
 | 项 | 状态 |
 |---|---|
-| 阶段 | **Measurement Validity Audit**（2026-10-09 由 E5-FAILURE-AUDIT 的指标病理触发）；前一阶段 Phase III Module Composition 已 STOP（E5-1 = `0 GO / 1 HOLD / 3 STOP`） |
+| 阶段 | **Lightweight Module Composition Screening**（E7-1 + E7-2 已完成，2026-10-09）；历史：E6-A Measurement Validity Audit 已完成、Phase III Module Composition 已 STOP（E5-1 = `0 GO / 1 HOLD / 3 STOP`） |
 | Method discovery / search | **CLOSED（已正式结束）** |
 | 冻结方法 | **X6c** — 内部 `A — FREEZE X6c`；但 **E4-X 外部（M²AD Bird）已 KILLED**，见 §13 |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
 | Module composition | **E5-1 BROAD SCREENING 已完成（2026-10-09）** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ 协议 §17 **case C**：**STOP Module Composition 分支**（见 §13） |
 | 主 E4 数据集 | **M²AD**（E4-0C winner；E4-D0 integrity **PASS**；E4-D1 Original smoke **PASS**） |
-| 下一步 | **人工裁决**（E6-A 已完成，CPU-only，**GPU 全程空闲**）：① 冻结 Axis Y = **`M5_A`**（门用**并列校正 AUROC** + `Δd′ ≥ −0.10`），伴轴 `M3_good`、反向对照 `M4_ng`；② 先解释 **C01 的指标符号分歧**（`M5_A`/`M3_*` 说更好，`M1_R_all`/`M4_*` 说更差）；③ `R_all` 已降为 SECONDARY，**不得再作首要鲁棒性指标**。**禁止自动启动 GPU、禁止 multi-view/multi-seed、禁止 rescue C06/C07/C08、禁止调参、禁止补 C10。** |
+| 下一步 | **人工裁决**（E7-1/E7-2 已完成）：**本轮最佳 = `P03` = CLAHE(clipLimit=2.0, tile 8×8) → PatchCore**，跨 4 views mean ΔAUROC **+0.0261**、3/4 view 为正、AUPR/`d′` 均值同时改善；次选 `P02`（CLAHE 1.5，+0.0158）。两者均为 **FINALIST (Path A)**。**6/6 组合 synergy 全负 ⇒ 组合路线在本轮再次被否证。** **禁止自动 E7-3、禁止 multi-seed、禁止第二类别、禁止新模块搜索、禁止参数 rescue、禁止写论文。** |
 
 ---
 
@@ -241,8 +241,45 @@ E5-FAILURE-AUDIT   = DONE   (CPU-only, GPU idle)
 Module composition = STOPPED (this branch)
 E6-A metric audit  = DONE   (CPU-only): R_all DEMOTED to SECONDARY; TWO-AXIS PARETO recommended;
                      C01 re-evaluated as SUPPORTS FOLLOW-UP (with sign-disagreement caveat)
-Next               = human review required (no GPU work authorised, no rescue, no C10)
+E7-1 broad screen  = DONE   (14/14 pipelines, 19m15s): 2 KEEP (P03 CLAHE-medium, P02 CLAHE-mild);
+                     ALL 6 compositions have NEGATIVE synergy
+E7-2 cross-view    = DONE   (4 views, 46m25s): BOTH are FINALIST (Path A)
+Best pipeline      = P03  CLAHE(clipLimit=2.0, tile 8x8) -> PatchCore   (mean dAUROC +0.02610)
+Next               = human review required (no E7-3, no multi-seed, no rescue, no paper writing)
 ```
+
+### E7-1 + E7-2 Lightweight Composition Broad Screening 结果（2026-10-09，`docs/E7_1_FROZEN_PROTOCOL.md` commit `af56dd3`）
+
+**角色边界**：本轮候选/组合/指标/晋级规则由上游冻结，我方仅实现与执行 —— 未增删候选、未改阈值、未调参。
+
+**E7-1（19 min 15 s + 323 s 缓存）**：M²AD Bird / seed 0 / view 120 / test 700 图不缩减 / normal bank = **E5-1 bank 的 25% 机械子集（300 图）**。Scope sanity **5/5 PASS**。
+
+| ID | pipeline | AUROC | ΔAUROC | AUPR | d′ | 判定 |
+|---|---|---|---|---|---|---|
+| **P03** | **CLAHE medium → PatchCore** | **0.79591** | **+0.01502** | 0.91479 | 1.2175 | **KEEP (B)** |
+| **P02** | **CLAHE mild → PatchCore** | **0.79458** | **+0.01369** | 0.91736 | 1.2157 | **KEEP (B)** |
+| P00 | Original PatchCore | 0.78089 | 0 | 0.91723 | **1.2258** | REFERENCE |
+| P04 / P01 | Retinex→CLAHE-mild / Retinex | 0.77662 / 0.77483 | −0.0043 / −0.0061 | — | — | STOP (D) |
+| P10, P06, P05, P11, P13, P09, P08, P12, P07 | SoftPatch / DINOv2 家族 | 0.7413 → 0.6696 | −0.040 → −0.111 | — | — | STOP (D) |
+
+- **组合 synergy 6/6 全负**（−0.018 至 −0.108）⇒ 无 POSITIVE_COMPOSITION；每个 A+B 都劣于其最好的 parent。**"模块叠加"再次被否证。**
+- **`d′` 高 ≠ AUROC 高**：P00 的 `d′`（1.2258）最高；P03 的 AUROC 增益伴随 AUPR −0.0024。
+- **Stage 0 smoke 14/14 执行**，工程检查全 PASS；P05/P06/P07/P08 的 `score_direction` 在 10 图 smoke bank 下 FAIL，**已定位为采样规模伪影而非实现缺陷**（真实 bank 下 dinov2_vits14 AUROC 0.71172 / vitb14 0.73158，方向正确）。
+
+**E7-2（gate 机械选出 P03/P02；46 min 25 s + 630 s 缓存）**：恢复**全量 1200 图 bank**；views 于读结果前由 `VIEW_SEED=20261009` 冻结为 **`['120','090','240','330']`**。
+
+| candidate | v120 | v090 | v240 | v330 | mean AUROC | **mean ΔAUROC** | **正 view** | worst Δ | 判定 |
+|---|---|---|---|---|---|---|---|---|---|
+| P00 baseline | 0.76963 | 0.82964 | 0.76890 | 0.75465 | 0.78071 | — | — | — | REFERENCE |
+| **P03** | 0.81062 | 0.81536 | 0.80133 | 0.79992 | **0.80681** | **+0.02610** | **3/4** | −0.01428 | **FINALIST (Path A)** |
+| **P02** | 0.79543 | 0.81060 | 0.78714 | 0.79276 | **0.79648** | **+0.01578** | **3/4** | −0.01904 | **FINALIST (Path A)** |
+
+- baseline 自身跨 view 摆动 **±0.037**（0.7547→0.8296）⇒ 单 view 结果本就不足取证。
+- CLAHE 效应**跨 view 存活**；**`medium` 在全部 4 个 view 上均优于 `mild`** ⇒ **本轮最佳 = `P03`**（mean ΔAUROC +0.0261，AUPR +0.0066、d′ +0.0616 均值同时改善）。
+- **但 view 090 上两者均输** ⇒ 增益为 **view 条件性但可重复**。P02 的 AUPR 均值略负（−0.0031）。
+
+**工程修复 6 项（协议 §17，均未触及方法定义/架构/loss/特征层/打分）**：`E7.Bar.__call__`；**安装 `faiss-cpu 1.15.1`**（官方声明依赖缺失，§G 允许的 dependency fix）；SoftPatch 模块加载；改用官方 `WeightedGreedyCoresetSampler`；补 `feature_shape`；smoke 采样改为每类 ≥10 个不同标本。
+**假设 A1–A6 仍待设计者确认**。**限定**：1 类别 × 1 seed × 4 views；bank 300（E7-1）/1200（E7-2）**绝对 AUROC 不可互比**，仅 E7 内部可比。
 
 ### E6-A 指标有效性审计结果（`docs/E6_A_METRIC_PROTOCOL.md` / `results/e6_a/`，2026-10-09，**CPU-only，GPU = 0**）
 

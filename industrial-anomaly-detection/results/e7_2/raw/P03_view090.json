@@ -1,0 +1,26 @@
+{
+  "pipeline": "P03",
+  "view": "090",
+  "metrics": {
+    "n_good": 200,
+    "n_defect": 500,
+    "image_auroc": 0.81536,
+    "image_aupr": 0.9286045322981682,
+    "d_prime": 1.3695762428878546,
+    "good_mean": 41.06502683639526,
+    "good_std": 2.8109954144494176,
+    "ng_mean": 47.12955255126953,
+    "ng_std": 5.595821421892474,
+    "pixel_auroc": NaN,
+    "aupro": NaN
+  },
+  "fit": {
+    "fit_s": 784.9,
+    "coreset_size": 122880
+  },
+  "runtime_s": 841.0,
+  "bank_n": 1200,
+  "test_n": 700,
+  "seed": 0,
+  "git_head": "af56dd3"
+}
