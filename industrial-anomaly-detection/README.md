@@ -1516,6 +1516,28 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **Composition（重新核实）**：**C01×C06 = ++**（去除 nuisance ＋ 补偿 defect preservation）；**C01×C08 = ++**（input photometric ＋ bank 容量/覆盖，直击 bank 1,200 图的真实约束）；C05×C06 原 ++ **失去载体**；C06×C07 为 **–（冗余）**。
    - **E5-1 预算（下调）**：**GPU units 4（+1 备用）**，**runtime ≈1.5–2.5 h**，**peak VRAM ≈16–19 GB**，1 worker，Original 复用 E4-X。**不为凑时间增加无意义实验。**
    - **保留的 negative result**：① **评分不能替代可移植性核验**（C05 高分掩盖致命工程事实）；② **C02 使"滤除 nuisance 方向"路线的负面证据被加强**，不得因外部论文采用而翻案；③ **C06 novelty collision = D 维持**。
+13. **E5-1P + E5-1 Broad Mini Screening — `0 GO / 1 HOLD / 3 STOP`（2026-10-09）**：
+   协议先冻结于 [`docs/E5_1_FROZEN_PROTOCOL.md`](docs/E5_1_FROZEN_PROTOCOL.md)（commit `e96cd5a`，`sha256 32159221…6035d`，**先于任何候选结果**）；结果见 [`results/e5_1/README.md`](results/e5_1/README.md)。
+   - **E5-1P 重大发现（改变预算前提）**：E4-D0 时实测服务器 `github.com` **不可达**，本次复测**已可达** ⇒ **三个官方仓库实克隆**：`Kaichen-Yang/piad_baseline@67b816b`、`DonaldRR/SimpleNet@351a2b8`、`tae-mo/CRAD@b5a1c472`（置于 `third_party/`，已 gitignore，不入库）。**C01 provenance 由此完全解决且零发明**：PIAD 自身 `pose_estimation.py:31` → `Retinex.RL_separate.Separate` → 输出**反射率图 R**；`Retinex/LICENSE = MIT © 2022 AndersonYong`（PIAD vendored URetinex-Net），4 个官方权重随仓库提交。**`HOLD_PROVENANCE` 未触发**，未自行近似实现、未在两个 URetinex 仓库间凭感觉选择。
+   - **冻结口径**：M²AD Bird / seed 0 / **view 120（未更换）** / bank 1200（10 normal train 标本 × 12 views × 10 illum）/ 打分 700（test @ view 120）/ 输入 256 / embedding **1536×32×32** / **Original 复用 E4-X（0 GPU）**。协议 §7 预注册 GO-A / GO-B / STOP-s1,s2,s3,s6，阈值硬编码、运行期不可改。
+   - **结果**（相对 Original `0.76766 / 1.20676 / 0.67543`）：
+
+     | 候选 | 插入点 | AUROC | ΔAUROC | d′ | Δd′ | R_all | R_ratio | 判定 |
+     |---|---|---|---|---|---|---|---|---|
+     | **C01 PIAD-Retinex** | input | **0.78043** | **+0.01277** | **1.30552** | **+0.09876** | 0.69617 | 1.0307 | **HOLD** |
+     | C06 SimpleNet | post-concat | 0.48820 | −0.27946 | −0.05534 | −1.26210 | 0.50851 | 0.7529 | **STOP** |
+     | C07 ReConPatch | post-concat | 0.55555 | −0.21211 | 0.14363 | −1.06313 | 0.67286 | 0.9962 | **STOP** |
+     | C08 CRAD | memory | 0.46197 | −0.30569 | −0.11035 | −1.31711 | 0.31423 | 0.4652 | **STOP** |
+
+     四轴排名（不看单一 AUROC）：Detection **C01>C07>C06>C08**；Robustness **C08>C06>C07>C01**；Preservation **C01>C07>C06>C08**。
+   - **C01 = 唯一非失败项（HOLD）**：`ΔAUROC = +0.01277` 落在预注册 HOLD 带 `[+0.01,+0.03)`（**不得解释为 detection win**）；`Δd′ = +0.09876`（normal-vs-defect 分离度真实提升 +8.2%）；但 `R_ratio = 1.0307` ⇒ **光照鲁棒性反而略降**，故按冻结规则不能 GO。L1oO：剔除 illumination **06 或 07** 后 ΔAUROC 跌破 +0.01（增益部分集中于两档光照）。
+   - **重要方法论发现（须写入论文 limitation）**：**`R_all` 可被"压扁分数"平凡最小化** —— C08 的 `R_ratio = 0.465` 是全场"最鲁棒"的数字，但 AUROC **0.462（低于随机）**、d′ **−0.110（负）**；C06 判别器训练 loss 收敛到 **恰好 1.0000**（= `2·θ` margin 下界，完全停止区分真伪特征）。**三个表示级插入点（post-concat ×2、memory ×1）在真实光照下同时降低 AUROC 与 d′**；只有 input-photometric 插入点未失败。故 `R_ratio` 必须与 `Δd′`/`ΔAUROC` 联读。
+   - **Runtime / 资源**：C01 **776.3 s**（fit 744.6 + scoring 25.6）、C08 **5569.1 s**、C07 **640.3 s**、C06 **524.1 s** ⇒ **总 GPU wall 7510 s ≈ 2 h 05 min**（另 E5-1P ≈1 h）。Peak VRAM：C01 14,497 MB alloc / 18,258 MB reserved；C08 reserved 15,310 MB。**1 worker**，无并发 GPU-heavy fit。C08 占 74% GPU 时间（97.4 M 参数 / 50 epochs）。
+   - **协议偏离 5 项（全部先于读取任何结果，logged 于协议 §12 D1–D5）**：D1 C08 `ch_exp` 取官方绝对值 **864**（按比例 `4·ch=6144` 需 ≈4.15×10⁸ 参数，24 GB 不可行）；D2 C07 用 `Adam`（`AdamP` 未安装）；D3 无 `faiss` ⇒ 暴力 kNN；D4 PIAD checkpoint 在 torch 2.8 下需 `add_safe_globals([argparse.Namespace])`（官方 API，未改 PIAD 代码）；D5 C01 的 Retinex 施加于冻结 256 输入。**无方法级修改，无阈值/超参/seed/view 搜索。**
+   - **Leakage = NO**；Sanity S1/S3/S7/S8 ＋ 运行时 S4/S5 全 PASS；Original 资产 sha256 `4aebd115…0a5d` 校验通过。
+   - **失败记录（不隐藏）**：C06/C08 为**实质失败**（detection 崩溃，非"最鲁棒"）；C07 的对比目标确实在学（loss 9.25→0.79）但学到的调制消灭了信号。三者**均不得**通过调参 / 换 view / 换 seed 挽救。
+   - **Phase III 推进**：按协议 §17 **case C（0 GO）** ⇒ **STOP Module Composition 分支**；禁止 `C01′` / `C01++` / `C07 tuned` / `C08 rescue`、自动补 C10、自动组合（**不得自动进入 E5-2**）。**未启动 E5-2、未跑多 seed/多 view、未组合候选。**
+   - **下一步（需人工裁决）**：唯一有证据支撑的方向是 **input-photometric（C01，HOLD）**；但必须先解释"为何 Δd′ 提升却无任何鲁棒性提升"，并原则性评估是否应更换 `R_all` 这一首要鲁棒性指标。
 
 ---
 

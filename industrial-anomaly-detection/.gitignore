@@ -304,3 +304,9 @@ results/e4_x/fit/
 
 # external reference sources fetched at E5-1P (never commit third-party code/weights)
 third_party/
+
+# E5-1: protocol + results tracked; run logs / model weights / Lightning fit dir excluded
+!results/e5_1/
+results/e5_1/logs/
+results/e5_1/**/fit/
+results/e5_1/raw/*.pt

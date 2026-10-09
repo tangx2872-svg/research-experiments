@@ -10,11 +10,13 @@
 
 | 项 | 状态 |
 |---|---|
-| 阶段 | **Phase III — Module Composition Screening**（2026-10-08 由 E4-X 触发） |
+| 阶段 | **Phase III — Module Composition Screening**（2026-10-08 由 E4-X 触发）；**E5-1 已完成：`0 GO / 1 HOLD / 3 STOP`** |
 | Method discovery / search | **CLOSED（已正式结束）** |
 | 冻结方法 | **X6c** — 内部 `A — FREEZE X6c`；但 **E4-X 外部（M²AD Bird）已 KILLED**，见 §13 |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
-| 下一步 | **E4-D2（人工决定）**；E4-D0 integrity PASS、E4-D1 Original smoke PASS（见下方 §13） |
+| Module composition | **E5-1 BROAD SCREENING 已完成（2026-10-09）** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ 协议 §17 **case C**：**STOP Module Composition 分支**（见 §13） |
+| 主 E4 数据集 | **M²AD**（E4-0C winner；E4-D0 integrity **PASS**；E4-D1 Original smoke **PASS**） |
+| 下一步 | **人工裁决**：唯一非失败方向 = input-photometric（C01，HOLD，`ΔAUROC +0.0128` / `Δd′ +0.0988` / `R_ratio 1.0307`）；须先解释"Δd′ 升但鲁棒性未升"并评估是否更换 `R_all` 指标。**禁止自动进入 E5-2、禁止 rescue C06/C07/C08、禁止补 C10。** |
 
 ---
 
@@ -233,8 +235,35 @@ Dataset selection  = CLOSED
 Integrity audit    = PASS   (E4-D0)
 Original GPU smoke = PASS   (E4-D1, pipeline feasibility only)
 Candidate kill test= DONE   (E4-X: B2 STOP, X6c STOP)
-Next               = Phase III — Module Composition Screening
+E5-1 broad screening= DONE  (0 GO / 1 HOLD / 3 STOP -> protocol §17 case C)
+Module composition = STOPPED (this branch)
+Next               = human review required (no auto E5-2, no rescue, no C10)
 ```
+
+### E5-1P + E5-1 Broad Mini Screening 结果（`docs/E5_1_FROZEN_PROTOCOL.md` / `results/e5_1/`，2026-10-09）
+
+协议先冻结于 commit `e96cd5a`（`sha256 32159221…6035d`，**先于任何候选结果**）。**`0 GO / 1 HOLD / 3 STOP`**。
+
+**E5-1P 关键发现**：E4-D0 时 `github.com` 在本机不可达，本次复测**已可达** ⇒ 三个官方仓库实克隆
+（`piad_baseline@67b816b`、`SimpleNet@351a2b8`、`CRAD@b5a1c472`，置于已 gitignore 的 `third_party/`）。
+**C01 provenance 零发明解决**：PIAD 自身路径 `Retinex.RL_separate.Separate` → 反射率图 R；`Retinex/LICENSE = MIT © 2022 AndersonYong`。
+
+| 候选 | 插入点 | AUROC | ΔAUROC | d′ | Δd′ | R_all | R_ratio | 判定 |
+|---|---|---|---|---|---|---|---|---|
+| Original（复用 E4-X，0 GPU） | — | 0.76766 | — | 1.20676 | — | 0.67543 | 1.0000 | REFERENCE |
+| **C01 PIAD-Retinex** | input | **0.78043** | **+0.01277** | **1.30552** | **+0.09876** | 0.69617 | 1.0307 | **HOLD** |
+| C06 SimpleNet | post-concat | 0.48820 | −0.27946 | −0.05534 | −1.26210 | 0.50851 | 0.7529 | **STOP** |
+| C07 ReConPatch | post-concat | 0.55555 | −0.21211 | 0.14363 | −1.06313 | 0.67286 | 0.9962 | **STOP** |
+| C08 CRAD | memory | 0.46197 | −0.30569 | −0.11035 | −1.31711 | 0.31423 | 0.4652 | **STOP** |
+
+**方法论发现（须写入 limitation）**：**`R_all` 可被"压扁分数"平凡最小化** —— C08 `R_ratio=0.465` 看似最鲁棒，
+实则 AUROC **0.462（低于随机）**、d′ **−0.110（负）**；C06 判别器 loss 收敛到恰好 **1.0000**（`2·θ` margin 下界）。
+**三个表示级插入点全部同时降低 AUROC 与 d′**；仅 input-photometric 未失败。`R_ratio` 必须与 `Δd′`/`ΔAUROC` 联读。
+
+**Cost**：总 GPU wall **7510 s ≈ 2 h 05 min**（C01 776 s / C08 5569 s / C07 640 s / C06 524 s）。
+**Leakage = NO**；**协议偏离 5 项（D1–D5）全部先于读取结果并已 logged**（无方法级修改）。
+
+**结论**：`Module composition branch STOPPED. No rescue for C06/C07/C08. No automatic E5-2. No C10 top-up.`
 
 ### E5-0B 结果（追加于 `docs/MODULE_CANDIDATE_REGISTRY.md` §B1–B13，2026-10-09，CPU-only，GPU = 0）
 
