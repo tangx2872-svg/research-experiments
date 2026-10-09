@@ -1,0 +1,354 @@
+{
+  "detection_preservation_ok": true,
+  "auroc_delta": 0.01277,
+  "dprime_delta": 0.09876,
+  "metrics_improved": [
+    {
+      "metric_id": "M5_A",
+      "verdict": "KEEP",
+      "field": "M5_A_all",
+      "original": 0.34804,
+      "c01": 0.32129
+    },
+    {
+      "metric_id": "M5_C",
+      "verdict": "KEEP",
+      "field": "M5_C_all",
+      "original": 0.43314,
+      "c01": 0.40986
+    },
+    {
+      "metric_id": "M3_all",
+      "verdict": "SECONDARY",
+      "field": "M3_all",
+      "original": 0.13468,
+      "c01": 0.08404
+    },
+    {
+      "metric_id": "M3_ng",
+      "verdict": "SECONDARY",
+      "field": "M3_ng",
+      "original": 0.112,
+      "c01": 0.09809
+    },
+    {
+      "metric_id": "M5_B",
+      "verdict": "SECONDARY",
+      "field": "M5_B_all",
+      "original": 0.35893,
+      "c01": 0.31395
+    },
+    {
+      "metric_id": "M5_D",
+      "verdict": "SECONDARY",
+      "field": "M5_D_all",
+      "original": 0.299,
+      "c01": 0.27704
+    },
+    {
+      "metric_id": "M3_good",
+      "verdict": "SECONDARY",
+      "field": "M3_good",
+      "original": 0.46262,
+      "c01": 0.31916
+    },
+    {
+      "metric_id": "M8_sd",
+      "verdict": "SECONDARY",
+      "field": "M8_ratio",
+      "original": 1.0,
+      "c01": 0.9293
+    },
+    {
+      "metric_id": "M7_raw",
+      "verdict": "REJECT",
+      "field": "M7_ratio",
+      "original": 1.0,
+      "c01": 0.87405
+    },
+    {
+      "metric_id": "M2_raw_var",
+      "verdict": "REJECT",
+      "field": "M2_ratio",
+      "original": 1.0,
+      "c01": 0.73885
+    }
+  ],
+  "metrics_l1oo_consistent": [
+    {
+      "metric_id": "M5_A",
+      "verdict": "KEEP",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M5_C",
+      "verdict": "KEEP",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M3_all",
+      "verdict": "SECONDARY",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M3_ng",
+      "verdict": "SECONDARY",
+      "n_same_direction": 9,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M5_B",
+      "verdict": "SECONDARY",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M5_D",
+      "verdict": "SECONDARY",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M3_good",
+      "verdict": "SECONDARY",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M8_sd",
+      "verdict": "SECONDARY",
+      "n_same_direction": 9,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M7_raw",
+      "verdict": "REJECT",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    },
+    {
+      "metric_id": "M2_raw_var",
+      "verdict": "REJECT",
+      "n_same_direction": 10,
+      "n_l1oo": 10
+    }
+  ],
+  "l1oo_deltas_c01_minus_original": {
+    "M4_ng_mean": {
+      "deltas": [
+        -0.010799,
+        -0.009068,
+        -0.014854,
+        -0.014344,
+        -0.018471,
+        -0.016545,
+        -0.017426,
+        -0.012039,
+        -0.014622,
+        -0.014288
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M5_A_all": {
+      "deltas": [
+        -0.034675,
+        -0.026399,
+        -0.021649,
+        -0.027466,
+        -0.021284,
+        -0.030615,
+        -0.016093,
+        -0.025662,
+        -0.031478,
+        -0.033562
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M5_C_all": {
+      "deltas": [
+        -0.033213,
+        -0.022507,
+        -0.01707,
+        -0.024335,
+        -0.015704,
+        -0.028399,
+        -0.013048,
+        -0.022175,
+        -0.028505,
+        -0.030355
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M3_all": {
+      "deltas": [
+        -0.054978,
+        -0.036387,
+        -0.03226,
+        -0.055301,
+        -0.04306,
+        -0.05543,
+        -0.070796,
+        -0.052836,
+        -0.050358,
+        -0.052733
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M4_good_mean": {
+      "deltas": [
+        -0.052256,
+        -0.074353,
+        -0.098037,
+        -0.080075,
+        -0.062114,
+        -0.069674,
+        -0.097452,
+        -0.093943,
+        -0.060109,
+        -0.059858
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "R_ratio": {
+      "deltas": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "n_nonzero_sign_consistent": 0
+    },
+    "M3_ng": {
+      "deltas": [
+        -0.021614,
+        0.002956,
+        -0.001965,
+        -0.01888,
+        -0.002465,
+        -0.015959,
+        -0.026778,
+        -0.014522,
+        -0.018087,
+        -0.019095
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M5_B_all": {
+      "deltas": [
+        -0.055792,
+        -0.046171,
+        -0.040122,
+        -0.045375,
+        -0.041998,
+        -0.046497,
+        -0.028705,
+        -0.042808,
+        -0.05014,
+        -0.053252
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M5_D_all": {
+      "deltas": [
+        -0.027794,
+        -0.012274,
+        -0.012802,
+        -0.029048,
+        -0.023914,
+        -0.028753,
+        -0.016833,
+        -0.016891,
+        -0.02624,
+        -0.026328
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M3_good": {
+      "deltas": [
+        -0.153654,
+        -0.134637,
+        -0.113459,
+        -0.14929,
+        -0.153308,
+        -0.1525,
+        -0.149639,
+        -0.141628,
+        -0.141987,
+        -0.144011
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M8_ratio": {
+      "deltas": [
+        -0.03837,
+        -0.026044,
+        -0.104359,
+        -0.071286,
+        -0.111522,
+        0.001314,
+        -0.071397,
+        -0.063743,
+        -0.093804,
+        -0.115924
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M7_std_all_mean": {
+      "deltas": [
+        0.00311,
+        0.029375,
+        0.045527,
+        0.01812,
+        0.035603,
+        0.016523,
+        0.025778,
+        0.019012,
+        0.01759,
+        0.022311
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M7_ratio": {
+      "deltas": [
+        -0.139782,
+        -0.117054,
+        -0.116722,
+        -0.127078,
+        -0.111654,
+        -0.140005,
+        -0.113068,
+        -0.125591,
+        -0.134362,
+        -0.132468
+      ],
+      "n_nonzero_sign_consistent": 10
+    },
+    "M2_ratio": {
+      "deltas": [
+        -0.285244,
+        -0.250744,
+        -0.237213,
+        -0.263068,
+        -0.253095,
+        -0.277415,
+        -0.248419,
+        -0.244393,
+        -0.276373,
+        -0.271926
+      ],
+      "n_nonzero_sign_consistent": 10
+    }
+  },
+  "verdict": "SUPPORTS FOLLOW-UP",
+  "rule": "protocol section 11: needs detection preserved AND a non-REJECT metric improved with >=9/10 leave-one-illumination-out agreement",
+  "note_on_M1": "R_all/R_kind cannot be recomputed under leave-one-illumination-out: the frozen `e4x_common.metric_block` hard-requires exactly 10 illuminations per specimen. It is therefore excluded from the L1oO consistency check (declared, not worked around by editing the frozen helper)."
+}

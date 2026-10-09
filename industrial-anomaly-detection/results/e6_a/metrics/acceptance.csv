@@ -1,0 +1,10 @@
+check,computed,frozen_record,abs_diff,PASS
+Original.R_all,0.675427,0.67543,3.11e-06,True
+C01.R_all,0.69617,0.69617,1.4e-07,True
+C01.R_ratio,1.030711,1.0307,1.131e-05,True
+Original.AUROC,0.76766,0.76766,0.0,True
+Original.dprime,1.206757,1.20676,2.77e-06,True
+Original.M3_good,0.462616,0.4626,1.631e-05,True
+C01.M3_good,0.319159,0.3192,4.111e-05,True
+Original.M3_ng,0.112001,0.112,1.41e-06,True
+C01.M3_ng,0.098092,0.0981,8.03e-06,True

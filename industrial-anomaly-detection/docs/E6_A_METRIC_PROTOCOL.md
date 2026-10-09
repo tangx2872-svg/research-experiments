@@ -268,4 +268,21 @@ hand-tuned metric weights · **no hiding a pathology to make the paper's story p
 
 | # | time | deviation | reason |
 |---|---|---|---|
-| — | — | *(none at freeze)* | — |
+| D1 | 2026-10-09, **pre-result** (found by T1, corrected before the reported run) | `M5_C` denominator was implemented as `sqrt((σ_G⁴ + σ_N⁴)/2)` instead of §4's `sqrt((σ_G² + σ_N²)/2)`. | T1 flagged it: a 0.1× rescale produced a relative deviation of exactly 9.0 (= 1/a − 1), i.e. the wrong dimensional scaling. Fixed. No metric definition changed; `M5_C` re-graded REJECT → KEEP. |
+| D2 | 2026-10-09, **pre-result** | Collapse-resistance term computed as `20·(0 if bad else 100)` giving CR = 2040. | Scoring artefact. Corrected to `20.0 / 0.0`. No ranking changed. |
+| D3 | 2026-10-09, **pre-result** | The per-specimen helpers hard-required **exactly 10** illuminations, so leave-one-illumination-out (§11) silently returned all-`nan` and C01 was graded AMBIGUOUS. | Relaxed to `MIN_ILLUM = 3`; the main run is unchanged (every specimen has 10). L1oO now computes for M2/M3/M4/M5/M7/M8. **C01 verdict corrected AMBIGUOUS → SUPPORTS FOLLOW-UP.** |
+| D4 | 2026-10-09, **pre-result** | `_synthetic_robust` treated a non-finite metric value on a degenerate detector as "the metric is fooled". | A metric that fails **loudly** (`nan`) is not fooled. Rule corrected and documented; synthetic readings are reported separately. |
+
+**Nothing in §1–§13 was edited.** No metric definition, threshold, weight, gate or verdict rule was
+changed after any unblinded result was read. The four items above are implementation corrections made
+before the reported run; they are logged here per §14.
+
+**Frozen-helper findings (reported, deliberately NOT fixed — editing them would redefine history):**
+
+1. `experiment1h_runner.image_auroc` does **not** average ranks for ties. An **all-constant** score
+   vector is scored **AUROC = 1.0** instead of 0.5. Measured impact on the 7 real methods:
+   **max |frozen − tie-corrected| = 0.000e+00**, so all historical AUROC values stand; but an
+   `AUROC ≥ 0.5` gate alone does not protect against constant collapse.
+2. `e4x_common.metric_block` hard-requires exactly 10 illuminations per specimen (it raises
+   `IndexError` on empty percentile arrays), so `R_all / R_ratio` are **not computable** under
+   leave-one-illumination-out. Declared rather than worked around.

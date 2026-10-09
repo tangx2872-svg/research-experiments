@@ -1563,6 +1563,22 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **Q5 下一阶段应切向**：①先做 **input-level / 免训练** 方向，且**先解释 C01 的指标符号矛盾**（见下）；②**先重新验证鲁棒性指标本身**再评判任何新候选；③训练-free 或目标函数无法被"忽略输入"满足的模块才允许重试；④C06/C07/C08 及其调优变体**明确降级，禁止重跑**；⑤B2/X6c 与 E5-0B 的 HOLD、C10 补位保持关闭。
    - **必须记录的新指标风险（本审计最有价值的产出）**：**C01 的"原始尺度"光照方差占比从 0.463 降到 0.319（−31%），而冻结首要指标 `R_all` 却报 +3.1% 恶化** —— 二者**符号相反**。同时 **`R_all` 可被"对光照与缺陷都不响应"的表示刷低**（C08：R_ratio 0.465 / AUROC 0.462 / d′ −0.110 / ρ −0.402）。⇒ **`R_all` 不可单独作为鲁棒性目标**，任何后续轮次必须与 Δd′/ΔAUROC 联读，并先解决 C01 的符号矛盾。
    - **限定**：1 类别 × 1 view × 1 seed × 1 backbone × 4 候选；**负结果**，不构成"不可能"的证明。**未启动** E5-2 组合、未做多 seed/多 view、未调参、未 rescue、未补 C10。
+15. **E6-A Illumination Robustness Metric Tournament & Validity Audit（2026-10-09，CPU-only，GPU = 0）**：
+   论文阶段暂时从 Module Composition Screening 切到 **Measurement Validity Audit**。
+   协议先冻结于 [`docs/E6_A_METRIC_PROTOCOL.md`](docs/E6_A_METRIC_PROTOCOL.md)（commit `77e81ee`，
+   **先于任何指标结果与解盲解读**）；资产清单 [`docs/E6_A_ASSET_MANIFEST.md`](docs/E6_A_ASSET_MANIFEST.md)；
+   结果 [`results/e6_a/README.md`](results/e6_a/README.md)。**方法先匿名（`BLIND_SEED=20261009`，Original 保留原名，其余 = M01–M06），
+   verdict 冻结后才解盲**；bootstrap 1000 次（`BOOTSTRAP_SEED=20261009`）。Runtime **221 s**。
+   - **为什么需要审计**：`R_all` 可被**游戏化** —— **C08** 的 `R_ratio = 0.4652` 是 E5-1 全场"最鲁棒"的数字，而 AUROC **0.46197**（低于随机）、`d′ = −0.11035`；且 **C01** 出现**符号矛盾**（原始光照方差占比 0.463→**0.319（−31%）**，而 `R_all` 报 **+3.1% 恶化**）。两条病理都**独立于 C01 的成败**存在。
+   - **验收 9/9 PASS**（冻结值被机械复现）：Original `R_all` 0.675427、C01 `R_all` 0.696170、C01 `R_ratio` 1.030711、Original AUROC/d′ 0.767660/1.206757、Original `M3_good/ng` 0.462616/0.112001、C01 0.319159/0.098092 ⇒ 说明 **M3 与 E5-FAILURE-AUDIT 的 variance-share 是同一个量**。
+   - **锦标赛（14 个候选指标，6 项加权）**：**KEEP 3 = `M4_ng`(92.00) / `M5_A`(90.25) / `M5_C`(90.25)**；**SECONDARY 8**（含 **`M1 R_all` 86.50**）；**REJECT 3 = `M7_std`（T6 fatal）/ `M7_raw`（scale-sensitive）/ `M2_raw_var`（scale-sensitive）**。
+   - **§6 发现 1（检测指标 bug）**：冻结的 `image_auroc` **未对并列值取平均秩** ⇒ **全常量分数被判 AUROC = 1.0**（校正后 0.5）。**实测 7 个真实方法上 frozen 与校正版 max|diff| = 0.000e+00** ⇒ **历史 AUROC 数值全部成立**；但 **`AUROC ≥ 0.5` 单靠一条门挡不住 constant collapse**（E6-A 的门只因 `Δd′ ≥ −0.10` 才挡住 `d′=nan`）。
+   - **§7 发现 2（指标符号分歧）**：**"C01 是否更光照鲁棒"取决于用哪个指标** —— `M3_good` −31.0% / `M3_all` −37.6% / **`M5_A` −7.7%（KEEP）** / **`M5_C` −5.4%（KEEP）** 说**更好**；而 `M1_R_all` **+3.1%**、`M7_std` **+3.1%**、`M4_good` **+15.8%**、**`M4_ng` +1.6%（KEEP）** 说**更差**。`M7` 的两个归一化**互相矛盾**且都被 REJECT。
+   - **§8 冗余**：`M5_A` vs `M5_C` ρ = **+1.0000**（同一排序）⇒ 按协议 §7 应视 `M5_C` 与 `M5_A` **冗余**，建议保留更简单、不依赖缺陷拟合的 **`M5_A`**；`M3_ng`≡`M3_all`、`M7_std`≡`R_ratio` 亦同。
+   - **结论**：**推荐 TWO-AXIS PARETO**（协议 §9 强制，因为**没有任何单一 scalar 同时可靠**）：**Axis X = AUROC / d′**（门须用并列校正 AUROC **且**保留 `Δd′ ≥ −0.10` 分离判据）；**Axis Y = `M5_A`**（主），`M3_good` 为可解释伴轴，`M4_ng` 作为**唯一会反号的 KEEP 指标**保留为反向对照。**禁止任意加权综合分**。**`R_all` 不再适合作首要鲁棒性指标**（SECONDARY：T6 失败 + 可被游戏化 + 与 REJECT 的 `M7_std` 排序完全相同）。
+   - **C01 复评 = `SUPPORTS FOLLOW-UP`**（按 §11 冻结规则：检测未退化 ✓、有非 REJECT 指标改善且 L1oO ≥9/10 一致 ✓、不依赖 REJECT 指标 ✓、所用指标通过病理 ✓）。**附条件（非改规则）**：`M4_ng` 与 `M1_R_all` 反号，C01 **只能与"先解释该符号分歧"的预注册计划一同推进**，不得作为无保留的鲁棒性胜利。
+   - **B2/X6c 的历史 STOP 不改变**（在全部 KEEP 指标上与 Original 不可区分，`M5_A` 0.3778/0.3566 **均劣于** 0.3480）；**C06/C07/C08 仍为 STOP**（三者均未过检测门，换指标不能复活已坍缩的检测器）。
+   - **限定**：1 类别 × 1 view × 1 seed × 7 方法 × 1 backbone；且 7 个方法中 3 个是**坍缩检测器**，故指标排序部分由"指标如何处理坍缩"决定（这正是审计目的，但排序**不是**干净的工作检测器鲁棒性排名）。**未启动 GPU**、未跑 multi-view/multi-seed、未调参、未 rescue、未组合、未搜新候选。
 
 ---
 

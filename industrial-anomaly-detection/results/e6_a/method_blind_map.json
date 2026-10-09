@@ -1,0 +1,13 @@
+{
+  "BLIND_SEED": 20261009,
+  "map": {
+    "Original": "Original",
+    "C01": "M01",
+    "C07": "M02",
+    "B2": "M03",
+    "C06": "M04",
+    "X6c": "M05",
+    "C08": "M06"
+  },
+  "note": "Original keeps its name; others are M01..M06. Read only AFTER verdicts are frozen."
+}

@@ -10,13 +10,13 @@
 
 | 项 | 状态 |
 |---|---|
-| 阶段 | **Phase III — Module Composition Screening**（2026-10-08 由 E4-X 触发）；**E5-1 已完成：`0 GO / 1 HOLD / 3 STOP`** |
+| 阶段 | **Measurement Validity Audit**（2026-10-09 由 E5-FAILURE-AUDIT 的指标病理触发）；前一阶段 Phase III Module Composition 已 STOP（E5-1 = `0 GO / 1 HOLD / 3 STOP`） |
 | Method discovery / search | **CLOSED（已正式结束）** |
 | 冻结方法 | **X6c** — 内部 `A — FREEZE X6c`；但 **E4-X 外部（M²AD Bird）已 KILLED**，见 §13 |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
 | Module composition | **E5-1 BROAD SCREENING 已完成（2026-10-09）** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ 协议 §17 **case C**：**STOP Module Composition 分支**（见 §13） |
 | 主 E4 数据集 | **M²AD**（E4-0C winner；E4-D0 integrity **PASS**；E4-D1 Original smoke **PASS**） |
-| 下一步 | **人工裁决**（E5-FAILURE-AUDIT 已完成，CPU-only）：① 先解释 **C01 的指标符号矛盾**（原始光照占比 −31% 而 `R_all` +3.1%）并重验鲁棒性指标；② 只有 **input-level / 免训练** 方向有证据支撑（C01，HOLD，`ΔAUROC +0.0128` / `Δd′ +0.0988` / `R_ratio 1.0307`）。**禁止自动进入 E5-2、禁止 rescue C06/C07/C08、禁止调参、禁止补 C10。** |
+| 下一步 | **人工裁决**（E6-A 已完成，CPU-only，**GPU 全程空闲**）：① 冻结 Axis Y = **`M5_A`**（门用**并列校正 AUROC** + `Δd′ ≥ −0.10`），伴轴 `M3_good`、反向对照 `M4_ng`；② 先解释 **C01 的指标符号分歧**（`M5_A`/`M3_*` 说更好，`M1_R_all`/`M4_*` 说更差）；③ `R_all` 已降为 SECONDARY，**不得再作首要鲁棒性指标**。**禁止自动启动 GPU、禁止 multi-view/multi-seed、禁止 rescue C06/C07/C08、禁止调参、禁止补 C10。** |
 
 ---
 
@@ -239,8 +239,24 @@ E5-1 broad screening= DONE  (0 GO / 1 HOLD / 3 STOP -> protocol §17 case C)
 E5-2A branch read  = CASE C (0 GO) -> E5-2A NOT EXECUTABLE (no survivor)
 E5-FAILURE-AUDIT   = DONE   (CPU-only, GPU idle)
 Module composition = STOPPED (this branch)
-Next               = human review required (no auto E5-2, no rescue, no C10)
+E6-A metric audit  = DONE   (CPU-only): R_all DEMOTED to SECONDARY; TWO-AXIS PARETO recommended;
+                     C01 re-evaluated as SUPPORTS FOLLOW-UP (with sign-disagreement caveat)
+Next               = human review required (no GPU work authorised, no rescue, no C10)
 ```
+
+### E6-A 指标有效性审计结果（`docs/E6_A_METRIC_PROTOCOL.md` / `results/e6_a/`，2026-10-09，**CPU-only，GPU = 0**）
+
+协议冻结于 commit `77e81ee`（**先于任何指标结果与解盲**）；盲映射 `BLIND_SEED=20261009`；bootstrap 1000（`BOOTSTRAP_SEED=20261009`）。Runtime **221 s**。
+
+- **验收 9/9 PASS**：冻结值全部机械复现（Original `R_all` 0.675427 / C01 0.696170 / C01 `R_ratio` 1.030711 / Original AUROC 0.767660 / d′ 1.206757 / `M3_good` 0.462616 / C01 0.319159 / `M3_ng` 0.112001 / C01 0.098092）。
+- **锦标赛**：**KEEP = `M4_ng`(92.0) / `M5_A`(90.25) / `M5_C`(90.25)**；SECONDARY 8（**含 `M1 R_all` 86.50**）；REJECT = `M7_std`(T6 fatal) / `M7_raw` / `M2_raw_var`(scale-sensitive)。
+- **发现 1 — 冻结检测指标有并列 bug**：`image_auroc` 不对并列取平均秩 ⇒ 全常量分数得 **AUROC 1.0**（校正 0.5）。**真实 7 方法上 max|diff| = 0.000e+00 ⇒ 历史数值全部成立**；但 `AUROC≥0.5` **单独不足以**挡住 constant collapse。
+- **发现 2 — 指标符号分歧**：`M3_*`/`M5_A`/`M5_C` 说 C01 **更鲁棒**（−31%/−37.6%/−7.7%/−5.4%）；`M1_R_all`(+3.1%)、`M7_std`(+3.1%)、`M4_good`(+15.8%)、`M4_ng`(+1.6%) 说**更差**。`M7` 两种归一化**互相矛盾**且都被 REJECT。
+- **发现 3 — 冗余**：`M5_A`≡`M5_C`（ρ=+1.0000）、`M3_ng`≡`M3_all`、`R_ratio`≡`M7_std` ⇒ 保留 **`M5_A`**。
+- **推荐协议 = TWO-AXIS PARETO**：Axis X = AUROC/d′（门用**并列校正 AUROC** + 保留 `Δd′ ≥ −0.10`）；Axis Y = **`M5_A`**（伴轴 `M3_good`，反向对照 `M4_ng`）。**禁止加权综合分**。**`R_all` 降为 SECONDARY，不再作首要鲁棒性指标**。
+- **C01 = `SUPPORTS FOLLOW-UP`**（§11 冻结规则全满足），**附条件**：须先解释 `M4_ng`/`M1_R_all` 的反号，不得当作无保留胜利。
+- **B2/X6c 历史 STOP 不变**；**C06/C07/C08 仍 STOP**（均未过检测门）。
+- **限定**：1 类别 × 1 view × 1 seed × 7 方法 × 1 backbone，且 7 方法中 3 个为坍缩检测器 ⇒ 指标排序部分由"如何处理坍缩"决定。**未启动任何 GPU 工作**。
 
 ### E5-FAILURE-AUDIT 结果（`docs/E5_FAILURE_AUDIT.md`，2026-10-09，**CPU-only，GPU = 0**）
 

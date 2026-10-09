@@ -1,0 +1,56 @@
+{
+  "blinded": true,
+  "BLIND_SEED": 20261009,
+  "verdicts": {
+    "M4_ng": "KEEP",
+    "M5_A": "KEEP",
+    "M5_C": "KEEP",
+    "M3_all": "SECONDARY",
+    "M4_good": "SECONDARY",
+    "M1_R_all": "SECONDARY",
+    "M3_ng": "SECONDARY",
+    "M5_B": "SECONDARY",
+    "M5_D": "SECONDARY",
+    "M3_good": "SECONDARY",
+    "M8_sd": "SECONDARY",
+    "M7_std": "REJECT",
+    "M7_raw": "REJECT",
+    "M2_raw_var": "REJECT"
+  },
+  "scores": {
+    "M4_ng": 92.0,
+    "M5_A": 90.25,
+    "M5_C": 90.25,
+    "M3_all": 88.75,
+    "M4_good": 87.5,
+    "M1_R_all": 86.5,
+    "M3_ng": 86.25,
+    "M5_B": 82.0,
+    "M5_D": 81.25,
+    "M3_good": 78.25,
+    "M8_sd": 77.0,
+    "M7_std": 80.75,
+    "M7_raw": 68.25,
+    "M2_raw_var": 64.5
+  },
+  "keep": [
+    "M4_ng",
+    "M5_A",
+    "M5_C"
+  ],
+  "secondary": [
+    "M3_all",
+    "M4_good",
+    "M1_R_all",
+    "M3_ng",
+    "M5_B",
+    "M5_D",
+    "M3_good",
+    "M8_sd"
+  ],
+  "reject": [
+    "M7_std",
+    "M7_raw",
+    "M2_raw_var"
+  ]
+}

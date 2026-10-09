@@ -1,0 +1,15 @@
+metric_id,label,field,direction,construct_validity_100,collapse_resistance_100,scale_behaviour_100,interpretability_100,statistical_stability_100,computability_100,score,verdict,fatal_pathologies,scale_sensitive,bootstrap_worst_rel_ci_width
+M4_ng,M4 within-specimen rank stability across illuminations (NG),M4_ng_mean,higher,100.0,100.0,100,90,70,80,92.0,KEEP,[],False,0.3866
+M5_A,M5 standardized sensitivity (denom A: pooled SD),M5_A_all,lower,100.0,100.0,100,65,70,100,90.25,KEEP,[],False,0.4639
+M5_C,M5 standardized sensitivity (denom C: pooled within-class SD),M5_C_all,lower,100.0,100.0,100,65,70,100,90.25,KEEP,[],False,0.4638
+M3_all,M3 illumination variance share (All),M3_all,lower,100.0,100.0,100,85,40,100,88.75,SECONDARY,[],False,0.566
+M4_good,M4 within-specimen rank stability across illuminations (Good),M4_good_mean,higher,100.0,100.0,100,90,40,80,87.5,SECONDARY,[],False,0.9446
+M1_R_all,M1 frozen R_all (LEGACY),R_ratio,lower,100.0,100.0,100,70,40,100,86.5,SECONDARY,[],False,0.5902
+M3_ng,M3 illumination variance share (NG),M3_ng,lower,90.0,100.0,100,85,40,100,86.25,SECONDARY,[],False,0.6401
+M5_B,M5 standardized sensitivity (denom B: |mean_NG-mean_Good|),M5_B_all,lower,100.0,100.0,100,70,10,100,82.0,SECONDARY,[],False,4.3821
+M5_D,M5 standardized sensitivity (denom D: robust MAD),M5_D_all,lower,100.0,100.0,100,65,10,100,81.25,SECONDARY,[],False,1.3791
+M3_good,M3 illumination variance share (Good),M3_good,lower,90.0,60.0,100,85,40,100,78.25,SECONDARY,[],False,0.7411
+M8_sd,M8 detection stability across illumination (sd AUROC),M8_ratio,lower,100.0,60.0,100,90,10,100,77.0,SECONDARY,[],False,2.159
+M7_std,M7 standardized pairwise illumination drift,M7_std_all_mean,lower,50.0,100.0,100,85,70,100,80.75,REJECT,['T6 fails to detect injected illumination sensitivity'],False,0.4755
+M7_raw,M7 raw pairwise illumination score drift,M7_ratio,lower,100.0,20.0,40,85,70,100,68.25,REJECT,[],True,0.4965
+M2_raw_var,M2 raw within-specimen illumination variance,M2_ratio,lower,100.0,20.0,40,90,40,100,64.5,REJECT,[],True,0.8426
