@@ -317,3 +317,10 @@ results/e5_1/raw/*.pt
 # E6-A metric tournament: analysis artifacts (no weights, no logs)
 !results/e6_a/
 results/e6_a/logs/
+
+# E7: protocol + results tracked; logs / weights / caches excluded
+!results/e7_1/
+!results/e7_2/
+results/e7_1/logs/
+results/e7_2/logs/
+results/e7_*/raw/*.pt
