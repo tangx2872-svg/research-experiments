@@ -121,8 +121,11 @@ def round1_scope(category: str) -> dict:
 
 def smoke_scope(category: str, n_bank: int = 12, n_test: int = 24) -> dict:
     sc = EF.build_scope(category)
-    bank = sorted(E8.bank_for(sc["pool"], ROUND1_SEED))[:n_bank]
-    test = sorted([r for r in sc["test"] if r["view"] == ROUND1_VIEW])[:n_test]
+    bank = E8.bank_for(sc["pool"], ROUND1_SEED)[:n_bank]
+    tv = [r for r in sc["test"] if r["view"] == ROUND1_VIEW]
+    good = [r for r in tv if r["kind"] == "Good"][:n_test // 2]
+    ng = [r for r in tv if r["kind"] == "NG"][:n_test - n_test // 2]
+    test = good + ng
     return {"category": category, "bank": bank, "test": test}
 
 

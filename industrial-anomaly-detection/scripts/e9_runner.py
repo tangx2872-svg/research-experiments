@@ -82,6 +82,31 @@ def build_input_cache(kind: str, records: list, bar=None) -> int:
     return written
 
 
+def build_retinex(records: list, bar=None) -> int:
+    """Retinex from L0_448 source (Car/Cube originals are not local). Bit-identical to E7's
+    `_load_rgb448(original)` because L0_448 is that exact resize, stored losslessly."""
+    import argparse
+    torch.serialization.add_safe_globals([argparse.Namespace])
+    model, save_fn = E7._retinex_model()
+    written = 0
+    for i, r in enumerate(records, 1):
+        rel = Path(r["image_path"]).relative_to(E7.LD.DATA_ROOT)
+        dst = E7.CACHE_ROOT / "retinex" / rel
+        if dst.exists():
+            continue
+        src = E8.CACHE_ROOT / "l0_448" / rel
+        arr = np.asarray(Image.open(src).convert("RGB"))
+        t = torch.from_numpy(arr).float().permute(2, 0, 1).unsqueeze(0).cuda() / 255.0
+        with torch.no_grad():
+            R, _L, _ = model(t)
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        save_fn(R, str(dst))
+        written += 1
+        if bar is not None and i % 200 == 0:
+            bar(i, extra=f"retinex written={written}")
+    return written
+
+
 def prep(categories: list, tracker: E8.EtaTracker) -> None:
     """Build E9 input caches + Retinex for Car/Cube (Bird retinex already cached)."""
     for cat in categories:
@@ -93,13 +118,12 @@ def prep(categories: list, tracker: E8.EtaTracker) -> None:
             n = build_input_cache(kind, recs)
             print(f"[E9 PREP] {cat} {kind}: wrote {n} (missing) in {time.time()-t0:.0f}s "
                   f"disk {E8.free_gb():.1f} GB", flush=True)
-        # retinex (Bird already has 1000; Car/Cube need it)
-        import e7_common as E7C
-        need = [r for r in recs if not (E7C.CACHE_ROOT / "retinex" /
-                Path(r["image_path"]).relative_to(E7C.LD.DATA_ROOT)).exists()]
+        # retinex from L0_448 (Bird cached in E7; Car/Cube built here)
+        need = [r for r in recs if not (E7.CACHE_ROOT / "retinex" /
+                Path(r["image_path"]).relative_to(E7.LD.DATA_ROOT)).exists()]
         if need:
             print(f"[E9 PREP] {cat} retinex: {len(need)} missing -> building (GPU)", flush=True)
-            E7C.ensure_cache("retinex", need, bar=None)
+            build_retinex(need, bar=None)
         else:
             print(f"[E9 PREP] {cat} retinex: already cached", flush=True)
         tracker.heartbeat_if_due(minutes=5)
