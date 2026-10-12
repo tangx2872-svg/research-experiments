@@ -10,13 +10,13 @@
 
 | 项 | 状态 |
 |---|---|
-| 阶段 | **Real-Illumination Robust Module Screening（E9）**；历史：E8 CLAHE 跨类别 Kill Test 已完成 **STOP**（2026-10-12）、E7-1/E7-2 已完成、E5-1 `0 GO / 1 HOLD / 3 STOP` |
+| 阶段 | **Real-Illumination Robust Module Screening（E9 已完成 `NO SURVIVOR`）**；历史：E8 CLAHE 跨类别 Kill Test **STOP**、E7-1/E7-2 已完成、E5-1 `0 GO / 1 HOLD / 3 STOP` |
 | Method discovery / search | **CLOSED（已正式结束）** |
 | 冻结方法 | **X6c** — 内部 `A — FREEZE X6c`；但 **E4-X 外部（M²AD Bird）已 KILLED**，见 §13 |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
 | Module composition | **E5-1 BROAD SCREENING 已完成** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ **STOP Module Composition 分支**；**E7 CLAHE 已 KILLED**（跨类别 STOP，见 §13） |
 | 主 E4 数据集 | **M²AD**（E4-0C winner；E4-D0 integrity **PASS**；E4-D1 Original smoke **PASS**） |
-| 下一步 | **E9 — Real-Illumination Robust Module/Combination Screening**（候选审计 → Smoke → Round 1）；以 **Retinex C01** 弱正信号（`ΔAUROC +0.0128 / Δd′ +0.0988`）为 reference；**禁止继续调 CLAHE**。 |
+| 下一步 | **人工裁决**（E9 = `NO SURVIVOR` 已完成）：跨 E5-1/E8/E9 三轮，「给 PatchCore 加便宜 preprocessing/feature-norm/module」路线已穷尽。需决定：① 接受负面研究叙事（PatchCore illumination-robustness 的谨慎 negative study）；或 ② 转向改变 scoring objective 本身的方法家族。**禁止继续 CLAHE 调参 / 继续 preprocessing 海选。** |
 
 ---
 
@@ -292,6 +292,15 @@ Next               = human review required (no E7-3, no multi-seed, no rescue, n
 - **类别趋势**：Bird **+0.013/+0.020**；Car **-0.036/-0.048**；Cube **-0.021/-0.023**（Car/Cube 4/4 view 负）。
 - **判定 = STOP**：CLAHE 收益是 **Bird 特异性**；CI 完全 <0；d′ 略降。**禁止继续调 CLAHE 参数。**
 - **推进**：进入 **E9**（以 Retinex C01 弱正信号为 reference，审计 input/feature/score 级归一化家族）。
+
+### E9 Real-Illumination Robust Module Screening 结果（`results/e9/`，2026-10-12）
+
+候选审计去重后冻结 **7 候选**（A0 Retinex / I01 Gray-World / I02 Shades-of-Gray / I03 Gamma / I04 Homomorphic / F01 L2-norm / A1 Retinex+L2）；历史 STOP 家族全部 REMOVE。**Smoke 7/7 PASS**。
+
+- **Round 1（3 cats × seed0 × view120）**：仅 **I03 Gamma** 达 ADVANCE（mean +0.0037，2/3 正）；Retinex(A0)、Shades(I02) 复现 CLAHE 式 Bird↑Car↓Cube↓。
+- **Round 2（I03+F01，3 cats × 3 seeds × 2 views）**：**I03 未确认**（总体 -0.0013，Bird 微正但 Car 翻负、Cube 全负）；**F01 为 Car 特异性**（Car +0.041 / Bird -0.034 / Cube -0.014）。
+- **判定 = `NO SURVIVOR`**：低成本 preprocessing / feature-norm 全部呈类别特异效应。
+- **论文意义**：跨 E5-1/E8/E9 三轮独立证据一致——「给 PatchCore 加便宜模块」路线穷尽；下一步需人工裁决（负面研究叙事 vs 转向 scoring-objective 方法家族）。
 
 ### E6-A 指标有效性审计结果（`docs/E6_A_METRIC_PROTOCOL.md` / `results/e6_a/`，2026-10-09，**CPU-only，GPU = 0**）
 

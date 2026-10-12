@@ -1,0 +1,108 @@
+{
+  "I03": {
+    "n": 9,
+    "mean_d_auroc": -0.00133,
+    "per_category_mean": {
+      "Bird": 0.00389,
+      "Car": -0.00195,
+      "Cube": -0.00593
+    },
+    "per_category_seed": {
+      "Bird": {
+        "0": {
+          "mean_d_auroc": 0.00329,
+          "mean_d_dprime": 0.02854
+        },
+        "1": {
+          "mean_d_auroc": 0.00399,
+          "mean_d_dprime": 0.03828
+        },
+        "2": {
+          "mean_d_auroc": 0.00439,
+          "mean_d_dprime": 0.03064
+        }
+      },
+      "Car": {
+        "0": {
+          "mean_d_auroc": 0.0031,
+          "mean_d_dprime": 0.00598
+        },
+        "1": {
+          "mean_d_auroc": -0.00431,
+          "mean_d_dprime": -0.00152
+        },
+        "2": {
+          "mean_d_auroc": -0.00462,
+          "mean_d_dprime": -0.01534
+        }
+      },
+      "Cube": {
+        "0": {
+          "mean_d_auroc": -0.00572,
+          "mean_d_dprime": -0.01974
+        },
+        "1": {
+          "mean_d_auroc": -0.00355,
+          "mean_d_dprime": -0.01496
+        },
+        "2": {
+          "mean_d_auroc": -0.00853,
+          "mean_d_dprime": -0.02632
+        }
+      }
+    }
+  },
+  "F01": {
+    "n": 9,
+    "mean_d_auroc": -0.00248,
+    "per_category_mean": {
+      "Bird": -0.03438,
+      "Car": 0.0407,
+      "Cube": -0.01377
+    },
+    "per_category_seed": {
+      "Bird": {
+        "0": {
+          "mean_d_auroc": -0.02802,
+          "mean_d_dprime": -0.11837
+        },
+        "1": {
+          "mean_d_auroc": -0.03135,
+          "mean_d_dprime": -0.12948
+        },
+        "2": {
+          "mean_d_auroc": -0.04378,
+          "mean_d_dprime": -0.19022
+        }
+      },
+      "Car": {
+        "0": {
+          "mean_d_auroc": 0.04761,
+          "mean_d_dprime": 0.17784
+        },
+        "1": {
+          "mean_d_auroc": 0.0272,
+          "mean_d_dprime": 0.11719
+        },
+        "2": {
+          "mean_d_auroc": 0.04729,
+          "mean_d_dprime": 0.1926
+        }
+      },
+      "Cube": {
+        "0": {
+          "mean_d_auroc": -0.02083,
+          "mean_d_dprime": -0.06244
+        },
+        "1": {
+          "mean_d_auroc": -0.01591,
+          "mean_d_dprime": -0.04376
+        },
+        "2": {
+          "mean_d_auroc": -0.00456,
+          "mean_d_dprime": -0.00117
+        }
+      }
+    }
+  }
+}

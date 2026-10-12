@@ -331,3 +331,8 @@ results/e8/logs/
 results/e8/**/fit/
 results/*/fit/
 results/e8/raw/*.pt
+
+# E9 results (tracked); run logs excluded
+!results/e9/
+results/e9/logs/
+results/e9/raw/

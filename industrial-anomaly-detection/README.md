@@ -1618,6 +1618,15 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **类别趋势**：Bird **+0.013 / +0.020**；Car **-0.036 / -0.048**；Cube **-0.021 / -0.023**（Car/Cube 均 **4/4 view 为负**）。
    - **判定 = STOP**：CLAHE 收益是 **Bird 特异性**，非跨类别稳健；95% CI 完全落在 0 以下，d′ 略降。**禁止继续调 CLAHE 参数。**
    - **推进**：明确了「输入级 CLAHE」不是通用解；进入 **E9 — Real-Illumination Robust Module/Combination Screening**（以 Retinex C01 的弱正信号 `ΔAUROC +0.0128 / Δd′ +0.0988` 为 reference）。
+18. **E9 Real-Illumination Robust Module Screening — `NO SURVIVOR`（2026-10-12）**：
+   结果见 [`results/e9/README.md`](results/e9/README.md)。
+   - **问题**：是否存在成熟的 illumination/photometric/feature 归一化模块，能对 PatchCore 提供**跨类别稳定**的 illumination robustness 改进？
+   - **候选（去重后 7 个）**：A0 Retinex（reference）、I01 Gray-World、I02 Shades-of-Gray(p=6)、I03 Gamma(γ=0.8)、I04 Homomorphic、F01 L2 特征归一化、A1 Retinex+L2。历史 STOP 的 α-IN/L2-residual/score-fusion/子空间投影/channel-gating/CLAHE/DINOv2/SoftPatch/SimpleNet/CRAD 全部 REMOVE。score 级校准因单调（不改 AUROC）排除。
+   - **Smoke 7/7 PASS**（Bird/seed0/12+12+12 子集，无 NaN/泄漏）。
+   - **Round 1（3 cats × seed0 × view120，21 units）**：仅 **I03 Gamma** 达 ADVANCE（Bird +0.0078 / Car +0.0078 / Cube -0.0044，mean **+0.0037**，2/3 正）；Retinex(A0) 与 Shades(I02) 复现 CLAHE 式 Bird↑Car↓Cube↓。
+   - **Round 2（Top-2=I03+F01，3 cats × 3 seeds × 2 views，18 units）**：**I03 未确认**（Bird +0.0039 保持，但 Car 翻负、Cube 全负 → 总体 -0.0013）；**F01 是 Car 特异性**（Car +0.041 一致、Bird -0.034 一致、Cube -0.014）。
+   - **判定 = NO SURVIVOR**：输入级 illumination 归一化与特征级 L2 norm 全部呈**类别特异**效应，与 CLAHE/E5-1 同型。
+   - **论文意义**：跨 E5-1/E8/E9 三轮独立证据一致表明——**对 PatchCore 施加任何低成本 preprocessing / feature-normalization / module-insertion 都无法在 M²AD 上获得跨类别稳健的 illumination-robustness 收益**。「给 PatchCore 加便宜模块」这条路线已穷尽。下一步需人工裁决：接受负面研究叙事，或转向改变 scoring objective 本身的方法家族（而非输入/特征预处理）。
 
 ---
 

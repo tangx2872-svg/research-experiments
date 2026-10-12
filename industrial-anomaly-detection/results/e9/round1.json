@@ -1,0 +1,118 @@
+{
+  "ranking": [
+    "I03",
+    "F01",
+    "I01",
+    "I04",
+    "I02",
+    "A0",
+    "A1"
+  ],
+  "aggregates": {
+    "A0": {
+      "mean_d_auroc": -0.010669999999999994,
+      "median_d_auroc": -0.016780000000000017,
+      "mean_d_dprime": -0.059690063150671914,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "worst_category": "Car",
+      "worst_d": -0.022619999999999973,
+      "per_category": {
+        "Bird": 0.007390000000000008,
+        "Car": -0.022619999999999973,
+        "Cube": -0.016780000000000017
+      }
+    },
+    "I01": {
+      "mean_d_auroc": 0.002820000000000008,
+      "median_d_auroc": -0.0017099999999999893,
+      "mean_d_dprime": 0.0014871959015610818,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "worst_category": "Cube",
+      "worst_d": -0.011270000000000002,
+      "per_category": {
+        "Bird": 0.021440000000000015,
+        "Car": -0.0017099999999999893,
+        "Cube": -0.011270000000000002
+      }
+    },
+    "I02": {
+      "mean_d_auroc": -0.0006133333333333546,
+      "median_d_auroc": -0.003770000000000051,
+      "mean_d_dprime": -0.0064155288177820124,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "worst_category": "Cube",
+      "worst_d": -0.03327000000000002,
+      "per_category": {
+        "Bird": 0.03520000000000001,
+        "Car": -0.003770000000000051,
+        "Cube": -0.03327000000000002
+      }
+    },
+    "I03": {
+      "mean_d_auroc": 0.003746666666666676,
+      "median_d_auroc": 0.007800000000000029,
+      "mean_d_dprime": 0.01990519678097567,
+      "positive_categories": 2,
+      "n_categories": 3,
+      "worst_category": "Cube",
+      "worst_d": -0.004369999999999985,
+      "per_category": {
+        "Bird": 0.007800000000000029,
+        "Car": 0.007809999999999984,
+        "Cube": -0.004369999999999985
+      }
+    },
+    "I04": {
+      "mean_d_auroc": 0.0023833333333333298,
+      "median_d_auroc": -0.0022699999999999942,
+      "mean_d_dprime": -0.014095380925354653,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "worst_category": "Bird",
+      "worst_d": -0.0038599999999999746,
+      "per_category": {
+        "Bird": -0.0038599999999999746,
+        "Car": 0.013279999999999959,
+        "Cube": -0.0022699999999999942
+      }
+    },
+    "F01": {
+      "mean_d_auroc": 0.005400000000000034,
+      "median_d_auroc": -0.003349999999999964,
+      "mean_d_dprime": 0.004218283828685758,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "worst_category": "Cube",
+      "worst_d": -0.00651999999999997,
+      "per_category": {
+        "Bird": -0.003349999999999964,
+        "Car": 0.026070000000000038,
+        "Cube": -0.00651999999999997
+      }
+    },
+    "A1": {
+      "mean_d_auroc": -0.029533333333333373,
+      "median_d_auroc": -0.045680000000000054,
+      "mean_d_dprime": -0.11661412783647142,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "worst_category": "Cube",
+      "worst_d": -0.04971000000000003,
+      "per_category": {
+        "Bird": 0.006789999999999963,
+        "Car": -0.045680000000000054,
+        "Cube": -0.04971000000000003
+      }
+    }
+  },
+  "survivors": [
+    "I03",
+    "F01",
+    "I01",
+    "I04"
+  ],
+  "n_survivor": 1
+}
