@@ -46,9 +46,14 @@ METHOD_DESC = {
 
 
 # ------------------------------------------------------------------ fit (frozen PatchCore)
-def fit_patchcore(bank: list, dev, tag: str):
+def fit_patchcore(bank: list, dev, tag: str, seed: int = 0):
     from experiment5a_model import FAlphaDualLayerPatchcore
     from anomalib.engine import Engine
+    # seed RNG before fit so the greedy coreset matches E8/E9's frozen Original (seed 0)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
     dm = LD.make_folder_datamodule([r["image_path"] for r in bank], batch_size=16,
                                    num_workers=0, seed=E7.SEED, name=f"e10_{tag}")
     model = FAlphaDualLayerPatchcore(backbone="wide_resnet50_2", layers=["layer2", "layer3"],
@@ -111,7 +116,7 @@ def run_unit(category: str, seed: int, dev) -> dict:
     bank_ids = {r["image_path"] for r in bank}
     val = [r for r in scope["pool"] if r["image_path"] not in bank_ids]
 
-    tm = fit_patchcore(bank_r, dev, f"{category}_s{seed}")
+    tm = fit_patchcore(bank_r, dev, f"{category}_s{seed}", seed=seed)
     rho3, rho5 = compute_rho(tm)
 
     def img_path(r):
@@ -160,7 +165,7 @@ def smoke(dev) -> int:
     scope = EF.build_scope("Bird")
     bank = E8.bank_for(scope["pool"], 0)
     bank_r = [dict(r, image_path=str(E8.cache_path("l0_256", r))) for r in bank]
-    tm = fit_patchcore(bank_r, dev, "smoke")
+    tm = fit_patchcore(bank_r, dev, "smoke", seed=0)
     rho3, rho5 = compute_rho(tm)
     test = [r for r in scope["test"] if r["view"] == "120"]
     good = [r for r in test if r["kind"] == "Good"][:6]
