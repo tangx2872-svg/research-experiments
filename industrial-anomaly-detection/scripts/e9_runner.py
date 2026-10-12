@@ -236,7 +236,7 @@ def round2(dev, top2: list) -> int:
     tracker.stage_announce(f"Round 2 (top2={top2}, 3 cats x 3 seeds x 2 views)", len(units) * 2.5)
     RAW.mkdir(parents=True, exist_ok=True)
     for cid, cat, s in units:
-        up = RAW / f"{cid}_{cat}_seed{s}.json"
+        up = RAW / f"{cid}_{cat}_seed{s}_r2.json"
         if up.exists():
             print(f"[E9 R2] SKIP {cid}/{cat}/s{s}", flush=True)
             continue
