@@ -1,0 +1,49 @@
+{
+  "verdict": "PASS",
+  "max_abs_dev": 0.009689999999999976,
+  "ranking_observed": [
+    "P03",
+    "P02",
+    "P00"
+  ],
+  "ranking_reference": [
+    "P03",
+    "P02",
+    "P00"
+  ],
+  "ranking_preserved": true,
+  "per_method": {
+    "P00": {
+      "auroc": 0.7712,
+      "ref": 0.78089,
+      "dev": -0.009689999999999976,
+      "d_prime": 1.1659645176910538,
+      "d_prime_ref": 1.22579
+    },
+    "P02": {
+      "auroc": 0.78987,
+      "ref": 0.79458,
+      "dev": -0.004709999999999992,
+      "d_prime": 1.1880553994423868,
+      "d_prime_ref": 1.2157
+    },
+    "P03": {
+      "auroc": 0.79588,
+      "ref": 0.79591,
+      "dev": -2.999999999997449e-05,
+      "d_prime": 1.2224028414400419,
+      "d_prime_ref": 1.21751
+    }
+  },
+  "bird_seed0_4view_mean": {
+    "P00": 0.7629525,
+    "P02": 0.7774125,
+    "P03": 0.78032
+  },
+  "e7_2_reference_means": {
+    "P00": 0.780705,
+    "P02": 0.7964825,
+    "P03": 0.8068074999999999
+  },
+  "note": "ranking well-ordered means P03 >= P02 >= P00 by measured AUROC"
+}

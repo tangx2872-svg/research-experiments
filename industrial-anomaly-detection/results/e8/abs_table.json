@@ -1,0 +1,326 @@
+[
+  {
+    "category": "Bird",
+    "method": "P00",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.7784483333333333,
+    "median": 0.772315,
+    "std": 0.042870147874574424
+  },
+  {
+    "category": "Bird",
+    "method": "P00",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.9159338848473176,
+    "median": 0.9150594970437774,
+    "std": 0.016280812219786216
+  },
+  {
+    "category": "Bird",
+    "method": "P00",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 1.3300113085304117,
+    "median": 1.288020762068824,
+    "std": 0.1343720831459036
+  },
+  {
+    "category": "Bird",
+    "method": "P00",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.9646524469145077,
+    "median": 0.9650274691633585,
+    "std": 0.012094000447126345
+  },
+  {
+    "category": "Bird",
+    "method": "P02",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.7914141666666666,
+    "median": 0.80053,
+    "std": 0.0288810754201474
+  },
+  {
+    "category": "Bird",
+    "method": "P02",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.9194040598764991,
+    "median": 0.9229938520687234,
+    "std": 0.010245988935815931
+  },
+  {
+    "category": "Bird",
+    "method": "P02",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 1.340621586001655,
+    "median": 1.333927713515895,
+    "std": 0.09722856163722746
+  },
+  {
+    "category": "Bird",
+    "method": "P02",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.9641615539841569,
+    "median": 0.9646776562512283,
+    "std": 0.012187577323828224
+  },
+  {
+    "category": "Bird",
+    "method": "P03",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.7982475000000001,
+    "median": 0.810655,
+    "std": 0.025756591786464018
+  },
+  {
+    "category": "Bird",
+    "method": "P03",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.9216668303505973,
+    "median": 0.9258191868926197,
+    "std": 0.008972852006642957
+  },
+  {
+    "category": "Bird",
+    "method": "P03",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 1.3610651229834883,
+    "median": 1.3451224037838747,
+    "std": 0.08507325535299673
+  },
+  {
+    "category": "Bird",
+    "method": "P03",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.9630738647135995,
+    "median": 0.9630605146788853,
+    "std": 0.011641093579305276
+  },
+  {
+    "category": "Car",
+    "method": "P00",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.6636700000000001,
+    "median": 0.66308,
+    "std": 0.035315277147432954
+  },
+  {
+    "category": "Car",
+    "method": "P00",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.8027563123587275,
+    "median": 0.8022824969791269,
+    "std": 0.03019482442629188
+  },
+  {
+    "category": "Car",
+    "method": "P00",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 0.514243651589718,
+    "median": 0.5041209286930756,
+    "std": 0.1458259928153662
+  },
+  {
+    "category": "Car",
+    "method": "P00",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.8942880014208892,
+    "median": 0.8987444625638117,
+    "std": 0.0132993483307433
+  },
+  {
+    "category": "Car",
+    "method": "P02",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.6272533333333333,
+    "median": 0.6290100000000001,
+    "std": 0.030894957615452478
+  },
+  {
+    "category": "Car",
+    "method": "P02",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.784688717943336,
+    "median": 0.779548677804131,
+    "std": 0.02789488066159017
+  },
+  {
+    "category": "Car",
+    "method": "P02",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 0.40506015154781233,
+    "median": 0.3872767824919815,
+    "std": 0.12652491223241993
+  },
+  {
+    "category": "Car",
+    "method": "P02",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.8459866767631136,
+    "median": 0.8515066231289807,
+    "std": 0.01393651125980044
+  },
+  {
+    "category": "Car",
+    "method": "P03",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.6154525000000001,
+    "median": 0.61416,
+    "std": 0.028024023176553357
+  },
+  {
+    "category": "Car",
+    "method": "P03",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.7790043343414143,
+    "median": 0.7774202022370549,
+    "std": 0.02572302763005251
+  },
+  {
+    "category": "Car",
+    "method": "P03",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 0.3746470081014441,
+    "median": 0.36471823775692014,
+    "std": 0.11807059600901192
+  },
+  {
+    "category": "Car",
+    "method": "P03",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.8374964487505632,
+    "median": 0.8453337398816936,
+    "std": 0.018102837288126068
+  },
+  {
+    "category": "Cube",
+    "method": "P00",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.6024866666666667,
+    "median": 0.608895,
+    "std": 0.032017709966753585
+  },
+  {
+    "category": "Cube",
+    "method": "P00",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.7914226996719765,
+    "median": 0.7925693742498447,
+    "std": 0.023863263003116798
+  },
+  {
+    "category": "Cube",
+    "method": "P00",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 0.3895741793734086,
+    "median": 0.40624987686227715,
+    "std": 0.10163356210915153
+  },
+  {
+    "category": "Cube",
+    "method": "P00",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.8749343749941131,
+    "median": 0.8722711840162016,
+    "std": 0.005033756872012237
+  },
+  {
+    "category": "Cube",
+    "method": "P02",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.5810208333333332,
+    "median": 0.5858300000000001,
+    "std": 0.038899143355450395
+  },
+  {
+    "category": "Cube",
+    "method": "P02",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.7781891615232174,
+    "median": 0.7800763771353945,
+    "std": 0.02286237421756019
+  },
+  {
+    "category": "Cube",
+    "method": "P02",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 0.3166884906749997,
+    "median": 0.338007749242496,
+    "std": 0.11658433315276939
+  },
+  {
+    "category": "Cube",
+    "method": "P02",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.8744725490084343,
+    "median": 0.8750480965176168,
+    "std": 0.0061516203007741565
+  },
+  {
+    "category": "Cube",
+    "method": "P03",
+    "metric": "image_auroc",
+    "n": 12,
+    "mean": 0.57994,
+    "median": 0.582775,
+    "std": 0.039169207293485026
+  },
+  {
+    "category": "Cube",
+    "method": "P03",
+    "metric": "image_aupr",
+    "n": 12,
+    "mean": 0.7777724807253114,
+    "median": 0.779628730873043,
+    "std": 0.02177020027002037
+  },
+  {
+    "category": "Cube",
+    "method": "P03",
+    "metric": "d_prime",
+    "n": 12,
+    "mean": 0.3125997851318438,
+    "median": 0.3244912337400673,
+    "std": 0.12032255694641908
+  },
+  {
+    "category": "Cube",
+    "method": "P03",
+    "metric": "pixel_auroc",
+    "n": 12,
+    "mean": 0.8700240968636669,
+    "median": 0.8710071057992805,
+    "std": 0.005268664215110271
+  }
+]

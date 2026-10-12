@@ -1,0 +1,10 @@
+{
+  "gate": {
+    "protocol_committed": "E8_FROZEN_PROTOCOL.md sha=7bf5d4ae209309cd",
+    "stage_a_gate": "gate missing/failed for ['Car', 'Cube']",
+    "no_other_runner": "other runners: none",
+    "disk": "22.3 GB free (min 3.0)",
+    "deadline": "deadline in inf h"
+  },
+  "time": "2026-10-12 12:07:47"
+}

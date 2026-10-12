@@ -1,0 +1,105 @@
+{
+  "per_method": {
+    "P02": {
+      "cells": {
+        "n": 36,
+        "mean": -0.014972222222222232,
+        "median": -0.01935500000000001,
+        "std": 0.026303069794891245,
+        "min": -0.05993000000000004,
+        "max": 0.04267999999999994
+      },
+      "bootstrap_ci": {
+        "lo": -0.023239208333333348,
+        "hi": -0.006412812500000037
+      },
+      "per_category_mean_d_auroc": {
+        "Bird": 0.012965833333333307,
+        "Car": -0.03641666666666665,
+        "Cube": -0.02146583333333335
+      },
+      "per_seed_mean_d_auroc": {
+        "0": -0.014054166666666664,
+        "1": -0.016632500000000022,
+        "2": -0.014230000000000012
+      },
+      "per_view_mean_d_auroc": {
+        "120": -0.00937444444444445,
+        "090": -0.018343333333333316,
+        "240": -0.020524444444444456,
+        "330": -0.011646666666666706
+      },
+      "mean_d_dprime": -0.05715297042302368,
+      "n_dprime": 36,
+      "mean_d_aupr": -0.009276985844989684,
+      "n_aupr": 36,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "positive_cat_seed": 3,
+      "n_cat_seed": 9,
+      "positive_views": 0,
+      "n_views": 4,
+      "worst_category": "Car",
+      "worst_category_d": -0.03641666666666665,
+      "best_category": "Bird",
+      "best_category_d": 0.012965833333333307,
+      "worst_view": "240",
+      "worst_view_d": -0.020524444444444456,
+      "seed_consistent": false,
+      "verdict": "STOP",
+      "go_rule_note": "mean dAUROC=-0.0150 (need >0), positive categories=1/3 (need >=2), mean dd'=-0.0572 (need >-0.10), seed consistent=False"
+    },
+    "P03": {
+      "cells": {
+        "n": 36,
+        "mean": -0.01698833333333334,
+        "median": -0.02401500000000001,
+        "std": 0.03328002133412779,
+        "min": -0.06940000000000002,
+        "max": 0.05006999999999995
+      },
+      "bootstrap_ci": {
+        "lo": -0.027423118055555563,
+        "hi": -0.006090125000000012
+      },
+      "per_category_mean_d_auroc": {
+        "Bird": 0.019799166666666673,
+        "Car": -0.048217499999999996,
+        "Cube": -0.022546666666666697
+      },
+      "per_seed_mean_d_auroc": {
+        "0": -0.016488333333333337,
+        "1": -0.01677666666666668,
+        "2": -0.017700000000000004
+      },
+      "per_view_mean_d_auroc": {
+        "120": -0.013267777777777767,
+        "090": -0.026314444444444442,
+        "240": -0.018638888888888896,
+        "330": -0.009732222222222253
+      },
+      "mean_d_dprime": -0.0618390744255874,
+      "n_dprime": 36,
+      "mean_d_aupr": -0.010556417153566176,
+      "n_aupr": 36,
+      "positive_categories": 1,
+      "n_categories": 3,
+      "positive_cat_seed": 3,
+      "n_cat_seed": 9,
+      "positive_views": 0,
+      "n_views": 4,
+      "worst_category": "Car",
+      "worst_category_d": -0.048217499999999996,
+      "best_category": "Bird",
+      "best_category_d": 0.019799166666666673,
+      "worst_view": "090",
+      "worst_view_d": -0.026314444444444442,
+      "seed_consistent": false,
+      "verdict": "STOP",
+      "go_rule_note": "mean dAUROC=-0.0170 (need >0), positive categories=1/3 (need >=2), mean dd'=-0.0618 (need >-0.10), seed consistent=False"
+    }
+  },
+  "primary": "P02",
+  "primary_verdict": "STOP",
+  "E8": "STOP"
+}

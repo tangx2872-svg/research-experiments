@@ -10,13 +10,13 @@
 
 | 项 | 状态 |
 |---|---|
-| 阶段 | **Lightweight Module Composition Screening**（E7-1 + E7-2 已完成，2026-10-09）；历史：E6-A Measurement Validity Audit 已完成、Phase III Module Composition 已 STOP（E5-1 = `0 GO / 1 HOLD / 3 STOP`） |
+| 阶段 | **Real-Illumination Robust Module Screening（E9）**；历史：E8 CLAHE 跨类别 Kill Test 已完成 **STOP**（2026-10-12）、E7-1/E7-2 已完成、E5-1 `0 GO / 1 HOLD / 3 STOP` |
 | Method discovery / search | **CLOSED（已正式结束）** |
 | 冻结方法 | **X6c** — 内部 `A — FREEZE X6c`；但 **E4-X 外部（M²AD Bird）已 KILLED**，见 §13 |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
-| Module composition | **E5-1 BROAD SCREENING 已完成（2026-10-09）** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ 协议 §17 **case C**：**STOP Module Composition 分支**（见 §13） |
+| Module composition | **E5-1 BROAD SCREENING 已完成** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ **STOP Module Composition 分支**；**E7 CLAHE 已 KILLED**（跨类别 STOP，见 §13） |
 | 主 E4 数据集 | **M²AD**（E4-0C winner；E4-D0 integrity **PASS**；E4-D1 Original smoke **PASS**） |
-| 下一步 | **人工裁决**（E7-1/E7-2 已完成）：**本轮最佳 = `P03` = CLAHE(clipLimit=2.0, tile 8×8) → PatchCore**，跨 4 views mean ΔAUROC **+0.0261**、3/4 view 为正、AUPR/`d′` 均值同时改善；次选 `P02`（CLAHE 1.5，+0.0158）。两者均为 **FINALIST (Path A)**。**6/6 组合 synergy 全负 ⇒ 组合路线在本轮再次被否证。** **禁止自动 E7-3、禁止 multi-seed、禁止第二类别、禁止新模块搜索、禁止参数 rescue、禁止写论文。** |
+| 下一步 | **E9 — Real-Illumination Robust Module/Combination Screening**（候选审计 → Smoke → Round 1）；以 **Retinex C01** 弱正信号（`ΔAUROC +0.0128 / Δd′ +0.0988`）为 reference；**禁止继续调 CLAHE**。 |
 
 ---
 
@@ -280,6 +280,18 @@ Next               = human review required (no E7-3, no multi-seed, no rescue, n
 
 **工程修复 6 项（协议 §17，均未触及方法定义/架构/loss/特征层/打分）**：`E7.Bar.__call__`；**安装 `faiss-cpu 1.15.1`**（官方声明依赖缺失，§G 允许的 dependency fix）；SoftPatch 模块加载；改用官方 `WeightedGreedyCoresetSampler`；补 `feature_shape`；smoke 采样改为每类 ≥10 个不同标本。
 **假设 A1–A6 仍待设计者确认**。**限定**：1 类别 × 1 seed × 4 views；bank 300（E7-1）/1200（E7-2）**绝对 AUROC 不可互比**，仅 E7 内部可比。
+
+### E8 CLAHE × PatchCore Cross-Category Stability Kill Test 结果（`docs/E8_FROZEN_PROTOCOL.md` / `results/e8/`，2026-10-12）
+
+协议冻结于 commit `f332ee1`（sha256 `3d0fe8e0…`，**先于任何结果**）。**`VERDICT = STOP`**。
+
+- **问题**：E7 的 CLAHE 增益是跨类别稳定还是 Bird 单类别偶然？
+- **设计**：3 方法（P00 / P02 / P03）× **3 类别（Bird/Car/Cube）** × 3 seeds × 4 views = **108 cells / 27 fits**；bank **300 图**（E7-1 冻结规则，全类别统一）；PatchCore 完全沿用 E7；Car/Cube 经 HF 镜像**流式选择性抽取**。
+- **Stage B 回归 Gate = PASS**（Bird seed0 view120 P03 = 0.79588 vs E7-1 参考 0.79591，dev -0.00003）。
+- **结果**：P02 mean ΔAUROC **-0.0150**（95% CI [-0.023,-0.006]）；P03 **-0.0170**（95% CI [-0.027,-0.006]）；positive categories = **1/3**；mean Δd′ = -0.057 / -0.062。
+- **类别趋势**：Bird **+0.013/+0.020**；Car **-0.036/-0.048**；Cube **-0.021/-0.023**（Car/Cube 4/4 view 负）。
+- **判定 = STOP**：CLAHE 收益是 **Bird 特异性**；CI 完全 <0；d′ 略降。**禁止继续调 CLAHE 参数。**
+- **推进**：进入 **E9**（以 Retinex C01 弱正信号为 reference，审计 input/feature/score 级归一化家族）。
 
 ### E6-A 指标有效性审计结果（`docs/E6_A_METRIC_PROTOCOL.md` / `results/e6_a/`，2026-10-09，**CPU-only，GPU = 0**）
 

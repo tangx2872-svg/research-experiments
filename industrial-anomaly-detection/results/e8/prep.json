@@ -1,0 +1,74 @@
+{
+  "Bird": {
+    "gate": {
+      "A1_file_count": {
+        "pass": true,
+        "detail": "Bird: 4000 images x 4 kinds; 0 missing"
+      },
+      "A2_decode": {
+        "pass": true,
+        "detail": "Bird: sampled decode check, 0 bad"
+      },
+      "A3_mask_alignment": {
+        "pass": true,
+        "detail": "Bird: 1500/2800 test records carry a mask; 0 missing"
+      },
+      "A4_illumination": {
+        "pass": true,
+        "detail": "Bird: views=['090', '120', '240', '330'] illum=['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']"
+      },
+      "A5_label_alignment": {
+        "pass": true,
+        "detail": "Bird: test Good=800 (expect 800), NG=2000 (expect 2000), total=2800"
+      }
+    }
+  },
+  "Car": {
+    "gate": {
+      "A1_file_count": {
+        "pass": true,
+        "detail": "Car: 4000 images x 4 kinds; 0 missing"
+      },
+      "A2_decode": {
+        "pass": true,
+        "detail": "Car: sampled decode check, 0 bad"
+      },
+      "A3_mask_alignment": {
+        "pass": true,
+        "detail": "Car: 1620/2800 test records carry a mask; 0 missing"
+      },
+      "A4_illumination": {
+        "pass": true,
+        "detail": "Car: views=['090', '120', '240', '330'] illum=['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']"
+      },
+      "A5_label_alignment": {
+        "pass": true,
+        "detail": "Car: test Good=800 (expect 800), NG=2000 (expect 2000), total=2800"
+      }
+    }
+  },
+  "Cube": {
+    "gate": {
+      "A1_file_count": {
+        "pass": true,
+        "detail": "Cube: 4000 images x 4 kinds; 0 missing"
+      },
+      "A2_decode": {
+        "pass": true,
+        "detail": "Cube: sampled decode check, 0 bad"
+      },
+      "A3_mask_alignment": {
+        "pass": true,
+        "detail": "Cube: 1840/2800 test records carry a mask; 0 missing"
+      },
+      "A4_illumination": {
+        "pass": true,
+        "detail": "Cube: views=['090', '120', '240', '330'] illum=['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']"
+      },
+      "A5_label_alignment": {
+        "pass": true,
+        "detail": "Cube: test Good=800 (expect 800), NG=2000 (expect 2000), total=2800"
+      }
+    }
+  }
+}

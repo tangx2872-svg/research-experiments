@@ -1,0 +1,12 @@
+{
+  "stage": "E8-StageC",
+  "completed": 24,
+  "total": 27,
+  "percent": 88.89,
+  "elapsed_sec": 4044.0,
+  "eta_sec": 558.0,
+  "current_unit": "P03/Cube/seed2",
+  "last_completed_unit": "P03/Cube/seed2",
+  "last_update": "2026-10-12 14:05:05",
+  "pid": 7149
+}

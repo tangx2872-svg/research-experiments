@@ -1608,6 +1608,16 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **工程修复 6 项（§G 允许，全部已 logged 于协议 §17）**：`E7.Bar.__call__`；**安装 `faiss-cpu 1.15.1`**（SoftPatch/DINOv2 官方声明依赖，本环境缺失）——按 §G「dependency issue 允许修复」；SoftPatch 模块加载返回类→模块；改用官方 `WeightedGreedyCoresetSampler`（`softpatch.py:85` 的真实路径）；补 `feature_shape`；smoke 采样改为每类 ≥10 个**不同**标本。**无任何方法定义/架构/loss/特征层/打分规则被改动。**
    - **假设 A1–A6 仍待设计者确认**（bank 子集基准、缓存分辨率 448、DINOv2 关闭 masking、无 τ_val、SoftPatch 作用于共享表示、faiss 缺失改用精确 kNN）。
    - **限定**：1 类别 × 1 seed × 4 views × 1 backbone 家族；bank 300 图（E7-1）/1200 图（E7-2），**两者绝对 AUROC 不可直接互比**，仅 E7 内部可比。**未启动 E7-3、未跑 multi-seed、未做第二类别、未搜新模块、未做参数 rescue、未写论文。**
+17. **E8 CLAHE × PatchCore Cross-Category Stability Kill Test — `STOP`（2026-10-12）**：
+   协议先冻结于 [`docs/E8_FROZEN_PROTOCOL.md`](docs/E8_FROZEN_PROTOCOL.md)（commit `f332ee1`，sha256 `3d0fe8e0…`）；结果见 [`results/e8/README.md`](results/e8/README.md)。
+   - **问题**：E7 的 CLAHE 增益（Bird 上 mean ΔAUROC +0.026）是**跨类别稳定**，还是 **Bird 单类别偶然**？
+   - **设计**：3 方法（`P00` 基线 / `P02` CLAHE mild clip1.5 / `P03` CLAHE medium clip2.0）× **3 类别（Bird/Car/Cube，机械选取）** × 3 seeds × 4 views = **108 cells / 27 fits**；bank = **300 图**（E7-1 冻结规则，全类别统一口径）；PatchCore 完全沿用 E7。
+   - **数据获取**：Car/Cube 通过 **HF 镜像流式选择性抽取**（官方归档 14.9–17.6 GB，磁盘只存所需子集 + 无损缓存 `l0_256/l0_448/clahe`）。
+   - **Stage B 回归 Gate = PASS**：Bird seed0 view120 **P03 = 0.79588** vs E7-1 参考 0.79591（dev **-0.00003**）⇒ 管线零漂移（排名 P03≥P02≥P00 保持）。
+   - **结果（108 cells）**：`P02` mean ΔAUROC **-0.0150**（95% CI [-0.023,-0.006]）；`P03` **-0.0170**（95% CI [-0.027,-0.006]）；两者 positive categories = **1/3**，mean Δd′ = **-0.057 / -0.062**。
+   - **类别趋势**：Bird **+0.013 / +0.020**；Car **-0.036 / -0.048**；Cube **-0.021 / -0.023**（Car/Cube 均 **4/4 view 为负**）。
+   - **判定 = STOP**：CLAHE 收益是 **Bird 特异性**，非跨类别稳健；95% CI 完全落在 0 以下，d′ 略降。**禁止继续调 CLAHE 参数。**
+   - **推进**：明确了「输入级 CLAHE」不是通用解；进入 **E9 — Real-Illumination Robust Module/Combination Screening**（以 Retinex C01 的弱正信号 `ΔAUROC +0.0128 / Δd′ +0.0988` 为 reference）。
 
 ---
 

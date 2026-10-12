@@ -1,0 +1,80 @@
+{
+  "experiment": "E8",
+  "verdict": "STOP",
+  "primary": "P02",
+  "protocol_commit": "f332ee1",
+  "matrix": "3 methods x 3 categories x 3 seeds x 4 views = 108 cells",
+  "per_method": {
+    "P02": {
+      "mean_d_auroc": -0.01497,
+      "ci95": {
+        "lo": -0.02324,
+        "hi": -0.00641
+      },
+      "positive_categories": "1/3",
+      "mean_d_dprime": -0.05715,
+      "worst_category": "Car",
+      "worst_category_d_auroc": -0.03642,
+      "best_category": "Bird",
+      "best_category_d_auroc": 0.01297,
+      "verdict": "STOP"
+    },
+    "P03": {
+      "mean_d_auroc": -0.01699,
+      "ci95": {
+        "lo": -0.02742,
+        "hi": -0.00609
+      },
+      "positive_categories": "1/3",
+      "mean_d_dprime": -0.06184,
+      "worst_category": "Car",
+      "worst_category_d_auroc": -0.04822,
+      "best_category": "Bird",
+      "best_category_d_auroc": 0.0198,
+      "verdict": "STOP"
+    }
+  },
+  "category_behavior": {
+    "Bird": {
+      "P02": {
+        "d_auroc": 0.012965833333333307,
+        "positive_views": "3/4"
+      },
+      "P00_auroc": 0.7784483333333333,
+      "P02_auroc": 0.7914141666666666,
+      "P03": {
+        "d_auroc": 0.019799166666666673,
+        "positive_views": "3/4"
+      },
+      "P03_auroc": 0.7982475000000001
+    },
+    "Car": {
+      "P02": {
+        "d_auroc": -0.03641666666666665,
+        "positive_views": "0/4"
+      },
+      "P00_auroc": 0.6636700000000001,
+      "P02_auroc": 0.6272533333333333,
+      "P03": {
+        "d_auroc": -0.048217499999999996,
+        "positive_views": "0/4"
+      },
+      "P03_auroc": 0.6154525000000001
+    },
+    "Cube": {
+      "P02": {
+        "d_auroc": -0.02146583333333335,
+        "positive_views": "0/4"
+      },
+      "P00_auroc": 0.6024866666666667,
+      "P02_auroc": 0.5810208333333332,
+      "P03": {
+        "d_auroc": -0.022546666666666697,
+        "positive_views": "0/4"
+      },
+      "P03_auroc": 0.57994
+    }
+  },
+  "conclusion": "CLAHE improvement is category-specific (Bird positive, Car/Cube negative). STOP.",
+  "next": "E9 \u2014 Real-Illumination Robust Module/Combination Screening"
+}
