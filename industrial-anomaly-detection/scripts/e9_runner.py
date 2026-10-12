@@ -75,7 +75,7 @@ def build_input_cache(kind: str, records: list, bar=None) -> int:
         rgb = np.asarray(Image.open(src).convert("RGB"))
         out = apply_kind(kind, rgb)
         dst.parent.mkdir(parents=True, exist_ok=True)
-        tmp = dst.with_suffix(dst.suffix + ".tmp")
+        tmp = dst.with_suffix(".tmp.png")
         Image.fromarray(out).save(tmp)
         tmp.replace(dst)          # atomic: no truncated cache on interrupt
         written += 1
