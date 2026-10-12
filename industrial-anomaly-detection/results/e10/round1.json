@@ -1,0 +1,72 @@
+{
+  "methods": [
+    {
+      "candidate": "S4",
+      "Bird": 0.00385,
+      "Car": 0.0263,
+      "Cube": 0.01883,
+      "mean": 0.01633,
+      "worst_cat": "Bird",
+      "worst": 0.00385,
+      "mean_ddprime": 0.01184,
+      "pos": "3/3",
+      "verdict": "ADVANCE"
+    },
+    {
+      "candidate": "S5",
+      "Bird": -0.00024,
+      "Car": 0.00032,
+      "Cube": 0.0046,
+      "mean": 0.00156,
+      "worst_cat": "Bird",
+      "worst": -0.00024,
+      "mean_ddprime": -0.10516,
+      "pos": "2/3",
+      "verdict": "HOLD"
+    },
+    {
+      "candidate": "S3",
+      "Bird": -0.00043,
+      "Car": 0.02378,
+      "Cube": 0.00687,
+      "mean": 0.01007,
+      "worst_cat": "Bird",
+      "worst": -0.00043,
+      "mean_ddprime": -0.00672,
+      "pos": "2/3",
+      "verdict": "ADVANCE"
+    },
+    {
+      "candidate": "S1",
+      "Bird": 0.00372,
+      "Car": -0.00301,
+      "Cube": 0.00048,
+      "mean": 0.0004,
+      "worst_cat": "Car",
+      "worst": -0.00301,
+      "mean_ddprime": 0.00775,
+      "pos": "2/3",
+      "verdict": "HOLD"
+    },
+    {
+      "candidate": "S2",
+      "Bird": 0.00674,
+      "Car": -0.02045,
+      "Cube": -0.00351,
+      "mean": -0.00574,
+      "worst_cat": "Car",
+      "worst": -0.02045,
+      "mean_ddprime": -0.00568,
+      "pos": "1/3",
+      "verdict": "STOP"
+    }
+  ],
+  "advance": [
+    "S4",
+    "S3"
+  ],
+  "top2": [
+    "S4",
+    "S3"
+  ]
+}

@@ -197,7 +197,7 @@ def smoke(dev) -> int:
 # ------------------------------------------------------------------ round1
 def round1(dev) -> int:
     units = [(cat, 0) for cat in ("Bird", "Car", "Cube")]
-    tracker = E8.EtaTracker(len(units), "E10-Round1")
+    tracker = E8.EtaTracker(len(units), "E10-Round1", status_path=OUT / "status.json")
     tracker.stage_announce("Round 1 (3 cats x seed0 x view120, 6 methods per fit)", len(units) * 4)
     RAW.mkdir(parents=True, exist_ok=True)
     for cat, seed in units:
@@ -231,9 +231,66 @@ def round1(dev) -> int:
     return 0
 
 
+
+
+# ------------------------------------------------------------------ round2 (Top-2: S3/S4)
+def run_unit_r2(category: str, seed: int, dev, views=("120", "090")):
+    scope = EF.build_scope(category)
+    bank = E8.bank_for(scope["pool"], seed)
+    bank_r = [dict(r, image_path=str(E8.cache_path("l0_256", r))) for r in bank]
+    tm = fit_patchcore(bank_r, dev, f"{category}_s{seed}_r2", seed=seed)
+    rho3, rho5 = compute_rho(tm)
+    test = [r for r in scope["test"] if r["view"] in views]
+    per_view_rows = {v: {m: [] for m in ("S0", "S3", "S4")} for v in views}
+    for r in test:
+        emb = extract_embedding(tm, e1b.load_image_as_tensor(E8.cache_path("l0_256", r)), dev)
+        sc = score_patches(tm, rho3, rho5, emb)
+        v = r["view"]
+        for m in ("S0", "S3", "S4"):
+            per_view_rows[v][m].append({"specimen": r["specimen"], "kind": r["kind"], "score": sc[m]})
+    per_method = {m: {v: E7.evaluate(per_view_rows[v][m], want_pixel=False) for v in views}
+                  for m in ("S0", "S3", "S4")}
+    for m in ("S3", "S4"):
+        for v in views:
+            per_method[m][v]["d_auroc"] = per_method[m][v]["image_auroc"] - per_method["S0"][v]["image_auroc"]
+            per_method[m][v]["d_dprime"] = per_method[m][v]["d_prime"] - per_method["S0"][v]["d_prime"]
+    return {"status": "OK", "category": category, "seed": seed, "views": list(views),
+            "coreset_size": int(tm.memory_bank.shape[0]), "per_method": per_method}
+
+
+def round2(dev) -> int:
+    units = [(cat, s) for cat in ("Bird", "Car", "Cube") for s in (0, 1, 2)]
+    tracker = E8.EtaTracker(len(units), "E10-Round2", status_path=OUT / "status.json")
+    tracker.stage_announce("Round 2 (3 cats x 3 seeds x 2 views x S3/S4)", len(units) * 2.5)
+    RAW.mkdir(parents=True, exist_ok=True)
+    for cat, s in units:
+        up = RAW / f"{cat}_seed{s}_r2.json"
+        if up.exists():
+            print(f"[E10 R2] SKIP {cat}/s{s}", flush=True)
+            continue
+        name = f"{cat}/s{s}"
+        tracker.start_unit()
+        print(f"\n[E10 R2] START {name}", flush=True)
+        try:
+            out = run_unit_r2(cat, s, dev)
+        except Exception as exc:
+            import traceback
+            traceback.print_exc()
+            out = {"status": "FAILED", "reason": f"{type(exc).__name__}: {exc}"}
+        E8.save_json(up, out)
+        if out["status"] == "OK":
+            s3 = out["per_method"]["S3"]; s4 = out["per_method"]["S4"]
+            mean_da = float(np.mean([s3[v]["d_auroc"] for v in out["views"]] + [s4[v]["d_auroc"] for v in out["views"]]))
+            tracker.finish_unit(name, extra=f"S3={np.mean([s3[v]['d_auroc'] for v in out['views']]):+.4f} S4={np.mean([s4[v]['d_auroc'] for v in out['views']]):+.4f}")
+        else:
+            tracker.finish_unit(name, extra=f"FAILED {out.get('reason','')[:50]}")
+        tracker.heartbeat_if_due()
+    print("\n[E10 R2] done", flush=True)
+    return 0
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stage", default="smoke", help="smoke|round1")
+    ap.add_argument("--stage", default="smoke", help="smoke|round1|round2")
     args = ap.parse_args()
     assert torch.cuda.is_available()
     dev = torch.device("cuda")
@@ -243,6 +300,8 @@ def main() -> int:
         return smoke(dev)
     if args.stage == "round1":
         return round1(dev)
+    if args.stage == "round2":
+        return round2(dev)
     print("unknown stage", args.stage)
     return 3
 

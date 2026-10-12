@@ -336,3 +336,9 @@ results/e8/raw/*.pt
 !results/e9/
 results/e9/logs/
 results/e9/raw/
+
+# E10 results (tracked aggregates only; raw/logs/fit excluded)
+!results/e10/
+results/e10/logs/
+results/e10/raw/
+results/e10/fit/

@@ -94,8 +94,9 @@ def clock(sec: float) -> str:
 class EtaTracker:
     """Dynamic ETA from real completed-unit wall-clock (EMA). One unit = one fit+4-view scoring."""
 
-    def __init__(self, total_units: int, label: str = "E8"):
+    def __init__(self, total_units: int, label: str = "E8", status_path=None):
         self.total, self.label = total_units, label
+        self.status_path = status_path or (OUT / "status.json")
         self.t0 = time.time()
         self.times = []
         self.unit_t0 = time.time()
@@ -156,7 +157,7 @@ class EtaTracker:
         el = time.time() - self.t0
         rem = self.remaining()
         try:
-            save_json(OUT / "status.json", {
+            save_json(self.status_path, {
                 "stage": self.label, "completed": done, "total": self.total,
                 "percent": round(100.0 * done / max(1, self.total), 2),
                 "elapsed_sec": round(el, 1),
