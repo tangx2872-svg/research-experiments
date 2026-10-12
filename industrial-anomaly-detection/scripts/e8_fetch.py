@@ -43,9 +43,12 @@ def build_scope(category: str) -> dict:
     original extracted tree is not present."""
     recs = LD.load_records(category=category, require_exists=False)
     for r in recs:
-        if r["mask_path"] and not Path(r["mask_path"]).exists():
-            cand = MASK_ROOT / Path(r["mask_path"]).relative_to(LD.DATA_ROOT)
-            r["mask_path"] = str(cand) if cand.exists() else ""
+        r["mask_member"] = ""
+        if r["mask_path"]:
+            rel = str(Path(r["mask_path"]).relative_to(LD.DATA_ROOT))
+            r["mask_member"] = rel
+            orig = Path(r["mask_path"])
+            r["mask_path"] = str(orig) if orig.exists() else str(MASK_ROOT / rel)
     est = LD.estimate_scope(recs)
     pool = sorted(LD.select(recs, set(est["bank_specimens"])), key=lambda r: r["image_path"])
     test = sorted([r for r in LD.select(recs, views=E8.VIEWS) if r["split"] == "test"],
@@ -63,8 +66,8 @@ def need_list(scope: dict) -> set:
     for r in scope["pool"] + scope["test"]:
         names.add(rel_of(r))
     for r in scope["test"]:
-        if r["mask_path"]:
-            names.add(rel_of(r, "mask_path"))
+        if r.get("mask_member"):
+            names.add(r["mask_member"])
     return names
 
 
@@ -143,12 +146,12 @@ def stream_extract(category: str, wanted: set, on_member, bar=None, max_members:
 # ------------------------------------------------------------------ cache writers (protocol s2.7)
 def _webp_lossless(arr: np.ndarray, dst: Path) -> None:
     dst.parent.mkdir(parents=True, exist_ok=True)
-    Image.fromarray(arr).save(dst, "WEBP", lossless=True, quality=100, method=4)
+    Image.fromarray(arr).save(dst, "WEBP", lossless=True, quality=100, method=0)
 
 
 def _png(arr: np.ndarray, dst: Path) -> None:
     dst.parent.mkdir(parents=True, exist_ok=True)
-    Image.fromarray(arr).save(dst)
+    Image.fromarray(arr).save(dst, "PNG", compress_level=3)
 
 
 def write_image_caches(rel: str, rgb: Image.Image, skip_existing: bool = True) -> int:
@@ -227,10 +230,8 @@ def prepare_category(category: str, max_members: int | None = None) -> dict:
             if all((E8.CACHE_ROOT / k / rel).exists() for k in KINDS):
                 wanted.discard(rel)
         for r in scope["test"]:
-            if r["mask_path"]:
-                mrel = rel_of(r, "mask_path")
-                if (MASK_ROOT / mrel).exists():
-                    wanted.discard(mrel)
+            if r.get("mask_member") and Path(r["mask_path"]).exists():
+                wanted.discard(r["mask_member"])
         _log(f"{category}: {len(wanted)} members still missing after cache scan")
 
         n_mask = 0

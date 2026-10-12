@@ -52,7 +52,7 @@ E7_2_REF = {"P00": [0.76963, 0.82964, 0.76890, 0.75465],
 OUT = ROOT / "results" / "e8"
 RAW = OUT / "raw"
 PROTOCOL = ROOT / "docs" / "E8_FROZEN_PROTOCOL.md"
-HARD_DEADLINE = time.mktime(time.strptime("2026-10-10 09:30", "%Y-%m-%d %H:%M"))
+HARD_DEADLINE = None      # deadline voided (user directive 2026-10-12): exit on GO/HOLD/STOP only
 MIN_FREE_GB = 3.0
 
 
@@ -100,12 +100,14 @@ class EtaTracker:
         self.times = []
         self.unit_t0 = time.time()
         self.last_beat = time.time()
+        self._last = None
 
     def start_unit(self) -> None:
         self.unit_t0 = time.time()
 
     def finish_unit(self, name: str, extra: str = "") -> None:
         self.times.append(time.time() - self.unit_t0)
+        self._last = name
         self.report(name, extra)
 
     def mean_unit(self) -> float:
@@ -134,8 +136,9 @@ class EtaTracker:
               f"VRAM {a:.0f}/{r:.0f} MB | RAM {ram_mb():.0f} MB | disk {free_gb():.1f} GB | {extra}",
               flush=True)
         self.last_beat = time.time()
+        self._write_status(name)
 
-    def heartbeat_if_due(self, minutes: int = 12, extra: str = "") -> None:
+    def heartbeat_if_due(self, minutes: int = 5, extra: str = "") -> None:
         if time.time() - self.last_beat < minutes * 60:
             return
         done, el, rem = len(self.times), time.time() - self.t0, self.remaining()
@@ -145,16 +148,34 @@ class EtaTracker:
               f"disk free = {free_gb():.1f} GB\nRAM       = {ram_mb():.0f} MB\n"
               f"failures  = {count_failures()}\n{extra}\n", flush=True)
         self.last_beat = time.time()
+        self._write_status(self._last)
+
+    def _write_status(self, current: str = None) -> None:
+        import os
+        done = len(self.times)
+        el = time.time() - self.t0
+        rem = self.remaining()
+        try:
+            save_json(OUT / "status.json", {
+                "stage": self.label, "completed": done, "total": self.total,
+                "percent": round(100.0 * done / max(1, self.total), 2),
+                "elapsed_sec": round(el, 1),
+                "eta_sec": (round(rem, 1) if np.isfinite(rem) else None),
+                "current_unit": current, "last_completed_unit": self._last,
+                "last_update": time.strftime("%Y-%m-%d %H:%M:%S"),
+                "pid": os.getpid()})
+        except Exception:  # noqa: BLE001
+            pass
 
     def stage_announce(self, stage: str, est_min: float) -> None:
         print(f"\n=== Stage {stage} | estimated {est_min/60:.1f} h | "
               f"expected finish {clock(est_min*60)} ===\n", flush=True)
 
     def deadline_exceeded(self) -> bool:
-        return time.time() >= HARD_DEADLINE
+        return False if HARD_DEADLINE is None else time.time() >= HARD_DEADLINE
 
     def time_to_deadline_h(self) -> float:
-        return (HARD_DEADLINE - time.time()) / 3600.0
+        return float("inf") if HARD_DEADLINE is None else (HARD_DEADLINE - time.time()) / 3600.0
 
 
 # ------------------------------------------------------------------ persistence (protocol s5)

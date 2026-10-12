@@ -324,3 +324,10 @@ results/e6_a/logs/
 results/e7_1/logs/
 results/e7_2/logs/
 results/e7_*/raw/*.pt
+
+# E8 results (tracked); run logs / model weights / Lightning fit dirs excluded
+!results/e8/
+results/e8/logs/
+results/e8/**/fit/
+results/*/fit/
+results/e8/raw/*.pt
