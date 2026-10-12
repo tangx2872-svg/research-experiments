@@ -75,7 +75,9 @@ def build_input_cache(kind: str, records: list, bar=None) -> int:
         rgb = np.asarray(Image.open(src).convert("RGB"))
         out = apply_kind(kind, rgb)
         dst.parent.mkdir(parents=True, exist_ok=True)
-        Image.fromarray(out).save(dst)
+        tmp = dst.with_suffix(dst.suffix + ".tmp")
+        Image.fromarray(out).save(tmp)
+        tmp.replace(dst)          # atomic: no truncated cache on interrupt
         written += 1
         if bar is not None and i % 500 == 0:
             bar(i, extra=f"{kind} written={written}")
@@ -197,7 +199,12 @@ def round1(dev) -> int:
         tracker.start_unit()
         print(f"\n[E9 R1] START {name}", flush=True)
         scope = E9.round1_scope(cat); scope["seed"] = 0
-        out = run_candidate(cid, scope, dev, f"E9_{cid}_{cat}_s0")
+        try:
+            out = run_candidate(cid, scope, dev, f"E9_{cid}_{cat}_s0")
+        except Exception as exc:
+            import traceback
+            traceback.print_exc()
+            out = {"status": "FAILED", "reason": f"{type(exc).__name__}: {exc}"}
         payload = {"candidate": cid, "category": cat, "seed": 0, "view": E9.ROUND1_VIEW,
                    "family": E9.CANDIDATES[cid]["family"],
                    "baseline_auroc": baseline_auroc(cat),
@@ -238,8 +245,13 @@ def round2(dev, top2: list) -> int:
         scope = EF.build_scope(cat)
         bank = E8.bank_for(scope["pool"], s)
         test = [r for r in scope["test"] if r["view"] in views]
-        out = run_candidate(cid, {"category": cat, "bank": bank, "test": test, "seed": s},
-                            dev, f"E9_{cid}_{cat}_s{s}")
+        try:
+            out = run_candidate(cid, {"category": cat, "bank": bank, "test": test, "seed": s},
+                                dev, f"E9_{cid}_{cat}_s{s}")
+        except Exception as exc:
+            import traceback
+            traceback.print_exc()
+            out = {"status": "FAILED", "reason": f"{type(exc).__name__}: {exc}"}
         payload = {"candidate": cid, "category": cat, "seed": s, "views": views,
                    "family": E9.CANDIDATES[cid]["family"]}
         payload.update(out)
