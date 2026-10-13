@@ -343,3 +343,6 @@ results/e10/logs/
 results/e10/raw/
 results/e10/fit/
 results/e10/status.json
+
+# E11 results (recon docs only)
+!results/e11/

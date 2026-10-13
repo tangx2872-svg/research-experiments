@@ -1,0 +1,94 @@
+{
+  "official_repo": {
+    "url": "https://github.com/hustCYQ/M2AD",
+    "head": "a606aa0",
+    "license": "NONE (must disclose)",
+    "size": "700MB (incl .git 345MB + docs 350MB)"
+  },
+  "official_methods": [
+    "CDO",
+    "Dinomaly",
+    "INP-Former",
+    "MSFlow",
+    "RD++"
+  ],
+  "feasibility": {
+    "CDO": {
+      "backbone_cached": false,
+      "backbone": "mshrnet32",
+      "needs_dtd": true,
+      "train": true,
+      "vrma_est_GB": "10-12",
+      "mini_runtime_est": "2-3h/100e/cat",
+      "duplicate": false,
+      "blocker": "mshrnet32 + DTD download"
+    },
+    "Dinomaly": {
+      "backbone_cached": false,
+      "backbone": "dinov2reg_vit_base_14",
+      "needs_dtd": false,
+      "train": true,
+      "vrma_est_GB": "10-14",
+      "mini_runtime_est": "2-3h",
+      "duplicate": false,
+      "blocker": "reg weight (Baidu link, may be blocked)"
+    },
+    "INP-Former": {
+      "backbone_cached": false,
+      "backbone": "dinov2reg_vit_base_14",
+      "needs_dtd": false,
+      "train": true,
+      "vrma_est_GB": "12-16",
+      "mini_runtime_est": "3-4h",
+      "duplicate": false,
+      "blocker": "reg weight"
+    },
+    "MSFlow": {
+      "backbone_cached": true,
+      "backbone": "wide_resnet50_2",
+      "needs_dtd": false,
+      "train": true,
+      "vrma_est_GB": "8-10",
+      "mini_runtime_est": "2-3h",
+      "duplicate": false,
+      "blocker": "none (lowest friction)"
+    },
+    "RD++": {
+      "backbone_cached": true,
+      "backbone": "wide_resnet50_2 (+decoder)",
+      "needs_dtd": true,
+      "train": true,
+      "vrma_est_GB": "6-8",
+      "mini_runtime_est": "2-3h",
+      "duplicate": false,
+      "blocker": "DTD download for DRAEM"
+    },
+    "Dinomaly2": {
+      "backbone_cached": false,
+      "backbone": "DINOv2",
+      "needs_dtd": false,
+      "train": true,
+      "vrma_est_GB": "unknown",
+      "mini_runtime_est": "unknown",
+      "duplicate": false,
+      "blocker": "very new (Oct 2025), inspect repo"
+    },
+    "AnomalyDINO": {
+      "backbone_cached": true,
+      "backbone": "DINOv2-B",
+      "needs_dtd": false,
+      "train": true,
+      "vrma_est_GB": "6-10",
+      "mini_runtime_est": "few-shot, <1h",
+      "duplicate": "partial (E7 DINOv2-NN weak)",
+      "blocker": "likely weak (E7 evidence)"
+    }
+  },
+  "protocol_difference_flag": "official Invariant drops detectable=False NG (Bird -365/Car -309/Cube -222); we keep all. Human must decide test-set convention before E11.",
+  "download_watchlist": [
+    "dinov2reg_vit_base_14 (~1.1GB, Baidu)",
+    "mshrnet32",
+    "DTD (~600MB)"
+  ],
+  "note": "all 5 official methods require full 100-epoch training; no shipped checkpoints"
+}
