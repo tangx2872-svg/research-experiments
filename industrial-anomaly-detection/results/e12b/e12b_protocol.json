@@ -1,0 +1,81 @@
+{
+  "experiment": "E12-B Lightweight Illumination-Adaptive Multi-Level Fusion Screening",
+  "stage": "representation-side lightweight adaptation (new axis after frozen-feature scoring search CLOSED)",
+  "date": "2026-10-13",
+  "git_head": "495a6c8b8f8f2c9dc70c5a4832fece445e1b8c20",
+  "paper_phase": "representation-side lightweight adaptation",
+  "thesis_served": "P4-A1 block9+final 的弱稳定正收益能否通过 normal-only illumination-adaptive fusion 转化成可发表的小改进",
+  "why_now": "P4-A1 block9+final 在 Bird/Car/Cube 3/3 AUROC positive（mean dAUROC ~ +0.0078），是 frozen-feature 搜索中最有价值的残余正信号；但 AP 不理想",
+  "exit": {
+    "KEEP": "进入 E12-C 3-seed validation",
+    "HOLD": "保留一个候选，下一轮小验证",
+    "NO_SURVIVOR": "关闭 adaptive fusion，转 training-based representation axis"
+  },
+  "frozen_inputs": {
+    "categories": ["Bird", "Car", "Cube"],
+    "bank": "300 normal samples/category (E7-1 seed-0 frozen bank, random.Random(20261009+0).sample(1200 pool, 300))",
+    "seed": 0,
+    "backbone": "frozen DINOv2-B (dinov2_vitb14, 768-d), NO gradient",
+    "features": "block9 (l9) + final layer (l11) patch tokens, get_intermediate_layers(n=5, norm=True), 448 input, 1024 patches/image, CLS excluded",
+    "scoring": "fixed E11 baseline 1-NN-max (L2-normalised cosine NN -> max over 1024 patches)",
+    "test_set": "identical to E11-P4/P5: Bird/Car/Cube view120 (700 img), official image_anomaly + raw boolean detectable filter",
+    "labels": "official image_anomaly + raw boolean detectable (no test-label tuning)"
+  },
+  "forbidden": [
+    "change backbone", "change input resolution", "change layer", "change kNN",
+    "add PCA", "add prototype", "add CLS", "add multi-scale", "tune test-specific params",
+    "geometry augmentation (would break patch correspondence)", "anomaly synthesis",
+    "test labels", "defect images", "grid-search alpha"
+  ],
+  "candidates": {
+    "S0": {"name": "final-layer only", "note": "REUSED baseline (P4/P5/E12-A), 0 GPU recompute"},
+    "S1": {"name": "P4-A1 fixed block9+final fusion", "op": "concat(l11,l9) then L2-norm (1536-d)", "note": "REUSED historical result, not re-run"},
+    "S2": {"name": "Global Scalar Gate", "op": "f = lam*norm(f9) + (1-lam)*norm(ffinal), lam=sigmoid(theta)", "trainable_params": 1},
+    "S3": {"name": "Channel Gate", "op": "f = lam .* norm(f9) + (1-lam) .* norm(ffinal), lam=sigmoid(theta) in R^768, +identity/L2 reg", "trainable_params": 768},
+    "S4": {"name": "Sample-Adaptive Two-Scale SE Gate", "op": "input=concat(global_avg_pool(f9), global_avg_pool(ffinal)) in R^1536 -> MLP(1536->48->2) -> softmax[w9,wfinal] -> f=w9*norm(f9)+wfinal*norm(ffinal)", "trainable_params": 73874}
+  },
+  "resolved_ambiguities": {
+    "A_identity_reference": "L_identity anchor = fixed equal-weight sum F_ref = normalize(0.5*n(f9)+0.5*n(ffinal)) in R^768 (NOT the 1536-d concat, which is dimension-incompatible with the sum-family output). F_ref == the gate initialization point, so L_identity==0 at init.",
+    "B_alpha": 0.1,
+    "C_s4_gate_input": "per-sample (image being scored): global mean-pooled raw LayerNorm'd block9 + final features, concat -> R^1536",
+    "contrast_impl": "NEW (history only had brightness/gamma): linear contrast (t-0.5)*level+0.5, clamped [0,1]"
+  },
+  "illumination_augmentation": {
+    "families": ["brightness", "contrast", "gamma"],
+    "severity": "mild +/-10% (levels 0.9, 1.1), consistent with E7-AO-Q3 mild convention",
+    "variants_per_image": 6,
+    "semantics": {"brightness": "t*level", "contrast": "(t-0.5)*level+0.5", "gamma": "t**(1/level)"},
+    "applied_in": "[0,1] tensor space BEFORE ImageNet normalization",
+    "no_geometry": true
+  },
+  "normal_only_training": {
+    "train_val_split": "bank 300 normals -> train 240 / val 60 (fixed, sorted image path order)",
+    "loss": "L = L_consistency + alpha*L_identity",
+    "L_consistency": "1 - cosine(F_fused(x), F_fused(T_illum(x))), per-patch mean (patch correspondence preserved)",
+    "L_identity": "squared L2 distance(F_fused(x), F_ref(x)), per-patch mean (F_ref = equal-weight sum)",
+    "alpha": 0.1,
+    "collapse_guard": "report feature std/norm before+after training"
+  },
+  "training_budget": {
+    "optimizer": "Adam",
+    "lr": {"S2": 0.01, "S3": 0.01, "S4": 0.001},
+    "batch_size_images": 8,
+    "max_steps": 500,
+    "early_stopping": "val consistency no improvement for 20 steps (evaluated every 5 steps)",
+    "DINO_forward_in_backward": false,
+    "per_candidate_timeout_min": 20,
+    "total_wallclock_target_min": [30, 75],
+    "hard_stop_min": 90
+  },
+  "decision_rules": {
+    "relative_to": "S0 (final-only baseline)",
+    "KEEP": "mean dAUROC >= +0.010 AND positive categories >= 2/3 AND worst dAUROC >= -0.010 AND mean dAP >= 0; AND complexity gate vs S1: (A) mean dAUROC >= S1 + 0.003 OR (B) mean dAP >= S1 + 0.010 AND mean dAUROC >= S1 - 0.002",
+    "HOLD": "mean dAUROC >= +0.005 AND 3/3 dAUROC >= 0 AND mean dAP >= -0.005",
+    "STOP": "otherwise",
+    "multi_keep": "keep only the simplest one"
+  },
+  "output": "results/e12b/",
+  "not_allowed_rescue": [
+    "NO SURVIVOR -> immediately close axis; do NOT tune lr/hidden-dim/augmentation-strength to rescue"
+  ]
+}

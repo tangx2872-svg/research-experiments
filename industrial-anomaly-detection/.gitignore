@@ -350,3 +350,12 @@ results/e11/p2_raw_results.json
 results/e11/p3_raw_results.json
 results/e11/p4_module_raw.json
 results/e11/p5_module_raw.json
+
+# E12-A results (tracked aggregates; logs excluded)
+!results/e12a/
+results/e12a/logs/
+
+# E12-B results (tracked aggregates; logs + resume checkpoint excluded)
+!results/e12b/
+results/e12b/logs/
+results/e12b/e12b_partial.json

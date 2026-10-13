@@ -1,0 +1,14 @@
+{
+  "Bird": {
+    "fixed_equal_weight_consistency": 0.046583,
+    "final_only_consistency": 0.064733
+  },
+  "Car": {
+    "fixed_equal_weight_consistency": 0.03096,
+    "final_only_consistency": 0.042659
+  },
+  "Cube": {
+    "fixed_equal_weight_consistency": 0.019917,
+    "final_only_consistency": 0.027449
+  }
+}
