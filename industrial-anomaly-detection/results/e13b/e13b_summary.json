@@ -1,0 +1,125 @@
+{
+  "experiment": "E13-B",
+  "candidate": "R1",
+  "verdict": "HOLD",
+  "summary": {
+    "overall_mean_d_auroc": 0.013245555555555556,
+    "overall_std_d_auroc": 0.014589318105304915,
+    "overall_min_d_auroc": -0.01229,
+    "overall_max_d_auroc": 0.03647,
+    "overall_mean_d_ap": 0.012996666666666667,
+    "overall_std_d_ap": 0.011044191912494094,
+    "positive_auroc_cells": 8,
+    "positive_ap_cells": 8,
+    "n_cells": 9,
+    "per_category": {
+      "Bird": {
+        "mean_d_auroc": 0.025856666666666667,
+        "std_d_auroc": 0.013538306147126875,
+        "mean_d_ap": 0.023713333333333333,
+        "seeds_d_auroc": {
+          "0": 0.01061,
+          "1": 0.03049,
+          "2": 0.03647
+        }
+      },
+      "Car": {
+        "mean_d_auroc": 0.011233333333333333,
+        "std_d_auroc": 0.007280620394810688,
+        "mean_d_ap": 0.01115,
+        "seeds_d_auroc": {
+          "0": 0.01959,
+          "1": 0.00785,
+          "2": 0.00626
+        }
+      },
+      "Cube": {
+        "mean_d_auroc": 0.0026466666666666665,
+        "std_d_auroc": 0.014211306531537956,
+        "mean_d_ap": 0.0041266666666666665,
+        "seeds_d_auroc": {
+          "0": 0.016,
+          "1": -0.01229,
+          "2": 0.00423
+        }
+      }
+    },
+    "per_seed": {
+      "0": {
+        "mean_d_auroc": 0.015399999999999999,
+        "cells": {
+          "Bird": 0.01061,
+          "Car": 0.01959,
+          "Cube": 0.016
+        }
+      },
+      "1": {
+        "mean_d_auroc": 0.008683333333333333,
+        "cells": {
+          "Bird": 0.03049,
+          "Car": 0.00785,
+          "Cube": -0.01229
+        }
+      },
+      "2": {
+        "mean_d_auroc": 0.015653333333333335,
+        "cells": {
+          "Bird": 0.03647,
+          "Car": 0.00626,
+          "Cube": 0.00423
+        }
+      }
+    },
+    "cells": {
+      "Bird|0": {
+        "d_auroc": 0.01061,
+        "d_ap": 0.01048
+      },
+      "Bird|1": {
+        "d_auroc": 0.03049,
+        "d_ap": 0.0289
+      },
+      "Bird|2": {
+        "d_auroc": 0.03647,
+        "d_ap": 0.03176
+      },
+      "Car|0": {
+        "d_auroc": 0.01959,
+        "d_ap": 0.01295
+      },
+      "Car|1": {
+        "d_auroc": 0.00785,
+        "d_ap": 0.00922
+      },
+      "Car|2": {
+        "d_auroc": 0.00626,
+        "d_ap": 0.01128
+      },
+      "Cube|0": {
+        "d_auroc": 0.016,
+        "d_ap": 0.0117
+      },
+      "Cube|1": {
+        "d_auroc": -0.01229,
+        "d_ap": -0.00321
+      },
+      "Cube|2": {
+        "d_auroc": 0.00423,
+        "d_ap": 0.00389
+      }
+    }
+  },
+  "collapsed": false,
+  "pass_criteria": {
+    "overall_mean_d_auroc_ge_010": true,
+    "positive_cells_ge_7": true,
+    "per_cat_mean_ge_005": false,
+    "mean_d_ap_ge_005": true
+  },
+  "hold_criteria": {
+    "overall_mean_d_auroc_ge_0075": true,
+    "positive_cells_ge_6": true,
+    "per_cat_mean_ge_0": true,
+    "mean_d_ap_ge_0": true
+  }
+}

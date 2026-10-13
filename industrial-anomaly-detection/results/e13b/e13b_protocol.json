@@ -1,0 +1,41 @@
+{
+  "experiment": "E13-B R1 Cross-Seed Stability Validation",
+  "stage": "first stability validation of the simplest KEEP candidate R1 (Linear Residual Adapter)",
+  "date": "2026-10-14",
+  "git_head_at_start": "143bd022cc0d0fe9abc5049eda39191d50d6d5f7",
+  "paper_phase": "from method screening to first stability validation",
+  "thesis_served": "验证 R1 在不同随机种子下是否仍能稳定提升 Bird/Car/Cube 的 AUROC 与 AP",
+  "why_now": "E13-A seed0 R1: mean dAUROC +0.01540 / mean dAP +0.01171, 3/3 categories positive; must rule out single-seed luck",
+  "exit": {"PASS": "E13-C 扩类别", "HOLD": "暂保留不扩大", "STOP": "关闭 R1，不调参救火"},
+  "frozen_inputs": {
+    "categories": ["Bird", "Car", "Cube"],
+    "bank": "300 normal/category",
+    "test": "view120 (identical to E13-A)",
+    "backbone": "frozen DINOv2-B",
+    "feature": "final-layer patch tokens (1024x768)",
+    "scoring": "1-NN-max",
+    "candidate": "R1 Linear Residual Adapter only (z' = z + W z, 768->768)"
+  },
+  "seed_rule": {
+    "seeds": [0, 1, 2],
+    "bank_seed": "bank = sorted(random.Random(20261009 + seed).sample(pool, 300))  (project unified rule BANK_SUBSET_SEED=20261009)",
+    "train_seed": "torch.manual_seed(seed) + np.random.default_rng(seed) for adapter training batch sampling",
+    "note": "adapter init is zero-init (identity), hence seed-independent; seed affects bank selection + batch order only",
+    "seed0": "REUSED from E13-A (results/e13a/e13a_screening.csv), 0 GPU recompute",
+    "new_seeds": [1, 2]
+  },
+  "hyperparameters": "strictly identical to E13-A R1: L=L_cons+0.1*L_preserve, AdamW lr=1e-3, mild brightness/contrast/gamma +/-15% (6 variants), max 300 steps, early-stop 30 (eval every 5), train 240/val 60",
+  "matrix": {"total_cells": 9, "reused_seed0": 3, "new_cells": 6},
+  "decision_rules": {
+    "relative_to": "R0 (frozen baseline, per-seed bank)",
+    "PASS": "overall mean dAUROC >= +0.010 AND positive AUROC cells >= 7/9 AND per-category 3-seed mean dAUROC >= +0.005 AND overall mean dAP >= +0.005 AND no collapse",
+    "HOLD": "overall mean dAUROC >= +0.0075 AND positive AUROC cells >= 6/9 AND per-category 3-seed mean dAUROC >= 0 AND overall mean dAP >= 0",
+    "STOP": "otherwise",
+    "report": ["mean", "std", "min", "max", "per-category seed mean/std", "9-cell sign consistency"]
+  },
+  "forbidden": [
+    "add candidates", "change loss/adapter/hyperparameters", "tune lr/steps/augmentation",
+    "rerun seed0", "optimize a single bad seed", "change backbone/scoring/resolution/bank"
+  ],
+  "output": "results/e13b/"
+}
