@@ -1,0 +1,74 @@
+{
+  "S1-AGG-1": {
+    "mean_d_auroc": -0.061,
+    "mean_d_ap": -0.07332,
+    "positive_categories": 1,
+    "worst_category": "Car",
+    "worst_d_auroc": -0.16492,
+    "per_category_d_auroc": {
+      "Bird": -0.02332,
+      "Car": -0.16492,
+      "Cube": 0.00525
+    }
+  },
+  "S1-AGG-2": {
+    "mean_d_auroc": -0.07709,
+    "mean_d_ap": -0.09846,
+    "positive_categories": 1,
+    "worst_category": "Car",
+    "worst_d_auroc": -0.18171,
+    "per_category_d_auroc": {
+      "Bird": -0.07282,
+      "Car": -0.18171,
+      "Cube": 0.02326
+    }
+  },
+  "S2-AGG-1": {
+    "mean_d_auroc": -0.03514,
+    "mean_d_ap": -0.04985,
+    "positive_categories": 1,
+    "worst_category": "Car",
+    "worst_d_auroc": -0.10275,
+    "per_category_d_auroc": {
+      "Bird": -0.01885,
+      "Car": -0.10275,
+      "Cube": 0.01617
+    }
+  },
+  "S2-AGG-2": {
+    "mean_d_auroc": -0.06185,
+    "mean_d_ap": -0.08137,
+    "positive_categories": 1,
+    "worst_category": "Car",
+    "worst_d_auroc": -0.14141,
+    "per_category_d_auroc": {
+      "Bird": -0.06947,
+      "Car": -0.14141,
+      "Cube": 0.02534
+    }
+  },
+  "S3-AGG-1": {
+    "mean_d_auroc": -0.0303,
+    "mean_d_ap": -0.04662,
+    "positive_categories": 1,
+    "worst_category": "Car",
+    "worst_d_auroc": -0.10027,
+    "per_category_d_auroc": {
+      "Bird": -0.00906,
+      "Car": -0.10027,
+      "Cube": 0.01843
+    }
+  },
+  "S3-AGG-2": {
+    "mean_d_auroc": -0.05518,
+    "mean_d_ap": -0.07795,
+    "positive_categories": 1,
+    "worst_category": "Car",
+    "worst_d_auroc": -0.13375,
+    "per_category_d_auroc": {
+      "Bird": -0.06426,
+      "Car": -0.13375,
+      "Cube": 0.03248
+    }
+  }
+}

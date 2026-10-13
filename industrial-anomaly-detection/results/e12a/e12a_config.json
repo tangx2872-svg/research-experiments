@@ -1,0 +1,69 @@
+{
+  "experiment": "E12-A Subspace Scoring Screening",
+  "stage": "scoring paradigm test (frozen-feature module search CLOSED)",
+  "frozen_inputs": {
+    "categories": ["Bird", "Car", "Cube"],
+    "seed": 0,
+    "bank_size": 300,
+    "bank_rule": "E7-1 seed-0 frozen bank (random.Random(20261009).sample(pool_of_1200, 300))",
+    "test_view": "120",
+    "backbone": "frozen DINOv2-B (dinov2_vitb14, 768-d)",
+    "feature_source": "final-layer patch tokens (get_intermediate_layers n=1 norm=True), 448 input, 1024 patches/image",
+    "labels": "official image_anomaly + raw boolean detectable filter (official_metrics from e11_p2_runner)",
+    "normal_training_only": true,
+    "test_labels_for_tuning": false
+  },
+  "baseline": {
+    "S0": "existing frozen DINOv2-B + 1-NN-max",
+    "reuse": "P5 baseline numbers (results/e11/p5_screening.csv); NOT recomputed",
+    "ref": {"Bird": {"auroc": 0.74725, "ap": 0.78863},
+            "Car": {"auroc": 0.78552, "ap": 0.84207},
+            "Cube": {"auroc": 0.85410, "ap": 0.91686}}
+  },
+  "candidates": {
+    "S1": {"variance_retained": 0.95, "desc": "PCA residual, tau=0.95"},
+    "S2": {"variance_retained": 0.99, "desc": "PCA residual, tau=0.99 (SubspaceAD official)"},
+    "S3": {"variance_retained": 0.995, "desc": "PCA residual, tau=0.995"}
+  },
+  "pca_definition": {
+    "fit_on": "raw (LayerNorm'd final-layer) mean-centered patch features, NO L2 normalization",
+    "covariance": "empirical covariance over all bank patches (300*1024 = 307200 samples)",
+    "components_r": "smallest r with cumulative explained variance >= tau",
+    "residual": "S(x) = ||x - (mu + C C^T (x - mu))||_2^2  (squared reconstruction residual, SubspaceAD official)",
+    "note": "sqrt vs squared is rank-equivalent; squared adopted per official"
+  },
+  "aggregations": {
+    "AGG-1": "MAX: image_score = max over 1024 patch residual scores",
+    "AGG-2": "SUBSPACE/TOP-REGION: image_score = mean of top k patch residual scores, k = max(1, ceil(0.01*1024)) = 11 (SubspaceAD TVaR top-1%)"
+  },
+  "matrix": {
+    "cells_per_category": ["S0", "S1-max", "S1-subspace", "S2-max", "S2-subspace", "S3-max", "S3-subspace"],
+    "total_cells": 21,
+    "note": "S0 counted once per category and reused; 6 PCA cells computed per category"
+  },
+  "metrics": ["image AUROC", "image AP", "dAUROC vs S0", "dAP vs S0"],
+  "summary": ["mean dAUROC", "mean dAP", "positive_categories/3", "worst-category dAUROC"],
+  "decision_rules": {
+    "GO": [
+      "mean dAUROC >= +0.010 AND mean dAP >= 0 AND no category dAUROC < -0.020",
+      "OR 3/3 categories dAUROC > 0 AND mean dAUROC >= +0.007 AND mean dAP >= 0"
+    ],
+    "HOLD": "2/3 categories positive AND mean dAUROC > 0 AND AP not clearly down (esp. ~+0.005..+0.010)",
+    "STOP": [
+      "mean dAUROC <= 0",
+      "OR only 1/3 categories positive with tiny gain",
+      "OR AP clearly down",
+      "OR catastrophic drop in some category",
+      "OR all improvements at noise level"
+    ]
+  },
+  "not_allowed": [
+    "change frozen test view", "change bank=300", "use test labels to tune",
+    "change backbone", "change DINOv2 layer", "add categories",
+    "add 5+ PCA params", "tune until a category looks good",
+    "trainable adapter", "long debug/rescue", "re-run existing baseline",
+    "add Mahalanobis/whitening/adapter/MLP if all STOP"
+  ],
+  "seed": 0,
+  "output": "results/e12a/"
+}
