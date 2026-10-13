@@ -63,9 +63,22 @@ def route(records: list, kind: str) -> list:
     return [dict(r, image_path=str(E8.cache_path(kind, r))) for r in records]
 
 
+_model_cache = {}
+
+
 def load_dinov2(name: str, dev):
-    model = torch.hub.load("facebookresearch/dinov2", name)
+    if name in _model_cache:
+        return _model_cache[name]
+    for attempt in range(4):
+        try:
+            model = torch.hub.load("facebookresearch/dinov2", name)
+            break
+        except Exception:
+            if attempt == 3:
+                raise
+            time.sleep(8)
     model.eval().to(dev)
+    _model_cache[name] = model
     return model
 
 

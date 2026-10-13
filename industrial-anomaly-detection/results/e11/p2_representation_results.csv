@@ -1,0 +1,10 @@
+category,view,backbone,scoring,train_budget,protocol,n_ok,n_ng,seed,auroc,ap,runtime,peak_vram,status
+Bird,120,resnet,1-NN-max,300,official_image_anomaly,320,333,0,0.68454,0.72797,125.0,6229.2,OK
+Bird,120,dinov2s,1-NN-max,300,official_image_anomaly,320,333,0,0.73875,0.76091,95.7,4927.3,OK
+Bird,120,dinov2b,1-NN-max,300,official_image_anomaly,320,333,0,0.74725,0.78863,185.3,5719.9,OK
+Car,120,resnet,1-NN-max,300,official_image_anomaly,300,356,0,0.62247,0.59298,123.2,6641.9,OK
+Car,120,dinov2s,1-NN-max,300,official_image_anomaly,300,356,0,0.75793,0.81392,29.2,5255.9,OK
+Car,120,dinov2b,1-NN-max,300,official_image_anomaly,300,356,0,0.78552,0.84207,54.0,5717.9,OK
+Cube,120,resnet,1-NN-max,300,official_image_anomaly,260,418,0,0.60857,0.66489,122.4,6917.2,OK
+Cube,120,dinov2s,1-NN-max,300,official_image_anomaly,260,418,0,0.83318,0.90530,29.6,5531.2,OK
+Cube,120,dinov2b,1-NN-max,300,official_image_anomaly,260,418,0,0.85410,0.91686,54.9,5993.2,OK
