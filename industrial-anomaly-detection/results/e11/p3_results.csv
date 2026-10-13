@@ -1,0 +1,6 @@
+category,view,backbone,condition,train_budget,calib_budget,n_ok,n_ng,auroc,ap,runtime,peak_vram,status
+Bird,120,dinov2b,raw,300,2400,320,333,0.74725,0.78863,206.7,5358.7,OK
+Bird,120,dinov2b,calibrated,300,2400,320,333,0.75090,0.79470,206.7,5358.7,OK
+Bird,120,dinov2b,global,300,2400,320,333,0.74725,0.78863,206.7,5358.7,OK
+Car,120,dinov2b,raw,,,,,,,,,BLOCKED: calibration set needs 20 non-bank specimens; originals not downloaded (forbidden)
+Cube,120,dinov2b,raw,,,,,,,,,BLOCKED: calibration set needs 20 non-bank specimens; originals not downloaded (forbidden)

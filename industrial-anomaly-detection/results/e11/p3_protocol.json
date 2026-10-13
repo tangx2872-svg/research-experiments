@@ -1,0 +1,40 @@
+{
+  "experiment": "E11-P3.1 Illumination-Conditioned Normal Calibration",
+  "backbone": "DINOv2-B (ViT-B/14, frozen, offline)",
+  "input": "l0_448 448x448 RGB",
+  "scoring": "1-NN-max (cosine distance to nearest bank patch, max over 1024 patches)",
+  "memory_bank": "10 bank specimens, 300 images (frozen E7-1 seed-0 sample) \u2014 UNCHANGED from P2",
+  "calibration_set": "20 non-bank train normal specimens, 2400 images (240 per illumination)",
+  "method": "per-illumination normal median centering: calibrated = raw - median_normal[illum]",
+  "controls": [
+    "A raw DINOv2-B 1-NN-max",
+    "B per-illumination median-centered",
+    "C global median centering (sanity: AUROC == A by monotonicity)"
+  ],
+  "labels": "official image_anomaly + raw boolean detectable filter",
+  "view": "120",
+  "seed": 0,
+  "categories": [
+    "Bird",
+    "Car",
+    "Cube"
+  ],
+  "metrics": [
+    "image AUROC",
+    "image AP",
+    "per-illumination normal median",
+    "per-illumination anomaly distribution",
+    "per-illumination AUROC (where pos+neg)",
+    "normal between-illumination offset",
+    "runtime"
+  ],
+  "forbidden": [
+    "test data/labels/scores in calibration",
+    "temperature params",
+    "learnable head",
+    "score fusion",
+    "auto tuning",
+    "new downloads",
+    "modifying history"
+  ]
+}
