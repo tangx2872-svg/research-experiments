@@ -1,0 +1,60 @@
+{
+  "experiment": "E11-P4 Round 1: Lightweight Module Screening",
+  "baseline": {
+    "name": "P00d",
+    "desc": "DINOv2-B last-layer (block11) L2-norm, 1-NN-max (= E11-P2 baseline)"
+  },
+  "frozen_inputs": {
+    "labels": "official image_anomaly + raw boolean detectable",
+    "view": "120",
+    "train_budget": 300,
+    "test": "Bird/Car/Cube view120 (700 img)",
+    "seed": 0,
+    "scoring": "L2-normalised patch tokens -> cosine 1-NN -> max over 1024 patches",
+    "bank": "P2 300-bank (10 specimens, view-mixed)",
+    "backbone": "DINOv2-B frozen"
+  },
+  "candidates": {
+    "A1": {
+      "direction": "intermediate+last fusion",
+      "op": "concat(last block11, block9) then L2-norm",
+      "dim": 1536
+    },
+    "A2": {
+      "direction": "intermediate+last fusion",
+      "op": "concat(last block11, block7) then L2-norm",
+      "dim": 1536
+    },
+    "B1": {
+      "direction": "local neighbourhood smoothing",
+      "op": "3x3 avg-pool over 32x32 patch grid, then L2-norm",
+      "dim": 768
+    },
+    "B2": {
+      "direction": "local neighbourhood smoothing",
+      "op": "5x5 avg-pool over 32x32 patch grid, then L2-norm",
+      "dim": 768
+    },
+    "C1": {
+      "direction": "multiscale",
+      "op": "concat(448 last-layer, 224 last-layer upsampled 16x16->32x32) then L2-norm",
+      "dim": 1536
+    },
+    "C2": {
+      "direction": "multiscale",
+      "op": "concat(448 last-layer, 336 last-layer upsampled 24x24->32x32) then L2-norm",
+      "dim": 1536
+    }
+  },
+  "screening_rule": {
+    "mean_dAUROC_ge": 0.01,
+    "min_improved_categories": 2,
+    "of": 3
+  },
+  "notes": [
+    "get_intermediate_layers(n=5, norm=True) returns blocks 7..11 (LayerNorm applied, no CLS token).",
+    "DINOv2-B has 12 blocks (0..11); last=block11.",
+    "Multi-scale uses the l0_448 cache resized to 224/336 (documented 2-stage resize vs original 1024).",
+    "No learned params, no test-set tuning, no threshold selection."
+  ]
+}
