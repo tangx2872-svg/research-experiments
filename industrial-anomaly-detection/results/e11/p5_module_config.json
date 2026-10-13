@@ -1,0 +1,61 @@
+{
+  "experiment": "E11-P5 Final Lightweight Screening",
+  "baseline": "DINOv2-B last-layer patch 1-NN-max (reproduced from P2/P4)",
+  "frozen_inputs": {
+    "labels": "official image_anomaly + raw boolean detectable",
+    "view": "120",
+    "train_budget": 300,
+    "seed": 0,
+    "backbone": "DINOv2-B frozen",
+    "test": "Bird/Car/Cube view120 (700 img)"
+  },
+  "candidates": {
+    "D1a": {
+      "name": "K-means prototype bank",
+      "prototypes": 1024,
+      "note": "1-NN-max against 1024 centroids (cosine)"
+    },
+    "D1b": {
+      "name": "K-means prototype bank",
+      "prototypes": 4096,
+      "note": "1-NN-max against 4096 centroids"
+    },
+    "D2a": {
+      "name": "k-NN local consistency",
+      "k": 3,
+      "note": "mean of 3 nearest cosine distances, max over patches"
+    },
+    "D2b": {
+      "name": "k-NN local consistency",
+      "k": 5,
+      "note": "mean of 5 nearest cosine distances, max over patches"
+    },
+    "D3a": {
+      "name": "global(CLS)+local fusion",
+      "alpha_global": 0.3,
+      "note": "0.7*local + 0.3*global(CLS 1-NN)"
+    },
+    "D3b": {
+      "name": "global(CLS)+local fusion",
+      "alpha_global": 0.5,
+      "note": "0.5*local + 0.5*global(CLS 1-NN)"
+    }
+  },
+  "screening_rule": {
+    "mean_dAUROC_ge": 0.01,
+    "min_improved_categories": 2,
+    "of": 3
+  },
+  "overlap_audit": {
+    "D1": "K-means prototypes vs E7 PatchCore greedy-coreset: different compression algorithm (no overlap).",
+    "D2": "k-NN mean vs E7 PatchCore k=9 softmin (ResNet) and P2/P4 1-NN-max (DINOv2): related family, different k/metric/features (not a duplicate).",
+    "D3": "CLS/patch weighted fusion vs E7 DINOv2 (which concatenated CLS into the token set): different mechanism (not a duplicate)."
+  },
+  "not_allowed": [
+    "test-label fitting",
+    "weight learning",
+    "param search",
+    "new candidates",
+    "multi-seed/view/train"
+  ]
+}
