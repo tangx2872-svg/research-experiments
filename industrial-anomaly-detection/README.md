@@ -1627,6 +1627,15 @@ Original/B2 在 5 类 × seeds 0–6 **全覆盖 35/35**、唯一未跑项为 `s
    - **Round 2（Top-2=I03+F01，3 cats × 3 seeds × 2 views，18 units）**：**I03 未确认**（Bird +0.0039 保持，但 Car 翻负、Cube 全负 → 总体 -0.0013）；**F01 是 Car 特异性**（Car +0.041 一致、Bird -0.034 一致、Cube -0.014）。
    - **判定 = NO SURVIVOR**：输入级 illumination 归一化与特征级 L2 norm 全部呈**类别特异**效应，与 CLAHE/E5-1 同型。
    - **论文意义**：跨 E5-1/E8/E9 三轮独立证据一致表明——**对 PatchCore 施加任何低成本 preprocessing / feature-normalization / module-insertion 都无法在 M²AD 上获得跨类别稳健的 illumination-robustness 收益**。「给 PatchCore 加便宜模块」这条路线已穷尽。下一步需人工裁决：接受负面研究叙事，或转向改变 scoring objective 本身的方法家族（而非输入/特征预处理）。
+19. **E10 Local-Manifold Calibrated Scoring — `NO SURVIVOR`（2026-10-13）**：
+   结果见 [`results/e10/README.md`](results/e10/README.md)。
+   - **问题**：illumination shift 是否主要通过局部 manifold 密度/尺度变化错误放大 absolute NN distance？若按 normal 局部尺度重校准 anomaly distance，能否打破 Bird↑/Car↓/Cube↓ 类别特异模式？
+   - **候选（scoring-only，冻结 6 个）**：S0 Original（baseline）/ S1 kNN3 mean / S2 kNN5 trimmed / **S3 局部密度比 k=3** / **S4 局部密度比 k=5** / S5 normal ECDF（monotone remap 对照）。输入/backbone/特征/coreset 全部冻结。
+   - **Sanity**：S0 与冻结 `predict_one` **逐位一致（0.000e+00）**（修复 coreset RNG 未播种 bug 后）；S1–S4 手工复算误差 0.0；rho 有限>0；S5 ECDF 单调/[0,1]/normal-only。
+   - **Round 1（3 cats × seed0 × view120，一次 fit 算 6 方法）**：**S4 达 ADVANCE**（Bird +0.0039 / Car +0.0263 / Cube +0.0188，**3/3 正**）；**S3 ADVANCE**（2/3 正）。是 E5–E10 首个看似跨类别正的候选。
+   - **Round 2（Top-2=S4/S3，3 cats × 3 seeds × 2 views）**：**均 STOP**。S4 的 Bird 从 +0.004 翻为 **-0.013**（view 090 上 -0.0246，3/3 seed 负），收益完全 **Car 驱动**（Car +0.032，3/3 seed 正）；Cube ≈0。S3 仅 Car 正。
+   - **判定 = NO SURVIVOR**：S4 未达 `worst ≥ -0.010`（Bird -0.0130）；S3 单类别正。
+   - **论文意义**：local-density 校准是真实 scoring 效应（非 monotone remap），但**只把类别特异模式从 Bird↑ 反转为 Car↑/Bird↓**，仍非跨类别稳健。**E5+E8+E9+E10 四轮后，不再有充分理由继续搜索 cheap PatchCore modifications**。最终建议：接受负面研究叙事（PatchCore illumination-robustness 的谨慎 negative study），或转向改变 scoring objective 本身的方法家族。
 
 ---
 

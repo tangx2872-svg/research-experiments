@@ -10,13 +10,13 @@
 
 | 项 | 状态 |
 |---|---|
-| 阶段 | **Real-Illumination Robust Module Screening（E9 已完成 `NO SURVIVOR`）**；历史：E8 CLAHE 跨类别 Kill Test **STOP**、E7-1/E7-2 已完成、E5-1 `0 GO / 1 HOLD / 3 STOP` |
+| 阶段 | **Local-Manifold Calibrated Scoring（E10 已完成 `NO SURVIVOR`）**；历史：E9 归一化海选 NO SURVIVOR、E8 CLAHE STOP、E7-1/E7-2、E5-1 `0 GO` |
 | Method discovery / search | **CLOSED（已正式结束）** |
 | 冻结方法 | **X6c** — 内部 `A — FREEZE X6c`；但 **E4-X 外部（M²AD Bird）已 KILLED**，见 §13 |
 | 内部验证 | **完成**（5 类 × 10 seeds = 50 单元） |
 | Module composition | **E5-1 BROAD SCREENING 已完成** ⇒ `0 GO / 1 HOLD / 3 STOP` ⇒ **STOP Module Composition 分支**；**E7 CLAHE 已 KILLED**（跨类别 STOP，见 §13） |
 | 主 E4 数据集 | **M²AD**（E4-0C winner；E4-D0 integrity **PASS**；E4-D1 Original smoke **PASS**） |
-| 下一步 | **人工裁决**（E9 = `NO SURVIVOR` 已完成）：跨 E5-1/E8/E9 三轮，「给 PatchCore 加便宜 preprocessing/feature-norm/module」路线已穷尽。需决定：① 接受负面研究叙事（PatchCore illumination-robustness 的谨慎 negative study）；或 ② 转向改变 scoring objective 本身的方法家族。**禁止继续 CLAHE 调参 / 继续 preprocessing 海选。** |
+| 下一步 | **人工裁决**（E10 = `NO SURVIVOR` 已完成）：跨 **E5+E8+E9+E10 四轮**，「给 PatchCore 加便宜 module/preprocessing/feature-norm/scoring-calibration」路线已彻底穷尽。建议：① 接受负面研究叙事（PatchCore illumination-robustness 的谨慎 negative study）；或 ② 转向改变 scoring objective 本身的方法家族。**禁止继续 cheap-modification 海选、禁止开启 E11。** |
 
 ---
 
@@ -301,6 +301,15 @@ Next               = human review required (no E7-3, no multi-seed, no rescue, n
 - **Round 2（I03+F01，3 cats × 3 seeds × 2 views）**：**I03 未确认**（总体 -0.0013，Bird 微正但 Car 翻负、Cube 全负）；**F01 为 Car 特异性**（Car +0.041 / Bird -0.034 / Cube -0.014）。
 - **判定 = `NO SURVIVOR`**：低成本 preprocessing / feature-norm 全部呈类别特异效应。
 - **论文意义**：跨 E5-1/E8/E9 三轮独立证据一致——「给 PatchCore 加便宜模块」路线穷尽；下一步需人工裁决（负面研究叙事 vs 转向 scoring-objective 方法家族）。
+
+### E10 Local-Manifold Calibrated Scoring 结果（`results/e10/`，2026-10-13）
+
+scoring-only，冻结 6 候选（S0 Original / S1 kNN3 / S2 kNN5-trimmed / **S3 ρ-ratio k=3** / **S4 ρ-ratio k=5** / S5 normal-ECDF）。**S0 与冻结 predict_one 逐位一致（0.0）**（修复 coreset RNG 未播种 bug）。
+
+- **Round 1（3 cats × seed0 × view120）**：**S4 达 ADVANCE（3/3 正：Bird +0.0039 / Car +0.0263 / Cube +0.0188）**；S3 ADVANCE（2/3 正）—— 是 E5–E10 首个看似跨类别正的候选。
+- **Round 2（S4/S3，3 cats × 3 seeds × 2 views）**：**均 STOP**。S4 的 Bird 翻为 **-0.013**（view 090 上 -0.0246，3/3 seed 负），收益完全 Car 驱动（Car +0.032）；S3 仅 Car 正。
+- **判定 = `NO SURVIVOR`**：S4 未达 `worst ≥ -0.010`；S3 单类别正。
+- **结论**：local-density 校准是真实 scoring 效应，但**只把类别特异模式从 Bird↑ 反转为 Car↑/Bird↓**，仍非跨类别稳健。**E5+E8+E9+E10 四轮后不再有理由搜索 cheap PatchCore modifications。**
 
 ### E6-A 指标有效性审计结果（`docs/E6_A_METRIC_PROTOCOL.md` / `results/e6_a/`，2026-10-09，**CPU-only，GPU = 0**）
 
