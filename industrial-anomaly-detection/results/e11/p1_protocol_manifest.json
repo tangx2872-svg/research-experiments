@@ -1,0 +1,438 @@
+{
+  "official_repo": "github.com/hustCYQ/M2AD",
+  "official_head": "a606aa0",
+  "filter_rule": "detectable != False (test only, M2AD-Invariant)",
+  "filter_semantics": "drops non-detectable NG; keeps ALL Good (detectable=\"\") and detectable NG",
+  "categories": {
+    "Bird": {
+      "full_test": {
+        "raw_OK": 3850,
+        "raw_NG": 4550,
+        "detectable_NG": 4185,
+        "non_detectable_NG": 365,
+        "filtered_OK": 3850,
+        "filtered_NG": 4185,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 390,
+          "030": 380,
+          "060": 430,
+          "090": 370,
+          "120": 380,
+          "150": 400,
+          "180": 380,
+          "210": 360,
+          "240": 370,
+          "270": 370,
+          "300": 340,
+          "330": 380
+        },
+        "NG_per_illumination": {
+          "01": 455,
+          "02": 455,
+          "03": 455,
+          "04": 455,
+          "05": 455,
+          "06": 455,
+          "07": 455,
+          "08": 455,
+          "09": 455,
+          "10": 455
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 320,
+        "raw_NG": 380,
+        "non_detectable_NG": 47,
+        "filtered_NG": 333
+      }
+    },
+    "Car": {
+      "full_test": {
+        "raw_OK": 3550,
+        "raw_NG": 4850,
+        "detectable_NG": 4541,
+        "non_detectable_NG": 309,
+        "filtered_OK": 3550,
+        "filtered_NG": 4541,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 370,
+          "030": 400,
+          "060": 400,
+          "090": 380,
+          "120": 400,
+          "150": 400,
+          "180": 370,
+          "210": 450,
+          "240": 430,
+          "270": 420,
+          "300": 420,
+          "330": 410
+        },
+        "NG_per_illumination": {
+          "01": 485,
+          "02": 485,
+          "03": 485,
+          "04": 485,
+          "05": 485,
+          "06": 485,
+          "07": 485,
+          "08": 485,
+          "09": 485,
+          "10": 485
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 300,
+        "raw_NG": 400,
+        "non_detectable_NG": 44,
+        "filtered_NG": 356
+      }
+    },
+    "Cube": {
+      "full_test": {
+        "raw_OK": 2870,
+        "raw_NG": 5530,
+        "detectable_NG": 5308,
+        "non_detectable_NG": 222,
+        "filtered_OK": 2870,
+        "filtered_NG": 5308,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 470,
+          "030": 470,
+          "060": 470,
+          "090": 440,
+          "120": 440,
+          "150": 440,
+          "180": 420,
+          "210": 460,
+          "240": 470,
+          "270": 470,
+          "300": 490,
+          "330": 490
+        },
+        "NG_per_illumination": {
+          "01": 553,
+          "02": 553,
+          "03": 553,
+          "04": 553,
+          "05": 553,
+          "06": 553,
+          "07": 553,
+          "08": 553,
+          "09": 553,
+          "10": 553
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 260,
+        "raw_NG": 440,
+        "non_detectable_NG": 22,
+        "filtered_NG": 418
+      }
+    },
+    "Dice": {
+      "full_test": {
+        "raw_OK": 3910,
+        "raw_NG": 4490,
+        "detectable_NG": 4170,
+        "non_detectable_NG": 320,
+        "filtered_OK": 3910,
+        "filtered_NG": 4170,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 310,
+          "030": 410,
+          "060": 400,
+          "090": 380,
+          "120": 400,
+          "150": 430,
+          "180": 350,
+          "210": 380,
+          "240": 390,
+          "270": 340,
+          "300": 340,
+          "330": 360
+        },
+        "NG_per_illumination": {
+          "01": 449,
+          "02": 449,
+          "03": 449,
+          "04": 449,
+          "05": 449,
+          "06": 449,
+          "07": 449,
+          "08": 449,
+          "09": 449,
+          "10": 449
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 300,
+        "raw_NG": 400,
+        "non_detectable_NG": 12,
+        "filtered_NG": 388
+      }
+    },
+    "Doll": {
+      "full_test": {
+        "raw_OK": 3390,
+        "raw_NG": 5010,
+        "detectable_NG": 4730,
+        "non_detectable_NG": 280,
+        "filtered_OK": 3390,
+        "filtered_NG": 4730,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 410,
+          "030": 420,
+          "060": 430,
+          "090": 410,
+          "120": 430,
+          "150": 420,
+          "180": 450,
+          "210": 430,
+          "240": 380,
+          "270": 380,
+          "300": 420,
+          "330": 430
+        },
+        "NG_per_illumination": {
+          "01": 501,
+          "02": 501,
+          "03": 501,
+          "04": 501,
+          "05": 501,
+          "06": 501,
+          "07": 501,
+          "08": 501,
+          "09": 501,
+          "10": 501
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 270,
+        "raw_NG": 430,
+        "non_detectable_NG": 30,
+        "filtered_NG": 400
+      }
+    },
+    "Holder": {
+      "full_test": {
+        "raw_OK": 3510,
+        "raw_NG": 4770,
+        "detectable_NG": 4616,
+        "non_detectable_NG": 154,
+        "filtered_OK": 3510,
+        "filtered_NG": 4616,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 370,
+          "030": 420,
+          "060": 420,
+          "090": 480,
+          "120": 400,
+          "150": 370,
+          "180": 350,
+          "210": 370,
+          "240": 390,
+          "270": 460,
+          "300": 370,
+          "330": 370
+        },
+        "NG_per_illumination": {
+          "01": 477,
+          "02": 477,
+          "03": 477,
+          "04": 477,
+          "05": 477,
+          "06": 477,
+          "07": 477,
+          "08": 477,
+          "09": 477,
+          "10": 477
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 290,
+        "raw_NG": 400,
+        "non_detectable_NG": 24,
+        "filtered_NG": 376
+      }
+    },
+    "Motor": {
+      "full_test": {
+        "raw_OK": 2400,
+        "raw_NG": 6000,
+        "detectable_NG": 5893,
+        "non_detectable_NG": 107,
+        "filtered_OK": 2400,
+        "filtered_NG": 5893,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 500,
+          "030": 500,
+          "060": 500,
+          "090": 500,
+          "120": 500,
+          "150": 500,
+          "180": 500,
+          "210": 500,
+          "240": 500,
+          "270": 500,
+          "300": 500,
+          "330": 500
+        },
+        "NG_per_illumination": {
+          "01": 600,
+          "02": 600,
+          "03": 600,
+          "04": 600,
+          "05": 600,
+          "06": 600,
+          "07": 600,
+          "08": 600,
+          "09": 600,
+          "10": 600
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 200,
+        "raw_NG": 500,
+        "non_detectable_NG": 12,
+        "filtered_NG": 488
+      }
+    },
+    "Ring": {
+      "full_test": {
+        "raw_OK": 2920,
+        "raw_NG": 5480,
+        "detectable_NG": 5375,
+        "non_detectable_NG": 105,
+        "filtered_OK": 2920,
+        "filtered_NG": 5375,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 480,
+          "030": 470,
+          "060": 460,
+          "090": 470,
+          "120": 470,
+          "150": 450,
+          "180": 440,
+          "210": 450,
+          "240": 450,
+          "270": 450,
+          "300": 440,
+          "330": 450
+        },
+        "NG_per_illumination": {
+          "01": 548,
+          "02": 548,
+          "03": 548,
+          "04": 548,
+          "05": 548,
+          "06": 548,
+          "07": 548,
+          "08": 548,
+          "09": 548,
+          "10": 548
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 230,
+        "raw_NG": 470,
+        "non_detectable_NG": 18,
+        "filtered_NG": 452
+      }
+    },
+    "Teapot": {
+      "full_test": {
+        "raw_OK": 3330,
+        "raw_NG": 5070,
+        "detectable_NG": 4761,
+        "non_detectable_NG": 309,
+        "filtered_OK": 3330,
+        "filtered_NG": 4761,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 410,
+          "030": 420,
+          "060": 410,
+          "090": 410,
+          "120": 450,
+          "150": 450,
+          "180": 430,
+          "210": 450,
+          "240": 430,
+          "270": 400,
+          "300": 400,
+          "330": 410
+        },
+        "NG_per_illumination": {
+          "01": 507,
+          "02": 507,
+          "03": 507,
+          "04": 507,
+          "05": 507,
+          "06": 507,
+          "07": 507,
+          "08": 507,
+          "09": 507,
+          "10": 507
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 250,
+        "raw_NG": 450,
+        "non_detectable_NG": 34,
+        "filtered_NG": 416
+      }
+    },
+    "Tube": {
+      "full_test": {
+        "raw_OK": 3350,
+        "raw_NG": 5050,
+        "detectable_NG": 4276,
+        "non_detectable_NG": 774,
+        "filtered_OK": 3350,
+        "filtered_NG": 4276,
+        "detectable_NG_no_mask": 0,
+        "NG_per_view": {
+          "000": 430,
+          "030": 430,
+          "060": 420,
+          "090": 420,
+          "120": 440,
+          "150": 410,
+          "180": 410,
+          "210": 390,
+          "240": 400,
+          "270": 420,
+          "300": 450,
+          "330": 430
+        },
+        "NG_per_illumination": {
+          "01": 505,
+          "02": 505,
+          "03": 505,
+          "04": 505,
+          "05": 505,
+          "06": 505,
+          "07": 505,
+          "08": 505,
+          "09": 505,
+          "10": 505
+        }
+      },
+      "view120_subset": {
+        "raw_OK": 260,
+        "raw_NG": 440,
+        "non_detectable_NG": 61,
+        "filtered_NG": 379
+      }
+    }
+  }
+}
