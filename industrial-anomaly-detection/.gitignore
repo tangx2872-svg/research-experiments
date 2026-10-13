@@ -354,8 +354,14 @@ results/e11/p5_module_raw.json
 # E12-A results (tracked aggregates; logs excluded)
 !results/e12a/
 results/e12a/logs/
+results/e12a/e12a_partial.json
 
 # E12-B results (tracked aggregates; logs + resume checkpoint excluded)
 !results/e12b/
 results/e12b/logs/
 results/e12b/e12b_partial.json
+
+# E13-A results (tracked aggregates; logs + resume checkpoint excluded)
+!results/e13a/
+results/e13a/logs/
+results/e13a/e13a_partial.json

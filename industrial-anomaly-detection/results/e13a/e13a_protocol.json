@@ -1,0 +1,80 @@
+{
+  "experiment": "E13-A Lightweight Representation Adaptation Screening",
+  "stage": "training-based lightweight representation adaptation (last search axis on DINOv2-B)",
+  "date": "2026-10-14",
+  "git_head_at_start": "a2ff97175143ca28e40b64871bb492e5bb596fe9",
+  "paper_phase": "representation adaptation quick screening",
+  "thesis_served": "验证 frozen DINOv2-B 的特征空间能否通过 normal-only lightweight adaptation 提升真实光照下的异常检测性能",
+  "why_now": "E11/E12 已证明 scoring/fusion 层免训练或极轻修改收益上限 ~+0.01；必须测试特征空间本身轻量适配是否有更强正信号",
+  "exit": {
+    "KEEP": "进入 E13-B 3-seed validation",
+    "HOLD": "保留最简单 1 个候选",
+    "NO_SURVIVOR": "关闭 DINOv2 representation adaptation axis，换 baseline/representation family"
+  },
+  "frozen_inputs": {
+    "categories": ["Bird", "Car", "Cube"],
+    "bank": "300 normal/category (E7-1 seed-0 frozen bank)",
+    "seed": 0,
+    "backbone": "frozen DINOv2-B (dinov2_vitb14), no full fine-tune",
+    "input_resolution": "448 (same as E11/E12)",
+    "feature": "final-layer patch tokens (get_intermediate_layers n=1 norm=True), 1024x768",
+    "scoring": "1-NN-max (L2-normalised cosine NN -> max over 1024 patches)",
+    "test": "Bird/Car/Cube view120 (700 img), official image_anomaly + raw detectable",
+    "evaluation": ["AUROC", "AP"],
+    "baseline": "R0 = frozen DINOv2-B final-layer (reuse/reproduce E11/E12 values)"
+  },
+  "protocol_amendment_before_results": {
+    "note": "R2/R4 objective split was fixed BEFORE any formal result was viewed; not post-hoc tuning.",
+    "r2": "L = L_preserve ONLY (ordinary lightweight representation adapter baseline)",
+    "r4": "L = L_cons + 0.1 * L_preserve (illumination-aware adapter)",
+    "r1_r3": "L = L_cons + 0.1 * L_preserve (per original protocol)",
+    "purpose": "R2 vs R4 = strict single-variable ablation measuring the incremental value of illumination consistency (same 768->128->768 residual MLP structure)."
+  },
+  "candidates": {
+    "R0": {"name": "frozen DINOv2-B final-layer", "note": "baseline, reused/reproduced"},
+    "R1": {"name": "Linear Residual Adapter", "op": "z' = z + W z, W: 768->768", "init": "W ~ 0 (near identity)", "objective": "L_cons + 0.1*L_preserve"},
+    "R2": {"name": "Bottleneck MLP Residual Adapter (preserve-only)", "op": "z' = z + W2 GELU(W1 z), 768->128->768", "init": "W2 ~ 0", "objective": "L_preserve ONLY"},
+    "R3": {"name": "LoRA on final DINO blocks", "target": "last 2 blocks, Q/V projection", "rank": 4, "alpha": 8, "objective": "L_cons + 0.1*L_preserve"},
+    "R4": {"name": "MLP Adapter + Illumination Consistency", "op": "same 768->128->768 residual MLP as R2", "objective": "L_cons + 0.1*L_preserve"}
+  },
+  "losses": {
+    "L_cons": "1 - cosine(z_adapter(x), z_adapter(T_illum(x))), per-patch mean",
+    "L_preserve": "1 - cosine(z_adapter(x), z_frozen(x)), per-patch mean",
+    "beta": 0.1
+  },
+  "illumination_augmentation": {
+    "families": ["brightness", "contrast", "gamma"],
+    "levels": {"brightness": [0.85, 1.15], "contrast": [0.85, 1.15], "gamma": [0.85, 1.15]},
+    "variants_per_image": 6,
+    "no_geometry": true
+  },
+  "training": {
+    "normal_only": true,
+    "train_val_split": "bank 300 -> train 240 / val 60 (sorted image path order)",
+    "max_steps": 300,
+    "optimizer": "AdamW",
+    "lr": {"adapter": 0.001, "lora": 0.0005},
+    "early_stop": "val consistency (R1/R3/R4) or val preservation (R2) no improvement for 30 steps, evaluated every 5 steps",
+    "single_cell_timeout_min": 20,
+    "total_budget_h": [1, 2],
+    "hard_stop_h": 2.5
+  },
+  "collapse_gate": {
+    "stop_if": "feature std drop > 50% OR mean pairwise cosine > 0.98 OR feature norm explodes",
+    "record": ["feature mean", "feature std", "feature norm", "pairwise cosine distribution"] + ["before", "after"]
+  },
+  "decision_rules": {
+    "relative_to": "R0",
+    "KEEP": "mean dAUROC >= +0.015 AND >=2/3 cat dAUROC >= +0.010 AND worst dAUROC >= -0.005 AND mean dAP >= +0.005 AND no collapse",
+    "HOLD": "mean dAUROC >= +0.010 AND 3/3 dAUROC >= -0.005 AND mean dAP >= 0 AND no collapse",
+    "STOP": "otherwise",
+    "multi_keep_priority": ["simpler", "fewer trainable params", "higher mean dAUROC", "higher mean dAP"]
+  },
+  "forbidden": [
+    "post-hoc lr/hidden-dim/beta/augmentation grid", "extra candidates", "combine S2",
+    "PCA/prototype/kNN variant", "change scoring/backbone/resolution/bank",
+    "full fine-tune", "unfreeze backbone", "rank grid", "target-module grid", "per-category tuning"
+  ],
+  "output": "results/e13a/",
+  "not_allowed_rescue": "NO SURVIVOR -> close DINOv2 representation adaptation axis; do NOT tune lr/hidden/beta/augmentation to rescue"
+}
