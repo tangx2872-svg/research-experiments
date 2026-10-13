@@ -1,0 +1,33 @@
+{
+  "experiment": "E11-P2 Frozen Representation Diagnostic",
+  "eval_label": "official image_anomaly (image-level ground truth)",
+  "filter": "detectable != False (RAW metadata boolean; NOT str()-coerced)",
+  "note_on_image_anomaly_false_object_true": "images with image_anomaly=False but object_anomaly=True are KEPT as normal test samples (official rule: the defect is not visible in that view/illum, so the image is normal)",
+  "eval_scope": "A = official-aligned view120 slice (primary this round); B = full 12-view Invariant (only if budget allows; NOT run by default)",
+  "backbones": {
+    "resnet": "wide_resnet50_2 L2+L3 (PatchCore embedding, 1536-d), input l0_256 256x256",
+    "dinov2s": "DINOv2 ViT-S/14 final-layer patch tokens (384-d), input l0_448 448x448",
+    "dinov2b": "DINOv2 ViT-B/14 final-layer patch tokens (768-d), input l0_448 448x448"
+  },
+  "train_budget": 300,
+  "bank_rule": "E7-1 seed-0 frozen bank (random.Random(20261009).sample(1200,300))",
+  "test": "Bird/Car/Cube view120 (700 images before filter)",
+  "scoring": "unified 1-NN: L2-normalise patch features -> cosine distance to nearest bank patch -> image score = max over 1024 patches",
+  "scoring_note": "identical scoring across all 3 backbones; NO coreset, NO k=9 softmin, NO test-set scoring search. E7 AnomalyDINO scoring (top-1% mean) is historical evidence only, NOT the fair control.",
+  "metrics": [
+    "image AUROC",
+    "image AP (average precision)"
+  ],
+  "seed": 0,
+  "stopping_rules": [
+    "cache cannot be decoded as RGB image",
+    "image ID/label misalignment",
+    "train/test leakage",
+    "GPU OOM un-resolvable by smaller batch",
+    "download > 2GB",
+    "backbone retraining",
+    "disk < 10GB",
+    "modifying historical results"
+  ],
+  "exclusions": "no training, no Dinomaly/MSFlow, no Car/Cube raw download, no P3 auto-start"
+}
