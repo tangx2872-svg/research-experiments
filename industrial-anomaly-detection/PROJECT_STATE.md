@@ -21,13 +21,14 @@
 | **E16** | **R1 资格赛 = GO**：Bird+Car **6/6 ΔAUROC>0**，mean ΔAUROC **+0.01855**、mean ΔAP **+0.01743**；Cube 未受损（+0.00265）；robustness 9/9 cell 同向改善；diagnostic 与 illumination-shift 排序一致（Bird>Car>Cube）。**R1-ILA 获得论文方法资格** |
 | **E17** | **BETA 扫描（0.0/0.05/0.1/0.2/0.5）= FREEZE_CURRENT_R1**：无挑战者过 +0.003 晋级门（最佳 +0.00173 且 Cube −0.0087）；BETA=0 触发 Cube collapse（pairwise cos 0.988）且三类最差。**最终方法冻结为 R1-ILA（BETA=0.1）** |
 | **E18-P0** | 最终基线主表审计：发现 **view120 存在两套标签协议**（E7 线用 `object_anomaly`，E11+ 用 `image_anomaly`+`detectable`）；PatchCore Bird 已 0 GPU 重算为 official 口径 **0.69318**（历史报告的 0.78089 为旧标签虚高） |
+| **E18-P2** | **主表定稿**：`results/e18/{main_table.csv, main_table.md, native_scoring_appendix.csv, statistical_analysis.md, illum_breakdown.csv, verification.csv}`。**零 GPU**；**40/40 独立复算校验 PASS**。F0 vs Ours 配对 bootstrap（seed-mean）：Bird **+0.02586 [+0.00833,+0.04310]**、Car **+0.01123 [−0.00412,+0.02615]**、Cube **+0.00265 [−0.01171,+0.01633]**。illumination 分析：good 分数跨光照 spread Bird 0.036→0.018 / Car 0.089→0.069 / Cube 0.028→0.019（仅可解读 spread，且只能写 "consistent with"） |
 | **E18-P1** | 补齐缺失单元：**AnomalyDINO/Cube = 0.84889/0.91134**、**SoftPatch/Cube = 0.69343/0.75908**（6/6 校验 PASS，1.8 min GPU）；**PatchCore official Car/Cube = BLOCKED**（`data/m2ad/extracted/` 只有 Bird，原图不可得；`l0_256` 经实测 max|Δ|=0.057 不等价，已拒绝替代）。**主表 5/7 行已 3/3 完备** |
 
 **最终结论：`major detector-family search = CLOSED`**。DINOv2-B + 1-NN-max 是 M²AD Bird/Car/Cube（view120 / 300-bank）下最强 baseline；frozen scoring / fusion / anomaly-oriented family / teacher-student paradigm 均无法稳定超越。
 
 **唯一残余正信号 = R1 illumination-consistent adaptation**，经 **E16（GO）** 资格认证、**E17（FREEZE_CURRENT_R1）** 参数冻结，**最终方法 = R1-ILA（BETA=0.1）**，唯一权威配置 = `results/e17/final_method.json`。
 
-**当前阶段：`METHOD SEARCH CLOSED → FINAL BENCHMARK AND PAPER CONVERGENCE`**。E18-P0（基线主表审计）+ E18-P1（补齐 2/4 单元）已完成，产出 `results/e18/{audit.md, compatibility_matrix.csv, protocol.md, run_plan.md, filled/, filled_summary.csv}`；**下一动作 = E18-P2 主表定稿**（5/7 行已 3/3 完备），PatchCore official Car/Cube 的处置需人工裁决（选项 A 下载原图 / B 缓存替代-已否决 / C 主表留空-推荐）。E18–E20 禁止修改 R1-ILA 结构/BETA/任何最终超参数。详见 `results/e16/e16_decision_memo.md`、`results/e17/e17_decision_memo.md`、`results/e18/audit.md` 及项目 memory。
+**当前阶段：`METHOD SEARCH CLOSED → FINAL BENCHMARK AND PAPER CONVERGENCE`**。E18-P0（基线主表审计）+ E18-P1（补齐 2/4 单元）已完成，产出 `results/e18/{audit.md, compatibility_matrix.csv, protocol.md, run_plan.md, filled/, filled_summary.csv}`；**E18-P2 主表定稿已完成（commit 待记录）**：6 行主表 **5 行 3/3 完备**，Ours 三类全面领先；PatchCore official Car/Cube 按人工裁决**保持 BLOCKED**（选项 C）。**下一动作 = `E19 Paper convergence: ablation + figures`（不新增 GPU、不改冻结参数，需人工裁决）**。E18–E20 禁止修改 R1-ILA 结构/BETA/任何最终超参数。详见 `results/e16/e16_decision_memo.md`、`results/e17/e17_decision_memo.md`、`results/e18/audit.md` 及项目 memory。
 
 ---
 

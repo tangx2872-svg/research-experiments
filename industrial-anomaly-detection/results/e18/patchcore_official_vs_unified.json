@@ -1,0 +1,17 @@
+{
+  "d_auroc": 0.006118421052631606,
+  "d_auroc_ci": [
+    -0.011261705587046384,
+    0.023404920466771284
+  ],
+  "p_auroc_gt0": 0.754,
+  "d_ap": -0.006438808823263309,
+  "d_ap_ci": [
+    -0.024932716493193896,
+    0.012056822182217378
+  ],
+  "p_ap_gt0": 0.2683333333333333,
+  "n_boot_effective": 3000,
+  "n_images": 700,
+  "note": "Bird only. Car/Cube BLOCKED for official scoring, so a 3-category official-vs-unified comparison is NOT claimed."
+}
