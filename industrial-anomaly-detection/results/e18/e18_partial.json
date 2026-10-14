@@ -1,0 +1,57 @@
+{
+  "experiment": "E18-P1",
+  "units": {
+    "AnomalyDINO|Cube": {
+      "method": "AnomalyDINO",
+      "category": "Cube",
+      "seed": 0,
+      "metrics": {
+        "n_ok": 260,
+        "n_ng": 418,
+        "auroc": 0.8488866396761134,
+        "ap": 0.911341244132325,
+        "n_filtered": 22
+      },
+      "config": {
+        "impl": "e14_screen.run_f1",
+        "backbone": "DINOv2-B raw (no LayerNorm)",
+        "resolution": 448,
+        "scoring": "L2 kNN k=1, image score = mean_top1p (official)",
+        "source_run": "E14 F1 config"
+      },
+      "stages": {
+        "extract_s": 11.7,
+        "scoring_s": 42.1
+      },
+      "wall_s": 56.4,
+      "per_image_csv": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/e18/filled/per_image/anomalydino_cube_per_image.csv",
+      "n_rows": 700
+    },
+    "SoftPatch|Cube": {
+      "method": "SoftPatch",
+      "category": "Cube",
+      "seed": 0,
+      "metrics": {
+        "n_ok": 260,
+        "n_ng": 418,
+        "auroc": 0.6934302539565698,
+        "ap": 0.7590847027020443,
+        "n_filtered": 22
+      },
+      "config": {
+        "impl": "e14_screen.run_f2 / e7_pipelines.run_softpatch",
+        "backbone": "wide_resnet50_2 PatchCore (l0_256)",
+        "scoring": "official WeightedGreedyCoresetSampler soft weighting (nearest)",
+        "source_run": "E14 F2 config"
+      },
+      "stages": {
+        "extract_s": 5.2,
+        "scoring_s": 9.7,
+        "coreset_size": 30720
+      },
+      "wall_s": 50.7,
+      "per_image_csv": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/e18/filled/per_image/softpatch_cube_per_image.csv",
+      "n_rows": 700
+    }
+  }
+}

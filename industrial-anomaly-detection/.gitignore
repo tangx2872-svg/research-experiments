@@ -398,3 +398,8 @@ results/e17/logs/
 # E18 results (audit artifacts; logs excluded)
 !results/e18/
 results/e18/logs/
+
+# E18-P1 filled cells + logs
+!results/e18/filled/
+!results/e18/filled/per_image/
+results/e18/logs/

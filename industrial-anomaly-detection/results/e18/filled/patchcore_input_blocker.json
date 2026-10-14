@@ -1,0 +1,156 @@
+{
+  "status": "BLOCKED",
+  "units": [
+    "PatchCore/Car",
+    "PatchCore/Cube"
+  ],
+  "reason": "PatchCore's frozen pipeline consumes the ORIGINAL 1024px image path; data/m2ad/extracted/ contains only Bird. l0_256 is NOT a valid substitute.",
+  "input_paths": {
+    "E7_1_P00": "TF.resize(TF.to_tensor(original_1024), [256,256], antialias=True)  [BILINEAR default]",
+    "l0_256_cache": "BICUBIC 256x256 uint8 artefact (E11-P2 p2_cache_validation.md), then a no-op resize"
+  },
+  "measured_difference_on_bird_20_images": {
+    "max_abs_over_images": 0.056774675846099854,
+    "mean_abs_over_images": 0.0012446211942005903,
+    "per_image": [
+      {
+        "rel": "Bird/Good/001/A120_I01.png",
+        "max_abs": 0.03214997053146362,
+        "mean_abs": 0.0011601168662309647
+      },
+      {
+        "rel": "Bird/Good/001/A120_I02.png",
+        "max_abs": 0.03357842564582825,
+        "mean_abs": 0.0011679420713335276
+      },
+      {
+        "rel": "Bird/Good/001/A120_I03.png",
+        "max_abs": 0.032433364540338516,
+        "mean_abs": 0.0012527058133855462
+      },
+      {
+        "rel": "Bird/Good/001/A120_I04.png",
+        "max_abs": 0.03866422176361084,
+        "mean_abs": 0.0012669179122895002
+      },
+      {
+        "rel": "Bird/Good/001/A120_I05.png",
+        "max_abs": 0.05066251754760742,
+        "mean_abs": 0.0013631293550133705
+      },
+      {
+        "rel": "Bird/Good/001/A120_I06.png",
+        "max_abs": 0.031441450119018555,
+        "mean_abs": 0.0012525710044428706
+      },
+      {
+        "rel": "Bird/Good/001/A120_I07.png",
+        "max_abs": 0.033678025007247925,
+        "mean_abs": 0.001174944918602705
+      },
+      {
+        "rel": "Bird/Good/001/A120_I08.png",
+        "max_abs": 0.02983301877975464,
+        "mean_abs": 0.0011294049909338355
+      },
+      {
+        "rel": "Bird/Good/001/A120_I09.png",
+        "max_abs": 0.037699103355407715,
+        "mean_abs": 0.0013257927494123578
+      },
+      {
+        "rel": "Bird/Good/001/A120_I10.png",
+        "max_abs": 0.04290366172790527,
+        "mean_abs": 0.0013463087379932404
+      },
+      {
+        "rel": "Bird/Good/002/A120_I01.png",
+        "max_abs": 0.031812965869903564,
+        "mean_abs": 0.00115281215403229
+      },
+      {
+        "rel": "Bird/Good/002/A120_I02.png",
+        "max_abs": 0.03983607888221741,
+        "mean_abs": 0.00116821622941643
+      },
+      {
+        "rel": "Bird/Good/002/A120_I03.png",
+        "max_abs": 0.03619027137756348,
+        "mean_abs": 0.0012397387763485312
+      },
+      {
+        "rel": "Bird/Good/002/A120_I04.png",
+        "max_abs": 0.044818490743637085,
+        "mean_abs": 0.0012455781688913703
+      },
+      {
+        "rel": "Bird/Good/002/A120_I05.png",
+        "max_abs": 0.056774675846099854,
+        "mean_abs": 0.0013231132179498672
+      },
+      {
+        "rel": "Bird/Good/002/A120_I06.png",
+        "max_abs": 0.03963693976402283,
+        "mean_abs": 0.0012588660465553403
+      },
+      {
+        "rel": "Bird/Good/002/A120_I07.png",
+        "max_abs": 0.03872549533843994,
+        "mean_abs": 0.0012195223243907094
+      },
+      {
+        "rel": "Bird/Good/002/A120_I08.png",
+        "max_abs": 0.03223040699958801,
+        "mean_abs": 0.0011598517885431647
+      },
+      {
+        "rel": "Bird/Good/002/A120_I09.png",
+        "max_abs": 0.04377681016921997,
+        "mean_abs": 0.0013322760351002216
+      },
+      {
+        "rel": "Bird/Good/002/A120_I10.png",
+        "max_abs": 0.04559588432312012,
+        "mean_abs": 0.0013526147231459618
+      }
+    ]
+  },
+  "conclusion": "max|delta| = 0.056775 > 0 -> the cache is a different model input, so using it would be a configuration deviation (E18-P1 section 6).",
+  "availability": {
+    "Bird": {
+      "view120_test_n": 700,
+      "original_exists": 700,
+      "l0_256_cache_exists": 700
+    },
+    "Car": {
+      "view120_test_n": 700,
+      "original_exists": 0,
+      "l0_256_cache_exists": 700
+    },
+    "Cube": {
+      "view120_test_n": 700,
+      "original_exists": 0,
+      "l0_256_cache_exists": 700
+    }
+  },
+  "options": [
+    {
+      "id": "A",
+      "action": "download+extract M2AD car.zip / cube.zip from hf-mirror.com",
+      "cost": "~14.4 GB zip each (Bird reference); 15 GB extracted each; 16 GB disk free -> peak 29 GB with the zip kept, or ~15 GB with streaming extraction (leaves ~1 GB free, risky)",
+      "time": "~20 min/category",
+      "needs": "human approval (disk + network)"
+    },
+    {
+      "id": "B",
+      "action": "substitute l0_256 cache",
+      "verdict": "REJECTED by measurement (see conclusion)"
+    },
+    {
+      "id": "C",
+      "action": "leave PatchCore official Car/Cube MISSING in the main table",
+      "note": "the unified-scoring PatchCore row (E11-P2 PatchCore-emb + 1-NN-max) already covers all 3 categories and is REUSE-complete"
+    }
+  ],
+  "zero_gpu": true
+}

@@ -99,3 +99,59 @@ Car/Cube 未运行。EfficientAD 是**唯一真正换 paradigm** 的基线（tea
 5. **补跑成本是否值得**：**值得** —— 6.2 min 换一张完整主表，且不改变任何方法配置。
 6. **EfficientAD**：**保留为早停证据**，主表显式标注 Bird-only；Car/Cube 补跑（≈58.4 min）需单独批准。
 7. **E18 最小执行方案**：见 §5 Plan A。
+
+---
+
+# E18-P1 执行结果（2026-10-14 更新）
+
+## P1 执行摘要
+
+| # | 计划单元 | 状态 | AUROC | AP | 说明 |
+|---|---|---|---|---|---|
+| A | PatchCore official / Car | **BLOCKED** | — | — | 原图不可得（见 §P1-阻断） |
+| A | PatchCore official / Cube | **BLOCKED** | — | — | 同上 |
+| B | AnomalyDINO / Cube | **DONE ✅** | 0.8488866396761134 | 0.911341244132325 | 6/6 校验 PASS |
+| C | SoftPatch / Cube | **DONE ✅** | 0.6934302539565698 | 0.7590847027020443 | 6/6 校验 PASS |
+
+- 实际 GPU 耗时：**1.8 min**（2 单元，各 56.4 s / 50.7 s）。
+- 产物：`results/e18/filled/{anomalydino_cube.json, softpatch_cube.json}`、`filled/per_image/*.csv`、
+  `results/e18/filled_summary.csv`、`results/e18/e18_partial.json`、`results/e18/logs/p1_run2.log`。
+- **未覆盖任何历史结果**；全部新产物写入 `results/e18/filled/`。
+
+## P1-阻断：PatchCore official / Car + Cube
+
+**结论**：**无法在本轮以逐字协议执行**（触发 §6 停止条款）。**已停止该 2 个单元，未做任何自动修补。**
+
+根因链（全部有证据）：
+1. `e7_pipelines.run_patchcore → e1b.predict_one → preprocess_for_model`
+   消费**原图**：`TF.resize(TF.to_tensor(原图 1024), [256,256], antialias=True)`（**BILINEAR**）。
+2. `data/m2ad/extracted/` **只有 Bird**；`DATASET_LOCAL_INFO.md` 记录 Car/Cube 从未下载，
+   且 `bird.zip`（14.4 GB）解包后即删除以恢复磁盘。**当前磁盘仅余 16 GB。**
+3. `l0_256` 缓存是 **BICUBIC + uint8** 产物，与 E7-1 P00 的输入**不等价**
+   （Bird 20 图实测 max|Δ| = 0.056775 / mean|Δ| = 0.001245）→ **已拒绝替代方案**。
+
+### 三个选项（需人工裁决，本轮不自动执行）
+
+| 选项 | 动作 | 成本 | 风险 | 需要 |
+|---|---|---|---|---|
+| **A** | 从 `hf-mirror.com`（`ChengYuQi99/M2AD`）下载并解压 `car.zip` / `cube.zip` | 每个 ~14.4 GB zip + 15 GB 解压；磁盘仅 16 GB → 保留 zip 时峰值 ~29 GB（**不可行**）；流式解压峰值 ~15 GB（余 ~1 GB，**高风险**）；耗时 ~20 min/类 | 磁盘被写满 / 解压中断 | 人工批准（磁盘 + 网络） |
+| **B** | 用 `l0_256` 缓存替代原图 | 0 | **已按实测拒绝** | — |
+| **C** | 主表将 PatchCore official 的 Car/Cube **留空**（显式标注 BLOCKED） | 0 | 主表该行只有 Bird | 人工接受 |
+
+**推荐**：**选项 C**。理由：论文主表若采用**统一 scoring 协议**，`PatchCore-emb + 1-NN-max`
+（E11-P2，**三类别齐全、REUSE 完整**）已经提供了完全可比的 PatchCore 对照；
+"PatchCore official scoring" 行属于 native-scoring 附录，其 Car/Cube 缺失可用
+"not run (input images unavailable in the frozen harness)" 明确标注，不影响主表结论。
+
+## P1 后的主表完备度
+
+| 行 | Bird | Car | Cube | 完备 |
+|---|---|---|---|---|
+| PatchCore official scoring | ✅ 0.69318 | ❌ BLOCKED | ❌ BLOCKED | 1/3 |
+| PatchCore-emb + unified scoring | ✅ 0.68454 | ✅ 0.62247 | ✅ 0.60857 | **3/3** |
+| AnomalyDINO | ✅ 0.70214 | ✅ 0.75684 | ✅ 0.84889 | **3/3** |
+| SoftPatch | ✅ 0.64396 | ✅ 0.50219 | ✅ 0.69343 | **3/3** |
+| EfficientAD | ✅ 0.61206 | ❌ EARLY_STOP | ❌ EARLY_STOP | 1/3 |
+| F0 | ✅ 0.74725 | ✅ 0.78552 | ✅ 0.85410 | **3/3** |
+| Ours = R1-ILA | ✅ 0.75786 | ✅ 0.80511 | ✅ 0.87010 | **3/3** |
+| **3/3 完备的行** | | | | **5/7** |

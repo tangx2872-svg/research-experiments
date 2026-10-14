@@ -16,9 +16,9 @@
 | 权威配置 | **[`results/e17/final_method.json`](results/e17/final_method.json)**（E18+ 唯一参数来源，禁止手工复制） |
 | E16 | **GO** —— Bird+Car 6/6 ΔAUROC>0，mean **+0.01855**，mean ΔAP **+0.01743**；Cube control 未受损（+0.00265） |
 | E17 | **FREEZE_CURRENT_R1** —— BETA 扫描无挑战者过 +0.003 门；BETA=0 触发 collapse |
-| E18 | **P0 审计完成，待人工批准补跑** —— 见 [`results/e18/audit.md`](results/e18/audit.md) / [`run_plan.md`](results/e18/run_plan.md) |
+| E18 | **P0 审计完成 + P1 补齐 2/4 单元** —— AnomalyDINO/Cube 0.84889、SoftPatch/Cube 0.69343（6/6 校验 PASS）；PatchCore official Car/Cube **BLOCKED**（原图不可得）见 [`results/e18/audit.md`](results/e18/audit.md) / [`run_plan.md`](results/e18/run_plan.md) |
 | 关键审计发现 | M²AD view120 存在**两套标签协议**；E7 线的 PatchCore image AUROC 0.78089 为 `object_anomaly` 旧口径虚高，official 口径重算为 **0.69318**（0 GPU） |
-| 下一步 | 人工批准 **E18 最小补跑 4 cells（≈6.2 min）** → 生成论文主表。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
+| 下一步 | **E18-P2 主表定稿**（5/7 行已 3/3 完备）。PatchCore official Car/Cube 需人工裁决选项 A/B/C。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
 
 ---
 

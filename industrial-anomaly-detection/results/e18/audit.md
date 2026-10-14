@@ -133,3 +133,51 @@ E7-1 **P00 = Original PatchCore**（`wide_resnet50_2` layer2+layer3，input 256�
    并另附 "统一 scoring" 的 representation-only 对照（E11-P2 PatchCore-emb 行）。
 5. **单 seed（seed0）** —— 除 F0/Ours（E16 有 3 seed）外，其余基线均为 seed0。
    主表中基线 vs Ours 是**同 seed、同 bank、同测试集**的公平比较，但**未做 seed 方差**。
+
+---
+
+# E18-P1 — 补齐缺失单元的审计更新（2026-10-14）
+
+执行范围：审计确认的 4 个缺失单元。**结果：2 个完成，2 个按 §6 停止（数据不可得）。**
+
+## 9.1 完成单元（全部校验 PASS）
+
+| unit | AUROC | AP | n | 标签分布 | 复算 | bank sha256 | 评分方向 | wall |
+|---|---|---|---|---|---|---|---|---|
+| AnomalyDINO / Cube | **0.8488866396761134** | **0.911341244132325** | 700（kept 678，filtered 22） | 260 ok / 418 ng == F0 参照 | dAUROC=0.0e+00, dAP=0.0e+00 | `3b0b7ea7b185e727` ✓ | NG 0.2641 > Good 0.1824 ✓ | 56.4 s |
+| SoftPatch / Cube | **0.6934302539565698** | **0.7590847027020443** | 700（kept 678，filtered 22） | 260 ok / 418 ng == F0 参照 | dAUROC=0.0e+00, dAP=0.0e+00 | `3b0b7ea7b185e727` ✓ | NG 668.6456 > Good 618.0145 ✓ | 50.7 s |
+
+配置与 E14 完全一致（`e14_screen.run_f1` / `run_f2`，通过 monkey-patch `official_metrics` 逐字复用并捕获逐图分数；**未改动任何 method 配置**）。
+产物：`results/e18/filled/{anomalydino_cube.json, softpatch_cube.json}` + `per_image/*.csv`（700 行/单元）。
+
+**对主表的直接后果**：AnomalyDINO 与 SoftPatch 现已具备完整三类别 official 口径结果。
+
+| family | Bird | Car | Cube |
+|---|---|---|---|
+| AnomalyDINO | 0.70214 / 0.72234 | 0.75684 / 0.78277 | **0.84889 / 0.91134** |
+| SoftPatch | 0.64396 / 0.57510 | 0.50219 / 0.55541 | **0.69343 / 0.75908** |
+
+## 9.2 停止单元：PatchCore official / Car + Cube（BLOCKED）
+
+**触发条款**：E18-P1 §6「磁盘空间不足以安全保存产物」（源数据无法获得）。
+
+**根因（已用证据固定，非猜测）**：
+1. PatchCore 的冻结管线 `e7_pipelines.run_patchcore → e1b.predict_one → preprocess_for_model`
+   消费**原图路径**：`TF.resize(TF.to_tensor(原图 1024), [256,256], antialias=True)`（默认 **BILINEAR**）。
+2. `data/m2ad/extracted/` **只有 Bird**（15 GB）；**Car / Cube 从未解压**
+   （`DATASET_LOCAL_INFO.md`：`bird.zip` 14.4 GB，解包后已删除以恢复磁盘；磁盘现余 **16 GB**）。
+3. **`l0_256` 缓存不能替代原图**：该缓存是 **BICUBIC + uint8 量化** 的 256×256 产物
+   （见 `results/e11/p2_cache_validation.md`），与 E7-1 P00 的 BILINEAR 路径不同。
+   实测（Bird 20 张 view120 图）：**max|Δ| = 0.056775，mean|Δ| = 0.001245** → 是**不同的模型输入**。
+   → 使用它属于配置偏差，**已拒绝**。证据：`results/e18/filled/patchcore_input_blocker.json`。
+
+**因此 PatchCore official 的 Car / Cube 无法在本轮以逐字协议补齐，主表这两个单元必须留空。**
+
+## 9.3 关于 `PatchCore bird 0.78089` 的正式说明（供论文使用）
+
+- **PatchCore Bird 的 official 口径指标 = AUROC 0.6931775525525525 / AP 0.7230433828349869**。
+- 旧值 **0.78089 / 0.91723 使用的是 legacy `object_anomaly` 标签（200 Good / 500 NG）**，
+  是 `results/e7_1/raw/P00.json` 的历史记录，**不可作为官方协议结果**。
+- 两者来自**同一次运行、同一 bank（sha256 `33381cd3004bfe68`）、同一测试集**，仅标签口径与 detectable 过滤不同；
+  旧值已逐位复现（`legacy_protocol_reproduced` 节），证明映射正确。
+- **旧记录保留不改动**：`results/e7_1/raw/P00.json` 与 `progress.json` 原样保留其历史标签说明。
