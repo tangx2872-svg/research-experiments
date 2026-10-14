@@ -1,0 +1,25 @@
+{
+  "experiment": "E14",
+  "overall_verdict": "STOP",
+  "verdicts": {
+    "F1": "STOP",
+    "F2": "STOP"
+  },
+  "summary": {
+    "F1": {
+      "mean_d_auroc_bird_car": -0.036895,
+      "mean_d_ap_bird_car": -0.062795,
+      "bird_d_auroc": -0.04511,
+      "car_d_auroc": -0.02868,
+      "cube_run": false
+    },
+    "F2": {
+      "mean_d_auroc_bird_car": -0.19331,
+      "mean_d_ap_bird_car": -0.250095,
+      "bird_d_auroc": -0.10329,
+      "car_d_auroc": -0.28333,
+      "cube_run": false
+    }
+  },
+  "note": "Both F1/F2 fail Stage A (Bird dAUROC -0.045/-0.103, both < -0.015); no family reaches Cube (Stage B)."
+}

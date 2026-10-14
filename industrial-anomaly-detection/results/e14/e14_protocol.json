@@ -1,0 +1,40 @@
+{
+  "experiment": "E14 Anomaly-Oriented Representation Family Screening",
+  "stage": "family screening (re-select representation family; do NOT rescue DINOv2-B)",
+  "date": "2026-10-14",
+  "git_head_at_start": "0645cc7e62baf9f78421ecf746a0ec48183e3709",
+  "thesis_served": "验证 anomaly-oriented representation/detector 是否在真实光照工业异常场景提供更稳定 headroom，为后续 illumination-consistency adaptation 提供更合适底座",
+  "why_now": "E13 证明方法收益受 DINOv2-B ceiling 限制；先判断换 representation family 是否值得",
+  "exit": {"KEEP": "至少 1 个 family 进入 E14-B", "STOP": "关闭 E14，重新定义问题/场景"},
+  "frozen_inputs": {
+    "categories": ["Bird", "Car", "Cube"],
+    "seed": 0,
+    "test": "view120",
+    "eval": ["AUROC", "AP"],
+    "note": "每 family 用官方推荐 anomaly score；本轮不统一成 1-NN-max（family-level comparison）"
+  },
+  "families": {
+    "F0": {"name": "Current Reference", "impl": "DINOv2-B final-layer 1-NN-max 300-bank", "note": "reuse E13 R0, 0 GPU"},
+    "F1": {"name": "AnomalyDINO", "impl": "DINOv2 448 L2-normalized kNN k=1, image score = mean_top1p (official)", "src": "e7_pipelines.run_dinov2 + offline DINOv2 loader", "status": "GO"},
+    "F2": {"name": "SoftPatch", "impl": "WideResNet50 PatchCore + official WeightedGreedyCoresetSampler soft weighting (nearest/LOF)", "src": "e7_pipelines.run_softpatch", "status": "GO (E7 警告: 弱于 PatchCore)"},
+    "F3": {"name": "EfficientAD", "impl": "teacher-student distillation", "status": "SKIP (本轮: 下载+训练成本, 第三优先)"}
+  },
+  "staging": {
+    "stage0": "smoke Bird per GO family (10 checks, hard 20 min)",
+    "stageA": "Bird + Car (advance if mean(Bird,Car) dAUROC >= +0.010 OR mean dAP >= +0.010, AND any-cat dAUROC >= -0.015)",
+    "stageB": "Cube ceiling test (only for Stage A advanced families)",
+    "cube_resistant": "dAUROC >= 0 AND dAP >= -0.005",
+    "cube_strong": "dAUROC >= +0.005 AND dAP >= 0"
+  },
+  "final_criteria": {
+    "KEEP": "3-cat mean dAUROC >= +0.010 AND positive categories >= 2/3 AND Cube dAUROC >= 0 AND mean dAP >= +0.005",
+    "HOLD": "3-cat mean dAUROC >= +0.005 AND Cube dAUROC >= -0.005 AND mean dAP >= 0",
+    "STOP": "otherwise",
+    "multi_keep_priority": ["Cube 更稳", "mean dAUROC", "mean dAP", "工程简单", "推理快"]
+  },
+  "forbidden": [
+    "rescue a single family", "tune k/layer/memory-size/epoch/patch-weight after seeing results",
+    "add adapter/S2 to family", "illumination consistency in this round", "per-category tuning"
+  ],
+  "output": "results/e14/"
+}

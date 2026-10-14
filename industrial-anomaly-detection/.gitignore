@@ -375,3 +375,8 @@ results/e13b/e13b_partial.json
 !results/e13b2/
 results/e13b2/logs/
 results/e13b2/e13b2_partial.json
+
+# E14 results (tracked aggregates; logs + resume checkpoint excluded)
+!results/e14/
+results/e14/logs/
+results/e14/e14_partial.json
