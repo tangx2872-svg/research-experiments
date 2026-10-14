@@ -1,0 +1,2 @@
+category,seed,config,beta,AUROC,AP,d_prime,robustness_score,illum_shift,note
+,,,,,,,,,NOT_RUN: no challenger satisfied the frozen Round-1 advancement gate

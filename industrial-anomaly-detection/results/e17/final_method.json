@@ -1,0 +1,102 @@
+{
+  "method_name": "R1-ILA (Illumination-consistent Linear Residual Adaptation)",
+  "base": "DINOv2-B (frozen, final-layer patch tokens 1024x768) + L2 + 1-NN-max",
+  "adaptation": "z' = z + W z  (W: 768x768, zero-init linear residual, normal-only training)",
+  "parameters": {
+    "BETA": 0.1,
+    "loss": "L = L_cons + BETA * L_preserve ; L_cons = 1 - cos(z(x), z(T(x))) ; L_preserve = 1 - cos(z(x), z_frozen(x))",
+    "LR_ADAPTER": 0.001,
+    "optimizer": "AdamW",
+    "MAX_STEPS": 300,
+    "PATIENCE_STEPS": 30,
+    "EVAL_EVERY": 5,
+    "BATCH_IMGS": 8,
+    "TRAIN_N": 240,
+    "VAL_N": 60,
+    "augmentation": "brightness/contrast/gamma x {0.85,1.15} (6 photometric variants)",
+    "trainable_params": 589824,
+    "beta_injection": "e13a_screen.BETA module global read by compute_loss; no frozen code changed"
+  },
+  "selection_reason": "E17 Round-1 BETA sweep {0.0,0.05,0.1,0.2,0.5}: no challenger cleared the frozen +0.003 Bird+Car mean dAUROC gate over C0 (best BETA=0.2 at +0.00173). The two near-ties (0.2, 0.5) also fail the Cube safety gate (-0.0087/-0.0098 vs C0) and worsen robustness_score; BETA=0 collapses the representation on Cube (pairwise cos 0.988) and is the worst detector on all three categories. BETA=0.1 is an aggregate interior optimum -> qualified current R1 frozen.",
+  "e16_reference": "results/e16/e16_decision_memo.md",
+  "e17_verdict": "FREEZE_CURRENT_R1",
+  "advancement_gates": {
+    "C1": {
+      "bird_car_mean_dAUROC_vs_C0": -0.022004999999999997,
+      "bird_car_mean_dAP_vs_C0": -0.030950000000000033,
+      "cube_dAUROC_vs_C0": 0.038939999999999975,
+      "bird_car_mean_d_rob_vs_C0": -0.279419,
+      "collapsed": true,
+      "gate1_ge_+0.003": false,
+      "gate2_cube_ge_-0.003": true,
+      "gate3_dAP_ge_-0.002": false,
+      "gate4_rob_not_worse": true,
+      "gate5_no_collapse": false,
+      "ADVANCE": false,
+      "SIMPLIFY_CANDIDATE": false
+    },
+    "C2": {
+      "bird_car_mean_dAUROC_vs_C0": -0.0064449999999999785,
+      "bird_car_mean_dAP_vs_C0": -0.006279999999999952,
+      "cube_dAUROC_vs_C0": 0.00043000000000004146,
+      "bird_car_mean_d_rob_vs_C0": -0.11723449999999999,
+      "collapsed": false,
+      "gate1_ge_+0.003": false,
+      "gate2_cube_ge_-0.003": true,
+      "gate3_dAP_ge_-0.002": false,
+      "gate4_rob_not_worse": true,
+      "gate5_no_collapse": true,
+      "ADVANCE": false,
+      "SIMPLIFY_CANDIDATE": false
+    },
+    "C3": {
+      "bird_car_mean_dAUROC_vs_C0": 0.0017300000000000093,
+      "bird_car_mean_dAP_vs_C0": 0.0035499999999999976,
+      "cube_dAUROC_vs_C0": -0.00869999999999993,
+      "bird_car_mean_d_rob_vs_C0": 0.11871150000000003,
+      "collapsed": false,
+      "gate1_ge_+0.003": false,
+      "gate2_cube_ge_-0.003": false,
+      "gate3_dAP_ge_-0.002": true,
+      "gate4_rob_not_worse": false,
+      "gate5_no_collapse": true,
+      "ADVANCE": false,
+      "SIMPLIFY_CANDIDATE": true
+    },
+    "C4": {
+      "bird_car_mean_dAUROC_vs_C0": -0.0006300000000000194,
+      "bird_car_mean_dAP_vs_C0": 0.004459999999999964,
+      "cube_dAUROC_vs_C0": -0.009750000000000036,
+      "bird_car_mean_d_rob_vs_C0": 0.284138,
+      "collapsed": false,
+      "gate1_ge_+0.003": false,
+      "gate2_cube_ge_-0.003": false,
+      "gate3_dAP_ge_-0.002": true,
+      "gate4_rob_not_worse": false,
+      "gate5_no_collapse": true,
+      "ADVANCE": false,
+      "SIMPLIFY_CANDIDATE": true
+    }
+  },
+  "e16_seed0_metrics": {
+    "Bird": {
+      "auroc": 0.757864114114114,
+      "ap": 0.7991123242300215,
+      "d_prime": 0.9569646694752953,
+      "robustness_score": 0.328048643640399
+    },
+    "Car": {
+      "auroc": 0.8051123595505618,
+      "ap": 0.8550192644777235,
+      "d_prime": 1.100082364576916,
+      "robustness_score": 0.28059861180890294
+    },
+    "Cube": {
+      "auroc": 0.8700956937799043,
+      "ap": 0.9285593141734598,
+      "d_prime": 1.5002747919190715,
+      "robustness_score": 0.22031458909952145
+    }
+  },
+  "frozen_metrics_source": "results/e16/e16_partial.json (all 9/9 cells, qualified in E16)"
+}

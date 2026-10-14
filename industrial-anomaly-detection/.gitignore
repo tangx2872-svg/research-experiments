@@ -390,3 +390,7 @@ results/e15/efficientad_output/
 # E16 results (tracked: aggregates + raw per-image evidence; logs excluded)
 !results/e16/
 results/e16/logs/
+
+# E17 results (tracked: aggregates + freeze decision; logs excluded)
+!results/e17/
+results/e17/logs/
