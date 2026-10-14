@@ -71,6 +71,8 @@
 | 不允许声称 | 因果机制已被证明；"adaptive α 提升平均性能"；**geometry predictor identity 已确立**（5D：优势为单类别驱动、robustness 为 10 个 gate 中最差）；**6A 的 CASE_A 是 identity 证据**（6A 只改 fragile 端强度、不改 category identity，且 mean α 0.30→0.40 budget 不 matched、A 的余量仅 5.6%）；需要 category-specific continuous α；**6A 的 α_F=0.25 是稳定 knee region**（6B：region length = 1）；**6A/6B 的收益是 selective allocation 的证据**（6B：60.1% 来自 strength）；**7A-O 的 A3_lam050 是可用于论文的新方法**（它只支配 Original，未超过 Uniform）；结论可外推到其他 backbone / detector / 数据集 / 真实光照；**8B 的 channel-selection 是可用于论文的方法 / 是 Plan C 已被验证**（8B 的 ranking 使用 test defect mask，全部 score-level 结果只是 **oracle diagnostic**；CASE_B 意味着 Plan C 仅 HOLD）；**8B 的 50% ratio 信号是已确认结论**（negative 未确认、random 仅 10 draws、cable 负迁移） |
 | 最新 commit | **`f1abbb8`（8B）**；关键历史 commit：`5951b75`(Q3/Q4 docs) · `b726476`(7A-O Q4) · `a53acaf`(Q3) · `7ffb3aa`(Q2) · `f118e1e`(7A-O) · `ad26ec5`(6B) · `1b3edd2`(6A) · `31150bd`(5D) · `fdd6fa9`(5C) · `5d6ee98`(5B-C) · `24d1b22`(5B) · `ff4a1b2`(5A-H) · `ba11038`(5A) |
 
+> ⚠️ **DINOv2 表示线（E11–E15）已 CLOSED（2026-10-14）**：上方 §0–§22 是 PatchCore/α-IN 线（E1–E16）历史。2026-10-13 起新开 **DINOv2-B 表示线**：E11-P2 证 DINOv2-B >> ResNet → E12-A/B scoring/fusion 全灭/HOLD → E13-A/B/B2 R1 adapter 有 Bird/Car 正信号但被 ceiling 限制（Cube）→ E14 AnomalyDINO/SoftPatch 均弱于 F0 → E15 EfficientAD teacher-student 仅 0.612（−0.135）。**最终：`major detector-family search = CLOSED`，DINOv2-B + 1-NN-max 是最强 baseline，唯一残余正信号 = R1 illumination-consistent adaptation（仅 Bird/Car）**。详见 `results/e11/`–`results/e15/` 各 `decision_memo.md`，及 `PROJECT_STATE.md` §0。
+
 ---
 
 ## 1. 论文路线

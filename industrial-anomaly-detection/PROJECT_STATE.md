@@ -6,6 +6,23 @@
 
 ---
 
+## 0. DINOv2 表示线（E11–E15）结论（2026-10-14，覆盖下方历史 PatchCore 线）
+
+> 本文件下方 §1–§13 是 **PatchCore/α-IN 线（E1–E16）** 的历史记录。2026-10-13 起项目**新开 DINOv2-B 表示线（E11→E15）**，其结论独立于此：
+
+| 实验 | 结论 |
+|---|---|
+| E11-P2 | frozen DINOv2-B 远强于 ResNet/PatchCore（表示是主导杠杆）；scoring 用 1-NN-max |
+| E11-P4/P5 | 中间层融合/平滑/多尺度/prototype/kNN/CLS 全灭 |
+| E12-A/B | subspace scoring 全灭；learnable fusion HOLD（不超固定 concat） |
+| E13-A/B/B2 | R1 linear adapter 有正信号（Bird/Car），但被 DINOv2 ceiling 限制（Cube 无 headroom） |
+| E14 | AnomalyDINO / SoftPatch 均远低于 DINOv2-B 1-NN-max |
+| E15 | EfficientAD teacher-student 在 M2AD Bird 仅 0.612（−0.135），远低于 F0 |
+
+**最终结论：`major detector-family search = CLOSED`**。DINOv2-B + 1-NN-max 是 M²AD Bird/Car/Cube（view120 / 300-bank）下最强 baseline；frozen scoring / fusion / adaptation / anomaly-oriented family / teacher-student paradigm 均无法稳定超越。唯一残余正信号 = R1 illumination-consistent adaptation（仅 Bird/Car 有效，Cube ceiling）。**下一步 = 人工裁决**（重定义问题 / 收敛有限应用方案 / 用 R1 正信号做小论文包装）。详见 `results/e13b2/e13b2_decision_memo.md`、`results/e15/e15_decision_memo.md` 及项目 memory。
+
+---
+
 ## 1. CURRENT PAPER STAGE
 
 | 项 | 状态 |
