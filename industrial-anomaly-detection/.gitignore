@@ -386,3 +386,7 @@ results/e14/e14_partial.json
 results/e15/logs/
 results/e15/e15_partial.json
 results/e15/efficientad_output/
+
+# E16 results (tracked: aggregates + raw per-image evidence; logs excluded)
+!results/e16/
+results/e16/logs/
