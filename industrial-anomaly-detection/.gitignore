@@ -394,3 +394,7 @@ results/e16/logs/
 # E17 results (tracked: aggregates + freeze decision; logs excluded)
 !results/e17/
 results/e17/logs/
+
+# E18 results (audit artifacts; logs excluded)
+!results/e18/
+results/e18/logs/

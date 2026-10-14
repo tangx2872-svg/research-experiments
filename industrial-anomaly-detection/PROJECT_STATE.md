@@ -6,9 +6,9 @@
 
 ---
 
-## 0. DINOv2 表示线（E11–E15）结论（2026-10-14，覆盖下方历史 PatchCore 线）
+## 0. DINOv2 表示线（E11–E18）结论 —— **最终方法已冻结**（2026-10-14，覆盖下方历史 PatchCore 线）
 
-> 本文件下方 §1–§13 是 **PatchCore/α-IN 线（E1–E16）** 的历史记录。2026-10-13 起项目**新开 DINOv2-B 表示线（E11→E15）**，其结论独立于此：
+> 本文件下方 §1–§13 是 **PatchCore/α-IN 线（E1–E16）** 的历史记录。2026-10-13 起项目**新开 DINOv2-B 表示线（E11→E18）**，其结论独立于此：
 
 | 实验 | 结论 |
 |---|---|
@@ -18,8 +18,15 @@
 | E13-A/B/B2 | R1 linear adapter 有正信号（Bird/Car），但被 DINOv2 ceiling 限制（Cube 无 headroom） |
 | E14 | AnomalyDINO / SoftPatch 均远低于 DINOv2-B 1-NN-max |
 | E15 | EfficientAD teacher-student 在 M2AD Bird 仅 0.612（−0.135），远低于 F0 |
+| **E16** | **R1 资格赛 = GO**：Bird+Car **6/6 ΔAUROC>0**，mean ΔAUROC **+0.01855**、mean ΔAP **+0.01743**；Cube 未受损（+0.00265）；robustness 9/9 cell 同向改善；diagnostic 与 illumination-shift 排序一致（Bird>Car>Cube）。**R1-ILA 获得论文方法资格** |
+| **E17** | **BETA 扫描（0.0/0.05/0.1/0.2/0.5）= FREEZE_CURRENT_R1**：无挑战者过 +0.003 晋级门（最佳 +0.00173 且 Cube −0.0087）；BETA=0 触发 Cube collapse（pairwise cos 0.988）且三类最差。**最终方法冻结为 R1-ILA（BETA=0.1）** |
+| **E18（P0 完成，待执行）** | 最终基线主表审计：发现 **view120 存在两套标签协议**（E7 线用 `object_anomaly`，E11+ 用 `image_anomaly`+`detectable`）；PatchCore Bird 已 0 GPU 重算为 official 口径 **0.69318**（历史报告的 0.78089 为旧标签虚高）。**最小补跑 4 cells ≈ 6.2 min** |
 
-**最终结论：`major detector-family search = CLOSED`**。DINOv2-B + 1-NN-max 是 M²AD Bird/Car/Cube（view120 / 300-bank）下最强 baseline；frozen scoring / fusion / adaptation / anomaly-oriented family / teacher-student paradigm 均无法稳定超越。唯一残余正信号 = R1 illumination-consistent adaptation（仅 Bird/Car 有效，Cube ceiling）。**下一步 = 人工裁决**（重定义问题 / 收敛有限应用方案 / 用 R1 正信号做小论文包装）。详见 `results/e13b2/e13b2_decision_memo.md`、`results/e15/e15_decision_memo.md` 及项目 memory。
+**最终结论：`major detector-family search = CLOSED`**。DINOv2-B + 1-NN-max 是 M²AD Bird/Car/Cube（view120 / 300-bank）下最强 baseline；frozen scoring / fusion / anomaly-oriented family / teacher-student paradigm 均无法稳定超越。
+
+**唯一残余正信号 = R1 illumination-consistent adaptation**，经 **E16（GO）** 资格认证、**E17（FREEZE_CURRENT_R1）** 参数冻结，**最终方法 = R1-ILA（BETA=0.1）**，唯一权威配置 = `results/e17/final_method.json`。
+
+**当前阶段：`METHOD SEARCH CLOSED → FINAL BENCHMARK AND PAPER CONVERGENCE`**。E18-P0（基线主表审计）已完成，产出 `results/e18/{audit.md, compatibility_matrix.csv, protocol.md, run_plan.md}`；**下一动作 = 人工批准 E18 最小补跑（4 cells ≈ 6.2 min）**，随后生成论文主表。E18–E20 禁止修改 R1-ILA 结构/BETA/任何最终超参数。详见 `results/e16/e16_decision_memo.md`、`results/e17/e17_decision_memo.md`、`results/e18/audit.md` 及项目 memory。
 
 ---
 

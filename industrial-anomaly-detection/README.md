@@ -4,6 +4,24 @@
 —— 面向光照扰动的特征归一化（α-IN，`F_α = (1−α)F + α·IN(F)`）可能同时**抑制 defect-relevant 信息**；
 本项目用 1B→1J-B 建立机制证据，再用 5A→5C 把机制结论推进为可验证的方法。
 
+## ⚠️ 最新状态（2026-10-14）— DINOv2 线：**最终方法已冻结**
+
+> **本仓库当前有两条独立研究线**。上方简介描述的是历史 **PatchCore/α-IN 线**；2026-10-13 起项目转入
+> **DINOv2-B 表示线（E11→E18）**，其结论与冻结方法如下：
+
+| 项 | 状态 |
+|---|---|
+| 阶段 | **`METHOD SEARCH CLOSED → FINAL BENCHMARK AND PAPER CONVERGENCE`** |
+| 最终方法 | **R1-ILA** = frozen DINOv2-B final-layer patch tokens + L2 + **1-NN-max** + 线性残差适配 `z' = z + Wz`（768×768，zero-init，589,824 参数），normal-only 训练，`L = L_cons + 0.1·L_preserve` |
+| 权威配置 | **[`results/e17/final_method.json`](results/e17/final_method.json)**（E18+ 唯一参数来源，禁止手工复制） |
+| E16 | **GO** —— Bird+Car 6/6 ΔAUROC>0，mean **+0.01855**，mean ΔAP **+0.01743**；Cube control 未受损（+0.00265） |
+| E17 | **FREEZE_CURRENT_R1** —— BETA 扫描无挑战者过 +0.003 门；BETA=0 触发 collapse |
+| E18 | **P0 审计完成，待人工批准补跑** —— 见 [`results/e18/audit.md`](results/e18/audit.md) / [`run_plan.md`](results/e18/run_plan.md) |
+| 关键审计发现 | M²AD view120 存在**两套标签协议**；E7 线的 PatchCore image AUROC 0.78089 为 `object_anomaly` 旧口径虚高，official 口径重算为 **0.69318**（0 GPU） |
+| 下一步 | 人工批准 **E18 最小补跑 4 cells（≈6.2 min）** → 生成论文主表。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
+
+---
+
 > ## 🔎 恢复入口（Recovery Entry — 新会话请先读这里）
 >
 > **本仓库支持「无对话上下文」恢复**：仅凭文件即可恢复研究问题、实验历史、结论、失败路线、冻结方法与下一步。

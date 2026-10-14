@@ -1,0 +1,31 @@
+{
+  "method": "PatchCore (official scoring)",
+  "category": "Bird",
+  "view": "120",
+  "seed": 0,
+  "bank_n": 300,
+  "test_n": 700,
+  "impl": "e7_pipelines.run_patchcore (wide_resnet50_2 layer2+layer3, input 256, coreset 0.1, k=9, max-pool)",
+  "source_run": "results/e7_1/raw/P00.json (git af56dd3)",
+  "source_scores": "results/e7_1/raw/P00_per_image.csv (label-independent per-image scores)",
+  "official_protocol": {
+    "labels": "image_anomaly",
+    "filter": "detectable != False",
+    "n_kept": 653,
+    "n_ok": 320,
+    "n_ng": 333,
+    "n_filtered": 47,
+    "auroc": 0.6931775525525525,
+    "ap": 0.7230433828349869
+  },
+  "legacy_protocol_reproduced": {
+    "labels": "object_anomaly (200 Good / 500 NG)",
+    "n": 700,
+    "auroc": 0.78089,
+    "ap": 0.9172272557040083,
+    "historical_reported_auroc": 0.78089,
+    "historical_reported_ap": 0.9172272557040083
+  },
+  "note": "Same bank (sha256 33381cd3004bfe68), same test set, same seed; only the label definition and the detectable filter differ. Scores are label-independent, so the official numbers are exact, not approximate.",
+  "recomputed_zero_gpu": true
+}
