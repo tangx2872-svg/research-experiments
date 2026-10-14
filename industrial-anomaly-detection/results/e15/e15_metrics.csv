@@ -1,0 +1,7 @@
+category,view,family,auroc,ap,d_auroc,d_ap,status
+Bird,120,F0,0.74725,0.78863,+0.00000,+0.00000,reused_e13
+Bird,120,EfficientAD,0.61206,0.62196,-0.13519,-0.16667,OK
+Car,120,F0,0.78552,0.84207,+0.00000,+0.00000,reused_e13
+Car,120,EfficientAD,,,,,MISSING
+Cube,120,F0,0.85410,0.91686,+0.00000,+0.00000,reused_e13
+Cube,120,EfficientAD,,,,,MISSING

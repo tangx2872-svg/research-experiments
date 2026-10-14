@@ -1,0 +1,16 @@
+{
+  "experiment": "E15",
+  "overall_verdict": "STOP",
+  "verdicts": {
+    "EfficientAD": "STOP"
+  },
+  "cells": {
+    "Bird": {
+      "auroc": 0.61206,
+      "ap": 0.62196,
+      "d_auroc": -0.13519,
+      "d_ap": -0.16667
+    }
+  },
+  "note": "Bird dAUROC -0.135 < -0.020 -> STOP per Stage A rule; Car/Cube not run."
+}

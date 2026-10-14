@@ -1,0 +1,43 @@
+{
+  "experiment": "E15 EfficientAD Teacher-Student Feasibility + Mini-Screen",
+  "stage": "detection paradigm change feasibility test",
+  "date": "2026-10-14",
+  "git_head_at_start": "87098a8dcbb62f8382715049ef885c899a972a2c",
+  "thesis_served": "验证 teacher-student anomaly detection 是否突破 frozen DINOv2-B + 1-NN-max 的 performance ceiling",
+  "why_now": "E11-E14 已穷尽 frozen-feature/scoring/fusion/lightweight-adaptation 路线；EfficientAD 是唯一未测的不同 paradigm",
+  "exit": {"KEEP/HOLD": "进入 E15-B", "STOP": "关闭 EfficientAD，不调参救火"},
+  "reference_f0": {"impl": "DINOv2-B final-layer LayerNorm 1-NN-max 300-bank view120 (reuse)",
+                   "Bird": [0.74725, 0.78863], "Car": [0.78552, 0.84207], "Cube": [0.85410, 0.91686]},
+  "frozen_config": {
+    "model_variant": "small (PDN-small, 默认)",
+    "teacher": "models/teacher_small.pth (DINO teacher, 官方)",
+    "student": "PDN-small (2*out_channels)",
+    "input_resolution": 256,
+    "train_steps": 70000,
+    "batch_size": 1,
+    "optimizer": "AdamW (官方默认)",
+    "lr": "官方默认 (1e-4)",
+    "official_deviation": "pretrain_penalty=False (无 ImageNet); 数据用 symlink farm; AUROC/AP 用官方 image_anomaly+detectable 口径"
+  },
+  "staging": {
+    "stage0": "Bird engineering smoke (12 checks, hard 15-20 min)",
+    "stageA": "Bird full (advance if dAUROC >= -0.010 AND dAP >= -0.010)",
+    "stageB": "Car (advance if mean(Bird,Car) dAUROC >= 0 OR mean dAP >= 0, AND any-cat dAUROC >= -0.015)",
+    "stageC": "Cube ceiling test",
+    "cube_resistant": "dAUROC >= 0 AND dAP >= -0.005",
+    "cube_strong": "dAUROC >= +0.005 AND dAP >= 0"
+  },
+  "final_criteria": {
+    "KEEP": "3-cat mean dAUROC >= +0.010 AND positive >= 2/3 AND Cube dAUROC >= 0 AND mean dAP >= +0.005 AND training stable",
+    "HOLD": "3-cat mean dAUROC >= +0.005 AND Cube dAUROC >= -0.005 AND mean dAP >= 0",
+    "SOFT_HOLD": "overall ~= F0 (+/-0.005) but Cube more stable / error pattern valuable (diagnostic only)",
+    "STOP": "otherwise"
+  },
+  "budget": {"target_h": [1, 2], "hard_cap_h": 2.5},
+  "forbidden": [
+    "hyperparam/architecture/epoch/teacher/resolution/loss-weight sweep",
+    "magic-reimplement a fake EfficientAD", "tune to rescue a bad category",
+    "change method core to fit data"
+  ],
+  "output": "results/e15/"
+}
