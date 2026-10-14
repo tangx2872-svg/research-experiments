@@ -1,0 +1,53 @@
+{
+  "experiment": "E13-B2 Bank Sensitivity + Extended Stability Sweep",
+  "stage": "stability validation / confound diagnosis (NOT tuning, NOT a new method)",
+  "date": "2026-10-14",
+  "git_head_at_start": "e036dff8613347fe44949e5b4ec7417d2fb68129",
+  "paper_phase": "stability validation / confound diagnosis",
+  "thesis_served": "确认 R1 的 paired 正收益在不同 normal-bank sampling 下是否稳定，区分方法失效 vs baseline bank sensitivity",
+  "why_now": "E13-B 8/9 cells 为正但 Cube seed1 唯一负例，且 frozen R0 随 bank seed 明显漂移；必须区分方法失效与 bank sensitivity",
+  "exit": {
+    "STABLE": "自动进入 Stage B，最终可恢复 PASS-like -> E13-C",
+    "BORDERLINE": "仍进入 Stage B，最终 verdict 标记 HOLD-risk",
+    "UNSTABLE": "不跑 Stage B，直接停止写 memo"
+  },
+  "frozen_method": {
+    "candidate": "R1 Linear Residual Adapter (z' = z + W z, 768->768)",
+    "loss": "strictly reused from E13-A/E13-B (L_cons + 0.1*L_preserve)",
+    "optimizer": "AdamW lr=1e-3",
+    "augmentation": "mild brightness/contrast/gamma +/-15% (6 variants)",
+    "steps": "max 300, early-stop 30 (eval every 5)",
+    "backbone": "frozen DINOv2-B",
+    "feature": "final-layer patch tokens",
+    "scoring": "1-NN-max",
+    "test": "view120 fixed"
+  },
+  "seed_rule": {
+    "seeds": [0, 1, 2, 3, 4, 5, 6, 7],
+    "bank_seed": "bank = random.Random(20261009 + seed).sample(pool, 300)",
+    "train_seed": "torch.manual_seed(seed) + np.random.default_rng(seed)",
+    "existing": "seed0/1/2 from E13-A/E13-B (reused)",
+    "new": "seed3/4/5/6/7"
+  },
+  "staging": {
+    "stage_a": "Cube x seed3-7 (5 cells), then decide STABLE/BORDERLINE/UNSTABLE",
+    "stage_b": "Bird/Car x seed3-7 (10 cells) if not UNSTABLE",
+    "total_matrix": "3 categories x 8 seeds = 24 paired cells (9 existing + 15 new)"
+  },
+  "stage_a_criteria": {
+    "STABLE": "Cube 8-seed mean dAUROC >= +0.005 AND positive seeds >= 6/8 AND mean dAP >= 0",
+    "BORDERLINE": "Cube mean dAUROC >= 0 AND positive seeds >= 4/8",
+    "UNSTABLE": "Cube mean dAUROC < 0 OR positive seeds <= 3/8"
+  },
+  "final_criteria": {
+    "PASS_LIKE": "overall mean dAUROC >= +0.010 AND positive cells >= 19/24 AND per-category 8-seed mean dAUROC >= +0.005 AND overall mean dAP >= +0.005 AND no collapse",
+    "HOLD": "overall mean dAUROC >= +0.0075 AND positive cells >= 17/24 AND per-category mean >= 0 AND overall mean dAP >= 0",
+    "STOP": "otherwise"
+  },
+  "budget": {"target_h": [1.5, 2.0], "stage_a_min": [25, 40], "stage_b_min": [50, 80], "hard_stop_h": 2.5},
+  "forbidden": [
+    "tune lr/loss/augmentation/steps", "change scoring/backbone/adapter", "add S2/S3/S4",
+    "add new method", "append seed9/10 after seeing results", "rescue a single bad category"
+  ],
+  "output": "results/e13b2/"
+}
