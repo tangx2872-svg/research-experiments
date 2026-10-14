@@ -1,0 +1,78 @@
+check_id,group,check,expected,actual,tolerance,PASS,source
+SRC-01,SRC,source artifact present: results/e16/e16_partial.json,exists & non-empty,sha256:dd350bc796303064,-,True,results/e16/e16_partial.json
+SRC-02,SRC,source artifact present: results/e17/e17_partial.json,exists & non-empty,sha256:861f6ac9dc2e68db,-,True,results/e17/e17_partial.json
+SRC-03,SRC,source artifact present: results/e17/final_method.json,exists & non-empty,sha256:f1309c680c3ccd6c,-,True,results/e17/final_method.json
+SRC-04,SRC,source artifact present: results/e18/main_table.csv,exists & non-empty,sha256:3145e331df047e21,-,True,results/e18/main_table.csv
+SRC-05,SRC,source artifact present: results/e18/illum_breakdown.csv,exists & non-empty,sha256:709452c5bacb9b6f,-,True,results/e18/illum_breakdown.csv
+SRC-06,SRC,source artifact present: results/e18/bootstrap_f0_vs_ours.json,exists & non-empty,sha256:6b038d0744ff5815,-,True,results/e18/bootstrap_f0_vs_ours.json
+SRC-07,SRC,source artifact present: results/e18/native_scoring_appendix.csv,exists & non-empty,sha256:bdcba63a3918c3a2,-,True,results/e18/native_scoring_appendix.csv
+SRC-08,SRC,source artifact present: results/e18/statistical_analysis.md,exists & non-empty,sha256:af1848615f28c7ba,-,True,results/e18/statistical_analysis.md
+BETA-01,BETA,beta_ablation.csv row count,15,15,0,True,results/e19/tables/beta_ablation.csv
+BETA-02,BETA,beta_ablation.csv column 'auroc' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-03,BETA,beta_ablation.csv column 'ap' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-04,BETA,beta_ablation.csv column 'd_prime' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-05,BETA,beta_ablation.csv column 'robustness_feat' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-06,BETA,beta_ablation.csv column 'robustness_score' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-07,BETA,beta_ablation.csv column 'illum_shift' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-08,BETA,beta_ablation.csv column 'std_ratio' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-09,BETA,beta_ablation.csv column 'pairwise_cos' vs e17_partial.json (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e17/e17_partial.json
+BETA-10,BETA,beta / steps_used match e17_partial.json (max|delta|),0.0,0.0,1e-09,True,results/e17/e17_partial.json
+BETA-11,BETA,delta vs F0 columns recompute (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/beta_ablation.csv vs results/e16/e16_partial.json
+BETA-12,BETA,frozen gate C1/bird_car_mean_dAUROC_vs_C0 recomputed from full precision,0.0,3.1739042412604057e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-13,BETA,frozen gate C1/bird_car_mean_dAP_vs_C0 recomputed from full precision,0.0,3.120219867480678e-07,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-14,BETA,frozen gate C1/cube_dAUROC_vs_C0 recomputed from full precision,0.0,9.208686050921067e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-15,BETA,frozen gate C1/bird_car_mean_d_rob_vs_C0 recomputed from full precision,0.0,7.978032290356651e-09,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-16,BETA,frozen gate C2/bird_car_mean_dAUROC_vs_C0 recomputed from full precision,0.0,6.064210277823001e-07,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-17,BETA,frozen gate C2/bird_car_mean_dAP_vs_C0 recomputed from full precision,0.0,4.349179213658516e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-18,BETA,frozen gate C2/cube_dAUROC_vs_C0 recomputed from full precision,0.0,2.4622745674607316e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-19,BETA,frozen gate C2/bird_car_mean_d_rob_vs_C0 recomputed from full precision,0.0,2.6072450885761267e-07,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-20,BETA,frozen gate C3/bird_car_mean_dAUROC_vs_C0 recomputed from full precision,0.0,3.579056584657181e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-21,BETA,frozen gate C3/bird_car_mean_dAP_vs_C0 recomputed from full precision,0.0,2.359565262177732e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-22,BETA,frozen gate C3/cube_dAUROC_vs_C0 recomputed from full precision,0.0,4.747883695310762e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-23,BETA,frozen gate C3/bird_car_mean_d_rob_vs_C0 recomputed from full precision,0.0,3.4085501909864035e-07,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-24,BETA,frozen gate C4/bird_car_mean_dAUROC_vs_C0 recomputed from full precision,0.0,1.7166885986075187e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-25,BETA,frozen gate C4/bird_car_mean_dAP_vs_C0 recomputed from full precision,0.0,2.5937561170530365e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-26,BETA,frozen gate C4/cube_dAUROC_vs_C0 recomputed from full precision,0.0,5.796834744220547e-06,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-27,BETA,frozen gate C4/bird_car_mean_d_rob_vs_C0 recomputed from full precision,0.0,6.466807945804121e-07,5e-05,True,results/e17/final_method.json vs e17_partial.json
+BETA-28,BETA,smallest distance to the +0.003 gate exceeds precision tolerance (1e-4),> 1e-4,0.0012699999999999908,0.0001,True,results/e17/final_method.json
+MAIN-01,MAIN,main_results.csv row count,6,6,0,True,results/e19/tables/main_results.csv
+MAIN-02,MAIN,non-empty cell count,32,32,0,True,results/e19/tables/main_results.csv
+MAIN-03,MAIN,empty cells stay empty (never imputed),4,4,0,True,results/e19/tables/main_results.csv
+MAIN-04,MAIN,all cell values == e18/main_table.csv (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/main_results.csv vs results/e18/main_table.csv
+MAIN-05,MAIN,main_results_3seed.csv row count,6,6,0,True,results/e19/tables/main_results_3seed.csv
+MAIN-06,MAIN,3-seed table + CI values == e18 artifacts (max|delta|),0.0,0.0,1e-12,True,e18/main_table.csv + e18/bootstrap_f0_vs_ours.json
+MAIN-07,MAIN,main_results.md display cells match CSV (max|delta| at 5 dp),0.0,4.9282599855482445e-06,5e-06,True,results/e19/tables/main_results.md
+ILLUM-01,ILLUM,illum_groups.csv row count,264,264,0,True,results/e19/tables/illum_groups.csv
+ILLUM-02,ILLUM,unique source set preserved,24,24,0,True,results/e18/illum_breakdown.csv
+ILLUM-03,ILLUM,illum_groups.csv column 'n_ok' vs e18 source (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/illum_groups.csv vs results/e18/illum_breakdown.csv
+ILLUM-04,ILLUM,illum_groups.csv column 'n_ng' vs e18 source (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/illum_groups.csv vs results/e18/illum_breakdown.csv
+ILLUM-05,ILLUM,illum_groups.csv column 'auroc' vs e18 source (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/illum_groups.csv vs results/e18/illum_breakdown.csv
+ILLUM-06,ILLUM,illum_groups.csv column 'ap' vs e18 source (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/illum_groups.csv vs results/e18/illum_breakdown.csv
+ILLUM-07,ILLUM,illum_groups.csv column 'good_mean' vs e18 source (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/illum_groups.csv vs results/e18/illum_breakdown.csv
+ILLUM-08,ILLUM,illum_groups.csv column 'good_std' vs e18 source (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/illum_groups.csv vs results/e18/illum_breakdown.csv
+ILLUM-09,ILLUM,rel_good_mean recompute (max|delta|),0.0,0.0,1e-12,True,results/e19/tables/illum_groups.csv
+ILLUM-10,ILLUM,spread values match results/e18/statistical_analysis.md (4 dp display),0.0,3.545996348064406e-05,0.0005,True,results/e18/statistical_analysis.md §B.1 vs results/e19/tables/illum_groups.csv
+FIG-01,FIG,figure present & non-trivial: fig_beta_auroc.png/.pdf,png>10kB & pdf>8kB,png=73627/pdf=19296,-,True,results/e19/figures/
+FIG-02,FIG,figure present & non-trivial: fig_beta_decision.png/.pdf,png>10kB & pdf>8kB,png=118854/pdf=23183,-,True,results/e19/figures/
+FIG-03,FIG,figure present & non-trivial: fig_beta_collapse.png/.pdf,png>10kB & pdf>8kB,png=138895/pdf=22413,-,True,results/e19/figures/
+FIG-04,FIG,figure present & non-trivial: fig_illum_auroc.png/.pdf,png>10kB & pdf>8kB,png=127856/pdf=22336,-,True,results/e19/figures/
+FIG-05,FIG,figure present & non-trivial: fig_illum_drift.png/.pdf,png>10kB & pdf>8kB,png=152670/pdf=23497,-,True,results/e19/figures/
+FIG-06,FIG,figure present & non-trivial: fig_illum_context.png/.pdf,png>10kB & pdf>8kB,png=183506/pdf=26289,-,True,results/e19/figures/
+FIG-07,FIG,figure present & non-trivial: fig_main_auroc.png/.pdf,png>10kB & pdf>8kB,png=83912/pdf=21555,-,True,results/e19/figures/
+FIG-08,FIG,figure present & non-trivial: fig_main_forest.png/.pdf,png>10kB & pdf>8kB,png=79619/pdf=21444,-,True,results/e19/figures/
+FIG-09,FIG,figure present & non-trivial: fig_main_3seed.png/.pdf,png>10kB & pdf>8kB,png=52026/pdf=17833,-,True,results/e19/figures/
+NOTES-01,NOTES,notes present with Source line: e19_beta_ablation_notes.md,exists & has Source line,3763 bytes,-,True,results/e19/notes/e19_beta_ablation_notes.md
+NOTES-02,NOTES,notes present with Source line: e19_illum_groups_notes.md,exists & has Source line,2417 bytes,-,True,results/e19/notes/e19_illum_groups_notes.md
+NOTES-03,NOTES,notes present with Source line: e19_main_results_notes.md,exists & has Source line,2368 bytes,-,True,results/e19/notes/e19_main_results_notes.md
+IDEM-01,IDEM,scripts/e19_figures.py rerun exit code,0,0,0,True,scripts/e19_figures.py
+IDEM-02,IDEM,rerun reproduces byte-identical: beta_ablation.csv,7bac3d555f587dad,7bac3d555f587dad,-,True,results/e19/tables/beta_ablation.csv
+IDEM-03,IDEM,rerun reproduces byte-identical: illum_groups.csv,d986c03f98969b8d,d986c03f98969b8d,-,True,results/e19/tables/illum_groups.csv
+IDEM-04,IDEM,rerun reproduces byte-identical: main_results.csv,e22865419059cd60,e22865419059cd60,-,True,results/e19/tables/main_results.csv
+IDEM-05,IDEM,rerun reproduces byte-identical: main_results.md,be75695e6e3128a2,be75695e6e3128a2,-,True,results/e19/tables/main_results.md
+IDEM-06,IDEM,rerun reproduces byte-identical: main_results_3seed.csv,24453a1ba9c4c149,24453a1ba9c4c149,-,True,results/e19/tables/main_results_3seed.csv
+IDEM-07,IDEM,rerun reproduces byte-identical: e19_beta_ablation_notes.md,f096038e4fa37c40,f096038e4fa37c40,-,True,results/e19/notes/e19_beta_ablation_notes.md
+IDEM-08,IDEM,rerun reproduces byte-identical: e19_illum_groups_notes.md,6e7b2742d5026106,6e7b2742d5026106,-,True,results/e19/notes/e19_illum_groups_notes.md
+IDEM-09,IDEM,rerun reproduces byte-identical: e19_main_results_notes.md,d1bbef66a4a6b5cd,d1bbef66a4a6b5cd,-,True,results/e19/notes/e19_main_results_notes.md
+GIT-01,GIT,"no E19 write outside {results/e19/**, scripts/e19_*, README.md, PROJECT_STATE.md}",[],[],-,True,git status --porcelain
+GIT-02,GIT,6 known legacy worktree paths still present (untouched),6,6,0,True,git status / workspace
+GIT-03,GIT,no modified tracked file under results/e1x (frozen history intact),[],[],-,True,git status --porcelain

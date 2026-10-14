@@ -4,10 +4,10 @@
 —— 面向光照扰动的特征归一化（α-IN，`F_α = (1−α)F + α·IN(F)`）可能同时**抑制 defect-relevant 信息**；
 本项目用 1B→1J-B 建立机制证据，再用 5A→5C 把机制结论推进为可验证的方法。
 
-## ⚠️ 最新状态（2026-10-14）— DINOv2 线：**最终方法已冻结**
+## ⚠️ 最新状态（2026-10-15）— DINOv2 线：**最终方法已冻结 · E19 论文资产已生成**
 
 > **本仓库当前有两条独立研究线**。上方简介描述的是历史 **PatchCore/α-IN 线**；2026-10-13 起项目转入
-> **DINOv2-B 表示线（E11→E18）**，其结论与冻结方法如下：
+> **DINOv2-B 表示线（E11→E19）**，其结论与冻结方法如下：
 
 | 项 | 状态 |
 |---|---|
@@ -18,7 +18,8 @@
 | E17 | **FREEZE_CURRENT_R1** —— BETA 扫描无挑战者过 +0.003 门；BETA=0 触发 collapse |
 | E18 | **主表定稿完成（P0+P1+P2）** —— 6 行主表 5 行 3/3 完备，Ours 三类全面领先；F0 vs Ours 配对 bootstrap 见 [`results/e18/README.md`](results/e18/README.md)。PatchCore official Car/Cube = **BLOCKED**（人工裁决选项 C），EfficientAD Car/Cube = EARLY_STOP |
 | 关键审计发现 | M²AD view120 存在**两套标签协议**；E7 线的 PatchCore image AUROC 0.78089 为 `object_anomaly` 旧口径虚高，official 口径重算为 **0.69318**（0 GPU） |
-| 下一步 | `NEXT = E19 Paper convergence: ablation + figures`（**不新增 GPU、不改冻结参数，等人工裁决**）。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
+| **E19** | **图表与论文资产已生成（零 GPU）** —— 9 张图（PNG+PDF）/ 3 张表 / 3 份 notes 在 [`results/e19/`](results/e19/)；**77/77 独立核验 PASS**（[`verification.csv`](results/e19/verification.csv)）；BETA 消融 / 照明分组 / 主结果均从 E16/E17/E18 冻结 artifact **确定性重建**（重跑 byte-identical）。报告：[`results/e19/README.md`](results/e19/README.md) |
+| 下一步 | `NEXT = Paper outline + first full draft`（**不新增 GPU、不改冻结参数**；仅当完整稿暴露实质证据缺口时才讨论补实验）。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
 
 ---
 

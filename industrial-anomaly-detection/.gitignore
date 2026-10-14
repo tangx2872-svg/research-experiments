@@ -403,3 +403,6 @@ results/e18/logs/
 !results/e18/filled/
 !results/e18/filled/per_image/
 results/e18/logs/
+
+# E19 paper assets (figures/tables/notes/verification; no logs, no GPU artifacts)
+!results/e19/
