@@ -1,0 +1,11 @@
+category,official_metadata_local,pixels_local,l0_448_files,l0_256_files,clahe_medium_files,test_v120_kept,test_v120_filtered,test_4view_kept,test_4view_filtered,used_in_e16_e18,expansion_type,e8_pre_registered_ext_order,acquisition_channel,acquisition_min_est,disk_gb_est_l0448_only,disk_gb_est_4kinds
+Bird,yes,yes,6400,4000,4000,653,47,2676,124,yes,in_use (E16/E18),,local (cached),0,,
+Car,yes,no,4000,4000,4000,656,44,2685,115,yes,in_use (E16/E18),,local (cached),0,,
+Cube,yes,no,4000,4000,4000,678,22,2729,71,yes,in_use (E16/E18),,local (cached),0,,
+Dice,yes,no,0,0,0,688,12,2709,91,no,new independent category (type A),1,hf-mirror streaming selective extraction (e8_fetch.py),22,0.8,2.7
+Doll,yes,no,0,0,0,670,30,2698,102,no,new independent category (type A),2,hf-mirror streaming selective extraction (e8_fetch.py),22,0.8,2.7
+Holder,yes,no,0,0,0,666,24,2690,70,no,new independent category (type A),3,hf-mirror streaming selective extraction (e8_fetch.py),22,0.8,2.7
+Motor,yes,no,0,0,0,688,12,2766,34,no,new independent category (type A),,hf-mirror streaming selective extraction (e8_fetch.py),22,0.8,2.7
+Ring,yes,no,0,0,0,682,18,2761,39,no,new independent category (type A),,hf-mirror streaming selective extraction (e8_fetch.py),22,0.8,2.7
+Teapot,yes,no,0,0,0,666,34,2682,118,no,new independent category (type A),,hf-mirror streaming selective extraction (e8_fetch.py),22,0.8,2.7
+Tube,yes,no,0,0,0,639,61,2551,249,no,new independent category (type A),,hf-mirror streaming selective extraction (e8_fetch.py),22,0.8,2.7
