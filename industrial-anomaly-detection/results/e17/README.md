@@ -11,7 +11,7 @@
 
 ## Q1 — 当前 R1 是否已接近局部最优？
 **是（聚合意义下）。** BETA 是单调的检测↔鲁棒性旋钮，而 0.1 位于聚合最优附近：
-- BETA ↓（更强适配）：光照 shift 与 robustness_score 更低（更鲁棒），但检测变差；**BETA=0 在三类上都是最差检测器**并在 Cube 触发 collapse。
+- BETA ↓（更强适配）：光照 shift 与 robustness_score 更低（更鲁棒），但检测变差；**BETA=0 按 d′ 指标在 Bird / Car / Cube 三类中均为最低**并在 Cube 触发 collapse。**指标限定（勘误，2026-10-15）**：按 AUROC 并非三类都最低——Cube 上 BETA=0 的 nominal AUROC 最高（0.9090），但伴随已记录的 collapse 行为（pairwise cos 0.9877，`collapsed=True`；见 `e17_partial.json`）。因此不能表述为"BETA=0 在三类上都是最差检测器"。
 - BETA ↑（更强锚定）：Bird 检测上升，但 **Car 与 Cube 下降**，robustness_score 显著恶化。
 - 聚合 Bird+Car mean ΔAUROC vs F0：**C0(0.1) = +0.01510 为最高**，C3(0.2) = +0.01683 vs F0… 见下注。
 
@@ -62,7 +62,7 @@ E17 结束后 **final method frozen**。E18–E20 不再为了结果修改方法
 复现：`python scripts/e17_refine.py --round 1` → `python scripts/e17_analysis.py`
 
 ## 机制补充（不新增机制研究，仅记录）
-- **preservation 项是必需组件**：BETA=0 时 `robustness_feat` 降到 0.0007（近乎完美光照一致性）但检测最差 → **光照一致性本身不是目标**，必须有 frozen 锚定。
+- **preservation 项是必需组件**：BETA=0 时 `robustness_feat` 降到 0.0007（近乎完美光照一致性）但检测性能按 d′ 三类均最低（Cube 的 nominal AUROC 最高 0.9090，但伴随 collapse；指标限定同上）→ **光照一致性本身不是目标**，必须有 frozen 锚定。
 - 这也解释了 E16 记录的"normal dispersion 反升"：adapter 需要锚定以免表示退化。
 - 允许的论文机制表述仍为：*R1 reduces illumination-induced feature shift / illumination-group discrepancy while preserving anomaly discrimination.*（禁用 normal dispersion reduction）
 
