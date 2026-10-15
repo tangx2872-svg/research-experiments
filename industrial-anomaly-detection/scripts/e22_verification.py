@@ -242,11 +242,16 @@ def main() -> int:
     pdfs = sorted(p.name for p in (OUT / "figures").glob("*.pdf")) if (OUT / "figures").is_dir() else []
     add("V28", "8 figures present as PNG and PDF", 8, f"{len(figs)} png / {len(pdfs)} pdf",
         len(figs) == 8 and len(pdfs) == 8)
+    # NOTE (2026-10-16 implementation fix): verification.csv was originally listed here, which made
+    # this check self-referential — it can only pass on a second run, after this script has written
+    # its own output. The required list therefore covers upstream artifacts only; verification.csv
+    # is written unconditionally at the end of this function (see below).
     req = ["README.md", "protocol.md", "main_table_10cat_3seed.csv", "category_summary.csv",
            "illumination_breakdown.csv", "statistical_summary.md", "failure_cases.md",
-           "verification.csv", "live_results.csv", "all10_3seed_cells.csv"]
+           "live_results.csv", "all10_3seed_cells.csv"]
     missing = [f for f in req if not (OUT / f).exists()]
-    add("V29", "all required artifacts exist", "none missing", missing or "none", not missing)
+    add("V29", "all required upstream artifacts exist (verification.csv = this script's output)",
+        "none missing", missing or "none", not missing)
 
     # ---- 30. negative results retained
     neg_cells = [(k, v) for k, v in cells.items() if v["delta_auroc"] < 0]

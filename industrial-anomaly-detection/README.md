@@ -22,7 +22,8 @@
 | E20-A | M²AD 扩展资源盘点（零 GPU/零下载）：覆盖 = 3 类 × view120；其余 7 类像素零/metadata 全；扩展三候选（M1 新类别/M2 4-view/M3 Bird 12-view）待批准。`results/e20/README.md` | 
 | E20-B | MVTec AD 2 预检（零 GPU）：**HOLD**（需人工表单下载 + D1–D5 批准；TESTpub 单场景 ΔAUROC 噪声半宽 0.04–0.07 → 必须 pooled）。`results/e20/mvtec_ad2_preflight.md` | 
 | **E21** | **多视角验证（4 views × seed0）= HOLD** —— view120 复现 **bit-identical（0.0 diff, 9/9 cell）**；12 cell 8 正 4 负（Car v330 −0.0260 显著负）；overall macro pooled ΔAUROC **+0.00142**（CI [−0.0032,+0.0062]）但 **ΔAP −0.00165** → 未过 GO 门。**不补 seed1/2**；**verification 11/11 PASS**。报告：[`results/e21/README.md`](results/e21/README.md) |
-| 下一步 | **裁决 E20-A/E20-B/E21 结果**（E21 = HOLD 待策划侧决定是否补 seed1/2 或归档；不自动补）。默认主线仍为 `Paper outline + first full draft`（**不新增 GPU、不改冻结参数**）。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
+| **E22** | **全类别多 seed 验证（10 类 × 3 seeds × view120）= HOLD** —— 30 cells（9 历史复用经 Gate A bit 级 + Gate B 逐图 0.0 复现；21 新算；无 NaN/OOM/重试）；**ΔAUROC 胜率 9/10、ΔAP 9/10**，macro mean ΔAUROC **+0.00760** / median **+0.01080**（ΔAP +0.00777/+0.00958）；7/10 类 3/3 seeds 为正；**Doll 0/3、mean −0.0385（CI [−0.0661,−0.0140]，p=0.001）= 唯一稳定负类别**；STRONG GO 第 ④ 条（无类别 < −0.03）未满足、STOP 未触发 → **HOLD**（禁止改写为 STRONG GO 或方法失败）。独立验证 **36/36 PASS**。报告：[`results/e22/README.md`](results/e22/README.md) |
+| 下一步 | **`PAPER VALIDATION → EVIDENCE CONSOLIDATION`**：E22 已归档（HOLD = 整体方向为正 9/10 + Doll severe regression）；随后 **E23（Doll failure 描述性审计，只读 / 0 GPU）** 与 [`results/paper_ready/`](results/paper_ready/) 论文证据包 → **停止实验，进入论文结构与正式写作**。默认主线 = `Paper outline + first full draft`（**不新增 GPU、不改冻结参数**）。**禁止**修改 R1-ILA 参数、重开 detector 搜索、补 seed/view、下载新数据集；E21 = HOLD 与 E20-B = HOLD 均保持待裁决 |
 
 ---
 

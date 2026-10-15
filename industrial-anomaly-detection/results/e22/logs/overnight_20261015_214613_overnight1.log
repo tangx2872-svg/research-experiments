@@ -1,0 +1,213 @@
+[E22 DRIVER] start 2026-10-15 21:46:13 CST tag=overnight1 pid=357949 log=results/e22/logs/overnight_20261015_214613_overnight1.log
+[E22 DRIVER] protocol: results/e22/protocol.md | method frozen R1-ILA BETA=0.1
+[E22 DRIVER] disk: /dev/nvme1n1     50G   38G   13G  76% /root/autodl-tmp
+[E22 DRIVER] --- stage: preflight ---
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+[E22 preflight] Bird    pool=1200 bank=300 test=700 kept=653 good=320 ng=333 illum=10 cache_miss=0 PASS
+[E22 preflight] Car     pool=1200 bank=300 test=700 kept=656 good=300 ng=356 illum=10 cache_miss=0 PASS
+[E22 preflight] Cube    pool=1200 bank=300 test=700 kept=678 good=260 ng=418 illum=10 cache_miss=0 PASS
+[E22 preflight] Dice    pool=1200 bank=300 test=700 kept=688 good=300 ng=388 illum=10 cache_miss=0 PASS
+[E22 preflight] Doll    pool=1200 bank=300 test=700 kept=670 good=270 ng=400 illum=10 cache_miss=0 PASS
+[E22 preflight] Holder  pool=1200 bank=300 test=690 kept=666 good=290 ng=376 illum=10 cache_miss=0 PASS
+[E22 preflight] Motor   pool=1200 bank=300 test=700 kept=688 good=200 ng=488 illum=10 cache_miss=0 PASS
+[E22 preflight] Ring    pool=1200 bank=300 test=700 kept=682 good=230 ng=452 illum=10 cache_miss=0 PASS
+[E22 preflight] Teapot  pool=1200 bank=300 test=700 kept=666 good=250 ng=416 illum=10 cache_miss=0 PASS
+[E22 preflight] Tube    pool=1200 bank=300 test=700 kept=639 good=260 ng=379 illum=10 cache_miss=0 PASS
+[E22 preflight] wrote /root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/e22/data_preflight.csv | ALL=PASS
+[E22 DRIVER] --- stage: reproduction gate ---
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+
+[E22 repro] Gate A: Bird|0 through frozen e16_qualify.run_cell ...
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+[E22 repro] Gate A: Bird|0 through E22 copy ...
+[E22 repro] Gate A: max|d score| F0=0.000e+00 R1=0.000e+00 bit_identical=True frozen_repro_ok=True
+
+[E22 repro] Gate B: Bird|0, Car|0, Cube|0, Car|1 vs e16_partial (tol 1e-6) ...
+[E22 repro] Bird|0: dF0=0.000e+00 dR1=0.000e+00 labels_identical=True pass=True
+[E22 repro] Car|0: dF0=0.000e+00 dR1=0.000e+00 labels_identical=True pass=True
+[E22 repro] Cube|0: dF0=0.000e+00 dR1=0.000e+00 labels_identical=True pass=True
+[E22 repro] Car|1: dF0=0.000e+00 dR1=0.000e+00 labels_identical=True pass=True
+[E22 repro] ALL GATES PASS -> matrix may start
+[E22 DRIVER] --- stage: matrix (7 new categories x 3 seeds = 21 cells) ---
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+[E22] frozen hyperparams OK: BETA=0.1 LR=0.001 steps=300/30 batch=8 train/val=240/60 bank=300 seed0=20261009 aug=[('brightness', 0.85), ('brightness', 1.15), ('contrast', 0.85), ('contrast', 1.15), ('gamma', 0.85), ('gamma', 1.15)]
+
+[E22] === RUN Dice|0 (round A, 1/21) ===
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")
+[E22 STATUS] stage=matrix completed 0/21 | 0.0% | current=Dice/seed0 cell_elapsed=0h1m0s | elapsed=0h1m0s last_cell=n/a mean_cell=n/a ETA=n/a | gpu=100%/1120MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 0/21 | 0.0% | current=Dice/seed0 cell_elapsed=0h2m0s | elapsed=0h2m0s last_cell=n/a mean_cell=n/a ETA=n/a | gpu=100%/10324MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 0/21 | 0.0% | current=Dice/seed0 cell_elapsed=0h3m0s | elapsed=0h3m0s last_cell=n/a mean_cell=n/a ETA=n/a | gpu=95%/10324MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 0/21 | 0.0% | current=Dice/seed0 cell_elapsed=0h4m0s | elapsed=0h4m0s last_cell=n/a mean_cell=n/a ETA=n/a | gpu=0%/10324MB disk=12.42GB
+[E22 STATUS] completed 1/21 | 4.8% | current=Dice|0 | round=A | elapsed=0h4m32s last_cell=0h4m31s mean_cell=0h4m31s ETA=1h30m20s | gpu=0%/730MB disk=12.42GB | Dice|0 dAUROC=+0.00267 dAP=+0.00048 (F0 0.90704 -> R1 0.90971)
+
+[E22] === RUN Doll|0 (round A, 2/21) ===
+[E22 STATUS] stage=matrix completed 1/21 | 4.8% | current=Doll/seed0 cell_elapsed=0h0m28s | elapsed=0h5m0s last_cell=0h4m31s mean_cell=0h4m31s ETA=1h30m20s | gpu=81%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 1/21 | 4.8% | current=Doll/seed0 cell_elapsed=0h1m28s | elapsed=0h6m0s last_cell=0h4m31s mean_cell=0h4m31s ETA=1h30m20s | gpu=98%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 1/21 | 4.8% | current=Doll/seed0 cell_elapsed=0h2m28s | elapsed=0h7m0s last_cell=0h4m31s mean_cell=0h4m31s ETA=1h30m20s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 1/21 | 4.8% | current=Doll/seed0 cell_elapsed=0h3m28s | elapsed=0h8m0s last_cell=0h4m31s mean_cell=0h4m31s ETA=1h30m20s | gpu=94%/10344MB disk=12.42GB
+[E22 STATUS] completed 2/21 | 9.5% | current=Doll|0 | round=A | elapsed=0h8m57s last_cell=0h4m24s mean_cell=0h4m27s ETA=1h24m42s | gpu=0%/730MB disk=12.42GB | Doll|0 dAUROC=-0.04385 dAP=-0.00947 (F0 0.71941 -> R1 0.67556)
+
+[E22] === RUN Holder|0 (round A, 3/21) ===
+[E22 STATUS] stage=matrix completed 2/21 | 9.5% | current=Holder/seed0 cell_elapsed=0h0m3s | elapsed=0h9m0s last_cell=0h4m24s mean_cell=0h4m27s ETA=1h24m42s | gpu=0%/730MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 2/21 | 9.5% | current=Holder/seed0 cell_elapsed=0h1m3s | elapsed=0h10m0s last_cell=0h4m24s mean_cell=0h4m27s ETA=1h24m42s | gpu=83%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 2/21 | 9.5% | current=Holder/seed0 cell_elapsed=0h2m3s | elapsed=0h11m0s last_cell=0h4m24s mean_cell=0h4m27s ETA=1h24m42s | gpu=2%/10284MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 2/21 | 9.5% | current=Holder/seed0 cell_elapsed=0h3m3s | elapsed=0h12m0s last_cell=0h4m24s mean_cell=0h4m27s ETA=1h24m42s | gpu=100%/10284MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 2/21 | 9.5% | current=Holder/seed0 cell_elapsed=0h4m5s | elapsed=0h13m3s last_cell=0h4m24s mean_cell=0h4m27s ETA=1h24m42s | gpu=0%/10284MB disk=12.42GB
+[E22 STATUS] completed 3/21 | 14.3% | current=Holder|0 | round=A | elapsed=0h13m18s last_cell=0h4m20s mean_cell=0h4m25s ETA=1h19m31s | gpu=0%/730MB disk=12.42GB | Holder|0 dAUROC=+0.01536 dAP=+0.01506 (F0 0.89580 -> R1 0.91116)
+
+[E22] === RUN Motor|0 (round A, 4/21) ===
+[E22 STATUS] stage=matrix completed 3/21 | 14.3% | current=Motor/seed0 cell_elapsed=0h0m44s | elapsed=0h14m3s last_cell=0h4m20s mean_cell=0h4m25s ETA=1h19m31s | gpu=100%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 3/21 | 14.3% | current=Motor/seed0 cell_elapsed=0h1m44s | elapsed=0h15m3s last_cell=0h4m20s mean_cell=0h4m25s ETA=1h19m31s | gpu=8%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 3/21 | 14.3% | current=Motor/seed0 cell_elapsed=0h2m44s | elapsed=0h16m3s last_cell=0h4m20s mean_cell=0h4m25s ETA=1h19m31s | gpu=95%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 3/21 | 14.3% | current=Motor/seed0 cell_elapsed=0h3m44s | elapsed=0h17m3s last_cell=0h4m20s mean_cell=0h4m25s ETA=1h19m31s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] completed 4/21 | 19.0% | current=Motor|0 | round=A | elapsed=0h17m48s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h15m18s | gpu=0%/730MB disk=12.42GB | Motor|0 dAUROC=+0.01480 dAP=+0.01934 (F0 0.81088 -> R1 0.82568)
+
+[E22] === RUN Ring|0 (round A, 5/21) ===
+[E22 STATUS] stage=matrix completed 4/21 | 19.0% | current=Ring/seed0 cell_elapsed=0h0m15s | elapsed=0h18m3s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h15m18s | gpu=82%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 4/21 | 19.0% | current=Ring/seed0 cell_elapsed=0h1m15s | elapsed=0h19m3s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h15m18s | gpu=100%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 4/21 | 19.0% | current=Ring/seed0 cell_elapsed=0h2m15s | elapsed=0h20m3s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h15m18s | gpu=95%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 4/21 | 19.0% | current=Ring/seed0 cell_elapsed=0h3m15s | elapsed=0h21m3s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h15m18s | gpu=95%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 4/21 | 19.0% | current=Ring/seed0 cell_elapsed=0h4m16s | elapsed=0h22m4s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h15m18s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 5/21 | 23.8% | current=Ring|0 | round=A | elapsed=0h22m11s last_cell=0h4m22s mean_cell=0h4m25s ETA=1h10m41s | gpu=0%/730MB disk=12.42GB | Ring|0 dAUROC=+0.02210 dAP=+0.01410 (F0 0.88287 -> R1 0.90496)
+
+[E22] === RUN Teapot|0 (round A, 6/21) ===
+[E22 STATUS] stage=matrix completed 5/21 | 23.8% | current=Teapot/seed0 cell_elapsed=0h0m52s | elapsed=0h23m4s last_cell=0h4m22s mean_cell=0h4m25s ETA=1h10m41s | gpu=89%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 5/21 | 23.8% | current=Teapot/seed0 cell_elapsed=0h1m52s | elapsed=0h24m4s last_cell=0h4m22s mean_cell=0h4m25s ETA=1h10m41s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 5/21 | 23.8% | current=Teapot/seed0 cell_elapsed=0h2m53s | elapsed=0h25m4s last_cell=0h4m22s mean_cell=0h4m25s ETA=1h10m41s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 5/21 | 23.8% | current=Teapot/seed0 cell_elapsed=0h3m53s | elapsed=0h26m4s last_cell=0h4m22s mean_cell=0h4m25s ETA=1h10m41s | gpu=95%/10344MB disk=12.42GB
+[E22 STATUS] completed 6/21 | 28.6% | current=Teapot|0 | round=A | elapsed=0h26m39s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h6m21s | gpu=0%/730MB disk=12.42GB | Teapot|0 dAUROC=+0.02539 dAP=+0.01417 (F0 0.87220 -> R1 0.89760)
+
+[E22] === RUN Tube|0 (round A, 7/21) ===
+[E22 STATUS] stage=matrix completed 6/21 | 28.6% | current=Tube/seed0 cell_elapsed=0h0m24s | elapsed=0h27m4s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h6m21s | gpu=100%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 6/21 | 28.6% | current=Tube/seed0 cell_elapsed=0h1m24s | elapsed=0h28m4s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h6m21s | gpu=98%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 6/21 | 28.6% | current=Tube/seed0 cell_elapsed=0h2m24s | elapsed=0h29m4s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h6m21s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 6/21 | 28.6% | current=Tube/seed0 cell_elapsed=0h3m24s | elapsed=0h30m4s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h6m21s | gpu=94%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 6/21 | 28.6% | current=Tube/seed0 cell_elapsed=0h4m24s | elapsed=0h31m4s last_cell=0h4m27s mean_cell=0h4m25s ETA=1h6m21s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 7/21 | 33.3% | current=Tube|0 | round=A | elapsed=0h31m7s last_cell=0h4m26s mean_cell=0h4m25s ETA=1h1m58s | gpu=0%/730MB disk=12.42GB | Tube|0 dAUROC=+0.01128 dAP=+0.00619 (F0 0.87409 -> R1 0.88538)
+
+[E22] === RUN Dice|1 (round B, 8/21) ===
+[E22 STATUS] stage=matrix completed 7/21 | 33.3% | current=Dice/seed1 cell_elapsed=0h0m57s | elapsed=0h32m5s last_cell=0h4m26s mean_cell=0h4m25s ETA=1h1m58s | gpu=100%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 7/21 | 33.3% | current=Dice/seed1 cell_elapsed=0h1m57s | elapsed=0h33m5s last_cell=0h4m26s mean_cell=0h4m25s ETA=1h1m58s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 7/21 | 33.3% | current=Dice/seed1 cell_elapsed=0h2m57s | elapsed=0h34m5s last_cell=0h4m26s mean_cell=0h4m25s ETA=1h1m58s | gpu=94%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 7/21 | 33.3% | current=Dice/seed1 cell_elapsed=0h3m59s | elapsed=0h35m7s last_cell=0h4m26s mean_cell=0h4m25s ETA=1h1m58s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 8/21 | 38.1% | current=Dice|1 | round=B | elapsed=0h35m35s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h57m33s | gpu=0%/730MB disk=12.42GB | Dice|1 dAUROC=+0.00321 dAP=+0.00342 (F0 0.90668 -> R1 0.90989)
+
+[E22] === RUN Doll|1 (round B, 9/21) ===
+[E22 STATUS] stage=matrix completed 8/21 | 38.1% | current=Doll/seed1 cell_elapsed=0h0m32s | elapsed=0h36m7s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h57m33s | gpu=81%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 8/21 | 38.1% | current=Doll/seed1 cell_elapsed=0h1m32s | elapsed=0h37m7s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h57m33s | gpu=87%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 8/21 | 38.1% | current=Doll/seed1 cell_elapsed=0h2m32s | elapsed=0h38m7s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h57m33s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 8/21 | 38.1% | current=Doll/seed1 cell_elapsed=0h3m32s | elapsed=0h39m7s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h57m33s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] completed 9/21 | 42.9% | current=Doll|1 | round=B | elapsed=0h40m4s last_cell=0h4m27s mean_cell=0h4m25s ETA=0h53m10s | gpu=0%/730MB disk=12.42GB | Doll|1 dAUROC=-0.03588 dAP=-0.00756 (F0 0.71306 -> R1 0.67719)
+
+[E22] === RUN Holder|1 (round B, 10/21) ===
+[E22 STATUS] stage=matrix completed 9/21 | 42.9% | current=Holder/seed1 cell_elapsed=0h0m3s | elapsed=0h40m7s last_cell=0h4m27s mean_cell=0h4m25s ETA=0h53m10s | gpu=0%/730MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 9/21 | 42.9% | current=Holder/seed1 cell_elapsed=0h1m3s | elapsed=0h41m7s last_cell=0h4m27s mean_cell=0h4m25s ETA=0h53m10s | gpu=94%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 9/21 | 42.9% | current=Holder/seed1 cell_elapsed=0h2m3s | elapsed=0h42m7s last_cell=0h4m27s mean_cell=0h4m25s ETA=0h53m10s | gpu=16%/10284MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 9/21 | 42.9% | current=Holder/seed1 cell_elapsed=0h3m3s | elapsed=0h43m7s last_cell=0h4m27s mean_cell=0h4m25s ETA=0h53m10s | gpu=95%/10284MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 9/21 | 42.9% | current=Holder/seed1 cell_elapsed=0h4m3s | elapsed=0h44m7s last_cell=0h4m27s mean_cell=0h4m25s ETA=0h53m10s | gpu=0%/10284MB disk=12.42GB
+[E22 STATUS] completed 10/21 | 47.6% | current=Holder|1 | round=B | elapsed=0h44m29s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h48m43s | gpu=0%/730MB disk=12.42GB | Holder|1 dAUROC=+0.00890 dAP=+0.01123 (F0 0.89807 -> R1 0.90697)
+
+[E22] === RUN Motor|1 (round B, 11/21) ===
+[E22 STATUS] stage=matrix completed 10/21 | 47.6% | current=Motor/seed1 cell_elapsed=0h0m38s | elapsed=0h45m7s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h48m43s | gpu=82%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 10/21 | 47.6% | current=Motor/seed1 cell_elapsed=0h1m38s | elapsed=0h46m7s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h48m43s | gpu=0%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 10/21 | 47.6% | current=Motor/seed1 cell_elapsed=0h2m38s | elapsed=0h47m8s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h48m43s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 10/21 | 47.6% | current=Motor/seed1 cell_elapsed=0h3m38s | elapsed=0h48m8s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h48m43s | gpu=95%/10344MB disk=12.42GB
+[E22 STATUS] completed 11/21 | 52.4% | current=Motor|1 | round=B | elapsed=0h48m55s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h44m15s | gpu=0%/730MB disk=12.42GB | Motor|1 dAUROC=-0.00025 dAP=-0.00258 (F0 0.82981 -> R1 0.82956)
+
+[E22] === RUN Ring|1 (round B, 12/21) ===
+[E22 STATUS] stage=matrix completed 11/21 | 52.4% | current=Ring/seed1 cell_elapsed=0h0m13s | elapsed=0h49m8s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h44m15s | gpu=0%/730MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 11/21 | 52.4% | current=Ring/seed1 cell_elapsed=0h1m13s | elapsed=0h50m8s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h44m15s | gpu=100%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 11/21 | 52.4% | current=Ring/seed1 cell_elapsed=0h2m13s | elapsed=0h51m8s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h44m15s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 11/21 | 52.4% | current=Ring/seed1 cell_elapsed=0h3m13s | elapsed=0h52m8s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h44m15s | gpu=95%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 11/21 | 52.4% | current=Ring/seed1 cell_elapsed=0h4m13s | elapsed=0h53m8s last_cell=0h4m24s mean_cell=0h4m25s ETA=0h44m15s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 12/21 | 57.1% | current=Ring|1 | round=B | elapsed=0h53m22s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h39m50s | gpu=0%/730MB disk=12.42GB | Ring|1 dAUROC=+0.01613 dAP=+0.01060 (F0 0.90479 -> R1 0.92092)
+
+[E22] === RUN Teapot|1 (round B, 13/21) ===
+[E22 STATUS] stage=matrix completed 12/21 | 57.1% | current=Teapot/seed1 cell_elapsed=0h0m46s | elapsed=0h54m8s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h39m50s | gpu=80%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 12/21 | 57.1% | current=Teapot/seed1 cell_elapsed=0h1m46s | elapsed=0h55m8s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h39m50s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 12/21 | 57.1% | current=Teapot/seed1 cell_elapsed=0h2m46s | elapsed=0h56m8s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h39m50s | gpu=94%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 12/21 | 57.1% | current=Teapot/seed1 cell_elapsed=0h3m46s | elapsed=0h57m8s last_cell=0h4m26s mean_cell=0h4m25s ETA=0h39m50s | gpu=93%/10344MB disk=12.42GB
+[E22 STATUS] completed 13/21 | 61.9% | current=Teapot|1 | round=B | elapsed=0h57m53s last_cell=0h4m30s mean_cell=0h4m25s ETA=0h35m27s | gpu=0%/730MB disk=12.42GB | Teapot|1 dAUROC=+0.01523 dAP=+0.00978 (F0 0.86627 -> R1 0.88150)
+
+[E22] === RUN Tube|1 (round B, 14/21) ===
+[E22 STATUS] stage=matrix completed 13/21 | 61.9% | current=Tube/seed1 cell_elapsed=0h0m15s | elapsed=0h58m8s last_cell=0h4m30s mean_cell=0h4m25s ETA=0h35m27s | gpu=0%/730MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 13/21 | 61.9% | current=Tube/seed1 cell_elapsed=0h1m15s | elapsed=0h59m8s last_cell=0h4m30s mean_cell=0h4m25s ETA=0h35m27s | gpu=98%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 13/21 | 61.9% | current=Tube/seed1 cell_elapsed=0h2m15s | elapsed=1h0m8s last_cell=0h4m30s mean_cell=0h4m25s ETA=0h35m27s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 13/21 | 61.9% | current=Tube/seed1 cell_elapsed=0h3m15s | elapsed=1h1m9s last_cell=0h4m30s mean_cell=0h4m25s ETA=0h35m27s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 13/21 | 61.9% | current=Tube/seed1 cell_elapsed=0h4m15s | elapsed=1h2m9s last_cell=0h4m30s mean_cell=0h4m25s ETA=0h35m27s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 14/21 | 66.7% | current=Tube|1 | round=B | elapsed=1h2m21s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h31m2s | gpu=0%/730MB disk=12.42GB | Tube|1 dAUROC=+0.01378 dAP=+0.00782 (F0 0.87479 -> R1 0.88857)
+
+[E22] === RUN Dice|2 (round C, 15/21) ===
+[E22 STATUS] stage=matrix completed 14/21 | 66.7% | current=Dice/seed2 cell_elapsed=0h0m47s | elapsed=1h3m9s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h31m2s | gpu=82%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 14/21 | 66.7% | current=Dice/seed2 cell_elapsed=0h1m47s | elapsed=1h4m9s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h31m2s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 14/21 | 66.7% | current=Dice/seed2 cell_elapsed=0h2m47s | elapsed=1h5m9s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h31m2s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 14/21 | 66.7% | current=Dice/seed2 cell_elapsed=0h3m47s | elapsed=1h6m9s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h31m2s | gpu=94%/10344MB disk=12.42GB
+[E22 STATUS] completed 15/21 | 71.4% | current=Dice|2 | round=C | elapsed=1h6m53s last_cell=0h4m30s mean_cell=0h4m26s ETA=0h26m37s | gpu=0%/730MB disk=12.42GB | Dice|2 dAUROC=+0.00420 dAP=+0.00245 (F0 0.90003 -> R1 0.90423)
+
+[E22] === RUN Doll|2 (round C, 16/21) ===
+[E22 STATUS] stage=matrix completed 15/21 | 71.4% | current=Doll/seed2 cell_elapsed=0h0m16s | elapsed=1h7m9s last_cell=0h4m30s mean_cell=0h4m26s ETA=0h26m37s | gpu=78%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 15/21 | 71.4% | current=Doll/seed2 cell_elapsed=0h1m16s | elapsed=1h8m9s last_cell=0h4m30s mean_cell=0h4m26s ETA=0h26m37s | gpu=94%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 15/21 | 71.4% | current=Doll/seed2 cell_elapsed=0h2m16s | elapsed=1h9m9s last_cell=0h4m30s mean_cell=0h4m26s ETA=0h26m37s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 15/21 | 71.4% | current=Doll/seed2 cell_elapsed=0h3m16s | elapsed=1h10m9s last_cell=0h4m30s mean_cell=0h4m26s ETA=0h26m37s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 15/21 | 71.4% | current=Doll/seed2 cell_elapsed=0h4m16s | elapsed=1h11m9s last_cell=0h4m30s mean_cell=0h4m26s ETA=0h26m37s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 16/21 | 76.2% | current=Doll|2 | round=C | elapsed=1h11m20s last_cell=0h4m25s mean_cell=0h4m26s ETA=0h22m11s | gpu=0%/730MB disk=12.42GB | Doll|2 dAUROC=-0.03576 dAP=-0.02203 (F0 0.70504 -> R1 0.66928)
+
+[E22] === RUN Holder|2 (round C, 17/21) ===
+[E22 STATUS] stage=matrix completed 16/21 | 76.2% | current=Holder/seed2 cell_elapsed=0h0m49s | elapsed=1h12m10s last_cell=0h4m25s mean_cell=0h4m26s ETA=0h22m11s | gpu=82%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 16/21 | 76.2% | current=Holder/seed2 cell_elapsed=0h1m49s | elapsed=1h13m10s last_cell=0h4m25s mean_cell=0h4m26s ETA=0h22m11s | gpu=98%/10284MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 16/21 | 76.2% | current=Holder/seed2 cell_elapsed=0h2m49s | elapsed=1h14m10s last_cell=0h4m25s mean_cell=0h4m26s ETA=0h22m11s | gpu=100%/10284MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 16/21 | 76.2% | current=Holder/seed2 cell_elapsed=0h3m49s | elapsed=1h15m10s last_cell=0h4m25s mean_cell=0h4m26s ETA=0h22m11s | gpu=95%/10284MB disk=12.42GB
+[E22 STATUS] completed 17/21 | 81.0% | current=Holder|2 | round=C | elapsed=1h15m47s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h17m45s | gpu=0%/730MB disk=12.42GB | Holder|2 dAUROC=+0.00682 dAP=+0.00738 (F0 0.88575 -> R1 0.89257)
+
+[E22] === RUN Motor|2 (round C, 18/21) ===
+[E22 STATUS] stage=matrix completed 17/21 | 81.0% | current=Motor/seed2 cell_elapsed=0h0m22s | elapsed=1h16m10s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h17m45s | gpu=98%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 17/21 | 81.0% | current=Motor/seed2 cell_elapsed=0h1m22s | elapsed=1h17m10s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h17m45s | gpu=99%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 17/21 | 81.0% | current=Motor/seed2 cell_elapsed=0h2m22s | elapsed=1h18m10s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h17m45s | gpu=100%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 17/21 | 81.0% | current=Motor/seed2 cell_elapsed=0h3m22s | elapsed=1h19m10s last_cell=0h4m26s mean_cell=0h4m26s ETA=0h17m45s | gpu=95%/10344MB disk=12.42GB
+[E22 STATUS] completed 18/21 | 85.7% | current=Motor|2 | round=C | elapsed=1h20m10s last_cell=0h4m21s mean_cell=0h4m26s ETA=0h13m18s | gpu=0%/730MB disk=12.42GB | Motor|2 dAUROC=+0.00966 dAP=-0.00034 (F0 0.83780 -> R1 0.84746)
+
+[E22] === RUN Ring|2 (round C, 19/21) ===
+[E22 STATUS] stage=matrix completed 18/21 | 85.7% | current=Ring/seed2 cell_elapsed=0h0m0s | elapsed=1h20m10s last_cell=0h4m21s mean_cell=0h4m26s ETA=0h13m18s | gpu=0%/730MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 18/21 | 85.7% | current=Ring/seed2 cell_elapsed=0h1m0s | elapsed=1h21m10s last_cell=0h4m21s mean_cell=0h4m26s ETA=0h13m18s | gpu=100%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 18/21 | 85.7% | current=Ring/seed2 cell_elapsed=0h2m0s | elapsed=1h22m11s last_cell=0h4m21s mean_cell=0h4m26s ETA=0h13m18s | gpu=99%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 18/21 | 85.7% | current=Ring/seed2 cell_elapsed=0h3m0s | elapsed=1h23m11s last_cell=0h4m21s mean_cell=0h4m26s ETA=0h13m18s | gpu=94%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 18/21 | 85.7% | current=Ring/seed2 cell_elapsed=0h4m0s | elapsed=1h24m11s last_cell=0h4m21s mean_cell=0h4m26s ETA=0h13m18s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 19/21 | 90.5% | current=Ring|2 | round=C | elapsed=1h24m32s last_cell=0h4m21s mean_cell=0h4m25s ETA=0h8m51s | gpu=0%/730MB disk=12.42GB | Ring|2 dAUROC=+0.02271 dAP=+0.01668 (F0 0.89212 -> R1 0.91483)
+
+[E22] === RUN Teapot|2 (round C, 20/21) ===
+[E22 STATUS] stage=matrix completed 19/21 | 90.5% | current=Teapot/seed2 cell_elapsed=0h0m38s | elapsed=1h25m11s last_cell=0h4m21s mean_cell=0h4m25s ETA=0h8m51s | gpu=81%/1148MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 19/21 | 90.5% | current=Teapot/seed2 cell_elapsed=0h1m38s | elapsed=1h26m11s last_cell=0h4m21s mean_cell=0h4m25s ETA=0h8m51s | gpu=0%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 19/21 | 90.5% | current=Teapot/seed2 cell_elapsed=0h2m38s | elapsed=1h27m11s last_cell=0h4m21s mean_cell=0h4m25s ETA=0h8m51s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 19/21 | 90.5% | current=Teapot/seed2 cell_elapsed=0h3m38s | elapsed=1h28m11s last_cell=0h4m21s mean_cell=0h4m25s ETA=0h8m51s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] completed 20/21 | 95.2% | current=Teapot|2 | round=C | elapsed=1h28m59s last_cell=0h4m25s mean_cell=0h4m25s ETA=0h4m25s | gpu=0%/730MB disk=12.42GB | Teapot|2 dAUROC=+0.01127 dAP=+0.00814 (F0 0.87849 -> R1 0.88976)
+
+[E22] === RUN Tube|2 (round C, 21/21) ===
+[E22 STATUS] stage=matrix completed 20/21 | 95.2% | current=Tube/seed2 cell_elapsed=0h0m12s | elapsed=1h29m11s last_cell=0h4m25s mean_cell=0h4m25s ETA=0h4m25s | gpu=0%/730MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 20/21 | 95.2% | current=Tube/seed2 cell_elapsed=0h1m12s | elapsed=1h30m11s last_cell=0h4m25s mean_cell=0h4m25s ETA=0h4m25s | gpu=98%/6144MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 20/21 | 95.2% | current=Tube/seed2 cell_elapsed=0h2m12s | elapsed=1h31m11s last_cell=0h4m25s mean_cell=0h4m25s ETA=0h4m25s | gpu=98%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 20/21 | 95.2% | current=Tube/seed2 cell_elapsed=0h3m12s | elapsed=1h32m11s last_cell=0h4m25s mean_cell=0h4m25s ETA=0h4m25s | gpu=94%/10344MB disk=12.42GB
+[E22 STATUS] stage=matrix completed 20/21 | 95.2% | current=Tube/seed2 cell_elapsed=0h4m12s | elapsed=1h33m12s last_cell=0h4m25s mean_cell=0h4m25s ETA=0h4m25s | gpu=0%/10344MB disk=12.42GB
+[E22 STATUS] completed 21/21 | 100.0% | current=Tube|2 | round=C | elapsed=1h33m23s last_cell=0h4m22s mean_cell=0h4m25s ETA=0h0m0s | gpu=0%/730MB disk=12.42GB | Tube|2 dAUROC=+0.02090 dAP=+0.01136 (F0 0.86469 -> R1 0.88559)
+
+[E22] matrix finished: 21/21 cells | live csv /root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/e22/live_results.csv
+[E22 DRIVER] matrix rc=0
+[E22 DRIVER] end 2026-10-15 23:42:30 CST

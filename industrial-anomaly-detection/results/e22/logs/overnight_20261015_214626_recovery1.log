@@ -1,0 +1,32 @@
+[E22 DRIVER] start 2026-10-15 21:46:26 CST tag=recovery1 pid=358066 log=results/e22/logs/overnight_20261015_214626_recovery1.log
+[E22 DRIVER] protocol: results/e22/protocol.md | method frozen R1-ILA BETA=0.1
+[E22 DRIVER] disk: /dev/nvme1n1     50G   38G   13G  76% /root/autodl-tmp
+[E22 DRIVER] --- stage: preflight ---
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+[E22 preflight] Bird    pool=1200 bank=300 test=700 kept=653 good=320 ng=333 illum=10 cache_miss=0 PASS
+[E22 preflight] Car     pool=1200 bank=300 test=700 kept=656 good=300 ng=356 illum=10 cache_miss=0 PASS
+[E22 preflight] Cube    pool=1200 bank=300 test=700 kept=678 good=260 ng=418 illum=10 cache_miss=0 PASS
+[E22 preflight] Dice    pool=1200 bank=300 test=700 kept=688 good=300 ng=388 illum=10 cache_miss=0 PASS
+[E22 preflight] Doll    pool=1200 bank=300 test=700 kept=670 good=270 ng=400 illum=10 cache_miss=0 PASS
+[E22 preflight] Holder  pool=1200 bank=300 test=690 kept=666 good=290 ng=376 illum=10 cache_miss=0 PASS
+[E22 preflight] Motor   pool=1200 bank=300 test=700 kept=688 good=200 ng=488 illum=10 cache_miss=0 PASS
+[E22 preflight] Ring    pool=1200 bank=300 test=700 kept=682 good=230 ng=452 illum=10 cache_miss=0 PASS
+[E22 preflight] Teapot  pool=1200 bank=300 test=700 kept=666 good=250 ng=416 illum=10 cache_miss=0 PASS
+[E22 preflight] Tube    pool=1200 bank=300 test=700 kept=639 good=260 ng=379 illum=10 cache_miss=0 PASS
+[E22 preflight] wrote /root/autodl-tmp/research-experiments/industrial-anomaly-detection/results/e22/data_preflight.csv | ALL=PASS
+[E22 DRIVER] --- stage: reproduction gate ---
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+
+[E22 repro] Gate A: Bird|0 through frozen e16_qualify.run_cell ...
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/swiglu_ffn.py:51: UserWarning: xFormers is not available (SwiGLU)
+  warnings.warn("xFormers is not available (SwiGLU)")
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/attention.py:33: UserWarning: xFormers is not available (Attention)
+  warnings.warn("xFormers is not available (Attention)")
+/root/.cache/torch/hub/facebookresearch_dinov2_main/dinov2/layers/block.py:40: UserWarning: xFormers is not available (Block)
+  warnings.warn("xFormers is not available (Block)")

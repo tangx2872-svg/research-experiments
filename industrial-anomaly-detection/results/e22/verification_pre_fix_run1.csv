@@ -1,0 +1,37 @@
+id,check,expected,observed,pass
+V01,10/10 categories present in results/e22/cells,"['Bird', 'Car', 'Cube', 'Dice', 'Doll', 'Holder', 'Motor', 'Ring', 'Teapot', 'Tube']","['Bird', 'Car', 'Cube', 'Dice', 'Doll', 'Holder', 'Motor', 'Ring', 'Teapot', 'Tube']",PASS
+V02,30/30 cells present,30,30,PASS
+V03,exactly 3 seeds per category,"{'Bird': [0, 1, 2], 'Car': [0, 1, 2], 'Cube': [0, 1, 2], 'Dice': [0, 1, 2], 'Doll': [0, 1, 2], 'Holder': [0, 1, 2], 'Motor': [0, 1, 2], 'Ring': [0, 1, 2], 'Teapot': [0, 1, 2], 'Tube': [0, 1, 2]}","{'Bird': [0, 1, 2], 'Car': [0, 1, 2], 'Cube': [0, 1, 2], 'Dice': [0, 1, 2], 'Doll': [0, 1, 2], 'Holder': [0, 1, 2], 'Motor': [0, 1, 2], 'Ring': [0, 1, 2], 'Teapot': [0, 1, 2], 'Tube': [0, 1, 2]}",PASS
+V04,no duplicate cells (unique category x seed keys),30,30,PASS
+V05,view120 only,{'120'},['120'],PASS
+V06,labels identical to official metadata image_anomaly (all 30 cells),True,True,PASS
+V07,detectable filter identical to metadata (all 30 cells),True,True,PASS
+V08,specimen order identical to metadata scope (all 30 cells),True,True,PASS
+V09,bank hash reproduced from frozen bank_for rule (all 30 cells),True,True,PASS
+V10,AUROC/AP recomputed from stored per-image scores (tol 1e-12),True,True,PASS
+V11,label trap handled: NG-directory files with image_anomaly=0 exist and are labelled 0,>=1,2040,PASS
+V12,frozen hyperparameters (BETA/LR/steps/patience/train/val/batch),"{'BETA': 0.1, 'LR': 0.001, 'MAX_STEPS': 300, 'PATIENCE': 30, 'TRAIN_N': 240, 'VAL_N': 60, 'BATCH': 8}","{'BETA': 0.1, 'LR': 0.001, 'MAX_STEPS': 300, 'PATIENCE': 30, 'TRAIN_N': 240, 'VAL_N': 60, 'BATCH': 8}",PASS
+V13,augmentation list unchanged (6 photometric variants),"[('brightness', 0.85), ('brightness', 1.15), ('contrast', 0.85), ('contrast', 1.15), ('gamma', 0.85), ('gamma', 1.15)]","[('brightness', 0.85), ('brightness', 1.15), ('contrast', 0.85), ('contrast', 1.15), ('gamma', 0.85), ('gamma', 1.15)]",PASS
+V14,"bank rule unchanged (seed 20261009, size 300)","{'seed': 20261009, 'size': 300}","{'seed': 20261009, 'size': 300}",PASS
+V15,R1-ILA training never exceeded MAX_STEPS=300 (all cells),<=300,124,PASS
+V16,trainable params = 589824 in every cell,{589824},[589824],PASS
+V17,Gate A: Bird|0 frozen path vs E22 copy bit-identical,True,True,PASS
+V18,"Gate B: Bird|0, Car|0, Cube|0, Car|1 reproduce history (<=1e-6)","{'GateB_Bird0': True, 'GateB_Car0': True, 'GateB_Cube0': True, 'GateB_Car1': True}","{'GateB_Bird0': True, 'GateB_Car0': True, 'GateB_Cube0': True, 'GateB_Car1': True}",PASS
+V19,repro gate overall all_pass=True,True,True,PASS
+V20,all 9 historical cells passed reuse verification (labels/bank/metrics),"9 cells, all checks true","9 cells, reuse_ok=True",PASS
+V21,21 new cells computed by E22 (7 categories x 3 seeds),21,21,PASS
+V22,all10_3seed_cells.csv has 30 rows,30,30,PASS
+V23,main_table ΔAUROC mean matches recomputation from cells (<5e-7),True,True (complete=True),PASS
+V24,win_rates.json positive-category count recomputed,9,9,PASS
+V25,verdict.json matches independent recomputation of the pre-registered rule,HOLD,HOLD,PASS
+V26,verdict.json conditions consistent with observed counts,"{'n_pos': 9, 'macro>0': True, 'median>0': True, 'n_severe': 1}","{'c1_pos_categories_ge_7': True, 'c2_macro_mean_gt_0': True, 'c3_median_gt_0': True, 'c4_no_category_below_-0.03': False}",PASS
+V27,bootstrap deterministic (same RNG -> identical CI) and matches stored CI,True,"{'identical': True, 'matches_stored': True}",PASS
+V28,8 figures present as PNG and PDF,8,8 png / 8 pdf,PASS
+V29,all required artifacts exist,none missing,['verification.csv'],FAIL
+V30,all negative cells listed in failure_cases.md,5,5,PASS
+V31,no frozen core file modified (e16/e13a/e13b/e11p2/e8_common/e4d1),none,none,PASS
+V32,E21 artifacts and scripts untouched,none,none,PASS
+V33,six legacy files never included in any E22 commit/stage,none,none,PASS
+V34,six legacy files still present and still uncommitted (state preserved),True,"{'present': True, 'still_dirty': True}",PASS
+V35,E22 cache aggregate sha256 unchanged (data provenance),1569cc57f8c316056b3f445c13779e36aee6e861433c020c3d0a683a16e47812,1569cc57f8c316056b3f445c13779e36aee6e861433c020c3d0a683a16e47812,PASS
+V36,illumination_breakdown.csv complete (cats x seeds x methods x (ALL+10)),660,660,PASS

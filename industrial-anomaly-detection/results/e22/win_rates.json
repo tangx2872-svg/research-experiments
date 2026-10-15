@@ -1,0 +1,57 @@
+{
+ "n_categories": 10,
+ "positive_mean_dauroc_categories": [
+  "Bird",
+  "Car",
+  "Cube",
+  "Dice",
+  "Holder",
+  "Motor",
+  "Ring",
+  "Teapot",
+  "Tube"
+ ],
+ "positive_mean_dap_categories": [
+  "Bird",
+  "Car",
+  "Cube",
+  "Dice",
+  "Holder",
+  "Motor",
+  "Ring",
+  "Teapot",
+  "Tube"
+ ],
+ "both_positive_categories": [
+  "Bird",
+  "Car",
+  "Cube",
+  "Dice",
+  "Holder",
+  "Motor",
+  "Ring",
+  "Teapot",
+  "Tube"
+ ],
+ "n_positive_dauroc": 9,
+ "n_positive_dap": 9,
+ "n_both": 9,
+ "win_rate_dauroc": "9/10",
+ "win_rate_dap": "9/10",
+ "pos_seed_count_distribution": {
+  "3/3": 7,
+  "2/3": 2,
+  "1/3": 0,
+  "0/3": 1
+ },
+ "macro_mean_d_auroc": 0.007596479144975132,
+ "median_d_auroc": 0.010796473227248082,
+ "macro_mean_d_ap": 0.007773015895199671,
+ "median_d_ap": 0.00957587077862393,
+ "min_category_mean_d_auroc": -0.03849691358024695,
+ "max_category_mean_d_auroc": 0.02585710710710709,
+ "n_severe_negative": 1,
+ "severe_negative_categories": [
+  "Doll"
+ ]
+}

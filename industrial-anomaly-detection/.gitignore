@@ -426,3 +426,5 @@ results/e22/*.csv.tmp
 results/e22/logs/*.log
 !results/e22/logs/fetch_20261015_183306.log
 !results/e22/logs/overnight_*.log
+# independent-verification logs (run1 pre-fix FAIL record / run2 / archive re-run)
+!results/e22/logs/verification_*.log

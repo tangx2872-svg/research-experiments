@@ -1,0 +1,11 @@
+category,source,d_auroc_mean,d_auroc_std,d_auroc_min,d_auroc_max,pos_seeds_auroc,d_ap_mean,d_ap_std,pos_seeds_ap,auroc_pos,ap_pos,both_pos,stability_label,mean_d_auroc_ge_0.005
+Bird,HISTORICAL_REUSED,0.025857,0.013535,0.010614,0.036468,3,0.023713,0.011548,3,1,1,1,seed_sensitive,1
+Car,HISTORICAL_REUSED,0.011233,0.007279,0.006264,0.019588,3,0.011152,0.001870,3,1,1,1,stable_positive,1
+Cube,HISTORICAL_REUSED,0.002647,0.014214,-0.012293,0.016001,2,0.004128,0.007458,2,1,1,1,seed_sensitive,0
+Dice,NEW,0.003362,0.000775,0.002672,0.004201,3,0.002117,0.001495,3,1,1,1,stable_positive,0
+Doll,NEW,-0.038497,0.004638,-0.043852,-0.035759,0,-0.013021,0.007863,0,0,0,0,stable_negative,0
+Holder,NEW,0.010360,0.004453,0.006823,0.015361,3,0.011224,0.003843,3,1,1,1,stable_positive,1
+Motor,NEW,0.008070,0.007646,-0.000246,0.014795,2,0.005474,0.012063,1,1,1,1,mixed,1
+Ring,NEW,0.020312,0.003634,0.016131,0.022711,3,0.013791,0.003054,3,1,1,1,stable_positive,1
+Teapot,NEW,0.017298,0.007286,0.011269,0.025394,3,0.010695,0.003117,3,1,1,1,stable_positive,1
+Tube,NEW,0.015322,0.004989,0.011285,0.020900,3,0.008456,0.002643,3,1,1,1,stable_positive,1

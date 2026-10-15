@@ -1,0 +1,25 @@
+{
+ "verdict": "HOLD",
+ "conditions": {
+  "c1_pos_categories_ge_7": true,
+  "c2_macro_mean_gt_0": true,
+  "c3_median_gt_0": true,
+  "c4_no_category_below_-0.03": false
+ },
+ "thresholds": {
+  "strong_go_pos_categories": 7,
+  "severe_negative": -0.03
+ },
+ "win_rates": {
+  "win_rate_dauroc": "9/10",
+  "win_rate_dap": "9/10",
+  "n_positive_dauroc": 9,
+  "n_positive_dap": 9,
+  "n_both": 9,
+  "macro_mean_d_auroc": 0.007596479144975132,
+  "median_d_auroc": 0.010796473227248082,
+  "macro_mean_d_ap": 0.007773015895199671,
+  "median_d_ap": 0.00957587077862393,
+  "n_severe_negative": 1
+ }
+}
