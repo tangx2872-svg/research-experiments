@@ -406,3 +406,6 @@ results/e18/logs/
 
 # E19 paper assets (figures/tables/notes/verification; no logs, no GPU artifacts)
 !results/e19/
+
+# E20-B MVTec AD 2 preflight (report + CPU-only power simulation; no data, no logs)
+!results/e20/

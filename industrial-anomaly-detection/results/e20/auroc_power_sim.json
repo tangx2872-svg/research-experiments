@@ -1,0 +1,232 @@
+{
+ "meta": {
+  "source": "results/e16/e16_partial.json (M2AD view120, seed 0, frozen)",
+  "method": "paired bootstrap resample of per-image scores down to MVTec AD 2 public-test sizes; sampling-noise estimate only, NOT AD2 data",
+  "n_boot": 4000,
+  "rng_seed": 20261015,
+  "ad2_targets": {
+   "sheet_metal": [
+    24,
+    90
+   ],
+   "vial": [
+    35,
+    105
+   ],
+   "fruit_jelly": [
+    20,
+    60
+   ],
+   "ad2_pooled_3_scenes": [
+    79,
+    255
+   ]
+  }
+ },
+ "results": {
+  "Bird": {
+   "m2ad_full_n": {
+    "good": 320,
+    "bad": 380
+   },
+   "m2ad_full_auroc": {
+    "f0": 0.7293421052631579,
+    "r1": 0.7435690789473685,
+    "delta": 0.014226973684210553
+   },
+   "scenes": {
+    "sheet_metal": {
+     "n_good": 24,
+     "n_bad": 90,
+     "delta_mean": 0.015066203703703705,
+     "delta_sd": 0.0293814259345425,
+     "delta_p2p5": -0.04212962962962963,
+     "delta_p97p5": 0.07314814814814807,
+     "delta_halfwidth95": 0.05763888888888885,
+     "auroc_f0_halfwidth95": 0.10046875000000005,
+     "p_delta_gt0": 0.6905
+    },
+    "vial": {
+     "n_good": 35,
+     "n_bad": 105,
+     "delta_mean": 0.015167346938775509,
+     "delta_sd": 0.025603720553175727,
+     "delta_p2p5": -0.033197278911564654,
+     "delta_p97p5": 0.06639455782312931,
+     "delta_halfwidth95": 0.04979591836734698,
+     "auroc_f0_halfwidth95": 0.08667346938775511,
+     "p_delta_gt0": 0.716
+    },
+    "fruit_jelly": {
+     "n_good": 20,
+     "n_bad": 60,
+     "delta_mean": 0.01307375,
+     "delta_sd": 0.03453397383249653,
+     "delta_p2p5": -0.054166666666666585,
+     "delta_p97p5": 0.08250000000000002,
+     "delta_halfwidth95": 0.0683333333333333,
+     "auroc_f0_halfwidth95": 0.11459375000000005,
+     "p_delta_gt0": 0.638
+    },
+    "ad2_pooled_3_scenes": {
+     "n_good": 79,
+     "n_bad": 255,
+     "delta_mean": 0.01423999751799454,
+     "delta_sd": 0.016689107510942245,
+     "delta_p2p5": -0.018515760734673647,
+     "delta_p97p5": 0.046662943658476085,
+     "delta_halfwidth95": 0.03258935219657487,
+     "auroc_f0_halfwidth95": 0.05594564408041702,
+     "p_delta_gt0": 0.80325
+    },
+    "m2ad_reference_full": {
+     "n_good": 320,
+     "n_bad": 380,
+     "delta_mean": 0.014140795641447369,
+     "delta_sd": 0.009604040585971101,
+     "delta_p2p5": -0.004984374999999958,
+     "delta_p97p5": 0.032608347039473705,
+     "delta_halfwidth95": 0.01879636101973683,
+     "auroc_f0_halfwidth95": 0.0365850123355263,
+     "p_delta_gt0": 0.92975
+    }
+   }
+  },
+  "Car": {
+   "m2ad_full_n": {
+    "good": 300,
+    "bad": 400
+   },
+   "m2ad_full_auroc": {
+    "f0": 0.7578583333333333,
+    "r1": 0.78165,
+    "delta": 0.023791666666666655
+   },
+   "scenes": {
+    "sheet_metal": {
+     "n_good": 24,
+     "n_bad": 90,
+     "delta_mean": 0.023604282407407404,
+     "delta_sd": 0.02698354440739767,
+     "delta_p2p5": -0.026388888888888906,
+     "delta_p97p5": 0.0800925925925925,
+     "delta_halfwidth95": 0.0532407407407407,
+     "auroc_f0_halfwidth95": 0.09421874999999996,
+     "p_delta_gt0": 0.8085
+    },
+    "vial": {
+     "n_good": 35,
+     "n_bad": 105,
+     "delta_mean": 0.02360265306122449,
+     "delta_sd": 0.022707698247667742,
+     "delta_p2p5": -0.01932653061224498,
+     "delta_p97p5": 0.06938775510204076,
+     "delta_halfwidth95": 0.04435714285714287,
+     "auroc_f0_halfwidth95": 0.08014965986394562,
+     "p_delta_gt0": 0.8545
+    },
+    "fruit_jelly": {
+     "n_good": 20,
+     "n_bad": 60,
+     "delta_mean": 0.023681875000000005,
+     "delta_sd": 0.030324825628738495,
+     "delta_p2p5": -0.03500000000000003,
+     "delta_p97p5": 0.08418750000000012,
+     "delta_halfwidth95": 0.05959375000000008,
+     "auroc_f0_halfwidth95": 0.10584375000000001,
+     "p_delta_gt0": 0.78175
+    },
+    "ad2_pooled_3_scenes": {
+     "n_good": 79,
+     "n_bad": 255,
+     "delta_mean": 0.023715376023827252,
+     "delta_sd": 0.01463232346638446,
+     "delta_p2p5": -0.004173492181682716,
+     "delta_p97p5": 0.052271034996277055,
+     "delta_halfwidth95": 0.028222263588979887,
+     "auroc_f0_halfwidth95": 0.05331471829238027,
+     "p_delta_gt0": 0.9455
+    },
+    "m2ad_reference_full": {
+     "n_good": 300,
+     "n_bad": 400,
+     "delta_mean": 0.023926868749999997,
+     "delta_sd": 0.008676585456899316,
+     "delta_p2p5": 0.007682083333333265,
+     "delta_p97p5": 0.041208958333333295,
+     "delta_halfwidth95": 0.016763437500000016,
+     "auroc_f0_halfwidth95": 0.034743437499999974,
+     "p_delta_gt0": 0.9975
+    }
+   }
+  },
+  "Cube": {
+   "m2ad_full_n": {
+    "good": 260,
+    "bad": 440
+   },
+   "m2ad_full_auroc": {
+    "f0": 0.842263986013986,
+    "r1": 0.8519493006993007,
+    "delta": 0.00968531468531475
+   },
+   "scenes": {
+    "sheet_metal": {
+     "n_good": 24,
+     "n_bad": 90,
+     "delta_mean": 0.009713888888888888,
+     "delta_sd": 0.02281035746084326,
+     "delta_p2p5": -0.03425925925925921,
+     "delta_p97p5": 0.05694444444444435,
+     "delta_halfwidth95": 0.04560185185185178,
+     "auroc_f0_halfwidth95": 0.07639467592592591,
+     "p_delta_gt0": 0.65875
+    },
+    "vial": {
+     "n_good": 35,
+     "n_bad": 105,
+     "delta_mean": 0.009487619047619049,
+     "delta_sd": 0.01973841478792202,
+     "delta_p2p5": -0.028299319727891126,
+     "delta_p97p5": 0.04925170068027207,
+     "delta_halfwidth95": 0.0387755102040816,
+     "auroc_f0_halfwidth95": 0.06503741496598636,
+     "p_delta_gt0": 0.68325
+    },
+    "fruit_jelly": {
+     "n_good": 20,
+     "n_bad": 60,
+     "delta_mean": 0.009650833333333334,
+     "delta_sd": 0.026708921612576576,
+     "delta_p2p5": -0.04083333333333339,
+     "delta_p97p5": 0.06333333333333335,
+     "delta_halfwidth95": 0.05208333333333337,
+     "auroc_f0_halfwidth95": 0.08875,
+     "p_delta_gt0": 0.63125
+    },
+    "ad2_pooled_3_scenes": {
+     "n_good": 79,
+     "n_bad": 255,
+     "delta_mean": 0.009494961528915364,
+     "delta_sd": 0.012633935024632548,
+     "delta_p2p5": -0.015488955075701208,
+     "delta_p97p5": 0.0348473566641847,
+     "delta_halfwidth95": 0.025168155869942956,
+     "auroc_f0_halfwidth95": 0.043118019359642545,
+     "p_delta_gt0": 0.771
+    },
+    "m2ad_reference_full": {
+     "n_good": 260,
+     "n_bad": 440,
+     "delta_mean": 0.009607871503496504,
+     "delta_sd": 0.008398298580026373,
+     "delta_p2p5": -0.006696022727272819,
+     "delta_p97p5": 0.026715253496503555,
+     "delta_halfwidth95": 0.016705638111888188,
+     "auroc_f0_halfwidth95": 0.027964051573426574,
+     "p_delta_gt0": 0.874
+    }
+   }
+  }
+ }
+}
