@@ -413,3 +413,12 @@ results/e18/logs/
 # E21 multi-view validation (protocol/audit/partial/scores/analysis/figures/verification; raw logs excluded)
 !results/e21/
 results/e21/logs/
+
+# E22 (7 new M2AD categories: l0_448 acquisition; README/manifest/status snapshot/integrity清单/取数日志纳入，
+# 运行时状态文件 status.json 与 stream_progress.json 不入库)
+!results/e22/
+results/e22/status.json
+results/e22/stream_progress.json
+results/e22/*.json.tmp
+results/e22/logs/*.log
+!results/e22/logs/fetch_20261015_183306.log

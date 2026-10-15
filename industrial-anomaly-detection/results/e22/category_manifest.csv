@@ -1,0 +1,11 @@
+category,is_existing,is_new,metadata_train_count,metadata_test_count,view120_raw_count,view120_detectable_count,good_count,anomaly_count,local_pixel_status,local_feature_status,l0_448_total_files_local
+Bird,1,0,3600,8400,700,653,320,333,original_present,l0_448_cached,6400
+Car,1,0,3600,8400,700,656,300,356,cache_present,l0_448_cached,4000
+Cube,1,0,3600,8400,700,678,260,418,cache_present,l0_448_cached,4000
+Dice,0,1,3480,8400,700,688,300,388,absent,absent,0
+Doll,0,1,3600,8400,700,670,270,400,absent,absent,0
+Holder,0,1,3600,8280,690,666,290,376,absent,absent,0
+Motor,0,1,3600,8400,700,688,200,488,absent,absent,0
+Ring,0,1,3600,8400,700,682,230,452,absent,absent,0
+Teapot,0,1,3600,8400,700,666,250,416,absent,absent,0
+Tube,0,1,3600,8400,700,639,260,379,absent,absent,0

@@ -1,0 +1,217 @@
+{
+ "task": "E22",
+ "categories": {
+  "Dice": {
+   "pool": 1200,
+   "test120": 700,
+   "n_wanted_total": 1900,
+   "n_present_before": 0,
+   "n_missing_before": 1900,
+   "mode": "streamed",
+   "members_seen": 12931,
+   "members_kept": 1900,
+   "streamed_gb": 15.53,
+   "seconds": 1004.5,
+   "name_sample": [
+    "Dice/",
+    "Dice/NG/",
+    "Dice/NG/scratch_1_025/",
+    "Dice/NG/scratch_1_025/A240_I05.png",
+    "Dice/NG/scratch_1_025/A300_I04.png",
+    "Dice/NG/scratch_1_025/A180_I07.png",
+    "Dice/NG/scratch_1_025/A300_I02.png",
+    "Dice/NG/scratch_1_025/A060_I08.png"
+   ],
+   "fetch": "done",
+   "gate": {
+    "n_expected": 1900,
+    "n_missing": 0,
+    "missing_sample": [],
+    "bad_shape": []
+   },
+   "free_gb_after": 15.77
+  },
+  "Doll": {
+   "pool": 1200,
+   "test120": 700,
+   "n_wanted_total": 1900,
+   "n_present_before": 0,
+   "n_missing_before": 1900,
+   "mode": "streamed",
+   "members_seen": 13156,
+   "members_kept": 1900,
+   "streamed_gb": 15.68,
+   "seconds": 1024.0,
+   "name_sample": [
+    "Doll/",
+    "Doll/NG/",
+    "Doll/NG/damage_2_037/",
+    "Doll/NG/damage_2_037/A240_I05.png",
+    "Doll/NG/damage_2_037/A300_I04.png",
+    "Doll/NG/damage_2_037/A180_I07.png",
+    "Doll/NG/damage_2_037/A300_I02.png",
+    "Doll/NG/damage_2_037/A060_I08.png"
+   ],
+   "fetch": "done",
+   "gate": {
+    "n_expected": 1900,
+    "n_missing": 0,
+    "missing_sample": [],
+    "bad_shape": []
+   },
+   "free_gb_after": 15.36
+  },
+  "Holder": {
+   "pool": 1200,
+   "test120": 690,
+   "n_wanted_total": 1890,
+   "n_present_before": 0,
+   "n_missing_before": 1890,
+   "mode": "streamed",
+   "members_seen": 12986,
+   "members_kept": 1890,
+   "streamed_gb": 16.27,
+   "seconds": 1136.0,
+   "name_sample": [
+    "Holder/",
+    "Holder/NG/",
+    "Holder/NG/damage_1_006/",
+    "Holder/NG/damage_1_006/A240_I05.png",
+    "Holder/NG/damage_1_006/A300_I04.png",
+    "Holder/NG/damage_1_006/A180_I07.png",
+    "Holder/NG/damage_1_006/A300_I02.png",
+    "Holder/NG/damage_1_006/A060_I08.png"
+   ],
+   "fetch": "done",
+   "gate": {
+    "n_expected": 1890,
+    "n_missing": 0,
+    "missing_sample": [],
+    "bad_shape": []
+   },
+   "free_gb_after": 14.95
+  },
+  "Motor": {
+   "pool": 1200,
+   "test120": 700,
+   "n_wanted_total": 1900,
+   "n_present_before": 0,
+   "n_missing_before": 1900,
+   "mode": "streamed",
+   "members_seen": 13354,
+   "members_kept": 1900,
+   "streamed_gb": 13.93,
+   "seconds": 984.9,
+   "name_sample": [
+    "Motor/",
+    "Motor/NG/",
+    "Motor/NG/hole_2_013/",
+    "Motor/NG/hole_2_013/A240_I05.png",
+    "Motor/NG/hole_2_013/A300_I04.png",
+    "Motor/NG/hole_2_013/A180_I07.png",
+    "Motor/NG/hole_2_013/A300_I02.png",
+    "Motor/NG/hole_2_013/A060_I08.png"
+   ],
+   "fetch": "done",
+   "gate": {
+    "n_expected": 1900,
+    "n_missing": 0,
+    "missing_sample": [],
+    "bad_shape": []
+   },
+   "free_gb_after": 14.52
+  },
+  "Ring": {
+   "pool": 1200,
+   "test120": 700,
+   "n_wanted_total": 1900,
+   "n_present_before": 0,
+   "n_missing_before": 1900,
+   "mode": "streamed",
+   "members_seen": 13250,
+   "members_kept": 1900,
+   "streamed_gb": 15.43,
+   "seconds": 1557.4,
+   "name_sample": [
+    "Ring/",
+    "Ring/NG/",
+    "Ring/NG/hole_1_008/",
+    "Ring/NG/hole_1_008/A240_I05.png",
+    "Ring/NG/hole_1_008/A300_I04.png",
+    "Ring/NG/hole_1_008/A180_I07.png",
+    "Ring/NG/hole_1_008/A300_I02.png",
+    "Ring/NG/hole_1_008/A060_I08.png"
+   ],
+   "fetch": "done",
+   "gate": {
+    "n_expected": 1900,
+    "n_missing": 0,
+    "missing_sample": [],
+    "bad_shape": []
+   },
+   "free_gb_after": 14.11
+  },
+  "Teapot": {
+   "pool": 1200,
+   "test120": 700,
+   "n_wanted_total": 1900,
+   "n_present_before": 0,
+   "n_missing_before": 1900,
+   "mode": "streamed",
+   "members_seen": 13168,
+   "members_kept": 1900,
+   "streamed_gb": 14.68,
+   "seconds": 2579.5,
+   "name_sample": [
+    "Teapot/",
+    "Teapot/NG/",
+    "Teapot/NG/hole_2_013/",
+    "Teapot/NG/hole_2_013/A240_I05.png",
+    "Teapot/NG/hole_2_013/A300_I04.png",
+    "Teapot/NG/hole_2_013/A180_I07.png",
+    "Teapot/NG/hole_2_013/A300_I02.png",
+    "Teapot/NG/hole_2_013/A060_I08.png"
+   ],
+   "fetch": "done",
+   "gate": {
+    "n_expected": 1900,
+    "n_missing": 0,
+    "missing_sample": [],
+    "bad_shape": []
+   },
+   "free_gb_after": 13.74
+  },
+  "Tube": {
+   "pool": 1200,
+   "test120": 700,
+   "n_wanted_total": 1900,
+   "n_present_before": 0,
+   "n_missing_before": 1900,
+   "mode": "streamed",
+   "members_seen": 13164,
+   "members_kept": 1900,
+   "streamed_gb": 15.56,
+   "seconds": 1227.6,
+   "name_sample": [
+    "Tube/",
+    "Tube/NG/",
+    "Tube/NG/damage_1_hole_1_scratch_1_048/",
+    "Tube/NG/damage_1_hole_1_scratch_1_048/A240_I05.png",
+    "Tube/NG/damage_1_hole_1_scratch_1_048/A300_I04.png",
+    "Tube/NG/damage_1_hole_1_scratch_1_048/A180_I07.png",
+    "Tube/NG/damage_1_hole_1_scratch_1_048/A300_I02.png",
+    "Tube/NG/damage_1_hole_1_scratch_1_048/A060_I08.png"
+   ],
+   "fetch": "done",
+   "gate": {
+    "n_expected": 1900,
+    "n_missing": 0,
+    "missing_sample": [],
+    "bad_shape": []
+   },
+   "free_gb_after": 13.34
+  }
+ },
+ "current": null,
+ "updated": 1792060364.8559344
+}
