@@ -409,3 +409,7 @@ results/e18/logs/
 
 # E20-B MVTec AD 2 preflight (report + CPU-only power simulation; no data, no logs)
 !results/e20/
+
+# E21 multi-view validation (protocol/audit/partial/scores/analysis/figures/verification; raw logs excluded)
+!results/e21/
+results/e21/logs/

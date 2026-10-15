@@ -1,0 +1,12 @@
+check,status,evidence
+view120_vs_history,PASS,"max |delta| over 3 cats x (AUROC,AP,F0/R1) = 0.000e+00 (tol 1e-6)"
+label_protocol,PASS,mismatched labels = 0 (checked all 4 views x 3 cats x 700)
+detectable_filter,PASS,"view120 kept (ok,ng) = {'Bird': (320, 333), 'Car': (300, 356), 'Cube': (260, 418)} vs expected {'Bird': (320, 333), 'Car': (300, 356), 'Cube': (260, 418)}"
+bank_hash_consistent,PASS,"recomputed sha256 matches partial for Bird:OK,Car:OK,Cube:OK"
+beta_0_1,PASS,"e13a_screen.BETA=0.1, final_method parameters.BETA=0.1"
+no_parameter_search,PASS,cells=3 (expect 3 = seed0 x 3 cats); no beta grid in runner
+csv_matches_readme,PASS,"rows checked=12/12, mismatches=none (tol 1e-5 display-level)"
+figures_source_is_csv,PASS,figures script reads analysis CSVs; 4 PNG present (fig5 intentionally absent under HOLD)
+bootstrap_deterministic,PASS,bootstrap_ci.csv sha256 unchanged on rerun: 2ffe7b72ab96da08
+six_legacy_files,PASS,monitor/exp_monitor.py:present/M; results/e8/status.json:present/M; monitor/events.jsonl:present/??; scripts/_lockprobe.txt:present/??; scripts/_probe2.py:present/??; scripts/e11_p4_runner.py:present/??
+history_unmodified,PASS,git porcelain under results/e16..e20: clean

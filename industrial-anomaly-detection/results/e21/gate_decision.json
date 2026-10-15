@@ -1,0 +1,11 @@
+{
+ "seed0_macro_pooled_d_auroc": 0.0014176082245622352,
+ "seed0_macro_pooled_d_ap": -0.0016525461593636104,
+ "n_cats_pooled_auroc_pos": 2,
+ "min_cell_d_auroc": -0.026002814919071082,
+ "cond_pooled_auroc_pos": true,
+ "cond_pooled_ap_pos": false,
+ "cond_2of3_cat_pos": true,
+ "cond_no_catastrophic": true,
+ "decision": "HOLD"
+}

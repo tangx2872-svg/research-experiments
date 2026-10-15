@@ -19,7 +19,10 @@
 | E18 | **主表定稿完成（P0+P1+P2）** —— 6 行主表 5 行 3/3 完备，Ours 三类全面领先；F0 vs Ours 配对 bootstrap 见 [`results/e18/README.md`](results/e18/README.md)。PatchCore official Car/Cube = **BLOCKED**（人工裁决选项 C），EfficientAD Car/Cube = EARLY_STOP |
 | 关键审计发现 | M²AD view120 存在**两套标签协议**；E7 线的 PatchCore image AUROC 0.78089 为 `object_anomaly` 旧口径虚高，official 口径重算为 **0.69318**（0 GPU） |
 | **E19** | **图表与论文资产已生成（零 GPU）** —— 9 张图（PNG+PDF）/ 3 张表 / 3 份 notes 在 [`results/e19/`](results/e19/)；**77/77 独立核验 PASS**（[`verification.csv`](results/e19/verification.csv)）；BETA 消融 / 照明分组 / 主结果均从 E16/E17/E18 冻结 artifact **确定性重建**（重跑 byte-identical）。报告：[`results/e19/README.md`](results/e19/README.md) |
-| 下一步 | `NEXT = Paper outline + first full draft`（**不新增 GPU、不改冻结参数**；仅当完整稿暴露实质证据缺口时才讨论补实验）。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
+| E20-A | M²AD 扩展资源盘点（零 GPU/零下载）：覆盖 = 3 类 × view120；其余 7 类像素零/metadata 全；扩展三候选（M1 新类别/M2 4-view/M3 Bird 12-view）待批准。`results/e20/README.md` | 
+| E20-B | MVTec AD 2 预检（零 GPU）：**HOLD**（需人工表单下载 + D1–D5 批准；TESTpub 单场景 ΔAUROC 噪声半宽 0.04–0.07 → 必须 pooled）。`results/e20/mvtec_ad2_preflight.md` | 
+| **E21** | **多视角验证（4 views × seed0）= HOLD** —— view120 复现 **bit-identical（0.0 diff, 9/9 cell）**；12 cell 8 正 4 负（Car v330 −0.0260 显著负）；overall macro pooled ΔAUROC **+0.00142**（CI [−0.0032,+0.0062]）但 **ΔAP −0.00165** → 未过 GO 门。**不补 seed1/2**；**verification 11/11 PASS**。报告：[`results/e21/README.md`](results/e21/README.md) |
+| 下一步 | **裁决 E20-A/E20-B/E21 结果**（E21 = HOLD 待策划侧决定是否补 seed1/2 或归档；不自动补）。默认主线仍为 `Paper outline + first full draft`（**不新增 GPU、不改冻结参数**）。**禁止**修改 R1-ILA 参数或重开 detector 搜索 |
 
 ---
 
