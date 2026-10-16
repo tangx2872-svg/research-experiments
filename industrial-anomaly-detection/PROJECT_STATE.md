@@ -1,7 +1,7 @@
 # PROJECT_STATE — 科研项目快速恢复入口
 
 > **本文件是唯一「快速恢复入口」**。任何新会话 / 新研究者接手本项目时，**先读本文件**。
-> 最后更新：2026-10-08 ｜ HEAD：`3615f84` ｜ 依据：Exp16 冻结验证 + `docs/RESEARCH_RECOVERY_AUDIT.md`
+> 最后更新：2026-10-16 ｜ HEAD：`5b24193`（E23 归档，已 push）｜ 依据：Exp16 冻结验证 + `docs/RESEARCH_RECOVERY_AUDIT.md`
 > **所有数字均从正式 artifact 重新读取确认**（路径逐项标注）；未在本文件出现的结论不属于项目正式结论。
 
 ---
@@ -32,9 +32,9 @@
 
 **唯一残余正信号 = R1 illumination-consistent adaptation**，经 **E16（GO）** 资格认证、**E17（FREEZE_CURRENT_R1）** 参数冻结，**最终方法 = R1-ILA（BETA=0.1）**，唯一权威配置 = `results/e17/final_method.json`。
 
-**当前阶段：`METHOD SEARCH CLOSED → FINAL BENCHMARK AND PAPER CONVERGENCE`**。E18-P0（基线主表审计）+ E18-P1（补齐 2/4 单元）已完成，产出 `results/e18/{audit.md, compatibility_matrix.csv, protocol.md, run_plan.md, filled/, filled_summary.csv}`；**E18-P2 主表定稿已完成**：6 行主表 **5 行 3/3 完备**，Ours 三类全面领先；PatchCore official Car/Cube 按人工裁决**保持 BLOCKED**（选项 C）。**E19 已完成（零 GPU）**：论文图表与表格全部从 E16/E17/E18 冻结 artifact 确定性重建（9 图 / 3 表 / 3 notes，**77/77 核验 PASS**，重跑 byte-identical），详见 `results/e19/README.md`。**E21（多视角验证）= HOLD**（Round 1 seed0：view120 bit-identical 复现，overall pooled ΔAUROC +0.00142 / ΔAP −0.00165，未过 GO；不补 seed1/2），详见 `results/e21/README.md`；**E20-A/B 扩展审计均完成待裁决**（`results/e20/`）。**E22（全类别多 seed 验证）= HOLD**（10 类 × 3 seeds × view120：9/10 类 mean ΔAUROC > 0、macro mean +0.00760、**Doll 稳定负 −0.0385 触发 severe-regression exclusion**；`verification.csv` 36/36 PASS），详见 `results/e22/README.md`。
+**当前阶段：`METHOD SEARCH CLOSED → FINAL BENCHMARK AND PAPER CONVERGENCE`**。E18-P0（基线主表审计）+ E18-P1（补齐 2/4 单元）已完成，产出 `results/e18/{audit.md, compatibility_matrix.csv, protocol.md, run_plan.md, filled/, filled_summary.csv}`；**E18-P2 主表定稿已完成**：6 行主表 **5 行 3/3 完备**，Ours 三类全面领先；PatchCore official Car/Cube 按人工裁决**保持 BLOCKED**（选项 C）。**E19 已完成（零 GPU）**：论文图表与表格全部从 E16/E17/E18 冻结 artifact 确定性重建（9 图 / 3 表 / 3 notes，**77/77 核验 PASS**，重跑 byte-identical），详见 `results/e19/README.md`。**E21（多视角验证）= HOLD**（Round 1 seed0：view120 bit-identical 复现，overall pooled ΔAUROC +0.00142 / ΔAP −0.00165，未过 GO；不补 seed1/2），详见 `results/e21/README.md`；**E20-A/B 扩展审计均完成待裁决**（`results/e20/`）。**E22（全类别多 seed 验证）= HOLD**（10 类 × 3 seeds × view120：9/10 类 mean ΔAUROC > 0、macro mean +0.00760、**Doll 稳定负 −0.0385 触发 severe-regression exclusion**；`verification.csv` 36/36 PASS），详见 `results/e22/README.md`。**E23（Doll failure 描述性审计，只读 / 0 GPU）+ `results/paper_ready/` 论文证据包 = 已完成并归档（commit `5b24193`，已 push；独立验证 38/38 PASS）**：预指定规则 COND_A 3/3 seeds → **EXPLAINED_PATTERN**（含量级限定：相对下降比 0.95–1.00 近对称；illumination shift ≈ 类别中位数 → shift 解释不适用），详见 `results/e23/README.md` 与 `results/paper_ready/`（主表/消融/多视角/claims/limitations/evidence map/7 图）。
 
-**下一动作 = E22 归档 → E23（Doll failure 描述性审计，只读 / 0 GPU）+ `results/paper_ready/` 论文证据包 → 停止实验、进入论文结构与正式写作**（不自动补 seed/view、不新增 GPU 实验、不下载新数据集；E20-B MVTec AD 2 保持 HOLD；E20-A M2/M3 与 E21 补 seed 均需策划侧明确批准）。E18–E23 禁止修改 R1-ILA 结构/BETA/任何最终超参数。详见 `results/e16/e16_decision_memo.md`、`results/e17/e17_decision_memo.md`、`results/e18/audit.md` 及项目 memory。
+**下一动作 = `PAPER WRITING`（实验阶段正式 STOP，2026-10-16）**：默认主线 = 论文大纲与完整初稿（不自动补 seed/view、不新增 GPU 实验、不下载新数据集；E20-B MVTec AD 2 保持 HOLD；E20-A M2/M3 与 E21 补 seed 均需策划侧明确批准）。E18–E23 禁止修改 R1-ILA 结构/BETA/任何最终超参数。详见 `results/e16/e16_decision_memo.md`、`results/e17/e17_decision_memo.md`、`results/e18/audit.md` 及项目 memory。
 
 ---
 
