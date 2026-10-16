@@ -1,0 +1,13 @@
+/root/miniconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:49: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/root/miniconda3/lib/python3.12/site-packages/anomalib/models/image/dinomaly/components/layers.py:22: FutureWarning: The anomalib.models.components.dinov2 package is deprecated and will be removed in a future release. Please use the timm-based feature extractor instead: anomalib.models.components.feature_extractors.TimmFeatureExtractor
+  from anomalib.models.components.dinov2.layers import Attention, DropPath, LayerScale, MemEffAttention
+[E23] Doll test records: 700
+[E23] wrote results/e23/doll_seed_summary.csv (7 rows)
+[E23] wrote results/e23/doll_score_distribution.csv (132 rows)
+[E23] wrote results/e23/doll_separation_summary.csv (3 rows)
+[E23] wrote results/e23/doll_per_image_delta.csv (2100 rows)
+[E23] wrote results/e23/doll_illumination_breakdown.csv (33 rows)
+[E23] wrote results/e23/category_comparison.csv (10 rows)
+[E23] wrote doll_vs_others.json (20 dims)
+[E23] VERDICT = EXPLAINED_PATTERN (COND_A 3/3 seeds)

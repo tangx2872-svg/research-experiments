@@ -1,0 +1,39 @@
+id,check,expected,observed,pass
+V01,results/e22 working tree clean (nothing modified after the archive commit),empty,empty,PASS
+V02,last commit touching results/e22 is the E22 archive commit 3d09b02,3d09b02,3d09b02,PASS
+V03,"30 cells present (21 NEW + 9 HISTORICAL_REUSED), all status OK","{'cells': 30, 'NEW': 21, 'HIST': 9}","{'cells': 30, 'NEW': 21, 'HIST': 9, 'ok': True}",PASS
+V04,no cell was recomputed: every cell timestamp is from the 2026-10-15 matrix run,all 2026-10-15,['2026-10-15'],PASS
+V05,E22 verification records intact (36/36 PASS; pre-fix run kept at 35 PASS + 1 FAIL),"{'final': '36 PASS', 'pre_fix': '35 PASS + 1 FAIL'}","{'final': '36 PASS', 'pre_fix': '35 PASS + 1 FAIL'}",PASS
+V06,E22 verdict stays HOLD and the README keeps the two-part archive structure,"{'verdict': 'HOLD', 'has Part I': True, 'has Part II': True}","{'verdict': 'HOLD', 'has Part I': True, 'has Part II': True}",PASS
+V07,"paper_main_table.csv contains all 10 categories + Macro Avg, Doll NOT removed","['Bird', 'Car', 'Cube', 'Dice', 'Doll', 'Holder', 'Motor', 'Ring', 'Teapot', 'Tube', 'Macro Avg']","['Bird', 'Car', 'Cube', 'Dice', 'Doll', 'Holder', 'Motor', 'Ring', 'Teapot', 'Tube', 'Macro Avg']",PASS
+V08,all three Doll negative cells still listed in E22 failure_cases.md,"{0: True, 1: True, 2: True}",True,PASS
+V09,Doll limitation present in paper_limitations.md (L1) and in the E23 README,True,"{'L1 has Doll': True, 'E23 README has Doll': True}",PASS
+V10,paper_multiview_table.csv keeps all 12 cells and flags exactly the 4 negative cells,"{'rows': 12, 'negatives': ['Car|240', 'Car|330', 'Cube|090', 'Cube|330']}","{'rows': 12, 'negatives': ['Car|240', 'Car|330', 'Cube|090', 'Cube|330']}",PASS
+V11,multi-view table values match E21 source and every row is marked HOLD,True,True,PASS
+V12,no frozen core file modified (e16/e13a/e13b/e11p2/e8_common/e4d1),none,none,PASS
+V13,E23 / paper_ready scripts contain no GPU or training call (0-GPU claim),"{'e23_doll_audit.py': [], 'e23_figures.py': [], 'paper_ready_build.py': []}","{'e23_doll_audit.py': [], 'e23_figures.py': [], 'paper_ready_build.py': []}",PASS
+V14,frozen method parameters unchanged and BETA == 0.1 (unique source e17/final_method.json),"{'BETA': 0.1, 'LR': 0.001, 'MAX_STEPS': 300, 'BATCH': 8}","{'BETA': 0.1, 'LR': 0.001, 'MAX_STEPS': 300, 'BATCH': 8, 'match': True}",PASS
+V15,every E22 cell still has 589824 trainable params and steps_used <= 300,"{'params': 589824, 'steps<=': 300}",True,PASS
+V16,"paper_main_table.csv matches E22 main table (10 cats, 12 numeric cols + seed counts)",no mismatch,no mismatch,PASS
+V17,Macro Avg row = column means of the 10 category rows; seed cells read 9/10,"{'macro ΔAUROC': '0.00760', 'positive': '9/10'}","{'macro ΔAUROC': '0.00760', 'positive': '9/10', 'means_ok': True}",PASS
+V18,ablation table matches E17 summary (15 rows) and carries the corrected BETA=0 note,"{'rows': 15, 'C1 notes': 3}","{'rows': 15, 'C1 notes': 3, 'values_ok': True}",PASS
+V19,multi-view table F0/R1/Δ values match E21 source for all 12 cells,no mismatch,no mismatch,PASS
+V20,E21 overall numbers quoted in the pack match analysis_overall.csv,"{'macro ΔAUROC': '0.00142', 'cells pos': '8'}","{'macro ΔAUROC': '0.00142 (in claims)', 'cells pos': '8 (in claims)', 'values_ok': True}",PASS
+V21,every SAFE claim number is present in the claims file exactly as computed from sources,all present,all present,PASS
+V22,no affirmative use of a forbidden phrase in the SAFE / LIMITED sections (negations allowed),none,none,PASS
+V23,FORBIDDEN section lists all 10 required items,10 items,10/10,PASS
+V24,paper_limitations.md contains the required explicit negations (L1-L5),"{'no causal mechanism': True, 'headroom explanation rejected': True, 'cross-dataset untested': True, 'association exploratory': True, 'uncertainties never merged': True}","{'no causal mechanism': True, 'headroom explanation rejected': True, 'cross-dataset untested': True, 'association exploratory': True, 'uncertainties never merged': True}",PASS
+V25,every figure file is listed in the manifest and every manifest source exists,"{'unlisted': 'none', 'missing sources': 'none'}","{'unlisted': 'none', 'missing sources': 'none'}",PASS
+V26,manifest columns + PNG/PDF pairs + the five required paper figures are present,"{'columns_ok': True, 'pairs': 7, 'required': 5}","{'columns_ok': True, 'pairs': 7, 'required': True}",PASS
+V27,E23-sourced figures are byte-identical copies of the E23 originals,2/2 identical,2/2 identical,PASS
+V28,E23 figures: 5 PNG + 5 PDF,"{'png': 5, 'pdf': 5}","{'png': 5, 'pdf': 5}",PASS
+V29,six legacy files byte-identical to the Stage-0 baseline,no change,no change,PASS
+V30,six legacy files still present and still uncommitted (state preserved),6/6 dirty or untracked,6/6,PASS
+V31,no legacy file was ever added in any E22/E23 commit,none,none,PASS
+V32,"per-image table: 2100 rows (700 x 3 seeds), 670 kept, 430 official anomalies","{'rows': 2100, 'kept/seed': 670, 'anomaly/seed': 430}","{'rows': 2100, 'kept_ok': True, 'lab_ok': True}",PASS
+V33,E23 verdict equals the independently recomputed pre-specified rule (COND_A per seed),EXPLAINED_PATTERN,"{'stored': 'EXPLAINED_PATTERN', 'cond_a': [True, True, True]}",PASS
+V34,magnitude descriptors in e23_verdict.json match doll_separation_summary.csv (CSV stores 10 decimals),True,True,PASS
+V35,"E23 illumination breakdown reproduces the frozen E22 values (33 rows, ≤1e-9 after 10-decimal storage)","{'rows': 33, 'match': True}","{'rows': 33, 'match': True}",PASS
+V36,shift-gain values recomputed from E23 category_comparison match the frozen E22 file,{'pearson_r': 0.371405591},"{'pearson_r': 0.37140559, 'spearman_rho': 0.575757576}",PASS
+V37,Doll is present in the 10-category comparison and has the minimum mean ΔAUROC,True,"{'doll': '-0.03850', 'is_min': True}",PASS
+V38,"E23 README states the verdict, the magnitude qualifier and the cannot-establish limits",True,True,PASS

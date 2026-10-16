@@ -1,0 +1,215 @@
+{
+ "experiment": "E23",
+ "verdict": "EXPLAINED_PATTERN",
+ "rule_applied": "EXPLAINED_PATTERN iff COND_A (anomaly-mean drop exceeds good-mean drop AND d' decreases) holds for 3/3 seeds; PARTIALLY_EXPLAINED iff 2/3; else UNEXPLAINED_FAILURE",
+ "cond_a_per_seed": {
+  "0": true,
+  "1": true,
+  "2": true
+ },
+ "n_cond_a": 3,
+ "cond_a_components_per_seed": {
+  "0": {
+   "dprime_f0": 0.8083192924995637,
+   "dprime_r1": 0.7101017646430868,
+   "dprime_change": -0.09821752785647686,
+   "good_mean_change": -0.0765309892318867,
+   "anomaly_mean_change": -0.08646745875477788,
+   "raw_separation_change": -0.009936469522891178,
+   "auroc_f0": 0.7194074074074074,
+   "auroc_r1": 0.6755555555555556,
+   "d_auroc": -0.04385185185185181
+  },
+  "1": {
+   "dprime_f0": 0.78795559303316,
+   "dprime_r1": 0.7158512619603341,
+   "dprime_change": -0.07210433107282588,
+   "good_mean_change": -0.08505323772077208,
+   "anomaly_mean_change": -0.09434639543294907,
+   "raw_separation_change": -0.00929315771217698,
+   "auroc_f0": 0.7130648148148149,
+   "auroc_r1": 0.6771851851851851,
+   "d_auroc": -0.03587962962962976
+  },
+  "2": {
+   "dprime_f0": 0.785049041718448,
+   "dprime_r1": 0.6509763216338181,
+   "dprime_change": -0.1340727200846299,
+   "good_mean_change": -0.08382068276405333,
+   "anomaly_mean_change": -0.09698411658406256,
+   "raw_separation_change": -0.01316343382000923,
+   "auroc_f0": 0.7050370370370371,
+   "auroc_r1": 0.6692777777777779,
+   "d_auroc": -0.03575925925925927
+  }
+ },
+ "magnitude_descriptors": {
+  "relative_drop_ratio_anomaly_over_good": {
+   "0": 0.9724204334130798,
+   "1": 0.9512679312388372,
+   "2": 0.9972913846676502
+  },
+  "raw_separation_ratio_r1_over_f0": {
+   "0": 0.7675332758117467,
+   "1": 0.7899487418428397,
+   "2": 0.6938700897137152
+  },
+  "pooled_std_ratio_r1_over_f0": {
+   "0": 0.885831449547755,
+   "1": 0.8871765216954391,
+   "2": 0.83889832701968
+  },
+  "dprime_ratio_r1_over_f0": {
+   "0": 0.8784916693590734,
+   "1": 0.9084918849357143,
+   "2": 0.8292173953984469
+  },
+  "asymmetry_small_ratio_ge_0.9_in_all_seeds": true,
+  "note": "COND_A is an absolute same-metric comparison; the relative (proportional) drops of the normal and anomaly score masses are close to symmetric, so the AS-CONFIRMED pattern is consistent but of SMALL magnitude. Scale-invariant confirmation is provided separately by AUROC/AP/d' decreasing in 3/3 seeds."
+ },
+ "verdict_sensitivity_disclosure": "The mechanical rule above was written before the audit numbers were inspected and was not modified afterwards. Post-hoc sensitivity: adding an effect-size threshold (relative_drop_ratio_anomaly_over_good <= 0.90 in all seeds) would change the verdict to PARTIALLY_EXPLAINED. That threshold was NOT part of the pre-specified rule and is disclosed for transparency only; it is not applied.",
+ "secondary_descriptors": {
+  "illumination_degradation_broad_ge_0.7_in_ge_2_seeds": true,
+  "per_seed_negative_illumination_groups": {
+   "0": {
+    "n_negative_groups": 9,
+    "n_groups": 10,
+    "frac_negative": 0.9
+   },
+   "1": {
+    "n_negative_groups": 8,
+    "n_groups": 10,
+    "frac_negative": 0.8
+   },
+   "2": {
+    "n_negative_groups": 8,
+    "n_groups": 10,
+    "frac_negative": 0.8
+   }
+  },
+  "per_seed_worst_best_group": {
+   "0": {
+    "worst_group": "02",
+    "worst_d_auroc": -0.09485094850948517,
+    "best_group": "05",
+    "best_d_auroc": 0.004516711833784992
+   },
+   "1": {
+    "worst_group": "02",
+    "worst_d_auroc": -0.10117434507678402,
+    "best_group": "08",
+    "best_d_auroc": 0.04814814814814805
+   },
+   "2": {
+    "worst_group": "09",
+    "worst_d_auroc": -0.07768744354110202,
+    "best_group": "01",
+    "best_d_auroc": 0.028028028028028062
+   }
+  },
+  "doll_gain_rank_among_10": 1,
+  "doll_shift_rank_among_10": 4,
+  "doll_shift_is_median_like": true
+ },
+ "shift_gain": {
+  "n_categories": 10,
+  "full_n10": {
+   "pearson_r": 0.3714055910334366,
+   "pearson_p": 0.29065035465765837,
+   "spearman_rho": 0.5757575757575757,
+   "spearman_p": 0.08155281477260244
+  },
+  "frozen_e22_values": {
+   "pearson_r": 0.3714055910334366,
+   "spearman_rho": 0.5757575757575757
+  },
+  "full_n10_matches_frozen": true,
+  "leave_one_out_without_doll": {
+   "n": 9,
+   "pearson_r": 0.8074647205366455,
+   "pearson_p": 0.008493803810477953,
+   "spearman_rho": 0.6,
+   "spearman_p": 0.08762282904140249
+  },
+  "doll_position": {
+   "D_shift_F0": 0.18235262235005698,
+   "shift_rank_among_10": 4,
+   "shift_median_among_10": 0.1834704528252284,
+   "d_auroc_mean": -0.03849691358024695,
+   "gain_rank_among_10": 1
+  },
+  "doll_residual_vs_n10_fit": -0.04525282058363512
+ },
+ "per_image_change": [
+  {
+   "seed": 0,
+   "n_good_kept": 270,
+   "n_anomaly_kept": 400,
+   "good_decreased": 270,
+   "good_decreased_frac": 1.0,
+   "anomaly_decreased": 400,
+   "anomaly_decreased_frac": 1.0,
+   "good_delta_mean": -0.07653098923188668,
+   "anomaly_delta_mean": -0.0864674587547779,
+   "good_delta_p05": -0.12484382092952728,
+   "good_delta_p25": -0.0901903361082077,
+   "good_delta_p50": -0.07276484370231628,
+   "good_delta_p75": -0.06126348674297333,
+   "good_delta_p95": -0.03994196057319642,
+   "anomaly_delta_p05": -0.13853084146976472,
+   "anomaly_delta_p25": -0.10201205313205719,
+   "anomaly_delta_p50": -0.08090943098068237,
+   "anomaly_delta_p75": -0.06624490022659302,
+   "anomaly_delta_p95": -0.0489280790090561,
+   "good_rank_improved_frac": 0.6148148148148148,
+   "anomaly_rank_improved_frac": 0.5625
+  },
+  {
+   "seed": 1,
+   "n_good_kept": 270,
+   "n_anomaly_kept": 400,
+   "good_decreased": 269,
+   "good_decreased_frac": 0.9962962962962963,
+   "anomaly_decreased": 400,
+   "anomaly_decreased_frac": 1.0,
+   "good_delta_mean": -0.08505323772077207,
+   "anomaly_delta_mean": -0.09434639543294907,
+   "good_delta_p05": -0.13586616814136504,
+   "good_delta_p25": -0.09974689781665802,
+   "good_delta_p50": -0.0833050012588501,
+   "good_delta_p75": -0.07006369531154633,
+   "good_delta_p95": -0.04667117595672608,
+   "anomaly_delta_p05": -0.14527776837348938,
+   "anomaly_delta_p25": -0.10897450149059296,
+   "anomaly_delta_p50": -0.09246018528938293,
+   "anomaly_delta_p75": -0.07377341389656067,
+   "anomaly_delta_p95": -0.058302384614944455,
+   "good_rank_improved_frac": 0.5740740740740741,
+   "anomaly_rank_improved_frac": 0.5225
+  },
+  {
+   "seed": 2,
+   "n_good_kept": 270,
+   "n_anomaly_kept": 400,
+   "good_decreased": 270,
+   "good_decreased_frac": 1.0,
+   "anomaly_decreased": 400,
+   "anomaly_decreased_frac": 1.0,
+   "good_delta_mean": -0.08382068276405334,
+   "anomaly_delta_mean": -0.09698411658406257,
+   "good_delta_p05": -0.12925534546375275,
+   "good_delta_p25": -0.09891588985919952,
+   "good_delta_p50": -0.08294478058815002,
+   "good_delta_p75": -0.06829221546649933,
+   "good_delta_p95": -0.03667986392974856,
+   "anomaly_delta_p05": -0.14861552119255067,
+   "anomaly_delta_p25": -0.11439597606658936,
+   "anomaly_delta_p50": -0.09309536218643188,
+   "anomaly_delta_p75": -0.07673203945159912,
+   "anomaly_delta_p95": -0.05650773942470553,
+   "good_rank_improved_frac": 0.5703703703703704,
+   "anomaly_rank_improved_frac": 0.5275
+  }
+ ],
+ "scope": "read-only descriptive audit; no retraining / no tuning / no method change; frozen metrics reused (d', D_illum_shift_F0, illumination spread, AUROC/AP)"
+}

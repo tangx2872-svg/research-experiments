@@ -428,3 +428,14 @@ results/e22/logs/*.log
 !results/e22/logs/overnight_*.log
 # independent-verification logs (run1 pre-fix FAIL record / run2 / archive re-run)
 !results/e22/logs/verification_*.log
+
+# E23 (Doll failure-case descriptive audit: README / analysis CSVs / verdict / figures / verification;
+# run logs incl. run1_superseded retained as evidence) — no training, no GPU artifacts
+!results/e23/
+# E23 run logs (0-GPU audit; run1 superseded record + run2) — keep as evidence
+!results/e23/logs/e23_audit.log
+!results/e23/logs/e23_audit_run2.log
+
+# paper_ready (Stage 3 paper evidence pack: tables / claims / limitations / evidence map / figures + manifest;
+# built by scripts/paper_ready_build.py, checked by scripts/e23_verify.py)
+!results/paper_ready/

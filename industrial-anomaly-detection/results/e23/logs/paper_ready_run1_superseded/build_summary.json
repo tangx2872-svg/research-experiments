@@ -1,0 +1,25 @@
+{
+ "main_table": {
+  "n_pos_auroc": 9,
+  "n_pos_ap": 9,
+  "n_3of3_auroc": 7,
+  "macro_mean_auroc": "0.00760",
+  "median_auroc": "0.01079",
+  "macro_mean_ap": "0.00777",
+  "doll_mean_auroc": "-0.03850",
+  "doll_mean_ap": "-0.01302"
+ },
+ "multiview": {
+  "macro_pooled_d_auroc": "0.00142",
+  "macro_pooled_d_ap": "-0.00165",
+  "n_cells_pos": "8",
+  "min_cell_d_auroc": "-0.02600",
+  "n_cats_pooled_pos": "2"
+ },
+ "built_from": [
+  "results/e22",
+  "results/e17",
+  "results/e21",
+  "results/e23"
+ ]
+}
