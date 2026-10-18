@@ -1,0 +1,26 @@
+{
+ "timestamp": "2026-10-18T21:50:49+08:00",
+ "checks": {
+  "bank_24_normals": true,
+  "labels_from_metadata": true,
+  "labels_both_classes": true,
+  "cuda": true,
+  "backbone_frozen": true,
+  "feature_shape": true,
+  "feature_finite": true,
+  "b0_scores_finite": true,
+  "b0_metrics_valid": true,
+  "adapter_params": true,
+  "aug_shape": true,
+  "r1_loss_finite": true,
+  "r1_grad_seen": true,
+  "r1_steps": true,
+  "r1_scores_finite": true,
+  "r1_no_collapse": true,
+  "output_writable": true,
+  "disk_ge_1gb": true
+ },
+ "pass": true,
+ "b0_auroc_test1_subset_full": 0.921875,
+ "steps_used": 49
+}

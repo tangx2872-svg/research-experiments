@@ -1,0 +1,3 @@
+domain,n_target_splits,auroc_f0_mean,auroc_r1_mean,d_auroc_mean,d_auroc_median,d_ap_mean,d_ap_median,n_pos_auroc,n_pos_ap,worst_split_auroc,worst_d_auroc,best_split_auroc,best_d_auroc,source_split,source_auroc_f0,source_auroc_r1,source_valid,source_d_auroc
+PCB,5,0.444722,0.466435,0.021713,0.022917,0.016790,0.018891,5,5,test4,0.008333,test3,0.036875,test0,0.926778,0.917000,1,-0.009778
+MetalParts,6,0.926111,0.905295,-0.020816,-0.018021,-0.025753,-0.015556,2,3,test5,-0.062083,test3,0.004896,test0,0.936275,0.957026,0,0.020752

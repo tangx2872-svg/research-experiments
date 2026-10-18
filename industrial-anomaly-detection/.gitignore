@@ -439,3 +439,8 @@ results/e22/logs/*.log
 # paper_ready (Stage 3 paper evidence pack: tables / claims / limitations / evidence map / figures + manifest;
 # built by scripts/paper_ready_build.py, checked by scripts/e23_verify.py)
 !results/paper_ready/
+# E25 (RobustAD external generalization of frozen R1-ILA: protocol / per-split cells /
+# summary CSVs / verdict / README; dataset data/robustad/ stays out of git)
+!results/e25/
+results/e25/logs/
+results/e25/*.pid

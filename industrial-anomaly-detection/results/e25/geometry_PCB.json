@@ -1,0 +1,60 @@
+{
+ "domain": "PCB",
+ "splits": {
+  "test0": {
+   "n_files": 195,
+   "sizes_sample": {
+    "2048x2048": 75,
+    "2560x2560": 5
+   }
+  },
+  "test1": {
+   "n_files": 210,
+   "sizes_sample": {
+    "2048x2048": 80
+   }
+  },
+  "test2": {
+   "n_files": 180,
+   "sizes_sample": {
+    "2048x2048": 80
+   }
+  },
+  "test3": {
+   "n_files": 140,
+   "sizes_sample": {
+    "2048x2048": 80
+   }
+  },
+  "test4": {
+   "n_files": 140,
+   "sizes_sample": {
+    "2048x2048": 80
+   }
+  },
+  "test5": {
+   "n_files": 140,
+   "sizes_sample": {
+    "2048x2048": 80
+   }
+  },
+  "train": {
+   "n_files": 255,
+   "sizes_sample": {
+    "2048x2048": 75,
+    "2560x2560": 5
+   }
+  }
+ },
+ "timestamp": "2026-10-18T22:02:29+08:00",
+ "n_square_sampled": 560,
+ "n_nonsquare_sampled": 0,
+ "bit_identical_vs_e13a": {
+  "n_checked": 20,
+  "n_shape_mismatch": 0,
+  "n_compared": 20,
+  "max_abs_diff": 0.0,
+  "identical": true,
+  "note": "shape mismatch is expected iff the domain has non-square images; then the square 448x448 resize IS the documented geometry rule, not an accident"
+ }
+}

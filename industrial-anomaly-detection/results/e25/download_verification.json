@@ -1,0 +1,142 @@
+{
+  "subset": [
+    "PCB",
+    "MetalParts"
+  ],
+  "remote_files": 2677,
+  "missing": [],
+  "n_missing": 0,
+  "bad_size": [],
+  "n_bad_size": 0,
+  "extra_local": [
+    "_meta/MP_metal_parts_data_dir_test0.jsonl",
+    "_meta/MP_metal_parts_data_dir_test1.jsonl",
+    "_meta/MP_metal_parts_data_dir_test2.jsonl",
+    "_meta/MP_metal_parts_data_dir_test3.jsonl",
+    "_meta/MP_metal_parts_data_dir_test4.jsonl",
+    "_meta/MP_metal_parts_data_dir_test5.jsonl",
+    "_meta/MP_metal_parts_data_dir_test6.jsonl",
+    "_meta/MP_metal_parts_data_dir_train.jsonl",
+    "_meta/PCB_pcb_data_dir_test0.jsonl",
+    "_meta/PCB_pcb_data_dir_test1.jsonl",
+    "_meta/PCB_pcb_data_dir_test2.jsonl",
+    "_meta/PCB_pcb_data_dir_test3.jsonl",
+    "_meta/PCB_pcb_data_dir_test4.jsonl",
+    "_meta/PCB_pcb_data_dir_test5.jsonl",
+    "_meta/PCB_pcb_data_dir_train.jsonl",
+    "_meta/README.md"
+  ],
+  "n_extra_local": 16,
+  "n_part_files": 0,
+  "n_metadata_missing": 0,
+  "n_label_inconsistent": 0,
+  "label_inconsistent": [],
+  "splits": [
+    {
+      "split": "MetalParts/metal_parts_data_dir_test0",
+      "n_metadata": 171,
+      "n_normal": 120,
+      "n_anomaly": 51,
+      "n_local_images": 171
+    },
+    {
+      "split": "MetalParts/metal_parts_data_dir_test1",
+      "n_metadata": 200,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "n_local_images": 200
+    },
+    {
+      "split": "MetalParts/metal_parts_data_dir_test2",
+      "n_metadata": 200,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "n_local_images": 200
+    },
+    {
+      "split": "MetalParts/metal_parts_data_dir_test3",
+      "n_metadata": 200,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "n_local_images": 200
+    },
+    {
+      "split": "MetalParts/metal_parts_data_dir_test4",
+      "n_metadata": 200,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "n_local_images": 200
+    },
+    {
+      "split": "MetalParts/metal_parts_data_dir_test5",
+      "n_metadata": 100,
+      "n_normal": 60,
+      "n_anomaly": 40,
+      "n_local_images": 100
+    },
+    {
+      "split": "MetalParts/metal_parts_data_dir_test6",
+      "n_metadata": 100,
+      "n_normal": 60,
+      "n_anomaly": 40,
+      "n_local_images": 100
+    },
+    {
+      "split": "MetalParts/metal_parts_data_dir_train",
+      "n_metadata": 231,
+      "n_normal": 180,
+      "n_anomaly": 51,
+      "n_local_images": 231
+    },
+    {
+      "split": "PCB/pcb_data_dir_test0",
+      "n_metadata": 195,
+      "n_normal": 120,
+      "n_anomaly": 75,
+      "n_local_images": 195
+    },
+    {
+      "split": "PCB/pcb_data_dir_test1",
+      "n_metadata": 210,
+      "n_normal": 120,
+      "n_anomaly": 90,
+      "n_local_images": 210
+    },
+    {
+      "split": "PCB/pcb_data_dir_test2",
+      "n_metadata": 180,
+      "n_normal": 120,
+      "n_anomaly": 60,
+      "n_local_images": 180
+    },
+    {
+      "split": "PCB/pcb_data_dir_test3",
+      "n_metadata": 140,
+      "n_normal": 80,
+      "n_anomaly": 60,
+      "n_local_images": 140
+    },
+    {
+      "split": "PCB/pcb_data_dir_test4",
+      "n_metadata": 140,
+      "n_normal": 80,
+      "n_anomaly": 60,
+      "n_local_images": 140
+    },
+    {
+      "split": "PCB/pcb_data_dir_test5",
+      "n_metadata": 140,
+      "n_normal": 80,
+      "n_anomaly": 60,
+      "n_local_images": 140
+    },
+    {
+      "split": "PCB/pcb_data_dir_train",
+      "n_metadata": 255,
+      "n_normal": 180,
+      "n_anomaly": 75,
+      "n_local_images": 255
+    }
+  ],
+  "ok": true
+}

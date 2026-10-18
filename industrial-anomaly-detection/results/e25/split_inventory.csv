@@ -1,0 +1,16 @@
+split,n_metadata,n_normal,n_anomaly,n_local_images
+MetalParts/metal_parts_data_dir_test0,171,120,51,171
+MetalParts/metal_parts_data_dir_test1,200,120,80,200
+MetalParts/metal_parts_data_dir_test2,200,120,80,200
+MetalParts/metal_parts_data_dir_test3,200,120,80,200
+MetalParts/metal_parts_data_dir_test4,200,120,80,200
+MetalParts/metal_parts_data_dir_test5,100,60,40,100
+MetalParts/metal_parts_data_dir_test6,100,60,40,100
+MetalParts/metal_parts_data_dir_train,231,180,51,231
+PCB/pcb_data_dir_test0,195,120,75,195
+PCB/pcb_data_dir_test1,210,120,90,210
+PCB/pcb_data_dir_test2,180,120,60,180
+PCB/pcb_data_dir_test3,140,80,60,140
+PCB/pcb_data_dir_test4,140,80,60,140
+PCB/pcb_data_dir_test5,140,80,60,140
+PCB/pcb_data_dir_train,255,180,75,255

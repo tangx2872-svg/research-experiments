@@ -1,0 +1,51 @@
+{
+ "experiment": "E25 RobustAD external generalization of frozen R1-ILA",
+ "protocol": "results/e25/ROBUSTAD_PROTOCOL_AUDIT.md (\u00a78 + \u00a710 amendment)",
+ "config_source": "results/e17/final_method.json",
+ "method": "R1-ILA",
+ "BETA": 0.1,
+ "augmentations": "brightness+contrast+gamma",
+ "strength": [
+  0.85,
+  1.15
+ ],
+ "lr": 0.001,
+ "max_steps": 300,
+ "patience": 30,
+ "batch_size": 8,
+ "EVAL_EVERY": 5,
+ "seed": 0,
+ "bank_train_n": 120,
+ "bank_val_n": 60,
+ "bank_rule": "all source-train normals (180), sorted by file_name; train = first 120, val = last 60",
+ "input_geometry": "square bicubic resize to 448x448 (protocol \u00a78.3); identical to E13-A for square inputs, asserted per domain in geometry_*.json",
+ "metric": "plain image-level AUROC/AP over all images (no detectable filter; RobustAD has no such field)",
+ "git_commit": "296ab33e77c0d60ef62acd1542b2aa3822c7909a",
+ "git_dirty_files": [
+  "M monitor/exp_monitor.py",
+  " M results/e8/status.json",
+  "?? monitor/events.jsonl",
+  "?? scripts/_lockprobe.txt",
+  "?? scripts/_probe2.py",
+  "?? scripts/e11_p4_runner.py",
+  "?? scripts/e25_analysis.py",
+  "?? scripts/e25_download_robustad.py",
+  "?? scripts/e25_robustad_eval.py",
+  "?? scripts/e25_run_all.sh",
+  "?? scripts/e25_verify_download.py",
+  "?? scripts/e25_watch_download.sh"
+ ],
+ "python": "3.12.3",
+ "torch": "2.8.0+cu128",
+ "sklearn": "1.9.1",
+ "gpu": {
+  "name": "NVIDIA GeForce RTX 3090",
+  "util_pct": 0,
+  "mem_used_mb": 1,
+  "mem_total_mb": 24576
+ },
+ "disk_free_gb": 6.02,
+ "started": "2026-10-18T22:00:38+08:00",
+ "pid": 11063,
+ "note": "results/e24/ not used and not created"
+}

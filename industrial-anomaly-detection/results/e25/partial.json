@@ -1,0 +1,29 @@
+{
+ "experiment": "E25",
+ "domains": {
+  "PCB": {
+   "domain": "PCB",
+   "n_splits": 6,
+   "bank_hash": "08821b36dddea79a0ffee81217d97eeb6dd57e0151a4c5c7105417d42b6b49dc",
+   "steps_used": 99,
+   "adapter_hash": "7d4c55ee3f95c24bab6d08f3bbb6018ec231bc37ee8c6d29d08e81e2f4514885",
+   "runtime_s": 361.4,
+   "peak_gpu_mb": 5011.3
+  },
+  "MetalParts": {
+   "domain": "MetalParts",
+   "n_splits": 7,
+   "bank_hash": "b4b517292166e66864588e6177f609e2f853abf241294f31a1831fc15d978e04",
+   "steps_used": 89,
+   "adapter_hash": "2c1a2cdf0517d1033361c6525c1496c9e41b5cfb142d455b5a0723ee0564dbbe",
+   "runtime_s": 91.7,
+   "geometry": {
+    "square_sampled": 0,
+    "nonsquare_sampled": 640,
+    "prep_vs_e13a_identical": false
+   },
+   "peak_gpu_mb": 1432.0
+  }
+ },
+ "started": "2026-10-18T21:29:38+08:00"
+}

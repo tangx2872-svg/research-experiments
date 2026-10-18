@@ -1,0 +1,9 @@
+condition_group,n_splits,splits,valid,d_auroc_mean,d_ap_mean,n_pos_auroc,n_ci_excludes_0_auroc
+illumination,2,PCB:test1;MetalParts:test1,1,0.014855,0.010784,2,1
+illumination_related_white_balance,1,PCB:test2,1,0.022917,0.025083,1,1
+illumination_related_shadow,1,PCB:test5,1,0.012292,0.002184,1,0
+pose,4,PCB:test3;PCB:test4;MetalParts:test2;MetalParts:test3,1,0.010807,0.014631,3,1
+scale,1,MetalParts:test4,1,-0.033229,-0.033453,0,1
+background,2,MetalParts:test5;MetalParts:test6,1,-0.045625,-0.072237,0,1
+source_reference,1,PCB:test0,1,-0.009778,-0.009739,0,0
+source_reference_INVALID,1,MetalParts:test0,0,0.020752,0.033359,1,1
