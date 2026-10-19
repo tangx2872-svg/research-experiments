@@ -245,11 +245,12 @@ def build_claims(summary: dict, mv: dict) -> None:
     L.append("- *The Doll failure is consistent with a mild, near-symmetric score shift in which the "
              "anomaly mass falls slightly more than the normal mass.* "
              "(Qualifier: relative drops 0.95-1.00 of each other; no causal mechanism established.)")
-    L.append("- *External evaluation on RobustAD indicates a stable domain dependence: PCB improves and "
-             "MetalParts degrades.* (Qualifier: adapter re-trained on each sub-dataset's own source "
-             "normals, not transferred; 11 valid target splits × 3 seeds; overall macro ΔAUROC "
-             "−0.00107 with a descriptive t-interval [−0.0033, +0.0012] that includes 0; 2 of 3 "
-             "sub-datasets covered.)\n")
+    L.append("- *External evaluation on RobustAD indicates a stable sub-dataset dependence: PCB improves "
+             "and MetalParts degrades.* (Qualifier: adapter re-trained per sub-dataset, not "
+             "transferred; 11 valid target splits × 3 seeds = 33 cells; overall macro ΔAUROC is "
+             "−0.001068 split-weighted and +0.000550 sub-dataset-weighted, i.e. the sign depends on "
+             "the weighting, and the descriptive t-interval [−0.0033, +0.0012] over 3 per-seed "
+             "macros includes 0; 2 of 3 sub-datasets covered.)\n")
     L.append("## FORBIDDEN CLAIMS\n")
     for item in ["Universal robustness across datasets, backbones or views",
                  "Improves all categories / improves every category",
@@ -312,17 +313,24 @@ def build_limitations() -> None:
          "## L6 — External evaluation is conditional and re-trained (E25)",
          "E25 evaluates R1-ILA on RobustAD (CC-BY-4.0), a dataset independent of M²AD. The adapter is "
          "re-trained from scratch on each RobustAD sub-dataset's own 120 source-train normals "
-         "(hyperparameters read only from `results/e17/final_method.json`; 3 adapter seeds), and both "
+         "(hyperparameters read only from `results/e17/final_method.json`; 3 adapter seeds), and one "
+         "adapter per (sub-dataset, seed) serves all of that sub-dataset's target domains; both "
          "variants score the same 180-normal bank on the same target splits. This is therefore "
          "external dataset validation with re-training, NOT a direct transfer of the M²AD adapter. "
-         "Across 11 valid target splits (PCB 5, MetalParts 6; MetalParts test0 excluded for a "
-         "145-file overlap with source-train) the result is domain dependent: PCB +0.01835 (5/5 "
-         "splits positive in all 3 seeds) and MetalParts −0.01725 (2/6 splits positive, background "
-         "and scale negative in all 3 seeds). The overall macro ΔAUROC is −0.00107 with a descriptive "
-         "t-interval over the 3 per-seed macros of [−0.0033, +0.0012], so no overall improvement is "
-         "claimed. Coverage limits: 2 of 3 RobustAD sub-datasets (PiledBags not downloaded), a single "
-         "backbone, plain image-level AUROC/AP (RobustAD has no `detectable` field), and anisotropic "
-         "448×448 resizing for MetalParts.",
+         "Cell accounting: 13 splits × 3 seeds = 39 completed cells, of which 33 (11 valid target "
+         "splits × 3 seeds) enter the target aggregates, 3 are PCB test0 (source reference) and 3 are "
+         "MetalParts test0, which is not held out (145 file names identical to source-train) and is "
+         "reported with valid=0 but never zero-filled. That validity rule is file-level and "
+         "outcome-independent; it is documented before the MetalParts run but, because protocol and "
+         "results were committed together, it cannot be proven pre-registered. "
+         "The result is sub-dataset dependent: PCB +0.01835 (5/5 splits positive in all 3 seeds) and "
+         "MetalParts −0.01725 (2/6 splits positive, background and scale negative in all 3 seeds). "
+         "The overall macro ΔAUROC is −0.001068 with split-level weighting and +0.000550 with "
+         "sub-dataset weighting (full-precision inputs in both cases), so the sign depends on the "
+         "weighting and no overall improvement is claimed; the descriptive t-interval over the 3 "
+         "per-seed macros is [−0.0033, +0.0012]. Coverage limits: 2 of 3 RobustAD sub-datasets "
+         "(PiledBags not downloaded), a single backbone, plain image-level AUROC/AP (RobustAD has no "
+         "`detectable` field), and anisotropic 448×448 resizing for MetalParts.",
          ""]
     (OUT / "paper_limitations.md").write_text("\n".join(L))
     print("[paper_ready] wrote paper_limitations.md", flush=True)
@@ -387,10 +395,12 @@ def build_evidence_map(summary: dict) -> None:
          "### Claim G — External evaluation on RobustAD is conditionally positive (E25)",
          "Evidence: E25 re-trains the frozen adapter on each RobustAD sub-dataset (PCB, MetalParts) "
          "and scores the same 180-normal bank with F0 (frozen DINOv2-B 1-NN-max) and R1; 39 cells = "
-         "13 splits × 3 adapter seeds, all status OK, per-cell AUROC/AP recomputation max|d| = 0.0. "
-         "11 valid non-source target splits: PCB +0.01835 (5/5 splits positive, all 3 seeds), "
-         "MetalParts −0.01725 (2/6 positive; background/scale negative in all 3 seeds); overall macro "
-         "ΔAUROC −0.00107, t-interval [−0.00333, +0.00119]; macro ΔAP −0.00544.",
+         "13 splits × 3 adapter seeds, all status OK, per-cell AUROC/AP recomputation max|d| = 0.0; "
+         "33 of them (11 valid target splits × 3 seeds) enter the target aggregates. PCB +0.01835 "
+         "(5/5 splits positive, all 3 seeds), MetalParts −0.01725 (2/6 positive; background/scale "
+         "negative in all 3 seeds); overall macro ΔAUROC −0.001068 split-weighted vs +0.000550 "
+         "sub-dataset-weighted (full precision), descriptive t-interval [−0.00333, +0.00119], "
+         "macro ΔAP −0.00544.",
          "Files: `results/e25/README.md` (§15), `multiseed_summary.csv`, "
          "`multiseed_analysis.json`, `cells/*.json`, `figures/e25_multiseed_domain_delta.*`, "
          "`results/paper_ready/EVIDENCE_MAP.md` §7–§9.",
@@ -452,6 +462,9 @@ def build_readme() -> None:
          "second dataset. RobustAD is the only independent external dataset in this chain.",
          "7. E25 re-trains the adapter on each RobustAD sub-dataset: write 'external dataset "
          "validation' or 'external evaluation', never 'direct cross-dataset transfer'.",
+         "8. Quote the RobustAD overall result with its weighting: −0.001068 split-weighted vs "
+         "+0.000550 sub-dataset-weighted (never 'domain-balanced'). Both come from full-precision "
+         "frozen values; the sign is weighting-dependent, so no overall direction may be claimed.",
          "",
          "```bash",
          "cd /root/autodl-tmp/research-experiments/industrial-anomaly-detection",

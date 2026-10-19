@@ -20,7 +20,7 @@ All SAFE numbers below are injected programmatically from `paper_main_table.csv`
 - *Multi-view experiments indicate that benefits are not restricted exclusively to view120, but substantial viewpoint heterogeneity remains.* (Qualifier: 8/12 cells positive; Car 240/330 negative; HOLD verdict.)
 - *Score-drift diagnostics are consistent with reduced illumination-related variation in several evaluated settings.* (Qualifier: 'consistent with' only; a normal-dispersion increase is also observed, and BETA=0 shows the opposite failure mode.)
 - *The Doll failure is consistent with a mild, near-symmetric score shift in which the anomaly mass falls slightly more than the normal mass.* (Qualifier: relative drops 0.95-1.00 of each other; no causal mechanism established.)
-- *External evaluation on RobustAD indicates a stable domain dependence: PCB improves and MetalParts degrades.* (Qualifier: adapter re-trained on each sub-dataset's own source normals, not transferred; 11 valid target splits × 3 seeds; overall macro ΔAUROC −0.00107 with a descriptive t-interval [−0.0033, +0.0012] that includes 0; 2 of 3 sub-datasets covered.)
+- *External evaluation on RobustAD indicates a stable sub-dataset dependence: PCB improves and MetalParts degrades.* (Qualifier: adapter re-trained per sub-dataset, not transferred; 11 valid target splits × 3 seeds = 33 cells; overall macro ΔAUROC is −0.001068 split-weighted and +0.000550 sub-dataset-weighted, i.e. the sign depends on the weighting, and the descriptive t-interval [−0.0033, +0.0012] over 3 per-seed macros includes 0; 2 of 3 sub-datasets covered.)
 
 ## FORBIDDEN CLAIMS
 

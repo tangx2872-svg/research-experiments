@@ -23,6 +23,7 @@ This directory contains the paper-facing tables, figures, claims and limitations
 5. Numbers must be quoted from these tables (or from the frozen E22/E17/E21 artifacts they mirror), not retyped from prose.
 6. Dataset names: M²AD is the main evaluation dataset (10 categories); Bird/Car/Cube are 3 of those 10 and are the method-development categories. Never call them an external or second dataset. RobustAD is the only independent external dataset in this chain.
 7. E25 re-trains the adapter on each RobustAD sub-dataset: write 'external dataset validation' or 'external evaluation', never 'direct cross-dataset transfer'.
+8. Quote the RobustAD overall result with its weighting: −0.001068 split-weighted vs +0.000550 sub-dataset-weighted (never 'domain-balanced'). Both come from full-precision frozen values; the sign is weighting-dependent, so no overall direction may be claimed.
 
 ```bash
 cd /root/autodl-tmp/research-experiments/industrial-anomaly-detection

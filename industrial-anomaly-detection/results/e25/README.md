@@ -296,7 +296,12 @@ python scripts/e25_analysis.py
 
 ### 15.3 总体与结构
 
-- **总体 macro ΔAUROC = −0.00107**（逐 seed：−0.00148 / −0.00170 / −0.00002；seed 间 std 0.00091；描述性 t-区间 95% **[−0.00333, +0.00119]**）；**macro ΔAP = −0.00544**。
+- **cell 账目（39 → 33）**：13 个 split × 3 seed = **39 cell**，全部 `status=OK`；其中进入 target 汇总的是 **11 个有效 target split × 3 seed = 33 cell**；另有 **3 cell** 属 PCB test0（`valid=1` 但为 source reference，仅用于 source→target 描述，不入 target 均值）与 **3 cell** 属 MetalParts test0（`valid=0`，见下条，不入任何汇总）。**无缺失 cell、无重试生成的重复 cell**；被排除的是**聚合口径**，不是删除样本。
+- **MP test0 的 `valid=0` 依据**：其 171 个条目中 **145 个文件名与 source-train 完全重合**（104 normal / 41 anomaly），**不是 held-out split**。该规则**与任何指标无关**（文件级重叠检测），文档化于 `ROBUSTAD_PROTOCOL_AUDIT.md` §6；协议文件最后写入时间（21:41）早于 MetalParts 首个 cell（21:52），但协议与结果在同一提交 `8ea1d73` 入库，**无法由 Git 证明它先于任何结果写定** ⇒ 记为「**结果无关、文档化于本 sub-dataset 运行之前，但不可证明预注册**」。
+- **总体 macro（split 等权）= −0.001068**（逐 seed：−0.00148464 / −0.00169508 / −0.0000242；seed 间 std 0.000910；描述性 t-区间 95% **[−0.00333, +0.00119]**）；**macro ΔAP = −0.005443**。
+- **总体 macro（子数据集等权）= +0.000550**＝(PCB +0.018352 + MP −0.017251)/2。两种均值均由冻结全精度结果计算（不拿已舍入的 5 位均值二次平均），差异**仅来自权重**：5 vs 6 个 split 的数量不平衡使 split 等权偏向 MP。
+- **总体结论对聚合权重敏感**，因此不选择性突出 +0.00055：报告以 split 等权为主值（与逐 split 表一致），并列给出子数据集等权值，二者符号相反 ⇒ **不能宣称任何方向的整体效应**。
+- t-区间的统计样本是 **3 个 per-seed macro**（n=3、df=2、t=4.303），描述的是 **adapter 训练种子随机性**；**不得**把 11×3=33 当作独立重复，也不得把它读作跨 sub-dataset 泛化保证。
 - 正向 split 比：**7/11（0.636）**；AP 侧 8/11。
 - 最差 target：**MP test5 background（−0.0556）**；最好：**PCB test3 rotation（+0.0321）**。
 - **结构保持判定**：`pcb_positive=True`、`mp_negative=True`、`pcb_positive_all_seeds=True`、`mp_negative_all_seeds=True` → **「PCB 正、MP 负」不是 seed 0 的偶然，而是跨 3 个独立 adapter 训练种子的稳定结构**（PCB 每个 seed 域均值 +0.0148…+0.0217；MP 每个 seed −0.0124…−0.0208，符号不翻转）。
@@ -304,8 +309,9 @@ python scripts/e25_analysis.py
 
 ### 15.4 解释（不得超出）
 
-- seed 只改变 adapter 训练轨迹，不改变 bank / 测试图 / 标签，因此 3 seed 的均值差反映**训练随机性**，而域间差异（+0.0184 vs −0.0173）**远大于** seed 噪声（域内 std 0.003–0.004）→ 域效应真实存在，不是噪声。
-- 但整体 macro 仍≈0（t-区间跨 0），因此**「R1-ILA 在 RobustAD 上整体提升」依然不成立**；成立的只是**条件性结构**：强偏移/低基线（PCB）一致改善，近饱和（MP）一致退化（background/scale 三 seed 全负）。
+- seed 只改变 adapter 训练轨迹，不改变 bank / 测试图 / 标签，因此 3 seed 的均值差反映**训练随机性**，而两个 sub-dataset 之间的差异（+0.0184 vs −0.0173）**远大于** seed 噪声（sub-dataset 内 std 0.003–0.004）→ **效果具有 sub-dataset 依赖性**，不是噪声。
+- 但整体 macro 仍≈0（split 等权 −0.00107；子数据集等权 +0.00055；t-区间跨 0），因此**「R1-ILA 在 RobustAD 上整体提升」依然不成立**；成立的只是**条件性结构**：强偏移/低基线（PCB）一致改善，近饱和（MP）一致退化（background/scale 三 seed 全负）。
+- **该结构不等于因果解释**：PCB 正 / MP 负只说明效果依赖 sub-dataset，**不能证明**失败源于尺度、背景、材质或几何；MP 同时存在 16:9 → 448×448 各向异性压缩这一未分离的混杂。
 - **不得**把 PCB 的 +0.018 当作"外部验证成功"：其 F0 基线平均仅 0.4447（test3 0.349 低于随机），改善发生在**失效的基线**上；也不得把 MP 的负向隐藏。
 
 ### 15.5 产物

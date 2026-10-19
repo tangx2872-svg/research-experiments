@@ -189,13 +189,13 @@ Doll 应作为 **limitation（适用边界）** 写入论文，模板如下（�
 | `e23_verdict.json` | Verdict + 预指定规则 + COND_A 逐 seed 分解 + 量级描述子 + 敏感性声明 + §7 关联 |
 | `figures/` | Fig1 逐图 F0–R1 散点 · Fig2 Δscore 分布 · Fig3 光照级 ΔAUROC/ΔAP · Fig4 10 类 shift–gain（突出 Doll）· Fig5 10 类 ΔAUROC（突出 Doll）；各 PNG + PDF |
 | `logs/e23_audit_run2.log` · `logs/run1_superseded/` | run2 日志；run1（分析 E/F 曾使用 6 位小数的主表导致关联值差 2.4e-6）已修复并**保留**为 superseded 证据 |
-| `verification.csv` | E23 + paper_ready 独立检查（见 `scripts/e23_verify.py`） |
+| `verification.csv` | E23 + paper_ready 独立检查（见 `scripts/e23_verify.py`）。此为 2026-10-16 的**历史 38/38 记录**；V30/V31 的语义修订与失败迁移说明见 `VERIFICATION_SEMANTICS.md` |
 
 ```bash
 cd /root/autodl-tmp/research-experiments/industrial-anomaly-detection
 /root/miniconda3/bin/python -u scripts/e23_doll_audit.py    # 分析 A–F（只读，0 GPU，~1 min）
 /root/miniconda3/bin/python -u scripts/e23_figures.py       # Fig1–Fig5（PNG+PDF）
-/root/miniconda3/bin/python -u scripts/e23_verify.py        # 独立验证 -> verification.csv
+/root/miniconda3/bin/python -u scripts/e23_verify.py --out <独立路径>.csv   # 独立验证（勿覆盖历史 verification.csv）
 ```
 
 **术语**：`d′` = 标准化可分性（cell 内存值，尺度无关）；`D_shift_F0` = E16/E18/E19 冻结的 patch 级光照偏移度量；`spread` = good 图像分数在 10 个 illumination group 间的极差；`COND_A` = 本实验预指定的失败模式判据（见 §2）。

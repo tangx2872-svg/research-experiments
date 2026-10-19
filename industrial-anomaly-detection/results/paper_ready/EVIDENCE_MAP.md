@@ -180,8 +180,19 @@
 
 **7.4 前置守卫**：`assert_frozen_config()` 对 BETA / lr / steps / patience / eval_every / batch / AUG_LIST / D,N_PATCH 逐项硬断言，不一致即抛异常终止。
 
-**7.5 数据完整性**：39/39 cell `status=OK`；逐图复算 AUROC/AP 的 `max|Δ| = 0.0`（容差 1e-12）；**无缺失 cell、无跳过、无排除样本**（MP test0 仍被计算并落盘，仅置 `valid=0` 不入聚合）。
+**7.5 数据完整性与 cell 账目**：**39/39 cell 均完成且 `status=OK`**，逐图复算 AUROC/AP 的 `max|Δ| = 0.0`（容差 1e-12）。**39 与 33 的关系**：
+
+| 类别 | cell 数 | 是否进入 target 汇总 |
+|---|---|---|
+| 11 个有效 target split × 3 seed | **33** | **是** |
+| PCB test0（source reference，`valid=1`） | 3 | 否（仅用于 source→target 描述） |
+| MetalParts test0（`valid=0`） | 3 | 否（重叠污染，见 §9） |
+
+即 **39 = 33 + 3 + 3**。因此**不得笼统写"无排除"**：样本没有被删除，指标也没有被填零，被排除的是**聚合口径**；同时**无缺失 cell、无重复重跑 cell**。推荐表述：**"39/39 cell 均完成；MP test0 依照所述有效性规则不纳入汇总。"**
 **日志中的 6 次 Traceback 均为写 cell 之前的工程错误**（MetalParts 非方形导致 1824 token、`AUG_BS`/`geom` 未定义），修复后重跑，**未影响任何已落盘结果**。
+
+**7.6 MP test0 有效性规则的时点（诚实标注）**：规则 = "145 个文件名与 source-train 完全相同（104 normal / 41 anomaly）→ 不是 held-out split"。它是**文件级、结果无关**的判定，不依赖任何指标。文档位置 `results/e25/ROBUSTAD_PROTOCOL_AUDIT.md` §6；该文件最后写入 2026-10-18 21:41，早于 MetalParts 首个 cell（21:52），但**协议与结果同处一个提交 `8ea1d73`**，Git 无法证明它先于任何结果写定。
+→ 论文中只能写 **"documented before this sub-dataset was run, outcome-independent, but not provably pre-registered"**；**不得**声称预注册。
 
 ---
 
@@ -229,8 +240,8 @@
    *The frozen augmentation setting (strength 0.85/1.15, brightness+contrast+gamma, BETA = 0.1) is not an arbitrary choice: it ranks first of six strengths under a pre-registered stability rule on the three development categories, and strengths 0.95/1.05–0.85/1.15 form a plateau; re-running the top two strengths with three adapter seeds does not separate them.*
 3. **多 seed 支持主要趋势不是单一随机种子偶然。**
    *The category-level sign pattern is reproduced across three bank seeds (7/10 categories positive in all three) and, externally, across three adapter-training seeds (PCB positive and MetalParts negative in every seed).*
-4. **RobustAD 外部验证显示显著的 domain dependency。**
-   *On RobustAD, with the adapter re-trained per sub-dataset under identical frozen hyperparameters, the effect is domain dependent: the PCB sub-dataset improves (mean ΔAUROC +0.01835, 5/5 target splits positive in all seeds) while MetalParts degrades (mean ΔAUROC −0.01725, 2/6 positive).*
+4. **RobustAD 外部验证显示显著的 sub-dataset 依赖性。**
+   *On RobustAD, with the adapter re-trained per sub-dataset under identical frozen hyperparameters, the effect is sub-dataset dependent: PCB improves (mean ΔAUROC +0.01835, 5/5 target splits positive in all seeds) while MetalParts degrades (mean ΔAUROC −0.01725, 2/6 positive). The overall macro is weighting-dependent (−0.001068 split-weighted, +0.000550 sub-dataset-weighted), so no overall direction is claimed.*
 5. **PCB 域稳定为正，MetalParts 域稳定为负。**
    *The sign of the effect does not flip across three independent adapter-training seeds in either sub-dataset.*
 6. **Doll 的退化是可复现的、可描述的（非随机噪声）。**
@@ -244,7 +255,7 @@
 
 1. **不得声称 RobustAD 整体显著提升。**（macro ΔAUROC **−0.00107**，t-interval [−0.0033, +0.0012] 跨 0；7/11 split 正向）
 2. **不得声称所有工业域普遍泛化。**（2/3 sub-datasets；PiledBags 未覆盖；单 backbone）
-3. **不得把 PCB / MetalParts 的差异归因于尺度、背景、材质、几何等具体机制**（未做机制验证；MP 同时存在方形 resize 混杂）。
+3. **不得把 PCB / MetalParts 的差异归因于尺度、背景、材质、几何等具体机制**（未做机制验证；MP 同时存在方形 resize 混杂）。该差异**只支持"效果具有 sub-dataset 依赖性"**，不构成失败原因的因果解释。
 4. **不得声称 direct cross-dataset transfer**（adapter 在每个 sub-dataset 上重训；见 §7.3）。
 5. 不得声称 universal robustness / viewpoint invariance / improves all categories。
 6. 不得把 E21 的 HOLD 写成通过（seed0 only、8/12 正、Car 240/330 与 Cube 090/330 为负）。
@@ -252,6 +263,8 @@
 8. 不得把 E24 的 S10 / A2 写成"应采用的配置"（单 seed 类型消融 + 3 seed 差距在噪声内）。
 9. 不得忽略 Doll（主表按构造包含它）。
 10. 不得把 M²AD Bird/Car/Cube 称为外部或独立数据集。
+11. **不得声称表征保持项"保证异常信息保留"**：`L_preserve` 只约束**正常特征**与冻结特征的一致性，异常侧行为是间接后果，未经独立验证（E16 已否定 normal-dispersion 叙事）。
+12. 不得把 E25 的 PCB/MetalParts 差异当作子数据集之外的"第二个外部数据集"或"跨数据集证据量"叠加。
 
 ---
 
@@ -304,13 +317,15 @@
 | E24 A2 | +0.019067 | `e24/tables/type_ranked.csv` | 3 类等权（单 seed） |
 | **PCB +0.01835** | +0.018352 | `e25/multiseed_summary.csv` → `multiseed_analysis.json:per_domain.PCB` | **5 split 等权**均值；每 split 先做 3-seed 均值（15 obs） |
 | **MP −0.01725** | −0.017251 | 同上 `per_domain.MetalParts` | **6 split 等权**均值（18 obs） |
-| **macro −0.00107** | −0.001068 | `multiseed_analysis.json:overall.macro_d_auroc_mean_over_splits` | **11 个 split 等权**（5 PCB + 6 MP）；**非 domain-balanced** |
+| **macro（split 等权，主值）** | −0.001068 | `multiseed_analysis.json:overall.macro_d_auroc_mean_over_splits` | **11 个 split 等权**（5 PCB + 6 MP）；**不是子数据集等权** |
+| **macro（子数据集等权）** | **+0.000550** | 本文件由两个 per-domain 全精度均值复算：(PCB + MP)/2 | **2 个 sub-dataset 等权**（"sub-dataset-weighted"，**不写 domain-balanced**） |
 | **t-interval** | [−0.003329, +0.001193] | 同上 `macro_d_auroc_t_interval95` | 统计样本 = **3 个 per-seed macro**（每个 = 该 seed 下 11 split 等权均值），n = 3，df = 2，t = 4.303 |
-| macro ΔAP | −0.00544 | 同上 `macro_d_ap_mean_over_splits` | 11 split 等权 |
+| macro ΔAP | −0.005443 | 同上 `macro_d_ap_mean_over_splits` | 11 split 等权 |
 
-**必须同时声明的两个口径事实**：
-1. **macro 是 split-level 而非 domain-balanced**。若改为两个 sub-dataset 等权，则 macro = (0.018352 + (−0.017251)) / 2 = **+0.00055**。论文中若写 "overall"，须注明是 11-split 等权。
-2. **t-interval 的 n = 3（seed 级），不是 11 或 39**。它是描述性区间，**不是**显著性检验；不得写 "statistically significant"。
+**必须同时声明的三个口径事实**：
+1. **两种总体均值并存，且符号相反**：split 等权 **−0.001068** vs 子数据集等权 **+0.000550**。差异来自 5 vs 6 个 split 的数量不平衡。**总体结论对聚合权重敏感**，因此不选择性突出正值：主值用 split 等权（与逐 split 表一致），并列给出子数据集等权，二者合起来只能支持「整体无一致方向」。
+2. **两者均由冻结全精度结果计算**（cell JSON 的 `d_auroc` float / 逐图 score 复算），**不是**拿 5 位舍入的均值二次平均。代码路径 `multiseed_analysis.py` 在 split 级先求均值，再求总体均值。
+3. **t-interval 的 n = 3（seed 级），不是 11 或 39**；它描述 **adapter 训练种子随机性**，不得把 split×seed 当独立重复，也不是跨 sub-dataset 泛化保证。它是描述性区间，**不是**显著性检验；不得写 "statistically significant"。
 
 ### 13.3 运行与验证记录
 
@@ -336,5 +351,10 @@
 
 ## 附：本文件与验证脚本的关系
 
-- `scripts/e23_verify.py` 的 V21–V24 仅检查 `paper_claims.md` 的字符串与 `paper_limitations.md` 的 5 条否定项（其中 "untested" 一词仍保留在 L3 的**时间限定**表述中，语义已由 L6 更新为"条件性已验证"）。
+- `scripts/e23_verify.py` 的 V21–V24 检查 `paper_claims.md` 的字符串与 `paper_limitations.md` 的 5 条否定项（其中 "untested" 一词保留在 L3 的**时间限定**表述中，语义已由 L6 更新为"条件性已验证"）。
+- **V30/V31 已于 2026-10-19 修订**（见 `results/e23/VERIFICATION_SEMANTICS.md`）：
+  - V29 = 六个 legacy 路径**字节未变**（文件缺失 → FAIL，不再抛异常中断）；
+  - V30 = **当前**处置与对账台账一致（3 项有意未提交 + 2 项经授权入库 + 1 项被忽略），任何第四项未跟踪路径或已入库文件被再次修改 → FAIL；
+  - V31 = **历史**：E21→E23 区间（`8957237..5b24193`）无 legacy 路径泄漏；该检查点之后只有授权提交 `9781e9d` 可触碰 legacy 路径，且提交内的 blob 必须与 Stage-0 md5 一致。
+  - 历史 38/38 记录保留在 `results/e23/verification.csv`；当前运行写入 `results/paper_ready/verification_reconciliation_<date>.csv`（`--out`）。
 - 本文件**不被任何自动生成脚本覆盖**；若与生成产物冲突，以本文件为准并修正 `scripts/paper_ready_build.py`。

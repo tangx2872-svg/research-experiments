@@ -13,12 +13,16 @@ artifacts. Checks cover the consolidation contract:
   * paper tables match their source CSVs
   * paper claims match the numeric evidence; forbidden claims absent (negation-aware scan)
   * figures provenance complete (manifest <-> files, PNG/PDF pairs, byte-identical copies)
-  * six legacy files untouched (md5 baseline + still dirty/untracked + never committed)
+  * six legacy files: bytes unchanged; current tracking/disposition matches the reconciled
+    ledger; the E21->E23 history range is clean; only the authorised commit touched a
+    legacy path afterwards, with baseline bytes (V29-V31, revised 2026-10-19)
 
-Output: results/e23/verification.csv  (id, check, expected, observed, pass)
+Output: results/e23/verification.csv by default; pass --out to write elsewhere
+        (all post-reconciliation runs must use --out so the historical 38/38 file is kept).
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -54,6 +58,32 @@ LEGACY_MD5 = {
     "scripts/_probe2.py": "3253b41059cac6e987c5a5e9233ea5d0",
     "scripts/e11_p4_runner.py": "4c72dd890e2298e09aaae23134aff772",
 }
+
+# The six legacy paths did NOT share one fate after the E23 checkpoint (5b24193):
+#   monitor/exp_monitor.py    tracked since 73eb8be; its long-standing modification was
+#                             committed on purpose in 9781e9d -> tracked_clean
+#   results/e8/status.json    tracked since 85642c6; its uncommitted modification is kept
+#                             on purpose -> tracked_dirty
+#   monitor/events.jsonl      runtime log, ignored since 8fbe09e -> invisible to git status
+#   scripts/_lockprobe.txt    6-byte probe residue, intentionally never committed
+#   scripts/_probe2.py        ditto
+#   scripts/e11_p4_runner.py  untracked until 9781e9d; committed because the E19-E23
+#                             verifiers reference it -> tracked_clean
+# => 3 intentionally uncommitted + 2 authorised into VCS + 1 ignored. Any deviation
+#    (extra untracked path, re-modified committed path, vanished file) is unauthorised.
+LEGACY_DISPOSITION = {
+    "monitor/exp_monitor.py": "tracked_clean",
+    "results/e8/status.json": "tracked_dirty",
+    "monitor/events.jsonl": "untracked_ignored",
+    "scripts/_lockprobe.txt": "untracked",
+    "scripts/_probe2.py": "untracked",
+    "scripts/e11_p4_runner.py": "tracked_clean",
+}
+# Verified: 8957237 = "E21: validate R1-ILA across M2AD views", 5b24193 = "E23: audit Doll
+# failure case". `git log --name-only 8957237..5b24193` contains no legacy path.
+LEGACY_HISTORY_RANGE = ("8957237", "5b24193")
+# The only legacy paths a post-checkpoint commit may have touched (all in 9781e9d).
+LEGACY_AUTHORISED_COMMIT_PATHS = {"monitor/exp_monitor.py", "scripts/e11_p4_runner.py"}
 FORBIDDEN_ITEMS = ["universal robustness", "improves all categories", "viewpoint invariant",
                    "every illumination group improves", "causal proof", "normal dispersion reduction",
                    "cross-dataset generalization", "statistically significant improvement on 9/10",
@@ -72,7 +102,17 @@ def add(cid: str, check: str, expected, observed, ok: bool) -> None:
 
 
 def git(*args: str) -> str:
-    return subprocess.run(["git", *args], cwd=str(ROOT), capture_output=True, text=True).stdout
+    """Run git and RAISE on a non-zero exit code.
+
+    An empty stdout is a legitimate answer for some queries (`--pretty=format:`), so the
+    exit code - not the output - decides success. Git problems must surface as FAIL rows
+    or as an exception, never as a silently empty "nothing leaked" result.
+    """
+    proc = subprocess.run(["git", *args], cwd=str(ROOT), capture_output=True, text=True)
+    if proc.returncode != 0:
+        raise RuntimeError(f"git {' '.join(args)} failed rc={proc.returncode}: "
+                           f"{proc.stderr.strip()[:300]}")
+    return proc.stdout
 
 
 def md5(p: Path) -> str:
@@ -93,6 +133,12 @@ def r5(x) -> float:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser(description="E23 / paper_ready independent verification")
+    ap.add_argument("--out", default=str(E23 / "verification.csv"),
+                    help="output CSV; use a distinct path so the historical record is preserved")
+    args = ap.parse_args()
+    out_path = Path(args.out)
+
     # ---------------- 1-6. E22 unchanged ----------------
     st = git("status", "--porcelain", "--", "results/e22").strip()
     add("V01", "results/e22 working tree clean (nothing modified after the archive commit)",
@@ -334,17 +380,81 @@ def main() -> int:
         len(e23_figs) == 5 and len(list((E23 / "figures").glob("*.pdf"))) == 5)
 
     # ---------------- 29-31. legacy files ----------------
-    bad_md5 = {k: md5(ROOT / k) for k, v in LEGACY_MD5.items() if md5(ROOT / k) != v}
+    # V29 is pure content: every legacy path must still hold the Stage-0 bytes.
+    try:
+        bad_md5 = {k: md5(ROOT / k) for k, v in LEGACY_MD5.items() if md5(ROOT / k) != v}
+        v29_err = None
+    except OSError as exc:                      # missing file must FAIL, never crash-silently
+        bad_md5, v29_err = {}, f"{type(exc).__name__}: {exc}"
     add("V29", "six legacy files byte-identical to the Stage-0 baseline", "no change",
-        bad_md5 or "no change", not bad_md5)
-    por = git("status", "--porcelain").splitlines()
-    still_dirty = [k for k in LEGACY_MD5 if any(k in ln for ln in por)]
-    add("V30", "six legacy files still present and still uncommitted (state preserved)",
-        "6/6 dirty or untracked", f"{len(still_dirty)}/6", len(still_dirty) == 6)
-    committed_range = git("log", "--name-only", "--pretty=format:", "8957237..HEAD")
-    leaked = [k for k in LEGACY_MD5 if k in committed_range]
-    add("V31", "no legacy file was ever added in any E22/E23 commit", "none",
-        leaked or "none", not leaked)
+        v29_err or bad_md5 or "no change", v29_err is None and not bad_md5)
+
+    # V30 is current state. Since 2026-10-19 the six paths no longer share one state:
+    # two were authorised into version control (9781e9d), one became gitignored (8fbe09e),
+    # and three remain intentionally uncommitted. The ledger below is the reconciliation
+    # decision; anything else (a fourth untracked path, an unexpected re-modification,
+    # a legacy file that disappears) is an unauthorised change and must FAIL.
+    try:
+        por = git("status", "--porcelain").splitlines()
+        tracked = set(p for p in LEGACY_DISPOSITION if git("ls-files", "--", p).strip())
+        ignored = set(p for p in LEGACY_DISPOSITION
+                      if subprocess.run(["git", "check-ignore", "-q", p], cwd=str(ROOT)).returncode == 0)
+        dirty = set(p for p in LEGACY_DISPOSITION if any(p in ln for ln in por))
+        observed_state = {}
+        for p in LEGACY_DISPOSITION:
+            if p in ignored:
+                observed_state[p] = "untracked_ignored"
+            elif p in tracked and p in dirty:
+                observed_state[p] = "tracked_dirty"
+            elif p in tracked:
+                observed_state[p] = "tracked_clean"
+            else:
+                observed_state[p] = "untracked"
+        state_ok = all(observed_state[p] == exp for p, exp in LEGACY_DISPOSITION.items())
+        v30_err = None
+    except Exception as exc:                    # noqa: BLE001 - git failure must be explicit
+        observed_state, state_ok, v30_err = {}, False, f"{type(exc).__name__}: {exc}"
+    n_uncommitted = sum(1 for s in observed_state.values() if s in ("tracked_dirty", "untracked"))
+    add("V30", "current disposition of the six legacy paths equals the reconciled ledger "
+               "(3 intentionally uncommitted / 2 authorised into VCS / 1 ignored)",
+        "ledger match", v30_err or {"n_uncommitted": n_uncommitted,
+                                    "mismatch": [p for p in LEGACY_DISPOSITION
+                                                 if observed_state.get(p) != LEGACY_DISPOSITION[p]]}
+        or "ledger match", v30_err is None and state_ok)
+
+    # V31 is history. Two separate facts, both re-derived from git (never from the worktree):
+    #  (a) inside the audited E21->E23 range no legacy path was ever added or modified;
+    #  (b) after that checkpoint only the authorised commit may touch a legacy path, and the
+    #      committed bytes must still equal the Stage-0 baseline.
+    try:
+        for sha in (LEGACY_HISTORY_RANGE[0], LEGACY_HISTORY_RANGE[1]):
+            git("cat-file", "-e", f"{sha}^{{commit}}")
+        hist_range = f"{LEGACY_HISTORY_RANGE[0]}..{LEGACY_HISTORY_RANGE[1]}"   # one revision arg
+        in_hist = git("log", "--name-only", "--pretty=format:", hist_range)
+        leaked_hist = [p for p in LEGACY_DISPOSITION if p in in_hist]
+        post = git("log", "--name-only", "--pretty=format:", f"{LEGACY_HISTORY_RANGE[1]}..HEAD")
+        post_hits = sorted(p for p in LEGACY_DISPOSITION if p in post)
+        unauthorised = sorted(set(post_hits) - set(LEGACY_AUTHORISED_COMMIT_PATHS))
+        blob_bad = {}
+        for p in post_hits:
+            ls = git("ls-files", "-s", "--", p).strip()
+            if not ls:
+                continue
+            blob = subprocess.run(["git", "cat-file", "blob", ls.split()[1]],
+                                  cwd=str(ROOT), capture_output=True).stdout
+            if hashlib.md5(blob).hexdigest() != LEGACY_MD5[p]:
+                blob_bad[p] = "committed bytes differ from baseline"
+        v31_err = None
+    except Exception as exc:                    # noqa: BLE001 - e.g. missing commit / not a repo
+        leaked_hist, post_hits, unauthorised, blob_bad = [], [], [], {}
+        v31_err = f"{type(exc).__name__}: {exc}"
+    v31_ok = v31_err is None and not leaked_hist and not unauthorised and not blob_bad
+    add("V31", "no legacy path in the E21->E23 range; afterwards only the authorised commit "
+               "touched legacy paths, with baseline bytes",
+        {LEGACY_HISTORY_RANGE[0]: "no leak", "post": "authorised only"},
+        v31_err or {"range_leak": leaked_hist or "none", "post_hits": post_hits,
+                    "unauthorised": unauthorised or "none", "blob": blob_bad or "baseline"},
+        v31_ok)
 
     # ---------------- 32-38. E23 self-consistency ----------------
     dly = list(csv.DictReader(open(E23 / "doll_per_image_delta.csv")))
@@ -408,13 +518,13 @@ def main() -> int:
         True, readme_ok, readme_ok)
 
     # ---------------- write ----------------
-    with open(E23 / "verification.csv", "w", newline="") as f:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["id", "check", "expected", "observed", "pass"])
         w.writeheader()
         w.writerows(results)
     n_fail = sum(1 for r in results if r["pass"] == "FAIL")
-    print(f"\n[E23 verification] {len(results)} checks, {n_fail} FAIL -> {E23 / 'verification.csv'}",
-          flush=True)
+    print(f"\n[E23 verification] {len(results)} checks, {n_fail} FAIL -> {out_path}", flush=True)
     return 1 if n_fail else 0
 
 
