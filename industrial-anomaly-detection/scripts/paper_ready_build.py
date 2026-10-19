@@ -227,7 +227,12 @@ def build_claims(summary: dict, mv: dict) -> None:
              f"artifacts.")
     L.append(f"- E23 (Doll audit) verdict = **{e23['verdict']}**: in 3/3 seeds the anomaly-side score "
              f"drop exceeds the normal-side drop and d' decreases; the degradation is broad across "
-             f"illumination groups (8-9 of 10 groups per seed).\n")
+             f"illumination groups (8-9 of 10 groups per seed).")
+    L.append("- E24 (sensitivity audit of the FROZEN configuration, Bird/Car/Cube only): the frozen "
+             "strength 0.85/1.15 ranks first of six strengths under a pre-registered stability rule "
+             "(3/3 positive cells, best worst-case, seed0 mean +0.015401), and strengths "
+             "0.95/1.05-0.85/1.15 form a plateau; 3-seed re-runs of S15 and S10 are not separable "
+             "(+0.013246 ± 0.014589 vs +0.015984 ± 0.014317). E24 does not redefine the frozen method.\n")
     L.append("## LIMITED CLAIMS (allowed only with the stated qualifier)\n")
     L.append("- *Results suggest broadly positive cross-category behaviour on M²AD.* "
              "(Qualifier: 9/10 categories, one reproducible regression; not universal.)")
@@ -239,7 +244,12 @@ def build_claims(summary: dict, mv: dict) -> None:
              "increase is also observed, and BETA=0 shows the opposite failure mode.)")
     L.append("- *The Doll failure is consistent with a mild, near-symmetric score shift in which the "
              "anomaly mass falls slightly more than the normal mass.* "
-             "(Qualifier: relative drops 0.95-1.00 of each other; no causal mechanism established.)\n")
+             "(Qualifier: relative drops 0.95-1.00 of each other; no causal mechanism established.)")
+    L.append("- *External evaluation on RobustAD indicates a stable domain dependence: PCB improves and "
+             "MetalParts degrades.* (Qualifier: adapter re-trained on each sub-dataset's own source "
+             "normals, not transferred; 11 valid target splits × 3 seeds; overall macro ΔAUROC "
+             "−0.00107 with a descriptive t-interval [−0.0033, +0.0012] that includes 0; 2 of 3 "
+             "sub-datasets covered.)\n")
     L.append("## FORBIDDEN CLAIMS\n")
     for item in ["Universal robustness across datasets, backbones or views",
                  "Improves all categories / improves every category",
@@ -247,10 +257,13 @@ def build_claims(summary: dict, mv: dict) -> None:
                  "Every illumination group improves",
                  "Causal proof of the illumination-shift mechanism",
                  "Normal dispersion reduction",
-                 "Cross-dataset generalization (no independent external dataset result exists)",
+                 "Cross-dataset generalization (one conditional external evaluation exists; a general "
+                 "improvement claim is still forbidden)",
                  "Statistically significant improvement on 9/10 categories",
                  "Doll is random noise / an artefact to be ignored",
-                 "The method universally preserves anomaly information"]:
+                 "The method universally preserves anomaly information",
+                 "Direct cross-dataset transfer (the adapter is re-trained on each RobustAD "
+                 "sub-dataset's own source normals)"]:
         L.append(f"- {item}")
     L.append("")
     (OUT / "paper_claims.md").write_text("\n".join(L))
@@ -279,7 +292,9 @@ def build_limitations() -> None:
          "The complete 10-category validation is on M²AD (view120, 300-bank, official "
          "`image_anomaly` + `detectable != False`) with a single backbone (DINOv2-B). MVTec AD 2 "
          "external validation was audited but is a HOLD (needs manual dataset access; single-scene "
-         "ΔAUROC noise half-width 0.04–0.07). Cross-dataset generalization is therefore untested.",
+         "ΔAUROC noise half-width 0.04–0.07). Cross-dataset generalization was untested before E25; "
+         "E25 now supplies one conditional external evaluation (see L6), so the limitation is narrowed "
+         "rather than removed.",
          "",
          "## L4 — Shift–gain association is exploratory",
          "The illumination-shift ↔ gain association has n = 10 categories (Pearson r = +0.371, "
@@ -293,6 +308,21 @@ def build_limitations() -> None:
          "cross-seed variability is reported separately as the std over the 3 bank seeds "
          "(e.g. Doll ΔAUROC −0.03850 ± 0.00379). The two are never merged, and image bootstrap CIs "
          "must not be read as cross-seed uncertainty.",
+         "",
+         "## L6 — External evaluation is conditional and re-trained (E25)",
+         "E25 evaluates R1-ILA on RobustAD (CC-BY-4.0), a dataset independent of M²AD. The adapter is "
+         "re-trained from scratch on each RobustAD sub-dataset's own 120 source-train normals "
+         "(hyperparameters read only from `results/e17/final_method.json`; 3 adapter seeds), and both "
+         "variants score the same 180-normal bank on the same target splits. This is therefore "
+         "external dataset validation with re-training, NOT a direct transfer of the M²AD adapter. "
+         "Across 11 valid target splits (PCB 5, MetalParts 6; MetalParts test0 excluded for a "
+         "145-file overlap with source-train) the result is domain dependent: PCB +0.01835 (5/5 "
+         "splits positive in all 3 seeds) and MetalParts −0.01725 (2/6 splits positive, background "
+         "and scale negative in all 3 seeds). The overall macro ΔAUROC is −0.00107 with a descriptive "
+         "t-interval over the 3 per-seed macros of [−0.0033, +0.0012], so no overall improvement is "
+         "claimed. Coverage limits: 2 of 3 RobustAD sub-datasets (PiledBags not downloaded), a single "
+         "backbone, plain image-level AUROC/AP (RobustAD has no `detectable` field), and anisotropic "
+         "448×448 resizing for MetalParts.",
          ""]
     (OUT / "paper_limitations.md").write_text("\n".join(L))
     print("[paper_ready] wrote paper_limitations.md", flush=True)
@@ -300,6 +330,8 @@ def build_limitations() -> None:
 
 def build_evidence_map(summary: dict) -> None:
     L = ["# Paper evidence map (claim → evidence → files → boundary)\n",
+         "> Consolidated 13-section map, including E24 and E25: "
+         "`results/paper_ready/EVIDENCE_MAP.md` (hand-curated; this file covers Claims A–F only).\n",
          "### Claim A — R1-ILA shows broadly positive cross-category behaviour on M²AD",
          f"Evidence: E22 (10 categories × 3 seeds × view120): {summary['n_pos_auroc']}/10 positive "
          f"mean ΔAUROC, macro mean {summary['macro_mean_auroc']}, median {summary['median_auroc']}, "
@@ -351,7 +383,30 @@ def build_evidence_map(summary: dict) -> None:
          "in any later experiment; frozen core files unchanged (verified in E22 V31 and E23).",
          "Files: `results/e17/final_method.json`, `results/e18/README.md`, `results/e19/README.md`, "
          "`results/e22/protocol.md`.",
-         "Boundary: parameter claims must cite `final_method.json`; never hand-copy hyperparameters.\n"]
+         "Boundary: parameter claims must cite `final_method.json`; never hand-copy hyperparameters.\n",
+         "### Claim G — External evaluation on RobustAD is conditionally positive (E25)",
+         "Evidence: E25 re-trains the frozen adapter on each RobustAD sub-dataset (PCB, MetalParts) "
+         "and scores the same 180-normal bank with F0 (frozen DINOv2-B 1-NN-max) and R1; 39 cells = "
+         "13 splits × 3 adapter seeds, all status OK, per-cell AUROC/AP recomputation max|d| = 0.0. "
+         "11 valid non-source target splits: PCB +0.01835 (5/5 splits positive, all 3 seeds), "
+         "MetalParts −0.01725 (2/6 positive; background/scale negative in all 3 seeds); overall macro "
+         "ΔAUROC −0.00107, t-interval [−0.00333, +0.00119]; macro ΔAP −0.00544.",
+         "Files: `results/e25/README.md` (§15), `multiseed_summary.csv`, "
+         "`multiseed_analysis.json`, `cells/*.json`, `figures/e25_multiseed_domain_delta.*`, "
+         "`results/paper_ready/EVIDENCE_MAP.md` §7–§9.",
+         "Boundary: re-trained per sub-dataset, so NOT direct transfer; no overall gain; not caused by "
+         "a specific mechanism (scale/background/geometry hypotheses untested); 2 of 3 sub-datasets.\n",
+         "### Claim H — The frozen augmentation setting is an audited, non-arbitrary choice (E24)",
+         "Evidence: E24 scans 6 strengths × 3 development categories (seed0) and 7 augmentation-type "
+         "subsets, plus 3-seed re-runs of the top two strengths, on the SAME frozen pipeline "
+         "(reproduction vs E18 `Ours`/`F0`: 9/9 checks, max|d| = 0.0). S15 ranks first under the "
+         "pre-registered rule (3/3 positive, worst +0.010614, mean +0.015401); S05–S15 is a plateau; "
+         "S10 is +0.00274 higher over 3 seeds but the gap is 0.19× the seed std; gamma alone (A2 "
+         "+0.019067) exceeds the full set (A6 +0.015401) at seed0 only.",
+         "Files: `results/e24/README.md`, `tables/strength_ranked.csv`, `tables/type_ranked.csv`, "
+         "`tables/stability_multiseed.csv`, `final_strength_analysis.json`, `figures/`.",
+         "Boundary: audit only — KEEP_FROZEN; S10 and A2 are candidates, never the frozen method; "
+         "single seed for the type ablation; no mechanistic claim about gamma.\n"]
     (OUT / "paper_evidence_map.md").write_text("\n".join(L))
     print("[paper_ready] wrote paper_evidence_map.md", flush=True)
 
@@ -374,8 +429,12 @@ def build_readme() -> None:
          "negative cells; `e21_verdict = HOLD` on every row | `results/e21/analysis_cells.csv` |",
          "| `paper_claims.md` | SAFE / LIMITED / FORBIDDEN claims (numbers injected from the tables) | "
          "`results/e22/*`, `results/e21/analysis_overall.csv` |",
-         "| `paper_limitations.md` | L1–L5 limitation material | E22/E21/E20/E23 |",
-         "| `paper_evidence_map.md` | Claim → evidence → files → boundary (Claims A–F) | all of the above |",
+         "| `paper_limitations.md` | L1–L6 limitation material | E22/E21/E20/E23/E25 |",
+         "| `paper_evidence_map.md` | Claim → evidence → files → boundary (Claims A–H) | all of the above |",
+         "| `EVIDENCE_MAP.md` | **Single authoritative 13-section evidence map** (frozen method → "
+         "M²AD → main results → ablation → E24 → multi-seed → E25 → PCB/MP → CAN/CANNOT → "
+         "open hypotheses → exact source files); hand-curated, not regenerated | E17/E18/E21/E22/"
+         "E23/E24/E25 |",
          "| `figures/` + `figure_manifest.csv` | Main Fig A–C, Supplement Fig D–E (+2 optional), "
          "copied (never redrawn) with provenance | `results/e22|e21|e23/figures/` |",
          "",
@@ -388,6 +447,11 @@ def build_readme() -> None:
          "4. Image bootstrap CIs are test-set sampling uncertainty, never cross-seed uncertainty.",
          "5. Numbers must be quoted from these tables (or from the frozen E22/E17/E21 artifacts they "
          "mirror), not retyped from prose.",
+         "6. Dataset names: M²AD is the main evaluation dataset (10 categories); Bird/Car/Cube are 3 "
+         "of those 10 and are the method-development categories. Never call them an external or "
+         "second dataset. RobustAD is the only independent external dataset in this chain.",
+         "7. E25 re-trains the adapter on each RobustAD sub-dataset: write 'external dataset "
+         "validation' or 'external evaluation', never 'direct cross-dataset transfer'.",
          "",
          "```bash",
          "cd /root/autodl-tmp/research-experiments/industrial-anomaly-detection",
@@ -413,7 +477,8 @@ def main() -> int:
     build_readme()
     (OUT / "build_summary.json").write_text(json.dumps(
         {"main_table": summary, "multiview": mv,
-         "built_from": ["results/e22", "results/e17", "results/e21", "results/e23"]}, indent=1))
+         "built_from": ["results/e22", "results/e17", "results/e21", "results/e23",
+                        "results/e24", "results/e25"]}, indent=1))
     print("[paper_ready] done", flush=True)
     return 0
 

@@ -10,8 +10,9 @@ This directory contains the paper-facing tables, figures, claims and limitations
 | `paper_ablation_table.csv` | E17 BETA ablation (5 configs × 3 categories) with the corrected BETA=0 wording in the `note` column | `results/e17/summary.csv` |
 | `paper_multiview_table.csv` | E21 12 cells (3 categories × 4 views), including all negative cells; `e21_verdict = HOLD` on every row | `results/e21/analysis_cells.csv` |
 | `paper_claims.md` | SAFE / LIMITED / FORBIDDEN claims (numbers injected from the tables) | `results/e22/*`, `results/e21/analysis_overall.csv` |
-| `paper_limitations.md` | L1–L5 limitation material | E22/E21/E20/E23 |
-| `paper_evidence_map.md` | Claim → evidence → files → boundary (Claims A–F) | all of the above |
+| `paper_limitations.md` | L1–L6 limitation material | E22/E21/E20/E23/E25 |
+| `paper_evidence_map.md` | Claim → evidence → files → boundary (Claims A–H) | all of the above |
+| `EVIDENCE_MAP.md` | **Single authoritative 13-section evidence map** (frozen method → M²AD → main results → ablation → E24 → multi-seed → E25 → PCB/MP → CAN/CANNOT → open hypotheses → exact source files); hand-curated, not regenerated | E17/E18/E21/E22/E23/E24/E25 |
 | `figures/` + `figure_manifest.csv` | Main Fig A–C, Supplement Fig D–E (+2 optional), copied (never redrawn) with provenance | `results/e22|e21|e23/figures/` |
 
 **Hard rules for anyone writing the paper from this pack**:
@@ -20,6 +21,8 @@ This directory contains the paper-facing tables, figures, claims and limitations
 3. E21 stays **HOLD**; Car 240/330 and Cube 090/330 must remain visible.
 4. Image bootstrap CIs are test-set sampling uncertainty, never cross-seed uncertainty.
 5. Numbers must be quoted from these tables (or from the frozen E22/E17/E21 artifacts they mirror), not retyped from prose.
+6. Dataset names: M²AD is the main evaluation dataset (10 categories); Bird/Car/Cube are 3 of those 10 and are the method-development categories. Never call them an external or second dataset. RobustAD is the only independent external dataset in this chain.
+7. E25 re-trains the adapter on each RobustAD sub-dataset: write 'external dataset validation' or 'external evaluation', never 'direct cross-dataset transfer'.
 
 ```bash
 cd /root/autodl-tmp/research-experiments/industrial-anomaly-detection

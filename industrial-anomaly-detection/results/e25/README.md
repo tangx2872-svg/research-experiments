@@ -27,9 +27,11 @@
 
 ## 3. 本实验要验证的核心论断
 
-> 「在 M²AD 上冻结的 R1-ILA（BETA=0.1，mild photometric augmentation，normal-only 训练）能够**跨数据集**迁移：在未见过的真实工业域偏移（光照/白平衡/阴影/位姿/尺度/背景）上，相对同 bank 的冻结 DINOv2-B 1-NN-max 仍保持检测性能提升。」
+> 「在 M²AD 上冻结的 R1-ILA 超参（BETA=0.1，mild photometric augmentation，normal-only 训练），在 **RobustAD 每个 sub-dataset 自身的 source-train normal 上重新训练 adapter** 后，能否在未见过的真实工业域偏移（光照/白平衡/阴影/位姿/尺度/背景）上，相对同 bank 的冻结 DINOv2-B 1-NN-max 仍保持检测性能提升。」
 
 该论断的**否定形式**同样重要：若在部分域上退化，则「外部泛化」只能以**有条件**的方式陈述。
+
+**训练方式口径（以代码为准，`scripts/e25_robustad_eval.py` 的 `run_domain`）**：每个 domain、每个 seed 都从零初始化 `LinearAdapter`，在该 domain 的 180 张 source-train normal 上重新训练（前 120 训练 / 后 60 验证）；**从未加载 M²AD 上训练得到的 adapter**（6 次运行的 `adapter_hash` 互不相同）。因此本实验只能称为 **external dataset validation（外部数据集验证）**，**不是 direct cross-dataset transfer（直接跨数据集迁移）**，论文中不得使用后者。
 
 ---
 

@@ -12,6 +12,7 @@ All SAFE numbers below are injected programmatically from `paper_main_table.csv`
 - Multi-view evaluation (E21, 4 views × 3 categories × seed0): 8 of 12 cells have ΔAUROC > 0; the macro pooled ΔAUROC is 0.00142 and ΔAP is -0.00165; E21 verdict = **HOLD**.
 - E22 passed **36 of 36** independent verification checks with no rewriting of any stored score, and every negative cell is retained in the committed artifacts.
 - E23 (Doll audit) verdict = **EXPLAINED_PATTERN**: in 3/3 seeds the anomaly-side score drop exceeds the normal-side drop and d' decreases; the degradation is broad across illumination groups (8-9 of 10 groups per seed).
+- E24 (sensitivity audit of the FROZEN configuration, Bird/Car/Cube only): the frozen strength 0.85/1.15 ranks first of six strengths under a pre-registered stability rule (3/3 positive cells, best worst-case, seed0 mean +0.015401), and strengths 0.95/1.05-0.85/1.15 form a plateau; 3-seed re-runs of S15 and S10 are not separable (+0.013246 ± 0.014589 vs +0.015984 ± 0.014317). E24 does not redefine the frozen method.
 
 ## LIMITED CLAIMS (allowed only with the stated qualifier)
 
@@ -19,6 +20,7 @@ All SAFE numbers below are injected programmatically from `paper_main_table.csv`
 - *Multi-view experiments indicate that benefits are not restricted exclusively to view120, but substantial viewpoint heterogeneity remains.* (Qualifier: 8/12 cells positive; Car 240/330 negative; HOLD verdict.)
 - *Score-drift diagnostics are consistent with reduced illumination-related variation in several evaluated settings.* (Qualifier: 'consistent with' only; a normal-dispersion increase is also observed, and BETA=0 shows the opposite failure mode.)
 - *The Doll failure is consistent with a mild, near-symmetric score shift in which the anomaly mass falls slightly more than the normal mass.* (Qualifier: relative drops 0.95-1.00 of each other; no causal mechanism established.)
+- *External evaluation on RobustAD indicates a stable domain dependence: PCB improves and MetalParts degrades.* (Qualifier: adapter re-trained on each sub-dataset's own source normals, not transferred; 11 valid target splits × 3 seeds; overall macro ΔAUROC −0.00107 with a descriptive t-interval [−0.0033, +0.0012] that includes 0; 2 of 3 sub-datasets covered.)
 
 ## FORBIDDEN CLAIMS
 
@@ -28,7 +30,8 @@ All SAFE numbers below are injected programmatically from `paper_main_table.csv`
 - Every illumination group improves
 - Causal proof of the illumination-shift mechanism
 - Normal dispersion reduction
-- Cross-dataset generalization (no independent external dataset result exists)
+- Cross-dataset generalization (one conditional external evaluation exists; a general improvement claim is still forbidden)
 - Statistically significant improvement on 9/10 categories
 - Doll is random noise / an artefact to be ignored
 - The method universally preserves anomaly information
+- Direct cross-dataset transfer (the adapter is re-trained on each RobustAD sub-dataset's own source normals)
