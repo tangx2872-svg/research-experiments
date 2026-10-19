@@ -411,3 +411,15 @@ PY
 ```
 
 **术语**：`l0_448` = 448×448 BICUBIC 无损 WebP 缓存；`pool` = bank 池 1200 图；`test120` = view120 评测集原始记录；`gate` = 取数后存在性+尺寸+模式校验。
+
+---
+
+## 14. 统计口径勘误（2026-10-19，仅追加，不改历史正文）
+
+**事实（代码级核对）**：`scripts/e22_analysis.py:226` 定义 `"p_d_auroc_gt0": float((das > 0).mean())`；`das` 来自 `paired_bootstrap()` 中每次配对图像重采样算出的 `AUROC(R1) − AUROC(F0)`。因此该字段表示 **bootstrap 重采样中 ΔAUROC > 0 的比例**（`p_d_ap_gt0` 同理），**不是**传统假设检验的单侧或双侧 p 值：它没有零假设、没有检验统计量，也没有对观测极端性的概率定义。
+
+**表述规范**：论文面向文本统一写 **P_boot(ΔAUROC > 0)**（bootstrap positive-difference proportion），不写 `p = …` / `p < …`，也不写 "significant at α = …"。历史表格表头与 JSON 字段名保持原样（`p(ΔAUROC>0)`、`p_d_auroc_gt0`），阅读时按上述定义换算。
+
+**影响范围**：**不改变**任何逐图分数、AUROC/AP、ΔAUROC/ΔAP、bootstrap CI、类别均值、判定（HOLD）或验证记录；`bootstrap_e22.json` 的数值与字段名均未修改。Doll 的 `P_boot(ΔAUROC>0) = 0.001` 仍只是一个重采样比例，论文中不得把它写成单侧 p 值，也不得据此声称进行了显著性检验。
+
+**为何追加**：原文档把该比例记作 `p`，容易被误读为假设检验的 p 值；本次只修正统计口径表述，不回溯修改任何历史数字。

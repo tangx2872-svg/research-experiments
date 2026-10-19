@@ -163,7 +163,7 @@ Frozen configuration actually executed:
 
 Descriptive probe only (first 20 pairs): pixel dimensions match, but the 64×64 grayscale mean absolute difference is **10.94–32.46** on a 0–255 scale (0 would mean identical).
 
-**Finding**: the overlap is **NAME-LEVEL ONLY**. All 145 files differ in content — same names, same dimensions, different captures. Reused file names still suggest possible source/target entanglement in how the sub-dataset was assembled, but **content-level contamination is not demonstrated**.
+**Finding**: the overlap is **not a byte-level duplicate set**. All 145 files differ in their raw bytes — same names, same dimensions, different bytes. What this excludes is **exact byte duplication only**; **near-duplication was not tested**, and the thumbnail differences do **not** establish that the two splits were acquired from independent scenes. Reused file names still suggest possible source/target entanglement in how the sub-dataset was assembled; contamination is neither demonstrated nor excluded beyond byte identity.
 
 **Consequence (binding)**
 
@@ -171,4 +171,4 @@ Descriptive probe only (first 20 pairs): pixel dimensions match, but the 64×64 
 2. The **rationale** is downgraded from "proven contamination" to **"conservative exclusion, rationale weakened"**. Changing the exclusion itself would alter the E25 protocol and its published aggregates, so it may only be revisited in a **new, separately approved analysis** — never in a documentation pass.
 3. The audit result is **file-name-level and outcome-independent**, so the timing argument in §6 is unaffected.
 
-**Required wording in the paper**: state that 145 file names are shared with `source-train`, that a byte-level audit found **0 of 145 identical in content**, and that the split is excluded **conservatively** under the original protocol rather than because contamination was demonstrated. Do **not** write "the same images appear in train and test0".
+**Required wording in the paper**: state that 145 file names are shared with `source-train`, that a byte-level audit found **0 of 145 byte-identical** (near-duplication was not tested), and that the split is excluded **conservatively** under the original protocol rather than because contamination was demonstrated. Do **not** write "the same images appear in train and test0", and do **not** write that contamination has been ruled out — only exact byte duplication has.

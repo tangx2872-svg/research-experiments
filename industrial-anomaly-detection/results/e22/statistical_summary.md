@@ -96,3 +96,7 @@ Only the SPREAD across groups is interpretable (R1-ILA changes the feature scale
 
 - **May be claimed**: the unselected result of frozen R1-ILA across 10 M²AD categories × 3 seeds × view120 (per-category means, seed variability, win rates, CIs, all negatives).
 - **May not be claimed**: causal attribution (illumination shift ↔ gain is an association at n=10); generalization beyond M²AD / this backbone / view120; image bootstrap CIs as if they were cross-seed uncertainty; a STOP verdict as 'paper failed'.
+
+## 统计口径说明（2026-10-19）
+
+本文档中的 `p(ΔAUROC>0)` / `p(ΔAP>0)` 列，以及 JSON 字段 `p_d_auroc_gt0` / `p_d_ap_gt0`，表示配对图像 bootstrap 中指标差大于 0 的**重采样比例**，不是假设检验的单侧或双侧 p 值；论文面向文本统一记为 **P_boot(ΔAUROC>0)**。代码依据（`scripts/e22_analysis.py:226`）与影响范围见 `README.md` §14。该说明不改变任何分数、指标、区间或既有判定。

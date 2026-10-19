@@ -174,6 +174,8 @@
 | 是否每个 domain / seed 重训 | **是**，每个 (sub-dataset, seed) 独立训练一次；同一 sub-dataset 的 6–7 个 target split 共用该 adapter（**不是**每 split 一个） | `partial.json` 6 条记录；`adapter_hash` 6 个互不相同 |
 | 是否用过 M²AD 的 adapter | **从未**（无任何 load/checkpoint 路径） | 全文件无 `load_state_dict` / 权重读取 |
 | baseline 与 R1 是否同划分 | **是**，B0 与 B1 用同一 180-normal bank、同一测试图、同一标签 | L357–409 |
+| bank 与训练/验证划分 | bank = 该 sub-dataset 的 **180 张 source-train normal**；adapter 在这 180 张上重训，**前 120 训练 / 后 60 验证**（E17 协议 `TRAIN_N=240` 因 bank 规模不可满足降为 120，属 bank 约束，**非调参**） | `run_domain()`；`README` §4/§5 |
+| 几何预处理 | **方形 448×448**：PCB 2048² 与原短边路径**逐位等价**（tensor 与 DINOv2 特征 `max|Δ| = 0.0`）；MetalParts 2681×1500 为 16:9 → 1:1 **各向异性压缩**，绝对水平**不可**与 PCB 横向比较（配对差仍公平） | `geometry_PCB.json` / `geometry_MetalParts.json`；`ROBUSTAD_PROTOCOL_AUDIT.md` §10 |
 | seed 改变什么 | 仅 (i) 训练 batch 的 normal 采样顺序、(ii) 每样本抽到 6 个增广变体中的哪一个；`W` 为零初始化，**初始化本身与 seed 无关**；bank / 测试图 / 增广集合 / 超参均不变 | `LinearAdapter.__init__` 零初始化；`train_r1` 内 `rng.integers` ×2 |
 
 **结论（唯一）**：**A 分支 —— external dataset validation**。**禁止**写 "direct cross-dataset transfer"。
@@ -186,18 +188,18 @@
 |---|---|---|
 | 11 个有效 target split × 3 seed | **33** | **是** |
 | PCB test0（source reference，`valid=1`） | 3 | 否（仅用于 source→target 描述） |
-| MetalParts test0（`valid=0`） | 3 | 否（**同名重叠、内容不同**，见 §7.6 / §9） |
+| MetalParts test0（`valid=0`） | 3 | 否（**同名重叠、非字节重复；近重复未检验**，见 §7.6 / §9） |
 
 即 **39 = 33 + 3 + 3**。因此**不得笼统写"无排除"**：样本没有被删除，指标也没有被填零，被排除的是**聚合口径**；同时**无缺失 cell、无重复重跑 cell**。推荐表述：**"39/39 cell 均完成；MP test0 依照所述有效性规则不纳入汇总。"**
 **日志中的 6 次 Traceback 均为写 cell 之前的工程错误**（MetalParts 非方形导致 1824 token、`AUG_BS`/`geom` 未定义），修复后重跑，**未影响任何已落盘结果**。
 
 **7.6 MP test0 有效性规则：依据与时点（含 2026-10-19 勘误）**：规则 = "145 个文件名与 source-train 重合（104 normal / 41 anomaly）→ `valid=0`，不纳入 held-out"。
 
-- **勘误（事实层）**：字节级 SHA-256 审计（`results/e25/overlap_audit.json`）比对全部 145 对同名文件：**内容相同 0 对、不同 145 对、缺失 0**；抽样 20 对 64×64 灰度平均绝对差 **10.94–32.46/255**。⇒ 重叠**仅为文件名层面**，原协议「test0 图像与 train 是同一批物理文件」**事实错误，已被取代**（`ROBUSTAD_PROTOCOL_AUDIT.md` §11）。
+- **勘误（事实层）**：字节级 SHA-256 审计（`results/e25/overlap_audit.json`）比对全部 145 对同名文件：**字节相同 0 对、不同 145 对、缺失 0**；抽样 20 对 64×64 灰度平均绝对差 **10.94–32.46/255**。⇒ **只能排除字节完全重复**；**近重复（perceptual / near-duplicate）未检验**，缩略图差异也不证明采集对象独立。原协议「test0 图像与 train 是同一批物理文件」**事实错误，已被取代**（`ROBUSTAD_PROTOCOL_AUDIT.md` §11）。
 - **决定不变**：`valid=0`、cell 账目 **39 = 33 + 3 + 3**、以及全部聚合数字**均不变**；理由从「已证明污染」降级为「**保守排除、理由被削弱**」。若要改为纳入，必须走单独批准的新分析。
 - **时点（诚实标注）**：该规则是**文件名级、结果无关**的判定，不依赖任何指标。文档位置 `results/e25/ROBUSTAD_PROTOCOL_AUDIT.md` §6；该文件最后写入 2026-10-18 21:41，早于 MetalParts 首个 cell（21:52），但**协议与结果同处一个提交 `8ea1d73`**，Git 无法证明它先于任何结果写定。
 
-→ 论文中只能写 **"145 file names are shared with source-train; a byte-level audit found 0/145 identical in content; the split is excluded conservatively under the original protocol, documented before this sub-dataset was run but not provably pre-registered"**；**不得**写「同一批图像同时出现在 train 和 test0」，也**不得**声称预注册。
+→ 论文中只能写 **"145 file names are shared with source-train; a byte-level audit found 0/145 byte-identical (near-duplication untested); the split is excluded conservatively under the original protocol, documented before this sub-dataset was run but not provably pre-registered"**；**不得**写「同一批图像同时出现在 train 和 test0」，**不得**写「已证明无污染 / 无近重复」，也**不得**声称预注册。
 
 ---
 
@@ -212,6 +214,7 @@
 | 逐 seed 域均值 | 0: +0.021713 / 1: +0.018500 / 2: +0.014843（seed 间 std **0.00344**） |
 | 正向 split | **5 / 5**（均值口径）；**5 / 5 在 3 个 seed 上全正** |
 | 基线水平 | target 平均 AUROC **0.4447**（test3 rotation 仅 0.349，**低于随机**） |
+| **绝对水平** | **F0 0.444722 → R1 0.463074**（5 split 等权、3 seed 均值；`multiseed_analysis.json:per_domain.PCB`） |
 | source split | test0 **−0.00807 ± 0.00192**（全 3 seed 负，不计入域均值） |
 
 **边界**：增益发生在**接近失效的基线**上（headroom 极大），**不得**称为"外部验证成功"，也不得把绝对值与 MetalParts 横向比较。
@@ -339,7 +342,7 @@
 | E17 冻结参数 | `results/e17/final_method.json` |
 | E18 等价性锚点 | `results/e18/main_table.csv` |
 | E22 主表 / 验证 | `results/e22/main_table_10cat_3seed.csv`、`results/e22/verification.csv`（36/36） |
-| E23 证据包校验 | `results/e23/verification.csv`（38/38）、`scripts/e23_verify.py` |
+| E23 证据包校验 | `results/e23/verification.csv`（历史 38/38）；当前 **45 项**套件见 `verification_reconciliation_20261019_e22_erratum.csv`；脚本 `scripts/e23_verify.py`＋`scripts/verification_reverse_tests.py` |
 | E24 判定 | `results/e24/final_strength_analysis.json`（`s15_decision.keep_s15 = true`） |
 | E24 复现校验 | 同上 `frozen_config_reproduction`（`pass: true`, `max_abs_diff: 0.0`） |
 | E25 复现校验 | `results/e25/multiseed_analysis.json:verification`（`max_abs_diff: 0.0`） |
@@ -360,7 +363,8 @@
 - **2026-10-19 勘误轮验证**：Doll 样本 std（0.00379→0.004638）+ Macro Avg std 留空 + E18 锚点修正 + E25 MetalParts `test0` 措辞勘误 → `results/paper_ready/verification_reconciliation_20261019_post_errata.csv`（**38 项 / 0 FAIL**，检查总数不变、容差未放宽）。
 - **V30/V31 已于 2026-10-19 修订**（见 `results/e23/VERIFICATION_SEMANTICS.md`）：
   - V29 = 六个 legacy 路径**字节未变**（文件缺失 → FAIL，不再抛异常中断）；
-  - V30 = **当前**处置与对账台账一致（3 项有意未提交 + 2 项经授权入库 + 1 项被忽略），任何第四项未跟踪路径或已入库文件被再次修改 → FAIL；
-  - V31 = **历史**：E21→E23 区间（`8957237..5b24193`）无 legacy 路径泄漏；该检查点之后只有授权提交 `9781e9d` 可触碰 legacy 路径，且提交内的 blob 必须与 Stage-0 md5 一致。
-  - 历史 38/38 记录保留在 `results/e23/verification.csv`；当前运行写入 `results/paper_ready/verification_reconciliation_<date>.csv`（`--out`）。
+  - V30 = **当前**处置与对账台账一致（3 项有意未提交 + 2 项经授权入库 + 1 项被忽略）。范围**仅限这六个 legacy 路径**（不宣称自动审计全仓）：缺失文件、状态不符、已入库文件被再次修改 → FAIL；其他未跟踪文件**单独报告**，不计为 legacy 违规。
+  - V31 = **历史（逐提交核验）**：E21→E23 区间（`8957237..5b24193`）内无 legacy 路径变动；该检查点之后，只有授权提交 `9781e9d` 的两个授权路径可以出现，变动类型仅限 **A/M**，且**该历史提交对象内的 blob** 必须等于 Stage-0 md5。未授权提交、**改后还原**、删除（D）、重命名（R）、以及合并提交中的同类变动（按第一父核验）均判 FAIL；所有 Git 子进程检查退出码，命令失败**不得**等价于“空历史”。
+  - **反向测试**：`scripts/verification_reverse_tests.py` 在隔离临时仓库中覆盖 11 个场景（缺失、台账错、未授权修改、**改后还原**、删除、重命名、Git 失败、合并、多条目解析）；记录见 `verification_reverse_tests_20261019.csv`；V44 每次运行都会重新执行它们并要求按预期 FAIL/PASS。
+  - 历史 38/38 记录保留在 `results/e23/verification.csv`；当前运行写入 `results/paper_ready/verification_reconciliation_<date>.csv`（`--out`），当前套件为 **45 项**。
 - 本文件**不被任何自动生成脚本覆盖**；若与生成产物冲突，以本文件为准并修正 `scripts/paper_ready_build.py`。

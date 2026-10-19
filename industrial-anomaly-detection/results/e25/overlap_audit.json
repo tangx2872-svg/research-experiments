@@ -18,7 +18,12 @@
     "mean_abs_diff_64x64_gray_max": 32.46,
     "note": "values are on a 0-255 scale; identical images would give 0"
   },
-  "finding": "The overlap is NAME-LEVEL ONLY. All 145 files differ in content; they share file names and dimensions but are different captures, not the same stored files.",
+  "finding": "The overlap is NOT a byte-level duplicate set. All 145 pairs differ in raw bytes; they share file names and pixel dimensions but are not the same stored files. Exact byte duplication is excluded; near-duplication (perceptual hashing) was NOT tested, and thumbnail differences do not establish that the splits were acquired from independent scenes.",
+  "limits": [
+    "Byte identity is the only property tested; near-duplicate detection was not run and no perceptual hash experiment is implied.",
+    "The 64x64 mean-|diff| probe is descriptive and does not prove distinct acquisition or scene independence.",
+    "No claim is made that contamination is ruled out; only that the 145 pairs are not byte-identical."
+  ],
   "consequence": {
     "aggregates_unchanged": true,
     "mp_test0_exclusion": "retained exactly as originally decided (valid=0, excluded from all target aggregates)",

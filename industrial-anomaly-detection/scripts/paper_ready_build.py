@@ -337,10 +337,11 @@ def build_limitations() -> None:
          "splits × 3 seeds) enter the target aggregates, 3 are PCB test0 (source reference) and 3 are "
          "MetalParts test0, which is excluded under the original protocol (145 file names shared with "
          "source-train) and is reported with valid=0 but never zero-filled. A 2026-10-19 byte-level "
-         "SHA-256 audit of that overlap found 0 of 145 pairs identical in content "
-         "(`results/e25/overlap_audit.json`), so the overlap is name-level only: the \"same stored "
-         "files\" rationale is superseded and the exclusion is retained conservatively, with a "
-         "weakened rather than proven rationale. That validity rule is file-name-level and "
+         "SHA-256 audit of that overlap found 0 of 145 pairs byte-identical "
+         "(`results/e25/overlap_audit.json`), so exact byte duplication is excluded but "
+         "near-duplication was NOT tested: the \"same stored files\" rationale is superseded and the "
+         "exclusion is retained conservatively, with a weakened rather than proven rationale. That "
+         "validity rule is file-name-level and "
          "outcome-independent; it is documented before the MetalParts run but, because protocol and "
          "results were committed together, it cannot be proven pre-registered. "
          "The result is sub-dataset dependent: PCB +0.01835 (5/5 splits positive in all 3 seeds) and "
@@ -448,12 +449,14 @@ def build_readme() -> None:
          "method change.\n",
          "This directory contains the paper-facing tables, figures, claims and limitations, all "
          "built deterministically from FROZEN artifacts by `scripts/paper_ready_build.py` and "
-         "re-checked by `scripts/e23_verify.py` (`results/e23/verification.csv`).\n",
+         "re-checked by `scripts/e23_verify.py` (current suite: 45 checks; the historical 38/38 "
+         "record is `results/e23/verification.csv`, current runs must pass `--out`).\n",
          "| File | Content | Source of truth |",
          "|---|---|---|",
          "| `paper_main_table.csv` | 10 categories × (F0/R1 AUROC·AP mean±std, ΔAUROC/ΔAP mean±std, "
-         "positive seeds) + **Macro Avg** row (std cells intentionally blank in that row) | "
-         "`results/e22/main_table_10cat_3seed.csv` |",
+         "positive seeds) + **Macro Avg** row (std cells intentionally blank in that row — blank "
+         "means *not defined at this aggregation level*, never 0; mean(category std) is not a "
+         "cross-seed std) | `results/e22/main_table_10cat_3seed.csv` |",
          "| `paper_ablation_table.csv` | E17 BETA ablation (5 configs × 3 categories) with the "
          "corrected BETA=0 wording in the `note` column | `results/e17/summary.csv` |",
          "| `paper_multiview_table.csv` | E21 12 cells (3 categories × 4 views), including all "

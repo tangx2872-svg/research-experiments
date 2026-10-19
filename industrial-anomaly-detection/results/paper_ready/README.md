@@ -2,11 +2,11 @@
 
 **Created**: 2026-10-16. **Scope**: consolidation only — no new experiment, no GPU, no method change.
 
-This directory contains the paper-facing tables, figures, claims and limitations, all built deterministically from FROZEN artifacts by `scripts/paper_ready_build.py` and re-checked by `scripts/e23_verify.py` (`results/e23/verification.csv`).
+This directory contains the paper-facing tables, figures, claims and limitations, all built deterministically from FROZEN artifacts by `scripts/paper_ready_build.py` and re-checked by `scripts/e23_verify.py` (current suite: 45 checks; the historical 38/38 record is `results/e23/verification.csv`, current runs must pass `--out`).
 
 | File | Content | Source of truth |
 |---|---|---|
-| `paper_main_table.csv` | 10 categories × (F0/R1 AUROC·AP mean±std, ΔAUROC/ΔAP mean±std, positive seeds) + **Macro Avg** row (std cells intentionally blank in that row) | `results/e22/main_table_10cat_3seed.csv` |
+| `paper_main_table.csv` | 10 categories × (F0/R1 AUROC·AP mean±std, ΔAUROC/ΔAP mean±std, positive seeds) + **Macro Avg** row (std cells intentionally blank in that row — blank means *not defined at this aggregation level*, never 0; mean(category std) is not a cross-seed std) | `results/e22/main_table_10cat_3seed.csv` |
 | `paper_ablation_table.csv` | E17 BETA ablation (5 configs × 3 categories) with the corrected BETA=0 wording in the `note` column | `results/e17/summary.csv` |
 | `paper_multiview_table.csv` | E21 12 cells (3 categories × 4 views), including all negative cells; `e21_verdict = HOLD` on every row | `results/e21/analysis_cells.csv` |
 | `paper_claims.md` | SAFE / LIMITED / FORBIDDEN claims (numbers injected from the tables) | `results/e22/*`, `results/e21/analysis_overall.csv` |

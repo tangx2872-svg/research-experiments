@@ -1,7 +1,7 @@
 # E23 验证语义修订记录（V30 / V31）
 
 **日期**：2026-10-19 ｜ **性质**：验证脚本语义修订，0 GPU、0 重训、不改任何结果
-**脚本**：`scripts/e23_verify.py` ｜ **检查总数**：仍为 **38**（未增删检查项，未放宽任何数值容差）
+**脚本**：`scripts/e23_verify.py` ｜ **检查总数**：**45**（2026-10-19 第二轮新增 V39–V45；V17/V24 为原地加强；**未放宽任何数值容差**）
 
 ---
 
@@ -78,4 +78,71 @@
 ## 6. 已知残留不一致（如实保留）
 
 - 历史 `verification.csv` 的 V30/V31 描述文字仍是"6/6 dirty"与"never added"，与其记录的 38/38 自洽，但**不再适用于当前状态**；本文档即为差异说明，不修改历史 CSV。
-- 若未来再次改动 legacy 路径的跟踪状态，必须同步更新 `LEGACY_DISPOSITION` / `LEGACY_AUTHORISED_COMMIT_PATHS` 并在本文件追加一节，**不得**通过删检查或放宽容差来恢复绿色。
+- 若未来再次改动 legacy 路径的跟踪状态，必须同步更新 `LEGACY_DISPOSITION` / `LEGACY_AUTHORISED` 并在本文件追加一节，**不得**通过删检查或放宽容差来恢复绿色。
+
+---
+
+## 7. 2026-10-19 第二轮：V30/V31 实质加固、E22 授权勘误与新增检查
+
+**触发**：上一轮的 V30/V31 已是两段式，但实现层存在可被规避的问题；同时 E22 需要追加统计口径勘误，而旧 V01/V02 断言「results/e22 工作区完全干净 / 最后触碰提交恒为 `3d09b02`」会与之冲突。本轮逐条修正，并用隔离仓库反向测试证明检查确实能失败。
+
+### 7.1 V30 修复（范围：六个 legacy 路径）
+
+| 旧行为 | 问题 | 现行为 |
+|---|---|---|
+| `any(p in ln for ln in status.splitlines())` | 子串匹配（例如 `scripts/_probe2.py` 可被别的路径命中），也可漏判 | 解析 `git status --porcelain -z`：NUL 分隔、`XY PATH` 为**单个字段**，仅 R/C 追加旧路径字段；按**精确路径**比对 |
+| 缺失文件按 tracked/dirty 归类 | 删除会被误判为 dirty，甚至被当成 untracked | 先检查磁盘存在性 → 独立的 `missing` 状态，台账不符即 FAIL |
+| `check-ignore` 只看 `rc == 0` | `rc = 128`（非仓库 / 路径错误）被当作"未忽略" | 0 = 忽略、1 = 未忽略、其他 → `GitFailure` |
+| 只报告台账六项 | 措辞易被读成"全仓审计" | 检查名明确 **NOT a whole-repo audit**；额外未跟踪文件仅作 `extra_untracked` 报告 |
+
+> 修复过程中确实发现并修正了一个真实解析 bug：早期实现对每个条目误加 2 而不是 1，会**跳过一半的 status 条目**，从而可能把 dirty 的 legacy 文件读成 clean。R11 即为该 bug 的回归测试。
+
+### 7.2 V31 修复（逐提交，不是路径集合）
+
+1. 端点用**完整 40 位 hash** 解析，并断言 subject（`E21: validate R1-ILA across M2AD views` / `E23: audit Doll failure case and consolidate paper evidence`），短 hash 或改名无法重定向区间。
+2. 历史区间 `89572372..5b24193f` 逐提交 `diff-tree`，任何 legacy 变动即 FAIL。
+3. 检查点之后逐提交核验：commit 身份、路径、变动类型、**该提交对象内的 blob md5**（`git show <commit>:<path>`），不使用 index 或 HEAD blob。
+4. 仅 `9781e9d` 的两个授权路径可动；类型仅 **A/M**；其他提交即使触碰同样路径也 FAIL。
+5. **改后还原**：每个 A/M 提交都记录 blob，`R06` 证明「先改坏再改回」仍 FAIL。
+6. 删除（D）与重命名（R）直接 FAIL；合并提交按**第一父**核验，且合并对 legacy 的任何变动都 FAIL。
+7. 所有 Git 子进程检查退出码；失败写入 FAIL 行（`R09` 证明非仓库路径抛 `GitFailure`，不会退化为"无泄漏"）。
+8. 每次运行报告扫描的提交数（当前：**4 hist / 9 post**）。
+
+### 7.3 E22 授权勘误与检查语义
+
+- **历史事实**：`3d09b02d5b86...` 归档了 E22 全部产物；V01 仍校验该提交的全 hash 与 subject。
+- **当前完整性**：V01 分别检查 (a) `3d09b02..HEAD` 中除两份指定文档外**没有任何** E22 路径被触碰；(b) 工作区中这些冻结路径没有未提交改动。
+- **唯一豁免**：V02 要求 `README.md` / `statistical_summary.md` **当前字节 = 归档 blob 字节 + 固定附录字节**（附录 sha256 硬编码），并检查附录必须包含的语义短语；删除、改写、重命名、替换或第三份文档都不通过。
+- **没有"E22 所有 Markdown 任意变化"白名单**；两份文档的历史正文按字节保留。
+
+### 7.4 新增 / 加强的检查（38 → 45）
+
+| ID | 内容 |
+|---|---|
+| V17 | （加强）Macro Avg 六个 std 单元格必须为空；同一判定函数对"填入 0"的合成行必须返回 False |
+| V24 | （加强）Doll `ddof=1` std 由三个原始 cell 复算，并要求同时出现在 L5 / `doll_seed_summary.csv` / `paper_main_table.csv` |
+| V39 | Doll 全部 12 个数值列的 std/min/max 从三条原始 seed cell 复算（不信任 CSV）；`analysis_a` 仅读 raw |
+| V40 | 包 README 明确"空白 = 未定义，绝不是 0" |
+| V41 | E18 锚点 = seed0 F0→Ours（Bird/Car/Cube）；三种子均值列独立命名；E24 S15 seed0 复现同 6 值；EVIDENCE_MAP 文本一致 |
+| V42 | `p_d_auroc_gt0` 实现为 `(das > 0).mean()`；论文面向文档写 P(ΔAUROC>0)，不写 `p = 0.001` |
+| V43 | E25：39 = 33+3+3；split 等权与子数据集等权各自口径；PCB 绝对 0.444722→0.463074 已报告；重训而非迁移措辞 |
+| V44 | V30/V31 隔离反向测试（11 场景）全部按预期 FAIL/PASS |
+| V45 | 生成器在隔离 OUT 目录逐字节复现 6 份文本产物（不重生成图 / PDF） |
+
+### 7.5 反向测试记录（`scripts/verification_reverse_tests.py`）
+
+| 场景 | 期望 | 实测 |
+|---|---|---|
+| R01 缺失文件 | V30 FAIL | FAIL（`state=missing`） |
+| R02 台账不符 | V30 FAIL | FAIL（`tracked_dirty`） |
+| R03 额外未跟踪 | V30 PASS（单独报告） | PASS |
+| R04 授权 A/M + 基线字节 | V31 PASS | PASS |
+| R05 未授权后续修改 | V31 FAIL | FAIL |
+| R06 改后还原 | V31 FAIL | FAIL（记录该提交 blob） |
+| R07 未授权删除 | V31 FAIL | FAIL（D） |
+| R08 未授权重命名 | V31 FAIL | FAIL（R100） |
+| R09 Git 命令失败 | FAIL，不静默 | `GitFailure` |
+| R10 合并提交触碰 legacy | V31 FAIL | FAIL（`merge=True`） |
+| R11 多状态条目中的 dirty legacy | 正确识别 | PASS（`tracked_dirty`） |
+
+**记录**：`results/paper_ready/verification_reverse_tests_20261019.csv`；完整验证：`results/paper_ready/verification_reconciliation_20261019_e22_erratum.csv`（45 项 / 0 FAIL）。
