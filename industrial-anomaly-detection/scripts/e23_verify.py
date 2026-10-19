@@ -319,7 +319,10 @@ def audit_v31(repo: Path, legacy_paths, baseline_md5: dict, hist_range, authoris
     hist_hits = scan(f"{start}..{end}")
     post_hits = scan(f"{end}..HEAD")
     n_hist = len([x for x in git_in(repo, "rev-list", f"{start}..{end}").split() if x])
-    n_post = len([x for x in git_in(repo, "rev-list", f"{end}..HEAD").split() if x])
+    # Count only post-checkpoint commits that TOUCH a legacy path. The raw commit count grows
+    # with every (unrelated) commit, including the commit that records this very CSV, which
+    # would make the record self-referential and force an endless sequence of record commits.
+    n_post_legacy = len({h["commit"] for h in post_hits})
     unauthorised, blob_bad = [], []
     for h in post_hits:
         # Hash the blob of THAT commit for every A/M entry, including unauthorised ones: this is
@@ -354,7 +357,8 @@ def audit_v31(repo: Path, legacy_paths, baseline_md5: dict, hist_range, authoris
     ok = subject_ok and not hist_hits and not unauthorised and not blob_bad and not head_bad
     return {"ok": ok, "range": {"start": start, "end": end, "subjects": subjects,
                                 "subjects_ok": subject_ok, "hist_leaks": hist_hits,
-                                "n_hist_commits": n_hist, "n_post_commits": n_post},
+                                "n_hist_commits": n_hist,
+                                "n_legacy_post_commits": n_post_legacy},
             "post": post_hits, "unauthorised": unauthorised, "blob_bad": blob_bad,
             "head_bad": head_bad, "touched_with_wrong_bytes": restored}
 
@@ -738,7 +742,7 @@ def main() -> int:
         v31_obs = {
             "range": f"{v31['range']['start'][:12]}..{v31['range']['end'][:12]}",
             "commits_scanned": f"{v31['range']['n_hist_commits']} hist / "
-                               f"{v31['range']['n_post_commits']} post",
+                               f"{v31['range']['n_legacy_post_commits']} legacy-touching post",
             "subjects_ok": v31["range"]["subjects_ok"],
             "hist_leaks": v31["range"]["hist_leaks"] or "none",
             "post": [f"{h['commit'][:7]}:{h['path']}:{h['status']}"
