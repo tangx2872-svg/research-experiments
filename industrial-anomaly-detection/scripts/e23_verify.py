@@ -392,15 +392,18 @@ def main() -> int:
     # every artefact, and a later commit may only APPEND an authorised erratum to two named
     # documents. Nothing here is a blanket "E22 may change" waiver.
     prefix = repo_prefix(ROOT)
-    doc_paths = set(E22_AUTHORISED_DOCS)
+    # sorted, not a set: the observed dict is written to CSV, and set iteration order
+    # depends on PYTHONHASHSEED, so the record would not be byte-reproducible.
+    doc_paths = sorted(E22_AUTHORISED_DOCS)
+    doc_set = set(doc_paths)
     archived = git("rev-parse", f"{E22_ARCHIVE_COMMIT}^{{commit}}").strip()
     arc_subject = git("log", "-1", "--format=%s", archived).strip()
     hist_paths = {ws_path(p, prefix)
                   for p in git("log", "--name-only", "--pretty=format:",
                                f"{archived}..HEAD", "--", "results/e22").split("\n") if p}
-    frozen_leaks = sorted(hist_paths - doc_paths)
+    frozen_leaks = sorted(hist_paths - doc_set)
     dirty_now = sorted(p for p in status_map(ROOT)
-                       if p.startswith("results/e22/") and p not in doc_paths)
+                       if p.startswith("results/e22/") and p not in doc_set)
     v01_ok = arc_subject == E22_ARCHIVE_SUBJECT and not frozen_leaks and not dirty_now
     add("V01", "E22 frozen artefacts unchanged since the archive commit (history AND worktree); "
                "only the two authorised documents may differ",

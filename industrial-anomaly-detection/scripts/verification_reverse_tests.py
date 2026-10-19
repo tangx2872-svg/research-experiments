@@ -154,7 +154,11 @@ def main() -> int:
         res = v31(repo, a, b, baseline, subjects, {c: {EXP, RUNNER}})
         record("R05 unauthorised later modification", True, not res["ok"],
                any(h["commit"] == d for h in res["unauthorised"]),
-               f"unauthorised={[h['commit'][:7] for h in res['unauthorised']]}")
+               # Deterministic detail: a temp-repo SHA changes on every run, so it
+               # must not be rendered here (the identity check lives in `mechanism`).
+               f"unauthorised={len(res['unauthorised'])} "
+               f"flagged_injected_commit="
+               f"{any(h['commit'] == d for h in res['unauthorised'])}")
 
         # R06 modify then restore: HEAD bytes match baseline, history must still FAIL.
         repo, a, b, baseline, subjects = build_v31_base(root / "r06")

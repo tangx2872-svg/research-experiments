@@ -1,0 +1,12 @@
+scenario,expected,observed,match,detail
+R01 missing legacy file,FAIL,FAIL,True,ok=False state=missing
+R02 ledger clean but file dirty,FAIL,FAIL,True,ok=False state=tracked_dirty
+R03 extra untracked path,PASS,PASS,True,ok=True extras=['draft/paper.md']
+R04 authorised history,PASS,PASS,True,"post=['M', 'A']"
+R05 unauthorised later modification,FAIL,FAIL,True,unauthorised=1 flagged_injected_commit=True
+R06 modify then restore,FAIL,FAIL,True,unauthorised=2 wrong_bytes=['monitor/exp_monitor.py']
+R07 unauthorised deletion,FAIL,FAIL,True,"types=['D', 'M', 'A']"
+R08 unauthorised rename,FAIL,FAIL,True,"types=['R100', 'M', 'A']"
+R09 git command failure,FAIL,FAIL,True,GitFailure raised
+R11 dirty legacy among many status entries,PASS,PASS,True,state=tracked_dirty
+R10 merge commit touching legacy,FAIL,FAIL,True,"post=[('M', True), ('M', False)]"
