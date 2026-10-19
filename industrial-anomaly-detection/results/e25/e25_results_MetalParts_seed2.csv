@@ -1,0 +1,8 @@
+domain,split,condition_group,valid,n_normal,n_anomaly,auroc_f0,ap_f0,auroc_r1,ap_r1,d_auroc,d_ap,steps_used,runtime_s,peak_gpu_mb,status
+MetalParts,test0,source_reference_INVALID,0,120,51,0.936275,0.865546,0.954575,0.891691,+0.018301,+0.026145,64,19.8,5011.3,OK
+MetalParts,test1,illumination,1,120,80,0.988646,0.983058,0.990104,0.985808,+0.001458,+0.002749,64,23.7,5011.3,OK
+MetalParts,test2,pose,1,120,80,0.957604,0.896529,0.958646,0.910509,+0.001042,+0.013981,64,23.7,5011.3,OK
+MetalParts,test3,pose,1,120,80,0.942917,0.903396,0.945521,0.911166,+0.002604,+0.007770,64,23.3,5011.3,OK
+MetalParts,test4,scale,1,120,80,0.928333,0.872528,0.908333,0.855383,-0.020000,-0.017145,64,31.2,5011.3,OK
+MetalParts,test5,background,1,60,40,0.802083,0.771262,0.760833,0.701869,-0.041250,-0.069393,64,11.9,5011.3,OK
+MetalParts,test6,background,1,60,40,0.937083,0.929580,0.918750,0.909702,-0.018333,-0.019878,64,11.8,5011.3,OK

@@ -14,26 +14,24 @@
  "patience": 30,
  "batch_size": 8,
  "EVAL_EVERY": 5,
- "seed": 0,
+ "seeds": [
+  1,
+  2
+ ],
  "bank_train_n": 120,
  "bank_val_n": 60,
  "bank_rule": "all source-train normals (180), sorted by file_name; train = first 120, val = last 60",
  "input_geometry": "square bicubic resize to 448x448 (protocol \u00a78.3); identical to E13-A for square inputs, asserted per domain in geometry_*.json",
  "metric": "plain image-level AUROC/AP over all images (no detectable filter; RobustAD has no such field)",
- "git_commit": "296ab33e77c0d60ef62acd1542b2aa3822c7909a",
+ "git_commit": "8ea1d7343713944e86ab2e0657be7c3f31a4dda8",
  "git_dirty_files": [
   "M monitor/exp_monitor.py",
   " M results/e8/status.json",
+  " M scripts/e25_robustad_eval.py",
   "?? monitor/events.jsonl",
   "?? scripts/_lockprobe.txt",
   "?? scripts/_probe2.py",
-  "?? scripts/e11_p4_runner.py",
-  "?? scripts/e25_analysis.py",
-  "?? scripts/e25_download_robustad.py",
-  "?? scripts/e25_robustad_eval.py",
-  "?? scripts/e25_run_all.sh",
-  "?? scripts/e25_verify_download.py",
-  "?? scripts/e25_watch_download.sh"
+  "?? scripts/e11_p4_runner.py"
  ],
  "python": "3.12.3",
  "torch": "2.8.0+cu128",
@@ -45,7 +43,7 @@
   "mem_total_mb": 24576
  },
  "disk_free_gb": 6.02,
- "started": "2026-10-18T22:00:38+08:00",
- "pid": 11063,
+ "started": "2026-10-18T23:43:37+08:00",
+ "pid": 19756,
  "note": "results/e24/ not used and not created"
 }

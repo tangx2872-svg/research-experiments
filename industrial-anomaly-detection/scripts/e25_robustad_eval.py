@@ -327,7 +327,18 @@ def metrics(scores: np.ndarray, labels: list[int]) -> dict:
 
 
 # ------------------------------------------------------------------ one domain
-def run_domain(domain: str, dev, args) -> dict:
+def cell_file(domain: str, split: str, seed: int) -> Path:
+    """seed 0 keeps the original E25 file name (committed assets stay valid)."""
+    return CELLDIR / (f"{domain}_{split}.json" if seed == 0
+                      else f"{domain}_seed{seed}_{split}.json")
+
+
+def domain_csv(domain: str, seed: int) -> Path:
+    return OUTDIR / (f"e25_results_{domain}.csv" if seed == 0
+                     else f"e25_results_{domain}_seed{seed}.csv")
+
+
+def run_domain(domain: str, dev, args, seed: int = 0) -> dict:
     t_dom = time.time()
     torch.cuda.reset_peak_memory_stats()
     bank = source_normals(domain)
@@ -348,8 +359,9 @@ def run_domain(domain: str, dev, args) -> dict:
     bank_hash = sha256_of([r["rel"] for r in bank])
     print(f"[E25] bank hash {bank_hash[:16]} | B0 bank ready", flush=True)
 
-    # ---- B1 adapter (frozen R1-ILA)
-    torch.manual_seed(0)
+    # ---- B1 adapter (frozen R1-ILA); seed only controls training randomness,
+    #      never a method hyperparameter (seed 0 = the E13-A/E17/E25-seed0 convention)
+    torch.manual_seed(seed)
     adapter = LinearAdapter().to(dev)
     n_params = sum(p.numel() for p in adapter.parameters())
     if n_params != 589824:
@@ -359,7 +371,7 @@ def run_domain(domain: str, dev, args) -> dict:
     va = bank_f[BANK_TRAIN_N:BANK_TRAIN_N + BANK_VAL_N]
     va_aug = bank_aug[BANK_TRAIN_N:BANK_TRAIN_N + BANK_VAL_N]
     t_tr = time.time()
-    trep = train_r1(adapter, tr, tr_aug, va, va_aug, dev, 0)
+    trep = train_r1(adapter, tr, tr_aug, va, va_aug, dev, seed)
     print(f"[E25] adapter trained in {time.time() - t_tr:.0f}s | "
           f"steps={trep['steps_used']} best_val={trep['best_val']:.6f} "
           f"loss_finite={trep['loss_finite']} pairwise_cos={trep['after']['pairwise_cos']:.4f}",
@@ -373,14 +385,14 @@ def run_domain(domain: str, dev, args) -> dict:
 
     rows = []
     for split in targets:
-        key = f"{domain}|{split}"
-        cp = CELLDIR / f"{domain}_{split}.json"
+        key = f"{domain}|s{seed}|{split}"
+        cp = cell_file(domain, split, seed)
         if cp.exists() and not args.force:
             old = json.loads(cp.read_text())
             if old.get("status") == "OK":
                 print(f"[E25] SKIP {key} (already complete)", flush=True)
                 rows.append(summary_row(old))
-                write_domain_csv(domain, rows, complete=False)
+                write_domain_csv(domain, rows, complete=False, seed=seed)
                 continue
 
         t0 = time.time()
@@ -409,7 +421,7 @@ def run_domain(domain: str, dev, args) -> dict:
                 "labels": labels, "files": [r["rel"] for r in recs],
                 "bank_hash": bank_hash, "bank_size": len(bank),
                 "adapter_hash": adapter_hash, "trainable_params": n_params,
-                "steps_used": trep["steps_used"], "seed": 0,
+                "steps_used": trep["steps_used"], "seed": seed,
                 "config_source": "results/e17/final_method.json",
                 "runtime_s": round(time.time() - t0, 1),
                 "peak_gpu_mb": round(torch.cuda.max_memory_allocated() / 2 ** 20, 1),
@@ -417,18 +429,19 @@ def run_domain(domain: str, dev, args) -> dict:
         write_json_atomic(cp, cell)
         rows.append(summary_row(cell))
         # persist after EVERY split (protocol requirement)
-        write_domain_csv(domain, rows, complete=False)
+        write_domain_csv(domain, rows, complete=False, seed=seed)
         print(f"[E25] {key:20s} valid={cell['valid']} n={cell['n_ok']}/{cell['n_ng']} "
               f"AUROC {m0['auroc']:.5f} -> {m1['auroc']:.5f} ({cell['d_auroc']:+.5f}) | "
               f"AP {m0['ap']:.5f} -> {m1['ap']:.5f} ({cell['d_ap']:+.5f}) | "
               f"{cell['runtime_s']:.0f}s", flush=True)
 
-    write_domain_csv(domain, rows, complete=True)
+    write_domain_csv(domain, rows, complete=True, seed=seed)
     del model, adapter, bank_f, bank_aug, bank_af, b0_bank, b1_bank
     torch.cuda.empty_cache()
-    print(f"[E25] DOMAIN {domain} done in {hms(time.time() - t_dom)} -> "
-          f"{OUTDIR / f'e25_results_{domain}.csv'}", flush=True)
-    return {"domain": domain, "n_splits": len(targets), "bank_hash": bank_hash,
+    print(f"[E25] DOMAIN {domain} seed{seed} done in {hms(time.time() - t_dom)} -> "
+          f"{domain_csv(domain, seed)}", flush=True)
+    return {"domain": domain, "seed": seed, "n_splits": len(targets),
+            "bank_hash": bank_hash,
             "steps_used": trep["steps_used"], "adapter_hash": adapter_hash,
             "runtime_s": round(time.time() - t_dom, 1),
             "geometry": {"square_sampled": geom["n_square_sampled"],
@@ -453,8 +466,9 @@ def summary_row(cell: dict) -> dict:
             "peak_gpu_mb": cell["peak_gpu_mb"], "status": cell["status"]}
 
 
-def write_domain_csv(domain: str, rows: list[dict], complete: bool) -> None:
-    path = OUTDIR / f"e25_results_{domain}.csv"
+def write_domain_csv(domain: str, rows: list[dict], complete: bool,
+                     seed: int = 0) -> None:
+    path = domain_csv(domain, seed)
     tmp = path.with_suffix(".csv.tmp")
     with open(tmp, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CSV_COLS)
@@ -541,7 +555,7 @@ def smoke(dev, domain: str = "PCB") -> int:
 
 
 # ------------------------------------------------------------------ manifest / main
-def write_manifest(dev) -> None:
+def write_manifest(dev, seeds=(0,)) -> None:
     import sklearn
     git = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "HEAD"],
                          capture_output=True, text=True).stdout.strip()
@@ -555,7 +569,7 @@ def write_manifest(dev) -> None:
         "strength": [0.85, 1.15], "lr": E13A.LR_ADAPTER,
         "max_steps": E13A.MAX_STEPS, "patience": E13A.PATIENCE_STEPS,
         "batch_size": E13A.BATCH_IMGS, "EVAL_EVERY": E13A.EVAL_EVERY,
-        "seed": 0, "bank_train_n": BANK_TRAIN_N, "bank_val_n": BANK_VAL_N,
+        "seeds": list(seeds), "bank_train_n": BANK_TRAIN_N, "bank_val_n": BANK_VAL_N,
         "bank_rule": "all source-train normals (180), sorted by file_name; "
                      "train = first 120, val = last 60",
         "input_geometry": "square bicubic resize to 448x448 (protocol §8.3); identical to "
@@ -573,6 +587,7 @@ def main() -> int:
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--smoke-domain", default="PCB")
     ap.add_argument("--domain", default="")
+    ap.add_argument("--seeds", default="0")
     ap.add_argument("--all", action="store_true")
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
@@ -585,8 +600,9 @@ def main() -> int:
         return smoke(dev, args.smoke_domain)
 
     assert_frozen_config()
-    write_manifest(dev)
-    print(f"[E25] gpu={gpu_stats()} disk={free_gb():.1f} GB", flush=True)
+    seeds = [int(s) for s in str(args.seeds).split(",") if str(s).strip() != ""]
+    write_manifest(dev, seeds)
+    print(f"[E25] gpu={gpu_stats()} disk={free_gb():.1f} GB seeds={seeds}", flush=True)
 
     todo = list(DOMAINS) if args.all else [d.strip() for d in args.domain.split(",") if d.strip()]
     if not todo:
@@ -602,9 +618,14 @@ def main() -> int:
         if dom not in DOMAINS:
             print(f"[E25] unknown domain {dom}", flush=True)
             return 1
-        info = run_domain(dom, dev, args)
-        partial["domains"][dom] = info
-        write_json_atomic(PARTIAL, partial)
+        for seed in seeds:
+            pk = dom if seed == 0 else f"{dom}|seed{seed}"
+            if pk in partial.get("domains", {}) and not args.force:
+                print(f"[E25] SKIP {pk} (already in partial.json)", flush=True)
+                continue
+            info = run_domain(dom, dev, args, seed)
+            partial.setdefault("domains", {})[pk] = info
+            write_json_atomic(PARTIAL, partial)
         print(f"[E25] partial updated -> {PARTIAL}", flush=True)
     print(f"\n[E25] finished {todo} at {now_iso()}", flush=True)
     return 0

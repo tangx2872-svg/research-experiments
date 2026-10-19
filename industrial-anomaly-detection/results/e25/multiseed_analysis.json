@@ -1,0 +1,416 @@
+{
+  "experiment": "E25 multi-seed",
+  "cells": 39,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "config_source": "results/e17/final_method.json",
+  "frozen": {
+    "BETA": 0.1,
+    "augmentations": "brightness+contrast+gamma",
+    "strength": [
+      0.85,
+      1.15
+    ],
+    "lr": 0.001,
+    "max_steps": 300,
+    "patience": 30,
+    "batch_size": 8
+  },
+  "verification": {
+    "max_abs_diff": 0.0,
+    "tolerance": 1e-12,
+    "pass": true
+  },
+  "per_domain": {
+    "PCB": {
+      "n_splits": 5,
+      "d_auroc_mean": 0.01835185185185185,
+      "d_auroc_median": 0.017268518518518534,
+      "d_ap_mean": 0.012358490152271088,
+      "auroc_f0_mean": 0.4447222222222222,
+      "auroc_r1_mean": 0.463074074074074,
+      "per_seed_d_auroc_mean": {
+        "0": 0.02171296296296297,
+        "1": 0.018499999999999982,
+        "2": 0.014842592592592607
+      },
+      "per_seed_d_auroc_std": 0.003437580277152162,
+      "n_splits_pos_mean": 5,
+      "n_splits_pos_all_seeds": 5,
+      "n_splits_neg_all_seeds": 0,
+      "n_splits_ci_excl0_seed0": 3
+    },
+    "MetalParts": {
+      "n_splits": 6,
+      "d_auroc_mean": -0.01725115740740742,
+      "d_auroc_median": -0.013211805555555605,
+      "d_ap_mean": -0.0202771531787195,
+      "auroc_f0_mean": 0.9261111111111111,
+      "auroc_r1_mean": 0.9088599537037036,
+      "per_seed_d_auroc_mean": {
+        "0": -0.020815972222222257,
+        "1": -0.018524305555555547,
+        "2": -0.012413194444444461
+      },
+      "per_seed_d_auroc_std": 0.004343656092628517,
+      "n_splits_pos_mean": 2,
+      "n_splits_pos_all_seeds": 2,
+      "n_splits_neg_all_seeds": 3,
+      "n_splits_ci_excl0_seed0": 2
+    }
+  },
+  "per_split": [
+    {
+      "domain": "PCB",
+      "split": "test0",
+      "condition_group": "source_reference",
+      "valid": 1,
+      "is_source": 1,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 75,
+      "auroc_f0_mean": 0.9267777777777777,
+      "auroc_r1_mean": 0.9187037037037037,
+      "d_auroc_mean": -0.008074074074073937,
+      "d_auroc_std": 0.0019159284676114787,
+      "d_ap_mean": -0.007586473185454874,
+      "d_ap_std": 0.0026098816821363297,
+      "n_pos_seeds_auroc": 0,
+      "n_pos_seeds_ap": 0,
+      "seed_values_d_auroc": "0:-0.009778;1:-0.008444;2:-0.006000",
+      "seed_values_d_ap": "0:-0.009739;1:-0.008337;2:-0.004684",
+      "ci95_seed0": [
+        -0.022666674038036214,
+        0.0021586156623007897
+      ]
+    },
+    {
+      "domain": "PCB",
+      "split": "test1",
+      "condition_group": "illumination",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 90,
+      "auroc_f0_mean": 0.5272222222222223,
+      "auroc_r1_mean": 0.5537962962962962,
+      "d_auroc_mean": 0.026574074074074045,
+      "d_auroc_std": 0.006035588328789725,
+      "d_ap_mean": 0.01691037053570199,
+      "d_ap_std": 0.00532588232720009,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:+0.028148;1:+0.031667;2:+0.019907",
+      "seed_values_d_ap": "0:+0.019228;1:+0.020685;2:+0.010818",
+      "ci95_seed0": [
+        0.006239760997957769,
+        0.05050658404760731
+      ]
+    },
+    {
+      "domain": "PCB",
+      "split": "test2",
+      "condition_group": "illumination_related_white_balance",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 60,
+      "auroc_f0_mean": 0.44138888888888883,
+      "auroc_r1_mean": 0.4586574074074074,
+      "d_auroc_mean": 0.017268518518518534,
+      "d_auroc_std": 0.004893411208045867,
+      "d_ap_mean": 0.013322984324729262,
+      "d_ap_std": 0.011610192770242918,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:+0.022917;1:+0.014583;2:+0.014306",
+      "seed_values_d_ap": "0:+0.025083;1:+0.013018;2:+0.001868",
+      "ci95_seed0": [
+        0.002360837739913864,
+        0.045042952824154645
+      ]
+    },
+    {
+      "domain": "PCB",
+      "split": "test3",
+      "condition_group": "pose",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 80,
+      "n_anomaly": 60,
+      "auroc_f0_mean": 0.3491666666666666,
+      "auroc_r1_mean": 0.3812499999999999,
+      "d_auroc_mean": 0.03208333333333335,
+      "d_auroc_std": 0.009216248483581104,
+      "d_ap_mean": 0.01584666691565652,
+      "d_ap_std": 0.00495900144023999,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:+0.036875;1:+0.037917;2:+0.021458",
+      "seed_values_d_ap": "0:+0.018566;1:+0.018851;2:+0.010123",
+      "ci95_seed0": [
+        0.0021129584125977752,
+        0.07188020833333343
+      ]
+    },
+    {
+      "domain": "PCB",
+      "split": "test4",
+      "condition_group": "pose",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 80,
+      "n_anomaly": 60,
+      "auroc_f0_mean": 0.39791666666666664,
+      "auroc_r1_mean": 0.4040277777777777,
+      "d_auroc_mean": 0.006111111111111141,
+      "d_auroc_std": 0.0045896421227384285,
+      "d_ap_mean": 0.01504748831071693,
+      "d_ap_std": 0.003457004279352964,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:+0.008333;1:+0.000833;2:+0.009167",
+      "seed_values_d_ap": "0:+0.018891;1:+0.014059;2:+0.012192",
+      "ci95_seed0": [
+        -0.022463367473337673,
+        0.03682896853421221
+      ]
+    },
+    {
+      "domain": "PCB",
+      "split": "test5",
+      "condition_group": "illumination_related_shadow",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 80,
+      "n_anomaly": 60,
+      "auroc_f0_mean": 0.5079166666666667,
+      "auroc_r1_mean": 0.5176388888888889,
+      "d_auroc_mean": 0.009722222222222188,
+      "d_auroc_std": 0.0024146303681546618,
+      "d_ap_mean": 0.0006649406745507328,
+      "d_ap_std": 0.001976616679762887,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 2,
+      "seed_values_d_auroc": "0:+0.012292;1:+0.007500;2:+0.009375",
+      "seed_values_d_ap": "0:+0.002184;1:-0.001570;2:+0.001380",
+      "ci95_seed0": [
+        -0.004586120892018827,
+        0.031331790098968026
+      ]
+    },
+    {
+      "domain": "MetalParts",
+      "split": "test0",
+      "condition_group": "source_reference_INVALID",
+      "valid": 0,
+      "is_source": 1,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 51,
+      "auroc_f0_mean": 0.9362745098039215,
+      "auroc_r1_mean": 0.9552287581699345,
+      "d_auroc_mean": 0.018954248366013116,
+      "d_auroc_std": 0.001575759928266817,
+      "d_ap_mean": 0.02846968038876274,
+      "d_ap_std": 0.004236286530431539,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:+0.020752;1:+0.017810;2:+0.018301",
+      "seed_values_d_ap": "0:+0.033359;1:+0.025905;2:+0.026145",
+      "ci95_seed0": [
+        0.004296920251465644,
+        0.042508145581160416
+      ]
+    },
+    {
+      "domain": "MetalParts",
+      "split": "test1",
+      "condition_group": "illumination",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "auroc_f0_mean": 0.9886458333333333,
+      "auroc_r1_mean": 0.9900347222222221,
+      "d_auroc_mean": 0.001388888888888884,
+      "d_auroc_std": 0.00021684020827767608,
+      "d_ap_mean": 0.0022084504413016903,
+      "d_ap_std": 0.0006178862903335076,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:+0.001563;1:+0.001146;2:+0.001458",
+      "seed_values_d_ap": "0:+0.002341;1:+0.001535;2:+0.002749",
+      "ci95_seed0": [
+        -0.0019001938615194835,
+        0.005729521247634472
+      ]
+    },
+    {
+      "domain": "MetalParts",
+      "split": "test2",
+      "condition_group": "pose",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "auroc_f0_mean": 0.9576041666666667,
+      "auroc_r1_mean": 0.9543750000000001,
+      "d_auroc_mean": -0.0032291666666667642,
+      "d_auroc_std": 0.003995168523076121,
+      "d_ap_mean": 0.010011844345218549,
+      "d_ap_std": 0.003462208863485991,
+      "n_pos_seeds_auroc": 1,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:-0.006875;1:-0.003854;2:+0.001042",
+      "seed_values_d_ap": "0:+0.007611;1:+0.008444;2:+0.013981",
+      "ci95_seed0": [
+        -0.01822395229523254,
+        0.003764092353716055
+      ]
+    },
+    {
+      "domain": "MetalParts",
+      "split": "test3",
+      "condition_group": "pose",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "auroc_f0_mean": 0.9429166666666666,
+      "auroc_r1_mean": 0.9464930555555556,
+      "d_auroc_mean": 0.0035763888888889297,
+      "d_auroc_std": 0.0011846334798077305,
+      "d_ap_mean": 0.009933616127239678,
+      "d_ap_std": 0.0030763173012173747,
+      "n_pos_seeds_auroc": 3,
+      "n_pos_seeds_ap": 3,
+      "seed_values_d_auroc": "0:+0.004896;1:+0.003229;2:+0.002604",
+      "seed_values_d_ap": "0:+0.013455;1:+0.008575;2:+0.007770",
+      "ci95_seed0": [
+        -0.011867106019779555,
+        0.022710997442455198
+      ]
+    },
+    {
+      "domain": "MetalParts",
+      "split": "test4",
+      "condition_group": "scale",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 120,
+      "n_anomaly": 80,
+      "auroc_f0_mean": 0.9283333333333333,
+      "auroc_r1_mean": 0.9018402777777778,
+      "d_auroc_mean": -0.02649305555555555,
+      "d_auroc_std": 0.006617931676583377,
+      "d_ap_mean": -0.026135256556949742,
+      "d_ap_std": 0.008281645995947499,
+      "n_pos_seeds_auroc": 0,
+      "n_pos_seeds_ap": 0,
+      "seed_values_d_auroc": "0:-0.033229;1:-0.026250;2:-0.020000",
+      "seed_values_d_ap": "0:-0.033453;1:-0.027808;2:-0.017145",
+      "ci95_seed0": [
+        -0.052691649476751354,
+        -0.015392868166756949
+      ]
+    },
+    {
+      "domain": "MetalParts",
+      "split": "test5",
+      "condition_group": "background",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 60,
+      "n_anomaly": 40,
+      "auroc_f0_mean": 0.8020833333333334,
+      "auroc_r1_mean": 0.7465277777777778,
+      "d_auroc_mean": -0.05555555555555558,
+      "d_auroc_std": 0.01240472953412589,
+      "d_ap_mean": -0.08984871510866477,
+      "d_ap_std": 0.019662681465941252,
+      "n_pos_seeds_auroc": 0,
+      "n_pos_seeds_ap": 0,
+      "seed_values_d_auroc": "0:-0.062083;1:-0.063333;2:-0.041250",
+      "seed_values_d_ap": "0:-0.108609;1:-0.091544;2:-0.069393",
+      "ci95_seed0": [
+        -0.11488038375967757,
+        -0.009222816399286989
+      ]
+    },
+    {
+      "domain": "MetalParts",
+      "split": "test6",
+      "condition_group": "background",
+      "valid": 1,
+      "is_source": 0,
+      "n_seeds": 3,
+      "n_normal": 60,
+      "n_anomaly": 40,
+      "auroc_f0_mean": 0.9370833333333334,
+      "auroc_r1_mean": 0.9138888888888889,
+      "d_auroc_mean": -0.023194444444444445,
+      "d_auroc_std": 0.005501472866760668,
+      "d_ap_mean": -0.027832858320462412,
+      "d_ap_std": 0.007993623481011401,
+      "n_pos_seeds_auroc": 0,
+      "n_pos_seeds_ap": 0,
+      "seed_values_d_auroc": "0:-0.029167;1:-0.022083;2:-0.018333",
+      "seed_values_d_ap": "0:-0.035865;1:-0.027756;2:-0.019878",
+      "ci95_seed0": [
+        -0.06728433526429174,
+        0.0024049495104039127
+      ]
+    }
+  ],
+  "overall": {
+    "n_target_splits": 11,
+    "macro_d_auroc_mean_over_splits": -0.0010679713804713873,
+    "macro_d_ap_mean_over_splits": -0.005442769846451052,
+    "macro_d_auroc_per_seed": {
+      "0": -0.001484638047138064,
+      "1": -0.00169507575757576,
+      "2": -2.4200336700338802e-05
+    },
+    "macro_d_auroc_seed_std": 0.0009100354396147127,
+    "macro_d_auroc_t_interval95": [
+      -0.003328624735047586,
+      0.0011926819741048102
+    ],
+    "positive_split_ratio_auroc": 0.6363636363636364,
+    "positive_split_ratio_ap": 0.7272727272727273,
+    "splits_positive_all_seeds": 7,
+    "splits_negative_all_seeds": 3,
+    "worst_split": "MetalParts:test5",
+    "worst_d_auroc_mean": -0.05555555555555558,
+    "best_split": "PCB:test3",
+    "best_d_auroc_mean": 0.03208333333333335
+  },
+  "structure_preserved": {
+    "pcb_positive": true,
+    "mp_negative": true,
+    "pcb_positive_all_seeds": true,
+    "mp_negative_all_seeds": true
+  },
+  "limitations": [
+    "3 seeds only; adapter-training randomness is sampled, not exhausted",
+    "single backbone / single scorer",
+    "plain AUROC/AP (no `detectable` field in RobustAD)",
+    "MetalParts inputs are anisotropically resized to 448x448 (protocol \u00a710)",
+    "MetalParts test0 excluded (overlaps source train)",
+    "PiledBags not covered"
+  ]
+}

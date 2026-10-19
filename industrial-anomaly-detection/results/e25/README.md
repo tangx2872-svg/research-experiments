@@ -6,6 +6,7 @@
 **唯一合法配置来源**：`results/e17/final_method.json`
 **协议**：`results/e25/ROBUSTAD_PROTOCOL_AUDIT.md`（§8 执行协议 + §10 冻结配置来源修订）
 **状态**：已完成（PCB + MetalParts），PiledBags 未运行（磁盘不足）
+**多 seed 扩展（2026-10-19 夜间）**：seed 0/1/2 全部完成，结论结构不变 → 见 **§15**（本文档 §7–§12 的 seed-0 叙述保留原样，§15 为三 seed 汇总，冲突时以 §15 为准）
 
 ---
 
@@ -257,3 +258,54 @@ python scripts/e25_analysis.py
 3. **（需批准）MetalParts 几何对照**：letterbox 或保持长宽比的可变 patch 打分，用于量化 §9-H3。
 4. **（需磁盘）PiledBags**：释放 ≥10 GB 后再下载；否则在论文中标注为未覆盖域。
 5. 论文表述按 §10 降级；不要新增「外部验证成功」类措辞。
+
+---
+
+## 15. 多 seed 扩展（seeds 1/2，2026-10-19 夜间补齐）
+
+**目的**：seed 0 是单点观测；本条回答「§7 的 PCB 正 / MP 负结构是否只是 seed 0 的运气」。
+
+**配置**：与 seed 0 **完全相同**（仍只读 `results/e17/final_method.json`；BETA=0.1、brightness+contrast+gamma × {0.85,1.15}、lr 1e-3、≤300 step、patience 30、batch 8、DINOv2-B frozen、1-NN-max）；**只有 adapter 训练的随机种子变化**。bank 构造与测试图完全相同。**未依据任何 RobustAD 结果调参**。
+
+### 15.1 逐 target split（3 seeds；mean ± std）
+
+| domain | split | 条件组 | n(ok/ng) | AUROC F0 → R1 | ΔAUROC | ΔAP | seed 同号 |
+|---|---|---|---|---|---|---|---|
+| PCB | test0 | source ref | 120/75 | 0.92678 → 0.91870 | −0.00807 ± 0.00192 | −0.00759 ± 0.00261 | 0/3（全负） |
+| PCB | test1 | illumination | 120/90 | 0.52722 → 0.55380 | **+0.02657 ± 0.00604** | +0.01691 ± 0.00533 | **3/3 正** |
+| PCB | test2 | white balance | 120/60 | 0.44139 → 0.45866 | **+0.01727 ± 0.00489** | +0.01332 ± 0.01161 | **3/3 正** |
+| PCB | test3 | pose (rot) | 80/60 | 0.34917 → 0.38125 | **+0.03208 ± 0.00922** | +0.01585 ± 0.00496 | **3/3 正** |
+| PCB | test4 | pose (pos) | 80/60 | 0.39792 → 0.40403 | **+0.00611 ± 0.00459** | +0.01505 ± 0.00346 | **3/3 正** |
+| PCB | test5 | shadow | 80/60 | 0.50792 → 0.51764 | **+0.00972 ± 0.00241** | +0.00066 ± 0.00198 | **3/3 正** |
+| MP | test0 | **(INVALID)** | 120/51 | 0.93627 → 0.95523 | +0.01895 ± 0.00158 | +0.02847 ± 0.00424 | 3/3（不入聚合） |
+| MP | test1 | illumination | 120/80 | 0.98865 → 0.99003 | +0.00139 ± 0.00022 | +0.00221 ± 0.00062 | 3/3 正 |
+| MP | test2 | pose (pos) | 120/80 | 0.95760 → 0.95438 | −0.00323 ± 0.00400 | +0.01001 ± 0.00346 | 1/3 |
+| MP | test3 | pose (rot) | 120/80 | 0.94292 → 0.94649 | +0.00358 ± 0.00118 | +0.00993 ± 0.00308 | 3/3 正 |
+| MP | test4 | scale | 120/80 | 0.92833 → 0.90184 | **−0.02649 ± 0.00662** | −0.02614 ± 0.00828 | 0/3（全负） |
+| MP | test5 | background #1 | 60/40 | 0.80208 → 0.74653 | **−0.05556 ± 0.01240** | −0.08985 ± 0.01966 | 0/3（全负） |
+| MP | test6 | background #2 | 60/40 | 0.93708 → 0.91389 | **−0.02319 ± 0.00550** | −0.02783 ± 0.00799 | 0/3（全负） |
+
+### 15.2 域聚合（11 个 valid 非 source split）
+
+| domain | ΔAUROC mean | 逐 seed 域均值 | seed 间 std | ΔAP mean | 正向 split（均值） | 全 seed 同向的 split |
+|---|---|---|---|---|---|---|
+| PCB | **+0.01835** | 0: +0.02171 / 1: +0.01850 / 2: +0.01484 | 0.00344 | +0.01236 | 5/5 | **5/5 全 3 seed 正** |
+| MetalParts | **−0.01725** | 0: −0.02082 / 1: −0.01852 / 2: −0.01241 | 0.00434 | −0.02028 | 2/6 | 3/6 全 3 seed 负、2/6 全 3 seed 正 |
+
+### 15.3 总体与结构
+
+- **总体 macro ΔAUROC = −0.00107**（逐 seed：−0.00148 / −0.00170 / −0.00002；seed 间 std 0.00091；描述性 t-区间 95% **[−0.00333, +0.00119]**）；**macro ΔAP = −0.00544**。
+- 正向 split 比：**7/11（0.636）**；AP 侧 8/11。
+- 最差 target：**MP test5 background（−0.0556）**；最好：**PCB test3 rotation（+0.0321）**。
+- **结构保持判定**：`pcb_positive=True`、`mp_negative=True`、`pcb_positive_all_seeds=True`、`mp_negative_all_seeds=True` → **「PCB 正、MP 负」不是 seed 0 的偶然，而是跨 3 个独立 adapter 训练种子的稳定结构**（PCB 每个 seed 域均值 +0.0148…+0.0217；MP 每个 seed −0.0124…−0.0208，符号不翻转）。
+- 校验：39/39 cell 逐图复算 AUROC/AP，`max|Δ| = 0.0`（容差 1e-12）。
+
+### 15.4 解释（不得超出）
+
+- seed 只改变 adapter 训练轨迹，不改变 bank / 测试图 / 标签，因此 3 seed 的均值差反映**训练随机性**，而域间差异（+0.0184 vs −0.0173）**远大于** seed 噪声（域内 std 0.003–0.004）→ 域效应真实存在，不是噪声。
+- 但整体 macro 仍≈0（t-区间跨 0），因此**「R1-ILA 在 RobustAD 上整体提升」依然不成立**；成立的只是**条件性结构**：强偏移/低基线（PCB）一致改善，近饱和（MP）一致退化（background/scale 三 seed 全负）。
+- **不得**把 PCB 的 +0.018 当作"外部验证成功"：其 F0 基线平均仅 0.4447（test3 0.349 低于随机），改善发生在**失效的基线**上；也不得把 MP 的负向隐藏。
+
+### 15.5 产物
+
+`multiseed_summary.csv`（逐 split）、`multiseed_analysis.json`（含逐 seed bootstrap CI 与 t-区间）、`figures/e25_multiseed_domain_delta.{png,pdf}`（PCB vs MP × ΔAUROC/ΔAP，含逐 seed 点）、`figures/e25_multiseed_per_target.{png,pdf}`（逐 target mean±std）。脚本：`scripts/e25_multiseed_analysis.py`、`scripts/e25_figures.py`；运行时 `scripts/e25_robustad_eval.py --domain PCB,MetalParts --seeds 1,2`（seed 0 文件命名不变）。

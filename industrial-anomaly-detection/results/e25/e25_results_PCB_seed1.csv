@@ -1,0 +1,7 @@
+domain,split,condition_group,valid,n_normal,n_anomaly,auroc_f0,ap_f0,auroc_r1,ap_r1,d_auroc,d_ap,steps_used,runtime_s,peak_gpu_mb,status
+PCB,test0,source_reference,1,120,75,0.926778,0.872850,0.918333,0.864513,-0.008444,-0.008337,164,34.3,5011.3,OK
+PCB,test1,illumination,1,120,90,0.527222,0.418036,0.558889,0.438721,+0.031667,+0.020685,164,47.0,5011.3,OK
+PCB,test2,illumination_related_white_balance,1,120,60,0.441389,0.305511,0.455972,0.318529,+0.014583,+0.013018,164,44.6,5011.3,OK
+PCB,test3,pose,1,80,60,0.349167,0.335054,0.387083,0.353905,+0.037917,+0.018851,164,35.1,5011.3,OK
+PCB,test4,pose,1,80,60,0.397917,0.365276,0.398750,0.379335,+0.000833,+0.014059,164,35.0,5011.3,OK
+PCB,test5,illumination_related_shadow,1,80,60,0.507917,0.421140,0.515417,0.419570,+0.007500,-0.001570,164,32.3,5011.3,OK

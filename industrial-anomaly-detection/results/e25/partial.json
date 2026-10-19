@@ -23,6 +23,66 @@
     "prep_vs_e13a_identical": false
    },
    "peak_gpu_mb": 1432.0
+  },
+  "PCB|seed1": {
+   "domain": "PCB",
+   "seed": 1,
+   "n_splits": 6,
+   "bank_hash": "08821b36dddea79a0ffee81217d97eeb6dd57e0151a4c5c7105417d42b6b49dc",
+   "steps_used": 164,
+   "adapter_hash": "28ef2bd8da60f55d659ab74d83c2e45e54596de0f776b668e30a5cabef16d618",
+   "runtime_s": 356.8,
+   "geometry": {
+    "square_sampled": 560,
+    "nonsquare_sampled": 0,
+    "prep_vs_e13a_identical": true
+   },
+   "peak_gpu_mb": 5011.3
+  },
+  "PCB|seed2": {
+   "domain": "PCB",
+   "seed": 2,
+   "n_splits": 6,
+   "bank_hash": "08821b36dddea79a0ffee81217d97eeb6dd57e0151a4c5c7105417d42b6b49dc",
+   "steps_used": 49,
+   "adapter_hash": "a57f0ac2bce7924537ed7020158dc7ccfe0e02e8acc9ffdfd866121edd1eadaf",
+   "runtime_s": 348.9,
+   "geometry": {
+    "square_sampled": 560,
+    "nonsquare_sampled": 0,
+    "prep_vs_e13a_identical": true
+   },
+   "peak_gpu_mb": 5011.3
+  },
+  "MetalParts|seed1": {
+   "domain": "MetalParts",
+   "seed": 1,
+   "n_splits": 7,
+   "bank_hash": "b4b517292166e66864588e6177f609e2f853abf241294f31a1831fc15d978e04",
+   "steps_used": 74,
+   "adapter_hash": "2e013c80bcfc46327e49d829100d31050b53582133d3161504d83d9247efc99c",
+   "runtime_s": 234.1,
+   "geometry": {
+    "square_sampled": 0,
+    "nonsquare_sampled": 640,
+    "prep_vs_e13a_identical": false
+   },
+   "peak_gpu_mb": 5011.3
+  },
+  "MetalParts|seed2": {
+   "domain": "MetalParts",
+   "seed": 2,
+   "n_splits": 7,
+   "bank_hash": "b4b517292166e66864588e6177f609e2f853abf241294f31a1831fc15d978e04",
+   "steps_used": 64,
+   "adapter_hash": "4069f1eec2c41c4c6f58118a7e5c8bc48a57410a061d3bfbeb90d1a5b5e2989d",
+   "runtime_s": 231.9,
+   "geometry": {
+    "square_sampled": 0,
+    "nonsquare_sampled": 640,
+    "prep_vs_e13a_identical": false
+   },
+   "peak_gpu_mb": 5011.3
   }
  },
  "started": "2026-10-18T21:29:38+08:00"
