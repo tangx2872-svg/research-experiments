@@ -23,7 +23,7 @@ Files: `results/e21/README.md`, `results/e21/analysis_cells.csv`, `results/paper
 Boundary: HOLD, seed0 only; not a viewpoint-invariance claim.
 
 ### Claim E — Doll defines the applicability boundary
-Evidence: E22 (Doll −0.03850, CI [−0.0661, −0.0140], p = 0.001, 0/3 seeds) + E23 descriptive audit (EXPLAINED_PATTERN: anomaly-side drop exceeds normal-side drop and d′ falls in 3/3 seeds; broad across illumination groups; Doll has the lowest F0 AUROC and the lowest d′ among the 10 categories; its illumination shift is close to the category median).
+Evidence: E22 (Doll −0.03850, CI [−0.0661, −0.0140], bootstrap positive-difference proportion P(ΔAUROC>0) = 0.001, one-sided resampling proportion, 0/3 seeds) + E23 descriptive audit (EXPLAINED_PATTERN: anomaly-side drop exceeds normal-side drop and d′ falls in 3/3 seeds; broad across illumination groups; Doll has the lowest F0 AUROC and the lowest d′ among the 10 categories; its illumination shift is close to the category median).
 Files: `results/e23/README.md`, `e23_verdict.json`, `doll_separation_summary.csv`, `doll_illumination_breakdown.csv`, `doll_vs_others.json`, `figures/` (Fig1–Fig5), `results/paper_ready/paper_limitations.md` (L1).
 Boundary: no causal explanation, no repair, no universal claim; the audit states a consistent but small-magnitude pattern.
 

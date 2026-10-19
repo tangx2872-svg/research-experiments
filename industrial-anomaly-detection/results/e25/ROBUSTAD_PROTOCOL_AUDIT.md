@@ -85,7 +85,7 @@ Read **only** `metadata.jsonl` (`label` 0/1) inside each split directory. Direct
 
 - PCB: train ↔ test0…test5 **name overlap = 0**; test ↔ test overlap = 0. Clean.
 - MetalParts: `train` ∩ `test0` = **145 identical file names** (104 of them are `label==0`, 41 `label==1`); no overlap with test1–test6; no cross-test overlap.
-  → MetalParts **test0 is not a held-out split** (its images are physically the same files as train). It is therefore **excluded from all target aggregates and from the source→target degradation metric**, and is reported only with `valid=0`.
+  → MetalParts **test0 is not treated as a held-out split** (its images were assumed to be physically the same files as train — **this wording is superseded, see the Erratum at the end of this file**). It is therefore **excluded from all target aggregates and from the source→target degradation metric**, and is reported only with `valid=0`.
   → Because the overlap is confined to test0, training/bank construction on train still leaks **nothing** into test1–test6. No bank exclusion is needed for the reported targets.
 
 ## 7. 是否可以严格执行 normal source train → target normal+anomaly test？
@@ -143,3 +143,32 @@ Frozen configuration actually executed:
 **Input geometry (added 2026-10-18, before any MetalParts result)**: §8.3's "448×448 bicubic resize" is applied **literally as a square resize to 448×448**. Rationale and evidence: PCB images are 2048×2048, so the short-side resize inherited from E13-A is already 448×448 and the two paths are **bit-identical** (verified: tensor and DINOv2 feature `max|Δ| = 0.0` on 8 images; PCB results were produced under this rule). MetalParts images are 2681×1500 (16:9) and a short-side resize yields 448×798 → 32×57 = **1824 tokens**, which is incompatible with the frozen 1024-token model/scorer; the square rule keeps 1024 tokens. Consequence to disclose: MetalParts inputs are anisotropically resized from 16:9, so absolute MetalParts levels are not comparable to PCB, while the **B0↔B1 comparison remains paired and internally fair** (both methods see the identical tensor). This is a preprocessing convention, not a tuned parameter, and it is recorded in `results/e25/geometry_<domain>.json`.
 
 **Verdict rule**: E25 has **no pre-registered GO/STOP gate**. `final_verdict.json` is therefore a **descriptive** summary (per-split and per-group ΔAUROC/ΔAP, sign counts, paired bootstrap CIs), and must be reported as descriptive evidence, not as a hypothesis test with a pre-set threshold.
+
+---
+
+## 11. Erratum — the MetalParts `test0` overlap is **name-level only** (added 2026-10-19, post-hoc audit)
+
+**Corrected statement.** §6 previously said MetalParts `test0` images "are physically the same files as train". **That sentence is factually wrong** and is superseded by this section. It was the *stated rationale* for `valid=0`; the decision itself is **not** changed by this erratum.
+
+**Audit** (`results/e25/overlap_audit.json`; SHA-256 over the raw bytes of every `metadata.jsonl`-listed file whose `file_name` appears in both splits, no image decoding):
+
+| Quantity | Value |
+|---|---|
+| files in `train` | 231 |
+| files in `test0` | 171 |
+| shared `file_name` values | 145 |
+| **byte-identical pairs (SHA-256)** | **0** |
+| byte-different pairs | **145** |
+| files missing on disk | 0 |
+
+Descriptive probe only (first 20 pairs): pixel dimensions match, but the 64×64 grayscale mean absolute difference is **10.94–32.46** on a 0–255 scale (0 would mean identical).
+
+**Finding**: the overlap is **NAME-LEVEL ONLY**. All 145 files differ in content — same names, same dimensions, different captures. Reused file names still suggest possible source/target entanglement in how the sub-dataset was assembled, but **content-level contamination is not demonstrated**.
+
+**Consequence (binding)**
+
+1. `valid=0` for MetalParts `test0` is **retained exactly as originally decided**, and the split remains excluded from all target aggregates and from the source→target degradation metric. All published E25 numbers are **unchanged**; no cell, CSV or JSON under `results/e25/` was touched.
+2. The **rationale** is downgraded from "proven contamination" to **"conservative exclusion, rationale weakened"**. Changing the exclusion itself would alter the E25 protocol and its published aggregates, so it may only be revisited in a **new, separately approved analysis** — never in a documentation pass.
+3. The audit result is **file-name-level and outcome-independent**, so the timing argument in §6 is unaffected.
+
+**Required wording in the paper**: state that 145 file names are shared with `source-train`, that a byte-level audit found **0 of 145 identical in content**, and that the split is excluded **conservatively** under the original protocol rather than because contamination was demonstrated. Do **not** write "the same images appear in train and test0".

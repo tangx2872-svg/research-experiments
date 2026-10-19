@@ -74,10 +74,10 @@
 | macro mean ΔAUROC | **+0.00760** |
 | median ΔAUROC | **+0.01080** |
 | macro mean ΔAP | **+0.00777** |
-| 唯一稳定负类 | **Doll −0.03850**（0/3 seed 正；bootstrap CI [−0.0661, −0.0140]，p = 0.001） |
+| 唯一稳定负类 | **Doll −0.03850**（0/3 seed 正；bootstrap CI [−0.0661, −0.0140]，bootstrap 正差比例 **P(ΔAUROC>0) = 0.001**，单侧重采样比例而非双侧 p 值；跨 seed 样本 std **0.004638**，ddof=1） |
 | 协议判定 | **HOLD**（Doll 触发 severe-regression 排除项，非 STRONG GO） |
 
-**E18（3 类，seed0）**：Bird 0.75786→0.77717、Car 0.80511→0.81102、Cube 0.87010→0.86645（AUROC），用于 E24 的等价性锚点。
+**E18（3 类，seed0，`results/e18/main_table.csv`）**：F0 → Ours(R1) 的 AUROC = Bird **0.74725→0.75786**、Car **0.78552→0.80511**、Cube **0.85409→0.87010**；E24 的 S15 seed 0 在这 9 项上与 `Ours` 行 `max|Δ| = 0.0`、`F0` 行逐位一致，故以此作为等价性锚点。**2026-10-19 修正**：旧文本写作「0.75786→0.77717、…、Cube 0.87010→0.86645」，把 Ours **seed0** 值与 **3-seed 均值**混用，并因此把 Cube 的方向写反（实际 seed0 为上升）；`main_table.csv` 中单 seed 列即 seed0，3-seed 列另列，二者不得互串。
 
 **边界**：HOLD 是协议判定，不得改写为 STRONG GO，也不得写成"方法失败"。
 
@@ -186,13 +186,18 @@
 |---|---|---|
 | 11 个有效 target split × 3 seed | **33** | **是** |
 | PCB test0（source reference，`valid=1`） | 3 | 否（仅用于 source→target 描述） |
-| MetalParts test0（`valid=0`） | 3 | 否（重叠污染，见 §9） |
+| MetalParts test0（`valid=0`） | 3 | 否（**同名重叠、内容不同**，见 §7.6 / §9） |
 
 即 **39 = 33 + 3 + 3**。因此**不得笼统写"无排除"**：样本没有被删除，指标也没有被填零，被排除的是**聚合口径**；同时**无缺失 cell、无重复重跑 cell**。推荐表述：**"39/39 cell 均完成；MP test0 依照所述有效性规则不纳入汇总。"**
 **日志中的 6 次 Traceback 均为写 cell 之前的工程错误**（MetalParts 非方形导致 1824 token、`AUG_BS`/`geom` 未定义），修复后重跑，**未影响任何已落盘结果**。
 
-**7.6 MP test0 有效性规则的时点（诚实标注）**：规则 = "145 个文件名与 source-train 完全相同（104 normal / 41 anomaly）→ 不是 held-out split"。它是**文件级、结果无关**的判定，不依赖任何指标。文档位置 `results/e25/ROBUSTAD_PROTOCOL_AUDIT.md` §6；该文件最后写入 2026-10-18 21:41，早于 MetalParts 首个 cell（21:52），但**协议与结果同处一个提交 `8ea1d73`**，Git 无法证明它先于任何结果写定。
-→ 论文中只能写 **"documented before this sub-dataset was run, outcome-independent, but not provably pre-registered"**；**不得**声称预注册。
+**7.6 MP test0 有效性规则：依据与时点（含 2026-10-19 勘误）**：规则 = "145 个文件名与 source-train 重合（104 normal / 41 anomaly）→ `valid=0`，不纳入 held-out"。
+
+- **勘误（事实层）**：字节级 SHA-256 审计（`results/e25/overlap_audit.json`）比对全部 145 对同名文件：**内容相同 0 对、不同 145 对、缺失 0**；抽样 20 对 64×64 灰度平均绝对差 **10.94–32.46/255**。⇒ 重叠**仅为文件名层面**，原协议「test0 图像与 train 是同一批物理文件」**事实错误，已被取代**（`ROBUSTAD_PROTOCOL_AUDIT.md` §11）。
+- **决定不变**：`valid=0`、cell 账目 **39 = 33 + 3 + 3**、以及全部聚合数字**均不变**；理由从「已证明污染」降级为「**保守排除、理由被削弱**」。若要改为纳入，必须走单独批准的新分析。
+- **时点（诚实标注）**：该规则是**文件名级、结果无关**的判定，不依赖任何指标。文档位置 `results/e25/ROBUSTAD_PROTOCOL_AUDIT.md` §6；该文件最后写入 2026-10-18 21:41，早于 MetalParts 首个 cell（21:52），但**协议与结果同处一个提交 `8ea1d73`**，Git 无法证明它先于任何结果写定。
+
+→ 论文中只能写 **"145 file names are shared with source-train; a byte-level audit found 0/145 identical in content; the split is excluded conservatively under the original protocol, documented before this sub-dataset was run but not provably pre-registered"**；**不得**写「同一批图像同时出现在 train 和 test0」，也**不得**声称预注册。
 
 ---
 
@@ -225,7 +230,7 @@
 | 正向 split | **2 / 6**（test1 illumination +0.00139、test3 pose +0.00358） |
 | 全 seed 负 | **3 / 6**：test4 scale（−0.02649）、test5 background（−0.05556）、test6 background（−0.02319） |
 | 基线水平 | target 平均 AUROC **0.9261**（接近饱和） |
-| 作废 split | test0：145 个文件名与 source-train 重叠，**非 held-out**，`valid=0` |
+| 作废 split | test0：145 个文件名与 source-train 同名重叠，但字节级审计 **0/145 内容相同** ⇒ **仅文件名层面**；仍按原协议 `valid=0` **保守排除**（理由被削弱，见 §7.6） |
 
 **几何事实**：MetalParts 原图 **2681×1500（16:9）**，按协议**方形 448×448** resize（`T.Resize` 短边在 1024-token 模型下不可用）；PCB 为 2048×2048 方图，方形 resize 与原路径**逐位等价（max|Δ|=0）**。
 **边界**：MP 的负向**不得隐藏**，也不得在未验证前归因于 any 单一机制（见 §12）。
@@ -351,7 +356,8 @@
 
 ## 附：本文件与验证脚本的关系
 
-- `scripts/e23_verify.py` 的 V21–V24 检查 `paper_claims.md` 的字符串与 `paper_limitations.md` 的 5 条否定项（其中 "untested" 一词保留在 L3 的**时间限定**表述中，语义已由 L6 更新为"条件性已验证"）。
+- `scripts/e23_verify.py` 的 V21–V24 检查 `paper_claims.md` 的字符串与 `paper_limitations.md` 的 5 条否定项（其中 "untested" 一词保留在 L3 的**时间限定**表述中，语义已由 L6 更新为"条件性已验证"）。**V24 另独立复算** Doll 三种子 ΔAUROC 的 `ddof=1` 样本标准差（**0.004638**），并要求同一数值同时出现在 L5、`results/e23/doll_seed_summary.csv` 与 `paper_main_table.csv`；**V17** 要求 Macro Avg 行六个 std 单元格**留空**（不得填 0，`mean(category std)` 不是 std）。
+- **2026-10-19 勘误轮验证**：Doll 样本 std（0.00379→0.004638）+ Macro Avg std 留空 + E18 锚点修正 + E25 MetalParts `test0` 措辞勘误 → `results/paper_ready/verification_reconciliation_20261019_post_errata.csv`（**38 项 / 0 FAIL**，检查总数不变、容差未放宽）。
 - **V30/V31 已于 2026-10-19 修订**（见 `results/e23/VERIFICATION_SEMANTICS.md`）：
   - V29 = 六个 legacy 路径**字节未变**（文件缺失 → FAIL，不再抛异常中断）；
   - V30 = **当前**处置与对账台账一致（3 项有意未提交 + 2 项经授权入库 + 1 项被忽略），任何第四项未跟踪路径或已入库文件被再次修改 → FAIL；

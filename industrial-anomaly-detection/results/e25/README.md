@@ -168,7 +168,7 @@ python scripts/e25_analysis.py
    - `NameError: AUG_BS`（常量编辑时两行被合并进注释）；
    - `NameError: geom`（domain 收尾元数据路径的变量注入未生效，**发生在全部 cell 已落盘、CSV 已 COMPLETE 之后**）。
    两者均只影响运行脚本的收尾，不影响已写出的逐图分数；修复后重跑仅执行 SKIP 路径，确认 cell 未变化（`SKIP ... (already complete)` ×7）。
-3. **MetalParts test0 泄漏**：与 source train 有 **145 个同名文件**（104 normal / 41 anomaly）→ `valid=0`，**不进入任何聚合或退化指标**，仅以 `valid=0` 记录。
+3. **MetalParts test0 同名重叠（非内容污染）**：与 source train 有 **145 个同名文件**（104 normal / 41 anomaly）→ 依原协议 `valid=0`，**不进入任何聚合或退化指标**。**2026-10-19 勘误**：字节级 SHA-256 审计（`overlap_audit.json`）显示 **145/145 对文件内容全部不同、0 个字节完全相同、0 缺失**，抽样 20 对的 64×64 灰度平均绝对差为 10.94–32.46/255 ⇒ 重叠**仅在文件名层面**，原「同一批物理文件」表述错误；`valid=0` 与全部聚合数字保留不变（见 `ROBUSTAD_PROTOCOL_AUDIT.md` §11）。
 4. **PiledBags 不可运行**：9.41 GB 未下载、磁盘剩 6.1 GB，未做任何推测或替代。
 5. **PCB 基线低于随机**（0.349–0.527）：这是**数据集/域偏移的真实难度**，不是实现错误——同 pipeline 在 PCB test0 上为 0.927、在 MetalParts 上为 0.80–0.99。必须作为限制随结果一起陈述。
 
@@ -297,7 +297,7 @@ python scripts/e25_analysis.py
 ### 15.3 总体与结构
 
 - **cell 账目（39 → 33）**：13 个 split × 3 seed = **39 cell**，全部 `status=OK`；其中进入 target 汇总的是 **11 个有效 target split × 3 seed = 33 cell**；另有 **3 cell** 属 PCB test0（`valid=1` 但为 source reference，仅用于 source→target 描述，不入 target 均值）与 **3 cell** 属 MetalParts test0（`valid=0`，见下条，不入任何汇总）。**无缺失 cell、无重试生成的重复 cell**；被排除的是**聚合口径**，不是删除样本。
-- **MP test0 的 `valid=0` 依据**：其 171 个条目中 **145 个文件名与 source-train 完全重合**（104 normal / 41 anomaly），**不是 held-out split**。该规则**与任何指标无关**（文件级重叠检测），文档化于 `ROBUSTAD_PROTOCOL_AUDIT.md` §6；协议文件最后写入时间（21:41）早于 MetalParts 首个 cell（21:52），但协议与结果在同一提交 `8ea1d73` 入库，**无法由 Git 证明它先于任何结果写定** ⇒ 记为「**结果无关、文档化于本 sub-dataset 运行之前，但不可证明预注册**」。
+- **MP test0 的 `valid=0` 依据（含 2026-10-19 勘误）**：其 171 个条目中 **145 个文件名与 source-train 完全重合**（104 normal / 41 anomaly），原判为**非 held-out split**。**勘误事实**：字节级 SHA-256 审计（`overlap_audit.json`）显示这 145 对文件**内容全部不同**（0/145 字节相同、0 缺失；20 对抽样 64×64 灰度平均绝对差 10.94–32.46/255）⇒ 重叠**仅在文件名层面**，原协议「test0 图像与 train 是同一批物理文件」的表述**已被取代**；`valid=0`、cell 账目与全部聚合数字**均不变**（改为纳入会变更已发布协议与结果，需单独批准的新分析）。该规则仍**与任何指标无关**（文件名级重叠检测），文档化于 `ROBUSTAD_PROTOCOL_AUDIT.md` §6；协议文件最后写入时间（21:41）早于 MetalParts 首个 cell（21:52），但协议与结果在同一提交 `8ea1d73` 入库，**无法由 Git 证明它先于任何结果写定** ⇒ 记为「**结果无关、文档化于本 sub-dataset 运行之前，但不可证明预注册**」。
 - **总体 macro（split 等权）= −0.001068**（逐 seed：−0.00148464 / −0.00169508 / −0.0000242；seed 间 std 0.000910；描述性 t-区间 95% **[−0.00333, +0.00119]**）；**macro ΔAP = −0.005443**。
 - **总体 macro（子数据集等权）= +0.000550**＝(PCB +0.018352 + MP −0.017251)/2。两种均值均由冻结全精度结果计算（不拿已舍入的 5 位均值二次平均），差异**仅来自权重**：5 vs 6 个 split 的数量不平衡使 split 等权偏向 MP。
 - **总体结论对聚合权重敏感**，因此不选择性突出 +0.00055：报告以 split 等权为主值（与逐 split 表一致），并列给出子数据集等权值，二者符号相反 ⇒ **不能宣称任何方向的整体效应**。

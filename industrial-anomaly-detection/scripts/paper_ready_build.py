@@ -49,6 +49,12 @@ def write_csv(path: Path, rows: list, fields: list) -> None:
 
 
 # ------------------------------------------------------------------ tables
+MACRO_MEAN_COLS = ("F0_AUROC_mean", "R1_AUROC_mean", "dAUROC_mean",
+                   "F0_AP_mean", "R1_AP_mean", "dAP_mean")
+MACRO_STD_COLS = ("F0_AUROC_std", "R1_AUROC_std", "dAUROC_std",
+                  "F0_AP_std", "R1_AP_std", "dAP_std")
+
+
 def build_main_table() -> dict:
     src = {r["category"]: r for r in csv.DictReader(open(E22 / "main_table_10cat_3seed.csv"))}
     fields = ["Category", "F0_AUROC_mean", "F0_AUROC_std", "R1_AUROC_mean", "R1_AUROC_std",
@@ -68,9 +74,15 @@ def build_main_table() -> dict:
             "positive_seeds_auroc": f"{r['pos_seeds_auroc']}/3",
             "positive_seeds_ap": f"{r['pos_seeds_ap']}/3",
         })
+    # The Macro Avg row averages the six MEAN columns only. mean(category std) is NOT the
+    # cross-seed std of a macro-averaged metric, so the six std cells stay blank -- blank means
+    # "not defined at this aggregation level", never 0. The two x/10 cells count positive
+    # CATEGORIES, not seeds (a seed count would be x/3).
     macro = {"Category": "Macro Avg"}
-    for k in fields[1:13]:
+    for k in MACRO_MEAN_COLS:
         macro[k] = fnum(sum(float(r[k]) for r in rows) / len(rows))
+    for k in MACRO_STD_COLS:
+        macro[k] = ""
     macro["positive_seeds_auroc"] = f"{sum(1 for r in rows if float(r['dAUROC_mean']) > 0)}/10"
     macro["positive_seeds_ap"] = f"{sum(1 for r in rows if float(r['dAP_mean']) > 0)}/10"
     rows.append(macro)
@@ -217,8 +229,9 @@ def build_claims(summary: dict, mv: dict) -> None:
              f"**{ver['verdict']}**.")
     L.append(f"- Doll is a reproducible regression: mean ΔAUROC **{summary['doll_mean_auroc']}** "
              f"(3-seed mean; 0/3 positive seeds), paired-image bootstrap CI "
-             f"[{fnum(doll['d_auroc_ci'][0], 4)}, {fnum(doll['d_auroc_ci'][1], 4)}], "
-             f"p(ΔAUROC>0) = {doll['p_d_auroc_gt0']:.3f}.")
+             f"[{fnum(doll['d_auroc_ci'][0], 4)}, {fnum(doll['d_auroc_ci'][1], 4)}], bootstrap "
+             f"positive-difference proportion P(ΔAUROC>0) = {doll['p_d_auroc_gt0']:.3f} "
+             f"(one-sided resampling proportion, not a two-sided p-value).")
     L.append(f"- Multi-view evaluation (E21, 4 views × 3 categories × seed0): {mv['n_cells_pos']} of "
              f"12 cells have ΔAUROC > 0; the macro pooled ΔAUROC is {mv['macro_pooled_d_auroc']} and "
              f"ΔAP is {mv['macro_pooled_d_ap']}; E21 verdict = **HOLD**.")
@@ -275,7 +288,9 @@ def build_limitations() -> None:
     L = ["# Paper limitations (factual material, ready for the limitation section)\n",
          "## L1 — Doll stable regression",
          "Doll is the only category with a stable negative ΔAUROC (3-seed mean −0.03850, 0/3 positive "
-         "seeds, paired-image bootstrap CI [−0.0661, −0.0140], p = 0.001). The audit in `results/e23/` "
+         "seeds, paired-image bootstrap CI [−0.0661, −0.0140], bootstrap positive-difference "
+         "proportion P(ΔAUROC>0) = 0.001, which is a one-sided resampling proportion and NOT a "
+         "two-sided p-value). The audit in `results/e23/` "
          "shows the failure is present in all three bank seeds, broad across illumination groups "
          "(8–9 of 10 groups negative per seed), and consistent with a mild near-symmetric score shift "
          "(the anomaly-side relative drop is 0.95–1.00 of the normal-side drop) rather than an "
@@ -307,7 +322,8 @@ def build_limitations() -> None:
          "## L5 — Two different uncertainties",
          "Per-category paired-image bootstrap CIs quantify test-set sampling uncertainty only; "
          "cross-seed variability is reported separately as the std over the 3 bank seeds "
-         "(e.g. Doll ΔAUROC −0.03850 ± 0.00379). The two are never merged, and image bootstrap CIs "
+         "(e.g. Doll ΔAUROC −0.03850 ± 0.004638, sample std with ddof=1 over the 3 bank seeds). The "
+         "two are never merged, and image bootstrap CIs "
          "must not be read as cross-seed uncertainty.",
          "",
          "## L6 — External evaluation is conditional and re-trained (E25)",
@@ -319,8 +335,12 @@ def build_limitations() -> None:
          "external dataset validation with re-training, NOT a direct transfer of the M²AD adapter. "
          "Cell accounting: 13 splits × 3 seeds = 39 completed cells, of which 33 (11 valid target "
          "splits × 3 seeds) enter the target aggregates, 3 are PCB test0 (source reference) and 3 are "
-         "MetalParts test0, which is not held out (145 file names identical to source-train) and is "
-         "reported with valid=0 but never zero-filled. That validity rule is file-level and "
+         "MetalParts test0, which is excluded under the original protocol (145 file names shared with "
+         "source-train) and is reported with valid=0 but never zero-filled. A 2026-10-19 byte-level "
+         "SHA-256 audit of that overlap found 0 of 145 pairs identical in content "
+         "(`results/e25/overlap_audit.json`), so the overlap is name-level only: the \"same stored "
+         "files\" rationale is superseded and the exclusion is retained conservatively, with a "
+         "weakened rather than proven rationale. That validity rule is file-name-level and "
          "outcome-independent; it is documented before the MetalParts run but, because protocol and "
          "results were committed together, it cannot be proven pre-registered. "
          "The result is sub-dataset dependent: PCB +0.01835 (5/5 splits positive in all 3 seeds) and "
@@ -376,7 +396,8 @@ def build_evidence_map(summary: dict) -> None:
          "`results/paper_ready/paper_multiview_table.csv` (all 12 cells retained).",
          "Boundary: HOLD, seed0 only; not a viewpoint-invariance claim.\n",
          "### Claim E — Doll defines the applicability boundary",
-         "Evidence: E22 (Doll −0.03850, CI [−0.0661, −0.0140], p = 0.001, 0/3 seeds) + E23 descriptive "
+         "Evidence: E22 (Doll −0.03850, CI [−0.0661, −0.0140], bootstrap positive-difference "
+         "proportion P(ΔAUROC>0) = 0.001, one-sided resampling proportion, 0/3 seeds) + E23 descriptive "
          "audit (EXPLAINED_PATTERN: anomaly-side drop exceeds normal-side drop and d′ falls in 3/3 "
          "seeds; broad across illumination groups; Doll has the lowest F0 AUROC and the lowest d′ "
          "among the 10 categories; its illumination shift is close to the category median).",

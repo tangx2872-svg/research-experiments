@@ -45,6 +45,7 @@ Outputs (results/e23/):
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import math
@@ -121,11 +122,25 @@ def doll_rel_paths() -> list:
 
 
 # ------------------------------------------------------------------ A
+A_FLOAT_COLS = ("auroc_f0", "auroc_r1", "d_auroc", "ap_f0", "ap_r1", "d_ap",
+                "dprime_f0", "dprime_r1", "dprime_change")
+A_COUNT_COLS = ("n_good", "n_anomaly", "n_filtered")
+
+
 def analysis_a(cells: dict) -> list:
-    rows = []
+    """Analysis A — three frozen seed rows + their summaries.
+
+    The summary rows are computed from `raw` ONLY (the three original seed records).
+    Accumulating them into the same list that is later re-read would feed each summary back
+    into the next statistic; that bug produced e.g. std(auroc_f0)=0.00588 (a 4-value std that
+    included the mean row) and min(auroc_f0)=0.00588 instead of 0.70504. `raw` is therefore
+    snapshotted before any summary row is appended and is never mutated afterwards.
+    Sample std uses ddof=1 (n=3 seeds).
+    """
+    raw = []
     for s in SEEDS:
         c = cells[(DOLL, s)]
-        rows.append({
+        raw.append({
             "seed": s,
             "auroc_f0": c["f0"]["auroc"], "auroc_r1": c["r1"]["auroc"],
             "d_auroc": c["delta_auroc"],
@@ -138,16 +153,16 @@ def analysis_a(cells: dict) -> list:
             "label_source": c["label_provenance"]["label_source"],
             "n_ng_dir_but_image_anomaly_0": c["label_provenance"]["n_ng_dir_but_image_anomaly_0"],
         })
+    if len(raw) != len(SEEDS):
+        raise RuntimeError(f"expected {len(SEEDS)} raw seed rows, got {len(raw)}")
+
+    rows = [dict(r) for r in raw]
     for stat in ("mean", "std", "min", "max"):
         row = {"seed": stat}
-        for k in ("auroc_f0", "auroc_r1", "d_auroc", "ap_f0", "ap_r1", "d_ap",
-                  "dprime_f0", "dprime_r1", "dprime_change"):
-            v = np.array([r[k] for r in rows], float)
-            row[k] = {"mean": v.mean(), "std": v.std(ddof=1) if stat in ("std", "min", "max")
-                      else np.nan, "min": v.min(), "max": v.max()}[stat]
-        for k in ("n_good", "n_anomaly", "n_filtered"):
-            v = np.array([r[k] for r in rows], float)
-            row[k] = {"mean": v.mean(), "std": v.std(ddof=1), "min": v.min(), "max": v.max()}[stat]
+        for k in A_FLOAT_COLS + A_COUNT_COLS:
+            v = np.array([float(r[k]) for r in raw], float)      # raw only, never `rows`
+            row[k] = {"mean": float(v.mean()), "std": float(v.std(ddof=1)),
+                      "min": float(v.min()), "max": float(v.max())}[stat]
         rows.append(row)
     return rows
 
@@ -404,11 +419,22 @@ def analysis_f(comp: list) -> dict:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser(description="E23 Doll descriptive audit (read-only, 0 GPU)")
+    ap.add_argument("--summary-only", action="store_true",
+                    help="rebuild only doll_seed_summary.csv from the frozen cells "
+                         "(no image access, no other output rewritten)")
+    args = ap.parse_args()
+
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "logs").mkdir(exist_ok=True)
     cells = load_cells()
     assert len(cells) == 30, len(cells)
     assert all((DOLL, s) in cells for s in SEEDS)
+
+    if args.summary_only:
+        write_csv(OUT / "doll_seed_summary.csv", analysis_a(cells))
+        print("[E23] summary-only: doll_seed_summary.csv rebuilt from 3 frozen seed rows", flush=True)
+        return 0
 
     specs = doll_rel_paths()
     print(f"[E23] Doll test records: {len(specs)}", flush=True)

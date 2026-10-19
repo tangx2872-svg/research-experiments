@@ -8,7 +8,7 @@ All SAFE numbers below are injected programmatically from `paper_main_table.csv`
 - **7 of 10** categories show a positive ΔAUROC across all three evaluated seeds.
 - The macro-average and median ΔAUROC are **0.00760** and **0.01080** (macro-average ΔAP 0.00777).
 - The frozen per-category paired-image bootstrap (n_boot = 3000) excludes zero for Bird, Ring and Teapot (and for Holder's ΔAP); the pre-registered STRONG-GO exclusion criterion is not met because Doll drops below −0.03, so the protocol verdict is **HOLD**.
-- Doll is a reproducible regression: mean ΔAUROC **-0.03850** (3-seed mean; 0/3 positive seeds), paired-image bootstrap CI [-0.0661, -0.0140], p(ΔAUROC>0) = 0.001.
+- Doll is a reproducible regression: mean ΔAUROC **-0.03850** (3-seed mean; 0/3 positive seeds), paired-image bootstrap CI [-0.0661, -0.0140], bootstrap positive-difference proportion P(ΔAUROC>0) = 0.001 (one-sided resampling proportion, not a two-sided p-value).
 - Multi-view evaluation (E21, 4 views × 3 categories × seed0): 8 of 12 cells have ΔAUROC > 0; the macro pooled ΔAUROC is 0.00142 and ΔAP is -0.00165; E21 verdict = **HOLD**.
 - E22 passed **36 of 36** independent verification checks with no rewriting of any stored score, and every negative cell is retained in the committed artifacts.
 - E23 (Doll audit) verdict = **EXPLAINED_PATTERN**: in 3/3 seeds the anomaly-side score drop exceeds the normal-side drop and d' decreases; the degradation is broad across illumination groups (8-9 of 10 groups per seed).

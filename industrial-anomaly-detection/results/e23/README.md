@@ -14,7 +14,7 @@
 |---|---|
 | 📍 论文阶段 | Paper Validation / Limitation Analysis —— 为已冻结方法划定适用边界 |
 | 🎯 服务论断 | *R1-ILA shows broadly positive category-level behavior on M²AD, but its benefit is not universal; Doll is a reproducible failure case that helps define the method's applicability boundary.* |
-| 🧪 为什么非做不可 | Doll 是 3/3 seeds 一致、CI 明确低于 0（[−0.0661, −0.0140]，p = 0.001）的失败类，需要判断它属于"光照偏移弱 ⇒ 方法不适用"、"R1 压低了异常可分性"、"正常/异常分数一起移动"还是"现有指标无法解释" |
+| 🧪 为什么非做不可 | Doll 是 3/3 seeds 一致、CI 明确低于 0（[−0.0661, −0.0140]，bootstrap 正差比例 P(ΔAUROC>0) = 0.001）的失败类，需要判断它属于"光照偏移弱 ⇒ 方法不适用"、"R1 压低了异常可分性"、"正常/异常分数一起移动"还是"现有指标无法解释" |
 | 🚦 出口条件 | 完成冻结的描述性分析即 **STOP**：**无论能否解释 Doll，都不进入任何方法修改**（无重训、无调参、无 Doll-specific 处理） |
 
 **硬性禁止（本实验全程遵守）**：改 BETA / BETA sweep / 改 LR / 改 augmentation / 改 preserve loss / 改 adapter / 改 backbone / 改 scoring / 改 bank / 换 seed / seed3+ / Doll-specific 训练或超参 / 新增模块 / 为 Doll 设计新 loss。**只读已有 scores / features / metadata / logs，0 GPU。**
@@ -44,8 +44,10 @@ E23 **不负责修复 Doll**，只负责描述失败发生在哪里，并检验*
 | 1 | 0.71306 | 0.67719 | **−0.03588** | 0.80318 | 0.79562 | −0.00756 | 0.78796 | 0.71585 | −0.07210 | `b60e2ca632` |
 | 2 | 0.70504 | 0.66928 | **−0.03576** | 0.80981 | 0.78778 | −0.02203 | 0.78505 | 0.65098 | −0.13407 | `d4efeaf9f3` |
 | mean | 0.71250 | 0.67401 | **−0.03850** | 0.80685 | 0.79383 | −0.01302 | 0.79377 | 0.69231 | −0.10146 | — |
-| std | 0.00588 | 0.00341 | 0.00379 | 0.00275 | 0.00439 | 0.00642 | 0.01035 | 0.02932 | — | — |
+| std | 0.00720 | 0.00418 | 0.00464 | 0.00337 | 0.00538 | 0.00786 | 0.01268 | 0.03591 | 0.03111 | — |
 | min / max | 0.70504 / 0.71941 | 0.66928 / 0.67719 | −0.04385 / −0.03576 | 0.80318 / 0.80981 | 0.78778 / 0.79808 | −0.02203 / −0.00756 | — | — | — | — |
+
+> **勘误（2026-10-19）**：此前本表的 std 行（0.00588 / 0.00341 / 0.00379 / …）与 min 行首格（0.00588）由 `analysis_a` 的汇总污染造成——汇总行被追加进 `rows` 后又被下一次统计读取，std 实际是 4 个值（3 seed + mean 行）的 std，min 又读到了该 std。现改为只从三条原始 seed 记录计算、`ddof=1`；`doll_seed_summary.csv` 已重生成。正确值：std(ΔAUROC) = **0.004638**（原误 0.0037868）、min(F0 AUROC) = **0.705037**（原误 0.00588）。原始三行未改动。
 
 - **3/3 seeds 同方向**：AUROC、AP、d′ 三个指标全部下降；n_good = 270、n_anomaly = 400（detectable 过滤 30 条）三 seed 完全相同，标签来源 = `meta_unsupervised.json:image_anomaly`（其中 70 条位于 `NG/` 目录但 `image_anomaly = 0`，已按元数据判类）。
 - 三 seed 使用**不同 bank**（hash 不同）、不同 adapter，得到同一结论 ⇒ 不是 bank/seed 偶然。
@@ -167,7 +169,7 @@ Doll 与另外 9 类在冻结维度上的位置（rank 1 = 10 类中最低值；
 
 Doll 应作为 **limitation（适用边界）** 写入论文，模板如下（数字自动核对过）：
 
-> Across the complete 10-category M²AD evaluation, R1-ILA yields positive mean ΔAUROC on 9 of 10 categories (macro mean +0.00760, median +0.01080), but it degrades one category reproducibly: **Doll** (mean ΔAUROC −0.03850, 95% paired-image bootstrap CI [−0.0661, −0.0140], p = 0.001; 0/3 seeds positive). A descriptive audit of the frozen per-image scores shows that the degradation is (i) present in all three bank seeds, (ii) broad across illumination groups (8–9 of 10 groups), (iii) accompanied by a mild, near-symmetric downward shift of both normal and anomaly scores with a slightly larger anomaly-side drop, and (iv) **not** explained by illumination-shift strength (Doll's shift metric is close to the category median) nor by the low-baseline/high-headroom regime (Doll has the lowest baseline yet the worst outcome). We therefore report Doll as a reproducible boundary case of the method rather than as a uniform improvement.
+> Across the complete 10-category M²AD evaluation, R1-ILA yields positive mean ΔAUROC on 9 of 10 categories (macro mean +0.00760, median +0.01080), but it degrades one category reproducibly: **Doll** (mean ΔAUROC −0.03850, 95% paired-image bootstrap CI [−0.0661, −0.0140], bootstrap positive-difference proportion P(ΔAUROC>0) = 0.001, i.e. a one-sided resampling proportion rather than a two-sided p-value; 0/3 seeds positive). A descriptive audit of the frozen per-image scores shows that the degradation is (i) present in all three bank seeds, (ii) broad across illumination groups (8–9 of 10 groups), (iii) accompanied by a mild, near-symmetric downward shift of both normal and anomaly scores with a slightly larger anomaly-side drop, and (iv) **not** explained by illumination-shift strength (Doll's shift metric is close to the category median) nor by the low-baseline/high-headroom regime (Doll has the lowest baseline yet the worst outcome). We therefore report Doll as a reproducible boundary case of the method rather than as a uniform improvement.
 
 **写法限制（与 §9 一致）**：
 - 可写：上述事实 + CI + "boundary case"；

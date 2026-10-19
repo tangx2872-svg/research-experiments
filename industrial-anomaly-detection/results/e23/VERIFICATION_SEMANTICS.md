@@ -69,6 +69,7 @@
 - **历史记录**：`results/e23/verification.csv`（38 项 / 0 FAIL）保持**原样**，它只证明 2026-10-16 那个时点的状态，**不作为当前通过记录**。
 - **语义修订前**：`results/paper_ready/verification_reconciliation_20261019.csv`（38 项 / **2 FAIL: V30/V31**），保留作为失败证据。
 - **语义修订后**：`results/paper_ready/verification_reconciliation_20261019_post_semantics.csv`（38 项 / **0 FAIL**）。
+- **勘误轮之后（2026-10-19 数值/措辞修订）**：`results/paper_ready/verification_reconciliation_20261019_post_errata.csv`（38 项 / **0 FAIL**）。本轮把 Doll 跨 seed 标准差统一为 `ddof=1` 的 **0.004638**（原 0.0037868 来自把 mean 行计入的 4 值 std）、Macro Avg 的六个 std 单元格留空、修正 E18 锚点、并记录 E25 MP `test0` 的字节级勘误。检查总数**仍为 38**：V24 增补「ddof=1 std 传播到 L5 / `doll_seed_summary.csv` / `paper_main_table.csv`」三项断言，V17 增补「六个 std 单元格必须为空」，**未放宽任何容差**。
 - 复跑命令（务必带 `--out`，否则会覆盖历史 `results/e23/verification.csv`）：
   `python scripts/e23_verify.py --out <独立路径>.csv`
 

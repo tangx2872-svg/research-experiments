@@ -252,14 +252,28 @@ def main() -> int:
         "no mismatch", bad[:4] or "no mismatch", not bad)
     wr = json.loads((E22 / "win_rates.json").read_text())
     macro = main_rows[-1]
+    MACRO_MEAN = ("F0_AUROC_mean", "R1_AUROC_mean", "dAUROC_mean",
+                  "F0_AP_mean", "R1_AP_mean", "dAP_mean")
+    MACRO_STD = ("F0_AUROC_std", "R1_AUROC_std", "dAUROC_std",
+                 "F0_AP_std", "R1_AP_std", "dAP_std")
     marg = all(r5(np.mean([float(r[c]) for r in main_rows[:-1]])) == r5(macro[c])
-               for c in ("dAUROC_mean", "dAP_mean", "F0_AUROC_mean", "R1_AUROC_mean"))
-    add("V17", "Macro Avg row = column means of the 10 category rows; seed cells read 9/10",
-        {"macro ΔAUROC": fnum(wr["macro_mean_d_auroc"]), "positive": "9/10"},
-        {"macro ΔAUROC": macro["dAUROC_mean"], "positive": macro["positive_seeds_auroc"],
-         "means_ok": marg},
-        marg and macro["positive_seeds_auroc"] == "9/10"
-        and macro["positive_seeds_ap"] == "9/10"
+               for c in MACRO_MEAN)
+    # The six std cells must be BLANK: mean(category std) is not a cross-seed std.
+    std_cells = {c: macro[c] for c in MACRO_STD}
+    std_blank = all(v.strip() == "" for v in std_cells.values())
+    # The x/10 cells are positive-CATEGORY counts; verify against the table, not against /3.
+    n_pos_cat = sum(1 for r in main_rows[:-1] if float(r["dAUROC_mean"]) > 0)
+    n_pos_ap = sum(1 for r in main_rows[:-1] if float(r["dAP_mean"]) > 0)
+    label_ok = (macro["positive_seeds_auroc"] == f"{n_pos_cat}/10"
+                and macro["positive_seeds_ap"] == f"{n_pos_ap}/10")
+    add("V17", "Macro Avg: 6 mean cells = category means, all 6 std cells blank (not 0), "
+               "x/10 cells are positive-category counts (not seeds)",
+        {"macro ΔAUROC": fnum(wr["macro_mean_d_auroc"]), "std cells": "blank",
+         "positive": f"{n_pos_cat}/10"},
+        {"macro ΔAUROC": macro["dAUROC_mean"], "std_cells": std_cells,
+         "positive": macro["positive_seeds_auroc"], "means_ok": marg,
+         "std_blank": std_blank, "labels_ok": label_ok},
+        marg and std_blank and label_ok
         and close(macro["dAUROC_mean"], wr["macro_mean_d_auroc"], 1e-5))
     abl = list(csv.DictReader(open(PR / "paper_ablation_table.csv")))
     src_abl = {(r["category"], r["config"]): r for r in csv.DictReader(open(E17 / "summary.csv"))}
@@ -308,7 +322,7 @@ def main() -> int:
         f"macro-average ΔAP {fnum(wr['macro_mean_d_ap'])}",
         f"mean ΔAUROC **{fnum(-0.03849691358024695)}**",
         f"[{boot['d_auroc_ci'][0]:.4f}, {boot['d_auroc_ci'][1]:.4f}]".replace("[-0.0661", "[-0.0661"),
-        f"p(ΔAUROC>0) = {boot['p_d_auroc_gt0']:.3f}",
+        f"P(ΔAUROC>0) = {boot['p_d_auroc_gt0']:.3f}",
         f"{ov['n_cells_pos']} of 12 cells have ΔAUROC > 0",
         f"macro pooled ΔAUROC is {fnum(ov['macro_pooled_d_auroc'])}",
         f"ΔAP is {fnum(ov['macro_pooled_d_ap'])}",
@@ -340,7 +354,20 @@ def main() -> int:
                   "cross-dataset untested": "untested" in lim.lower(),
                   "association exploratory": "exploratory" in lim.lower(),
                   "uncertainties never merged": "never merged" in lim.lower()}
-    add("V24", "paper_limitations.md contains the required explicit negations (L1-L5)",
+    # Doll cross-seed std: recomputed from the three frozen E22 cells (ddof=1) and required to be
+    # identical in L5 text, doll_seed_summary.csv and paper_main_table.csv. The pre-2026-10-19
+    # value 0.0037868 came from a 4-value std (3 seeds + the appended mean row).
+    doll_d = np.array([cells[f"Doll_seed{s}"]["delta_auroc"] for s in (0, 1, 2)], float)
+    doll_std = float(doll_d.std(ddof=1))
+    seed_rows = list(csv.DictReader(open(E23 / "doll_seed_summary.csv")))
+    csv_std = float(next(r for r in seed_rows if r["seed"] == "std")["d_auroc"])
+    tbl_rows = list(csv.DictReader(open(PR / "paper_main_table.csv")))
+    tbl_std = next(r for r in tbl_rows if r["Category"] == "Doll")["dAUROC_std"]
+    lim_checks[f"Doll std ddof=1 = {doll_std:.6f} in L5"] = f"± {doll_std:.6f}" in lim
+    lim_checks["doll_seed_summary.csv std == cells"] = abs(csv_std - doll_std) < 1e-9
+    lim_checks["paper_main_table.csv Doll std == cells"] = tbl_std == f"{doll_std:.5f}"
+    add("V24", "paper_limitations.md negations (L1-L5) and the ddof=1 Doll std propagated to "
+               "L5 / doll_seed_summary.csv / paper_main_table.csv",
         {k: True for k in lim_checks}, lim_checks, all(lim_checks.values()))
 
     # ---------------- 25-27. figures provenance ----------------
