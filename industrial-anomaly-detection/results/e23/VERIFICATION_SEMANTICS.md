@@ -146,3 +146,66 @@
 | R11 多状态条目中的 dirty legacy | 正确识别 | PASS（`tracked_dirty`） |
 
 **记录**：`results/paper_ready/verification_reverse_tests_20261019.csv`；完整验证：`results/paper_ready/verification_reconciliation_20261019_e22_erratum.csv`（45 项 / 0 FAIL）。
+
+---
+
+## 8. 2026-10-19 第三轮：记录字节级可复现性的两处修复（V30/V31 语义不变）
+
+**触发**：提交 `ae27a3b` 之后按既定流程复跑两个脚本：
+
+- 反向测试记录有 **1 行不同**（R05 的临时 SHA）；
+- 完整验证记录**当次**恰好逐字节一致，但逐行核查 V02 后发现其 `observed` 字典由 `set(E22_AUTHORISED_DOCS)` 迭代构造，键顺序随 `PYTHONHASHSEED` 变化。修复前连续两次运行已经实测出现两种顺序（v1 记录为 `statistical_summary` 在前，另一次为 `README` 在前）。因此那次"一致"**不是可复现，而是碰巧**。
+
+即：两处都是"记录的渲染依赖非确定性输入"，与检查语义无关。
+
+### 8.1 事实 A（R05：临时仓库 SHA）
+
+```text
+< R05 unauthorised later modification,FAIL,FAIL,True,unauthorised=['2883e90']
+> R05 unauthorised later modification,FAIL,FAIL,True,unauthorised=['d7f4ad9']
+```
+
+- 11 个场景数量一致；`scenario / expected / observed / match` 四列**完全一致**；
+- 唯一差异是 R05 `detail` 中渲染的 **7 位短 hash**，来自 `tempfile.TemporaryDirectory()` 内的临时仓库，其 SHA 依赖时间戳，**每次运行必然不同**。
+
+### 8.2 事实 B（V02：set 迭代序）
+
+- 源码：`doc_paths = set(E22_AUTHORISED_DOCS)`，随后 `{p: ... for p in doc_paths}` 直接进入 `observed` 字段；
+- 同一个 CSV 的 `baseline_sha256` / `appendix_sha256` 两个子字典，其**键顺序**在不同进程间不同，但值、判定（`prefix_ok` / `hash_ok` / `phrases_ok`）完全相同；
+- 因此 V02 的**结论**从未随机，随机的只是**记录文本**；但足以让"复跑逐字节相等"这一契约失效。
+
+### 8.3 修改（2 处，均不改判定）
+
+| 项 | 修改前 | 修改后 |
+|---|---|---|
+| R05 `detail` | `unauthorised=['2883e90']`（临时 SHA） | `unauthorised=1 flagged_injected_commit=True` |
+| V02 迭代源 | `doc_paths = set(E22_AUTHORISED_DOCS)` | `doc_paths = sorted(...)`；另保留 `doc_set` 供 `hist_paths - doc_set` 等集合运算 |
+
+- **断言未变**：R05 的 `mechanism` 仍是 `any(h["commit"] == d for h in res["unauthorised"])`，即"被判定的提交**恰好**是测试注入的那个提交"；该布尔值原本就已参与 `match` 计算，现在只是把它写进 `detail`。V02 的 `all(...)` 本来与顺序无关，现在仍是同一组断言。
+- **未变**：场景数（11）、期望值（9 FAIL / 2 PASS）、`match` 判定函数、V30/V31 审计逻辑、45 项完整验证的任何一条检查与容差。
+- **未变**：R06 的 `unauthorised=2`、R07/R08 的 `types=[...]`、R10 的 `post=[...]` 均为确定性字段，保持原样。
+
+### 8.4 验证结果
+
+| 检查 | 结果 |
+|---|---|
+| 反向测试连续两次运行 `cmp` | **逐字节一致**（BYTE-STABLE） |
+| 完整验证连续两次运行 `cmp` | **逐字节一致**（BYTE-STABLE） |
+| 与 v1 记录对比 | 反向测试仅 R05 `detail` 一列不同；完整验证仅 V02 一行（键顺序）不同 |
+| `match` / `pass` 全为通过 | 是（11/11、45/45） |
+| V31 扫描范围 | 仍为 `4 hist / 1 legacy-touching post`（本轮提交未触碰 legacy 路径） |
+
+### 8.5 记录版本与契约
+
+| 文件 | 状态 | 说明 |
+|---|---|---|
+| `verification_reverse_tests_20261019.csv` | **保留原样**（v1） | 首次记录；`detail` 含一次性临时 SHA，**不可逐字节复现** |
+| `verification_reverse_tests_20261019_v2.csv` | **新增**（v2） | 当前契约记录；可逐字节复现 |
+| `verification_reconciliation_20261019_e22_erratum.csv` | **保留原样**（v1） | 45 项 / 0 FAIL；V02 键顺序为修复前的一次偶然顺序 |
+| `verification_reconciliation_20261019_e22_erratum_v2.csv` | **新增**（v2） | 45 项 / 0 FAIL；V02 键顺序为 `sorted()` 后的固定顺序，可逐字节复现 |
+
+**契约边界**：
+
+- 反向测试的可复现承诺适用于 `scenario / expected / observed / match` 四列（v1、v2 完全相同）；`detail` 列自 v2 起亦纳入该承诺。v1 的 `detail` 仅作历史诊断信息，**不作为契约字段**。
+- 完整验证的可复现承诺以 v2 为准；v1 与 v2 的差异仅限 V02 `observed` 的键顺序，判定列逐行相同。
+- 任何未来新增的 `detail` / `observed` 都不允许渲染临时仓库的 SHA、时间戳、绝对路径或**未排序的集合迭代序**。
