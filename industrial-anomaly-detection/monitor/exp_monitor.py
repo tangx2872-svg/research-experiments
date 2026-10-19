@@ -113,9 +113,20 @@ def read_progress(root: Path) -> dict:
 
     pdir = root / "progress"
     if pdir.is_dir():
+        # 只统计“当前 round”的分片，避免把历史 round 的 unit 数并进分母
+        cur_round = None
+        try:
+            cur_round = json.loads((root / "progress.json").read_text()).get("round")
+        except Exception:
+            pass
+        shards = sorted(pdir.glob("*.json"))
+        if cur_round:
+            scoped = [p for p in shards if p.name.startswith(f"{cur_round}__")]
+            if scoped:
+                shards = scoped
         total = done = failed = 0
         n_shards = 0
-        for p in sorted(pdir.glob("*.json")):
+        for p in shards:
             try:
                 j = json.loads(p.read_text())
             except Exception:
@@ -216,9 +227,22 @@ def finished_rounds() -> dict:
                     continue
                 st = rounds.setdefault(rd.name, {})
                 st["n_units"] = len(list(rd.rglob("info.json")))
+        pdir = root / "progress"
+        if pdir.is_dir():
+            for p in sorted(pdir.glob("*.json")):
+                r = p.name.split("__")[0]
+                try:
+                    j = json.loads(p.read_text())
+                except Exception:
+                    continue
+                st = rounds.setdefault(r, {})
+                st["shard_total"] = st.get("shard_total", 0) + int(j.get("units_total", 0) or 0)
+                st["shard_done"] = st.get("shard_done", 0) + len(j.get("units", []) or [])
+
         for r, st in rounds.items():
             fin = (st.get("remaining") == 0) or (
-                st.get("done") is not None and st.get("total") and st["done"] >= st["total"])
+                st.get("done") is not None and st.get("total") and st["done"] >= st["total"]) or (
+                bool(st.get("shard_total")) and st.get("shard_done", 0) >= st["shard_total"])
             st.update(root=str(root), round=r, finished=bool(fin))
             out[f"{root.name}::{r}"] = st
     return out
@@ -329,8 +353,9 @@ def main() -> int:
             last_change_ts = now
         if act and act > cur.get("last_act", 0):
             cur["last_act"] = act
-            if done is None:
-                last_change_ts = now
+            # 文件活动本身就是"有进度"的证据（日志/结果在刷新）。
+            # 之前只在 done is None 时才认活动，导致 done 恒为 0 的长任务被误判为卡住。
+            last_change_ts = now
 
         snap = {"script": cur["script"], "root": str(root) if root else None,
                 "alive": len(alive), "pids": cur["pids_first"], "done": done,
