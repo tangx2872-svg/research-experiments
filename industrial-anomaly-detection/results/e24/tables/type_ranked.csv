@@ -1,0 +1,8 @@
+rank,type,families,n_cells,d_auroc_mean,d_ap_mean,n_pos_auroc,worst_d_auroc
+1,A2,gamma,3,+0.019067,+0.014409,3,+0.012100
+2,A4,brightness+gamma,3,+0.015539,+0.011918,3,+0.011051
+3,A6,brightness+contrast+gamma,3,+0.015401,+0.011712,3,+0.010614
+4,A3,brightness+contrast,3,+0.011223,+0.008334,2,-0.000188
+5,A5,contrast+gamma,3,+0.009778,+0.006037,3,+0.002521
+6,A1,contrast,3,+0.008920,+0.004499,3,+0.001297
+7,A0,brightness,3,+0.004142,+0.003421,3,+0.000066

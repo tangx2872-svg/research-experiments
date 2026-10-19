@@ -1,0 +1,795 @@
+{
+  "experiment": "E24 photometric sensitivity (M2AD, frozen R1-ILA)",
+  "note": "EXPLANATORY AUDIT ONLY. No frozen definition is changed; any better setting is recorded as a candidate for a future pre-registered study. RobustAD target/test results were never used for selection.",
+  "data": "M2AD Bird/Car/Cube, view120, 300-bank, official image_anomaly labels",
+  "fixed_parameters": {
+    "BETA": 0.1,
+    "lr": 0.001,
+    "max_steps": 300,
+    "patience": 30,
+    "batch_size": 8,
+    "backbone": "DINOv2-B frozen",
+    "scoring": "1-NN-max",
+    "bank": 300,
+    "train/val": [
+      240,
+      60
+    ]
+  },
+  "round1_seed0": {
+    "S05": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.014354636579651267,
+      "d_auroc_median": 0.012612359550561836,
+      "d_auroc_std": 0.006864038845536328,
+      "d_ap_mean": 0.012343023760382358,
+      "d_ap_median": 0.011391829153050814,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.00852962826647019,
+      "best_d_auroc": 0.021921921921921772,
+      "worst_cell": "Cube",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 80.66666666666667,
+      "runtime_s_mean": 131.73333333333332,
+      "per_category": {
+        "Bird": {
+          "d_auroc": 0.021921921921921772,
+          "d_ap": 0.021018604839912136,
+          "steps": 44
+        },
+        "Car": {
+          "d_auroc": 0.012612359550561836,
+          "d_ap": 0.011391829153050814,
+          "steps": 99
+        },
+        "Cube": {
+          "d_auroc": 0.00852962826647019,
+          "d_ap": 0.004618637288184124,
+          "steps": 99
+        }
+      },
+      "levels": [
+        0.95,
+        1.05
+      ],
+      "families": [
+        "brightness",
+        "contrast",
+        "gamma"
+      ]
+    },
+    "S10": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.015322818718183862,
+      "d_auroc_median": 0.018069632132132085,
+      "d_auroc_std": 0.004791419524885705,
+      "d_ap_mean": 0.0125808900732071,
+      "d_ap_median": 0.012503735250869785,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.009790209790209725,
+      "best_d_auroc": 0.018108614232209774,
+      "worst_cell": "Cube",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 84.0,
+      "runtime_s_mean": 132.23333333333332,
+      "per_category": {
+        "Bird": {
+          "d_auroc": 0.018069632132132085,
+          "d_ap": 0.018991169710592337,
+          "steps": 104
+        },
+        "Car": {
+          "d_auroc": 0.018108614232209774,
+          "d_ap": 0.012503735250869785,
+          "steps": 44
+        },
+        "Cube": {
+          "d_auroc": 0.009790209790209725,
+          "d_ap": 0.006247765258159177,
+          "steps": 104
+        }
+      },
+      "levels": [
+        0.9,
+        1.1
+      ],
+      "families": [
+        "brightness",
+        "contrast",
+        "gamma"
+      ]
+    },
+    "S15": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.015400952626336931,
+      "d_auroc_median": 0.01600110415899869,
+      "d_auroc_std": 0.0045171390188867,
+      "d_ap_mean": 0.011712007580720255,
+      "d_ap_median": 0.011702448515137576,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.01061373873873861,
+      "best_d_auroc": 0.019588014981273494,
+      "worst_cell": "Bird",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 54.0,
+      "runtime_s_mean": 130.70000000000002,
+      "per_category": {
+        "Bird": {
+          "d_auroc": 0.01061373873873861,
+          "d_ap": 0.01048114643243181,
+          "steps": 59
+        },
+        "Car": {
+          "d_auroc": 0.019588014981273494,
+          "d_ap": 0.012952427794591381,
+          "steps": 44
+        },
+        "Cube": {
+          "d_auroc": 0.01600110415899869,
+          "d_ap": 0.011702448515137576,
+          "steps": 59
+        }
+      },
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "families": [
+        "brightness",
+        "contrast",
+        "gamma"
+      ]
+    },
+    "S20": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.011764650294366463,
+      "d_auroc_median": 0.014657710710342275,
+      "d_auroc_std": 0.006833766671561425,
+      "d_ap_mean": 0.008319775204778815,
+      "d_ap_median": 0.01050829759030103,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.003960210210210202,
+      "best_d_auroc": 0.016676029962546912,
+      "worst_cell": "Bird",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 89.0,
+      "runtime_s_mean": 133.46666666666667,
+      "per_category": {
+        "Bird": {
+          "d_auroc": 0.003960210210210202,
+          "d_ap": 0.0033087898999178966,
+          "steps": 59
+        },
+        "Car": {
+          "d_auroc": 0.016676029962546912,
+          "d_ap": 0.01114223812411752,
+          "steps": 104
+        },
+        "Cube": {
+          "d_auroc": 0.014657710710342275,
+          "d_ap": 0.01050829759030103,
+          "steps": 104
+        }
+      },
+      "levels": [
+        0.8,
+        1.2
+      ],
+      "families": [
+        "brightness",
+        "contrast",
+        "gamma"
+      ]
+    },
+    "S25": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.011000935308667414,
+      "d_auroc_median": 0.015715863084284076,
+      "d_auroc_std": 0.012474451460282397,
+      "d_ap_mean": 0.0068176595258084465,
+      "d_ap_median": 0.01167227003249438,
+      "n_pos_auroc": 2,
+      "n_pos_ap": 2,
+      "worst_d_auroc": -0.003143768768768873,
+      "best_d_auroc": 0.02043071161048704,
+      "worst_cell": "Bird",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 74.0,
+      "runtime_s_mean": 132.73333333333332,
+      "per_category": {
+        "Bird": {
+          "d_auroc": -0.003143768768768873,
+          "d_ap": -0.004323452755042201,
+          "steps": 59
+        },
+        "Car": {
+          "d_auroc": 0.02043071161048704,
+          "d_ap": 0.01310416129997316,
+          "steps": 59
+        },
+        "Cube": {
+          "d_auroc": 0.015715863084284076,
+          "d_ap": 0.01167227003249438,
+          "steps": 104
+        }
+      },
+      "levels": [
+        0.75,
+        1.25
+      ],
+      "families": [
+        "brightness",
+        "contrast",
+        "gamma"
+      ]
+    },
+    "S30": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.011275553570053795,
+      "d_auroc_median": 0.018237026131762812,
+      "d_auroc_std": 0.013495569017848666,
+      "d_ap_mean": 0.0077115222265683086,
+      "d_ap_median": 0.012910038637928056,
+      "n_pos_auroc": 2,
+      "n_pos_ap": 2,
+      "worst_d_auroc": -0.004279279279279291,
+      "best_d_auroc": 0.01986891385767786,
+      "worst_cell": "Bird",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 90.66666666666667,
+      "runtime_s_mean": 132.53333333333333,
+      "per_category": {
+        "Bird": {
+          "d_auroc": -0.004279279279279291,
+          "d_ap": -0.0029522006877961138,
+          "steps": 109
+        },
+        "Car": {
+          "d_auroc": 0.01986891385767786,
+          "d_ap": 0.012910038637928056,
+          "steps": 59
+        },
+        "Cube": {
+          "d_auroc": 0.018237026131762812,
+          "d_ap": 0.013176728729572984,
+          "steps": 104
+        }
+      },
+      "levels": [
+        0.7,
+        1.3
+      ],
+      "families": [
+        "brightness",
+        "contrast",
+        "gamma"
+      ]
+    }
+  },
+  "round1_rank_stability_first": [
+    "S15",
+    "S10",
+    "S05",
+    "S20",
+    "S25",
+    "S30"
+  ],
+  "top2_by_stability": [
+    "S15",
+    "S10"
+  ],
+  "round2_multiseed": {
+    "S05": {
+      "n_cells": 3,
+      "seeds": [
+        0
+      ],
+      "d_auroc_mean": 0.014354636579651267,
+      "d_auroc_std": 0.006864038845536328,
+      "d_ap_mean": 0.012343023760382358,
+      "d_ap_std": 0.008241256719105125,
+      "n_pos_auroc": 3,
+      "per_category": {
+        "Bird": {
+          "d_auroc_mean": 0.021921921921921772,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.021018604839912136,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Car": {
+          "d_auroc_mean": 0.012612359550561836,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.011391829153050814,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Cube": {
+          "d_auroc_mean": 0.00852962826647019,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.004618637288184124,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        }
+      },
+      "category_consistency": 3
+    },
+    "S10": {
+      "n_cells": 9,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "d_auroc_mean": 0.015984113051615043,
+      "d_auroc_std": 0.014316631079900619,
+      "d_ap_mean": 0.015259731007069418,
+      "d_ap_std": 0.012726887355709078,
+      "n_pos_auroc": 8,
+      "per_category": {
+        "Bird": {
+          "d_auroc_mean": 0.031364176676676715,
+          "d_auroc_std": 0.01237522644823491,
+          "d_ap_mean": 0.0300898499384723,
+          "n_seeds": 3,
+          "seeds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Car": {
+          "d_auroc_mean": 0.013014981273408277,
+          "d_auroc_std": 0.004607236354781834,
+          "d_ap_mean": 0.011852759394882728,
+          "n_seeds": 3,
+          "seeds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Cube": {
+          "d_auroc_mean": 0.003573181204760134,
+          "d_auroc_std": 0.006811816977585308,
+          "d_ap_mean": 0.0038365836878532233,
+          "n_seeds": 3,
+          "seeds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "category_consistency": 3
+    },
+    "S15": {
+      "n_cells": 9,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "d_auroc_mean": 0.013245618517893286,
+      "d_auroc_std": 0.014589048677111395,
+      "d_ap_mean": 0.01299769408118328,
+      "d_ap_std": 0.0110434297904128,
+      "n_pos_auroc": 8,
+      "per_category": {
+        "Bird": {
+          "d_auroc_mean": 0.02585710710710709,
+          "d_auroc_std": 0.013535283173724983,
+          "d_ap_mean": 0.023713225945736143,
+          "n_seeds": 3,
+          "seeds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Car": {
+          "d_auroc_mean": 0.011232833957553109,
+          "d_auroc_std": 0.007278927292102761,
+          "d_ap_mean": 0.01115241368341687,
+          "n_seeds": 3,
+          "seeds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Cube": {
+          "d_auroc_mean": 0.0026469144890196583,
+          "d_auroc_std": 0.014213531660887378,
+          "d_ap_mean": 0.00412744261439683,
+          "n_seeds": 3,
+          "seeds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "category_consistency": 3
+    },
+    "S20": {
+      "n_cells": 3,
+      "seeds": [
+        0
+      ],
+      "d_auroc_mean": 0.011764650294366463,
+      "d_auroc_std": 0.006833766671561425,
+      "d_ap_mean": 0.008319775204778815,
+      "d_ap_std": 0.004351201034686049,
+      "n_pos_auroc": 3,
+      "per_category": {
+        "Bird": {
+          "d_auroc_mean": 0.003960210210210202,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.0033087898999178966,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Car": {
+          "d_auroc_mean": 0.016676029962546912,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.01114223812411752,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Cube": {
+          "d_auroc_mean": 0.014657710710342275,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.01050829759030103,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        }
+      },
+      "category_consistency": 3
+    },
+    "S25": {
+      "n_cells": 3,
+      "seeds": [
+        0
+      ],
+      "d_auroc_mean": 0.011000935308667414,
+      "d_auroc_std": 0.012474451460282397,
+      "d_ap_mean": 0.0068176595258084465,
+      "d_ap_std": 0.009675012418150239,
+      "n_pos_auroc": 2,
+      "per_category": {
+        "Bird": {
+          "d_auroc_mean": -0.003143768768768873,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": -0.004323452755042201,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Car": {
+          "d_auroc_mean": 0.02043071161048704,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.01310416129997316,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Cube": {
+          "d_auroc_mean": 0.015715863084284076,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.01167227003249438,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        }
+      },
+      "category_consistency": 2
+    },
+    "S30": {
+      "n_cells": 3,
+      "seeds": [
+        0
+      ],
+      "d_auroc_mean": 0.011275553570053795,
+      "d_auroc_std": 0.013495569017848666,
+      "d_ap_mean": 0.0077115222265683086,
+      "d_ap_std": 0.009236017577776746,
+      "n_pos_auroc": 2,
+      "per_category": {
+        "Bird": {
+          "d_auroc_mean": -0.004279279279279291,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": -0.0029522006877961138,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Car": {
+          "d_auroc_mean": 0.01986891385767786,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.012910038637928056,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        },
+        "Cube": {
+          "d_auroc_mean": 0.018237026131762812,
+          "d_auroc_std": 0.0,
+          "d_ap_mean": 0.013176728729572984,
+          "n_seeds": 1,
+          "seeds": [
+            0
+          ]
+        }
+      },
+      "category_consistency": 2
+    }
+  },
+  "s15_decision": {
+    "reference": "S15",
+    "margin": 0.002,
+    "best_round1": "S15",
+    "gain_vs_s15": 0.0,
+    "consistent_vs_s15": true,
+    "keep_s15": true,
+    "rule": "S15 is itself the round-1 maximum"
+  },
+  "frozen_config_reproduction": {
+    "reference": "results/e18/main_table.csv (Ours = frozen R1-ILA, F0)",
+    "max_abs_diff": 0.0,
+    "per_check": {
+      "Bird_auroc": 0.0,
+      "Bird_ap": 0.0,
+      "Bird_f0_auroc": 0.0,
+      "Car_auroc": 0.0,
+      "Car_ap": 0.0,
+      "Car_f0_auroc": 0.0,
+      "Cube_auroc": 0.0,
+      "Cube_ap": 0.0,
+      "Cube_f0_auroc": 0.0
+    },
+    "tolerance": 1e-06,
+    "pass": true
+  },
+  "type_ablation_seed0": {
+    "A0": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.004141940132847781,
+      "d_auroc_median": 0.005808933933933891,
+      "d_auroc_std": 0.0035497257224735676,
+      "d_ap_mean": 0.0034214422723806517,
+      "d_ap_median": 0.003316232811884312,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 6.554307116102276e-05,
+      "best_d_auroc": 0.006551343393448428,
+      "worst_cell": "Car",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 102.33333333333333,
+      "runtime_s_mean": 103.66666666666667,
+      "families": [
+        "brightness"
+      ],
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "per_category": {
+        "Bird": 0.005808933933933891,
+        "Car": 6.554307116102276e-05,
+        "Cube": 0.006551343393448428
+      }
+    },
+    "A1": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.008919671393799122,
+      "d_auroc_median": 0.005424174174174179,
+      "d_auroc_std": 0.00984689785678218,
+      "d_ap_mean": 0.004498673896549676,
+      "d_ap_median": 0.005646436515091557,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 2,
+      "worst_d_auroc": 0.0012973868237025066,
+      "best_d_auroc": 0.02003745318352068,
+      "worst_cell": "Cube",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 154.0,
+      "runtime_s_mean": 101.0,
+      "families": [
+        "contrast"
+      ],
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "per_category": {
+        "Bird": 0.005424174174174179,
+        "Car": 0.02003745318352068,
+        "Cube": 0.0012973868237025066
+      }
+    },
+    "A2": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.019066700851517442,
+      "d_auroc_median": 0.021273408239700364,
+      "d_auroc_std": 0.006167173526761164,
+      "d_ap_mean": 0.0144092594584209,
+      "d_ap_median": 0.015655315079626142,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.012099742362900012,
+      "best_d_auroc": 0.023826951951951947,
+      "worst_cell": "Cube",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 134.0,
+      "runtime_s_mean": 99.76666666666667,
+      "families": [
+        "gamma"
+      ],
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "per_category": {
+        "Bird": 0.023826951951951947,
+        "Car": 0.021273408239700364,
+        "Cube": 0.012099742362900012
+      }
+    },
+    "A3": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.011222780978842403,
+      "d_auroc_median": 0.014455281560544542,
+      "d_auroc_std": 0.01018643748316937,
+      "d_ap_mean": 0.008334372213924043,
+      "d_ap_median": 0.00930141310611754,
+      "n_pos_auroc": 2,
+      "n_pos_ap": 3,
+      "worst_d_auroc": -0.00018768768768773203,
+      "best_d_auroc": 0.019400749063670397,
+      "worst_cell": "Bird",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 57.333333333333336,
+      "runtime_s_mean": 113.63333333333333,
+      "families": [
+        "brightness",
+        "contrast"
+      ],
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "per_category": {
+        "Bird": -0.00018768768768773203,
+        "Car": 0.019400749063670397,
+        "Cube": 0.014455281560544542
+      }
+    },
+    "A4": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.01553894964820457,
+      "d_auroc_median": 0.017003745318352248,
+      "d_auroc_std": 0.003964209466422579,
+      "d_ap_mean": 0.01191793200985499,
+      "d_ap_median": 0.013959258574384292,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.01105079131394926,
+      "best_d_auroc": 0.0185623123123122,
+      "worst_cell": "Cube",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 104.0,
+      "runtime_s_mean": 115.96666666666665,
+      "families": [
+        "brightness",
+        "gamma"
+      ],
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "per_category": {
+        "Bird": 0.0185623123123122,
+        "Car": 0.017003745318352248,
+        "Cube": 0.01105079131394926
+      }
+    },
+    "A5": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.009777730924611427,
+      "d_auroc_median": 0.010519894894894799,
+      "d_auroc_std": 0.006915419111514302,
+      "d_ap_mean": 0.0060366639247240545,
+      "d_ap_median": 0.008644398983859936,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.002521163047478736,
+      "best_d_auroc": 0.016292134831460747,
+      "worst_cell": "Cube",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 119.0,
+      "runtime_s_mean": 116.7,
+      "families": [
+        "contrast",
+        "gamma"
+      ],
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "per_category": {
+        "Bird": 0.010519894894894799,
+        "Car": 0.016292134831460747,
+        "Cube": 0.002521163047478736
+      }
+    },
+    "A6": {
+      "n_cells": 3,
+      "d_auroc_mean": 0.015400952626336931,
+      "d_auroc_median": 0.01600110415899869,
+      "d_auroc_std": 0.0045171390188867,
+      "d_ap_mean": 0.011712007580720255,
+      "d_ap_median": 0.011702448515137576,
+      "n_pos_auroc": 3,
+      "n_pos_ap": 3,
+      "worst_d_auroc": 0.01061373873873861,
+      "best_d_auroc": 0.019588014981273494,
+      "worst_cell": "Bird",
+      "mean_auroc_f0": 0.7956231031885231,
+      "mean_steps": 54.0,
+      "runtime_s_mean": 127.96666666666665,
+      "families": [
+        "brightness",
+        "contrast",
+        "gamma"
+      ],
+      "levels": [
+        0.85,
+        1.15
+      ],
+      "per_category": {
+        "Bird": 0.01061373873873861,
+        "Car": 0.019588014981273494,
+        "Cube": 0.01600110415899869
+      }
+    }
+  },
+  "type_ranking": [
+    "A2",
+    "A4",
+    "A6",
+    "A3",
+    "A5",
+    "A1",
+    "A0"
+  ],
+  "best_single_type": "A2",
+  "best_double_type": "A4",
+  "full_type": "A6",
+  "verification": {
+    "n_strength_cells": 18,
+    "n_type_cells": 21,
+    "n_stability_cells": 12
+  }
+}

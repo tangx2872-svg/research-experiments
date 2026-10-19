@@ -444,3 +444,14 @@ results/e22/logs/*.log
 !results/e25/
 results/e25/logs/
 results/e25/*.pid
+
+# E24 (photometric-augmentation sensitivity audit of frozen R1-ILA: README / per-cell JSON /
+# raw CSVs / ranked tables / analysis JSON / figures). Explanatory audit only.
+!results/e24/
+results/e24/logs/
+results/e24/*.pid
+results/e24/*.json.tmp
+results/e24/*.csv.tmp
+
+# 本地监控运行时输出（非科研资产）
+monitor/events.jsonl
