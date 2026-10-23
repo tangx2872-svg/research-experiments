@@ -453,5 +453,9 @@ results/e24/*.pid
 results/e24/*.json.tmp
 results/e24/*.csv.tmp
 
+# paper_supplement (2026-10-23 local audit + closest-method comparison: audit_findings / reconciliation
+# JSONs / metric CSV / sample-alignment / specimen cluster bootstrap / HANDOFF — CPU-only, no data/weights)
+!results/paper_supplement_20261023/
+
 # 本地监控运行时输出（非科研资产）
 monitor/events.jsonl

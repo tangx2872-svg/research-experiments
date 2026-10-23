@@ -1,0 +1,262 @@
+{
+ "per_category": [
+  {
+   "category": "Bird",
+   "d_auroc_mean": 0.02585710710710709,
+   "d_auroc_std_ddof1": 0.013535283173724984,
+   "d_auroc_min": 0.01061373873873861,
+   "d_auroc_max": 0.03646771771771773,
+   "pos_seeds_auroc": 3,
+   "d_ap_mean": 0.023713225945736143,
+   "d_ap_std_ddof1": 0.011547791542975791,
+   "pos_seeds_ap": 3
+  },
+  {
+   "category": "Car",
+   "d_auroc_mean": 0.011232833957553109,
+   "d_auroc_std_ddof1": 0.007278927292102761,
+   "d_auroc_min": 0.006264044943820268,
+   "d_auroc_max": 0.019588014981273494,
+   "pos_seeds_auroc": 3,
+   "d_ap_mean": 0.01115241368341687,
+   "d_ap_std_ddof1": 0.001869621910460053,
+   "pos_seeds_ap": 3
+  },
+  {
+   "category": "Cube",
+   "d_auroc_mean": 0.0026469144890196583,
+   "d_auroc_std_ddof1": 0.014213531660887378,
+   "d_auroc_min": -0.012292970187707142,
+   "d_auroc_max": 0.01600110415899869,
+   "pos_seeds_auroc": 2,
+   "d_ap_mean": 0.004127621119714653,
+   "d_ap_std_ddof1": 0.007457794314570984,
+   "pos_seeds_ap": 2
+  },
+  {
+   "category": "Dice",
+   "d_auroc_mean": 0.0033619702176403976,
+   "d_auroc_std_ddof1": 0.0007754041267465353,
+   "d_auroc_min": 0.0026718213058418705,
+   "d_auroc_max": 0.004201030927835303,
+   "pos_seeds_auroc": 3,
+   "d_ap_mean": 0.002117385977076077,
+   "d_ap_std_ddof1": 0.0014945094574509603,
+   "pos_seeds_ap": 3
+  },
+  {
+   "category": "Doll",
+   "d_auroc_mean": -0.03849691358024695,
+   "d_auroc_std_ddof1": 0.004637903101191275,
+   "d_auroc_min": -0.04385185185185181,
+   "d_auroc_max": -0.03575925925925927,
+   "pos_seeds_auroc": 0,
+   "d_ap_mean": -0.013021115590964786,
+   "d_ap_std_ddof1": 0.007863414982323867,
+   "pos_seeds_ap": 0
+  },
+  {
+   "category": "Holder",
+   "d_auroc_mean": 0.010360112496943056,
+   "d_auroc_std_ddof1": 0.004453439668883184,
+   "d_auroc_min": 0.006823184152604522,
+   "d_auroc_max": 0.015361335289801992,
+   "pos_seeds_auroc": 3,
+   "d_ap_mean": 0.0112236003372194,
+   "d_ap_std_ddof1": 0.00384292971277134,
+   "pos_seeds_ap": 3
+  },
+  {
+   "category": "Motor",
+   "d_auroc_mean": 0.008070355191256873,
+   "d_auroc_std_ddof1": 0.0076457519512020695,
+   "d_auroc_min": -0.00024590163934423703,
+   "d_auroc_max": 0.01479508196721313,
+   "pos_seeds_auroc": 2,
+   "d_ap_mean": 0.005473860049165132,
+   "d_ap_std_ddof1": 0.012062710130555073,
+   "pos_seeds_ap": 1
+  },
+  {
+   "category": "Ring",
+   "d_auroc_mean": 0.02031229960241121,
+   "d_auroc_std_ddof1": 0.0036339944705621537,
+   "d_auroc_min": 0.01613120430934989,
+   "d_auroc_max": 0.022710657945363644,
+   "pos_seeds_auroc": 3,
+   "d_ap_mean": 0.013791425873385369,
+   "d_ap_std_ddof1": 0.00305386012285669,
+   "pos_seeds_ap": 3
+  },
+  {
+   "category": "Teapot",
+   "d_auroc_mean": 0.017298076923076795,
+   "d_auroc_std_ddof1": 0.007285892331829073,
+   "d_auroc_min": 0.011269230769230698,
+   "d_auroc_max": 0.02539423076923064,
+   "pos_seeds_auroc": 3,
+   "d_ap_mean": 0.010695311078029493,
+   "d_ap_std_ddof1": 0.003117440672589413,
+   "pos_seeds_ap": 3
+  },
+  {
+   "category": "Tube",
+   "d_auroc_mean": 0.015322035044990079,
+   "d_auroc_std_ddof1": 0.004989441036351405,
+   "d_auroc_min": 0.011284757458899897,
+   "d_auroc_max": 0.020900142074284478,
+   "pos_seeds_auroc": 3,
+   "d_ap_mean": 0.008456430479218366,
+   "d_ap_std_ddof1": 0.0026433303119548783,
+   "pos_seeds_ap": 3
+  }
+ ],
+ "macro": {
+  "macro_d_auroc_mean": 0.007596479144975132,
+  "macro_d_ap_mean": 0.007773015895199671,
+  "median_d_auroc": 0.010796473227248082,
+  "n_pos_cat_auroc": 9,
+  "n_pos_cat_ap": 9,
+  "n_all3pos_auroc": 7,
+  "n_all3pos_ap": 7
+ },
+ "doll": {
+  "per_seed_d_auroc": [
+   -0.04385185185185181,
+   -0.03587962962962976,
+   -0.03575925925925927
+  ],
+  "d_auroc_mean": -0.03849691358024695,
+  "d_auroc_std_ddof1": 0.004637903101191275,
+  "matches_0_004638": true
+ },
+ "reconciliation": {
+  "per_category_vs_full_precision": [
+   {
+    "category": "Bird",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.025857,
+    "frozen_std": 0.013535
+   },
+   {
+    "category": "Car",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.011233,
+    "frozen_std": 0.007279
+   },
+   {
+    "category": "Cube",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.002647,
+    "frozen_std": 0.014214
+   },
+   {
+    "category": "Dice",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.003362,
+    "frozen_std": 0.000775
+   },
+   {
+    "category": "Doll",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": -0.038497,
+    "frozen_std": 0.004638
+   },
+   {
+    "category": "Holder",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.01036,
+    "frozen_std": 0.004453
+   },
+   {
+    "category": "Motor",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.00807,
+    "frozen_std": 0.007646
+   },
+   {
+    "category": "Ring",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.020312,
+    "frozen_std": 0.003634
+   },
+   {
+    "category": "Teapot",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.017298,
+    "frozen_std": 0.007286
+   },
+   {
+    "category": "Tube",
+    "mean_match": true,
+    "std_match": true,
+    "frozen_mean": 0.015322,
+    "frozen_std": 0.004989
+   }
+  ],
+  "all_mean_match": true,
+  "all_std_match": true,
+  "per_category_vs_rounded_paper_table": [
+   {
+    "category": "Bird",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Car",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Cube",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Dice",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Doll",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Holder",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Motor",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Ring",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Teapot",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   },
+   {
+    "category": "Tube",
+    "rounded_mean_match": true,
+    "rounded_std_match": true
+   }
+  ],
+  "all_rounded_match": true
+ }
+}

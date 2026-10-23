@@ -1,0 +1,417 @@
+{
+ "note": "specimen-level paired cluster bootstrap (new supplementary analysis, estimand = specimen-level resampling uncertainty of dAUROC)",
+ "rng_seed": 20261023,
+ "n_boot": 3000,
+ "per_category": {
+  "Bird": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.014142289772714593,
+     "d_auroc_ci_2p5": -0.024150589606471946,
+     "d_auroc_ci_97p5": 0.05503272609819127,
+     "p_d_auroc_gt0": 0.7593333333333333
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": 0.03184125089432413,
+     "d_auroc_ci_2p5": -0.00609908750671303,
+     "d_auroc_ci_97p5": 0.07142530612244902,
+     "p_d_auroc_gt0": 0.9553333333333334
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.040785166357394494,
+     "d_auroc_ci_2p5": 0.0011613069962253953,
+     "d_auroc_ci_97p5": 0.08264051628564875,
+     "p_d_auroc_gt0": 0.978
+    }
+   },
+   "mean_of_seed_means": 0.028922902341477735,
+   "mean_ci_2p5": -0.00969612337231986,
+   "mean_ci_97p5": 0.069699516168763,
+   "mean_p_d_auroc_gt0": 0.8975555555555556
+  },
+  "Car": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.02383337068575503,
+     "d_auroc_ci_2p5": -0.0014160289115646332,
+     "d_auroc_ci_97p5": 0.04960914048783245,
+     "p_d_auroc_gt0": 0.968
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": 0.014155611979102308,
+     "d_auroc_ci_2p5": -0.01753371710526311,
+     "d_auroc_ci_97p5": 0.04630478522053999,
+     "p_d_auroc_gt0": 0.809
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.007566692074639117,
+     "d_auroc_ci_2p5": -0.021109016871816773,
+     "d_auroc_ci_97p5": 0.03575384086057761,
+     "p_d_auroc_gt0": 0.7123333333333334
+    }
+   },
+   "mean_of_seed_means": 0.015185224913165485,
+   "mean_ci_2p5": -0.013352920962881506,
+   "mean_ci_97p5": 0.043889255522983346,
+   "mean_p_d_auroc_gt0": 0.8297777777777778
+  },
+  "Cube": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.009597370675218516,
+     "d_auroc_ci_2p5": -0.012229663164607926,
+     "d_auroc_ci_97p5": 0.03380820997807013,
+     "p_d_auroc_gt0": 0.7863333333333333
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": -0.02118478596174006,
+     "d_auroc_ci_2p5": -0.0496926171497585,
+     "d_auroc_ci_97p5": 0.005795305023923613,
+     "p_d_auroc_gt0": 0.059
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": -0.00020623093264344894,
+     "d_auroc_ci_2p5": -0.026270730401844612,
+     "d_auroc_ci_97p5": 0.024540316731141393,
+     "p_d_auroc_gt0": 0.489
+    }
+   },
+   "mean_of_seed_means": -0.003931215406388331,
+   "mean_ci_2p5": -0.029397670238737014,
+   "mean_ci_97p5": 0.02138127724437838,
+   "mean_p_d_auroc_gt0": 0.44477777777777777
+  },
+  "Dice": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.0006948857274561912,
+     "d_auroc_ci_2p5": -0.021976667320579308,
+     "d_auroc_ci_97p5": 0.023045679165816638,
+     "p_d_auroc_gt0": 0.537
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": 0.002597571329158771,
+     "d_auroc_ci_2p5": -0.016846186921782975,
+     "d_auroc_ci_97p5": 0.022368869006321197,
+     "p_d_auroc_gt0": 0.6003333333333334
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.0019273766972981417,
+     "d_auroc_ci_2p5": -0.01997706801595255,
+     "d_auroc_ci_97p5": 0.02471032065018594,
+     "p_d_auroc_gt0": 0.5693333333333334
+    }
+   },
+   "mean_of_seed_means": 0.0017399445846377013,
+   "mean_ci_2p5": -0.019599974086104945,
+   "mean_ci_97p5": 0.023374956274107923,
+   "mean_p_d_auroc_gt0": 0.5688888888888889
+  },
+  "Doll": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": -0.04202869103813649,
+     "d_auroc_ci_2p5": -0.10570761353189935,
+     "d_auroc_ci_97p5": 0.014594460227272931,
+     "p_d_auroc_gt0": 0.083
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": -0.03177660005127966,
+     "d_auroc_ci_2p5": -0.08581033975275412,
+     "d_auroc_ci_97p5": 0.019048490333671942,
+     "p_d_auroc_gt0": 0.116
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": -0.032661341420914224,
+     "d_auroc_ci_2p5": -0.08254041609938935,
+     "d_auroc_ci_97p5": 0.01695151362414463,
+     "p_d_auroc_gt0": 0.10433333333333333
+    }
+   },
+   "mean_of_seed_means": -0.035488877503443456,
+   "mean_ci_2p5": -0.09135278979468094,
+   "mean_ci_97p5": 0.016864821395029834,
+   "mean_p_d_auroc_gt0": 0.10111111111111111
+  },
+  "Holder": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 69,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.015376905579820618,
+     "d_auroc_ci_2p5": -0.00693849967351809,
+     "d_auroc_ci_97p5": 0.04052354497354505,
+     "p_d_auroc_gt0": 0.91
+    },
+    "1": {
+     "n_specimen": 69,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": 0.009451458359908921,
+     "d_auroc_ci_2p5": -0.007076541219936302,
+     "d_auroc_ci_97p5": 0.027900517408123722,
+     "p_d_auroc_gt0": 0.866
+    },
+    "2": {
+     "n_specimen": 69,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.005771732229672913,
+     "d_auroc_ci_2p5": -0.013693758071771613,
+     "d_auroc_ci_97p5": 0.025649831649831593,
+     "p_d_auroc_gt0": 0.7166666666666667
+    }
+   },
+   "mean_of_seed_means": 0.010200032056467485,
+   "mean_ci_2p5": -0.009236266321742003,
+   "mean_ci_97p5": 0.03135796467716679,
+   "mean_p_d_auroc_gt0": 0.8308888888888889
+  },
+  "Motor": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.014077004174279928,
+     "d_auroc_ci_2p5": -0.017721030227567287,
+     "d_auroc_ci_97p5": 0.04015050000000002,
+     "p_d_auroc_gt0": 0.8253333333333334
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": -0.0022803470747758937,
+     "d_auroc_ci_2p5": -0.0272309709488022,
+     "d_auroc_ci_97p5": 0.021346538901601837,
+     "p_d_auroc_gt0": 0.42933333333333334
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.007932226182760986,
+     "d_auroc_ci_2p5": -0.015523924198250664,
+     "d_auroc_ci_97p5": 0.031571947674418496,
+     "p_d_auroc_gt0": 0.7466666666666667
+    }
+   },
+   "mean_of_seed_means": 0.0065762944274216735,
+   "mean_ci_2p5": -0.02015864179154005,
+   "mean_ci_97p5": 0.031022995525340116,
+   "mean_p_d_auroc_gt0": 0.6671111111111111
+  },
+  "Ring": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.018375070024228553,
+     "d_auroc_ci_2p5": -0.0029296212121210493,
+     "d_auroc_ci_97p5": 0.0401833939628482,
+     "p_d_auroc_gt0": 0.9513333333333334
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": 0.012767444165455643,
+     "d_auroc_ci_2p5": -0.008515154275996167,
+     "d_auroc_ci_97p5": 0.03321120626664348,
+     "p_d_auroc_gt0": 0.886
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.018005622646782692,
+     "d_auroc_ci_2p5": -0.003911601597160558,
+     "d_auroc_ci_97p5": 0.04222301025177398,
+     "p_d_auroc_gt0": 0.9473333333333334
+    }
+   },
+   "mean_of_seed_means": 0.016382712278822296,
+   "mean_ci_2p5": -0.0051187923617592584,
+   "mean_ci_97p5": 0.03853920349375522,
+   "mean_p_d_auroc_gt0": 0.9282222222222223
+  },
+  "Teapot": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.021365860441581674,
+     "d_auroc_ci_2p5": -0.003771051506316919,
+     "d_auroc_ci_97p5": 0.048635233070500966,
+     "p_d_auroc_gt0": 0.9526666666666667
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": 0.013423552857754253,
+     "d_auroc_ci_2p5": -0.010565257352940904,
+     "d_auroc_ci_97p5": 0.038952151049458275,
+     "p_d_auroc_gt0": 0.8593333333333333
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.00693292849526693,
+     "d_auroc_ci_2p5": -0.018973343663274835,
+     "d_auroc_ci_97p5": 0.03188406763285042,
+     "p_d_auroc_gt0": 0.7173333333333334
+    }
+   },
+   "mean_of_seed_means": 0.013907447264867619,
+   "mean_ci_2p5": -0.011103217507510886,
+   "mean_ci_97p5": 0.039823817250936554,
+   "mean_p_d_auroc_gt0": 0.843111111111111
+  },
+  "Tube": {
+   "per_seed": {
+    "0": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261023,
+     "d_auroc_mean": 0.01149501481808052,
+     "d_auroc_ci_2p5": -0.01305237407862387,
+     "d_auroc_ci_97p5": 0.03706388873223553,
+     "p_d_auroc_gt0": 0.8293333333333334
+    },
+    "1": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261024,
+     "d_auroc_mean": 0.014763100193079746,
+     "d_auroc_ci_2p5": -0.008623225524475562,
+     "d_auroc_ci_97p5": 0.03899589156314711,
+     "p_d_auroc_gt0": 0.8936666666666667
+    },
+    "2": {
+     "n_specimen": 70,
+     "n_boot_requested": 3000,
+     "n_boot_effective": 3000,
+     "n_degenerate": 0,
+     "rng_seed": 20261025,
+     "d_auroc_mean": 0.025285207774823137,
+     "d_auroc_ci_2p5": -0.0015688317550506337,
+     "d_auroc_ci_97p5": 0.05497864350703073,
+     "p_d_auroc_gt0": 0.9666666666666667
+    }
+   },
+   "mean_of_seed_means": 0.017181107595327802,
+   "mean_ci_2p5": -0.007748143786050022,
+   "mean_ci_97p5": 0.04367947460080446,
+   "mean_p_d_auroc_gt0": 0.8965555555555556
+  }
+ }
+}
