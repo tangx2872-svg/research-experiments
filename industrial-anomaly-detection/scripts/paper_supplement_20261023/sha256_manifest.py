@@ -83,7 +83,11 @@ def verify(root: Path, manifest: Path) -> int:
 
     actual = _walk(root)
     # If the manifest itself lives inside root, never flag it as "extra".
-    actual.pop(manifest.resolve().relative_to(root.resolve()).as_posix(), None)
+    # relative_to() raises ValueError when the manifest is outside root, which is the
+    # normal case (manifest kept next to, not inside, the transferred tree).
+    root_r, man_r = root.resolve(), manifest.resolve()
+    if root_r in man_r.parents:
+        actual.pop(man_r.relative_to(root_r).as_posix(), None)
 
     missing = sorted(set(expect) - set(actual))
     extra = sorted(set(actual) - set(expect))
