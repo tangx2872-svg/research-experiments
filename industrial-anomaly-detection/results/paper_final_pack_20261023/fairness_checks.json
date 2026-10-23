@@ -1,0 +1,538 @@
+{
+ "n_categories": 10,
+ "n_cells": 30,
+ "all_checks_pass": true,
+ "per_category": {
+  "Bird": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 653,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "1cac68f70de7",
+    "1": "cafad1b2bbfc",
+    "2": "3c899ab87638"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 59,
+    "1": 59,
+    "2": 54
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     true,
+     true,
+     true
+    ],
+    "specimen_match_e16": [
+     true,
+     true,
+     true
+    ],
+    "bank_hash_matches_e21": [
+     true,
+     true,
+     true
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Car": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 656,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "02884fc0f764",
+    "1": "eca2c8f78ebf",
+    "2": "e098c084b521"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 44,
+    "1": 59,
+    "2": 49
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     true,
+     true,
+     true
+    ],
+    "specimen_match_e16": [
+     true,
+     true,
+     true
+    ],
+    "bank_hash_matches_e21": [
+     true,
+     true,
+     true
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Cube": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 678,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "d4132e596aaa",
+    "1": "f8b424925099",
+    "2": "9922fe71ef64"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 59,
+    "1": 59,
+    "2": 124
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     true,
+     true,
+     true
+    ],
+    "specimen_match_e16": [
+     true,
+     true,
+     true
+    ],
+    "bank_hash_matches_e21": [
+     true,
+     true,
+     true
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Dice": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 688,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "16691ce2ac64",
+    "1": "09cea1491623",
+    "2": "178715787e8e"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 104,
+    "1": 59,
+    "2": 54
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "specimen_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "bank_hash_matches_e21": [
+     null,
+     null,
+     null
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Doll": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 670,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "46a03f7ed371",
+    "1": "b60e2ca6324d",
+    "2": "d4efeaf9f33b"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 44,
+    "1": 59,
+    "2": 49
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "specimen_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "bank_hash_matches_e21": [
+     null,
+     null,
+     null
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Holder": {
+   "n_total_per_seed": {
+    "0": 690,
+    "1": 690,
+    "2": 690
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 666,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "031c39212200",
+    "1": "9b38df3fa969",
+    "2": "dd32b7ea506b"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 44,
+    "1": 59,
+    "2": 49
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "specimen_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "bank_hash_matches_e21": [
+     null,
+     null,
+     null
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Motor": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 688,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "012d04bca160",
+    "1": "b4c1ffbf6ba2",
+    "2": "4f99a027a048"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 104,
+    "1": 59,
+    "2": 49
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "specimen_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "bank_hash_matches_e21": [
+     null,
+     null,
+     null
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Ring": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 682,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "a98b04ad65d1",
+    "1": "9af5ca564162",
+    "2": "92228fb4d6b5"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 44,
+    "1": 59,
+    "2": 49
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "specimen_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "bank_hash_matches_e21": [
+     null,
+     null,
+     null
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Teapot": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 666,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "b63c8ac60aa1",
+    "1": "1a1432f15e6a",
+    "2": "f77c0666c387"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 104,
+    "1": 59,
+    "2": 54
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "specimen_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "bank_hash_matches_e21": [
+     null,
+     null,
+     null
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  },
+  "Tube": {
+   "n_total_per_seed": {
+    "0": 700,
+    "1": 700,
+    "2": 700
+   },
+   "lengths_consistent": true,
+   "same_identity_set_across_seeds": true,
+   "same_identity_order_across_seeds": true,
+   "same_detectable_mask_across_seeds": true,
+   "n_detectable": 639,
+   "same_labels_across_seeds": true,
+   "bank_hash_len_ok": true,
+   "bank_hash_per_seed": {
+    "0": "035826fe4f58",
+    "1": "d7290dae4cb9",
+    "2": "ae10a96f21f8"
+   },
+   "bank_size": {
+    "0": 300,
+    "1": 300,
+    "2": 300
+   },
+   "trainable_params": {
+    "0": 589824,
+    "1": 589824,
+    "2": 589824
+   },
+   "steps_used": {
+    "0": 44,
+    "1": 59,
+    "2": 49
+   },
+   "scores_finite": true,
+   "cell_metrics_recompute_flags": {
+    "labels_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "specimen_match_e16": [
+     null,
+     null,
+     null
+    ],
+    "bank_hash_matches_e21": [
+     null,
+     null,
+     null
+    ],
+    "note": "None = 该 cell 是 E22 新算（source=NEW），无历史复用断言"
+   }
+  }
+ },
+ "note": "身份键 = (specimen, illumination, kind)；该组合在 30 个 cell 中逐 cell 唯一。"
+}

@@ -457,5 +457,9 @@ results/e24/*.csv.tmp
 # JSONs / metric CSV / sample-alignment / specimen cluster bootstrap / HANDOFF — CPU-only, no data/weights)
 !results/paper_supplement_20261023/
 
+# paper_final_pack (2026-10-23 pre-submission audit: report / fairness checklist / corrected
+# specimen bootstrap / illumination evidence — CPU-only; per_image copies and the ZIP stay out)
+!results/paper_final_pack_20261023/
+
 # 本地监控运行时输出（非科研资产）
 monitor/events.jsonl

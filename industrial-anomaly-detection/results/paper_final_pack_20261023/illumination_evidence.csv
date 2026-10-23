@@ -1,0 +1,152 @@
+group,metric,dataset,category,method,n,value_mean,value_std,source,definition_key
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Bird,F0,3,0.8886750340461731,0.0023367366715573057,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Bird,F0,3,0.06516832113265991,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Bird,F0,3,0.23776491979757944,0.0003062046326212486,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Bird,F0,3,0.07626443686308684,0.0003337034490770177,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Bird,F0,3,1.350442480513293,0.03157831727440134,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Bird,R1,3,0.9845535755157471,0.0005864402556152882,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Bird,R1,3,0.007361749807993571,0.00043859467949348025,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Bird,R1,3,0.11723122994105022,0.0008440025019997331,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Bird,R1,3,0.012132869473210087,0.00035606179323670063,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Bird,R1,3,0.3189624729287757,0.0102474866787094,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Car,F0,3,0.9015122652053833,0.0038160678428850675,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Car,F0,3,0.03344470262527466,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Car,F0,3,0.18259620666503906,0.000947360460648345,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Car,F0,3,0.0516610156165229,0.00037198004006759616,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Car,F0,3,0.9696879608425424,0.014114856641197158,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Car,R1,3,0.9803651173909506,0.002372906283314319,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Car,R1,3,0.005576610565185547,0.000574689646405355,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Car,R1,3,0.09657258540391922,0.000988785519555897,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Car,R1,3,0.009979565805859037,0.00018582585828600632,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Car,R1,3,0.2761385290262586,0.011286788576192265,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Cube,F0,3,0.9095436334609985,0.0012755490059245655,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Cube,F0,3,0.03136104345321655,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Cube,F0,3,0.13781951864560446,0.0018733873319478817,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Cube,F0,3,0.03547729810078939,0.0008150984840089786,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Cube,F0,3,0.8949277882934158,0.015795045846451763,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Cube,R1,3,0.9646811882654825,0.005698700462103457,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Cube,R1,3,0.011089146137237549,0.0025479876015857546,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Cube,R1,3,0.07770650833845139,0.0009782354261582327,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Cube,R1,3,0.008002553162751372,0.0003562438261695035,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Cube,R1,3,0.22154663608761696,0.005004057837118672,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Dice,F0,3,0.9327032168706259,0.00028459598418625323,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Dice,F0,3,0.03339666128158569,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Dice,F0,3,0.15668363372484842,0.000994214819898337,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Dice,F0,3,0.04070961281105324,0.0002826698493774346,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Dice,F0,3,1.2334268537168371,0.05535009114131625,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Dice,R1,3,0.9763630827267965,0.0018413142713848616,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Dice,R1,3,0.012232363224029541,0.0010706520781491437,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Dice,R1,3,0.08413284023602803,0.0007566303920863002,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Dice,R1,3,0.008313652321144387,0.00015938022652273984,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Dice,R1,3,0.26028836251716264,0.006845724596904771,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Doll,F0,3,0.8936687111854553,0.0007143221091456426,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Doll,F0,3,0.048511505126953125,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Doll,F0,3,0.18235262235005698,0.0014402249449187688,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Doll,F0,3,0.05126656956142849,0.00048290366444113885,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Doll,F0,3,1.655431190469276,0.06289161346079829,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Doll,R1,3,0.976915160814921,0.00315333817000258,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Doll,R1,3,0.01009883483250936,0.0016830397031917534,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Doll,R1,3,0.0985850989818573,0.0016679762854102894,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Doll,R1,3,0.010338270090244435,6.091222475322015e-05,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Doll,R1,3,0.47614639629438055,0.021179006447616482,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Holder,F0,3,0.8806423942248026,0.0014335331622498501,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Holder,F0,3,0.04281336069107056,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Holder,F0,3,0.1870003342628479,0.0020568354434306814,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Holder,F0,3,0.05389241889671043,0.0008331419398408922,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Holder,F0,3,0.9532498802730585,0.017473417771847573,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Holder,R1,3,0.9711799820264181,0.003411099262494508,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Holder,R1,3,0.006997207800547282,0.0008599494003462612,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Holder,R1,3,0.10183887183666229,0.001186702254142977,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Holder,R1,3,0.011792424828917894,3.887011730350087e-05,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Holder,R1,3,0.264461179362019,0.008544873446639204,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Motor,F0,3,0.9185754060745239,0.000128124769635202,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Motor,F0,3,0.03582340478897095,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Motor,F0,3,0.19170851508776346,0.0007125417149611767,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Motor,F0,3,0.05507200823889838,0.0004524047674399876,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Motor,F0,3,1.3609737349394664,0.04416261796356728,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Motor,R1,3,0.9838143587112427,0.001789095655661554,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Motor,R1,3,0.0052092671394348145,0.0004277560004064558,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Motor,R1,3,0.09965604543685913,0.0013978296867240734,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Motor,R1,3,0.010842955377366808,0.00024308483323035732,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Motor,R1,3,0.36468314709286126,0.00539083134614617,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Ring,F0,3,0.9500312407811483,0.001078468766473803,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Ring,F0,3,0.038793861865997314,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Ring,F0,3,0.17685440182685852,0.0011191921554666417,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Ring,F0,3,0.050897753326981154,0.0005212341301134765,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Ring,F0,3,1.2965943006125873,0.13235793242247654,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Ring,R1,3,0.9911672870318095,0.0011816602672219813,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Ring,R1,3,0.006786525249481201,0.0009251751073447354,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Ring,R1,3,0.08988300710916519,0.00041585507113687853,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Ring,R1,3,0.008228616626174362,0.00030747139792850885,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Ring,R1,3,0.2295400150866548,0.015334031029614352,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Teapot,F0,3,0.9129043817520142,0.00038647744057613746,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Teapot,F0,3,0.06195187568664551,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Teapot,F0,3,0.2228647917509079,0.0003820777329808909,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Teapot,F0,3,0.07116575982835559,6.999146561522128e-05,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Teapot,F0,3,0.9175318105769259,0.020106610833176435,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Teapot,R1,3,0.9850934942563375,0.0025127325519128892,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Teapot,R1,3,0.010299861431121826,0.00163948355193889,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Teapot,R1,3,0.10756812244653702,0.0011425886960542307,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Teapot,R1,3,0.010586363739437527,0.0006894658148792606,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Teapot,R1,3,0.19462903583288893,0.010524392937600303,results/e22/cells/*.json,robustness_score_R1
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Tube,F0,3,0.9342037836710612,0.0005242450363151865,results/e22/cells/*.json,A_disp_pairwise_cos_F0
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Tube,F0,3,0.03726375102996826,0.0,results/e22/cells/*.json,B_illum_group_centroid_dist_F0
+synthetic_photometric,D_illum_shift,M2AD view120,Tube,F0,3,0.1843446989854177,0.00035101798061087057,results/e22/cells/*.json,D_illum_shift_F0
+synthetic_photometric,robustness_feat,M2AD view120,Tube,F0,3,0.05378801504770916,0.00014275109949315326,results/e22/cells/*.json,robustness_feat_F0
+synthetic_photometric,robustness_score,M2AD view120,Tube,F0,3,1.1799314190267003,0.05026140911178518,results/e22/cells/*.json,robustness_score_F0
+synthetic_photometric,A_disp_pairwise_cos,M2AD view120,Tube,R1,3,0.9883335630098978,0.0008618907816285527,results/e22/cells/*.json,A_disp_pairwise_cos_R1
+synthetic_photometric,B_illum_group_centroid_dist,M2AD view120,Tube,R1,3,0.0062999725341796875,0.0004871986205652563,results/e22/cells/*.json,B_illum_group_centroid_dist_R1
+synthetic_photometric,D_illum_shift,M2AD view120,Tube,R1,3,0.0972538689772288,0.0010941163492412158,results/e22/cells/*.json,D_illum_shift_R1
+synthetic_photometric,robustness_feat,M2AD view120,Tube,R1,3,0.009736450733961883,4.934814885868177e-05,results/e22/cells/*.json,robustness_feat_R1
+synthetic_photometric,robustness_score,M2AD view120,Tube,R1,3,0.27059945902227517,0.013518802300833837,results/e22/cells/*.json,robustness_score_R1
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Bird,F0,3,0.038137,0.002169,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Bird,R1,3,0.014563,0.003066,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Bird,R1/F0,3,0.381865,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Car,F0,3,0.063853,0.025755,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Car,R1,3,0.050829,0.016952,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Car,R1/F0,3,0.796027,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Cube,F0,3,0.027825,0.000924,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Cube,R1,3,0.016098,0.002894,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Cube,R1/F0,3,0.578525,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Dice,F0,3,0.01536,0.004968,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Dice,R1,3,0.021609,0.008231,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Dice,R1/F0,3,1.406836,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Doll,F0,3,0.01678,0.003976,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Doll,R1,3,0.012042,0.002652,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Doll,R1/F0,3,0.717604,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Holder,F0,3,0.03248,0.00799,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Holder,R1,3,0.030681,0.002427,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Holder,R1/F0,3,0.94459,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Motor,F0,3,0.055013,0.029862,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Motor,R1,3,0.017873,0.008536,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Motor,R1/F0,3,0.324878,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Ring,F0,3,0.026433,0.001958,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Ring,R1,3,0.021198,0.003197,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Ring,R1/F0,3,0.801929,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Teapot,F0,3,0.032781,0.004114,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Teapot,R1,3,0.018655,0.002924,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Teapot,R1/F0,3,0.569067,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Tube,F0,3,0.031312,0.007085,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,good_score_spread_across_illum_groups,M2AD view120,Tube,R1,3,0.024774,0.000821,results/e22/illumination_summary.csv,max_minus_min of good_mean over 10 illumination groups
+real_illumination_M2AD,spread_ratio_R1_over_F0,M2AD view120,Tube,R1/F0,3,0.791192,nan,results/e22/illumination_summary.csv,ratio of the two spreads above
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD MetalParts,MetalParts,background,6,-0.039375000000000014,0.019693396383333978,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD MetalParts,MetalParts,illumination,3,0.001388888888888884,0.00021684020827767608,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD MetalParts,MetalParts,pose,6,0.00017361111111108274,0.004565146999783286,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD MetalParts,MetalParts,scale,3,-0.02649305555555555,0.006617931676583377,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD PCB,PCB,illumination,3,0.026574074074074045,0.006035588328789726,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD PCB,PCB,illumination_related_shadow,3,0.009722222222222188,0.0024146303681546618,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD PCB,PCB,illumination_related_white_balance,3,0.017268518518518534,0.004893411208045867,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD PCB,PCB,pose,6,0.019097222222222248,0.01564507969038568,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+external_real_shift_RobustAD,d_auroc_by_condition_group,RobustAD PCB,PCB,source_reference,3,-0.008074074074073937,0.0019159284676114787,results/e25/cells/*.json,"mean dAUROC over seeds, valid cells only"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Bird,view090,1,0.021402,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Bird,view120,1,0.010614,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Bird,view240,1,0.005059,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Bird,view330,1,0.003337,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Car,view090,1,0.001088,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Car,view120,1,0.019588,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Car,view240,1,-0.01632,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Car,view330,1,-0.026003,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Cube,view090,1,-0.000294,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Cube,view120,1,0.016001,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Cube,view240,1,0.005031,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
+viewpoint_M2AD,d_auroc_by_view,M2AD,Cube,view330,1,-0.004291,nan,results/e21/analysis_cells.csv,"dAUROC for a viewpoint change, NOT an illumination change"
