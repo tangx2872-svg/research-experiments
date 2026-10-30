@@ -463,3 +463,26 @@ results/e24/*.csv.tmp
 
 # 本地监控运行时输出（非科研资产）
 monitor/events.jsonl
+
+# E26 (AnomalyDINO official baseline under identical protocol: protocol / 2 scripts / 30 per-cell per-image
+# scores / analysis CSVs / backend equivalence / run log / README). work/ 是 33,970 个数据集目录符号链接，
+# 仅运行期脚手架，不入库。
+!results/e26_anomalydino/
+results/e26_anomalydino/work/
+
+# E27 (real-illumination paired analysis of existing scores: protocol / 2 scripts / 7 CSVs / coverage / README)
+!results/e27_illum_paired/
+
+# E28 (literature check: AnomalyDINO / FAPrompt-CAP / PG-PSR) — single markdown report
+!results/e28_lit_review/
+
+# final_supplement (2026-10-30 final report + SHA256SUMS; the tar.gz bundle duplicates tracked files, so it
+# stays on disk only, integrity recorded by SHA256SUMS.txt)
+!results/final_supplement_20261030/
+results/final_supplement_20261030/*.tar.gz
+
+# paper_figures_20261030 (camera-ready exports: 3 x {300 dpi PNG, vector PDF} / export script / 4 input CSVs /
+# parity checks / README / figure map). The .tar.gz bundle duplicates tracked files -> stays on disk only.
+!results/paper_figures_20261030/
+results/paper_figures_20261030/*.tar.gz
+results/paper_figures_20261030/**/__pycache__/

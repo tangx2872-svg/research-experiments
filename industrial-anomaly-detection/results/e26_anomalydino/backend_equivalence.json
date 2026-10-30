@@ -1,0 +1,10 @@
+{
+ "n_ref": 30,
+ "n_angles": 8,
+ "n_test": 10,
+ "n_bank_vectors": 245760,
+ "max_abs_diff": 1.8179416655383918e-07,
+ "n_compared": 10,
+ "t_official_faiss_cpu_s": 24.6,
+ "t_torch_backend_s": 8.8
+}

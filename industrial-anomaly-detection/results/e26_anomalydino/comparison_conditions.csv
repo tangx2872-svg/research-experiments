@@ -1,0 +1,12 @@
+condition,anomalydino_official_this_protocol,this_paper_f0_r1,aligned
+backbone,dinov2_vits14 (official default),DINOv2 ViT-B/14,不同（容量）
+resolution,448 短边 BICUBIC + 裁 14 倍数,448 l0 缓存,几何等价
+input file,写盘 l0_448 (PNG uint8) — 8bit 量化,内存 float,轻微数值偏差（已量化）
+reference set,300 张 = 该 seed 的 bank（bank_hash 逐 cell 核对）,同,完全一致
+reference augmentation,8 角度旋转（官方 agnostic 默认）,无,未对齐（官方组件）
+PCA masking,关闭（官方对自定义数据集 fallback）,无,一致
+retrieval,"L2_normalized, k=1, 精确",cosine 1-NN 精确,等价
+image score,mean of top 1% patch distances,max patch distance,不同（官方组件）
+adapter/training,无（training-free）,线性残差 W，normal-only 训练,R1 有训练
+test set,"view120, 700 图, 逐图身份一致",同,完全一致
+label / filter,image_anomaly + detectable != False,同,完全一致

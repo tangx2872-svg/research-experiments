@@ -1,0 +1,11 @@
+category,group,delta_sd_normal_across_illum,delta_auroc,delta_ap,delta_normal_mean,delta_normal_sd,delta_anomaly_mean,delta_anomaly_sd,sd_decreased,auroc_decreased,pattern
+Bird,dev,-0.017134,0.025857,0.023713,-0.150253,-0.027156,-0.174185,-0.028988,True,False,SD_down_AUROC_up
+Car,dev,-0.010504,0.011233,0.011152,-0.062075,-0.010851,-0.072111,-0.010388,True,False,SD_down_AUROC_up
+Cube,dev,-0.005307,0.002647,0.004128,-0.049507,-0.006791,-0.065916,-0.014370,True,False,SD_down_AUROC_up
+Dice,ext,-0.004479,0.003362,0.002117,-0.065970,-0.004862,-0.084993,-0.013440,True,False,SD_down_AUROC_up
+Doll,ext,-0.006961,-0.038497,-0.013021,-0.081802,-0.008150,-0.092600,-0.006549,True,True,SD_down_AUROC_down
+Holder,ext,-0.009187,0.010360,0.011224,-0.087314,-0.014788,-0.101537,-0.007893,True,False,SD_down_AUROC_up
+Motor,ext,-0.011889,0.008070,0.005474,-0.079710,-0.011627,-0.093875,-0.011825,True,False,SD_down_AUROC_up
+Ring,ext,-0.006023,0.020312,0.013791,-0.053701,-0.005787,-0.054894,-0.005551,True,False,SD_down_AUROC_up
+Teapot,ext,-0.006140,0.017298,0.010695,-0.068145,-0.007645,-0.088935,-0.023061,True,False,SD_down_AUROC_up
+Tube,ext,-0.002403,0.015322,0.008456,-0.045677,-0.000968,-0.041966,-0.001122,True,False,SD_down_AUROC_up

@@ -1,0 +1,22 @@
+{
+  "repo": "/root/autodl-tmp/research-experiments/industrial-anomaly-detection",
+  "absolute_tolerance": 1e-06,
+  "tolerance_reason": "export reads the 6-dp CSV tables (same numbers as the paper tables); the original runtime scripts read full-precision per-cell JSON, so residuals are bounded by CSV rounding",
+  "figures": {
+    "delta_auroc_10cat_horizontal": {
+      "identical_within_tol": true,
+      "exact_match": false,
+      "max_abs_diff": 4.41947565562803e-07
+    },
+    "doll_f0_vs_r1_per_image_scatter": {
+      "identical_within_tol": true,
+      "exact_match": false,
+      "max_abs_diff": 4.2321020010671617e-07
+    },
+    "multiview_delta_auroc_heatmap": {
+      "identical_within_tol": true,
+      "exact_match": true,
+      "max_abs_diff": 0.0
+    }
+  }
+}

@@ -1,0 +1,4 @@
+level,n_categories,auroc_ad_macro,ap_ad_macro,auroc_f0_macro,ap_f0_macro,auroc_r1_macro,ap_r1_macro,d_auroc_r1_minus_ad_macro,d_ap_r1_minus_ad_macro,d_auroc_ad_minus_f0_macro,d_ap_ad_minus_f0_macro
+macro_10cat,10,0.803565,0.859184,0.838813,0.893955,0.846409,0.901728,0.042844,0.042544,-0.035247,-0.034771
+dev_3cat,3,0.743570,0.791269,0.804968,0.854328,0.818213,0.867326,0.074644,0.076057,-0.061398,-0.063060
+ext_7cat,7,0.829278,0.888291,0.853318,0.910938,0.858493,0.916472,0.029215,0.028181,-0.024040,-0.022647

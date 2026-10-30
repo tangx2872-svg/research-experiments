@@ -1,0 +1,4 @@
+category,seed,max_abs_dscore,auroc_orig_input,auroc_cache_input,d_auroc_cache_minus_orig,ap_orig_input,ap_cache_input,d_ap_cache_minus_orig
+Bird,0,0.010465,0.655114,0.654261,-0.000854,0.687873,0.689531,0.001659
+Bird,1,0.014598,0.668572,0.667680,-0.000892,0.700820,0.700240,-0.000580
+Bird,2,0.018599,0.666498,0.665653,-0.000845,0.692415,0.692963,0.000549

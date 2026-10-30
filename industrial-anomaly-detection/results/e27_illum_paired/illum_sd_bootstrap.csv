@@ -1,0 +1,4 @@
+level,point_delta_sd,mean,sd,lo,hi,n_boot,rng_seed,resample_unit
+macro_10cat,-0.008003,-0.008003,0.000432,-0.008856,-0.007165,3000,20261030,specimen (3 seeds share draw)
+dev_3cat,-0.010982,-0.010968,0.000806,-0.012558,-0.009459,3000,20261030,specimen (3 seeds share draw)
+ext_7cat,-0.006726,-0.006732,0.000514,-0.007735,-0.005755,3000,20261030,specimen (3 seeds share draw)

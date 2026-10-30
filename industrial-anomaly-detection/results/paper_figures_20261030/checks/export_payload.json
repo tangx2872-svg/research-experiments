@@ -1,0 +1,193 @@
+{
+  "limits_locked_to_original": true,
+  "figures": {
+    "delta_auroc_10cat_horizontal": {
+      "categories": [
+        "Bird",
+        "Car",
+        "Cube",
+        "Dice",
+        "Doll",
+        "Holder",
+        "Motor",
+        "Ring",
+        "Teapot",
+        "Tube"
+      ],
+      "bar_values": [
+        0.025857,
+        0.011233,
+        0.002647,
+        0.003362,
+        -0.038497,
+        0.01036,
+        0.00807,
+        0.020312,
+        0.017298,
+        0.015322
+      ],
+      "xerr_sample_std_ddof1": [
+        0.013535,
+        0.007279,
+        0.014214,
+        0.000775,
+        0.004638,
+        0.004453,
+        0.007646,
+        0.003634,
+        0.007286,
+        0.004989
+      ],
+      "per_seed_dots": {
+        "Bird": [
+          0.010614,
+          0.03049,
+          0.036468
+        ],
+        "Car": [
+          0.019588,
+          0.007846,
+          0.006264
+        ],
+        "Cube": [
+          0.016001,
+          -0.012293,
+          0.004233
+        ],
+        "Dice": [
+          0.002672,
+          0.003213,
+          0.004201
+        ],
+        "Doll": [
+          -0.043852,
+          -0.03588,
+          -0.035759
+        ],
+        "Holder": [
+          0.015361,
+          0.008896,
+          0.006823
+        ],
+        "Motor": [
+          0.014795,
+          -0.000246,
+          0.009662
+        ],
+        "Ring": [
+          0.022095,
+          0.016131,
+          0.022711
+        ],
+        "Teapot": [
+          0.025394,
+          0.015231,
+          0.011269
+        ],
+        "Tube": [
+          0.011285,
+          0.013781,
+          0.0209
+        ]
+      },
+      "positive_categories": 9,
+      "xlim": [
+        -0.048014,
+        0.043554
+      ],
+      "ylim": [
+        -0.7525,
+        9.7525
+      ]
+    },
+    "doll_f0_vs_r1_per_image_scatter": {
+      "per_seed": {
+        "0": {
+          "n_images": 670,
+          "n_normal": 270,
+          "n_anomalous": 400,
+          "auroc_stored_f0": 0.719407,
+          "auroc_stored_r1": 0.675556,
+          "auroc_recomputed_f0": 0.719407,
+          "auroc_recomputed_r1": 0.675556,
+          "auroc_max_abs_diff": 4.44e-07,
+          "offsets_sha256": "c39bca1dddc50acf7cdf15303e63d64cc5a0bb5de8c3d4564804eed163cd2438"
+        },
+        "1": {
+          "n_images": 670,
+          "n_normal": 270,
+          "n_anomalous": 400,
+          "auroc_stored_f0": 0.713065,
+          "auroc_stored_r1": 0.677185,
+          "auroc_recomputed_f0": 0.713065,
+          "auroc_recomputed_r1": 0.677185,
+          "auroc_max_abs_diff": 1.85e-07,
+          "offsets_sha256": "3bb289c300b83f0a18f2e88a39ba32c1b609b59c6549c7bf1a08572cf6c40cbb"
+        },
+        "2": {
+          "n_images": 670,
+          "n_normal": 270,
+          "n_anomalous": 400,
+          "auroc_stored_f0": 0.705037,
+          "auroc_stored_r1": 0.669278,
+          "auroc_recomputed_f0": 0.705037,
+          "auroc_recomputed_r1": 0.669278,
+          "auroc_max_abs_diff": 2.22e-07,
+          "offsets_sha256": "f6aac62a06f474c6aaeaac422409377c17951bfbde4b22da813abc56f43b37ae"
+        }
+      },
+      "detectable_filter": "detectable == True (670 images per seed: 270 normal + 400 anomalous)",
+      "xlim": [
+        0.094993,
+        0.52045
+      ],
+      "ylim": [
+        0.094993,
+        0.52045
+      ]
+    },
+    "multiview_delta_auroc_heatmap": {
+      "categories": [
+        "Bird",
+        "Car",
+        "Cube"
+      ],
+      "views": [
+        "090",
+        "120",
+        "240",
+        "330"
+      ],
+      "matrix": [
+        [
+          0.021402,
+          0.010614,
+          0.005059,
+          0.003337
+        ],
+        [
+          0.001088,
+          0.019588,
+          -0.01632,
+          -0.026003
+        ],
+        [
+          -0.000294,
+          0.016001,
+          0.005031,
+          -0.004291
+        ]
+      ],
+      "colour_limit": 0.03,
+      "n_negative_cells": 4,
+      "xlim": [
+        -0.5,
+        3.5
+      ],
+      "ylim": [
+        2.5,
+        -0.5
+      ]
+    }
+  }
+}
