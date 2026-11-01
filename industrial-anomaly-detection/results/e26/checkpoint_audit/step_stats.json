@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-01",
+  "experiment": "E26-B",
+  "final_trainer": "scripts/e13b_screen.py",
+  "final_config": "results/e17/final_method.json",
+  "final_importers": {
+    "scripts/e16_qualify.py": "E16 qualification",
+    "scripts/e17_refine.py": "E17 BETA refine / freeze",
+    "scripts/e21_multiview_validation.py": "E21 multi-view",
+    "scripts/e22_full_category_validation.py": "E22 10-category x 3 seeds (main table)",
+    "scripts/e24_runner.py": "E24 photometric sensitivity",
+    "scripts/e25_robustad_eval.py": "E25 RobustAD external validation"
+  },
+  "deprecated_excluded": {
+    "scripts/e12b_screen.py": "E12-B gate method (not the final method)"
+  },
+  "findings": {
+    "Q1_tracks_best_val": true,
+    "Q2_saves_best_weights": false,
+    "Q3_weights_used_for_scoring": "current weights at the stopping iteration (no best-checkpoint restore)",
+    "Q3_code_evidence": [
+      {
+        "file": "scripts/e13b_screen.py",
+        "lines": "52-82",
+        "what": "best_val / no_improve updated; break when no_improve*EVAL_EVERY >= PATIENCE_STEPS"
+      },
+      {
+        "file": "scripts/e13b_screen.py",
+        "lines": "85-90",
+        "what": "report uses the live adapter; no snapshot, no restore"
+      },
+      {
+        "file": "scripts/e13b_screen.py",
+        "lines": "137-141",
+        "what": "run_cell() scores bank/test with the same adapter returned from train_r1"
+      }
+    ],
+    "snapshot_keywords_in_final_trainer": [],
+    "deprecated_contrast": {
+      "file": "scripts/e12b_screen.py",
+      "lines": "326, 333-334",
+      "what": "this older E12-B path DOES snapshot/restore best_state; it is NOT on the final import chain and must not be used to infer the final behaviour"
+    },
+    "minor_observations": [
+      "steps_used is written after the eval branch, so on an early-stop break it records one step less than the number of executed steps (reporting only)",
+      "best_val is a dead variable: it decides when to stop, never which weights to score"
+    ]
+  },
+  "protocol_check": {
+    "frozen_protocol_states_checkpoint_policy": false,
+    "paper_facing_material_states_checkpoint_policy": false,
+    "evidence": [
+      "results/e16/protocol.md:45",
+      "results/e16/audit.md:64",
+      "results/e17/e17_decision_memo.md:31",
+      "results/e17/audit.md:25",
+      "results/e17/final_method.json (PATIENCE_STEPS/EVAL_EVERY/MAX_STEPS only)",
+      "results/paper_ready/EVIDENCE_MAP.md:36"
+    ],
+    "verdict": "PASS_A",
+    "verdict_reason": "implementation = current weights; neither the frozen protocol nor the paper-facing material requires best-checkpoint restore, so there is no contradiction. If the intended behaviour was best-restore, this becomes ESCALATE and requires human adjudication.",
+    "required_manuscript_sentence": "Early stopping monitors a validation consistency loss on 60 held-out normal images (every 5 steps, patience 30); the parameters at the stopping iteration are used for evaluation - no best-validation checkpoint is restored."
+  },
+  "step_stats": {
+    "E22": {
+      "n_cells": 30,
+      "n_with_steps_used": 30,
+      "steps_min": 44,
+      "steps_median": 59.0,
+      "steps_max": 124,
+      "n_hit_max_steps_300": 0,
+      "n_early_stopped": 30,
+      "n_with_best_val_recorded": 0
+    },
+    "E25": {
+      "n_cells": 39,
+      "n_with_steps_used": 39,
+      "steps_min": 49,
+      "steps_median": 74,
+      "steps_max": 164,
+      "n_hit_max_steps_300": 0,
+      "n_early_stopped": 39,
+      "n_with_best_val_recorded": 0
+    },
+    "E24": {
+      "n_cells": 51,
+      "n_with_steps_used": 51,
+      "steps_min": 44,
+      "steps_median": 59,
+      "steps_max": 219,
+      "n_hit_max_steps_300": 0,
+      "n_early_stopped": 51,
+      "n_with_best_val_recorded": 51
+    }
+  }
+}

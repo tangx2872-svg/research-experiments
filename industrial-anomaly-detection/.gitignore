@@ -470,6 +470,17 @@ monitor/events.jsonl
 !results/e26_anomalydino/
 results/e26_anomalydino/work/
 
+# E26 pre-submission P0 audit group (A duplicate / B checkpoint / C reproducibility / D numerical
+# consistency): scripts in scripts/e26_*.py, outputs here. Only reports + small CSV/JSON enter git.
+# Excluded: the two ~11 MB visual contact sheets (human review only) and run1_prefix_bug/
+# (development counter-example; its content is described textually in results_consistency/REPORT.md).
+!results/e26/
+!results/e26/**
+results/e26/robustad_duplicate_audit/*contact_sheet*.png
+results/e26/results_consistency/run1_prefix_bug/
+results/e26/**/__pycache__/
+results/e26/**/*.log
+
 # E27 (real-illumination paired analysis of existing scores: protocol / 2 scripts / 7 CSVs / coverage / README)
 !results/e27_illum_paired/
 
